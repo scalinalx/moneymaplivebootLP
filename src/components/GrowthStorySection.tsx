@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const GrowthStorySection = () => {
   return (
@@ -32,10 +33,12 @@ const GrowthStorySection = () => {
             {/* Profile Header */}
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-yellow-400">
-                <img 
+                <Image 
                   src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b1deb04-e24a-4f12-af95-c9941a3c4a34_1500x1500.png" 
                   alt="Ana Calin"
                   className="w-full h-full object-cover"
+                  width={64}
+                  height={64}
                 />
               </div>
               <div>

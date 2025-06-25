@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Check, ArrowRight, Zap } from 'lucide-react';
+import Image from 'next/image';
 
 const OldVsNewWaySection = () => {
   const oldWayItems = [

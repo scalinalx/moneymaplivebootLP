@@ -17,7 +17,7 @@ const NewsletterMonetizationCopy = () => {
           
           {/* Main Headline */}
           <h1 className="text-white text-5xl md:text-6xl font-bold mb-8 leading-tight">
-            There's no reason why you should be <span className="text-yellow-400">struggling to monetize</span> your newsletter
+            There&apos;s no reason why you should be <span className="text-yellow-400">struggling to monetize</span> your newsletter
           </h1>
           
           {/* Subheadline */}
@@ -59,7 +59,7 @@ const NewsletterMonetizationCopy = () => {
                       <span className="text-yellow-400 text-2xl font-bold">3</span>
                     </div>
                     <h3 className="text-white text-lg font-semibold mb-2">Launch Irresistible Offer(s)</h3>
-                    <p className="text-gray-400 text-sm">Products and services your audience can't wait to buy</p>
+                    <p className="text-gray-400 text-sm">Products and services your audience can&apos;t wait to buy</p>
                   </div>
                   
                   <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
@@ -67,13 +67,13 @@ const NewsletterMonetizationCopy = () => {
                       <span className="text-yellow-400 text-2xl font-bold">4</span>
                     </div>
                     <h3 className="text-white text-lg font-semibold mb-2">Multiple Income Streams</h3>
-                    <p className="text-gray-400 text-sm">Revenue sources that don't depend on massive audiences</p>
+                    <p className="text-gray-400 text-sm">Revenue sources that don&apos;t depend on massive audiences</p>
                   </div>
                 </div>
                 
                 <div className="text-center p-6 bg-gradient-to-r from-yellow-400/10 to-orange-400/10 rounded-xl border border-yellow-400/20">
                   <p className="text-gray-300 text-lg leading-relaxed italic mb-4">
-                    "Simple enough, but not easy to master."
+                    &ldquo;Simple enough, but not easy to master.&rdquo;
                   </p>
                 </div>
               </div>
@@ -83,7 +83,7 @@ const NewsletterMonetizationCopy = () => {
           {/* Final CTA Section */}
           <div className="text-center">
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              That's where the <span style={{ color: '#ffc300' }}>Newsletter Money Map</span> comes in
+              That&apos;s where the <span style={{ color: '#ffc300' }}>Newsletter Money Map</span> comes in
             </h2>
             
             <p className="text-gray-300 text-xl mb-8 max-w-3xl mx-auto leading-relaxed">

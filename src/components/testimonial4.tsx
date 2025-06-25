@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const Testimonial4 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -90,10 +91,12 @@ const Testimonial4 = () => {
             <div className="aspect-video rounded-xl overflow-hidden relative bg-gradient-to-br from-gray-800 to-gray-900">
               {/* Video Thumbnail with Play Button */}
               <div className="relative w-full h-full">
-                <img 
+                <Image 
                   src={testimonials[currentSlide].thumbnail}
                   alt={testimonials[currentSlide].name}
                   className="w-full h-full object-cover"
+                  width={400}
+                  height={300}
                 />
                 
                 {/* Play Button Overlay */}
@@ -166,10 +169,12 @@ const Testimonial4 = () => {
                     : 'border-white/20 hover:border-white/40'
                 }`}
               >
-                <img 
+                <Image 
                   src={testimonial.thumbnail}
                   alt={testimonial.name}
                   className="w-full h-full object-cover"
+                  width={400}
+                  height={300}
                 />
               </button>
             ))}

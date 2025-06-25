@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Testimonials2 = () => {
   return (
@@ -10,10 +11,12 @@ const Testimonials2 = () => {
       <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto">
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="Emma Wilson"
               className="w-16 h-16 rounded-full"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-white font-semibold">Emma Wilson</h3>
@@ -34,10 +37,12 @@ const Testimonials2 = () => {
 
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="David Chen"
               className="w-16 h-16 rounded-full"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-white font-semibold">David Chen</h3>
@@ -64,10 +69,12 @@ const Testimonials2 = () => {
       <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto">
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="Emma Wilson"
               className="w-16 h-16 rounded-full"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-white font-semibold">Emma Wilson</h3>
@@ -88,10 +95,12 @@ const Testimonials2 = () => {
 
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="David Chen"
               className="w-16 h-16 rounded-full"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-white font-semibold">David Chen</h3>
@@ -117,10 +126,12 @@ const Testimonials2 = () => {
       <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto">
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="Emma Wilson"
               className="w-16 h-16 rounded-full"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-white font-semibold">Emma Wilson</h3>
@@ -141,10 +152,12 @@ const Testimonials2 = () => {
 
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="David Chen"
               className="w-16 h-16 rounded-full"
+              width={64}
+              height={64}
             />
             <div>
               <h3 className="text-white font-semibold">David Chen</h3>

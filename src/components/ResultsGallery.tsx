@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const ResultsGallery = () => {
   return (
@@ -10,10 +11,12 @@ const ResultsGallery = () => {
       <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="aspect-w-16 aspect-h-9 mb-4">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="Growth Chart"
               className="rounded-lg object-cover w-full h-full"
+              width={320}
+              height={180}
             />
           </div>
           <h3 className="text-white font-semibold mb-2">Tech Weekly Insights</h3>
@@ -31,10 +34,12 @@ const ResultsGallery = () => {
 
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="aspect-w-16 aspect-h-9 mb-4">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="Revenue Chart"
               className="rounded-lg object-cover w-full h-full"
+              width={320}
+              height={180}
             />
           </div>
           <h3 className="text-white font-semibold mb-2">Marketing Growth Lab</h3>
@@ -52,10 +57,12 @@ const ResultsGallery = () => {
 
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="aspect-w-16 aspect-h-9 mb-4">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="Engagement Chart"
               className="rounded-lg object-cover w-full h-full"
+              width={320}
+              height={180}
             />
           </div>
           <h3 className="text-white font-semibold mb-2">Creator Economy Weekly</h3>

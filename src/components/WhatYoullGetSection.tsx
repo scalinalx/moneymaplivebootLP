@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const WhatYoullGetSection = () => {
   const [visibleItems, setVisibleItems] = useState(new Set<number>());
@@ -136,34 +137,42 @@ const WhatYoullGetSection = () => {
                         <div className="grid grid-cols-2 gap-4 w-full h-full p-4">
                           {/* Ana Calin */}
                           <div className="rounded-lg overflow-hidden border-2 border-yellow-400">
-                            <img 
+                            <Image 
                               src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b1deb04-e24a-4f12-af95-c9941a3c4a34_1500x1500.png" 
                               alt="Ana Calin"
                               className="w-full h-full object-cover"
+                              width={240}
+                              height={240}
                             />
                           </div>
                           {/* Member 1 - Male participant */}
                           <div className="rounded-lg overflow-hidden border-2 border-blue-400">
-                            <img 
+                            <Image 
                               src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=300&h=300&fit=crop&crop=face&auto=format&q=80" 
                               alt="Member 1"
                               className="w-full h-full object-cover"
+                              width={240}
+                              height={240}
                             />
                           </div>
                           {/* Member 2 - Female participant */}
                           <div className="rounded-lg overflow-hidden border-2 border-green-400">
-                            <img 
+                            <Image 
                               src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=300&h=300&fit=crop&crop=face&auto=format&q=80" 
                               alt="Member 2"
                               className="w-full h-full object-cover"
+                              width={240}
+                              height={240}
                             />
                           </div>
                           {/* Member 3 - Diverse participant */}
                           <div className="rounded-lg overflow-hidden border-2 border-purple-400">
-                            <img 
+                            <Image 
                               src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=300&h=300&fit=crop&crop=face&auto=format&q=80" 
                               alt="Member 3"
                               className="w-full h-full object-cover"
+                              width={240}
+                              height={240}
                             />
                           </div>
                         </div>
