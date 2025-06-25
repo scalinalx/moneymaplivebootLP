@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Brand Partnership Workshop - How Small Creators Make $3K+ Monthly",
+  title: "Newsletter Money Map - How to Monetize Your Newsletter & Build 6-Figure Income",
   description: "Learn the exact strategies small creators use to land consistent brand partnerships and build a reliable $3K+ monthly income stream.",
   icons: {
     icon: '/imgs/hwg-icon.webp',
