@@ -11,4 +11,4 @@ export const stripe = new Stripe(stripeSecretKey || 'sk_test_placeholder', {
   typescript: true,
 });
 
-export const WORKSHOP_PRICE = parseInt('14700'); // $147.00 in cents 
+export const WORKSHOP_PRICE = parseInt('24700'); // $247.00 in cents 
