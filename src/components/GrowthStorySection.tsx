@@ -43,7 +43,7 @@ const GrowthStorySection = () => {
               </div>
               <div>
                 <h3 className="text-yellow-400 text-2xl font-bold">Ana Calin</h3>
-                <p className="text-gray-300">53,801 subscribers</p>
+                <p className="text-gray-300">55,450 subscribers</p>
               </div>
             </div>
 

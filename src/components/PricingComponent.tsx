@@ -84,7 +84,7 @@ const PricingComponent = () => {
                     <div className="grid grid-cols-3 gap-4 h-full">
                       <div className="bg-orange-600 rounded-lg p-3 flex flex-col gap-2">
                         <div className="w-12 h-12 bg-white rounded-full"></div>
-                        <div className="text-white text-xs font-bold">LITERALLY ACADEMY</div>
+                        <div className="text-white text-xs font-bold">SUBSTACK MONEY MAP</div>
                         <div className="flex flex-col gap-1 mt-4">
                           {['Dashboard', 'Courses', 'Homework', 'Community', 'Team Starter', 'Analytics', 'Live', 'Bookflix', 'Shop/Pro'].map((item) => (
                             <div key={item} className="text-white text-xs py-1">{item}</div>
