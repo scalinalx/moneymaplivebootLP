@@ -5,8 +5,8 @@ import type { LeadFormData, ApiResponse, Lead } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
-    const body: LeadFormData = await request.json();
-    const { email, name } = body;
+    const body: LeadFormData & { referralId?: string } = await request.json();
+    const { email, name, referralId } = body;
 
     // Validate required fields
     if (!email || !name) {
@@ -40,6 +40,14 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (existingLead) {
+      // If lead exists and we have a new referral ID, update it
+      if (referralId && !existingLead.referral_id) {
+        await supabaseAdmin
+          .from('leads_bootcamp_brands')
+          .update({ referral_id: referralId })
+          .eq('id', existingLead.id);
+      }
+
       const leadData: Lead = {
         id: existingLead.id,
         email: existingLead.email,
@@ -58,15 +66,22 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Create new lead
+    // Create new lead with referral ID
+    const insertData: any = {
+      email,
+      name,
+      has_checkout_session: false,
+      has_paid: false
+    };
+
+    // Only include referral_id if it exists
+    if (referralId) {
+      insertData.referral_id = referralId;
+    }
+
     const { data: newLead, error } = await supabaseAdmin
       .from('leads_bootcamp_brands')
-      .insert([{
-        email,
-        name,
-        has_checkout_session: false,
-        has_paid: false
-      }])
+      .insert([insertData])
       .select()
       .single();
 

@@ -38,8 +38,8 @@ export async function POST(request: NextRequest) {
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-    // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
+    // Prepare checkout session parameters
+    const checkoutParams: any = {
       payment_method_types: ['card'],
       line_items: [
         {
@@ -64,7 +64,17 @@ export async function POST(request: NextRequest) {
       },
       allow_promotion_codes: true,
       billing_address_collection: 'required',
-    });
+      customer_creation: 'always', // Required for Rewardful integration
+    };
+
+    // Add client_reference_id if referral ID exists (required for Rewardful)
+    if (lead.referral_id) {
+      checkoutParams.client_reference_id = lead.referral_id;
+      console.log('Including Rewardful referral ID in checkout:', lead.referral_id);
+    }
+
+    // Create Stripe checkout session
+    const session = await stripe.checkout.sessions.create(checkoutParams);
 
     // Update lead with checkout session info
     const { error: updateError } = await supabaseAdmin

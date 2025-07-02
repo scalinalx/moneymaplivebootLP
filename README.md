@@ -51,23 +51,23 @@ workshop-landing/
 Create this table in your Supabase database:
 
 ```sql
--- Create leads table
-CREATE TABLE leads (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  first_name VARCHAR(100) NOT NULL,
-  last_name VARCHAR(100) NOT NULL,
-  phone VARCHAR(20),
-  company VARCHAR(255),
-  has_checkout_session BOOLEAN DEFAULT FALSE,
-  stripe_session_id VARCHAR(255),
-  has_paid BOOLEAN DEFAULT FALSE,
-  payment_completed_at TIMESTAMP WITH TIME ZONE,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- Create leads_bootcamp_brands table
+CREATE TABLE public.leads_bootcamp_brands (
+  id UUID NOT NULL DEFAULT gen_random_uuid(),
+  email CHARACTER VARYING(255) NOT NULL,
+  name CHARACTER VARYING(200) NOT NULL,
+  has_checkout_session BOOLEAN NULL DEFAULT false,
+  stripe_session_id CHARACTER VARYING(255) NULL,
+  has_paid BOOLEAN NULL DEFAULT false,
+  payment_completed_at TIMESTAMP WITH TIME ZONE NULL,
+  referral_id CHARACTER VARYING(255) NULL, -- Rewardful affiliate tracking
+  created_at TIMESTAMP WITH TIME ZONE NULL DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE NULL DEFAULT now(),
+  CONSTRAINT leads_bootcamp_brands_pkey PRIMARY KEY (id),
+  CONSTRAINT leads_bootcamp_brands_email_key UNIQUE (email)
+) TABLESPACE pg_default;
 
--- Create updated_at trigger
+-- Create updated_at trigger function
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -76,15 +76,31 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
-CREATE TRIGGER update_leads_updated_at 
-  BEFORE UPDATE ON leads 
+-- Create trigger for updated_at
+CREATE TRIGGER update_leads_bootcamp_brands_updated_at 
+  BEFORE UPDATE ON leads_bootcamp_brands 
   FOR EACH ROW 
   EXECUTE FUNCTION update_updated_at_column();
 
 -- Create indexes for performance
-CREATE INDEX idx_leads_email ON leads(email);
-CREATE INDEX idx_leads_stripe_session ON leads(stripe_session_id);
-CREATE INDEX idx_leads_created_at ON leads(created_at);
+CREATE INDEX IF NOT EXISTS idx_leads_bootcamp_brands_email 
+ON public.leads_bootcamp_brands USING btree (email) TABLESPACE pg_default;
+
+CREATE INDEX IF NOT EXISTS idx_leads_bootcamp_brands_stripe_session 
+ON public.leads_bootcamp_brands USING btree (stripe_session_id) TABLESPACE pg_default;
+
+CREATE INDEX IF NOT EXISTS idx_leads_bootcamp_brands_created_at 
+ON public.leads_bootcamp_brands USING btree (created_at) TABLESPACE pg_default;
+
+CREATE INDEX IF NOT EXISTS idx_leads_bootcamp_brands_has_paid 
+ON public.leads_bootcamp_brands USING btree (has_paid) TABLESPACE pg_default;
+
+CREATE INDEX IF NOT EXISTS idx_leads_bootcamp_brands_referral_id 
+ON public.leads_bootcamp_brands USING btree (referral_id) TABLESPACE pg_default;
+
+-- Add column comments
+COMMENT ON COLUMN public.leads_bootcamp_brands.referral_id 
+IS 'Rewardful affiliate referral ID (UUID string) for tracking affiliate commissions';
 ```
 
 ## ⚙️ Setup Instructions

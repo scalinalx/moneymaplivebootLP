@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -14,6 +14,7 @@ interface LeadFormProps {
 
 export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [referralId, setReferralId] = useState<string | null>(null);
   
   const {
     register,
@@ -22,13 +23,36 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError }) => {
     setError
   } = useForm<LeadFormData>();
 
+  // Capture Rewardful referral ID when component mounts
+  useEffect(() => {
+    const getReferralId = () => {
+      if (typeof window !== 'undefined' && window.rewardful) {
+        window.rewardful('ready', () => {
+          if (window.Rewardful?.referral) {
+            setReferralId(window.Rewardful.referral);
+            console.log('Rewardful referral ID captured:', window.Rewardful.referral);
+          }
+        });
+      }
+    };
+
+    // Try immediately
+    getReferralId();
+
+    // Also try after a short delay in case Rewardful script is still loading
+    const timeout = setTimeout(getReferralId, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const onSubmit = async (data: LeadFormData) => {
     setIsSubmitting(true);
 
     try {
       const submitData = {
         name: data.name.trim(),
-        email: data.email
+        email: data.email,
+        ...(referralId && { referralId }) // Only include referralId if it exists
       };
 
       const response = await fetch('/api/leads', {
@@ -60,6 +84,11 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError }) => {
   return (
     <div className="max-w-md mx-auto">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        {/* Hidden input for referral ID as recommended by Rewardful */}
+        {referralId && (
+          <input type="hidden" name="referral" value={referralId} />
+        )}
+        
         <Input
           label="Full Name"
           required

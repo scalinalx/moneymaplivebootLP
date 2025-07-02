@@ -13,6 +13,15 @@ function SuccessContent() {
     const session_id = searchParams.get('session_id');
     if (session_id) {
       setSessionId(session_id);
+      
+      // Track conversion with Rewardful
+      if (typeof window !== 'undefined' && window.rewardful) {
+        window.rewardful('convert', {
+          amount: 147.00, // $147 bootcamp price
+          email: null // Will be populated by Rewardful from the checkout session
+        });
+        console.log('Rewardful conversion tracked for $147');
+      }
     }
   }, [searchParams]);
 
