@@ -7,7 +7,7 @@ const FAQSection = () => {
   const faqs = [
     {
       question: "What's the pricing exactly?",
-      answer: "The LIVE Substack Money Map Bootcamp is just $147 as a one-time payment. That's less than what most people spend on a single dinner out, yet our students are generating $2,000-$8,000+ monthly from their newsletters. Most of our students make back their investment within their first two weeks after the bootcamp by converting free subscribers to paid tiers."
+      answer: "The LIVE Substack Money Map Bootcamp is just $247 as a one-time payment. That's less than what most people spend on a single dinner out, yet our students are generating $2,000-$8,000+ monthly from their newsletters. Most of our students make back their investment within their first two weeks after the bootcamp by converting free subscribers to paid tiers."
     },
     {
       question: "I've wasted money on courses in the past. What's different about Newsletter Money Map?",

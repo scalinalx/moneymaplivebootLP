@@ -97,7 +97,7 @@ const PricingComp2 = () => {
         <div id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center mb-8">
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Get The Complete System for Just <span className="text-yellow-400">$147</span>
+              Get The Complete System for Just <span className="text-yellow-400">$247</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">
               (Save $2,000+ vs. hiring a consultant)
