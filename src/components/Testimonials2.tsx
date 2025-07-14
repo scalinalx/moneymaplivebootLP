@@ -13,7 +13,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/44.jpg"
+              src="/testimavatar/44.webp"
               alt="Hilde Palladino"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -39,7 +39,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/45.jpg"
+              src="/testimavatar/45.webp"
               alt="Sue Bolton"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -71,7 +71,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/46.jpg"
+              src="/testimavatar/46.webp"
               alt="Mary Bartnikowski"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -97,7 +97,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/men/32.jpg"
+              src="/testimavatar/32.webp"
               alt="Jeff Herring"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -128,7 +128,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/47.jpg"
+              src="/testimavatar/47.webp"
               alt="Jill Hart"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -153,7 +153,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/48.jpg"
+              src="/testimavatar/48.webp"
               alt="Jill Hart"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -184,7 +184,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/49.jpg"
+              src="/testimavatar/49.webp"
               alt="Juliana Shoumbert"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -209,7 +209,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="https://randomuser.me/api/portraits/women/50.jpg"
+              src="/testimavatar/50.webp"
               alt="Neera Mahajan"
               className="w-16 h-16 rounded-full"
               width={64}
