@@ -23,7 +23,7 @@ const ResultsGallery = () => {
           <div className="space-y-2">
             <div className="flex justify-between">
               <span className="text-gray-400">Subscriber Growth</span>
-              <span className="text-green-400">+14,800</span>
+              <span className="text-green-400">+9,755</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-400">Time Period</span>
