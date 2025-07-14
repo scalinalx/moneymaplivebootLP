@@ -22,8 +22,8 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative">
       {/* Global red overlay - 3% opacity */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(239, 68, 68, 0.03)' }}></div>
-      
-      <div className="relative z-10">
+                
+                <div className="relative z-10">
         <PricingComponent />
         <BannerText1/>
         <NewsletterValueSection />
@@ -36,7 +36,7 @@ export default function LandingPage() {
         <ColdHardTruthSection/>
         <FAQSection/>
         <FooterSection/>
-      </div>
+        </div>
     </div>
   );
 }

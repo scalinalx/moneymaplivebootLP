@@ -1,68 +1,73 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState, useRef } from 'react';
 
 const Testimonial4 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Mock testimonial videos data
+  // Testimonial videos data with real video files (only 4 testimonials)
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Sarah",
       title: "Newsletter Creator",
       subscribers: "12K subscribers",
       revenue: "$3.2K/month",
-      videoUrl: "https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Video+1",
-      thumbnail: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=300&fit=crop&crop=face&auto=format&q=80"
+      videoUrl: "/videos/clip1.mp4"
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Joanne",
       title: "Content Creator",
       subscribers: "8.5K subscribers",
       revenue: "$2.1K/month",
-      videoUrl: "https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Video+2",
-      thumbnail: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=300&fit=crop&crop=face&auto=format&q=80"
+      videoUrl: "/videos/clip2.mp4"
     },
     {
       id: 3,
-      name: "Emily Davis",
+      name: "Emily",
       title: "Newsletter Creator",
       subscribers: "15K subscribers",
       revenue: "$4.8K/month",
-      videoUrl: "https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Video+3",
-      thumbnail: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=300&fit=crop&crop=face&auto=format&q=80"
+      videoUrl: "/videos/clip3.mp4"
     },
     {
       id: 4,
-      name: "David Rodriguez",
+      name: "Cindy",
       title: "Course Creator",
       subscribers: "22K subscribers",
       revenue: "$6.5K/month",
-      videoUrl: "https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Video+4",
-      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face&auto=format&q=80"
-    },
-    {
-      id: 5,
-      name: "Lisa Thompson",
-      title: "Newsletter Creator",
-      subscribers: "9.8K subscribers",
-      revenue: "$2.7K/month",
-      videoUrl: "https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Video+5",
-      thumbnail: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=300&fit=crop&crop=face&auto=format&q=80"
+      videoUrl: "/videos/clip4.mp4"
     }
   ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+    setIsPlaying(false);
+    if (videoRef.current) videoRef.current.pause();
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsPlaying(false);
+    if (videoRef.current) videoRef.current.pause();
   };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
+    setIsPlaying(false);
+    if (videoRef.current) videoRef.current.pause();
+  };
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handlePause = () => {
+    setIsPlaying(false);
   };
 
   return (
@@ -89,36 +94,43 @@ const Testimonial4 = () => {
           {/* Main Video Container */}
           <div className="relative bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 shadow-2xl mb-8">
             <div className="aspect-video rounded-xl overflow-hidden relative bg-gradient-to-br from-gray-800 to-gray-900">
-              {/* Video Thumbnail with Play Button */}
+              {/* Video with Play Button Overlay */}
               <div className="relative w-full h-full">
-                <Image 
-                  src={testimonials[currentSlide].thumbnail}
-                  alt={testimonials[currentSlide].name}
-                  className="w-full h-full object-cover"
+                <video
+                  ref={videoRef}
+                  src={testimonials[currentSlide].videoUrl}
+                  className="w-full h-full object-cover rounded-xl"
                   width={400}
                   height={300}
+                  muted
+                  playsInline
+                  controls={isPlaying}
+                  onPause={handlePause}
+                  onEnded={handlePause}
+                  preload="metadata"
                 />
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center cursor-pointer hover:bg-yellow-300 transition-colors duration-200 group">
-                    <svg className="w-8 h-8 text-black ml-1 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Creator Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <div className="text-white">
-                    <h3 className="text-xl font-bold mb-1">{testimonials[currentSlide].name}</h3>
-                    <p className="text-gray-300 text-sm mb-2">{testimonials[currentSlide].title}</p>
-                    <div className="flex gap-4 text-sm">
-                      <span className="text-yellow-400">{testimonials[currentSlide].subscribers}</span>
-                      <span className="text-green-400">{testimonials[currentSlide].revenue}</span>
+                {!isPlaying && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer" onClick={handlePlay}>
+                    <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-300 transition-colors duration-200 group">
+                      <svg className="w-8 h-8 text-black ml-1 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
                     </div>
                   </div>
-                </div>
+                )}
+                {/* Creator Info Overlay - only show when not playing */}
+                {!isPlaying && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <div className="text-white">
+                      <h3 className="text-xl font-bold mb-1">{testimonials[currentSlide].name}</h3>
+                      <p className="text-gray-300 text-sm mb-2">{testimonials[currentSlide].title}</p>
+                      <div className="flex gap-4 text-sm">
+                        <span className="text-yellow-400">{testimonials[currentSlide].subscribers}</span>
+                        <span className="text-green-400">{testimonials[currentSlide].revenue}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -158,7 +170,7 @@ const Testimonial4 = () => {
           </div>
 
           {/* Thumbnail Preview Row */}
-          <div className="mt-8 grid grid-cols-5 gap-4">
+          <div className="mt-8 grid grid-cols-4 gap-4">
             {testimonials.map((testimonial, index) => (
               <button
                 key={testimonial.id}
@@ -169,12 +181,16 @@ const Testimonial4 = () => {
                     : 'border-white/20 hover:border-white/40'
                 }`}
               >
-                <Image 
-                  src={testimonial.thumbnail}
-                  alt={testimonial.name}
+                <video
+                  src={testimonial.videoUrl}
                   className="w-full h-full object-cover"
                   width={400}
                   height={300}
+                  muted
+                  playsInline
+                  controls={false}
+                  preload="metadata"
+                  style={{ pointerEvents: 'none' }}
                 />
               </button>
             ))}

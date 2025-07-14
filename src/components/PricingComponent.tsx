@@ -218,10 +218,10 @@ const PricingComponent = () => {
                 </div>
               </div>
               <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                "The Newsletter Money Map completely transformed my approach. I went from 200 subscribers to 15K in just 3 months and made my first $5K from my newsletter!"
+                "The Newsletter Money Map completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!"
               </p>
               <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                Tech Weekly Insights
+                Gustavo
               </a>
             </div>
 
@@ -239,10 +239,10 @@ const PricingComponent = () => {
                 </div>
               </div>
               <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                "Ana's framework is pure gold. I launched my newsletter 6 weeks ago and already have 3,000 engaged subscribers. The templates saved me months of work."
+                "Ana's framework is pure gold. I re-launched my newsletter 6 weeks ago and already have 2,755 engaged subscribers. The templates saved me months of work."
               </p>
               <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                Marketing Growth Lab
+                Maria
               </a>
             </div>
 
@@ -263,7 +263,7 @@ const PricingComponent = () => {
                 "Best investment I made this year. The community alone is worth the price. I'm now making $2,500/month from my newsletter thanks to this program."
               </p>
               <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                Creator Economy Weekly
+                Kyle
               </a>
             </div>
           </div>
@@ -298,14 +298,14 @@ const PricingComponent = () => {
             <div className="bg-white rounded-2xl overflow-hidden">
               <div className="h-48 bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg">
-                  EC
+                  GK
                 </div>
               </div>
               <div className="p-6">
                 <div className="text-gray-500 text-xs font-medium mb-2 tracking-wide">CREATOR RESULTS</div>
-                <h3 className="text-black text-xl font-bold mb-3">Em Connors ▶</h3>
+                <h3 className="text-black text-xl font-bold mb-3">Gustavo Karakey ▶</h3>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Newsletter creator Em Connors built an audience and earned five figures in a week with her first online course.
+                Can I just say that you have over delivered. Wow! It's nice to have a clear map. Still work to do, but much more satisfying, and less wheel spinning. 🙂
                 </p>
               </div>
             </div>
@@ -313,14 +313,14 @@ const PricingComponent = () => {
             <div className="bg-white rounded-2xl overflow-hidden">
               <div className="h-48 bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg">
-                  MH
+                  JM
                 </div>
               </div>
               <div className="p-6">
                 <div className="text-gray-500 text-xs font-medium mb-2 tracking-wide">CREATOR RESULTS</div>
-                <h3 className="text-black text-xl font-bold mb-3">Myisha T. Hill ▶</h3>
+                <h3 className="text-black text-xl font-bold mb-3">Jeanette Martin ▶</h3>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Myisha shares how she's building her business online through newsletter content and community building.
+                What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.
                 </p>
               </div>
             </div>
@@ -328,14 +328,14 @@ const PricingComponent = () => {
             <div className="bg-white rounded-2xl overflow-hidden">
               <div className="h-48 bg-gradient-to-br from-purple-300 to-purple-400 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg">
-                  JM
+                  SA
                 </div>
               </div>
               <div className="p-6">
                 <div className="text-gray-500 text-xs font-medium mb-2 tracking-wide">CREATOR RESULTS</div>
-                <h3 className="text-black text-xl font-bold mb-3">Juan Muñoz ▶</h3>
+                <h3 className="text-black text-xl font-bold mb-3">Shahidah Al-Amin ▶</h3>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Juan published his email newsletter for 162 weeks straight and built a fulfilling online business.
+                I love the way you get straight to the point about growth and how to communicate value to your audience so they WANT to pay you. It is a priority of mine to grow my audience and get paid for my offers & I'm really confident that your roadmap will help me achieve that.
                 </p>
               </div>
             </div>
@@ -343,14 +343,14 @@ const PricingComponent = () => {
             <div className="bg-white rounded-2xl overflow-hidden">
               <div className="h-48 bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg">
-                  KH
+                  AL
                 </div>
               </div>
               <div className="p-6">
                 <div className="text-gray-500 text-xs font-medium mb-2 tracking-wide">CREATOR RESULTS</div>
-                <h3 className="text-black text-xl font-bold mb-3">Khe Hy ▶</h3>
+                <h3 className="text-black text-xl font-bold mb-3">Adora Lee ▶</h3>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Khe left Wall Street and turned a 36-person email list into a $500k creator business.
+                I finally see the possibility of monetizing here! I'm so excited to apply aal that I've learned during the bootcamp!
                 </p>
               </div>
             </div>

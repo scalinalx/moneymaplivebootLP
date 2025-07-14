@@ -42,7 +42,7 @@ const ResultsGallery = () => {
               height={180}
             />
           </div>
-          <h3 className="text-white font-semibold mb-2">Marketing Growth Lab</h3>
+          <h3 className="text-white font-semibold mb-2">Alpha Driven Portfolio</h3>
           <div className="space-y-2">
             <div className="flex justify-between">
               <span className="text-gray-400">Monthly Revenue</span>
@@ -50,7 +50,7 @@ const ResultsGallery = () => {
             </div>
             <div className="flex justify-between">
               <span className="text-gray-400">Time Period</span>
-              <span className="text-white">6 weeks</span>
+              <span className="text-white">7 weeks</span>
             </div>
           </div>
         </div>
@@ -58,8 +58,8 @@ const ResultsGallery = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="aspect-w-16 aspect-h-9 mb-4">
             <Image
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Engagement Chart"
+              src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"
+              alt="Creator Economy Desk"
               className="rounded-lg object-cover w-full h-full"
               width={320}
               height={180}
