@@ -154,13 +154,13 @@ const Testimonials2 = () => {
           <div className="flex items-center gap-4 mb-6">
             <Image
               src="/testimavatar/48.webp"
-              alt="Jill Hart"
+              alt="Julia"
               className="w-16 h-16 rounded-full"
               width={64}
               height={64}
             />
             <div>
-              <h3 className="text-white font-semibold">Jill Hart</h3>
+              <h3 className="text-white font-semibold">Julia</h3>
             </div>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
