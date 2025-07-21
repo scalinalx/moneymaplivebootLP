@@ -25,6 +25,34 @@ function SuccessContent() {
     }
   }, [searchParams]);
 
+  // Countdown and redirect functionality
+  useEffect(() => {
+    let countdown = 5;
+    const countdownElement = document.getElementById('countdown');
+    const progressBar = document.getElementById('progress-bar');
+    
+    const timer = setInterval(() => {
+      countdown--;
+      
+      if (countdownElement) {
+        countdownElement.textContent = countdown.toString();
+      }
+      
+      if (progressBar) {
+        const progress = (countdown / 5) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+      
+      if (countdown <= 0) {
+        clearInterval(timer);
+        // Redirect to Google Docs
+        window.location.href = 'https://docs.google.com/document/d/1TsgG4m2VbICd2-qbWEFdtn71diZvAeZdePk6hPQLGDk/edit?tab=t.0#heading=h.sf9d4b74dnjt';
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       <div className="max-w-4xl mx-auto px-6 py-16">
@@ -50,6 +78,34 @@ function SuccessContent() {
               </p>
             </div>
           )}
+
+          {/* Countdown and Redirect Section */}
+          <div className="mt-8 text-center">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 border-4 border-yellow-400 shadow-2xl transform hover:scale-105 transition-all duration-300">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <h2 className="text-3xl font-bold text-white mb-6 drop-shadow-lg">
+                  Redirecting you to the subscribe doc in <span id="countdown" className="text-yellow-300 text-4xl font-extrabold">5</span> seconds. Hold tight!
+                </h2>
+                <div className="w-80 h-3 bg-white/20 rounded-full mx-auto overflow-hidden border-2 border-white/30 shadow-inner">
+                  <div 
+                    id="progress-bar" 
+                    className="h-full bg-gradient-to-r from-yellow-300 to-orange-400 transition-all duration-1000 ease-linear shadow-lg"
+                    style={{ width: '100%' }}
+                  ></div>
+                </div>
+                <p className="text-white/90 mt-6 text-lg font-medium">
+                  You'll be automatically redirected to join our Substack community
+                </p>
+                <div className="mt-4 flex justify-center">
+                  <div className="animate-pulse">
+                    <svg className="w-8 h-8 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* What's Next Section */}

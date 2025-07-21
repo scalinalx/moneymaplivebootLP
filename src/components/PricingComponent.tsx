@@ -36,6 +36,70 @@ const PricingComponent = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Video progress tracking
+  useEffect(() => {
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    const timeDisplay = document.getElementById('video-time') as HTMLElement;
+    const progressBar = document.getElementById('video-progress') as HTMLElement;
+    const overlay = document.getElementById('play-overlay') as HTMLElement;
+    const progressContainer = document.getElementById('progress-container') as HTMLElement;
+
+    if (!video) return;
+
+    const updateProgress = () => {
+      if (video.duration && !isNaN(video.duration)) {
+        const currentTime = video.currentTime;
+        const duration = video.duration;
+        const progress = (currentTime / duration) * 100;
+        
+        // Update progress bar
+        if (progressBar) {
+          progressBar.style.width = `${progress}%`;
+        }
+        
+        // Update time display
+        if (timeDisplay) {
+          const currentMinutes = Math.floor(currentTime / 60);
+          const currentSeconds = Math.floor(currentTime % 60);
+          const totalMinutes = Math.floor(duration / 60);
+          const totalSeconds = Math.floor(duration % 60);
+          
+          timeDisplay.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')} / ${totalMinutes}:${totalSeconds.toString().padStart(2, '0')}`;
+        }
+      }
+    };
+
+    const handleVideoEnd = () => {
+      if (overlay) {
+        overlay.style.display = 'flex';
+      }
+      if (progressContainer) {
+        progressContainer.style.display = 'block';
+      }
+    };
+
+    const handlePlay = () => {
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+      if (progressContainer) {
+        progressContainer.style.display = 'none';
+      }
+    };
+
+    video.addEventListener('play', handlePlay);
+    video.addEventListener('timeupdate', updateProgress);
+    video.addEventListener('loadedmetadata', updateProgress);
+    video.addEventListener('ended', handleVideoEnd);
+
+    return () => {
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('timeupdate', updateProgress);
+      video.removeEventListener('loadedmetadata', updateProgress);
+      video.removeEventListener('ended', handleVideoEnd);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen relative">
       <style jsx>{`
@@ -79,54 +143,52 @@ const PricingComponent = () => {
           <div className="max-w-4xl mx-auto mb-8">
             <div className="relative">
               <div className="aspect-video bg-black rounded-lg overflow-hidden border border-gray-700">
-                <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center relative">
-                  <div className="absolute inset-4 bg-gray-800 rounded-lg p-4">
-                    <div className="grid grid-cols-3 gap-4 h-full">
-                      <div className="bg-orange-600 rounded-lg p-3 flex flex-col gap-2">
-                        <div className="w-12 h-12 bg-white rounded-full"></div>
-                        <div className="text-white text-xs font-bold">SUBSTACK MONEY MAP</div>
-                        <div className="flex flex-col gap-1 mt-4">
-                          {['Dashboard', 'Courses', 'Homework', 'Community', 'Team Starter', 'Analytics', 'Live', 'Bookflix', 'Shop/Pro'].map((item) => (
-                            <div key={item} className="text-white text-xs py-1">{item}</div>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div className="bg-gray-900 rounded-lg relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                            <svg className="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          </div>
-                        </div>
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="bg-black/70 rounded p-2">
-                            <div className="text-white text-xs">Welcome Call</div>
-                            <div className="text-gray-400 text-xs">This is for our new daily members who joined. This is just the Q&A.</div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        {[...Array(6)].map((_, i) => (
-                          <div key={i} className="bg-gray-700 rounded p-2 flex items-center gap-2">
-                            <div className="w-8 h-8 bg-gray-600 rounded"></div>
-                            <div className="text-white text-xs">Post Boost, Oct {15 + i}</div>
-                          </div>
-                        ))}
-                      </div>
+                <div className="w-full h-full relative">
+                  <video
+                    id="hero-video"
+                    className="w-full h-full object-cover"
+                    src="/videos/0721.mp4"
+                    preload="metadata"
+                    playsInline
+                    controls
+                  />
+                  
+                  {/* Play Button Overlay - Only show before first play */}
+                  <div 
+                    id="play-overlay"
+                    className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer"
+                    onClick={() => {
+                      const video = document.getElementById('hero-video') as HTMLVideoElement;
+                      const overlay = document.getElementById('play-overlay') as HTMLElement;
+                      const progressContainer = document.getElementById('progress-container') as HTMLElement;
+                      if (video && overlay) {
+                        video.play();
+                        overlay.style.display = 'none';
+                        if (progressContainer) {
+                          progressContainer.style.display = 'none';
+                        }
+                      }
+                    }}
+                  >
+                    <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-300 transition-colors duration-200 group">
+                      <svg className="w-8 h-8 text-black ml-1 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-4 left-4 right-4">
+                  {/* Custom Progress Bar - Only show before first play */}
+                  <div 
+                    id="progress-container"
+                    className="absolute bottom-4 left-4 right-4"
+                  >
                     <div className="bg-black/80 rounded p-2 flex items-center gap-2">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
-                      <div className="text-white text-sm">2:57 / 8:15</div>
+                      <div className="text-white text-sm" id="video-time">0:00 / 0:00</div>
                       <div className="flex-1 bg-gray-600 h-1 rounded">
-                        <div className="bg-white h-1 rounded w-1/3"></div>
+                        <div className="bg-white h-1 rounded w-0 transition-all duration-300" id="video-progress"></div>
                       </div>
                     </div>
                   </div>
