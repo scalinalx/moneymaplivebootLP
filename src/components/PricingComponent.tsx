@@ -212,25 +212,25 @@ const PricingComponent = () => {
           <div className="mt-16 mb-8">
             <div className="mb-12 overflow-hidden">
               <div className="flex animate-scroll">
-                <div className="flex items-center gap-12 min-w-full">
-                  <div className="text-white font-bold text-2xl opacity-70">Substack</div>
-                  <div className="text-white font-bold text-2xl italic opacity-70">Forbes</div>
-                  <div className="text-white font-bold text-xl opacity-70">LinkedIn</div>
-                  <div className="text-white font-bold text-xl opacity-70">GITEX</div>
-                  <div className="text-white font-bold text-lg opacity-70">beehiiv</div>
-                  <div className="text-white font-bold text-lg opacity-70">SEMRUSH</div>
-                  <div className="bg-gray-600 text-white px-3 py-1 rounded-full text-sm opacity-70">Top Voice</div>
-                  <div className="text-white font-bold text-lg opacity-70">LinkedIn News</div>
+                <div className="flex items-center gap-6 md:gap-12 min-w-full px-4">
+                  <div className="text-white font-bold text-lg md:text-2xl opacity-70 px-2">Substack</div>
+                  <div className="text-white font-bold text-lg md:text-2xl italic opacity-70 px-2">Forbes</div>
+                  <div className="text-white font-bold text-base md:text-xl opacity-70 px-2">LinkedIn</div>
+                  <div className="text-white font-bold text-base md:text-xl opacity-70 px-2">GITEX</div>
+                  <div className="text-white font-bold text-sm md:text-lg opacity-70 px-2">beehiiv</div>
+                  <div className="text-white font-bold text-sm md:text-lg opacity-70 px-2">SEMRUSH</div>
+                  <div className="bg-gray-600 text-white px-3 py-1 rounded-full text-xs md:text-sm opacity-70">Top Voice</div>
+                  <div className="text-white font-bold text-sm md:text-lg opacity-70 px-2">LinkedIn News</div>
                 </div>
-                <div className="flex items-center gap-12 min-w-full">
-                  <div className="text-white font-bold text-2xl opacity-70">Substack</div>
-                  <div className="text-white font-bold text-2xl italic opacity-70">Forbes</div>
-                  <div className="text-white font-bold text-xl opacity-70">LinkedIn</div>
-                  <div className="text-white font-bold text-xl opacity-70">GITEX</div>
-                  <div className="text-white font-bold text-lg opacity-70">beehiiv</div>
-                  <div className="text-white font-bold text-lg opacity-70">SEMRUSH</div>
-                  <div className="bg-gray-600 text-white px-3 py-1 rounded-full text-sm opacity-70">Top Voice</div>
-                  <div className="text-white font-bold text-lg opacity-70">LinkedIn News</div>
+                <div className="flex items-center gap-6 md:gap-12 min-w-full px-4">
+                  <div className="text-white font-bold text-lg md:text-2xl opacity-70 px-2">Substack</div>
+                  <div className="text-white font-bold text-lg md:text-2xl italic opacity-70 px-2">Forbes</div>
+                  <div className="text-white font-bold text-base md:text-xl opacity-70 px-2">LinkedIn</div>
+                  <div className="text-white font-bold text-base md:text-xl opacity-70 px-2">GITEX</div>
+                  <div className="text-white font-bold text-sm md:text-lg opacity-70 px-2">beehiiv</div>
+                  <div className="text-white font-bold text-sm md:text-lg opacity-70 px-2">SEMRUSH</div>
+                  <div className="bg-gray-600 text-white px-3 py-1 rounded-full text-xs md:text-sm opacity-70">Top Voice</div>
+                  <div className="text-white font-bold text-sm md:text-lg opacity-70 px-2">LinkedIn News</div>
                 </div>
               </div>
             </div>
@@ -356,7 +356,7 @@ const PricingComponent = () => {
 
         {/* Creator Stories Section */}
         <div className="mb-16">
-          <div className="grid grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden">
               <div className="h-48 bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg">
