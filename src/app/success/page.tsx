@@ -153,7 +153,7 @@ function SuccessContent() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-blue-500" />
-                  <span className="text-gray-700">90-minute live session</span>
+                  <span className="text-gray-700">90-minute session</span>
                 </div>
                 
                 <div className="flex items-center space-x-3">
