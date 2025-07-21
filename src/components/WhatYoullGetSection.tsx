@@ -46,7 +46,7 @@ const WhatYoullGetSection = () => {
     {
       number: "01",
       title: "Monthly Implementation Group calls with Me",
-      description: "As an academy member you'll get access to weekly coaching calls directly with me where we will host live Q&As to help you overcome the unique challenges you're facing with your newsletter.",
+      description: "As an academy member you'll get access to monthly group coaching calls directly with me where we will host live Q&As to help you overcome the unique challenges you're facing with your newsletter.",
       image: "group-calls"
     },
     {
