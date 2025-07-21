@@ -265,8 +265,8 @@ const PricingComponent = () => {
           <div className="text-center mb-12">
             <h2 className="text-white text-3xl font-bold mb-2">What Our Students Say</h2>
           </div>
-          <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
-            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto mb-8">
+            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
                   SJ
@@ -287,7 +287,7 @@ const PricingComponent = () => {
               </a>
             </div>
 
-            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
+            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
                   MR
@@ -308,7 +308,7 @@ const PricingComponent = () => {
               </a>
             </div>
 
-            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
+            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
                   KL
