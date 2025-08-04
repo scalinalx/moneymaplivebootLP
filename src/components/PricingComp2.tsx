@@ -102,7 +102,7 @@ const PricingComp2 = () => {
               <span className="text-yellow-400">$497</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">
-              (Save $250 + & $2,000+ vs. hiring a consultant)
+              (Save $400 + & $2,000+ vs. hiring a consultant)
             </p>
             
             {/* Value Points */}
@@ -152,7 +152,7 @@ const PricingComp2 = () => {
                 ⚠️ 47 spots left at this price
               </p>
               <p className="text-red-300 text-sm font-bold mt-1">
-                Next cohort: $497
+                Next cohort: $897
               </p>
             </div>
           </div>
