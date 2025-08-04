@@ -17,10 +17,10 @@ function SuccessContent() {
       // Track conversion with Rewardful
       if (typeof window !== 'undefined' && window.rewardful) {
         window.rewardful('convert', {
-          amount: 247.00, // $247 bootcamp price
+          amount: 497.00, // $497 bootcamp price
           email: null // Will be populated by Rewardful from the checkout session
         });
-        console.log('Rewardful conversion tracked for $247');
+        console.log('Rewardful conversion tracked for $497');
       }
     }
   }, [searchParams]);
