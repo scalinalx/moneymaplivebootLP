@@ -73,7 +73,7 @@ const Testimonials2 = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
             <Image
-              src="/testimavatar/32.webp"
+              src="/testimavatar/jeff.webp"
               alt="Jeff Herring"
               className="w-16 h-16 rounded-full"
               width={64}
@@ -81,7 +81,7 @@ const Testimonials2 = () => {
             />
             <div>
               <h3 className="text-white font-semibold text-lg">Jeff Herring</h3>
-              <p className="text-gray-400 text-sm">Business Coach</p>
+              <p className="text-gray-400 text-sm">Host of the How You Profit Show</p>
             </div>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed">
