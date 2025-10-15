@@ -74,6 +74,44 @@ const PricingComp2 = () => {
 
   return (
     <div className="min-h-screen relative">
+      <style jsx>{`
+        .shine { position: relative; overflow: hidden; }
+        .shine::before {
+          content: '';
+          position: absolute;
+          inset: -40% -70%;
+          background: linear-gradient(115deg,
+            rgba(255,255,255,0) 20%,
+            rgba(255,255,255,0.55) 45%,
+            rgba(255,255,255,0.85) 50%,
+            rgba(255,255,255,0.55) 55%,
+            rgba(255,255,255,0) 80%);
+          filter: blur(2px);
+          transform: translateX(-130%) skewX(-18deg);
+          transition: transform 650ms ease;
+          pointer-events: none;
+        }
+        .shine:hover::before { transform: translateX(130%) skewX(-18deg); }
+        .promo-border { position: relative; }
+        .promo-border::after {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border-radius: inherit;
+          background: conic-gradient(
+            from 0deg,
+            #facc15,
+            #f97316,
+            #ef4444,
+            #facc15
+          );
+          z-index: -1;
+          filter: blur(6px);
+          opacity: 0.35;
+          transition: opacity 300ms ease, filter 300ms ease;
+        }
+        .promo-border:hover::after { opacity: 0.7; filter: blur(8px); }
+      `}</style>
       <div className="max-w-6xl mx-auto px-8 relative z-10">
         
         
@@ -146,14 +184,38 @@ const PricingComp2 = () => {
               </div>
             </div>
             
-            {/* Urgency Message */}
-            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 mb-8 max-w-md mx-auto">
-              <p className="text-red-300 text-sm font-semibold">
-                ⚠️ 47 spots left at this price
-              </p>
-              <p className="text-red-300 text-sm font-bold mt-1">
-                Next cohort: $897
-              </p>
+            {/* Full-width Last Chance banner (replaces spots/cohort message) */}
+            <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-8">
+              <button
+                type="button"
+                aria-label="Last Chance to Join - scroll to form"
+                onClick={() => {
+                  document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="shine promo-border relative w-full overflow-hidden rounded-none md:rounded-2xl border-y md:border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-500/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
+                {/* Deadline pill */}
+                <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+                  </span>
+                  <span className="text-black font-semibold text-[11px] md:text-xs">Ends Oct 31, 2025</span>
+                </div>
+                <div className="relative px-6 py-5 md:px-10 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                  <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
+                  <div className="text-center">
+                    <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
+                      Last Chance to Join!
+                    </div>
+                    <div className="text-black/90 font-semibold text-sm md:text-base">
+                      Closing doors forever on Oct 31st, 2025
+                    </div>
+                  </div>
+                  <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
+                </div>
+              </button>
             </div>
           </div>
           

@@ -114,6 +114,45 @@ const PricingComponent = () => {
         .animate-scroll {
           animation: scroll 20s linear infinite;
         }
+        /* Hover shine effect (stronger, visible) */
+        .shine { position: relative; overflow: hidden; }
+        .shine::before {
+          content: '';
+          position: absolute;
+          inset: -40% -70%;
+          background: linear-gradient(115deg,
+            rgba(255,255,255,0) 20%,
+            rgba(255,255,255,0.55) 45%,
+            rgba(255,255,255,0.85) 50%,
+            rgba(255,255,255,0.55) 55%,
+            rgba(255,255,255,0) 80%);
+          filter: blur(2px);
+          transform: translateX(-130%) skewX(-18deg);
+          transition: transform 650ms ease;
+          pointer-events: none;
+        }
+        .shine:hover::before { transform: translateX(130%) skewX(-18deg); }
+
+        /* Animated gradient border ring */
+        .promo-border { position: relative; }
+        .promo-border::after {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border-radius: inherit;
+          background: conic-gradient(
+            from 0deg,
+            #facc15,
+            #f97316,
+            #ef4444,
+            #facc15
+          );
+          z-index: -1;
+          filter: blur(6px);
+          opacity: 0.35;
+          transition: opacity 300ms ease, filter 300ms ease;
+        }
+        .promo-border:hover::after { opacity: 0.7; filter: blur(8px); }
       `}</style>
       
       <div className="max-w-6xl mx-auto px-8 relative z-10">
@@ -138,6 +177,42 @@ const PricingComponent = () => {
           <p className="text-gray-300 text-xl mb-12 max-w-4xl mx-auto leading-relaxed">
             The complete system that transformed 250+ hobby newsletters into profitable businesses - without spending a penny on ads
           </p>
+          {/* CRO Banner (clickable) */}
+          <div className="mb-10 relative group">
+            <button
+              type="button"
+              aria-label="Last Chance to Join - scroll to form"
+              onClick={() => {
+                document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="shine promo-border relative w-full overflow-hidden rounded-2xl border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-400/40 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              {/* Gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
+              {/* Deadline pill */}
+              <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+                </span>
+                <span className="text-black font-semibold text-[11px] md:text-xs">Ends Oct 31, 2025</span>
+              </div>
+
+              {/* Content (reduced height ~20%) */}
+              <div className="relative px-6 py-4 md:px-9 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
+                <div className="text-center">
+                  <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
+                    Last Chance to Join!
+                  </div>
+                  <div className="text-black/90 font-semibold text-sm md:text-base">
+                    Closing doors forever on Oct 31st, 2025
+                  </div>
+                </div>
+                <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
+              </div>
+            </button>
+          </div>
           
           {/* Video Section */}
           <div className="max-w-4xl mx-auto mb-8">
@@ -331,27 +406,38 @@ const PricingComponent = () => {
           </div>
         </div>
 
-        {/* Countdown Timer */}
-        <div className="text-center mb-12">
-          <div className="bg-yellow-400 rounded-xl p-4 max-w-3xl mx-auto">
-            <h3 className="text-black text-xl font-bold mb-1">⚡ LIMITED TIME OFFER</h3>
-            <p className="text-black/80 text-sm mb-3">Early Bird Pricing Ends Soon!</p>
-            
-            <div className="flex justify-center gap-3">
-              <div className="bg-black rounded-lg p-2 min-w-[70px]">
-                <div className="text-white text-3xl font-bold">{String(timeLeft.hours).padStart(2, '0')}</div>
-                <div className="text-gray-300 text-sm">HOURS</div>
-              </div>
-              <div className="bg-black rounded-lg p-2 min-w-[70px]">
-                <div className="text-white text-3xl font-bold">{String(timeLeft.minutes).padStart(2, '0')}</div>
-                <div className="text-gray-300 text-sm">MINS</div>
-              </div>
-              <div className="bg-black rounded-lg p-2 min-w-[70px]">
-                <div className="text-white text-3xl font-bold">{String(timeLeft.seconds).padStart(2, '0')}</div>
-                <div className="text-gray-300 text-sm">SECS</div>
-              </div>
+        {/* Full-width Last Chance banner (replaces countdown and yellow bg) */}
+        <div className="mb-12 -mx-8">
+          <button
+            type="button"
+            aria-label="Last Chance to Join - scroll to form"
+            onClick={() => {
+              document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="shine promo-border relative w-full overflow-hidden rounded-none md:rounded-2xl border-y md:border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-500/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
+            {/* Deadline pill */}
+            <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+              </span>
+              <span className="text-black font-semibold text-[11px] md:text-xs">Ends Oct 31, 2025</span>
             </div>
-          </div>
+            <div className="relative px-6 py-5 md:px-10 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
+              <div className="text-center">
+                <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
+                  Last Chance to Join!
+                </div>
+                <div className="text-black/90 font-semibold text-sm md:text-base">
+                  Closing doors forever on Oct 31st, 2025
+                </div>
+              </div>
+              <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
+            </div>
+          </button>
         </div>
 
         {/* Creator Stories Section */}
