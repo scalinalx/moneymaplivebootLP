@@ -185,7 +185,50 @@ const PricingComp2 = () => {
             </div>
             
             {/* Full-width Last Chance banner (replaces spots/cohort message) */}
-            <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-8">
+            <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-8 relative group">
+              {/* Squiggles like example (hover reveal) */}
+              <div
+                className="pointer-events-none absolute left-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-3 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 md:flex"
+                style={{ color: '#FACC15' }}
+              >
+                {[0,1,2].map((i) => (
+                  <svg
+                    key={`l-${i}`}
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${i===0? '-rotate-12' : i===2? 'rotate-12' : ''}`}
+                  >
+                    <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+                  </svg>
+                ))}
+              </div>
+              <div
+                className="pointer-events-none absolute right-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-3 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:flex"
+                style={{ color: '#FACC15' }}
+              >
+                {[0,1,2].map((i) => (
+                  <svg
+                    key={`r-${i}`}
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${i===0? 'rotate-12' : i===2? '-rotate-12' : ''}`}
+                  >
+                    <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+                  </svg>
+                ))}
+              </div>
               <button
                 type="button"
                 aria-label="Last Chance to Join - scroll to form"
