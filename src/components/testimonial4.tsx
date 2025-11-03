@@ -85,7 +85,7 @@ const Testimonial4 = () => {
           </div>
           
           <h2 className="text-white text-5xl md:text-6xl font-bold mb-8 leading-tight">
-            Just take a look at what our <span className="text-yellow-400">250+</span> members are saying.
+            Just take a look at what our <span className="text-yellow-400">300+</span> members are saying.
           </h2>
         </div>
 
@@ -200,7 +200,7 @@ const Testimonial4 = () => {
         {/* Stats Section */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-black/20 backdrop-blur-xl rounded-xl p-6 border border-white/25">
-            <div className="text-4xl font-bold text-yellow-400 mb-2">250+</div>
+          <div className="text-4xl font-bold text-yellow-400 mb-2">300+</div>
             <div className="text-gray-300">Active Members</div>
           </div>
           <div className="bg-black/20 backdrop-blur-xl rounded-xl p-6 border border-white/25">
@@ -237,7 +237,7 @@ const Testimonial4 = () => {
           
           {/* Subheadline */}
           <p className="text-gray-300 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
-            The exact system 250+ creators used to build 6-figure newsletter businesses
+            The exact system 300+ creators used to build 6-figure newsletter businesses
           </p>
         </div>
       </div>

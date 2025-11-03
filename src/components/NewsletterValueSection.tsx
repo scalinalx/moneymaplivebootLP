@@ -18,7 +18,7 @@ const NewsletterValueSection = () => {
     Community: {
       title: "Join the #1 Newsletter Creator Community",
       points: [
-        "Get daily feedback from 250+ successful newsletter creators",
+        "Get daily feedback from 300+ successful newsletter creators",
         "Share revenue wins, growth strategies, and monetization tactics",
         "Access our private mastermind of $10K+/month newsletter owners"
       ],
@@ -142,7 +142,7 @@ const NewsletterValueSection = () => {
                         <MessageCircle className="w-16 h-16 text-white" />
                       </div>
                       <div className="text-white text-xl font-bold mb-2">Active Community</div>
-                      <div className="text-white/80 text-sm">250+ Newsletter Creators Sharing Daily Wins</div>
+                      <div className="text-white/80 text-sm">300+ Newsletter Creators Sharing Daily Wins</div>
                       <div className="mt-4 grid grid-cols-2 gap-2 w-full max-w-xs">
                         <div className="bg-white/20 rounded p-2 text-white text-xs">Revenue: $5,200 MRR</div>
                         <div className="bg-white/20 rounded p-2 text-white text-xs">Subscribers: 12K</div>
@@ -241,9 +241,9 @@ const NewsletterValueSection = () => {
             }}
             className="text-black font-bold py-4 px-12 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 hover:opacity-90" style={{ backgroundColor: '#ffc300' }}
           >
-            JOIN SUBSTACK MONEY MAP TODAY
+            JOIN BUILD TO PROFIT TODAY!
           </button>
-          <p className="text-gray-400 text-sm mt-4">Join 250+ newsletter creators already building their revenue machines</p>
+          <p className="text-gray-400 text-sm mt-4">Join 300+ newsletter creators already building their revenue machines</p>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { ArrowLeft, Shield, Clock, CheckCircle } from 'lucide-react';
 import { formatPrice } from '@/utils/validation';
 import type { Lead, ApiResponse, StripeCheckoutSession } from '@/types';
 
-const WORKSHOP_PRICE = 49700; // $497.00 in cents
+const WORKSHOP_PRICE = 59700; // $597.00 in cents
 
 function LeadCollectionContent() {
   const router = useRouter();

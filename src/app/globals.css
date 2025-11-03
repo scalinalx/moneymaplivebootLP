@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Subtle radial page background (avoids banding lines) */
+/* High-contrast dark linear gradient (left→right) */
+.bg-page-radial {
+  background: #000000; /* fallback */
+  background: -webkit-linear-gradient(to right, #232324 0%, #000000 100%); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #232324 0%, #000000 100%); /* Modern browsers */
+}

@@ -132,12 +132,12 @@ const PricingComp2 = () => {
        
 
         {/* Pricing Section */}
-        <div id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-4">
           <div className="text-center mb-8">
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Get The Complete System for Just{' '}
               <span className="text-gray-400 line-through mr-4">$897</span>
-              <span className="text-yellow-400">$497</span>
+              <span className="text-yellow-400">$597</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">
               (Save $400 + & $2,000+ vs. hiring a consultant)
@@ -183,83 +183,7 @@ const PricingComp2 = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Full-width Last Chance banner (replaces spots/cohort message) */}
-            <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-8 relative group">
-              {/* Squiggles like example (hover reveal) */}
-              <div
-                className="pointer-events-none absolute left-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-3 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 md:flex"
-                style={{ color: '#FACC15' }}
-              >
-                {[0,1,2].map((i) => (
-                  <svg
-                    key={`l-${i}`}
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`transition-transform duration-300 ${i===0? '-rotate-12' : i===2? 'rotate-12' : ''}`}
-                  >
-                    <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
-                  </svg>
-                ))}
-              </div>
-              <div
-                className="pointer-events-none absolute right-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-3 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:flex"
-                style={{ color: '#FACC15' }}
-              >
-                {[0,1,2].map((i) => (
-                  <svg
-                    key={`r-${i}`}
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`transition-transform duration-300 ${i===0? 'rotate-12' : i===2? '-rotate-12' : ''}`}
-                  >
-                    <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
-                  </svg>
-                ))}
-              </div>
-              <button
-                type="button"
-                aria-label="Last Chance to Join - scroll to form"
-                onClick={() => {
-                  document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="shine promo-border relative w-full overflow-hidden rounded-none md:rounded-2xl border-y md:border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-500/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
-                {/* Deadline pill */}
-                <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
-                  </span>
-                  <span className="text-black font-semibold text-[11px] md:text-xs">Ends Oct 31, 2025</span>
-                </div>
-                <div className="relative px-6 py-5 md:px-10 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-                  <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
-                  <div className="text-center">
-                    <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
-                      Last Chance to Join!
-                    </div>
-                    <div className="text-black/90 font-semibold text-sm md:text-base">
-                      Closing doors forever on Oct 31st, 2025
-                    </div>
-                  </div>
-                  <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
-                </div>
-              </button>
-            </div>
+            {/* Last-chance banner removed per new launch copy */}
           </div>
           
           {/* Form Section */}

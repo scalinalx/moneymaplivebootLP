@@ -86,7 +86,7 @@ const WhoThisIsForSection = () => {
             </button>
           </div>
           <p className="text-gray-400 text-sm mt-6">
-            Join 250+ newsletter creators already building sustainable revenue streams
+            Join 300+ newsletter creators already building sustainable revenue streams
           </p>
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 export default function CheckoutStep1() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+    <div className="min-h-screen bg-page-radial">
       <div className="max-w-4xl mx-auto px-6 py-16 text-center text-white">
         <h1 className="text-4xl font-bold mb-8">
           Checkout Step 1

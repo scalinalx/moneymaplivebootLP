@@ -5,7 +5,7 @@ import type { ApiResponse, StripeCheckoutSession } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
-    const { leadId } = await request.json();
+    const { leadId, promoCode } = await request.json();
 
     if (!leadId) {
       return NextResponse.json<ApiResponse>({
@@ -66,6 +66,20 @@ export async function POST(request: NextRequest) {
       billing_address_collection: 'required',
       customer_creation: 'always', // Required for Rewardful integration
     };
+
+    // Optionally pre-apply a promotion code (by code) if provided
+    if (promoCode && typeof promoCode === 'string') {
+      try {
+        const list = await stripe.promotionCodes.list({ code: promoCode, active: true, limit: 1 });
+        const pc = list.data[0];
+        if (pc) {
+          checkoutParams.discounts = [{ promotion_code: pc.id }];
+        }
+      } catch (e) {
+        // Non-fatal: if lookup fails, continue without pre-applied discount
+        console.warn('Promo code lookup failed:', e);
+      }
+    }
 
     // Add client_reference_id if referral ID exists (required for Rewardful)
     if (lead.referral_id) {

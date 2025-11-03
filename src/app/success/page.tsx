@@ -17,10 +17,10 @@ function SuccessContent() {
       // Track conversion with Rewardful
       if (typeof window !== 'undefined' && window.rewardful) {
         window.rewardful('convert', {
-          amount: 497.00, // $497 bootcamp price
+          amount: 597.00, // $597 bootcamp price
           email: null // Will be populated by Rewardful from the checkout session
         });
-        console.log('Rewardful conversion tracked for $497');
+        console.log('Rewardful conversion tracked for $597');
       }
     }
   }, [searchParams]);
@@ -45,8 +45,8 @@ function SuccessContent() {
       
       if (countdown <= 0) {
         clearInterval(timer);
-        // Redirect to Google Docs
-        window.location.href = 'https://docs.google.com/document/d/1TsgG4m2VbICd2-qbWEFdtn71diZvAeZdePk6hPQLGDk/edit?tab=t.0#heading=h.sf9d4b74dnjt';
+        // Redirect to Google Docs (updated link)
+        window.location.href = 'https://docs.google.com/document/d/1667iP0cUqa09jBBodsXcqctmHiblpWZYtnzopYx1xUU/edit?tab=t.0#heading=h.sf9d4b74dnjt';
       }
     }, 1000);
 

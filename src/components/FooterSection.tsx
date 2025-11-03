@@ -21,7 +21,7 @@ const FooterSection = () => {
                 </div>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                The proven system that helps newsletter creators build $120K+/year businesses. Join 250+ successful students who've transformed their newsletters into revenue machines.
+                The proven system that helps newsletter creators build $120K+/year businesses. Join 300+ successful students who've transformed their newsletters into revenue machines.
               </p>
               
               {/* Trust Badges */}
@@ -32,7 +32,7 @@ const FooterSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-green-400" />
-                  <span className="text-gray-300 text-xs">250+ Success Stories</span>
+                  <span className="text-gray-300 text-xs">300+ Success Stories</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-green-400" />
@@ -99,7 +99,7 @@ const FooterSection = () => {
             <div>
               <h3 className="text-white font-semibold text-lg mb-4">Ready to Start?</h3>
               <p className="text-gray-300 text-sm mb-4">
-                Join 250+ newsletter creators who've built profitable businesses with our proven system.
+                Join 300+ newsletter creators who've built profitable businesses with our proven system.
               </p>
               <button 
                 onClick={() => {
@@ -158,7 +158,7 @@ const FooterSection = () => {
               <div className="hidden md:block w-px h-4 bg-gray-600"></div>
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-300 text-xs">Trusted by 250+ Newsletter Creators</span>
+                <span className="text-gray-300 text-xs">Trusted by 300+ Newsletter Creators</span>
               </div>
               <div className="hidden md:block w-px h-4 bg-gray-600"></div>
               <div className="flex items-center gap-2">

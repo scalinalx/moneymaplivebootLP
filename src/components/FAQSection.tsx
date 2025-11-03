@@ -7,11 +7,11 @@ const FAQSection = () => {
   const faqs = [
     {
       question: "What's the pricing exactly?",
-      answer: "The Substack Money Map Bootcamp is just $497 as a one-time payment. That's less than what most people spend on a single dinner out, yet our students are generating $2,000-$8,000+ monthly from their newsletters. Most of our students make back their investment within their first two weeks after the bootcamp by converting free subscribers to paid tiers."
+      answer: "The Substack Money Map Bootcamp is just $597 as a one-time payment. That's less than what most people spend on a single dinner out, yet our students are generating $2,000-$8,000+ monthly from their newsletters. Most of our students make back their investment within their first two weeks after the bootcamp by converting free subscribers to paid tiers."
     },
     {
       question: "I've wasted money on courses in the past. What's different about Newsletter Money Map?",
-      answer: "Most courses give you theory. We give you the exact templates, frameworks, and strategies that generated over $500k+ for our students. You get proven systems used by 12 Substack Bestsellers, plus a community of 250+ successful newsletter creators who actually implement and see results."
+      answer: "Most courses give you theory. We give you the exact templates, frameworks, and strategies that generated over $500k+ for our students. You get proven systems used by 12 Substack Bestsellers, plus a community of 300+ successful newsletter creators who actually implement and see results."
     },
     {
       question: "How can I be sure this program is right for me?",

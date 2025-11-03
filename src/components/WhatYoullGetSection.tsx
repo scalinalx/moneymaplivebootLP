@@ -52,13 +52,13 @@ const WhatYoullGetSection = () => {
     {
       number: "02", 
       title: "The 6 module roadmap to build and monetize your newsletter",
-      description: "Our course content has been designed to take you from a nobody to a serious newsletter creator. These are the same methods that have grown my newsletter, along with 250+ others over the last few months.",
+      description: "Our course content has been designed to take you from a nobody to a serious newsletter creator. These are the same methods that have grown my newsletter, along with 300+ others over the last few months.",
       image: "roadmap"
     },
     {
       number: "03",
       title: "Access to our Private Community",
-      description: "Connect with 250+ newsletter creators who are all working towards the same goal. Share wins, get feedback, and collaborate with like-minded creators in our exclusive community.",
+      description: "Connect with 300+ newsletter creators who are all working towards the same goal. Share wins, get feedback, and collaborate with like-minded creators in our exclusive community.",
       image: "community"
     },
     {
@@ -244,14 +244,14 @@ const WhatYoullGetSection = () => {
                           </div>
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-purple-400 rounded-full"></div>
-                            <div className="text-white text-sm">250+ subscribers this week!</div>
+                            <div className="text-white text-sm">300+ subscribers this week!</div>
                           </div>
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-red-400 rounded-full"></div>
                             <div className="text-white text-sm">Need feedback on my landing page</div>
                           </div>
                         </div>
-                        <div className="mt-4 text-yellow-400 text-xs text-center">250+ Active Members</div>
+                        <div className="mt-4 text-yellow-400 text-xs text-center">300+ Active Members</div>
                       </div>
                     )}
 
@@ -295,7 +295,7 @@ const WhatYoullGetSection = () => {
             GET ACCESS TO EVERYTHING TODAY
           </button>
           <p className="text-gray-400 text-sm mt-4">
-            Join 250+ newsletter creators already building their revenue machines
+            Join 300+ newsletter creators already building their revenue machines
           </p>
         </div>
       </div>

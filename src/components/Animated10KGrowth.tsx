@@ -231,7 +231,7 @@ const Animated10KGrowth = () => {
             opacity={animationProgress > 0.3 ? 1 : 0}
             style={{ transition: 'opacity 0.5s ease-in-out' }}
           >
-            The Substack
+            The Build to Profit
           </text>
           <text
             x={width / 2}
@@ -244,7 +244,7 @@ const Animated10KGrowth = () => {
             opacity={animationProgress > 0.5 ? 1 : 0}
             style={{ transition: 'opacity 0.5s ease-in-out' }}
           >
-            MoneyMap Effect
+            Effect
           </text>
 
           {/* Arrow and "This could be you" text */}
@@ -331,7 +331,7 @@ const Animated10KGrowth = () => {
             <div className="text-gray-300 text-sm">To Full System</div>
           </div>
           <div className="text-center">
-            <div className="text-yellow-400 text-2xl font-bold">250+</div>
+            <div className="text-yellow-400 text-2xl font-bold">300+</div>
             <div className="text-gray-300 text-sm">Success Stories</div>
           </div>
         </div>

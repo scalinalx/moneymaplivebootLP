@@ -144,7 +144,7 @@ const OldVsNewWaySection = () => {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
             <p className="text-gray-500 text-xs mt-3">
-              Join 250+ newsletter creators building 6-figure businesses
+              Join 300+ newsletter creators building 6-figure businesses
             </p>
           </div>
         </div>
@@ -159,7 +159,7 @@ const OldVsNewWaySection = () => {
               <div className="relative">
                 <div className="absolute inset-0 rounded-full blur-lg opacity-30" style={{ backgroundColor: '#ffc300' }}></div>
                 <span className="relative text-black text-sm font-semibold px-5 py-2 rounded-full border" style={{ backgroundColor: '#ffc300', borderColor: '#ffc300' }}>
-                  250+ Success stories to date
+                  300+ Success stories to date
                 </span>
               </div>
             </div>

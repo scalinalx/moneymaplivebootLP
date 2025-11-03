@@ -1,24 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Testimonials2 = () => {
+// Copy of the 7-card testimonials section (starts with Hilde Palladino)
+export default function TestimonialsFull() {
   return (
     <div className="mb-16">
       <div className="text-center mb-12">
         <h2 className="text-white text-3xl font-bold mb-2">What Our Students Say</h2>
       </div>
-      {/* First row - all testimonials in a single grid */}
+      {/* All testimonials in a single grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {/* Hilde Palladino */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/testimavatar/44.webp"
-              alt="Hilde Palladino"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="/testimavatar/44.webp" alt="Hilde Palladino" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Hilde Palladino</h3>
               <p className="text-gray-400 text-sm">Substack Bestseller</p>
@@ -32,13 +27,7 @@ const Testimonials2 = () => {
         {/* Sue Bolton */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/testimavatar/45.webp"
-              alt="Sue Bolton"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="/testimavatar/45.webp" alt="Sue Bolton" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Sue Bolton</h3>
               <p className="text-gray-400 text-sm">Newsletter Creator</p>
@@ -52,13 +41,7 @@ const Testimonials2 = () => {
         {/* Mary Bartnikowski */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/testimavatar/46.webp"
-              alt="Mary Bartnikowski"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="/testimavatar/46.webp" alt="Mary Bartnikowski" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Mary Bartnikowski</h3>
               <p className="text-gray-400 text-sm">Content Creator</p>
@@ -72,13 +55,7 @@ const Testimonials2 = () => {
         {/* Jeff Herring */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/testimavatar/jeff.webp"
-              alt="Jeff Herring"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="/testimavatar/jeff.webp" alt="Jeff Herring" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Jeff Herring</h3>
               <p className="text-gray-400 text-sm">Host of the How You Profit Show</p>
@@ -92,13 +69,7 @@ const Testimonials2 = () => {
         {/* Alexandra Lee (replaces duplicate Jill Hart) */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1664"
-              alt="Alexandra Lee"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1664" alt="Alexandra Lee" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Alexandra Lee</h3>
               <p className="text-gray-400 text-sm">Digital Entrepreneur</p>
@@ -112,13 +83,7 @@ const Testimonials2 = () => {
         {/* Jill Hart 2 */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/testimavatar/47.webp"
-              alt="Jill Hart"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="/testimavatar/47.webp" alt="Jill Hart" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Jill Hart</h3>
               <p className="text-gray-400 text-sm">Digital Entrepreneur</p>
@@ -132,13 +97,7 @@ const Testimonials2 = () => {
         {/* Sarah Johnson */}
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/testimavatar/48.webp"
-              alt="Sarah Johnson"
-              className="w-16 h-16 rounded-full"
-              width={64}
-              height={64}
-            />
+            <Image src="/testimavatar/48.webp" alt="Sarah Johnson" className="w-16 h-16 rounded-full" width={64} height={64} />
             <div>
               <h3 className="text-white font-semibold text-lg">Sarah Johnson</h3>
               <p className="text-gray-400 text-sm">Freelance Writer</p>
@@ -151,6 +110,4 @@ const Testimonials2 = () => {
       </div>
     </div>
   );
-};
-
-export default Testimonials2; 
+}
