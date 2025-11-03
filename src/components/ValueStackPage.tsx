@@ -62,7 +62,7 @@ export default function ValueStackPage() {
         <header className="text-center">
           <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">What You Get When You Join <span className="block">Build to Profit</span></h1>
           <div className="mt-3 text-lg sm:text-xl md:text-2xl font-extrabold text-yellow-300">
-            Secure the $597 launch rate by Nov 9 — then it jumps to $897
+            Secure the $597 launch rate by Nov 9 — then it jumps to $997
           </div>
         </header>
 
