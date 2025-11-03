@@ -53,7 +53,7 @@ function NeonSeparator() {
 export default function ValueStackPage() {
   const totalValue = 2735;
   const yourPrice = 597;
-  const regularPrice = 897;
+  const regularPrice = 997;
   const off = percentOff(totalValue, yourPrice); // 82
 
   return (

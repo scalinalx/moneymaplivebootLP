@@ -136,7 +136,7 @@ const PricingComp2 = () => {
           <div className="text-center mb-8">
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Get The Complete System for Just{' '}
-              <span className="text-gray-400 line-through mr-4">$897</span>
+              <span className="text-gray-400 line-through mr-4">$997</span>
               <span className="text-yellow-400">$597</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">

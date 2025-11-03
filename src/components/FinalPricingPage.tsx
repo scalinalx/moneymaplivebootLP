@@ -102,7 +102,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
     return function () { clearInterval(t); };
   }, []);
 
-  const regularPrice = 897; // matches ValueStack regular
+  const regularPrice = 997; // matches ValueStack regular
   const earlyBird = 597;
   const savings = totalValue - earlyBird; // 2732
 
