@@ -28,13 +28,9 @@ export async function POST(request: NextRequest) {
       }, { status: 404 });
     }
 
-    // Check if lead already has paid
-    if (lead.has_paid) {
-      return NextResponse.json<ApiResponse>({
-        success: false,
-        error: 'Payment already completed'
-      }, { status: 400 });
-    }
+    // IMPORTANT: Do not block returning customers who previously purchased
+    // a different program (e.g., Money Map). We allow creating a new
+    // Checkout session regardless of historical has_paid status.
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
@@ -46,8 +42,8 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Live Workshop Access',
-              description: 'Get exclusive access to our live workshop and transform your skills!',
+              name: 'Build to Profit – Enrollment',
+              description: 'Cohort-based program: 2x live implementation sessions, templates, community access',
             },
             unit_amount: WORKSHOP_PRICE,
           },
@@ -61,6 +57,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         leadId: leadId,
         name: lead.name,
+        program: 'build_to_profit'
       },
       allow_promotion_codes: true,
       billing_address_collection: 'required',
