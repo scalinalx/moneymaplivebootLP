@@ -58,7 +58,7 @@ export default function PSPage() {
                 <span>P.P.S.</span>
               </div>
               <p className="text-base leading-relaxed text-slate-200">
-                Early bird ends <span className="font-semibold text-white">November 8</span>. After that, Build to Profit goes to <span className="font-semibold text-white">$797</span>. That’s <span className="font-extrabold text-emerald-300">$300</span> for waiting <span className="font-semibold text-white">9 days</span>. If you know you need this, <span className="font-semibold text-white">grab it now</span>.
+                Early bird ends <span className="font-semibold text-white">November 8</span>. After that, Build to Profit goes to <span className="font-semibold text-white">$997</span>. That’s <span className="font-extrabold text-emerald-300">$300</span> for waiting <span className="font-semibold text-white">9 days</span>. If you know you need this, <span className="font-semibold text-white">grab it now</span>.
               </p>
             </article>
 

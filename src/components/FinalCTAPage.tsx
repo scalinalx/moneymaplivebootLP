@@ -49,7 +49,7 @@ function usd(n: number) {
 
 export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: number; capacity?: number }) {
   const totalValue = 3229; // $3,229
-  const wasPrice = 797; // $797 (reference/regular)
+  const wasPrice = 997; // $997 (reference/regular)
   const nowPrice = 597; // $597 early bird
   const savings = totalValue - nowPrice; // 2732
 
