@@ -13,8 +13,8 @@ export const Input: React.FC<InputProps> = ({
   className = '',
   ...props
 }) => {
-  const baseClasses = 'w-full px-4 py-3 border rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500';
-  const errorClasses = error ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-blue-500';
+  const baseClasses = 'w-full px-4 py-3 border rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-transparent text-white placeholder-white/60';
+  const errorClasses = error ? 'border-red-500 bg-red-500/10' : 'border-gray-300 focus:border-blue-500';
 
   return (
     <div className="space-y-1">
