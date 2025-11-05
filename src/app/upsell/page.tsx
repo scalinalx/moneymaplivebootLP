@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import React, { Suspense, useEffect, useMemo, useState, useRef } from "react";
 import { useSearchParams } from 'next/navigation';
 
 // Conversion‑first hero
@@ -12,7 +12,7 @@ import { useSearchParams } from 'next/navigation';
 // - value stack + progressive price callout
 // - bottom-right secondary choice link
 
-export default function UpsellHero() {
+function UpsellContent() {
   // === CONFIG ===
   const cohortStart = useMemo(() => new Date("2025-11-18T09:00:00"), []);
   const seatCap = 30;
@@ -244,6 +244,18 @@ export default function UpsellHero() {
         <span aria-hidden>❌</span> No Thanks, I don't want the complete system
       </button>
     </section>
+  );
+}
+
+export default function UpsellPage() {
+  return (
+    <Suspense fallback={
+      <section className="min-h-[92vh] flex items-center justify-center bg-gradient-to-b from-neutral-900 via-black to-neutral-950 text-white">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-yellow-300" />
+      </section>
+    }>
+      <UpsellContent />
+    </Suspense>
   );
 }
 
