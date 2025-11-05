@@ -11,7 +11,7 @@ const FAQSection = () => {
     },
     {
       question: "I've wasted money on courses in the past. What's different about Newsletter Money Map?",
-      answer: "Most courses give you theory. We give you the exact templates, frameworks, and strategies that generated over $500k+ for our students. You get proven systems used by 12 Substack Bestsellers, plus a community of 300+ successful newsletter creators who actually implement and see results."
+      answer: "Most courses give you theory. We give you the exact templates, frameworks, and strategies that generated over $500k+ for our students. You get proven systems used by 25 Substack Bestsellers, plus a community of 300+ successful newsletter creators who actually implement and see results."
     },
     {
       question: "How can I be sure this program is right for me?",

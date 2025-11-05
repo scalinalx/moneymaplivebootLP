@@ -18,27 +18,17 @@ export type Bonus = {
 export const BONUSES: Bonus[] = [
   {
     id: "b1",
-    title: "🎁 Bonus #1: The $5K Launch Playbook",
-    valueEur: 297,
-    valueLabel: "($297 value)",
-    bullets: [
-      "Step-by-step guide to launching your first $5K offer",
-      "What to say, when to say it, how to handle objections",
-    ],
-  },
-  {
-    id: "b2",
-    title: "🎁 Bonus #2: Swipe File of 50 High-Converting Emails",
+    title: "🎁 Bonus #1: Notes to Cash Workshop",
     valueEur: 197,
     valueLabel: "($197 value)",
     bullets: [
-      "Ana's personal collection of subject lines, email sequences, and CTAs",
-      "Assets that helped generate $500K+",
+      "Turn your notes into revenue with a simple, repeatable system",
+      "Exactly what to publish, when to publish, and how to convert",
     ],
   },
   {
     id: "b3",
-    title: "🎁 Bonus #3: Private Accelerator Preview",
+    title: "🎁 bonus #2: Private Accelerator Preview",
     valueEur: null,
     valueLabel: "(Priceless)",
     bullets: [

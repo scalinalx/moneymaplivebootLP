@@ -35,7 +35,7 @@ const FooterSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-green-400" />
-                  <span className="text-gray-300 text-xs">12 Substack Bestsellers</span>
+                <span className="text-gray-300 text-xs">25 Substack Bestsellers</span>
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@ const FooterSection = () => {
               <div className="hidden md:block w-px h-4 bg-gray-600"></div>
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4 text-yellow-400" />
-                <span className="text-gray-300 text-xs">Proven by 12 Substack Bestsellers</span>
+                <span className="text-gray-300 text-xs">Proven by 25 Substack Bestsellers</span>
               </div>
             </div>
           </div>
