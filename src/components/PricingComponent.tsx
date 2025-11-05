@@ -154,9 +154,17 @@ const PricingComponent = () => {
             <span className="text-gray-300 text-sm ml-4">Join 350+ Students including 25 Substack Bestsellers</span>
           </div>
           
-          <h1 className="text-white text-6xl font-bold mb-6 leading-tight w-full max-w-5xl mx-auto">
-            The <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">complete system</span> to go from strategy to your <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">first $5K</span> in revenue — in 30 days or less
-          </h1>
+          {/* Added top title + subtitle */}
+          <div className="mb-4">
+            <h1 className="text-white text-5xl sm:text-6xl font-extrabold leading-tight w-full max-w-5xl mx-auto">
+              Turn Your Newsletter Into a <span style={{ color: '#ffc300' }}>$120K+/Year</span> Revenue Machine
+            </h1>
+            <p className="text-gray-300 text-xl max-w-4xl mx-auto mt-2">
+              The exact system 300+ creators used to build 6-figure newsletter businesses
+            </p>
+          </div>
+
+          {/* Removed duplicate main headline per request; now shown near "Two Paths" section */}
           {/* CRO banner removed per new launch copy */}
           
           {/* Video Section */}

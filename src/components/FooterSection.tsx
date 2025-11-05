@@ -16,8 +16,7 @@ const FooterSection = () => {
                   <span className="text-black font-bold text-lg">NM</span>
                 </div>
                 <div>
-                  <div className="text-white font-bold text-lg">Newsletter</div>
-                  <div className="text-yellow-400 font-bold text-lg">Money Map</div>
+                  <div className="text-white font-bold text-lg">Build To Profit</div>
                 </div>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-6">
@@ -123,7 +122,7 @@ const FooterSection = () => {
           <div className="max-w-7xl mx-auto px-6 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-gray-400 text-sm">
-                © 2024 Newsletter Money Map. All rights reserved. Results may vary.
+                © 2024 How We Grow. © 2025 Build To Profit
               </div>
               
               <div className="flex items-center gap-6">

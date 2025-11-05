@@ -38,6 +38,9 @@ export default function FinalUrgencyPage() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="text-center">
+          <h1 className="text-white text-6xl font-bold mb-6 leading-tight w-full max-w-5xl mx-auto">
+            The <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">complete system</span> to go from strategy to your <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">first $5K</span> in revenue — in 30 days or less
+          </h1>
           <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">Two Paths. One Decision.</h1>
           <p className="mx-auto mt-3 max-w-2xl text-slate-300">Choose momentum over maintenance. Your next 30 days can compound for the next 6 months.</p>
         </header>
@@ -74,7 +77,7 @@ export default function FinalUrgencyPage() {
               <h2 className="text-xl sm:text-2xl font-extrabold text-white">Path 2: Join Build to Profit</h2>
             </div>
             <div className="mt-4 space-y-3 text-slate-100">
-              <p>Get the complete system. Launch with a cohort. Make your first sales in <span className="font-extrabold">30 days</span>.</p>
+              <p>Get the Build To Profit system. Launch with a cohort. Make your first sales in <span className="font-extrabold">30 days</span>.</p>
               <p><span className="font-semibold">6 months from now</span>, you'll have a profitable newsletter business and <span className="font-extrabold text-emerald-300">$15K–$30K</span> in revenue.</p>
             </div>
             <button

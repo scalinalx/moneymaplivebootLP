@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe, WORKSHOP_PRICE } from '@/lib/stripe';
+import { stripe, WORKSHOP_PRICE, BUNDLE_PRICE } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase';
 import type { ApiResponse, StripeCheckoutSession } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
-    const { leadId, promoCode } = await request.json();
+    const { leadId, promoCode, variant } = await request.json();
 
     if (!leadId) {
       return NextResponse.json<ApiResponse>({
@@ -34,6 +34,16 @@ export async function POST(request: NextRequest) {
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
+    // Choose price and product naming based on variant
+    const isBundle = typeof variant === 'string' && variant.toLowerCase() === 'bundle';
+    const chosenPrice = isBundle ? BUNDLE_PRICE : WORKSHOP_PRICE;
+    const productName = isBundle
+      ? 'Build to Profit + Money Map bundle'
+      : 'Build to Profit liveworkshop';
+    const productDescription = isBundle
+      ? 'Bundle: Workshop + extras. 2x live sessions, templates, community access'
+      : 'Cohort-based program: 2x live implementation sessions, templates, community access';
+
     // Prepare checkout session parameters
     const checkoutParams: any = {
       payment_method_types: ['card'],
@@ -42,22 +52,25 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Build to Profit – Enrollment',
-              description: 'Cohort-based program: 2x live implementation sessions, templates, community access',
+              name: productName,
+              description: productDescription,
             },
-            unit_amount: WORKSHOP_PRICE,
+            unit_amount: chosenPrice,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: baseUrl,
+      // Always send cancel back to upsell with the same leadId so the user can choose again
+      cancel_url: `${baseUrl}/upsell?leadId=${encodeURIComponent(leadId)}`,
       customer_email: lead.email,
       metadata: {
         leadId: leadId,
         name: lead.name,
-        program: 'build_to_profit'
+        program: 'build_to_profit',
+        variant: isBundle ? 'bundle' : 'standard',
+        product_name: productName
       },
       allow_promotion_codes: true,
       billing_address_collection: 'required',

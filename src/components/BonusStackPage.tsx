@@ -104,7 +104,7 @@ function ValueBadge({ valueEur }: { valueEur: number | null }) {
   );
 }
 
-export default function BonusStackPage({ deadlineISO = "2025-11-09T08:59:59" }: { deadlineISO?: string }) {
+export default function BonusStackPage({ deadlineISO = "2025-11-18T09:00:00" }: { deadlineISO?: string }) {
   const deadline = useMemo(function () { return new Date(deadlineISO); }, [deadlineISO]);
   // Avoid hydration mismatch by rendering a stable placeholder until mounted
   const [mounted, setMounted] = useState(false);

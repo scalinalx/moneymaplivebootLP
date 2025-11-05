@@ -229,7 +229,7 @@ const OldVsNewWaySection = () => {
                     className="w-12 h-12 rounded-full"
                   />
                   <div>
-                    <h3 className="text-white font-semibold text-sm">Sarah Johnson</h3>
+                    <h3 className="text-white font-semibold text-sm">Sarah J.</h3>
                     <p className="text-gray-400 text-xs">Marketing Insights</p>
                   </div>
                 </div>

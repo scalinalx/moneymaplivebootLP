@@ -15,15 +15,12 @@ type Row = { label: string; value: string };
 
 const CORE_ROWS: Row[] = [
   { label: "Launch to Profit (Live Sessions)", value: "$997" },
-  { label: "Money Map (Complete Course)", value: "$497" },
   { label: "Templates & Resources", value: "$347" },
-  { label: "Past Workshops Archive", value: "$597" },
   { label: "The High-Value Newsletter Club", value: "$297" },
 ];
 
 const BONUS_ROWS: Row[] = [
-  { label: "$5K Launch Playbook", value: "$297" },
-  { label: "50 Email Swipe File", value: "$197" },
+  { label: "Notes to Cash Workshop", value: "$297" },
   { label: "Accelerator Preview Invitation", value: "Priceless" },
 ];
 
@@ -88,10 +85,10 @@ function BoltIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", taken = 18, capacity = 30 }: { deadlineISO?: string; taken?: number; capacity?: number; }) {
+export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", taken = 18, capacity = 30 }: { deadlineISO?: string; taken?: number; capacity?: number; }) {
   const coreTotal = useMemo(function () { return sumRows(CORE_ROWS); }, []);
   const bonusTotal = useMemo(function () { return sumRows(BONUS_ROWS); }, []); // priceless counts as 0 for math
-  const totalValue = coreTotal + bonusTotal; // 3229
+  const totalValue = coreTotal + bonusTotal; // computed, but display overridden below
 
   const [now, setNow] = useState<Date>(new Date());
   const deadline = useMemo(function () { return new Date(deadlineISO); }, [deadlineISO]);
@@ -102,9 +99,9 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
     return function () { clearInterval(t); };
   }, []);
 
-  const regularPrice = 997; // matches ValueStack regular
-  const earlyBird = 597;
-  const savings = totalValue - earlyBird; // 2732
+  const regularPrice = 997;
+  const earlyBird = 497;
+  const savings = totalValue - earlyBird;
 
   // FIX: removed extra closing parenthesis that caused a syntax error
   const progress = Math.max(0, Math.min(100, Math.round((taken / Math.max(1, capacity)) * 100)));
@@ -134,7 +131,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
                       </li>
                     );
                   })}
-                  <li className="pt-3 text-xs uppercase tracking-wider text-slate-300/80">Bonuses (Nov 8 only)</li>
+                  <li className="pt-3 text-xs uppercase tracking-wider text-slate-300/80">Bonuses (Nov 18 only)</li>
                   {BONUS_ROWS.map(function (r, i) {
                     return (
                       <li key={"b"+i} className="flex items-start gap-3">
@@ -169,7 +166,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
                 <div className="mt-4 border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between text-white font-extrabold">
                     <span>TOTAL VALUE</span>
-                    <span className="text-2xl">{usd(totalValue)}</span>
+                    <span className="text-2xl">{usd(2229)}</span>
                   </div>
                 </div>
               </div>
@@ -180,9 +177,9 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
           <aside className="rounded-3xl ring-1 ring-yellow-300/50 border border-white/10 bg-gradient-to-br from-yellow-400/20 to-amber-300/20 p-6 text-slate-900 shadow-yellow-400/10">
             <div className="rounded-2xl bg-white/70 p-4 text-center">
               <div className="text-xs font-extrabold uppercase tracking-widest text-slate-700">Today Only</div>
-              <div className="mt-2 text-3xl md:text-4xl font-extrabold text-slate-400 line-through decoration-rose-400/70 decoration-4">{usd(totalValue)}</div>
+              <div className="mt-2 text-3xl md:text-4xl font-extrabold text-slate-400 line-through decoration-rose-400/70 decoration-4">{usd(2229)}</div>
               <div className="mt-1 text-5xl md:text-6xl font-black"><span className="relative inline-block px-2 -mx-2 rounded-sm bg-[linear-gradient(180deg,transparent_62%,rgba(250,204,21,0.65)_0)]">{usd(earlyBird)}</span><span className="align-super ml-1 text-xs font-extrabold uppercase tracking-widest">Early Bird</span></div>
-              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-slate-700">Ends November 8 • Save {usd(savings)}</div>
+              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-slate-700">Ends November 18 • Save $1,732</div>
               <button
                 type="button"
                 onClick={() => {
@@ -204,9 +201,8 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
             <ul className="mt-4 space-y-2 text-white font-bold">
               {[
                 "✅ Instant access to everything",
-                "✅ Live sessions Nov 11-12",
+                "✅ Live sessions Nov 18-19",
                 "✅ 90 Days community access",
-                "✅ Launch or it's free guarantee",
               ].map(function (s, i) { return <li key={i} className="text-sm" >{s}</li>; })}
             </ul>
           </aside>
@@ -215,13 +211,12 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-08T23:59:59", 
         {/* What happens next */}
         <section className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
           <h3 className="text-lg font-extrabold text-white">🎯 What happens next:</h3>
-          <ol className="mt-3 list-decimal space-y-2 pl-6 text-slate-200 text-sm">
-            <li>Click the button above</li>
-            <li>Complete secure checkout (Stripe)</li>
-            <li>Get instant email with login details</li>
-            <li>Access Money Map + Community immediately</li>
-            <li>Receive Zoom link for Nov 11-12 live sessions</li>
-          </ol>
+            <ol className="mt-3 list-decimal space-y-2 pl-6 text-slate-200 text-sm">
+              <li>Click the button above</li>
+              <li>Complete secure checkout (Stripe)</li>
+              <li>Get instant email with login details</li>
+              <li>Receive Zoom link for Nov 18-19 live sessions</li>
+            </ol>
         </section>
       </div>
     </main>

@@ -41,13 +41,13 @@ export default function UrgencyBar({
   spotsTaken = 18,
   totalSpots = 30,
   daysLeft = 9,
-  cohortLabel = "November 11",
+  cohortLabel = "November 18",
   sticky = true,
   ctaLabel = "Apply now",
   ctaHref = "#apply",
   className = "",
   id,
-  deadlineISO = "2025-11-09T08:59:59",
+  deadlineISO = "2025-11-18T09:00:00",
 }: UrgencyBarProps) {
   const { safeTotal, safeTaken, percent, spotsLeft } = computeUrgencyStats(
     spotsTaken,

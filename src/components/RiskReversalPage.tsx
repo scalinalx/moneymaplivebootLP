@@ -54,7 +54,7 @@ function CheckIcon({ className = "h-5 w-5" }: { className?: string }) {
 }
 
 export default function RiskReversalPage({
-  productPrice = 597,
+  productPrice = 497,
   offerPrice = 297,
   typicalCustomers = 10,
   roiLabel = "5X in 30 days",

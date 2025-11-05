@@ -11,6 +11,9 @@ export const stripe = new Stripe(stripeSecretKey || 'sk_test_placeholder', {
   typescript: true,
 });
 
-// Price in cents. Prefer .env WORKSHOP_PRICE; fallback to 59700 ($597)
-const parsedPrice = Number.parseInt(process.env.WORKSHOP_PRICE || '', 10);
-export const WORKSHOP_PRICE = Number.isFinite(parsedPrice) ? parsedPrice : 59700;
+// Prices in cents. Prefer env vars; fall back to sane defaults.
+const parsedWorkshop = Number.parseInt(process.env.WORKSHOP_PRICE || '', 10);
+export const WORKSHOP_PRICE = Number.isFinite(parsedWorkshop) ? parsedWorkshop : 59700; // $597
+
+const parsedBundle = Number.parseInt(process.env.BUNDLE_PRICE || '', 10);
+export const BUNDLE_PRICE = Number.isFinite(parsedBundle) ? parsedBundle : 79700; // $797 default

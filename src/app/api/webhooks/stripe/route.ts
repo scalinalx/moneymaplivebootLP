@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
   if (event.type === 'checkout.session.completed') {
     console.log('💳 Processing checkout.session.completed');
-    const session = event.data.object;
+    const session = event.data.object as any;
     const leadId = session.metadata?.leadId;
 
     console.log('📝 Lead ID from metadata:', leadId);
@@ -57,13 +57,24 @@ export async function POST(request: NextRequest) {
     try {
       console.log('🔄 Attempting to update lead in database...');
       
-      // Update lead as paid
+      // Gather additional details
+      const amountTotal: number | null = typeof session.amount_total === 'number' ? session.amount_total : null;
+      const amountPaidUnits = amountTotal != null ? amountTotal / 100 : null; // convert cents to currency units
+      const currency: string | null = session.currency ? String(session.currency).toUpperCase() : null;
+      const productVariant: string | null = session.metadata?.variant ?? null;
+      const productName: string | null = session.metadata?.product_name ?? null;
+
+      // Update lead as paid with extra fields
       const { error, data } = await supabaseAdmin
         .from('leads_bootcamp_brands')
         .update({
           has_paid: true,
           stripe_session_id: session.id,
-          payment_completed_at: new Date().toISOString()
+          payment_completed_at: new Date().toISOString(),
+          amount_paid: amountPaidUnits,
+          currency: currency,
+          product_variant: productVariant,
+          product_name: productName
         })
         .eq('id', leadId)
         .select();

@@ -18,32 +18,9 @@ function LeadCollectionContent() {
   const canceled = searchParams.get('canceled');
 
   const handleLeadSuccess = async (leadData: Lead) => {
-    setIsProcessingPayment(true);
+    // Route to upsell page; checkout happens after choice
     setError(null);
-
-    try {
-      // Create Stripe checkout session
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ leadId: leadData.id }),
-      });
-
-      const result: ApiResponse<StripeCheckoutSession> = await response.json();
-
-      if (result.success && result.data) {
-        // Redirect to Stripe checkout
-        window.location.href = result.data.url;
-      } else {
-        setError(result.error || 'Failed to create checkout session');
-        setIsProcessingPayment(false);
-      }
-    } catch {
-      setError('Network error. Please try again.');
-      setIsProcessingPayment(false);
-    }
+    router.push(`/upsell?leadId=${encodeURIComponent(leadData.id || '')}`);
   };
 
   const handleLeadError = (errorMessage: string) => {

@@ -42,30 +42,9 @@ const PricingComp2 = () => {
   }, []);
 
   const handleLeadSuccess = async (leadData: Lead) => {
-    setIsProcessingPayment(true);
+    // Route to upsell page; checkout happens after choice
     setError(null);
-
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ leadId: leadData.id }),
-      });
-
-      const result: ApiResponse<StripeCheckoutSession> = await response.json();
-
-      if (result.success && result.data) {
-        window.location.href = result.data.url;
-      } else {
-        setError(result.error || 'Failed to create checkout session');
-        setIsProcessingPayment(false);
-      }
-    } catch {
-      setError('Network error. Please try again.');
-      setIsProcessingPayment(false);
-    }
+    router.push(`/upsell?leadId=${encodeURIComponent(leadData.id || '')}`);
   };
 
   const handleLeadError = (errorMessage: string) => {
@@ -137,7 +116,7 @@ const PricingComp2 = () => {
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Get The Complete System for Just{' '}
               <span className="text-gray-400 line-through mr-4">$997</span>
-              <span className="text-yellow-400">$597</span>
+              <span className="text-yellow-400">$497</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">
               (Save $400 + & $2,000+ vs. hiring a consultant)

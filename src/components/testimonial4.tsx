@@ -228,18 +228,7 @@ const Testimonial4 = () => {
           </p>
         </div>
 
-        {/* Revenue Hero Section */}
-        <div className="mt-8 text-center max-w-5xl mx-auto">
-          {/* Main Headline */}
-          <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-            Turn Your Newsletter Into a <span className="text-yellow-400">$120K+/Year</span> Revenue Machine
-          </h1>
-          
-          {/* Subheadline */}
-          <p className="text-gray-300 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
-            The exact system 300+ creators used to build 6-figure newsletter businesses
-          </p>
-        </div>
+        {/* Revenue Hero Section removed to avoid duplicate main headline */}
       </div>
     </div>
   );

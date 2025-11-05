@@ -27,7 +27,7 @@ const RIGHT_ITEMS: string[] = [
   "Launch with cohort (supported)",
   "Specific guidance for YOUR business",
   "$2,970-$5,000+ in first 30 days",
-  "Total cost: $597 (2X ROI in 30 days)",
+  "Total cost: $497 (2X ROI in 30 days)",
 ];
 
 function XIcon({ className = "h-5 w-5" }: { className?: string }) {
@@ -123,7 +123,7 @@ export default function ComparisonPage() {
             }}
             className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
           >
-            Join Build to Profit — $597 Today
+            Join Build to Profit — $497 Today
           </button>
         </div>
       </div>

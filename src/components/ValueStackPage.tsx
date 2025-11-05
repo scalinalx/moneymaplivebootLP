@@ -52,17 +52,17 @@ function NeonSeparator() {
 
 export default function ValueStackPage() {
   const totalValue = 2735;
-  const yourPrice = 597;
+  const yourPrice = 497;
   const regularPrice = 997;
   const off = percentOff(totalValue, yourPrice); // 82
 
   return (
-    <main className="min-h-screen bg-transparent py-12 text-slate-200">
+    <main className="bg-transparent pt-8 pb-4 text-slate-200">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <header className="text-center">
           <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">What You Get When You Join <span className="block">Build to Profit</span></h1>
           <div className="mt-3 text-lg sm:text-xl md:text-2xl font-extrabold text-yellow-300">
-            Secure the $597 launch rate by Nov 9 — then it jumps to $997
+            Secure the $497 launch rate by Nov 18th
           </div>
         </header>
 
@@ -114,163 +114,12 @@ export default function ValueStackPage() {
               </div>
             </div>
           </article>
-          {/* Bridge line under first card */}
-          <div className="mt-4 text-center">
-            <p className="inline-block rounded bg-black/60 px-5 py-1.5 text-yellow-300 text-2xl md:text-3xl font-extrabold shadow-lg shadow-black/40 ring-1 ring-white/10 motion-safe:animate-pulse">
-              PLUS Access To All Of These:
-            </p>
-          </div>
-          <NeonSeparator />
-
-          {/* Item 2 – Money Map now second */}
-          <article className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-            <div className="flex items-start gap-3">
-              {/* icon removed per request */}
-              <div className="flex-1">
-                <details className="group">
-                  <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">Money Map: Complete Strategy Course <span className="font-medium text-slate-300">({formatCurrencyUSD(497)} value)</span></h2>
-                    <svg className="h-5 w-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </summary>
-                  <div className="mt-3 pt-2 border-t border-white/10">
-                    <p className="text-sm">5 comprehensive modules + 23 chapters + 10+ hours of content</p>
-                    <p className="mt-1 text-sm">Transform your newsletter from hobby to business with the exact frameworks I used to build 7-figures.</p>
-                    <ul className="mt-3 list-disc space-y-1 pl-6 text-sm text-left">
-                      <li><strong>Module 1: Subscriber Conversion Machine</strong> (The 3-question homepage test that converts at 12%)</li>
-                      <li><strong>Module 2: Paywall Strategy</strong> (When to charge, how much, and why people actually pay)</li>
-                      <li><strong>Module 3: Multiple Income Streams</strong> (Add revenue without overwhelming your audience)</li>
-                      <li><strong>Module 4: The Disaster Method</strong> (What to do when launches fail - recovery in 72 hours)</li>
-                      <li><strong>Module 5: Anti-Sell System</strong> (Promote daily without feeling gross)</li>
-                    </ul>
-                    <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-600/15 px-4 py-1.5 text-[15px] font-bold text-emerald-300 ring-1 ring-emerald-500/30">
-                      <span aria-hidden>🎯</span>
-                      Outcome: A complete monetization strategy tailored to YOUR newsletter
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </div>
-          </article>
-          <NeonSeparator />
-
-          {/* Item 3 */}
-          <article className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-            <div className="flex items-start gap-3">
-              {/* icon removed per request */}
-              <div className="flex-1">
-                <details className="group">
-                  <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">Done-For-You Templates & Frameworks <span className="font-medium text-slate-300">({formatCurrencyUSD(347)} value)</span></h2>
-                    <svg className="h-5 w-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </summary>
-                  <div className="mt-3 pt-2 border-t border-white/10">
-                    <p className="text-sm">Stop starting from scratch. Use what already converts.</p>
-                    <ul className="mt-2 space-y-1 text-sm text-left">
-                      <li><span aria-hidden>🏠</span> Homepage Template (12% conversion rate vs 2-3% industry standard)</li>
-                      <li><span aria-hidden>📧</span> 4-Email Launch Sequence (copy-paste, customize, send)</li>
-                      <li><span aria-hidden>📝</span> 50+ Newsletter Topic Ideas (never run out of content)</li>
-                      <li><span aria-hidden>💰</span> Pricing Calculator (know exactly what to charge)</li>
-                      <li><span aria-hidden>📊</span> Revenue Tracker Spreadsheet (see your growth in real-time)</li>
-                      <li><span aria-hidden>🎯</span> About Page Template (write yours in 20 minutes)</li>
-                      <li><span aria-hidden>🚀</span> Notes to Cash Strategy (Ana's exact Substack Notes system)</li>
-                    </ul>
-                    <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-600/15 px-4 py-1.5 text-[15px] font-bold text-emerald-300 ring-1 ring-emerald-500/30">
-                      <span aria-hidden>🎯</span>
-                      Outcome: Launch-ready assets in hours, not weeks
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </div>
-          </article>
-          <NeonSeparator />
-
-          {/* Item 4 */}
-          <article className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-            <div className="flex items-start gap-3">
-              {/* icon removed per request */}
-              <div className="flex-1">
-                <details className="group">
-                  <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">Past Workshops Archive <span className="font-medium text-slate-300">({formatCurrencyUSD(597)} value)</span></h2>
-                    <svg className="h-5 w-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </summary>
-                  <div className="mt-3 pt-2 border-t border-white/10">
-                    <p className="text-sm">Instant access to $4,970 worth of previous content:</p>
-                    <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-left">
-                      <li>5 guest expert sessions (SEO, email marketing, viral content, sales psychology)</li>
-                      <li>12 implementation workshop recordings</li>
-                      <li>Behind-the-scenes: How Ana launched to $30K in 30 days (full breakdown)</li>
-                    </ul>
-                    <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-600/15 px-4 py-1.5 text-[15px] font-bold text-emerald-300 ring-1 ring-emerald-500/30">
-                      <span aria-hidden>🎯</span>
-                      Outcome: Learn from what's already worked for others
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </div>
-          </article>
-          <NeonSeparator />
-
-          {/* Item 5 */}
-          <article className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-            <div className="flex items-start gap-3">
-              {/* icon removed per request */}
-              <div className="flex-1">
-                <details className="group">
-                  <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">The High-Value Newsletter Club - Private Community <span className="font-medium text-slate-300">({formatCurrencyUSD(297)} value)</span></h2>
-                    <svg className="h-5 w-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </summary>
-                  <div className="mt-3 pt-2 border-t border-white/10">
-                    <p className="text-sm">90D access to our Skool community with 300+ creators</p>
-                    <p className="mt-1 text-sm">This isn't a Facebook group where posts disappear. It's structured, active, and results-focused.</p>
-                    <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-left">
-                      <li>Daily wins shared (see what's working in real-time)</li>
-                      <li>Get feedback on your offers, emails, homepages</li>
-                      <li>Accountability partners matched by cohort</li>
-                      <li>Monthly guest workshops</li>
-                      <li>Direct access to Ana between live sessions</li>
-                    </ul>
-                    <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-emerald-600/15 px-4 py-1.5 text-[15px] font-bold text-emerald-300 ring-1 ring-emerald-500/30">
-                      <span aria-hidden>🎯</span>
-                      Outcome: Never launch alone. Build with a cohort of people who get it.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </div>
-          </article>
+          {/* Bridge line under first card removed per request */}
         </section>
 
         {/* Value summary chips moved to end */}
         <div className="mt-8 text-center">
-          {/* Row 1: Total Value */}
-          <div className="flex justify-center">
-            <span className="inline-flex items-center justify-center gap-3 rounded-md bg-slate-800/70 px-12 py-3 text-lg sm:text-xl ring-1 ring-white/10 shadow-lg shadow-slate-900/30 min-w-[22rem] sm:min-w-[32rem]">
-              <span className="opacity-80 font-bold">Total Value:</span>
-              <strong className="text-white text-3xl sm:text-4xl font-black tracking-tight">{formatCurrencyUSD(totalValue)}</strong>
-            </span>
-          </div>
-
-          {/* Row 2: Regular price (struck through) */}
-          <div className="mt-3 flex justify-center">
-            <span className="inline-flex items-center justify-center gap-3 rounded-md bg-slate-700/70 px-12 py-3 text-xl sm:text-2xl font-extrabold text-white ring-1 ring-white/10 shadow-lg shadow-slate-900/30 min-w-[22rem] sm:min-w-[32rem]">
-              <span className="opacity-90 font-normal">Regular Price:</span>
-              <span className="text-white line-through decoration-red-500/80 decoration-4">{formatCurrencyUSD(regularPrice)}</span>
-            </span>
-          </div>
-
-          {/* Row 3: Early bird with attached CRO discount badge */}
+          {/* Early bird with attached CRO discount badge */}
           <div className="mt-3 flex items-center justify-center">
             <span className="relative inline-flex items-center justify-center gap-3 rounded-md bg-yellow-400 px-12 py-3 text-2xl sm:text-3xl font-extrabold text-slate-900 ring-2 ring-yellow-300 shadow-lg shadow-yellow-400/30 min-w-[22rem] sm:min-w-[32rem]">
               Early Bird (Today): {formatCurrencyUSD(yourPrice)}
@@ -279,14 +128,14 @@ export default function ValueStackPage() {
                 className="absolute -top-2 -right-2 rounded-full bg-rose-600 px-3 py-1 text-xs sm:text-sm font-black uppercase tracking-wider text-white ring-2 ring-rose-300 shadow-md shadow-rose-600/40"
                 aria-hidden
               >
-                {off}% OFF
+                50% OFF
               </span>
             </span>
           </div>
         </div>
 
         {/* Optional CTA footer */}
-        <footer className="mt-10 flex items-center justify-center">
+        <footer className="mt-2 flex items-center justify-center">
           <button
             type="button"
             onClick={() => {
@@ -294,7 +143,7 @@ export default function ValueStackPage() {
             }}
             className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
           >
-            Save Your Seat Until Nov 8th
+            Save Your Seat Until Nov 18th
           </button>
         </footer>
       </div>

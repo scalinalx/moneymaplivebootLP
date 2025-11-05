@@ -48,10 +48,10 @@ function usd(n: number) {
 }
 
 export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: number; capacity?: number }) {
-  const totalValue = 3229; // $3,229
+  const totalValue = 2229; // $2,229
   const wasPrice = 997; // $997 (reference/regular)
-  const nowPrice = 597; // $597 early bird
-  const savings = totalValue - nowPrice; // 2732
+  const nowPrice = 497; // $497
+  const savings = totalValue - nowPrice; // 1732
 
   const taken = Math.max(0, capacity - left);
   const progress = useMemo(function () {
@@ -81,7 +81,7 @@ export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: numb
             <div className="text-5xl md:text-6xl font-black text-white">
               <span className="relative inline-block px-2 -mx-2 rounded-sm bg-[linear-gradient(180deg,transparent_62%,rgba(250,204,21,0.65)_0)]">{usd(nowPrice)}</span>
             </div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-300">(Save {usd(savings)} — Ends November 8)</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-300">(Save {usd(savings)} — Ends November 18th)</div>
           </div>
 
           {/* Massive CTA */}
@@ -113,7 +113,7 @@ export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: numb
         </section>
 
         {/* Trust line */}
-        <p className="mt-6 text-center text-xs text-slate-400">Trusted by 260+ creators • Backed by a risk‑free guarantee • Proven results</p>
+        <p className="mt-6 text-center text-xs text-slate-400">Trusted by 300+ creators • Backed by a risk‑free guarantee • Proven results</p>
       </div>
     </main>
   );

@@ -22,7 +22,7 @@ export default function ThreeTestimonials() {
             </div>
           </div>
           <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-            "Build To Profit completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!"
+            "Your programs completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!"
           </p>
           <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
             Gustavo

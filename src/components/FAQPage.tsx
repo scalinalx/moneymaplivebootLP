@@ -12,7 +12,7 @@ export type FaqItem = { q: string; a: React.ReactNode };
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "What if I can't attend the live sessions on Nov 11-12?",
+    q: "What if I can't attend the live sessions on Nov 18-19?",
     a: (
       <p className="text-slate-200">
         Recordings are sent within 24 hours. However, the real value is in live participation — getting hot seat coaching and real-time feedback. If you absolutely can't make it, recordings still provide massive value.
@@ -71,7 +71,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     q: "How long do I have access?",
     a: (
       <p className="text-slate-200">
-        Lifetime. Money Map, all recordings, templates, community — forever. You can join future monthly cohorts at no extra cost.
+        Lifetime. Build to Profit, all recordings, templates, community — forever. You can join future monthly cohorts at no extra cost.
       </p>
     ),
   },
