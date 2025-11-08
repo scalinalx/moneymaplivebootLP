@@ -62,8 +62,8 @@ export async function POST(request: NextRequest) {
       ],
       mode: 'payment',
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      // Always send cancel back to upsell with the same leadId so the user can choose again
-      cancel_url: `${baseUrl}/upsell?leadId=${encodeURIComponent(leadId)}`,
+      // Send cancel back to main page (skipping upsell in the new flow)
+      cancel_url: `${baseUrl}/#form-section`,
       customer_email: lead.email,
       metadata: {
         leadId: leadId,

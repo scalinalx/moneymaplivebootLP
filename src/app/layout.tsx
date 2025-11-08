@@ -14,12 +14,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Newsletter Money Map - How to Monetize Your Newsletter & Build 6-Figure Income",
-  description: "Learn the exact strategies small creators use to land consistent brand partnerships and build a reliable $3K+ monthly income stream.",
+  title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
+  description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
   icons: {
     icon: '/imgs/hwg-icon.webp',
     shortcut: '/imgs/hwg-icon.webp',
     apple: '/imgs/hwg-icon.webp',
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  openGraph: {
+    title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
+    description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
+    siteName: 'Build To Profit',
+    type: 'website',
+    url: '/',
+    images: [
+      {
+        url: '/imgs/heroimgs/btp8.webp',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
+    description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
+    images: ['/imgs/heroimgs/btp8.webp'],
+    site: '@howwegrow',
+    creator: 'how we grow',
   },
 };
 

@@ -205,9 +205,21 @@ function UpsellContent() {
               type="button"
               onClick={() => createCheckout('bundle')}
               disabled={loading !== 'none'}
-              className="inline-flex items-center justify-center rounded-lg bg-yellow-300 px-6 py-3 text-base font-semibold text-black shadow-[0_8px_30px_rgba(253,224,71,0.35)] ring-1 ring-yellow-200 transition hover:translate-y-[-1px] hover:shadow-[0_12px_40px_rgba(253,224,71,0.45)] disabled:opacity-60"
+              className="inline-flex items-center justify-center rounded-lg bg-yellow-300 px-6 py-3 text-[1.1rem] font-semibold text-black shadow-[0_8px_30px_rgba(253,224,71,0.35)] ring-1 ring-yellow-200 transition hover:translate-y-[-1px] hover:shadow-[0_12px_40px_rgba(253,224,71,0.45)] disabled:opacity-60"
             >
               {loading === 'bundle' ? 'Starting checkout…' : 'Upgrade now — Bundle ($747)'}
+            </button>
+          </div>
+
+          {/* Secondary choice: non-bundle checkout (moved below main CTA) */}
+          <div className="mt-3 flex justify-center">
+            <button
+              type="button"
+              onClick={() => createCheckout('standard')}
+              disabled={loading !== 'none'}
+              className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-[1.05rem] py-[0.66rem] text-[0.95rem] font-bold text-white/85 ring-1 ring-white/20 shadow-sm backdrop-blur transition hover:text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300/50 disabled:opacity-60"
+            >
+              <span aria-hidden>❌</span> No Thanks! I want just Build To Profit ($497)
             </button>
           </div>
         </div>
@@ -234,15 +246,7 @@ function UpsellContent() {
         
       </div>
 
-      {/* Bottom-right secondary link */}
-      <button
-        type="button"
-        onClick={() => createCheckout('standard')}
-        disabled={loading !== 'none'}
-        className="fixed bottom-6 right-6 inline-flex items-center gap-2 rounded-lg bg-white/5 px-3 py-2 text-sm font-medium text-white/80 ring-1 ring-white/15 backdrop-blur transition hover:text-white hover:bg-white/10 disabled:opacity-60"
-      >
-        <span aria-hidden>❌</span> No Thanks, I don't want the complete system
-      </button>
+      
     </section>
   );
 }

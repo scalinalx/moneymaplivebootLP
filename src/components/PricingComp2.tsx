@@ -42,9 +42,26 @@ const PricingComp2 = () => {
   }, []);
 
   const handleLeadSuccess = async (leadData: Lead) => {
-    // Route to upsell page; checkout happens after choice
+    // New flow: skip upsell, auto-start STANDARD checkout
     setError(null);
-    router.push(`/upsell?leadId=${encodeURIComponent(leadData.id || '')}`);
+    setIsProcessingPayment(true);
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leadId: leadData.id, variant: 'standard' })
+      });
+      const result: ApiResponse<StripeCheckoutSession> = await response.json();
+      if (result.success && result.data?.url) {
+        window.location.href = result.data.url;
+      } else {
+        setError(result.error || 'Failed to start checkout. Please try again.');
+        setIsProcessingPayment(false);
+      }
+    } catch (e) {
+      setError('Network error. Please try again.');
+      setIsProcessingPayment(false);
+    }
   };
 
   const handleLeadError = (errorMessage: string) => {
