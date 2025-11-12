@@ -138,8 +138,11 @@ export default function SimpleLandingPage() {
         {/* Hero */}
         <header className="text-center">
           <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Build an offer people actually buy — <span className="text-emerald-400">live</span>.
+          <span className="text-emerald-400">3X Your Sales</span>  Without Changing Anything <br/> About Your Offer
           </h1>
+          <p className="mt-2 text-lg sm:text-xl text-yellow-300 font-bold">
+          The problem is almost never what you’re selling, but how you’re selling it.
+          </p>
           <p className="mt-2 text-lg sm:text-xl text-yellow-300 font-bold">
             Two live build sessions • Templates • Coaching • Nov 18–19, 2025
           </p>
@@ -168,8 +171,8 @@ export default function SimpleLandingPage() {
             </div>
           </div>
         </header>
-
-        {/* Pain → Promise with visual connector (LeaderLine) */}
+        
+               {/* Pain → Promise with visual connector (LeaderLine) */}
         <section className="mt-6 relative">
           <div className="grid gap-8 sm:gap-20 sm:grid-cols-2">
             <div ref={leftColRef} className="rounded-xl border border-white/10 bg-white/5 p-4 max-w-sm mx-auto">
