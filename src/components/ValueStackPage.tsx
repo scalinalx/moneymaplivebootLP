@@ -86,7 +86,7 @@ export default function ValueStackPage() {
                     <p className="mt-1 text-sm font-semibold text-yellow-300">This is where strategy becomes MONEY.</p>
                     <div className="mt-3 grid gap-4 sm:grid-cols-2">
                       <div className="rounded-xl border border-orange-500/70 bg-gradient-to-br from-orange-300/20 to-orange-400/10 p-4">
-                        <p className="text-sm font-semibold text-white">Day 1 - Build Day (Nov 11, 9am EET):</p>
+                        <p className="text-sm font-semibold text-white">Day 1 - Build Day (Nov 18, 9am EET):</p>
                         <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-left">
                           <li>Build or fix your offer (live, together)</li>
                           <li>Write your 4-email launch sequence (copy-paste templates provided)</li>
@@ -95,7 +95,7 @@ export default function ValueStackPage() {
                         </ul>
                       </div>
                       <div className="rounded-xl border border-orange-500/70 bg-gradient-to-br from-orange-300/20 to-orange-400/10 p-4">
-                        <p className="text-sm font-semibold text-white">Day 2 - Launch Day (Nov 12, 9am EET):</p>
+                        <p className="text-sm font-semibold text-white">Day 2 - Launch Day (Nov 19, 9am EET):</p>
                         <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-left">
                           <li>Troubleshoot what's working (live feedback)</li>
                           <li>Learn how to close your first 10 customers (objection handling scripts)</li>

@@ -178,7 +178,7 @@ const PricingComponent = () => {
               </div>
               <div className="text-center mt-4">
                 <div className="text-yellow-400 font-extrabold">
-                  Build Your Irresistible Offer + Understand Your Audience Painpoints + Live Implementation + 24/7 Community Support
+                  Live build-with-you sessions + templates + coaching. Next cohort Nov 18–19, 9:00 EET
                 </div>
               </div>
             </div>
@@ -186,16 +186,25 @@ const PricingComponent = () => {
             {/* Styled testimonials before primary CTA */}
             <InlineHeroTestimonials />
 
-            <div className="text-center mt-8">
-              <button
-                onClick={() => {
+              <div className="text-center mt-8">
+                <button
+                  onClick={() => {
                   document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
-              >
-                JOIN BUILD TO PROFIT TODAY!
-              </button>
-            </div>
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
+                >
+                  JOIN BUILD TO PROFIT - $497
+                </button>
+                <div className="mt-2 flex items-center justify-center gap-2 text-sm text-gray-300">
+                  <Shield className="w-4 h-4 text-emerald-400" aria-hidden />
+                  <span>Secure checkout</span>
+                  <span className="opacity-60">(Stripe)</span>
+                  <span className="inline-flex items-center rounded bg-white/10 px-2 py-0.5 text-white text-xs font-semibold ring-1 ring-white/20">
+                    {/* Simple Stripe wordmark badge */}
+                    Stripe
+                  </span>
+                </div>
+              </div>
 
             {/* Urgency Bar */}
             <div className="mt-6">

@@ -1,6 +1,5 @@
 import React from "react";
 
-// Types for TS/JS projects using .tsx (safe to ignore in plain JS projects)
 export type UrgencyBarProps = {
   spotsTaken?: number;
   totalSpots?: number;
@@ -12,33 +11,24 @@ export type UrgencyBarProps = {
   className?: string;
   id?: string;
   deadlineISO?: string;
-  primaryOverride?: string; // Replaces "X of Y spots taken" when provided
+  primaryOverride?: string;
 };
 
-// Pure helper for unit tests and easier reasoning
 export function computeUrgencyStats(
   spotsTaken: number = 0,
   totalSpots: number = 0
 ) {
   const t = Number.isFinite(totalSpots) ? totalSpots : 0;
   const s = Number.isFinite(spotsTaken) ? spotsTaken : 0;
-
   const safeTotal = Math.max(0, Math.floor(t));
   const safeTaken = Math.max(0, Math.min(Math.floor(s), safeTotal));
   const percentRaw = safeTotal > 0 ? (safeTaken / safeTotal) * 100 : 0;
   const percent = Math.max(0, Math.min(100, Math.round(percentRaw)));
   const spotsLeft = Math.max(0, safeTotal - safeTaken);
-
   return { safeTotal, safeTaken, percent, spotsLeft };
 }
 
-/**
- * UrgencyBar – a compact, high-converting announcement bar for landing pages.
- *
- * Defaults match your request:
- *  🔥 18 of 30 spots taken | Early bird pricing ends in 9 days | Next cohort: December 9
- */
-export default function UrgencyBar({
+export default function UrgencyLanding({
   spotsTaken = 18,
   totalSpots = 30,
   daysLeft = 9,
@@ -56,7 +46,6 @@ export default function UrgencyBar({
     totalSpots
   );
 
-  // Hydration-safe live countdown to match BonusStackPage
   const [mounted, setMounted] = React.useState(false);
   const [now, setNow] = React.useState<Date>(new Date());
   React.useEffect(() => {
@@ -79,18 +68,16 @@ export default function UrgencyBar({
 
   return (
     <div id={id} className={`${sticky ? "sticky top-0 z-50" : ""} w-full`}>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-4xl">
         <div
-          className={`relative overflow-hidden rounded-2xl border border-amber-300/40 bg-gradient-to-r from-amber-50 via-orange-50 to-rose-50 p-3 shadow-sm backdrop-blur ${className}`}
+          className={`relative overflow-hidden rounded-xl border border-amber-300/40 bg-gradient-to-r from-amber-50 via-orange-50 to-rose-50 p-2 shadow-sm backdrop-blur ${className}`}
           role="region"
           aria-label="Cohort sign-up status"
         >
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm sm:text-base font-medium text-stone-800">
-                <span role="img" aria-label="fire" className="text-base sm:text-lg">
-                  🔥
-                </span>
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-sm font-medium text-stone-800">
+                <span role="img" aria-label="fire" className="text-sm sm:text-base">🔥</span>
                 {primaryOverride ? (
                   <span className="font-extrabold text-rose-600">{primaryOverride}</span>
                 ) : (
@@ -121,7 +108,7 @@ export default function UrgencyBar({
               </div>
 
               <div
-                className="mt-2 h-2 w-full rounded-full bg-stone-200"
+                className="mt-1.5 h-1 w-full rounded-full bg-stone-200"
                 role="progressbar"
                 aria-label="Spots taken"
                 aria-valuemin={0}
@@ -133,7 +120,7 @@ export default function UrgencyBar({
                   style={{ width: `${percent}%` }}
                 />
               </div>
-              <div className="mt-1 text-[11px] leading-none text-stone-500">
+              <div className="mt-1 text-[10px] leading-none text-stone-500">
                 <span className="sr-only">{percent}% filled. </span>
                 Only {spotsLeft} {spotsLeft === 1 ? "spot" : "spots"} left
               </div>
@@ -142,19 +129,13 @@ export default function UrgencyBar({
             <div className="shrink-0">
               <a
                 href={ctaHref}
-                className="inline-flex items-center gap-2 rounded-xl border border-amber-300/60 bg-white px-3 py-2 text-sm font-semibold text-stone-800 shadow transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+                className="inline-flex items-center gap-2 rounded-lg border border-amber-300/60 bg-white px-2.5 py-1.5 text-xs sm:text-sm font-semibold text-stone-800 shadow transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-amber-400/50"
               >
                 <span className="hidden sm:inline">{ctaLabel}</span>
                 <span className="sm:hidden">Apply</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
                   <path d="M13.5 4.5a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0V6.56l-7.22 7.22a.75.75 0 1 1-1.06-1.06L17.44 5.5h-2.69a.75.75 0 0 1-.75-.75Z" />
-                  <path d="M5.25 6A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75v-5.5a.75.75 0 0 0-1.5 0v5.5c0 .414-.336.75-.75.75H5.25a.75.75 0 0 1-.75-.75V8.25c0-.414.336-.75.75-.75h5.5a.75.75 0 0 0 0-1.5h-5.5Z" />
+                  <path d="M5.25 6A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75v-5.5a.75.75 0  0 0-1.5 0v5.5c0 .414-.336.75-.75.75H5.25a.75.75 0 0 1-.75-.75V8.25c0-.414.336-.75.75-.75h5.5a.75.75 0 0 0 0-1.5h-5.5Z" />
                 </svg>
               </a>
             </div>
