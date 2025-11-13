@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     url: '/',
     images: [
       {
-        url: '/imgs/heroimgs/btp8.webp',
+        url: '/imgs/heroimgs/he2.webp',
       },
     ],
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
     description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
-    images: ['/imgs/heroimgs/btp8.webp'],
+    images: ['/imgs/heroimgs/he2.webp'],
     site: '@howwegrow',
     creator: 'how we grow',
   },

@@ -58,7 +58,7 @@ const PricingComponent = () => {
   // (Video section removed) – using randomized hero image instead
 
   // Fixed hero image (single source)
-  const heroImg = '/imgs/heroimgs/btp8.webp';
+  const heroImg = '/imgs/heroimgs/he2.webp';
 
   // Avatars for social proof row (Unsplash portraits)
   const heroAvatars = [
