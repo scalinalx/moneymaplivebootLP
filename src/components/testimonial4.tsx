@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef } from 'react';
 
 const Testimonial4 = () => {
@@ -200,7 +202,7 @@ const Testimonial4 = () => {
         {/* Stats Section */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-black/20 backdrop-blur-xl rounded-xl p-6 border border-white/25">
-          <div className="text-4xl font-bold text-yellow-400 mb-2">300+</div>
+          <div className="text-4xl font-bold text-yellow-400 mb-2">350+</div>
             <div className="text-gray-300">Active Members</div>
           </div>
           <div className="bg-black/20 backdrop-blur-xl rounded-xl p-6 border border-white/25">
@@ -217,7 +219,7 @@ const Testimonial4 = () => {
         <div className="text-center mt-16">
           <button 
             onClick={() => {
-              document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('join-secondary')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="text-black font-bold py-4 px-12 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 hover:opacity-90" style={{ backgroundColor: '#ffc300' }}
           >
