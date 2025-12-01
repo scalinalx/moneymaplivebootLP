@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, X } from 'lucide-react';
+import { Check, X, ArrowRight } from 'lucide-react';
 
 export const IsThisForYou: React.FC = () => {
   const forYou = [
@@ -29,7 +29,7 @@ export const IsThisForYou: React.FC = () => {
           <div className="relative pl-8 md:pl-12 border-l border-brand-lime/30">
             <h3 className="text-2xl font-display font-bold text-white mb-8 flex items-center gap-3">
                <span className="w-8 h-8 bg-brand-lime rounded-full flex items-center justify-center text-brand-950 text-lg">✓</span>
-               WHO THIS IS FOR
+               THIS IS FOR YOU IF...
             </h3>
             <ul className="space-y-8">
               {forYou.map((item, idx) => (
@@ -45,7 +45,7 @@ export const IsThisForYou: React.FC = () => {
           <div className="relative pl-8 md:pl-12 border-l border-brand-800 opacity-60 hover:opacity-100 transition-opacity duration-500">
             <h3 className="text-2xl font-display font-bold text-brand-grey mb-8 flex items-center gap-3">
                <span className="w-8 h-8 bg-brand-800 rounded-full flex items-center justify-center text-brand-grey text-lg">✕</span>
-               WHO THIS IS NOT FOR
+               WALK AWAY IF...
             </h3>
             <ul className="space-y-8">
               {notForYou.map((item, idx) => (
@@ -56,6 +56,16 @@ export const IsThisForYou: React.FC = () => {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Centered CTA */}
+        <div className="mt-12 text-center">
+          <a
+            href="#join-secondary"
+            className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 font-bold px-8 py-4 text-lg rounded-lg hover:bg-yellow-300 transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            This is for me! <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
       </div>
     </section>

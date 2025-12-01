@@ -28,7 +28,7 @@ const SCHEDULE_DAY_2: ScheduleItem[] = [
 const TESTIMONIALS: Testimonial[] = [
   { id: 1, name: "Sarah Jenkins", role: "Founder", company: "TechDaily", content: "I was treating my newsletter like a blog. Ana showed me how to treat it like a media company. I launched my first product during the workshop and made $2.4k.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces" },
   { id: 2, name: "Marcus Chen", role: "Growth Lead", company: "SaaS Inc", content: "The 'Offer Engine' session alone was worth the investment. We simplified our pricing and saw a 40% increase in conversions the next week.", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces" },
-  { id: 3, name: "Elena Rodriguez", role: "Creator", company: "Design Weekly", content: "Simple. Actionable. Profitable. I've taken $5k courses that had less implementation value than these 2 days. Ana is a beast at strategy.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces" },
+  { id: 3, name: "Elena Rodriguez", role: "Creator", company: "Design Weekly", content: "Simple. Actionable. Profitable. I've taken $5k courses that had less implementation value than these 2 days. Ana is a beast at strategy.", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=faces" },
 ];
 
 const FAQ_ITEMS: FAQItem[] = [

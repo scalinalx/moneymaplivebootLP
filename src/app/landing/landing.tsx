@@ -1,18 +1,15 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { Shield, Check, Rocket, Target, Clock, Sparkles } from "lucide-react";
+import { Shield, Check } from "lucide-react";
 import Script from "next/script";
-import type { Lead, ApiResponse, StripeCheckoutSession } from "@/types";
-import { LeadForm } from "@/components/forms/LeadForm";
+import { CheckoutFormWrapper } from "@/components/CheckoutFormWrapper";
 import UrgencyLanding from "@/components/urgency-landing";
 import ResultsGallery from "@/components/ResultsGallery";
 import Growth4Landing from "@/components/Growth4Landing";
 
 export default function SimpleLandingPage() {
-  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [llReady, setLlReady] = useState(false);
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
@@ -26,30 +23,6 @@ export default function SimpleLandingPage() {
     "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=96&h=96&q=80",
     "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=96&h=96&q=80",
   ];
-
-  const handleLeadSuccess = async (leadData: Lead) => {
-    setError(null);
-    setIsProcessingPayment(true);
-    try {
-      const response = await fetch("/api/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ leadId: leadData.id, variant: "standard" }),
-      });
-      const result: ApiResponse<StripeCheckoutSession> = await response.json();
-      if (result.success && result.data?.url) {
-        window.location.href = result.data.url;
-      } else {
-        setError(result.error || "Could not start checkout. Please try again.");
-        setIsProcessingPayment(false);
-      }
-    } catch (e) {
-      setError("Network error. Please try again.");
-      setIsProcessingPayment(false);
-    }
-  };
-
-  const handleLeadError = (msg: string) => setError(msg);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -303,14 +276,7 @@ export default function SimpleLandingPage() {
           <p className="text-center text-slate-200 mb-3">
             Enter your details. Go to secure checkout.
           </p>
-          <LeadForm onSuccess={handleLeadSuccess} onError={handleLeadError} />
-
-          {isProcessingPayment && (
-            <p className="mt-3 text-center text-sm text-slate-300">Starting checkout…</p>
-          )}
-          {error && (
-            <div className="mt-3 text-center text-sm text-rose-300">{error}</div>
-          )}
+          <CheckoutFormWrapper />
         </section>
         {/* Real Results from Our Students */}
         <section className="mt-8">

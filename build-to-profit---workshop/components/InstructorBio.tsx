@@ -54,7 +54,7 @@ export const InstructorBio: React.FC = () => {
                 I don't teach you how to "write viral threads". That's a commodity. I teach you how to build <strong className="text-white">media assets</strong> that compound in value.
               </p>
               <p>
-                The <em>Build to Profit</em> system is the exact framework I used to scale from 0 to <span className="text-brand-lime font-semibold">68k+ subscribers</span> without paid ads, and how I consistently hit <span className="text-brand-lime font-semibold">$25,000+ revenue</span> months while working for only 2 hours/day.
+                The <em>Build to Profit</em> system is the exact framework I used to scale from 0 to <span className="text-brand-lime font-semibold">69k+ subscribers</span> without paid ads, and how I consistently hit <span className="text-brand-lime font-semibold">$25,000+ revenue</span> months while working for only 2 hours/day.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export const InstructorBio: React.FC = () => {
                <div className="flex items-start gap-4">
                   <Users className="w-8 h-8 text-brand-lime flex-shrink-0" />
                   <div>
-                    <p className="text-3xl font-display font-bold text-white">68k+</p>
+                    <p className="text-3xl font-display font-bold text-white">69k+</p>
                     <p className="text-xs text-brand-grey uppercase tracking-wider mt-1">Active Readers</p>
                   </div>
                </div>

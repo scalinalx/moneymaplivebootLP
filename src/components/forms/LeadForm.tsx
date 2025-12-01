@@ -10,9 +10,10 @@ import type { LeadFormData, ApiResponse, Lead } from '@/types';
 interface LeadFormProps {
   onSuccess: (leadData: Lead) => void;
   onError?: (error: string) => void;
+  inline?: boolean;
 }
 
-export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError }) => {
+export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline = false }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [referralId, setReferralId] = useState<string | null>(null);
   
@@ -82,51 +83,59 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <div className={inline ? 'w-full' : 'max-w-md mx-auto'}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={inline ? 'flex flex-col md:flex-row md:items-start gap-3' : 'space-y-6'}
+      >
         {/* Hidden input for referral ID as recommended by Rewardful */}
         {referralId && (
           <input type="hidden" name="referral" value={referralId} />
         )}
         
-        <Input
-          label="Full Name"
-          required
-          placeholder="Enter your full name"
-          {...register('name', {
-            required: 'Name is required',
-            validate: (value) => validateName(value) || 'Name must be at least 2 characters'
-          })}
-          error={errors.name?.message}
-          disabled={isSubmitting}
-        />
+        <div className={inline ? 'flex-1' : ''}>
+          <Input
+            label={inline ? undefined : 'Full Name'}
+            required
+            placeholder="Enter your full name"
+            {...register('name', {
+              required: 'Name is required',
+              validate: (value) => validateName(value) || 'Name must be at least 2 characters'
+            })}
+            error={errors.name?.message}
+            disabled={isSubmitting}
+          />
+        </div>
 
-        <Input
-          label="Email"
-          type="email"
-          required
-          placeholder="Enter your email address"
-          {...register('email', {
-            required: 'Email is required',
-            validate: (value) => validateEmail(value) || 'Please enter a valid email address'
-          })}
-          error={errors.email?.message}
-          disabled={isSubmitting}
-        />
+        <div className={inline ? 'flex-1' : ''}>
+          <Input
+            label={inline ? undefined : 'Email'}
+            type="email"
+            required
+            placeholder="Enter your email address"
+            {...register('email', {
+              required: 'Email is required',
+              validate: (value) => validateEmail(value) || 'Please enter a valid email address'
+            })}
+            error={errors.email?.message}
+            disabled={isSubmitting}
+          />
+        </div>
 
         {errors.root && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className={`p-4 bg-red-50 border border-red-200 rounded-lg ${inline ? 'md:col-span-full' : ''}`}>
             <p className="text-sm text-red-600">{errors.root.message}</p>
           </div>
         )}
 
         <Button
           type="submit"
+          variant="yellow"
           size="lg"
           loading={isSubmitting}
-          className="w-full"
+          className={inline ? 'md:w-auto whitespace-nowrap' : 'w-full'}
         >
-          {isSubmitting ? 'Processing...' : 'Continue to Payment'}
+          {isSubmitting ? 'Processing...' : "Show Me The System →"}
         </Button>
       </form>
     </div>

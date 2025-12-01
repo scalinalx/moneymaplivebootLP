@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ArrowRight, Quote, ShieldCheck, Star } from 'lucide-react';
-import { WaitlistForm } from '../../../build-to-profit---workshop/components/WaitlistForm';
+import { CheckoutFormWrapper } from '@/components/CheckoutFormWrapper';
 import { IsThisForYou } from '../../../build-to-profit---workshop/components/IsThisForYou';
 import { InstructorBio } from '../../../build-to-profit---workshop/components/InstructorBio';
 import { ValueStack } from '../../../build-to-profit---workshop/components/ValueStack';
@@ -38,7 +38,7 @@ const HERO_AVATARS = [
     alt: 'Alexandra L.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
     alt: 'Emma Wilson',
   },
   {
@@ -223,12 +223,12 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: 'How much does it cost?',
     answer:
-      'Public enrollment will open at $1,997. However, waitlist members will receive a significant exclusive discount when we open doors.',
+      'Build to Profit is $747 (normally $1,997). This includes both live workshop days, all templates, the community, and lifetime access to recordings.',
   },
   {
-    question: 'What do I get before the cohort starts?',
+    question: 'What happens after I purchase?',
     answer:
-      'You’ll get value-packed emails from Ana that show you the behind-the-scenes of how we grow and monetize, waitlist-only discounts, and first dibs on limited seats when enrollment opens.',
+      "You'll receive immediate access to the community, pre-workshop materials, and calendar invites for the live sessions. Plus value-packed emails from Ana to prepare you for the cohort.",
   },
 ];
 
@@ -261,13 +261,13 @@ export default function JoinPage() {
               </a>
               <a
                 href="#join-secondary"
-                className="text-[12px] font-medium uppercase tracking-widest text-brand-grey transition-colors hover:text-white"
+                className="bg-yellow-400 text-gray-900 font-bold px-4 py-2 text-[12px] uppercase tracking-widest rounded hover:bg-yellow-300 transition-all"
               >
-                Join
+                Get In →
               </a>
               <div className="h-4 w-px bg-brand-800" />
               <span className="rounded border border-brand-lime/20 bg-brand-lime/5 px-2 py-1 font-mono text-[12px] uppercase tracking-widest text-brand-lime">
-                Waitlist Closing Dec 1
+                Limited Spots Available
               </span>
             </div>
           </div>
@@ -278,6 +278,10 @@ export default function JoinPage() {
           <div className="grid gap-6 lg:grid-cols-12">
             {/* Text block */}
             <div className="relative z-10 flex flex-col justify-center lg:col-span-8">
+              <p className="mb-4 text-sm text-brand-grey">
+                Trusted by 350+ creators <span className="text-white font-medium">(students report $2k–$6k in their first launches)</span>
+              </p>
+
               <div className="mb-8 inline-flex items-center gap-2">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-brand-lime" />
                 <span className="font-mono text-sm uppercase tracking-widest text-brand-lime">
@@ -285,23 +289,37 @@ export default function JoinPage() {
                 </span>
               </div>
 
-              <h1 className="mb-8 text-[2.8rem] font-display font-bold leading-[0.9] tracking-tighter text-white md:text-6xl lg:text-[5.2rem]">
-                HOW TO GROW &amp; MONETIZE YOUR NEWSLETTER
-                <br />
-                BY LAUNCHING IRRESISTIBLE OFFERS THAT TURN IT INTO A <span className="text-brand-lime">CASH MACHINE.</span>
+              <h1 className="mb-4 text-[2.8rem] font-display font-bold leading-[0.95] tracking-tighter text-white md:text-6xl lg:text-[5.2rem]">
+                TURN YOUR NEWSLETTER INTO A{' '}
+                <span className="text-brand-lime">$5K/MONTH REVENUE ENGINE</span>
               </h1>
+              <p className="mb-8 text-xl font-medium text-brand-grey md:text-2xl">
+                (Even if you have less than 1,000 subscribers)
+              </p>
 
               <p className="mb-10 max-w-2xl text-xl font-light leading-relaxed text-brand-grey md:text-2xl">
-                Stop writing for &quot;engagement&quot;. Start building a profit
-                engine. Join <span className="font-medium text-white">Ana Calin</span> for 2
-                days of deep implementation on launching profitable offers, monetizing your audience &amp; scaling to $5k MRR.
+                Two live days to design, price, and launch one paid offer. Templates, scripts, and a live launch plan included.
               </p>
 
               <div className="flex flex-col items-start gap-4">
                 <div className="w-full">
-                  <WaitlistForm requireName inline />
+                  <CheckoutFormWrapper inline />
                 </div>
-                <p className="text-xs uppercase tracking-wide text-brand-grey">Waitlist Closing on Dec 1</p>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl font-bold text-white">$747</span>
+                  <span className="text-lg text-brand-grey line-through">$1,997</span>
+                  <span className="bg-brand-lime/10 text-brand-lime text-xs font-bold px-2 py-1 rounded border border-brand-lime/20">SAVE 63%</span>
+                </div>
+                <div className="flex items-center gap-4 text-xs text-blue-400">
+                  <span className="flex items-center gap-1">
+                    <ShieldCheck className="h-4 w-4" />
+                    Secure checkout
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Money-back guarantee
+                  </span>
+                </div>
                 <div className="flex items-center gap-4 text-sm text-brand-grey">
                   <div className="flex -space-x-3">
                     {HERO_AVATARS.map((avatar, idx) => (
@@ -317,7 +335,7 @@ export default function JoinPage() {
                       </div>
                     ))}
                   </div>
-                  <span>Join 350+ students including 12 Substack Bestsellers</span>
+                  <span>Including 12 Substack Bestsellers</span>
                 </div>
               </div>
             </div>
@@ -332,6 +350,89 @@ export default function JoinPage() {
                 <p className="text-sm text-brand-grey">
                   Target Monthly Recurring Revenue for graduates.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Testimonials - Above marquee */}
+        <section className="relative z-10 bg-brand-950 px-4 pt-0 pb-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-6 md:grid-cols-3">
+              {/* David L. */}
+              <div className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex text-yellow-400">
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                  </div>
+                  <span className="text-xs text-brand-grey">Nov 11, 2025</span>
+                </div>
+                <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
+                  &quot;$7,486.03 in one week! That&apos;s how much my program made after following your advice. Jeez... why didn&apos;t I do all this earlier? Thank you, thank you, Ana.&quot;
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
+                  <div className="w-10 h-10 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-sm">DL</div>
+                  <div>
+                    <div className="font-display text-sm font-bold text-white">David L.</div>
+                    <div className="text-xs text-brand-grey">$7,486 in one week</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Noemi */}
+              <div className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex text-yellow-400">
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                  </div>
+                  <span className="text-xs text-brand-grey">Oct 7, 2025</span>
+                </div>
+                <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
+                  &quot;I launched my $997 offer to 450 subscribers. Got 4 sales in 5 days. $3,988. I almost didn&apos;t launch because I thought my audience was &apos;too small.&apos; Glad I ignored that.&quot;
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
+                  <div className="w-10 h-10 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-sm">N</div>
+                  <div>
+                    <div className="font-display text-sm font-bold text-white">Noemi</div>
+                    <div className="text-xs text-brand-grey">$3,988 from 450 subscribers</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Jill Hart */}
+              <div className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex text-yellow-400">
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                    <Star className="h-4 w-4 fill-current" />
+                  </div>
+                  <span className="text-xs text-brand-grey">Jun 26, 2025</span>
+                </div>
+                <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
+                  &quot;I&apos;ve implemented Ana&apos;s money map and made $1,500 over the last month with a less than 400 subscriber base!&quot;
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fe6a99c21-4306-4fec-817f-ccab659b69f5%2Favatar?alt=media&token=ab8ae473-f1ba-4034-8ddf-059bc842131b"
+                    alt="Jill Hart"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="font-display text-sm font-bold text-white">Jill Hart</div>
+                    <div className="text-xs text-brand-grey">$1,500/mo with &lt;400 subs</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -359,12 +460,39 @@ export default function JoinPage() {
           </div>
         </div>
 
+        {/* Dashboard Screenshots - Below marquee */}
+        <section className="relative z-10 bg-brand-950 px-4 py-12">
+          <div className="mx-auto max-w-2xl space-y-12">
+            {/* David's Dashboard */}
+            <div className="text-center">
+              <p className="text-sm text-brand-grey mb-4 italic">Screenshot from David&apos;s revenue dashboard:</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Ff6526edc-c872-4f0a-94ba-bab6dab3bb7e%2Fattached?alt=media&token=bacfe6aa-46ec-464e-8992-3a1456e820f3"
+                alt="David L's revenue dashboard showing $7,486.03"
+                className="w-full rounded-lg border border-brand-800 shadow-2xl"
+              />
+              <p className="mt-4 text-lg text-white font-medium">$7,486.03 in one week</p>
+            </div>
+            {/* Sarah's Dashboard */}
+            <div className="text-center">
+              <p className="text-sm text-brand-grey mb-4 italic">Screenshot from Sarah&apos;s revenue dashboard:</p>
+              <img
+                src="/imgs/revdash_Screenshot2.png"
+                alt="Sarah's revenue dashboard showing $4,865.82 (+443%)"
+                className="w-full rounded-lg border border-brand-800 shadow-2xl"
+              />
+              <p className="mt-4 text-lg text-white font-medium">$4,865.82 <span className="text-green-400">(+443%)</span></p>
+            </div>
+            <p className="text-center text-brand-grey">Real dashboards. Real results.</p>
+          </div>
+        </section>
+
         {/* Agitation section */}
-        <section className="relative z-10 bg-brand-950 px-4 py-32">
+        <section className="relative z-10 bg-brand-950 px-4 pt-10 pb-32">
           <div className="mx-auto grid max-w-5xl items-center gap-16 md:grid-cols-2">
             <div>
               <h2 className="mb-8 text-4xl font-display font-bold leading-[0.95] text-white md:text-6xl">
-                MOST CREATORS ARE <br />
+                HERE'S WHY YOU'RE STILL <br />
                 <span className="underline decoration-wavy decoration-1 underline-offset-8 text-brand-lime">
                   BROKE.
                 </span>
@@ -473,7 +601,7 @@ export default function JoinPage() {
                 The System
               </span>
               <h2 className="text-5xl font-display font-bold text-white md:text-7xl">
-                BUILD TO PROFIT
+                WHAT HAPPENS IN 2 DAYS
               </h2>
               <p className="mt-4 text-lg text-brand-grey">
                 Two days. One hour per day. Zero fluff.
@@ -614,20 +742,25 @@ export default function JoinPage() {
 
           <div className="relative z-10 w-full max-w-lg text-center">
             <h3 className="mb-4 text-4xl font-display font-bold text-white">
-              Join The Waitlist
+              Ready? <span className="text-brand-lime">Let's Go.</span>
             </h3>
             <p className="mb-8 text-brand-grey">
-              The December cohort is capped at 50 students. Be the first to know
-              when doors open and unlock exclusive discounts.
+              50 spots. December cohort. Once they're gone, they're gone.
             </p>
-            <WaitlistForm variant="footer" requireName />
-            <div className="mt-8 flex items-center justify-center gap-6 opacity-50 grayscale">
-              <ShieldCheck className="h-6 w-6 text-brand-grey" />
+            <CheckoutFormWrapper />
+            <div className="mt-8 flex items-center justify-center gap-6">
+              <span className="flex items-center gap-2 text-blue-400 text-sm">
+                <ShieldCheck className="h-5 w-5" />
+                Secure checkout
+              </span>
+              <span className="text-brand-800">|</span>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg"
                 alt="Stripe"
-                className="h-6 invert"
+                className="h-5 invert opacity-70"
               />
+              <span className="text-brand-800">|</span>
+              <span className="text-blue-400 text-sm">Money-back guarantee</span>
             </div>
           </div>
         </section>
@@ -639,7 +772,7 @@ export default function JoinPage() {
         >
           <div className="mx-auto max-w-3xl">
             <h2 className="mb-12 text-center font-display text-3xl font-bold text-white">
-              QUESTIONS?
+              QUESTIONS? <span className="text-brand-lime">ANSWERS.</span>
             </h2>
             <FAQ items={FAQ_ITEMS} />
           </div>

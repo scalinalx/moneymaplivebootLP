@@ -1,58 +1,5 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { Check, Sparkles, Lock, Clock, Calendar, Bell } from 'lucide-react';
-
-const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    // Target Date: December 1, 2025
-    const targetDate = new Date('2025-12-01T00:00:00').getTime();
-
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      } else {
-        // Optional: Handle expiration
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const TimeUnit = ({ value, label }: { value: number, label: string }) => (
-    <div className="flex flex-col items-center bg-brand-900 border border-brand-800 p-2 rounded w-14 md:w-16 shadow-inner">
-      <span className="text-xl md:text-2xl font-mono font-bold text-white">
-        {value.toString().padStart(2, '0')}
-      </span>
-      <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-brand-grey mt-1">{label}</span>
-    </div>
-  );
-
-  return (
-    <div className="flex items-center justify-center gap-2 md:gap-3 my-4 md:my-6">
-      <TimeUnit value={timeLeft.days} label="Days" />
-      <span className="text-brand-lime font-bold text-xl pb-4">:</span>
-      <TimeUnit value={timeLeft.hours} label="Hrs" />
-      <span className="text-brand-lime font-bold text-xl pb-4">:</span>
-      <TimeUnit value={timeLeft.minutes} label="Mins" />
-      <span className="text-brand-lime font-bold text-xl pb-4">:</span>
-      <TimeUnit value={timeLeft.seconds} label="Secs" />
-    </div>
-  );
-};
+import React from 'react';
+import { Check, Sparkles, Lock, Bell } from 'lucide-react';
 
 export const ValueStack: React.FC = () => {
   const items = [
@@ -72,7 +19,7 @@ export const ValueStack: React.FC = () => {
           <div className="lg:col-span-7 bg-brand-900 border border-brand-800 p-8 md:p-12 rounded-t-3xl lg:rounded-3xl lg:rounded-r-none relative z-10">
              <h3 className="text-3xl font-display font-bold text-white mb-8 flex items-center gap-3">
                <Sparkles className="w-6 h-6 text-brand-lime" />
-               TOTAL ACCESS PASS
+               HERE'S EVERYTHING YOU GET
              </h3>
              
              <div className="space-y-6">
@@ -107,42 +54,33 @@ export const ValueStack: React.FC = () => {
 
               <div className="mb-6 mt-8">
                 <p className="text-brand-grey font-mono text-sm mb-1">Regular Price: <span className="line-through">$1,997</span></p>
-                <p className="text-brand-grey font-mono text-sm mb-2">Your Price Today:</p>
+                <p className="text-white font-mono text-lg font-bold mb-2 bg-brand-lime/20 inline-block px-3 py-1 rounded">→ Your Price Today:</p>
                 <div className="flex items-center justify-center gap-4">
-                   <h4 className="text-7xl md:text-8xl font-display font-bold text-white tracking-tighter">TBD</h4>
+                   <h4 className="text-7xl md:text-8xl font-display font-bold text-brand-lime tracking-tighter">$747</h4>
                 </div>
                 <div className="inline-flex items-center gap-2 bg-brand-lime/10 text-brand-lime px-4 py-1 rounded-full text-sm font-bold mt-4 border border-brand-lime/20">
                    <Bell className="w-3 h-3" />
-                   WAITLIST PRIORITY ACCESS
+                   LIMITED TIME OFFER
                 </div>
               </div>
 
               {/* Benefits Section */}
               <div className="bg-brand-900/50 rounded-xl p-6 mb-8 border border-brand-800 text-left">
-                <h5 className="text-white font-bold text-sm uppercase tracking-wide mb-3 text-center">Why Join The Waitlist?</h5>
+                <h5 className="text-white font-bold text-sm uppercase tracking-wide mb-3 text-center">Why Join Build2Profit?</h5>
                 <ul className="space-y-3 text-sm text-brand-grey">
                    <li className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-brand-lime mt-0.5 shrink-0" />
-                      <span>Be the first to know when enrollment opens.</span>
+                      <span>Walk away with a <span className="text-white font-medium">launch-ready offer</span> in 2 days.</span>
                    </li>
                    <li className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-brand-lime mt-0.5 shrink-0" />
-                      <span>Unlock exclusive <span className="text-white font-medium">Launch Discounts</span>.</span>
+                      <span>Get <span className="text-white font-medium">live coaching</span> from Ana on your specific offer.</span>
                    </li>
                    <li className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-brand-lime mt-0.5 shrink-0" />
-                      <span>Secure your spot before public sellout.</span>
+                      <span>Join 350+ creators already <span className="text-white font-medium">monetizing their newsletters</span>.</span>
                    </li>
                 </ul>
-              </div>
-
-              {/* Countdown Section */}
-              <div className="mb-4">
-                <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest mb-2" style={{ color: '#f87171' }}>
-                  <Clock className="w-3 h-3 text-[#f87171]" />
-                  <span>Waitlist Closing Soon</span>
-                </div>
-                <CountdownTimer />
               </div>
 
               <div className="flex items-center justify-center gap-2 text-xs text-brand-800 uppercase font-bold tracking-widest mt-6">
