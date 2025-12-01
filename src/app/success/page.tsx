@@ -27,7 +27,7 @@ function SuccessContent() {
 
   // Countdown and redirect functionality
   useEffect(() => {
-    let countdown = 5;
+    let countdown = 3;
     const countdownElement = document.getElementById('countdown');
     const progressBar = document.getElementById('progress-bar');
     
@@ -39,7 +39,7 @@ function SuccessContent() {
       }
       
       if (progressBar) {
-        const progress = (countdown / 5) * 100;
+        const progress = (countdown / 3) * 100;
         progressBar.style.width = `${progress}%`;
       }
       
@@ -84,7 +84,7 @@ function SuccessContent() {
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 border-4 border-yellow-400 shadow-2xl transform hover:scale-105 transition-all duration-300">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <h2 className="text-3xl font-bold text-white mb-6 drop-shadow-lg">
-                  Redirecting you to the subscribe doc in <span id="countdown" className="text-yellow-300 text-4xl font-extrabold">5</span> seconds. Hold tight!
+                  Redirecting you to the subscribe doc in <span id="countdown" className="text-yellow-300 text-4xl font-extrabold">3</span> seconds. Hold tight!
                 </h2>
                 <div className="w-80 h-3 bg-white/20 rounded-full mx-auto overflow-hidden border-2 border-white/30 shadow-inner">
                   <div 
