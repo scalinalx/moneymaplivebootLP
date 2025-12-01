@@ -135,7 +135,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline =
           loading={isSubmitting}
           className={inline ? 'md:w-auto whitespace-nowrap' : 'w-full'}
         >
-          {isSubmitting ? 'Processing...' : "Show Me The System →"}
+          {isSubmitting ? 'Processing...' : "Save Your Seat for Dec 18-19"}
         </Button>
       </form>
     </div>
