@@ -13,6 +13,7 @@ import type {
 import JoinVSLPlayer from '@/components/JoinVSLPlayer';
 import { MRRGraph } from '@/components/MRRGraph';
 import VideoTestimonialsClone from '@/components/VideoTestimonialsClone';
+import WhySpecificOffer from '@/components/WhySpecificOffer';
 
 const HERO_AVATARS = [
   {
@@ -541,6 +542,9 @@ export default function JoinPage() {
             </div>
           </div>
         </section>
+
+        {/* Why this specific offer? (CRO Suggestion #8) */}
+        <WhySpecificOffer />
 
         {/* Who this is for */}
         <IsThisForYou />

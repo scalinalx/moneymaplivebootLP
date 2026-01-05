@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 const JoinVSLPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -13,7 +14,15 @@ const JoinVSLPlayer: React.FC = () => {
     >
       {!isPlaying ? (
         <>
-          <div className="absolute inset-0 bg-[url('/podcast1.png')] bg-cover bg-center opacity-70 transition-transform duration-700 group-hover:scale-105" />
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/podcast1.png"
+              alt="Build to Profit VSL Thumbnail"
+              fill
+              className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-brand-950/50 via-brand-950/25 to-transparent" />
 
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-end p-6 text-center pb-10">
