@@ -82,9 +82,9 @@ export const ValueStack: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-xs text-brand-800 uppercase font-bold tracking-widest mt-6">
+              <div className="flex items-center justify-center gap-2 text-xs text-brand-lime uppercase font-bold tracking-widest mt-6">
                 <Lock className="w-3 h-3" />
-                Limited to 50 Students
+                75% Discount - Today Only
               </div>
             </div>
           </div>

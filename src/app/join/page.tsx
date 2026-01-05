@@ -741,8 +741,8 @@ export default function JoinPage() {
             <h3 className="mb-4 text-4xl font-display font-bold text-white">
               Ready? <span className="text-brand-lime">Let's Go.</span>
             </h3>
-            <p className="mb-8 text-brand-grey">
-              50 spots available at this price. Once they're gone, they're gone.
+            <p className="mb-8 text-brand-grey font-medium">
+              Early Bird pricing available for a limited time. Save $1,500 today.
             </p>
             <CheckoutFormWrapper />
             <div className="mt-8 flex items-center justify-center gap-6">

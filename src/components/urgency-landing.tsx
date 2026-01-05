@@ -82,7 +82,7 @@ export default function UrgencyLanding({
                   <span className="font-extrabold text-rose-600">{primaryOverride}</span>
                 ) : (
                   <span>
-                    <strong>{safeTaken}</strong> of <strong>{safeTotal}</strong> spots taken
+                    <strong>75% Off</strong> Early Bird Discount Active
                   </span>
                 )}
                 <span className="hidden sm:inline text-stone-400">|</span>
@@ -110,7 +110,7 @@ export default function UrgencyLanding({
               <div
                 className="mt-1.5 h-1 w-full rounded-full bg-stone-200"
                 role="progressbar"
-                aria-label="Spots taken"
+                aria-label="Discount claimed progress"
                 aria-valuemin={0}
                 aria-valuenow={safeTaken}
                 aria-valuemax={safeTotal}
@@ -121,8 +121,8 @@ export default function UrgencyLanding({
                 />
               </div>
               <div className="mt-1 text-[10px] leading-none text-stone-500">
-                <span className="sr-only">{percent}% filled. </span>
-                Only {spotsLeft} {spotsLeft === 1 ? "spot" : "spots"} left
+                <span className="sr-only">{percent}% claimed. </span>
+                Discount available for a limited time
               </div>
             </div>
 

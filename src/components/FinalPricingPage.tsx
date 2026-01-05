@@ -190,11 +190,11 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
                 Join Build to Profit Now — {usd(earlyBird)}
               </button>
               <div className="mt-3 grid grid-cols-3 items-center gap-2 text-[11px] font-semibold text-slate-800">
-                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><BoltIcon /> {taken} of {capacity} spots</div>
+                <div className="flex items-center justify-center gap-1 whitespace-nowrap text-rose-600"><BoltIcon /> Price Rises Soon</div>
                 <div className="flex items-center justify-center gap-1 whitespace-nowrap"><ClockIcon /> {parts.expired ? "Ended" : `${parts.days}d ${String(parts.hours).padStart(2, '0')}h`}</div>
                 <div className="flex items-center justify-center gap-1 whitespace-nowrap"><LockIcon /> Secure checkout</div>
               </div>
-              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/60">
+              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/60" role="progressbar" aria-label="Discount claimed progress">
                 <div className="h-full rounded-full bg-yellow-500" style={{ width: `${progress}%` }} />
               </div>
             </div>
