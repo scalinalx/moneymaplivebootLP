@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrendingUp, Award, ArrowUpRight, Users, BookOpen } from 'lucide-react';
+import Image from 'next/image';
 
 export const InstructorBio: React.FC = () => {
   return (
@@ -17,10 +18,13 @@ export const InstructorBio: React.FC = () => {
               <div className="absolute inset-0 bg-brand-lime/10 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-700"></div>
 
               {/* IMPORTANT: Replace the src below with the URL of the image you uploaded! */}
-              <img
-                src="/6b1deb04-e24a-4f12-af95-c9941a3c4a34_1500x1500.jpg"
+              <Image
+                src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b1deb04-e24a-4f12-af95-c9941a3c4a34_1500x1500.png"
                 alt="Ana Calin"
                 className="w-full h-full object-cover contrast-125 transition-all duration-700 ease-out group-hover:scale-105"
+                width={600}
+                height={750}
+                priority
               />
 
               {/* Floating Card */}
