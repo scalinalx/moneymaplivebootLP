@@ -16,11 +16,12 @@ const JoinVSLPlayer: React.FC = () => {
         <>
           <div className="absolute inset-0 z-0">
             <Image
-              src="/podcast1.png"
+              src="/imgs/vsl-thumbnail.png"
               alt="Build to Profit VSL Thumbnail"
               fill
               className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
               priority
+              unoptimized
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-brand-950/50 via-brand-950/25 to-transparent" />
