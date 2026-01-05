@@ -18,7 +18,7 @@ const NewsletterValueSection = () => {
     Community: {
       title: "Join the #1 Newsletter Creator Community",
       points: [
-        "Get daily feedback from 300+ successful newsletter creators",
+        "Get daily feedback from 380+ successful newsletter creators",
         "Share revenue wins, growth strategies, and monetization tactics",
         "Access our private mastermind of $10K+/month newsletter owners"
       ],
@@ -28,7 +28,7 @@ const NewsletterValueSection = () => {
       title: "Complete Newsletter Monetization Course",
       points: [
         "6 comprehensive modules with step-by-step video training",
-        "50+ high-converting newsletter templates and frameworks", 
+        "50+ high-converting newsletter templates and frameworks",
         "Revenue tracking spreadsheets and growth optimization tools"
       ],
       screenshot: "Course dashboard showing video lessons, templates, and progress tracking"
@@ -66,13 +66,13 @@ const NewsletterValueSection = () => {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-white text-5xl font-bold mb-6 leading-tight max-w-4xl mx-auto">
             Everything you need to transform your newsletter into a revenue machine
           </h2>
-          
+
           <p className="text-gray-300 text-xl max-w-4xl mx-auto leading-relaxed">
-            As a SubstackMoney Map member you'll not just receive 6+ modules of expert content to help you become a top 1% newsletter creator, you'll 
+            As a SubstackMoney Map member you'll not just receive 6+ modules of expert content to help you become a top 1% newsletter creator, you'll
             receive an enormous amount of support, resources and coaching to help you accelerate your growth.
           </p>
         </div>
@@ -84,11 +84,10 @@ const NewsletterValueSection = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                  activeTab === tab
-                    ? 'text-black'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10'
-                }`}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${activeTab === tab
+                  ? 'text-black'
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
                 style={activeTab === tab ? { backgroundColor: '#ffc300' } : {}}
               >
                 {tab}
@@ -104,7 +103,7 @@ const NewsletterValueSection = () => {
             <h3 className="text-white text-3xl font-bold leading-tight">
               {tabContent[activeTab].title}
             </h3>
-            
+
             <div className="space-y-4">
               {tabContent[activeTab].points.map((point, index) => (
                 <div key={index} className="flex items-start gap-4">
@@ -142,7 +141,7 @@ const NewsletterValueSection = () => {
                         <MessageCircle className="w-16 h-16 text-white" />
                       </div>
                       <div className="text-white text-xl font-bold mb-2">Active Community</div>
-                      <div className="text-white/80 text-sm">300+ Newsletter Creators Sharing Daily Wins</div>
+                      <div className="text-white/80 text-sm">380+ Newsletter Creators Sharing Daily Wins</div>
                       <div className="mt-4 grid grid-cols-2 gap-2 w-full max-w-xs">
                         <div className="bg-white/20 rounded p-2 text-white text-xs">Revenue: $5,200 MRR</div>
                         <div className="bg-white/20 rounded p-2 text-white text-xs">Subscribers: 12K</div>
@@ -206,7 +205,7 @@ const NewsletterValueSection = () => {
                         <Users className="w-16 h-16 text-white" />
                       </div>
                       <div className="text-white text-xl font-bold mb-2">Creator Network</div>
-                      <div className="text-white/80 text-sm">Supercharge Your Growth with LIVE Coaching Calls</div>
+                      <div className="text-white/80 text-sm">Supercharge Your Growth with Recorded Coaching Libraries</div>
                       <div className="mt-4 space-y-2 w-full max-w-sm">
                         <div className="bg-white/20 rounded p-2 flex items-center gap-2">
                           <div className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center text-white text-xs">M</div>
@@ -226,8 +225,8 @@ const NewsletterValueSection = () => {
                 </div>
 
                 {/* Join CTA Overlay */}
-               
-                
+
+
               </div>
             </div>
           </div>
@@ -235,7 +234,7 @@ const NewsletterValueSection = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <button 
+          <button
             onClick={() => {
               document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -243,7 +242,7 @@ const NewsletterValueSection = () => {
           >
             JOIN BUILD TO PROFIT TODAY!
           </button>
-          <p className="text-gray-400 text-sm mt-4">Join 300+ newsletter creators already building their revenue machines</p>
+          <p className="text-gray-400 text-sm mt-4">Join 380+ newsletter creators already building their revenue machines</p>
         </div>
       </div>
     </div>

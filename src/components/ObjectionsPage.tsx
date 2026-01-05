@@ -11,10 +11,10 @@ import React, { useMemo, useState, useId } from "react";
 export type ObjectionItem = { q: string; a: React.ReactNode };
 export const OBJECTION_ITEMS: ObjectionItem[] = [
   {
-    q: "What if I don't have time for live sessions?",
+    q: "How much time do I need for this?",
     a: (
       <p className="text-slate-200">
-        Recordings are available within 24 hours. But here's the truth: If you don't have 2 hours for the live sessions,
+        You get immediate access to the complete recordings of the live sessions. You can watch them at your own pace. But here's the truth: If you don't have 2 hours to invest in the recordings,
         you don't have time to build a business. <span className="font-semibold text-white">This IS the shortcut.</span>
       </p>
     ),
@@ -157,7 +157,7 @@ export default function ObjectionsPage() {
 
           {/* Clarity bar – fills as items are opened; no numbers displayed */}
           <div className="mx-auto mt-6 h-2 w-full max-w-md rounded-full bg-white/10" role="progressbar" aria-label="Clarity"
-               aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
+            aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}>
             <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 via-yellow-300 to-orange-400 transition-[width] duration-500" style={{ width: `${progress}%` }} />
           </div>
         </header>

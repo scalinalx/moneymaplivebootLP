@@ -3,14 +3,14 @@ import React, { useMemo } from "react";
 
 // ==============================================
 // Final CTA – Standalone Page
-// Join 300+ Creators Who Stopped Waiting and Started Profiting
+// Join 380+ Creators Who Stopped Waiting and Started Profiting
 // Big price stack, massive CTA, urgency bar, and trust line
 // ==============================================
 
 function BoltIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" fill="currentColor"/>
+      <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" fill="currentColor" />
     </svg>
   );
 }
@@ -18,7 +18,7 @@ function BoltIcon({ className = "h-4 w-4" }: { className?: string }) {
 function ClockIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 10.268 3.536 2.04-1 1.732L11 13V6h2v6.268Z" fill="currentColor"/>
+      <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 10.268 3.536 2.04-1 1.732L11 13V6h2v6.268Z" fill="currentColor" />
     </svg>
   );
 }
@@ -26,7 +26,7 @@ function ClockIcon({ className = "h-4 w-4" }: { className?: string }) {
 function ShieldIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3Z" fill="currentColor"/>
+      <path d="M12 2 4 5v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5l-8-3Z" fill="currentColor" />
     </svg>
   );
 }
@@ -34,7 +34,7 @@ function ShieldIcon({ className = "h-4 w-4" }: { className?: string }) {
 function LockIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M7 10V8a5 5 0 0 1 10 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1Zm2 0h6V8a3 3 0 1 0-6 0v2Z" fill="currentColor"/>
+      <path d="M7 10V8a5 5 0 0 1 10 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1Zm2 0h6V8a3 3 0 1 0-6 0v2Z" fill="currentColor" />
     </svg>
   );
 }
@@ -63,7 +63,7 @@ export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: numb
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Headline */}
         <header className="text-center">
-          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">Join 300+ Creators Who Stopped Waiting and Started Profiting</h1>
+          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">Join 380+ Creators Who Stopped Waiting and Started Profiting</h1>
           <p className="mt-2 text-sm text-slate-300">Everything you need to launch and monetize — fast.</p>
         </header>
 
@@ -81,7 +81,7 @@ export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: numb
             <div className="text-5xl md:text-6xl font-black text-white">
               <span className="relative inline-block px-2 -mx-2 rounded-sm bg-[linear-gradient(180deg,transparent_62%,rgba(250,204,21,0.65)_0)]">{usd(nowPrice)}</span>
             </div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-300">(Save {usd(savings)} — Ends November 18th)</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-300">(Save {usd(savings)} — Limited Time Offer)</div>
           </div>
 
           {/* Massive CTA */}
@@ -98,10 +98,10 @@ export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: numb
           {/* Urgency strip */}
           <div className="mt-4 grid grid-cols-1 gap-2 text-[13px] font-semibold sm:grid-cols-2">
             <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-              <BoltIcon /> Only <span className="font-extrabold text-white">{left}</span> spots left in November cohort
+              <BoltIcon /> Only <span className="font-extrabold text-white">{left}</span> spots left at this price
             </div>
             <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-              <ClockIcon /> Early bird ends in <span className="font-extrabold text-white">9 days</span>
+              <ClockIcon /> Early bird price ends <span className="font-extrabold text-white">soon</span>
             </div>
             <div className="flex items-center justify-center gap-2 whitespace-nowrap">
               <ShieldIcon /> Launch or it's free guarantee • <LockIcon /> Secure checkout
@@ -113,7 +113,7 @@ export default function FinalCTAPage({ left = 12, capacity = 30 }: { left?: numb
         </section>
 
         {/* Trust line */}
-        <p className="mt-6 text-center text-xs text-slate-400">Trusted by 300+ creators • Backed by a risk‑free guarantee • Proven results</p>
+        <p className="mt-6 text-center text-xs text-slate-400">Trusted by 380+ creators • Backed by a risk‑free guarantee • Proven results</p>
       </div>
     </main>
   );

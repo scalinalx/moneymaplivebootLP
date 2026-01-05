@@ -14,7 +14,11 @@ import { useSearchParams } from 'next/navigation';
 
 function UpsellContent() {
   // === CONFIG ===
-  const cohortStart = useMemo(() => new Date("2025-11-18T09:00:00"), []);
+  const cohortStart = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 2); // Always 2 days from now for evergreen urgency
+    return d;
+  }, []);
   const seatCap = 30;
   const initialSeatsTaken = 11; // replace with live number if available
   const bundleCheckoutUrl = "#checkout-bundle"; // TODO: real link
@@ -120,10 +124,10 @@ function UpsellContent() {
 
         {/* Top chips */}
         <div className="mb-5 flex flex-wrap items-center gap-2 text-[11px] font-medium text-white/80">
-          <span className="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">Cohort: Nov 18–19</span>
+          <span className="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">Status: Instant Access</span>
           <span className="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">~{seatCap} seats • <strong className="text-white">{seatsLeft} left</strong></span>
           <span className="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">Ana — Substack Bestseller • Top in Business</span>
-          <span className="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">65k+ subscribers on Substack</span>
+          <span className="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15">70k+ subscribers on Substack</span>
         </div>
 
         {/* Headline */}
@@ -138,7 +142,7 @@ function UpsellContent() {
           <div className="mb-3 text-base font-semibold"><span className="rounded bg-yellow-300 px-2 py-0.5 text-black">Here’s What You Get When You Upgrade Today…</span></div>
           {/* Hook sentence (not a bullet) */}
           <p className="mb-3 text-[15px] text-white/90">
-            Copy our <strong>Newsletter Sales Mechanism</strong> to quickly validate your offer and ship in days — and, most importantly, <strong>make an offer they can’t ignore</strong> and <strong>ship the launch that prints orders</strong> so you can enjoy <strong>consistent monthly sales</strong>. Add Money Map to Build to Profit to access:
+            Join 380+ successful newsletter creators. Copy our <strong>Newsletter Sales Mechanism</strong> to quickly validate your offer and ship in days — and, most importantly, <strong>make an offer they can’t ignore</strong> and <strong>ship the launch that prints orders</strong> so you can enjoy <strong>consistent monthly sales</strong>. Add Money Map to Build to Profit to access:
           </p>
           <ul className="grid gap-2 text-[15px] text-white/90">
             <li className="flex items-start gap-2"><Check /><span><strong>Module 1</strong> — Your Subscriber Conversion Machine</span></li>
@@ -170,9 +174,9 @@ function UpsellContent() {
             <div className="flex-1">
               <div className="text-xl font-extrabold">You’re In Good Hands</div>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-white/80 text-left">
-                <li>65k+ Substack subscribers</li>
+                <li>70k+ Substack subscribers</li>
                 <li>Generated $300k+ revenue in the last 12 months</li>
-                <li>300+ creators in the community — including 25 Substack Bestsellers</li>
+                <li>Join 380+ successful newsletter creators</li>
               </ul>
             </div>
           </div>
@@ -184,7 +188,7 @@ function UpsellContent() {
             <span className="rounded bg-yellow-300 px-2 py-0.5 text-black">Bundle Value Stack (What You Get)</span>
           </div>
           <ul className="list-disc space-y-1 pl-5 text-sm text-white/90 text-left">
-            <li>Build to Profit: 2× live implementation sessions + exact 12‑day launch plan — <span className="font-semibold text-white">$497 value</span></li>
+            <li>Build to Profit: Lifetime access to 2x Recorded Live Workshop Sessions (Build Your Offer; Launch System) + exact 12‑day launch plan — <span className="font-semibold text-white">$497 value</span></li>
             <li>Money Map: Complete strategy course (ICP, offer, positioning, segmentation, messaging, copy) — <span className="font-semibold text-white">$497 value</span></li>
             <li>Templates & Resources — <span className="font-semibold text-white">$397 value</span></li>
             <li>Past Workshops Archive — <span className="font-semibold text-white">$697 value</span></li>
@@ -197,9 +201,9 @@ function UpsellContent() {
         {/* Value & Price Callout (progressively smaller text) */}
         <div className="mt-5 mx-auto max-w-[900px] text-center">
           <div className="font-extrabold text-4xl">Retail Value: <span className="text-yellow-300">$3,202</span></div>
-          <div className="mt-1 font-bold text-3xl">Discount: <span className="text-yellow-300">$2,455</span></div>
-          <div className="mt-1 font-semibold text-2xl">Today You Pay: <span className="text-yellow-300">$747</span></div>
-          <div className="mt-1 text-xl">Click The Button Below To Receive <span className="text-yellow-300">25% Off</span></div>
+          <div className="mt-1 font-bold text-3xl">Discount: <span className="text-yellow-300">$2,705</span></div>
+          <div className="mt-1 font-semibold text-2xl">Today You Pay: <span className="text-yellow-300">$497</span></div>
+          <div className="mt-1 text-xl">Click The Button Below To Receive <span className="text-yellow-300">50% Off</span></div>
           <div className="mt-4 flex justify-center">
             <button
               type="button"
@@ -207,7 +211,7 @@ function UpsellContent() {
               disabled={loading !== 'none'}
               className="inline-flex items-center justify-center rounded-lg bg-yellow-300 px-6 py-3 text-[1.1rem] font-semibold text-black shadow-[0_8px_30px_rgba(253,224,71,0.35)] ring-1 ring-yellow-200 transition hover:translate-y-[-1px] hover:shadow-[0_12px_40px_rgba(253,224,71,0.45)] disabled:opacity-60"
             >
-              {loading === 'bundle' ? 'Starting checkout…' : 'Upgrade now — Bundle ($747)'}
+              {loading === 'bundle' ? 'Starting checkout…' : 'Upgrade now — Bundle ($497)'}
             </button>
           </div>
 
@@ -231,7 +235,7 @@ function UpsellContent() {
             title="Offer your audience actually wants"
             blurb="Pinpoint ICP, problem, and promise so readers say ‘that’s me’."
           />
-        	<BenefitCard
+          <BenefitCard
             icon={<RocketIcon />}
             title="Ship fast with proven assets"
             blurb="Plug‑and‑play pages, emails, and prompts to publish quickly."
@@ -243,10 +247,10 @@ function UpsellContent() {
           />
         </div>
 
-        
+
       </div>
 
-      
+
     </section>
   );
 }

@@ -48,7 +48,7 @@ export default function PSPage() {
                 <span>P.S.</span>
               </div>
               <p className="text-base leading-relaxed text-slate-200">
-                If you’re still reading, you’re serious. You’ve been building, learning, preparing. Maybe for months. Maybe years. The gap between where you are and where you want to be isn’t more knowledge — it’s <span className="font-semibold text-white">implementation</span>. <span className="font-semibold text-white">Build to Profit</span> is the bridge. I can’t do the work for you. But I can give you the exact system, live coaching, and community support to make it happen. The question isn’t <span className="italic">“Is this worth <span className="font-bold text-white">$497</span>?”</span> The question is: <span className="underline decoration-yellow-400/70 decoration-4 underline-offset-4 font-semibold text-white">“How much more money will I lose by waiting?”</span> <span className="text-slate-300">See you in the live sessions.</span> — <span className="italic">Ana</span>
+                If you’re still reading, you’re serious. You’ve been building, learning, preparing. Maybe for months. Maybe years. The gap between where you are and where you want to be isn’t more knowledge — it’s <span className="font-semibold text-white">implementation</span>. <span className="font-semibold text-white">Build to Profit</span> is the bridge. I can’t do the work for you. But I can give you the exact system, recordings of the live build sessions, and community support to make it happen. The question isn’t <span className="italic">“Is this worth <span className="font-bold text-white">$497</span>?”</span> The question is: <span className="underline decoration-yellow-400/70 decoration-4 underline-offset-4 font-semibold text-white">“How much more money will I lose by waiting?”</span> <span className="text-slate-300">See you inside the workshop.</span> — <span className="italic">Ana</span>
               </p>
             </article>
 
@@ -58,7 +58,7 @@ export default function PSPage() {
                 <span>P.P.S.</span>
               </div>
               <p className="text-base leading-relaxed text-slate-200">
-                Early bird ends <span className="font-semibold text-white">November 18th</span>. After that, Build to Profit goes to <span className="font-semibold text-white">$997</span>. That’s <span className="font-extrabold text-emerald-300">$300</span> for waiting <span className="font-semibold text-white">a few days</span>. If you know you need this, <span className="font-semibold text-white">grab it now</span>.
+                Early bird ends <span className="font-semibold text-white">soon</span>. After that, Build to Profit goes to <span className="font-semibold text-white">$997</span>. That’s <span className="font-extrabold text-emerald-300">$300</span> for waiting <span className="font-semibold text-white">a few extra days</span>. If you know you need this, <span className="font-semibold text-white">grab it now</span>.
               </p>
             </article>
 
@@ -68,7 +68,7 @@ export default function PSPage() {
                 <span>P.P.P.S.</span>
               </div>
               <p className="text-base leading-relaxed text-slate-200">
-                Only <span className="font-extrabold text-white">12</span> spots left in the November cohort. Once we hit <span className="font-semibold text-white">30</span>, enrollment closes until <span className="font-semibold text-white">December 9</span>. If you want to launch in November, <span className="font-semibold text-white">this is your window</span>.
+                Only <span className="font-extrabold text-white">12</span> spots left at this price point. Once we hit <span className="font-semibold text-white">30</span>, enrollment closes until <span className="font-semibold text-white">the next batch</span>. If you want to launch now, <span className="font-semibold text-white">this is your window</span>.
               </p>
             </article>
           </div>

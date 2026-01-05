@@ -36,12 +36,12 @@ const Animated10KGrowth = () => {
     if (visiblePoints.length < 2) return '';
 
     let path = `M ${getX(visiblePoints[0].day)} ${getY(visiblePoints[0].revenue)}`;
-    
+
     for (let i = 1; i < visiblePoints.length; i++) {
       const curr = visiblePoints[i];
       path += ` L ${getX(curr.day)} ${getY(curr.revenue)}`;
     }
-    
+
     return path;
   };
 
@@ -52,15 +52,15 @@ const Animated10KGrowth = () => {
 
     let path = `M ${getX(visiblePoints[0].day)} ${getY(0)}`;
     path += ` L ${getX(visiblePoints[0].day)} ${getY(visiblePoints[0].revenue)}`;
-    
+
     for (let i = 1; i < visiblePoints.length; i++) {
       const curr = visiblePoints[i];
       path += ` L ${getX(curr.day)} ${getY(curr.revenue)}`;
     }
-    
+
     path += ` L ${getX(visiblePoints[visiblePoints.length - 1].day)} ${getY(0)}`;
     path += ' Z';
-    
+
     return path;
   };
 
@@ -92,7 +92,7 @@ const Animated10KGrowth = () => {
         if (!start) start = timestamp;
         const elapsed = timestamp - start;
         const progress = Math.min(elapsed / duration, 1);
-        
+
         // Easing function for smooth animation
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
         setAnimationProgress(easeOutQuart);
@@ -108,13 +108,13 @@ const Animated10KGrowth = () => {
 
   return (
     <div className="w-full max-w-5xl mx-auto py-16 px-8 relative z-10">
-      <div 
+      <div
         ref={chartRef}
         className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 shadow-2xl"
       >
-        <svg 
-          width="100%" 
-          height="400" 
+        <svg
+          width="100%"
+          height="400"
           viewBox={`0 0 ${width} ${height}`}
           className="overflow-visible"
         >
@@ -124,7 +124,7 @@ const Animated10KGrowth = () => {
               <stop offset="0%" stopColor="#FCD34D" stopOpacity="0.3" />
               <stop offset="100%" stopColor="#FCD34D" stopOpacity="0.05" />
             </linearGradient>
-            
+
             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#374151" />
               <stop offset={`${animationProgress * 100}%`} stopColor="#FCD34D" />
@@ -258,7 +258,7 @@ const Animated10KGrowth = () => {
                 fill="none"
                 markerEnd="url(#arrowhead)"
               />
-              
+
               {/* Arrow head */}
               <defs>
                 <marker
@@ -275,7 +275,7 @@ const Animated10KGrowth = () => {
                   />
                 </marker>
               </defs>
-              
+
               {/* "This could be you" text */}
               <text
                 x={width - 120}
@@ -303,7 +303,7 @@ const Animated10KGrowth = () => {
           >
             Revenue
           </text>
-          
+
           <text
             x={width / 2}
             y={height - 15}
@@ -317,10 +317,9 @@ const Animated10KGrowth = () => {
         </svg>
 
         {/* Stats that appear after animation */}
-        <div 
-          className={`grid grid-cols-3 gap-6 mt-8 transition-all duration-1000 ${
-            animationProgress > 0.8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+        <div
+          className={`grid grid-cols-3 gap-6 mt-8 transition-all duration-1000 ${animationProgress > 0.8 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
         >
           <div className="text-center">
             <div className="text-yellow-400 text-2xl font-bold">$10,000+</div>
@@ -331,7 +330,7 @@ const Animated10KGrowth = () => {
             <div className="text-gray-300 text-sm">To Full System</div>
           </div>
           <div className="text-center">
-            <div className="text-yellow-400 text-2xl font-bold">300+</div>
+            <div className="text-yellow-400 text-2xl font-bold">380+</div>
             <div className="text-gray-300 text-sm">Success Stories</div>
           </div>
         </div>

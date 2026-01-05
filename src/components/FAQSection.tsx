@@ -11,7 +11,7 @@ const FAQSection = () => {
     },
     {
       question: "I've wasted money on courses in the past. What's different about Newsletter Money Map?",
-      answer: "Most courses give you theory. We give you the exact templates, frameworks, and strategies that generated over $500k+ for our students. You get proven systems used by 25 Substack Bestsellers, plus a community of 300+ successful newsletter creators who actually implement and see results."
+      answer: "Most courses give you theory. We give you the exact templates, frameworks, and strategies that generated over $500k+ for our students. You get proven systems used by 25 Substack Bestsellers, plus a community of 380+ successful newsletter creators who actually implement and see results."
     },
     {
       question: "How can I be sure this program is right for me?",
@@ -50,7 +50,7 @@ const FAQSection = () => {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
+            <div
               key={index}
               className="bg-black/20 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-300"
             >
@@ -69,7 +69,7 @@ const FAQSection = () => {
                   )}
                 </div>
               </button>
-              
+
               {openFAQ === index && (
                 <div className="px-6 pb-6">
                   <div className="border-t border-white/10 pt-4">

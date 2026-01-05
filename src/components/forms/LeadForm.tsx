@@ -16,7 +16,7 @@ interface LeadFormProps {
 export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline = false }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [referralId, setReferralId] = useState<string | null>(null);
-  
+
   const {
     register,
     handleSubmit,
@@ -92,7 +92,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline =
         {referralId && (
           <input type="hidden" name="referral" value={referralId} />
         )}
-        
+
         <div className={inline ? 'flex-1' : ''}>
           <Input
             label={inline ? undefined : 'Full Name'}
@@ -135,7 +135,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline =
           loading={isSubmitting}
           className={inline ? 'md:w-auto whitespace-nowrap' : 'w-full'}
         >
-          {isSubmitting ? 'Processing...' : "Save Your Seat for Dec 18-19"}
+          {isSubmitting ? 'Processing...' : "Get Instant Access"}
         </Button>
       </form>
     </div>

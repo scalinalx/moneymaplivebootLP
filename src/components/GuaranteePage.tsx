@@ -82,9 +82,9 @@ export default function GuaranteePage() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="text-center">          <div className="inline-flex items-center gap-3 rounded-full bg-emerald-600 px-6 py-3 text-lg sm:text-xl font-extrabold uppercase tracking-wider text-white ring-2 ring-emerald-400/50 shadow-lg shadow-emerald-600/30">
-            <ShieldCheckIcon className="h-6 w-6" />
-            RISK‑FREE GUARANTEE
-          </div>
+          <ShieldCheckIcon className="h-6 w-6" />
+          RISK‑FREE GUARANTEE
+        </div>
           <h1 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
             The <span className="text-emerald-300">“Launch or It’s Free”</span> Guarantee
           </h1>
@@ -107,7 +107,7 @@ export default function GuaranteePage() {
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl border border-emerald-500/40 bg-emerald-600/10 p-4">
               <p className="text-sm font-semibold text-emerald-300">Why this guarantee?</p>
-              <p className="mt-2 text-sm text-slate-200">Because I’ve seen it work for <span className="font-semibold text-white">300+ creators</span>. If you show up, implement, and launch—you <span className="font-semibold text-white">WILL</span> make money.</p>
+              <p className="mt-2 text-sm text-slate-200">Because I’ve seen it work for <span className="font-semibold text-white">380+ creators</span>. If you show up, implement, and launch—you <span className="font-semibold text-white">WILL</span> make money.</p>
             </div>
             <div className="rounded-2xl border border-red-500/40 bg-red-600/10 p-4">
               <p className="text-sm font-semibold text-red-300">When it doesn’t apply</p>

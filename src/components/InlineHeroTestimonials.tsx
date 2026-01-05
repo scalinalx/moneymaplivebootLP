@@ -1,10 +1,10 @@
 import React from 'react';
 
 export default function InlineHeroTestimonials() {
-  return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `
+    return (
+        <div
+            dangerouslySetInnerHTML={{
+                __html: `
 <section class="py-4 bg-transparent sm:py-6 lg:py-8">
     <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen"><div class="mx-auto w-[95vw] px-0">
         <div class="flex flex-col items-center">
@@ -75,7 +75,7 @@ export default function InlineHeroTestimonials() {
                                 </div>
 
                                 <blockquote class="flex-1 mt-8">
-                                    <p class="text-lg leading-relaxed text-gray-900 font-pj">“Finally launched after endless 'planning.' Hit $4,500 Week 1. The live sessions are everything.”</p>
+                                    <p class="text-lg leading-relaxed text-gray-900 font-pj">“Finally launched after endless 'planning.' Hit $4,500 Week 1. The workshop sessions are everything.”</p>
                                 </blockquote>
                             </div>
 
@@ -130,7 +130,7 @@ export default function InlineHeroTestimonials() {
     </div></div>
 </section>
         `,
-      }}
-    />
-  );
+            }}
+        />
+    );
 }

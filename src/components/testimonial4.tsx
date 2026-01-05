@@ -85,9 +85,9 @@ const Testimonial4 = () => {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-white text-5xl md:text-6xl font-bold mb-8 leading-tight">
-            Just take a look at what our <span className="text-yellow-400">300+</span> members are saying.
+            Just take a look at what our <span className="text-yellow-400">380+</span> members are saying.
           </h2>
         </div>
 
@@ -115,7 +115,7 @@ const Testimonial4 = () => {
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer" onClick={handlePlay}>
                     <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-300 transition-colors duration-200 group">
                       <svg className="w-8 h-8 text-black ml-1 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
+                        <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
                   </div>
@@ -137,7 +137,7 @@ const Testimonial4 = () => {
             </div>
 
             {/* Navigation Arrows */}
-            <button 
+            <button
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
             >
@@ -145,8 +145,8 @@ const Testimonial4 = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            
-            <button 
+
+            <button
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
             >
@@ -162,11 +162,10 @@ const Testimonial4 = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === currentSlide 
-                    ? 'bg-yellow-400 scale-125' 
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentSlide
+                    ? 'bg-yellow-400 scale-125'
                     : 'bg-white/30 hover:bg-white/50'
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -177,11 +176,10 @@ const Testimonial4 = () => {
               <button
                 key={testimonial.id}
                 onClick={() => goToSlide(index)}
-                className={`aspect-video rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                  index === currentSlide 
-                    ? 'border-yellow-400 scale-105' 
+                className={`aspect-video rounded-lg overflow-hidden border-2 transition-all duration-200 ${index === currentSlide
+                    ? 'border-yellow-400 scale-105'
                     : 'border-white/20 hover:border-white/40'
-                }`}
+                  }`}
               >
                 <video
                   src={testimonial.videoUrl}
@@ -202,7 +200,7 @@ const Testimonial4 = () => {
         {/* Stats Section */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-black/20 backdrop-blur-xl rounded-xl p-6 border border-white/25">
-          <div className="text-4xl font-bold text-yellow-400 mb-2">350+</div>
+            <div className="text-4xl font-bold text-yellow-400 mb-2">380+</div>
             <div className="text-gray-300">Active Members</div>
           </div>
           <div className="bg-black/20 backdrop-blur-xl rounded-xl p-6 border border-white/25">
@@ -217,7 +215,7 @@ const Testimonial4 = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <button 
+          <button
             onClick={() => {
               document.getElementById('join-secondary')?.scrollIntoView({ behavior: 'smooth' });
             }}

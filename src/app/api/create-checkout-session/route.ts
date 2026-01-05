@@ -41,8 +41,8 @@ export async function POST(request: NextRequest) {
       ? 'Build to Profit + Money Map bundle'
       : 'Build to Profit liveworkshop';
     const productDescription = isBundle
-      ? 'Bundle: Workshop + extras. 2x live sessions, templates, community access'
-      : 'Cohort-based program: 2x live implementation sessions, templates, community access';
+      ? 'Bundle: Workshop + extras. 2x Recorded Sessions, templates, community access'
+      : 'Program: Lifetime access to 2x Recorded Live Workshop Sessions, templates, community access';
 
     // Prepare checkout session parameters
     const checkoutParams: any = {

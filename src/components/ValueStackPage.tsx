@@ -62,7 +62,7 @@ export default function ValueStackPage() {
         <header className="text-center">
           <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">What You Get When You Join <span className="block">Build to Profit</span></h1>
           <div className="mt-3 text-lg sm:text-xl md:text-2xl font-extrabold text-yellow-300">
-            Secure the $497 launch rate by Nov 18th
+            Secure the $497 launch rate Today
           </div>
         </header>
 
@@ -76,35 +76,35 @@ export default function ValueStackPage() {
               <div className="flex-1">
                 <details className="group">
                   <summary className="flex items-center justify-between cursor-pointer list-none">
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">2x Live Implementation Sessions <span className="font-medium text-slate-300">({formatCurrencyUSD(997)} value)</span></h2>
+                    <h2 className="text-xl md:text-2xl font-extrabold text-white">Lifetime access to 2x Recorded Implementation Sessions <span className="font-medium text-slate-300">({formatCurrencyUSD(997)} value)</span></h2>
                     <svg className="h-5 w-5 text-slate-300 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </summary>
                   <div className="mt-3 pt-2 border-t border-white/10">
-                    <p className="text-sm">2 x 1-hour live Zoom sessions with Ana + max 29 other creators</p>
+                    <p className="text-sm">2 x 1-hour recorded workshop sessions with Ana + other creators</p>
                     <p className="mt-1 text-sm font-semibold text-yellow-300">This is where strategy becomes MONEY.</p>
                     <div className="mt-3 grid gap-4 sm:grid-cols-2">
                       <div className="rounded-xl border border-orange-500/70 bg-gradient-to-br from-orange-300/20 to-orange-400/10 p-4">
-                        <p className="text-sm font-semibold text-white">Day 1 - Build Day (Nov 18, 9am EET):</p>
+                        <p className="text-sm font-semibold text-white">Day 1 - Build Day:</p>
                         <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-left">
-                          <li>Build or fix your offer (live, together)</li>
+                          <li>Build or fix your offer (step-by-step)</li>
                           <li>Write your 4-email launch sequence (copy-paste templates provided)</li>
                           <li>Map your 14-day launch plan (no guessing)</li>
-                          <li>Get hot seat coaching on YOUR specific offer</li>
+                          <li>Watch hot seat coaching audits on real student offers</li>
                         </ul>
                       </div>
                       <div className="rounded-xl border border-orange-500/70 bg-gradient-to-br from-orange-300/20 to-orange-400/10 p-4">
-                        <p className="text-sm font-semibold text-white">Day 2 - Launch Day (Nov 19, 9am EET):</p>
+                        <p className="text-sm font-semibold text-white">Day 2 - Launch Day:</p>
                         <ul className="mt-2 list-disc space-y-1 pl-6 text-sm text-left">
-                          <li>Troubleshoot what's working (live feedback)</li>
+                          <li>Troubleshoot with proven frameworks</li>
                           <li>Learn how to close your first 10 customers (objection handling scripts)</li>
                           <li>Create post-launch momentum (keep sales coming after launch ends)</li>
                           <li>Celebrate wins together (accountability fuel)</li>
                         </ul>
                       </div>
                     </div>
-                    <p className="mt-3 text-xs text-slate-300"><span aria-hidden>📹</span> Can't attend live? Recordings sent within 24 hours. But live is where magic happens.</p>
+                    <p className="mt-3 text-xs text-slate-300"><span aria-hidden>📹</span> High-definition workshop recordings available immediately.</p>
                     <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-emerald-600/15 px-4 py-1.5 text-[15px] font-bold text-emerald-300 ring-1 ring-emerald-500/30">
                       <span aria-hidden>🎯</span>
                       Outcome: You launch within 14 days with a complete system that works
@@ -143,7 +143,7 @@ export default function ValueStackPage() {
             }}
             className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
           >
-            Save Your Seat Until Nov 18th
+            Save Your Seat Today
           </button>
         </footer>
       </div>

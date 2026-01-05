@@ -6,7 +6,7 @@ This brief captures the positioning, pricing, timing, and messaging to market bo
 
 - Build to Profit (BTP)
   - What it is: Live, cohort-style implementation program with coaching and feedback.
-  - What it includes: An exact 12‑day launch plan and live sessions to ship your offer and make sales (first cohort Nov 18–19).
+  - What it includes: An exact 12‑day launch plan and recorded sessions to ship your offer and make sales.
   - What it solves: The implementation gap — turning your perfected offer into a real launch that drives revenue, LTV, retention, and brand growth.
 
 - Money Map (MM)
@@ -18,7 +18,7 @@ This brief captures the positioning, pricing, timing, and messaging to market bo
   - MM = Strategy foundation. BTP = Implementation and momentum.
   - Recommended path: Bundle both for best outcomes
   - You can do BTP without MM but you'll get mediocre results at best. For best results we recommend getting the bundle. 
-  - #1 newsletter monetization community: 300+ members scaling newsletters to $10K–$100K+. Live workshops, systems, boost sessions. Turn expertise to revenue.
+  - #1 newsletter monetization community: 380+ members scaling newsletters to $10K–$100K+. Live workshops, systems, boost sessions. Turn expertise to revenue.
 
 ## Money Map Curriculum
 
@@ -39,25 +39,24 @@ This brief captures the positioning, pricing, timing, and messaging to market bo
 
 ## Dates, Cohort, and Urgency
 
-- First BTP live cohort: November 18–19.
-- Scarcity: cap at ~30 seats; show taken/left to emphasize demand and group dynamic.
+- Scarcity: Enrollment is limited to ensure a focused group dynamic; show taken/left to emphasize demand.
 
 ## Offers and Pricing (as provided)
 
 - Money Map (standalone): $497
 - Build to Profit (standalone): $497
 - Build to Profit + Money Map bundle is valued at $3000
-- Bundle (Build to Profit + Money Map): $747
+- Bundle (Build to Profit + Money Map): $497
 
 Pricing math and savings:
-- Bundle: $747
-- Separately: $497 + $497 = $994 (saves $247 with the bundle)
+- Bundle: $497
+- Separately: $497 + $497 = $994 (saves $497 with the bundle)
 
 Use clear “you save” callouts to compare the bundle vs. buying both standalone. Use percentages. And don't forget about the bundle value (checn bundle value stack below).  
 
 ## Messaging Pillars
 
-- Community leadership: #1 newsletter monetization community. 300+ members scaling newsletters to $10K–$100K+. Live workshops, systems, boost sessions. Turn expertise to revenue.
+- Academy: Join 380+ newsletter creators in our private community. scaling newsletters to $10K–$100K+. Live workshops, systems, boost sessions. Turn expertise to revenue.
 
 - Strategy vs. Implementation
   - MM gives you strategy and the “perfect offer.”
@@ -77,14 +76,14 @@ Use clear “you save” callouts to compare the bundle vs. buying both standalo
 - Avoid costly mistakes: MM prevents classic traps (wrong audience, wrong price, vague promise, weak messaging) that make launches underperform.
 - Faster outcomes: Do the MM pre‑work, then use BTP to implement in 12 days. No guessing in‑session — just decisive execution and momentum.
 - Reusable assets: MM’s frameworks and templates become long‑term assets for future launches, upsells, and renewals.
-- Confidence + accountability: Clarity from MM means you use BTP’s live coaching to optimize — not to figure out fundamentals on the fly.
-- Best‑value path: If you haven’t bought MM, get the Bundle — Build to Profit + Money Map for $747 (Money Map at 50% off; instead of $994 total).
+- Confidence + accountability: Clarity from MM means you use BTP’s recorded coaching audits to optimize — not to figure out fundamentals on the fly.
+- Best‑value path: If you haven’t bought MM, get the Bundle — Build to Profit + Money Map for $497 (Money Map at 100% off; instead of $994 total).
 - Who should definitely bundle: New to monetization, pivoting offers, or struggling with conversions — MM tightens strategy so BTP can maximize results.
 - Bottom line: You can buy BTP standalone, but the fastest, safest path to sales is Strategy (Money Map) + Implementation (Build to Profit) together.
 
 ## Bundle Value Stack (What You Get)
 
-- Build to Profit: 2× live implementation sessions + exact 12‑day launch plan — $497 value
+- Build to Profit: 2x Recorded Live Workshop Sessions (Build Your Offer; Launch System) + exact 12‑day launch plan — $497 value
 - Money Map: Complete strategy course (ICP, offer, positioning, segmentation, messaging, copy) — $497 value
 - Templates & Resources — $397 value
 - Past Workshops Archive — $697 value
@@ -96,17 +95,17 @@ Estimated TOTAL value: ≈ $3,000+
 
 Investment options
 - Standalone prices: Build to Profit $497; Money Map $497
-- Bundle: $747 (Save $2250 vs. TOTAL VALUE. Save 25% vs purchasing separately.)
+- Bundle: $497 (Save $2505 vs. TOTAL VALUE. Save 50% vs purchasing separately.)
 
 ## Copy Guidance (consistency checklist)
 
-- Prices: Reflect $497 BTP, $497 MM, $747 bundle across hero, value stacks, FAQs, and CTAs.
+- Prices: Reflect $497 BTP, $497 MM, $497 bundle across hero, value stacks, FAQs, and CTAs.
 - Timing: Reinforce Nov 18–19 dates and cohort capacity urgency.
-- Bundle CTA: Highlight “get Money Map at 50% off when you bundle.”
+- Bundle CTA: Highlight “get Money Map for FREE when you bundle.”
 - Framing: Emphasize that MM is the foundation; BTP is the fast path to launch and revenue.
 
 ## Next Steps
 
 - Align all on‑page pricing references and countdowns to the above numbers and dates.
-- Add explicit savings math where helpful (e.g., Save $2250 vs. TOTAL VALUE." or  "Save 25% vs purchasing separately.").
-- Ensure capacity/seat counters and timers match the Nov 18–19 cohort.
+- Add explicit savings math where helpful (e.g., Save $2505 vs. TOTAL VALUE." or  "Save 50% vs purchasing separately.").
+- Ensure capacity/seat counters and timers match current enrollment goals.

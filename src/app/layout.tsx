@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
-  description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
+  description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded implementation sessions, templates, and proven playbooks.",
   icons: {
     icon: '/imgs/hwg-icon.webp',
     shortcut: '/imgs/hwg-icon.webp',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   openGraph: {
     title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
-    description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
+    description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded implementation sessions, templates, and proven playbooks.",
     siteName: 'Build To Profit',
     type: 'website',
     url: '/',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
-    description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.",
+    description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded sessions, templates, and proven playbooks.",
     images: ['/imgs/heroimgs/he2.webp'],
     site: '@howwegrow',
     creator: 'how we grow',

@@ -41,7 +41,7 @@ const WhoThisIsForSection = () => {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-white text-5xl font-bold leading-tight">
             Who this is for
           </h2>
@@ -50,7 +50,7 @@ const WhoThisIsForSection = () => {
         {/* Target Audience Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {targetAudiences.map((audience, index) => (
-            <div 
+            <div
               key={index}
               className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 shadow-2xl hover:border-white/40 transition-all duration-300 group hover:transform hover:scale-105"
             >
@@ -59,7 +59,7 @@ const WhoThisIsForSection = () => {
                 <h3 className="text-white text-xl font-bold leading-tight">
                   {audience.title}
                 </h3>
-                
+
                 {/* Description */}
                 <p className="text-gray-300 text-base leading-relaxed">
                   {audience.description}
@@ -74,9 +74,9 @@ const WhoThisIsForSection = () => {
           <div className="relative inline-block">
             {/* Glow effect */}
             <div className="absolute inset-0 rounded-lg blur-lg opacity-40" style={{ boxShadow: '0 0 30px #ffc300' }}></div>
-            
+
             {/* Button */}
-            <button 
+            <button
               onClick={() => {
                 document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
               }}
@@ -86,7 +86,7 @@ const WhoThisIsForSection = () => {
             </button>
           </div>
           <p className="text-gray-400 text-sm mt-6">
-            Join 300+ newsletter creators already building sustainable revenue streams
+            Join 380+ newsletter creators already building sustainable revenue streams
           </p>
         </div>
       </div>

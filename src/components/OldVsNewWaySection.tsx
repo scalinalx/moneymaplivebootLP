@@ -5,7 +5,7 @@ import Image from 'next/image';
 const OldVsNewWaySection = () => {
   const oldWayItems = [
     "Publishing inconsistently when you feel like it",
-    "Writing about random topics with no strategy", 
+    "Writing about random topics with no strategy",
     "Hoping people will magically find your newsletter",
     "Only talking about yourself in every email",
     "Never asking for the sale or monetizing"
@@ -13,7 +13,7 @@ const OldVsNewWaySection = () => {
 
   const newWayItems = [
     "Follow a proven content calendar & framework",
-    "Create value-driven content that converts", 
+    "Create value-driven content that converts",
     "Build strategic partnerships for growth",
     "Master the art of newsletter monetization",
     "Scale to 6-figures with proven systems"
@@ -37,7 +37,7 @@ const OldVsNewWaySection = () => {
           <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
             If you want to make it <span className="text-yellow-400">BIG</span> on Substack in 2025, you have two options.
           </h1>
-          
+
           {/* Subheadline */}
           <p className="text-gray-300 text-base md:text-lg mb-10 leading-relaxed">
             You can either follow "the old way" or "the new way"
@@ -53,7 +53,7 @@ const OldVsNewWaySection = () => {
                 </div>
                 <h3 className="text-white text-xl font-bold">Old way</h3>
               </div>
-              
+
               <div className="space-y-4">
                 {oldWayItems.map((item, index) => (
                   <div key={index} className="flex items-start gap-3 group">
@@ -66,7 +66,7 @@ const OldVsNewWaySection = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-6 pt-4 border-t border-red-500/20">
                 <div className="text-center">
                   <span className="text-red-400 text-xs font-medium">Result: Struggle & inconsistent income</span>
@@ -97,7 +97,7 @@ const OldVsNewWaySection = () => {
                 <h3 className="text-white text-xl font-bold">New way</h3>
                 <Zap className="w-4 h-4 text-yellow-400 opacity-80" />
               </div>
-              
+
               <div className="space-y-4">
                 {newWayItems.map((item, index) => (
                   <div key={index} className="flex items-start gap-3 group/item">
@@ -110,7 +110,7 @@ const OldVsNewWaySection = () => {
                   </div>
                 ))}
               </div>
-              
+
               <div className="mt-6 pt-4 border-t border-yellow-400/20">
                 <div className="text-center">
                   <span className="text-yellow-400 text-xs font-medium">Result: $120K+/year revenue machine 🚀</span>
@@ -133,23 +133,23 @@ const OldVsNewWaySection = () => {
             <p className="text-gray-300 text-sm mb-4">
               Ready to switch to the proven method that actually works?
             </p>
-            <button 
+            <button
               onClick={() => {
                 document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group inline-flex items-center justify-center gap-2 px-8 py-3 text-base font-bold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl shadow-lg" 
+              className="group inline-flex items-center justify-center gap-2 px-8 py-3 text-base font-bold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl shadow-lg"
             >
               <Zap className="w-4 h-4 group-hover:animate-pulse" />
               SHOW ME THE NEW WAY
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
             <p className="text-gray-500 text-xs mt-3">
-              Join 300+ newsletter creators building 6-figure businesses
+              Join 380+ newsletter creators building 6-figure businesses
             </p>
           </div>
         </div>
       </div>
-      
+
       {/* Close the main container and create full-width testimonials section */}
       <div className="relative">
         <div className="relative z-10 py-20">
@@ -159,17 +159,17 @@ const OldVsNewWaySection = () => {
               <div className="relative">
                 <div className="absolute inset-0 rounded-full blur-lg opacity-30" style={{ backgroundColor: '#ffc300' }}></div>
                 <span className="relative text-black text-sm font-semibold px-5 py-2 rounded-full border" style={{ backgroundColor: '#ffc300', borderColor: '#ffc300' }}>
-                  300+ Success stories to date
+                  380+ Success stories to date
                 </span>
               </div>
             </div>
           </div>
-          
+
           <div className="text-center mb-12 px-6">
             <h2 className="text-white text-3xl font-bold mb-2">Need More Convincing?</h2>
             <p className="text-gray-400">Join hundreds of successful newsletter creators</p>
           </div>
-          
+
           {/* Full-width testimonials container - truly full width */}
           <div className="w-full px-8">
             <div className="grid grid-cols-4 gap-6 max-w-none mx-auto">
@@ -191,7 +191,7 @@ const OldVsNewWaySection = () => {
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   ))}
                 </div>
@@ -215,7 +215,7 @@ const OldVsNewWaySection = () => {
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   ))}
                 </div>
@@ -239,7 +239,7 @@ const OldVsNewWaySection = () => {
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   ))}
                 </div>
@@ -263,7 +263,7 @@ const OldVsNewWaySection = () => {
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   ))}
                 </div>

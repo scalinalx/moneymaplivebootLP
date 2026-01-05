@@ -4,9 +4,9 @@ import React, { useEffect, useMemo, useState } from "react";
 // Final Pricing – Standalone Page (with visuals)
 // Start Building Your Newsletter Revenue Machine Today
 // - Clear value table (What You Get vs Value)
-// - Bonuses block (Nov 8 only) with values
+// - Bonuses block with values
 // - Struck-through Regular + Early Bird price
-// - Live countdown to Nov 8 + capacity bar (18/30)
+// - Live countdown + capacity bar (18/30)
 // - Secure checkout + What happens next steps
 // TailwindCSS, no nullish coalescing (for broad JS envs)
 // ==============================================
@@ -14,7 +14,7 @@ import React, { useEffect, useMemo, useState } from "react";
 type Row = { label: string; value: string };
 
 const CORE_ROWS: Row[] = [
-  { label: "Launch to Profit (Live Sessions)", value: "$997" },
+  { label: "Lifetime access: 2x Recorded Workshop Sessions", value: "$997" },
   { label: "Templates & Resources", value: "$347" },
   { label: "The High-Value Newsletter Club", value: "$297" },
 ];
@@ -64,7 +64,7 @@ function CheckIcon({ className = "h-5 w-5" }: { className?: string }) {
 function LockIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M7 10V8a5 5 0 0 1 10 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1Zm2 0h6V8a3 3 0 1 0-6 0v2Z" fill="currentColor"/>
+      <path d="M7 10V8a5 5 0 0 1 10 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1Zm2 0h6V8a3 3 0 1 0-6 0v2Z" fill="currentColor" />
     </svg>
   );
 }
@@ -72,7 +72,7 @@ function LockIcon({ className = "h-5 w-5" }: { className?: string }) {
 function ClockIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 10.268 3.536 2.04-1 1.732L11 13V6h2v6.268Z" fill="currentColor"/>
+      <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm1 10.268 3.536 2.04-1 1.732L11 13V6h2v6.268Z" fill="currentColor" />
     </svg>
   );
 }
@@ -80,7 +80,7 @@ function ClockIcon({ className = "h-4 w-4" }: { className?: string }) {
 function BoltIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" fill="currentColor"/>
+      <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" fill="currentColor" />
     </svg>
   );
 }
@@ -125,17 +125,17 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
                 <ul className="mt-4 space-y-3 text-slate-200">
                   {CORE_ROWS.map(function (r, i) {
                     return (
-                      <li key={"c"+i} className="flex items-start gap-3">
-                        <span className="mt-0.5 rounded-full bg-emerald-600/20 p-1 ring-1 ring-emerald-500/40"><CheckIcon className="h-5 w-5 text-emerald-300"/></span>
+                      <li key={"c" + i} className="flex items-start gap-3">
+                        <span className="mt-0.5 rounded-full bg-emerald-600/20 p-1 ring-1 ring-emerald-500/40"><CheckIcon className="h-5 w-5 text-emerald-300" /></span>
                         <span>{r.label}</span>
                       </li>
                     );
                   })}
-                  <li className="pt-3 text-xs uppercase tracking-wider text-slate-300/80">Bonuses (Nov 18 only)</li>
+                  <li className="pt-3 text-xs uppercase tracking-wider text-slate-300/80">Special Bonuses</li>
                   {BONUS_ROWS.map(function (r, i) {
                     return (
-                      <li key={"b"+i} className="flex items-start gap-3">
-                        <span className="mt-0.5 rounded-full bg-yellow-400/20 p-1 ring-1 ring-yellow-300/40"><CheckIcon className="h-5 w-5 text-yellow-300"/></span>
+                      <li key={"b" + i} className="flex items-start gap-3">
+                        <span className="mt-0.5 rounded-full bg-yellow-400/20 p-1 ring-1 ring-yellow-300/40"><CheckIcon className="h-5 w-5 text-yellow-300" /></span>
                         <span>{r.label}</span>
                       </li>
                     );
@@ -147,7 +147,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
                 <ul className="mt-4 space-y-3 text-slate-200">
                   {CORE_ROWS.map(function (r, i) {
                     return (
-                      <li key={"cv"+i} className="flex items-center justify-between gap-3">
+                      <li key={"cv" + i} className="flex items-center justify-between gap-3">
                         <span className="sr-only">value</span>
                         <span className="ml-auto font-bold">{r.value}</span>
                       </li>
@@ -156,7 +156,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
                   <li className="pt-3 text-xs uppercase tracking-wider text-slate-300/80">&nbsp;</li>
                   {BONUS_ROWS.map(function (r, i) {
                     return (
-                      <li key={"bv"+i} className="flex items-center justify-between gap-3">
+                      <li key={"bv" + i} className="flex items-center justify-between gap-3">
                         <span className="sr-only">bonus value</span>
                         <span className={`ml-auto font-bold ${/priceless/i.test(r.value) ? "text-emerald-300" : ""}`}>{r.value}</span>
                       </li>
@@ -179,7 +179,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
               <div className="text-xs font-extrabold uppercase tracking-widest text-slate-700">Today Only</div>
               <div className="mt-2 text-3xl md:text-4xl font-extrabold text-slate-400 line-through decoration-rose-400/70 decoration-4">{usd(2229)}</div>
               <div className="mt-1 text-5xl md:text-6xl font-black"><span className="relative inline-block px-2 -mx-2 rounded-sm bg-[linear-gradient(180deg,transparent_62%,rgba(250,204,21,0.65)_0)]">{usd(earlyBird)}</span><span className="align-super ml-1 text-xs font-extrabold uppercase tracking-widest">Early Bird</span></div>
-              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-slate-700">Ends November 18 • Save $1,732</div>
+              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-slate-700">Limited Time Offer • Save $1,732</div>
               <button
                 type="button"
                 onClick={() => {
@@ -190,9 +190,9 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
                 Join Build to Profit Now — {usd(earlyBird)}
               </button>
               <div className="mt-3 grid grid-cols-3 items-center gap-2 text-[11px] font-semibold text-slate-800">
-                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><BoltIcon/> {taken} of {capacity} spots</div>
-                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><ClockIcon/> {parts.expired ? "Ended" : `${parts.days}d ${String(parts.hours).padStart(2,'0')}h`}</div>
-                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><LockIcon/> Secure checkout</div>
+                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><BoltIcon /> {taken} of {capacity} spots</div>
+                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><ClockIcon /> {parts.expired ? "Ended" : `${parts.days}d ${String(parts.hours).padStart(2, '0')}h`}</div>
+                <div className="flex items-center justify-center gap-1 whitespace-nowrap"><LockIcon /> Secure checkout</div>
               </div>
               <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/60">
                 <div className="h-full rounded-full bg-yellow-500" style={{ width: `${progress}%` }} />
@@ -201,7 +201,7 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
             <ul className="mt-4 space-y-2 text-white font-bold">
               {[
                 "✅ Instant access to everything",
-                "✅ Live sessions Nov 18-19",
+                "✅ Recorded workshop sessions",
                 "✅ 90 Days community access",
               ].map(function (s, i) { return <li key={i} className="text-sm" >{s}</li>; })}
             </ul>
@@ -211,12 +211,12 @@ export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", 
         {/* What happens next */}
         <section className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
           <h3 className="text-lg font-extrabold text-white">🎯 What happens next:</h3>
-            <ol className="mt-3 list-decimal space-y-2 pl-6 text-slate-200 text-sm">
-              <li>Click the button above</li>
-              <li>Complete secure checkout (Stripe)</li>
-              <li>Get instant email with login details</li>
-              <li>Receive Zoom link for Nov 18-19 live sessions</li>
-            </ol>
+          <ol className="mt-3 list-decimal space-y-2 pl-6 text-slate-200 text-sm">
+            <li>Click the button above</li>
+            <li>Complete secure checkout (Stripe)</li>
+            <li>Get instant email with login details</li>
+            <li>Get instant access to the Workshop recordings</li>
+          </ol>
         </section>
       </div>
     </main>

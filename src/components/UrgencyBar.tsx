@@ -36,19 +36,19 @@ export function computeUrgencyStats(
  * UrgencyBar – a compact, high-converting announcement bar for landing pages.
  *
  * Defaults match your request:
- *  🔥 18 of 30 spots taken | Early bird pricing ends in 9 days | Next cohort: December 9
+ *  🔥 18 of 30 spots taken | Early bird pricing ends in 2 days | Status: Instant Access
  */
 export default function UrgencyBar({
   spotsTaken = 18,
   totalSpots = 30,
   daysLeft = 9,
-  cohortLabel = "November 18",
+  cohortLabel = "Instant Access",
   sticky = true,
   ctaLabel = "Apply now",
   ctaHref = "#apply",
   className = "",
   id,
-  deadlineISO = "2025-11-18T09:00:00",
+  deadlineISO = new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
   primaryOverride,
 }: UrgencyBarProps) {
   const { safeTotal, safeTaken, percent, spotsLeft } = computeUrgencyStats(
@@ -116,7 +116,7 @@ export default function UrgencyBar({
                 )}
                 <span className="hidden sm:inline text-stone-400">|</span>
                 <span>
-                  Next cohort: <strong>{cohortLabel}</strong>
+                  Status: <strong>{cohortLabel}</strong>
                 </span>
               </div>
 

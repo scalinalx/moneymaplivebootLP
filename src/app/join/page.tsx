@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   title:
     'Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income',
   description:
-    'Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.',
+    'Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded implementation sessions, templates, and proven playbooks.',
   icons: {
     icon: '/imgs/hwg-icon.webp',
     shortcut: '/imgs/hwg-icon.webp',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title:
       'Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income',
     description:
-      'Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.',
+      'Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded implementation sessions, templates, and proven playbooks.',
     siteName: 'Build To Profit',
     type: 'website',
     url: '/join',
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     title:
       'Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income',
     description:
-      'Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with live sessions, templates, and proven playbooks.',
+      'Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded implementation sessions, templates, and proven playbooks.',
     images: ['/imgs/heroimgs/he2.webp'],
     site: '@howwegrow',
     creator: 'how we grow',
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
 
 const SCHEDULE_DAY_1: ScheduleItem[] = [
   {
-    time: '10:00 AM - 11:00 AM',
+    time: '',
     title: 'The Irresistible Offer System',
     description:
       'We stop the guesswork and use systems to create the perfect offer for your most profitable audience segment.',
@@ -101,7 +101,7 @@ const SCHEDULE_DAY_1: ScheduleItem[] = [
 
 const SCHEDULE_DAY_2: ScheduleItem[] = [
   {
-    time: '10:00 AM - 11:00 AM',
+    time: '',
     title: 'Pricing Model & Launch Plan',
     description:
       "We create the 14-day Launch Plan along with the right Pricing Model that's GUARANTEEED to bring in sales.",
@@ -125,7 +125,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: 'Content Strategist',
     company: '$4,500 Week 1 launch',
     content:
-      "Finally launched after endless planning. Hit $4,500 Week 1. The live sessions are everything.",
+      "Finally launched after endless planning. Hit $4,500 Week 1. The workshop sessions are everything.",
     avatar:
       'https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png',
   },
@@ -208,7 +208,7 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: 'Is this live or pre-recorded?',
     answer:
-      "This is 100% LIVE. We build together. Ana is on the call, showing you the behind-the-scenes of how she operates and answering your questions in real time.",
+      'You get access to the COMPLETE HD Recordings of the 100% LIVE Sessions. Ana is showing you the behind-the-scenes of how she operates and answering questions all throughout.',
   },
   {
     question: 'I have a small list (under 1k). Is this for me?',
@@ -216,19 +216,19 @@ const FAQ_ITEMS: FAQItem[] = [
       "Yes. In fact, it's better to implement these systems NOW before you scale. You will grow faster and monetize sooner than if you wait.",
   },
   {
-    question: "What if I can't make the dates?",
+    question: 'How long do I have access for?',
     answer:
-      'You get lifetime access to the HD recordings, the template library, and the community. You can implement at your own pace during that window.',
+      'Lifetime. You get immediate access to the complete recordings, templates, and community forever. You can implement at your own pace whenever you\'re ready.',
   },
   {
     question: 'How much does it cost?',
     answer:
-      'Build to Profit is $747 (normally $1,997). This includes both live workshop days, all templates, the community, and lifetime access to recordings.',
+      'Build to Profit is $497 (normally $1,997). This includes both recorded workshop sessions, all templates, the community, and lifetime access to the curriculum.',
   },
   {
     question: 'What happens after I purchase?',
     answer:
-      "You'll receive immediate access to the community, pre-workshop materials, and calendar invites for the live sessions. Plus value-packed emails from Ana to prepare you for the cohort.",
+      "You'll receive immediate access to the community, pre-workshop materials, and the complete workshop recordings. Plus value-packed emails from Ana to guide your implementation.",
   },
 ];
 
@@ -267,7 +267,7 @@ export default function JoinPage() {
               </a>
               <div className="h-4 w-px bg-brand-800" />
               <span className="rounded border border-brand-lime/20 bg-brand-lime/5 px-2 py-1 font-mono text-[12px] uppercase tracking-widest text-brand-lime">
-                Limited Spots Available
+                Instant Access Available
               </span>
             </div>
           </div>
@@ -279,13 +279,13 @@ export default function JoinPage() {
             {/* Text block */}
             <div className="relative z-10 flex flex-col justify-center lg:col-span-8">
               <p className="mb-4 text-sm text-brand-grey">
-                Trusted by 350+ creators <span className="text-white font-medium">(students report $2k–$6k in their first launches)</span>
+                Trusted by 380+ creators <span className="text-white font-medium">(students report $2k–$6k in their first launches)</span>
               </p>
 
               <div className="mb-8 inline-flex items-center gap-2">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-brand-lime" />
                 <span className="font-mono text-sm uppercase tracking-widest text-brand-lime">
-                  Live Offer Build & Launch Workshop
+                  Premium Offer Build & Launch Workshop
                 </span>
               </div>
 
@@ -298,7 +298,7 @@ export default function JoinPage() {
               </p>
 
               <p className="mb-10 max-w-2xl text-xl font-light leading-relaxed text-brand-grey md:text-2xl">
-                Two live days to design, price, and launch one paid offer. Templates, scripts, and a live launch plan included.
+                Two <span className="text-white font-semibold">live recordings</span> to design, price, and launch your irresistible offer. Templates, scripts, and a live launch plan included.
               </p>
 
               <div className="flex flex-col items-start gap-4">
@@ -306,9 +306,9 @@ export default function JoinPage() {
                   <CheckoutFormWrapper inline />
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl font-bold text-white">$747</span>
+                  <span className="text-2xl font-bold text-white">$497</span>
                   <span className="text-lg text-brand-grey line-through">$1,997</span>
-                  <span className="bg-brand-lime/10 text-brand-lime text-xs font-bold px-2 py-1 rounded border border-brand-lime/20">SAVE 63%</span>
+                  <span className="bg-brand-lime/10 text-brand-lime text-xs font-bold px-2 py-1 rounded border border-brand-lime/20">SAVE 75%</span>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-blue-400">
                   <span className="flex items-center gap-1">
@@ -316,7 +316,7 @@ export default function JoinPage() {
                     Secure checkout
                   </span>
                   <span className="flex items-center gap-1">
-                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
                     Money-back guarantee
                   </span>
                 </div>
@@ -604,7 +604,7 @@ export default function JoinPage() {
                 WHAT HAPPENS IN 2 DAYS
               </h2>
               <p className="mt-4 text-lg text-brand-grey">
-                Two days. One hour per day. Zero fluff.
+                Two days. One live recording. Zero fluff.
               </p>
             </div>
 
@@ -625,8 +625,6 @@ export default function JoinPage() {
                   {SCHEDULE_DAY_1.map((item, i) => (
                     <div key={i} className="flex gap-4">
                       <div className="pt-1 font-mono text-brand-lime whitespace-nowrap">
-                        {item.time}
-                        <div className="text-xs text-brand-grey">EST</div>
                       </div>
                       <div>
                         <h4 className="text-lg font-bold text-white">
@@ -656,7 +654,6 @@ export default function JoinPage() {
                   {SCHEDULE_DAY_2.map((item, i) => (
                     <div key={i} className="flex gap-4">
                       <div className="pt-1 font-mono text-brand-white whitespace-nowrap">
-                        {item.time}
                       </div>
                       <div>
                         <h4 className="text-lg font-bold text-white">
@@ -745,7 +742,7 @@ export default function JoinPage() {
               Ready? <span className="text-brand-lime">Let's Go.</span>
             </h3>
             <p className="mb-8 text-brand-grey">
-              50 spots. December cohort. Once they're gone, they're gone.
+              50 spots available at this price. Once they're gone, they're gone.
             </p>
             <CheckoutFormWrapper />
             <div className="mt-8 flex items-center justify-center gap-6">
@@ -793,13 +790,13 @@ export default function JoinPage() {
               </p>
             </div>
 
-              <div className="flex gap-8 font-mono text-sm uppercase tracking-wider text-brand-grey">
-                <a href="#" className="transition-colors hover:text-brand-lime">
-                  Terms
-                </a>
-                <a href="#" className="transition-colors hover:text-brand-lime">
-                  Privacy
-                </a>
+            <div className="flex gap-8 font-mono text-sm uppercase tracking-wider text-brand-grey">
+              <a href="#" className="transition-colors hover:text-brand-lime">
+                Terms
+              </a>
+              <a href="#" className="transition-colors hover:text-brand-lime">
+                Privacy
+              </a>
               <a href="https://howwegrowtoday.substack.com/" className="transition-colors hover:text-brand-lime">
                 Substack
               </a>

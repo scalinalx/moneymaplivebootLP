@@ -71,7 +71,7 @@ export default function SimpleLandingPage() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1 text-yellow-400" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map((_, s) => (
-              <svg key={s} className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg key={s} className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" /></svg>
             ))}
           </div>
           {date ? <span className="text-xs text-slate-400">{date}</span> : <span />}
@@ -103,7 +103,7 @@ export default function SimpleLandingPage() {
           sticky={true}
           spotsTaken={25}
           totalSpots={30}
-          cohortLabel="Nov 18–19, 2025"
+          cohortLabel="Instant Access"
           ctaLabel="Join now"
           ctaHref="#form-section"
           primaryOverride="LAST 5 seats remaining!"
@@ -111,13 +111,13 @@ export default function SimpleLandingPage() {
         {/* Hero */}
         <header className="text-center">
           <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-          <span className="text-emerald-400">3X Your Sales</span>  Without Changing Anything <br/> About Your Offer
+            <span className="text-emerald-400">3X Your Sales</span>  Without Changing Anything <br /> About Your Offer
           </h1>
           <p className="mt-2 text-lg sm:text-xl text-yellow-300 font-bold">
-          The problem is almost never what you’re selling, but how you’re selling it.
+            The problem is almost never what you’re selling, but how you’re selling it.
           </p>
           <p className="mt-2 text-lg sm:text-xl text-yellow-300 font-bold">
-            Two live build sessions • Templates • Coaching • Nov 18–19, 2025
+            Recorded Build Sessions • Templates • Coaching • Instant access
           </p>
           {/* Hero visual */}
           <div className="mt-6 relative mx-auto max-w-[58rem]">
@@ -139,13 +139,13 @@ export default function SimpleLandingPage() {
                     <img src={src} alt="creator" className="h-full w-full object-cover" />
                   </span>
                 ))}
-                <span className="ml-3 text-sm text-slate-300">Join 300+ creators</span>
+                <span className="ml-3 text-sm text-slate-300">Join 380+ creators</span>
               </div>
             </div>
           </div>
         </header>
-        
-               {/* Pain → Promise with visual connector (LeaderLine) */}
+
+        {/* Pain → Promise with visual connector (LeaderLine) */}
         <section className="mt-6 relative">
           <div className="grid gap-8 sm:gap-20 sm:grid-cols-2">
             <div ref={leftColRef} className="rounded-xl border border-white/10 bg-white/5 p-4 max-w-sm mx-auto">
@@ -160,10 +160,10 @@ export default function SimpleLandingPage() {
             <div ref={rightColRef} className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 max-w-sm mx-auto">
               <p className="text-white font-extrabold mb-2">What changes</p>
               <ul className="space-y-2 text-slate-100 text-base">
-                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5"/> A clear, irresistible offer</li>
-                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5"/> A 12‑day launch you can follow</li>
-                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5"/> Copy you can plug right in</li>
-                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5"/> Live feedback and accountability</li>
+                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5" /> A clear, irresistible offer</li>
+                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5" /> A 12‑day launch you can follow</li>
+                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5" /> Copy you can plug right in</li>
+                <li className="flex items-start gap-2"><Check className="w-5 h-5 text-emerald-300 mt-0.5" /> High-level build recordings and accountability</li>
               </ul>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function SimpleLandingPage() {
           </div>
         </section>
 
-        
+
 
         {/* Testimonials Group A (unified design) */}
         <section className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2">
@@ -236,7 +236,7 @@ export default function SimpleLandingPage() {
         {/* How it works (days) */}
         <section className="mt-6 grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-white font-extrabold">Day 1 — Build (Nov 18)</p>
+            <p className="text-white font-extrabold">Part 1 — The Build</p>
             <ul className="mt-2 space-y-2 text-slate-200 text-sm">
               <li>Lock your offer and pricing</li>
               <li>Write a 4‑email launch sequence</li>
@@ -245,7 +245,7 @@ export default function SimpleLandingPage() {
             </ul>
           </div>
           <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-white font-extrabold">Day 2 — Launch (Nov 19)</p>
+            <p className="text-white font-extrabold">Part 2 — The Launch</p>
             <ul className="mt-2 space-y-2 text-slate-200 text-sm">
               <li>Ship, review, and adjust fast</li>
               <li>Handle objections. Close your first 10</li>
@@ -260,10 +260,10 @@ export default function SimpleLandingPage() {
           <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
             <p className="text-white font-extrabold">Included</p>
             <ul className="mt-2 space-y-2 text-slate-100 text-sm">
-              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5"/> 2× live sessions with coaching</li>
-              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5"/> 12‑day launch plan and tracker</li>
-              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5"/> Copy you can plug right in + sales templates</li>
-              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5"/> Private community + recordings</li>
+              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5" /> 2× Recorded workshop sessions with build guides</li>
+              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5" /> 12‑day launch plan and tracker</li>
+              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5" /> Copy you can plug right in + sales templates</li>
+              <li className="flex items-start gap-2"><Check className="w-4 h-4 text-emerald-300 mt-0.5" /> Private community + recordings</li>
             </ul>
           </div>
         </section>
@@ -286,8 +286,8 @@ export default function SimpleLandingPage() {
         {/* Risk reversal + FAQ (tiny) */}
         <section className="mt-10 grid gap-3">
           <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-white font-bold">Can’t attend live?</p>
-            <p className="mt-1 text-slate-200 text-sm">Recordings within 24 hours. Follow the plan. Get results.</p>
+            <p className="text-white font-bold">How long do I have access for?</p>
+            <p className="mt-1 text-slate-200 text-sm">Lifetime. Get immediate access to recordings and community. Implement whenever you're ready.</p>
           </div>
           <div className="rounded-xl border border-white/10 bg-white/5 p-4">
             <p className="text-white font-bold">Who it’s for</p>
@@ -312,7 +312,7 @@ export default function SimpleLandingPage() {
           ))}
         </section>
 
-        
+
 
         {/* Final CTA */}
         <section className="mt-8 text-center">
