@@ -135,12 +135,12 @@ const GrowthStorySection = () => {
                   <span>Oct 2024</span>
                   <span>Nov 2024</span>
                   <span>Dec 2024</span>
-                  <span>Jan 2025</span>
-                  <span>Feb 2025</span>
-                  <span>Mar 2025</span>
-                  <span>Apr 2025</span>
-                  <span>May 2025</span>
-                  <span>Jun 2025</span>
+                  <span>Jan 2026</span>
+                  <span>Feb 2026</span>
+                  <span>Mar 2026</span>
+                  <span>Apr 2026</span>
+                  <span>May 2026</span>
+                  <span>Jun 2026</span>
                 </div>
               </div>
             </div>

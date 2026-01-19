@@ -123,7 +123,7 @@ const FooterSection = () => {
           <div className="max-w-7xl mx-auto px-6 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-gray-400 text-sm">
-                © 2024 Newsletter Money Map. All rights reserved. Results may vary.
+                © 2026 Newsletter Money Map. All rights reserved. Results may vary.
               </div>
 
               <div className="flex items-center gap-6">

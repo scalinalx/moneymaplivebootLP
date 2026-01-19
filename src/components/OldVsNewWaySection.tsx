@@ -36,7 +36,7 @@ const OldVsNewWaySection = () => {
 
           {/* Main Headline */}
           <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-            If you want to make it <span className="text-yellow-400">BIG</span> on Substack in 2025, you have two options.
+            If you want to make it <span className="text-yellow-400">BIG</span> on Substack in 2026, you have two options.
           </h1>
 
           {/* Subheadline */}

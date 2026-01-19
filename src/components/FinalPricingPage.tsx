@@ -85,7 +85,7 @@ function BoltIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-export default function FinalPricingPage({ deadlineISO = "2025-11-18T23:59:59", taken = 18, capacity = 30 }: { deadlineISO?: string; taken?: number; capacity?: number; }) {
+export default function FinalPricingPage({ deadlineISO = "2026-11-18T23:59:59", taken = 18, capacity = 30 }: { deadlineISO?: string; taken?: number; capacity?: number; }) {
   const coreTotal = useMemo(function () { return sumRows(CORE_ROWS); }, []);
   const bonusTotal = useMemo(function () { return sumRows(BONUS_ROWS); }, []); // priceless counts as 0 for math
   const totalValue = coreTotal + bonusTotal; // computed, but display overridden below

@@ -63,8 +63,8 @@ export function getCountdownParts(deadline: Date, now: Date) {
 function GiftIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M2.75 9.5h18.5v10a1.75 1.75 0 0 1-1.75 1.75H4.5A1.75 1.75 0 0 1 2.75 19.5v-10Z" fill="currentColor" opacity="0.15"/>
-      <path d="M21.25 7.5H13c.9-.61 1.5-1.61 1.5-2.75A2.75 2.75 0 0 0 11.75 2 2.75 2.75 0 0 0 9 4.75c0 1.14.6 2.14 1.5 2.75H2.75a.75.75 0 0 0 0 1.5H11v14h2V9h8.25a.75.75 0 0 0 0-1.5ZM10.5 4.75c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25S12.44 6 11.75 6 10.5 5.44 10.5 4.75Z" fill="currentColor"/>
+      <path d="M2.75 9.5h18.5v10a1.75 1.75 0 0 1-1.75 1.75H4.5A1.75 1.75 0 0 1 2.75 19.5v-10Z" fill="currentColor" opacity="0.15" />
+      <path d="M21.25 7.5H13c.9-.61 1.5-1.61 1.5-2.75A2.75 2.75 0 0 0 11.75 2 2.75 2.75 0 0 0 9 4.75c0 1.14.6 2.14 1.5 2.75H2.75a.75.75 0 0 0 0 1.5H11v14h2V9h8.25a.75.75 0 0 0 0-1.5ZM10.5 4.75c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25S12.44 6 11.75 6 10.5 5.44 10.5 4.75Z" fill="currentColor" />
     </svg>
   );
 }
@@ -72,8 +72,8 @@ function GiftIcon({ className = "h-5 w-5" }: { className?: string }) {
 function CalendarIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path d="M6 2.75a.75.75 0 0 1 .75.75V5h10.5V3.5a.75.75 0 0 1 1.5 0V5h.5A2.75 2.75 0 0 1 22 7.75v10.5A2.75 2.75 0 0 1 19.25 21H4.75A2.75 2.75 0 0 1 2 18.25V7.75A2.75 2.75 0 0 1 4.75 5h.5V3.5A.75.75 0 0 1 6 2.75Z" fill="currentColor" opacity="0.2"/>
-      <path d="M3.5 9h17v9.25c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25V9Z" fill="currentColor"/>
+      <path d="M6 2.75a.75.75 0 0 1 .75.75V5h10.5V3.5a.75.75 0 0 1 1.5 0V5h.5A2.75 2.75 0 0 1 22 7.75v10.5A2.75 2.75 0 0 1 19.25 21H4.75A2.75 2.75 0 0 1 2 18.25V7.75A2.75 2.75 0 0 1 4.75 5h.5V3.5A.75.75 0 0 1 6 2.75Z" fill="currentColor" opacity="0.2" />
+      <path d="M3.5 9h17v9.25c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25V9Z" fill="currentColor" />
     </svg>
   );
 }
@@ -94,7 +94,7 @@ function ValueBadge({ valueEur }: { valueEur: number | null }) {
   );
 }
 
-export default function BonusStackPage({ deadlineISO = "2025-11-18T09:00:00" }: { deadlineISO?: string }) {
+export default function BonusStackPage({ deadlineISO = "2026-11-18T09:00:00" }: { deadlineISO?: string }) {
   const deadline = useMemo(function () { return new Date(deadlineISO); }, [deadlineISO]);
   // Avoid hydration mismatch by rendering a stable placeholder until mounted
   const [mounted, setMounted] = useState(false);
@@ -157,11 +157,10 @@ export default function BonusStackPage({ deadlineISO = "2025-11-18T09:00:00" }: 
           {BONUSES.map(function (b, idx) {
             const strongest = b.valueEur === null; // Priceless gets hero styling
             return (
-              <article key={b.id} className={`relative overflow-hidden rounded-3xl border p-6 backdrop-blur-md ${
-                strongest
+              <article key={b.id} className={`relative overflow-hidden rounded-3xl border p-6 backdrop-blur-md ${strongest
                   ? "border-emerald-400/40 ring-1 ring-emerald-300/40 bg-gradient-to-br from-emerald-500/15 to-emerald-400/10 shadow shadow-emerald-600/20"
                   : "border-white/10 bg-white/5"
-              }`}>
+                }`}>
                 <ValueBadge valueEur={b.valueEur} />
                 <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-yellow-400/10 blur-3xl" />
                 <h2 className="text-lg sm:text-xl font-extrabold text-white">

@@ -668,7 +668,7 @@ export default function JoinPage() {
                 BUILD<span className="text-brand-lime">2</span>PROFIT
               </div>
               <p className="text-xs text-brand-800">
-                &copy; 2025 Ana Calin Media. All rights reserved.
+                &copy; 2026 Ana Calin Media. All rights reserved.
               </p>
             </div>
 
