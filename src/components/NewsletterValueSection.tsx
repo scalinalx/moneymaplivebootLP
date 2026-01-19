@@ -205,7 +205,7 @@ const NewsletterValueSection = () => {
                         <Users className="w-16 h-16 text-white" />
                       </div>
                       <div className="text-white text-xl font-bold mb-2">Creator Network</div>
-                      <div className="text-white/80 text-sm">Supercharge Your Growth with Recorded Coaching Libraries</div>
+                      <div className="text-white/80 text-sm">Supercharge Your Growth with LIVE Coaching Calls</div>
                       <div className="mt-4 space-y-2 w-full max-w-sm">
                         <div className="bg-white/20 rounded p-2 flex items-center gap-2">
                           <div className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center text-white text-xs">M</div>
@@ -240,7 +240,7 @@ const NewsletterValueSection = () => {
             }}
             className="text-black font-bold py-4 px-12 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 hover:opacity-90" style={{ backgroundColor: '#ffc300' }}
           >
-            JOIN BUILD TO PROFIT TODAY!
+            I'M READY TO SCALE
           </button>
           <p className="text-gray-400 text-sm mt-4">Join 380+ newsletter creators already building their revenue machines</p>
         </div>

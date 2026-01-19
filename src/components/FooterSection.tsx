@@ -16,7 +16,8 @@ const FooterSection = () => {
                   <span className="text-black font-bold text-lg">NM</span>
                 </div>
                 <div>
-                  <div className="text-white font-bold text-lg">Build To Profit</div>
+                  <div className="text-white font-bold text-lg">Newsletter</div>
+                  <div className="text-yellow-400 font-bold text-lg">Money Map</div>
                 </div>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-6">
@@ -35,7 +36,7 @@ const FooterSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-green-400" />
-                  <span className="text-gray-300 text-xs">25 Substack Bestsellers</span>
+                  <span className="text-gray-300 text-xs">12 Substack Bestsellers</span>
                 </div>
               </div>
             </div>
@@ -98,7 +99,7 @@ const FooterSection = () => {
             <div>
               <h3 className="text-white font-semibold text-lg mb-4">Ready to Start?</h3>
               <p className="text-gray-300 text-sm mb-4">
-                Join 380+ newsletter creators in our private community. scaling newsletters to $10K–$100K+. Live workshops, systems, boost sessions. Turn expertise to revenue.
+                Join 380+ newsletter creators who've built profitable businesses with our proven system.
               </p>
               <button
                 onClick={() => {
@@ -107,7 +108,7 @@ const FooterSection = () => {
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl shadow-lg mb-4"
               >
                 <Mail className="w-4 h-4" />
-                GET INSTANT ACCESS
+                I WANT $5K/MONTH
               </button>
 
               <div className="text-center">
@@ -122,7 +123,7 @@ const FooterSection = () => {
           <div className="max-w-7xl mx-auto px-6 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-gray-400 text-sm">
-                © 2024 How We Grow. © 2025 Build To Profit
+                © 2024 Newsletter Money Map. All rights reserved. Results may vary.
               </div>
 
               <div className="flex items-center gap-6">
@@ -162,7 +163,7 @@ const FooterSection = () => {
               <div className="hidden md:block w-px h-4 bg-gray-600"></div>
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4 text-yellow-400" />
-                <span className="text-gray-300 text-xs">Proven by 25 Substack Bestsellers</span>
+                <span className="text-gray-300 text-xs">Proven by 12 Substack Bestsellers</span>
               </div>
             </div>
           </div>

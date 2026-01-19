@@ -12,10 +12,10 @@ export type FaqItem = { q: string; a: React.ReactNode };
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "How long do I have access for?",
+    q: "What if I can't attend the live sessions on Nov 18-19?",
     a: (
       <p className="text-slate-200">
-        You get <span className="font-semibold text-white">lifetime access</span> to the complete workshop recordings, the template library, and our private community. You can start building today and implement at your own pace whenever you're ready.
+        Recordings are sent within 24 hours. However, the real value is in live participation — getting hot seat coaching and real-time feedback. If you absolutely can't make it, recordings still provide massive value.
       </p>
     ),
   },
@@ -88,7 +88,7 @@ export const FAQ_ITEMS: FaqItem[] = [
 function QuestionIcon({ className = "h-6 w-6" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} aria-hidden>
-      <path fill="currentColor" d="M12 2.5c5.25 0 9.5 4.25 9.5 9.5s-4.25 9.5-9.5 9.5S2.5 17.25 2.5 12 6.75 2.5 12 2.5Zm0 4.7c1.9 0 3.3 1.1 3.3 2.7 0 1.06-.56 1.74-1.67 2.29-.96.47-1.33.9-1.33 1.69v.3h-1.9v-.34c0-1.36.8-2.19 1.86-2.72.98-.46 1.38-.88 1.38-1.34 0-.6-.63-1.1-1.64-1.1-1.08 0-1.8.5-1.93 1.34H8.48C8.72 9.1 10.02 7.2 12 7.2Zm-1 7.95c0-.6.45-1.05 1.05-1.05s1.05.45 1.05 1.05S12.65 16.25 12.05 16.25 11 15.8 11 15.15Z" />
+      <path fill="currentColor" d="M12 2.5c5.25 0 9.5 4.25 9.5 9.5s-4.25 9.5-9.5 9.5S2.5 17.25 2.5 12 6.75 2.5 12 2.5Zm0 4.7c1.9 0 3.3 1.1 3.3 2.7 0 1.06-.56 1.74-1.67 2.29-.96.47-1.33.9-1.33 1.69v.3h-1.9v-.34c0-1.36.8-2.19 1.86-2.72.98-.46 1.38-.88 1.38-1.34 0-.6-.63-1.1-1.64-1.1-1.08 0-1.8.5-1.93 1.34H8.48C8.72 9.1 10.02 7.2 12 7.2Zm-1 7.95c0-.6.45-1.05 1.05-1.05s1.05.45 1.05 1.05S12.65 16.25 12.05 16.25 11 15.8 11 15.15Z"/>
     </svg>
   );
 }

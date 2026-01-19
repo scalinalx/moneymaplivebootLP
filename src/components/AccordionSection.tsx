@@ -143,13 +143,17 @@ const AccordionSection = () => {
   return (
     <div className="mb-16">
       <div className="text-center mb-12">
-        
+        <div className="flex justify-center mb-3">
+          <div className="border border-orange-500 rounded-full px-6 py-2">
+            <span className="text-white text-base font-bold">The world's #1 Substack growth & monetization course + community</span>
+          </div>
+        </div>
         <h1 className="text-white text-4xl font-bold mb-4 leading-tight max-w-5xl mx-auto">
-          Turn Your Newsletter Into a $10K+/Month Revenue Machine<br/>
+          Turn Your Newsletter Into a $10K+/Month Revenue Machine<br />
           <span className="text-yellow-400 text-2xl">(Without Spending a Dime On Paid Ads)</span>
         </h1>
         <p className="text-gray-300 text-lg mb-4 max-w-4xl mx-auto leading-relaxed">
-          The complete system to go from strategy to your first $5K in revenue — in 30 days or less
+          The complete system that transformed 380+ hobby newsletters into profitable businesses - without spending a penny on ads
         </p>
         <Animated10KGrowth />
         <div className="flex items-center justify-center gap-2 mb-4">
@@ -183,7 +187,7 @@ const AccordionSection = () => {
                 </span>
               </div>
             </button>
-            
+
             {openItem === index && (
               <div className="px-6 pb-4">
                 <p className="text-gray-300 text-base leading-relaxed mb-6">
@@ -210,7 +214,7 @@ const AccordionSection = () => {
           }}
           className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
         >
-          JOIN BUILD TO PROFIT TODAY!
+          I'M READY TO SCALE
         </button>
       </div>
     </div>

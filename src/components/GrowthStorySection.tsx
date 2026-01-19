@@ -15,14 +15,14 @@ const GrowthStorySection = () => {
               </span>
             </div>
           </div>
-          
+
           <h2 className="text-white text-5xl md:text-6xl font-bold mb-8 leading-tight">
             Supercharge the growth & monetization of your <span className="text-yellow-400">newsletter</span>
           </h2>
-          
+
           <p className="text-gray-300 text-xl max-w-4xl mx-auto leading-relaxed">
-            Just over 1 year ago I started Substack with zero followers and no idea where to begin. <br/> Now I'm one of the fastest growing 
-            female creators on the platform. Inside the academy, I'll reveal exactly how I did it so you can achieve success with your 
+            Just over 8 months ago I started Substack with zero followers and no idea where to begin. <br /> Now I'm one of the fastest growing
+            female creators on the platform. Inside the academy, I'll reveal exactly how I did it so you can achieve success with your
             newsletter.
           </p>
         </div>
@@ -33,8 +33,8 @@ const GrowthStorySection = () => {
             {/* Profile Header */}
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-yellow-400">
-                <Image 
-                  src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b1deb04-e24a-4f12-af95-c9941a3c4a34_1500x1500.png" 
+                <Image
+                  src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6b1deb04-e24a-4f12-af95-c9941a3c4a34_1500x1500.png"
                   alt="Ana Calin"
                   className="w-full h-full object-cover"
                   width={64}
@@ -43,7 +43,7 @@ const GrowthStorySection = () => {
               </div>
               <div>
                 <h3 className="text-yellow-400 text-2xl font-bold">Ana Calin</h3>
-                <p className="text-gray-300">64,987 subscribers</p>
+                <p className="text-gray-300">71,000 subscribers</p>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ const GrowthStorySection = () => {
                 <span>15,000</span>
                 <span>0</span>
               </div>
-              
+
               {/* Chart area */}
               <div className="ml-16 mr-4 relative" style={{ height: '400px' }}>
                 {/* Grid lines */}
@@ -66,17 +66,17 @@ const GrowthStorySection = () => {
                     <div key={i} className="border-b border-gray-300"></div>
                   ))}
                 </div>
-                
+
                 {/* Growth curve area */}
                 <div className="absolute bottom-0 left-0 right-0" style={{ height: '80%' }}>
-                  <div 
+                  <div
                     className="absolute bottom-0 left-0 right-0 rounded-t-lg opacity-60"
-                    style={{ 
+                    style={{
                       background: 'linear-gradient(to top, #eab308, #fbbf24, rgba(251, 191, 36, 0.3))',
                       clipPath: 'polygon(0% 100%, 15% 90%, 35% 75%, 55% 55%, 75% 30%, 90% 10%, 100% 0%, 100% 100%)'
                     }}
                   ></div>
-                  
+
                   {/* Growth line */}
                   <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <path
@@ -107,7 +107,7 @@ const GrowthStorySection = () => {
                       <div className="bg-yellow-500 text-black p-3 rounded-lg relative">
                         <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center absolute -top-4 left-4 text-black font-bold text-sm">2</div>
                         <p className="text-sm font-medium pt-2">
-                          Found my style of writing, branding, tone of voice and built a consistent value delivery system - 
+                          Found my style of writing, branding, tone of voice and built a consistent value delivery system -
                           <span className="font-bold"> focused on quality not just quantity.</span>
                         </p>
                         <div className="absolute -top-2 left-8 w-0 h-0 border-l-4 border-r-4 border-b-4 border-transparent border-b-yellow-500"></div>
@@ -147,7 +147,7 @@ const GrowthStorySection = () => {
 
             {/* Bottom CTA */}
             <div className="text-center">
-              <button 
+              <button
                 onClick={() => {
                   document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
                 }}

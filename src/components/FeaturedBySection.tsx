@@ -21,8 +21,8 @@ export default function FeaturedBySection() {
           </h2>
 
           <p className="text-gray-300 text-xl max-w-4xl mx-auto leading-relaxed">
-            Just over 1 year ago I started Substack with zero followers and no idea where to begin. <br/> Now I'm one of the fastest growing 
-            female creators on the platform. Inside the academy, I'll reveal exactly how I did it so you can achieve success with your 
+            Just over 1 year ago I started Substack with zero followers and no idea where to begin. <br /> Now I'm one of the fastest growing
+            female creators on the platform. Inside the academy, I'll reveal exactly how I did it so you can achieve success with your
             newsletter.
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function FeaturedBySection() {
               </div>
               <div>
                 <h3 className="text-yellow-400 text-2xl font-bold">Ana Calin</h3>
-                <p className="text-gray-300">64,987 subscribers</p>
+                <p className="text-gray-300">71,000 subscribers</p>
               </div>
             </div>
 

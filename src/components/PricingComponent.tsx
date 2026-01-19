@@ -1,29 +1,48 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { Check, Shield, Zap, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ArrowDown } from 'lucide-react';
+import TESTIMONIALS_DATA from '@/data/testimonials.json';
+import AccordionSection from './AccordionSection';
 import ResultsGallery from './ResultsGallery';
-// import Testimonials2 from './Testimonials2';
-import Animated10KGrowth from './Animated10KGrowth';
-import InlineHeroTestimonials from './InlineHeroTestimonials';
-import UrgencyBar from './UrgencyBar';
-import ProblemAgitateSection from './ProblemAgitateSection';
-import ThreeTestimonials from './ThreeTestimonials';
-import FeaturedBySection from './FeaturedBySection';
-import ValueStackPage from './ValueStackPage';
-import RiskReversalPage from './RiskReversalPage';
-import ObjectionsPage from './ObjectionsPage';
-import WhoThisIsForPage from './WhoThisIsForPage';
-import ComparisonPage from './ComparisonPage';
-import TestimonialsFull from './TestimonialsFull';
-import BonusStackPage from './BonusStackPage';
-import FinalPricingPage from './FinalPricingPage';
-import FAQPage from './FAQPage';
-import FinalUrgencyPage from './FinalUrgencyPage';
-import FinalCTAPage from './FinalCTAPage';
-import PSPage from './PSPage';
-import Testimonial4 from './testimonial4';
+import Testimonials2 from './Testimonials2';
+
+const HERO_AVATARS = [
+  {
+    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    alt: 'Sarah K.',
+  },
+  {
+    src: 'https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png',
+    alt: 'Marcus T.',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1685903772095-f07172808761?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    alt: 'Priya M.',
+  },
+  {
+    src: 'https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fa5e4510d-697e-412b-a33e-d5503f645c92%2Favatar?alt=media&token=3a4e4b81-9080-436e-bfae-25808b43fc0f',
+    alt: 'Sue',
+  },
+  { src: '/testimavatar/jeff.webp', alt: 'Jeff' },
+  { src: '/testimavatar/46.webp', alt: 'Mary B.' },
+  {
+    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    alt: 'Alexandra L.',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    alt: 'Emma Wilson',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    alt: 'Tom Wilson',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1541216970279-affbfdd55aa8?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
+    alt: 'Rachel Torres',
+  },
+];
 
 const PricingComponent = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -55,27 +74,69 @@ const PricingComponent = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // (Video section removed) – using randomized hero image instead
+  // Video progress tracking
+  useEffect(() => {
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    const timeDisplay = document.getElementById('video-time') as HTMLElement;
+    const progressBar = document.getElementById('video-progress') as HTMLElement;
+    const overlay = document.getElementById('play-overlay') as HTMLElement;
+    const progressContainer = document.getElementById('progress-container') as HTMLElement;
 
-  // Fixed hero image (single source)
-  const heroImg = '/imgs/heroimgs/he2.webp';
+    if (!video) return;
 
-  // Avatars for social proof row (Unsplash portraits)
-  const heroAvatars = [
-    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1546525848-3ce03ca516f6?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1544006659-f0b21884ce1d?auto=format&fit=crop&w=96&h=96&q=80',
-    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=96&h=96&q=80',
-  ];
+    const updateProgress = () => {
+      if (video.duration && !isNaN(video.duration)) {
+        const currentTime = video.currentTime;
+        const duration = video.duration;
+        const progress = (currentTime / duration) * 100;
 
-  // UrgencyBar now handles its own computations and defaults
+        // Update progress bar
+        if (progressBar) {
+          progressBar.style.width = `${progress}%`;
+        }
+
+        // Update time display
+        if (timeDisplay) {
+          const currentMinutes = Math.floor(currentTime / 60);
+          const currentSeconds = Math.floor(currentTime % 60);
+          const totalMinutes = Math.floor(duration / 60);
+          const totalSeconds = Math.floor(duration % 60);
+
+          timeDisplay.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')} / ${totalMinutes}:${totalSeconds.toString().padStart(2, '0')}`;
+        }
+      }
+    };
+
+    const handleVideoEnd = () => {
+      if (overlay) {
+        overlay.style.display = 'flex';
+      }
+      if (progressContainer) {
+        progressContainer.style.display = 'block';
+      }
+    };
+
+    const handlePlay = () => {
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+      if (progressContainer) {
+        progressContainer.style.display = 'none';
+      }
+    };
+
+    video.addEventListener('play', handlePlay);
+    video.addEventListener('timeupdate', updateProgress);
+    video.addEventListener('loadedmetadata', updateProgress);
+    video.addEventListener('ended', handleVideoEnd);
+
+    return () => {
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('timeupdate', updateProgress);
+      video.removeEventListener('loadedmetadata', updateProgress);
+      video.removeEventListener('ended', handleVideoEnd);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen relative">
@@ -132,59 +193,164 @@ const PricingComponent = () => {
         .promo-border:hover::after { opacity: 0.7; filter: blur(8px); }
       `}</style>
 
-      <div className="w-full max-w-none mx-auto px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-8 relative z-10">
         {/* Hero Section */}
         <div className="text-center py-16">
-          {/* Profile Pictures Row (avatars restored) */}
+          {/* Profile Pictures Row */}
           <div className="flex justify-center items-center gap-1 mb-4">
-            <div className="flex -space-x-2">
-              {heroAvatars.map((src, i) => (
-                <div key={i} className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white shrink-0">
-                  <Image
-                    src={src}
-                    alt={`Member ${i + 1}`}
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                    loading="lazy"
-                  />
+            <div className="flex -space-x-3">
+              {HERO_AVATARS.map((avatar, i) => (
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                  <img src={avatar.src} alt={avatar.alt} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
-            <span className="text-gray-300 text-sm ml-4">Join 380+ Students including 25 Substack Bestsellers</span>
+            <span className="text-gray-300 text-sm ml-4">Join 380+ students including 17 substack bestsellers</span>
           </div>
 
-          {/* Added top title + subtitle */}
-          <div className="mb-4">
-            <h1 className="text-white text-5xl sm:text-6xl font-extrabold leading-tight w-full max-w-5xl mx-auto">
-              Turn Your Newsletter Into a <span style={{ color: '#ffc300' }}>$120K+/Year</span> Revenue Machine
-            </h1>
-            <p className="text-gray-300 text-xl max-w-4xl mx-auto mt-2">
-              The exact system 380+ creators used to build 6-figure newsletter businesses
-            </p>
-          </div>
+          <h1 className="text-white text-6xl font-bold mb-6 leading-tight max-w-5xl mx-auto">
+            Turn Your Newsletter Into a<br />
+            <span className="text-yellow-400">6-Figure Business</span> in 90 Days
+          </h1>
+          <p className="text-gray-300 text-xl mb-12 max-w-4xl mx-auto leading-relaxed">
+            The complete system that transformed 380+ hobby newsletters into profitable businesses - without spending a penny on ads
+          </p>
+          {/* CRO Banner (clickable) */}
+          <div className="mb-10 relative group">
+            {/* Squiggles like example (hover reveal) */}
+            <div
+              className="pointer-events-none absolute left-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-3 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 md:flex"
+              style={{ color: '#FACC15' }}
+            >
+              {[0, 1, 2].map((i) => (
+                <svg
+                  key={`l-${i}`}
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`transition-transform duration-300 ${i === 0 ? '-rotate-12' : i === 2 ? 'rotate-12' : ''}`}
+                >
+                  <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+                </svg>
+              ))}
+            </div>
+            <div
+              className="pointer-events-none absolute right-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-3 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:flex"
+              style={{ color: '#FACC15' }}
+            >
+              {[0, 1, 2].map((i) => (
+                <svg
+                  key={`r-${i}`}
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`transition-transform duration-300 ${i === 0 ? 'rotate-12' : i === 2 ? '-rotate-12' : ''}`}
+                >
+                  <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+                </svg>
+              ))}
+            </div>
+            <button
+              type="button"
+              aria-label="Get Instant Access - scroll to form"
+              onClick={() => {
+                document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="shine promo-border relative w-full overflow-hidden rounded-2xl border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-400/40 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              {/* Gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
+              {/* Deadline pill */}
+              <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-black font-semibold text-[11px] md:text-xs">Instant Access</span>
+              </div>
 
-          {/* Removed duplicate main headline per request; now shown near "Two Paths" section */}
-          {/* CRO banner removed per new launch copy */}
+              {/* Content (reduced height ~20%) */}
+              <div className="relative px-6 py-4 md:px-9 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
+                <div className="text-center">
+                  <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
+                    Get the Complete System
+                  </div>
+                  <div className="text-black/90 font-semibold text-sm md:text-base">
+                    Watch anytime, anywhere. Lifetime access included.
+                  </div>
+                </div>
+                <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
+              </div>
+            </button>
+          </div>
 
           {/* Video Section */}
           <div className="max-w-4xl mx-auto mb-8">
             <div className="relative">
-              <div className="aspect-video bg-black rounded-lg overflow-hidden border border-gray-700 relative">
+              <div className="aspect-video bg-black rounded-lg overflow-hidden border border-gray-700">
+                <div className="w-full h-full relative">
+                  <video
+                    id="hero-video"
+                    className="w-full h-full object-cover"
+                    src="/videos/vsl_3.mp4"
+                    preload="metadata"
+                    playsInline
+                    controls
+                  />
 
-                <Image src={heroImg} alt="Build To Profit hero" fill priority className="object-cover" />
+                  {/* Play Button Overlay - Only show before first play */}
+                  <div
+                    id="play-overlay"
+                    className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer"
+                    onClick={() => {
+                      const video = document.getElementById('hero-video') as HTMLVideoElement;
+                      const overlay = document.getElementById('play-overlay') as HTMLElement;
+                      const progressContainer = document.getElementById('progress-container') as HTMLElement;
+                      if (video && overlay) {
+                        video.play();
+                        overlay.style.display = 'none';
+                        if (progressContainer) {
+                          progressContainer.style.display = 'none';
+                        }
+                      }
+                    }}
+                  >
+                    <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-300 transition-colors duration-200 group">
+                      <svg className="w-8 h-8 text-black ml-1 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
 
-
-              </div>
-              <div className="text-center mt-4">
-                <div className="text-yellow-400 font-extrabold">
-                  Recorded build-with-you sessions + templates + coaching. Instant access.
+                  {/* Custom Progress Bar - Only show before first play */}
+                  <div
+                    id="progress-container"
+                    className="absolute bottom-4 left-4 right-4"
+                  >
+                    <div className="bg-black/80 rounded p-2 flex items-center gap-2">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <div className="text-white text-sm" id="video-time">0:00 / 0:00</div>
+                      <div className="flex-1 bg-gray-600 h-1 rounded">
+                        <div className="bg-white h-1 rounded w-0 transition-all duration-300" id="video-progress"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Styled testimonials before primary CTA */}
-            <InlineHeroTestimonials />
 
             <div className="text-center mt-8">
               <button
@@ -193,22 +359,8 @@ const PricingComponent = () => {
                 }}
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black bg-yellow-400 border border-transparent rounded-md hover:bg-yellow-500 transition-colors duration-200"
               >
-                JOIN BUILD TO PROFIT - $497
+                I'M READY TO SCALE
               </button>
-              <div className="mt-2 flex items-center justify-center gap-2 text-sm text-gray-300">
-                <Shield className="w-4 h-4 text-emerald-400" aria-hidden />
-                <span>Secure checkout</span>
-                <span className="opacity-60">(Stripe)</span>
-                <span className="inline-flex items-center rounded bg-white/10 px-2 py-0.5 text-white text-xs font-semibold ring-1 ring-white/20">
-                  {/* Simple Stripe wordmark badge */}
-                  Stripe
-                </span>
-              </div>
-            </div>
-
-            {/* Urgency Bar */}
-            <div className="mt-6">
-              <UrgencyBar sticky={false} ctaLabel="Join now" ctaHref="#pricing" />
             </div>
           </div>
 
@@ -242,7 +394,7 @@ const PricingComponent = () => {
             <div className="grid grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center border-r border-gray-600 last:border-r-0">
                 <div className="text-white text-6xl font-bold mb-2">#1</div>
-                <div className="text-gray-300 text-lg">Newsletter Monetization program</div>
+                <div className="text-gray-300 text-lg">Substack Money Map program</div>
               </div>
 
               <div className="text-center border-r border-gray-600 last:border-r-0">
@@ -265,127 +417,184 @@ const PricingComponent = () => {
         </div>
 
         {/* Testimonials Section */}
-        <ThreeTestimonials />
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-white text-3xl font-bold mb-2">What Our Students Say</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto mb-8">
+            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
+                  SJ
+                </div>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                "The Newsletter Money Map completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!"
+              </p>
+              <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                Gustavo
+              </a>
+            </div>
 
-        {/* Problem-Agitate Section */}
-        <ProblemAgitateSection />
+            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
+                  MR
+                </div>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                "Ana's framework is pure gold. I re-launched my newsletter 6 weeks ago and already have 2,755 engaged subscribers. The templates saved me months of work."
+              </p>
+              <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                Maria
+              </a>
+            </div>
 
-        {/* Last-chance banner removed per new launch copy */}
+            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
+                  KL
+                </div>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                "Best investment I made this year. The community alone is worth the price. I'm now making $2,500/month from my newsletter thanks to this program."
+              </p>
+              <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                Kyle
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Full-width Last Chance banner (replaces countdown and yellow bg) */}
+        <div className="mb-12 -mx-8 relative group">
+          {/* Squiggles like example (hover reveal) */}
+          <div
+            className="pointer-events-none absolute left-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-3 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 md:flex"
+            style={{ color: '#FACC15' }}
+          >
+            {[0, 1, 2].map((i) => (
+              <svg
+                key={`l2-${i}`}
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-300 ${i === 0 ? '-rotate-12' : i === 2 ? 'rotate-12' : ''}`}
+              >
+                <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+              </svg>
+            ))}
+          </div>
+          <div
+            className="pointer-events-none absolute right-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-3 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:flex"
+            style={{ color: '#FACC15' }}
+          >
+            {[0, 1, 2].map((i) => (
+              <svg
+                key={`r2-${i}`}
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-300 ${i === 0 ? 'rotate-12' : i === 2 ? '-rotate-12' : ''}`}
+              >
+                <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+              </svg>
+            ))}
+          </div>
+          <button
+            type="button"
+            aria-label="Get Instant Access - scroll to form"
+            onClick={() => {
+              document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="shine promo-border relative w-full overflow-hidden rounded-none md:rounded-2xl border-y md:border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-500/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
+            {/* Deadline pill */}
+            <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-black font-semibold text-[11px] md:text-xs">Instant Access</span>
+            </div>
+            <div className="relative px-6 py-5 md:px-10 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
+              <div className="text-center">
+                <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
+                  Get the Complete System
+                </div>
+                <div className="text-black/90 font-semibold text-sm md:text-base">
+                  Watch anytime, anywhere. Lifetime access included.
+                </div>
+              </div>
+              <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
+            </div>
+          </button>
+        </div>
 
         {/* Creator Stories Section */}
-        <div className="pt-5 mb-16">
+        <div className="mb-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            <div className="bg-white rounded-2xl overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center">
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F71750850-e9e2-45cd-8e06-5daa71b7f61d%2Favatar?alt=media&token=6e39ea1b-96a6-410e-8d40-a69e2e022a38"
-                  alt="Marni avatar"
-                  className="w-24 h-24 rounded-full object-cover border-2 border-white"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-gray-500 text-xs font-medium tracking-wide">CREATOR RESULTS</div>
-                <div className="mt-1 flex items-center justify-between">
-                  <div className="flex items-center gap-0.5 text-yellow-500" aria-label="5 out of 5 stars">
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  </div>
-                  <div className="text-xs text-gray-500">Recorded</div>
+            {TESTIMONIALS_DATA.slice(0, 4).map((testimonial, i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <div className={`h-48 bg-gradient-to-br ${i % 4 === 0 ? 'from-orange-300 to-orange-400' :
+                  i % 4 === 1 ? 'from-blue-300 to-blue-400' :
+                    i % 4 === 2 ? 'from-purple-300 to-purple-400' :
+                      'from-emerald-300 to-emerald-400'
+                  } flex items-center justify-center`}>
+                  {testimonial.AvatarURL ? (
+                    <img
+                      src={testimonial.AvatarURL}
+                      alt={testimonial.Name}
+                      className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                      {testimonial.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-black text-xl font-bold mt-2 mb-3">Marni ▶</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  I have two people in my 90 day program and it generated 4k (so far) and I'm so happy about that!
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-blue-300 to-blue-400 flex items-center justify-center">
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F6fd11c11-ac36-43d9-9d22-7d7fdf9e398a%2Favatar?alt=media&token=8442c231-2be2-46c9-93c1-733ea4ad27d3"
-                  alt="Carrie Loranger avatar"
-                  className="w-24 h-24 rounded-full object-cover border-2 border-white"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-gray-500 text-xs font-medium tracking-wide">CREATOR RESULTS</div>
-                <div className="mt-1 flex items-center justify-between">
-                  <div className="flex items-center gap-0.5 text-yellow-500" aria-label="5 out of 5 stars">
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  </div>
-                  <div className="text-xs text-gray-500">Recorded</div>
+                <div className="p-6">
+                  <div className="text-gray-500 text-xs font-medium mb-2 tracking-wide uppercase">{testimonial.additionalinfo}</div>
+                  <h3 className="text-black text-xl font-bold mb-3">{testimonial.Name}</h3>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    "{testimonial.Text}"
+                  </p>
                 </div>
-                <h3 className="text-black text-xl font-bold mt-2 mb-3">Carrie Loranger ▶</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  The feedback is already incredible on my just-launched $100k Offer Stack Builder: "This nailed exactly what I needed to focus on" "Finally, a clear path forward" "Spot-on recommendations"
-                </p>
               </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-purple-300 to-purple-400 flex items-center justify-center">
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F417f5f06-d7a0-44b8-818e-e535c3ec2c55%2Fattached?alt=media&token=daf7c28f-d537-4943-a21d-585db796f083&_w=1000&_h=667"
-                  alt="Nate Solon avatar"
-                  className="w-24 h-24 rounded-full object-cover border-2 border-white"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-gray-500 text-xs font-medium tracking-wide">CREATOR RESULTS</div>
-                <div className="mt-1 flex items-center justify-between">
-                  <div className="flex items-center gap-0.5 text-yellow-500" aria-label="5 out of 5 stars">
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  </div>
-                  <div className="text-xs text-gray-500">Recorded</div>
-                </div>
-                <h3 className="text-black text-xl font-bold mt-2 mb-3">Nate Solon ▶</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  Hi Ana, just wanted to say thank you for your webinar. I used your system to name my highest performing post, which is currently responsible for quite a lot of my overall profit. Of course now I’ll use the same system to more posts. I want to send a screenshot of the stats but looks like I can’t in messages anyway it’s this post. It’s converted $3500 in paid subs.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden">
-              <div className="h-48 bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center">
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fc9cdb423-d612-48be-9745-2665ff95993f%2Favatar?alt=media&token=8cb6ceb6-b40e-4698-8a51-3ab418023d38"
-                  alt="Jeanette Martin avatar"
-                  className="w-24 h-24 rounded-full object-cover border-2 border-white"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-gray-500 text-xs font-medium tracking-wide">CREATOR RESULTS</div>
-                <div className="mt-1 flex items-center justify-between">
-                  <div className="flex items-center gap-0.5 text-yellow-500" aria-label="5 out of 5 stars">
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  </div>
-                  <div className="text-xs text-gray-500">Sept 21, 2025</div>
-                </div>
-                <h3 className="text-black text-xl font-bold mt-2 mb-3">Jeanette Martin ▶</h3>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -398,29 +607,14 @@ const PricingComponent = () => {
 
           {/* Results Gallery */}
           <ResultsGallery />
-          <FeaturedBySection />
-          <ValueStackPage />
-          <RiskReversalPage />
-          <ObjectionsPage />
-          <WhoThisIsForPage />
-          <ComparisonPage />
-          <TestimonialsFull />
-          <BonusStackPage />
-          <FinalPricingPage />
-          <FAQPage />
-          {/* Move Even More Success Stories here */}
-          <Testimonial4 />
-          <FinalUrgencyPage />
-          <FinalCTAPage />
-          <PSPage />
-          <Animated10KGrowth />
         </div>
 
         {/* What We Cover Section */}
         <div className="pb-16">
+          <AccordionSection />
         </div>
 
-        {/** Removed duplicate "What Our Students Say" section above the yellow pill */}
+        <Testimonials2 />
       </div>
     </div>
   );

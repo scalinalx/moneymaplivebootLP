@@ -140,7 +140,7 @@ const OldVsNewWaySection = () => {
               className="group inline-flex items-center justify-center gap-2 px-8 py-3 text-base font-bold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl shadow-lg"
             >
               <Zap className="w-4 h-4 group-hover:animate-pulse" />
-              SHOW ME THE NEW WAY
+              I WANT $5K/MONTH
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
             <p className="text-gray-500 text-xs mt-3">
@@ -176,7 +176,7 @@ const OldVsNewWaySection = () => {
               <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
                 <div className="flex items-center gap-3 mb-4">
                   <img
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt="Emma Wilson"
                     className="w-12 h-12 rounded-full"
                   />
@@ -229,7 +229,7 @@ const OldVsNewWaySection = () => {
                     className="w-12 h-12 rounded-full"
                   />
                   <div>
-                    <h3 className="text-white font-semibold text-sm">Sarah J.</h3>
+                    <h3 className="text-white font-semibold text-sm">Sarah Johnson</h3>
                     <p className="text-gray-400 text-xs">Marketing Insights</p>
                   </div>
                 </div>

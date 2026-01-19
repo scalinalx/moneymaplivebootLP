@@ -82,7 +82,7 @@ const WhoThisIsForSection = () => {
               }}
               className="relative text-black font-bold py-4 px-12 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 hover:opacity-90" style={{ backgroundColor: '#ffc300' }}
             >
-              GET INSTANT ACCESS TODAY
+              I'M READY TO SCALE
             </button>
           </div>
           <p className="text-gray-400 text-sm mt-6">

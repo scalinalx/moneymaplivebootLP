@@ -45,8 +45,8 @@ const WhatYoullGetSection = () => {
   const features = [
     {
       number: "01",
-      title: "Monthly Implementation Group calls with Me",
-      description: "As an academy member you'll get access to monthly group coaching calls directly with me where we will host live Q&As to help you overcome the unique challenges you're facing with your newsletter.",
+      title: "Access to a private 300+ elite community on Skool made up of creators like you",
+      description: "Join an exclusive network of high-performing creators. Get 24/7 support, share specific revenue strategies, and accelerate your growth by surrounding yourself with people who are already winning.",
       image: "group-calls"
     },
     {
@@ -99,8 +99,8 @@ const WhatYoullGetSection = () => {
                     <div
                       ref={el => { itemRefs.current[index] = el; }}
                       className={`w-16 h-16 rounded-full bg-yellow-400/20 flex items-center justify-center border-2 border-yellow-400 transition-all duration-700 ease-in-out ${visibleItems.has(index)
-                          ? 'scale-110'
-                          : 'scale-100'
+                        ? 'scale-110'
+                        : 'scale-100'
                         }`}
                       style={visibleItems.has(index) ? {
                         boxShadow: '0 0 30px rgba(255, 195, 0, 0.9), 0 0 60px rgba(255, 195, 0, 0.5), 0 0 90px rgba(255, 195, 0, 0.3)'
@@ -176,7 +176,7 @@ const WhatYoullGetSection = () => {
                           </div>
                         </div>
                         <div className="absolute bottom-4 left-4 right-4 bg-black/80 rounded p-2">
-                          <div className="text-white text-sm">Monthly Implementation Call - Live Q&A</div>
+                          <div className="text-white text-sm">Private Skool Community - 300+ Members</div>
                         </div>
                       </div>
                     )}
@@ -291,7 +291,7 @@ const WhatYoullGetSection = () => {
             }}
             className="text-black font-bold py-4 px-12 rounded-lg text-xl transition-all duration-200 transform hover:scale-105 hover:opacity-90" style={{ backgroundColor: '#ffc300' }}
           >
-            GET ACCESS TO EVERYTHING TODAY
+            I'M READY TO SCALE
           </button>
           <p className="text-gray-400 text-sm mt-4">
             Join 380+ newsletter creators already building their revenue machines

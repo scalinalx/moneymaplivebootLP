@@ -22,7 +22,7 @@ const PricingComp2 = () => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         let { hours, minutes, seconds } = prev;
-        
+
         if (seconds > 0) {
           seconds--;
         } else if (minutes > 0) {
@@ -33,7 +33,7 @@ const PricingComp2 = () => {
           minutes = 59;
           seconds = 59;
         }
-        
+
         return { hours, minutes, seconds };
       });
     }, 1000);
@@ -42,23 +42,27 @@ const PricingComp2 = () => {
   }, []);
 
   const handleLeadSuccess = async (leadData: Lead) => {
-    // New flow: skip upsell, auto-start STANDARD checkout
-    setError(null);
     setIsProcessingPayment(true);
+    setError(null);
+
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ leadId: leadData.id, variant: 'standard' })
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ leadId: leadData.id }),
       });
+
       const result: ApiResponse<StripeCheckoutSession> = await response.json();
-      if (result.success && result.data?.url) {
+
+      if (result.success && result.data) {
         window.location.href = result.data.url;
       } else {
-        setError(result.error || 'Failed to start checkout. Please try again.');
+        setError(result.error || 'Failed to create checkout session');
         setIsProcessingPayment(false);
       }
-    } catch (e) {
+    } catch {
       setError('Network error. Please try again.');
       setIsProcessingPayment(false);
     }
@@ -109,36 +113,36 @@ const PricingComp2 = () => {
         .promo-border:hover::after { opacity: 0.7; filter: blur(8px); }
       `}</style>
       <div className="max-w-6xl mx-auto px-8 relative z-10">
-        
-        
+
+
 
         {/* Testimonials Section */}
-        
+
 
         {/* Countdown Timer */}
-        
+
 
         {/* Creator Stories Section */}
-        
+
 
         {/* Transition Section */}
-        
+
 
         {/* What We Cover Section */}
-       
+
 
         {/* Pricing Section */}
-        <div id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-4">
+        <div id="pricing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center mb-8">
             <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Get The Complete System for Just{' '}
-              <span className="text-gray-400 line-through mr-4">$997</span>
+              <span className="text-gray-400 line-through mr-4">$897</span>
               <span className="text-yellow-400">$497</span>
             </h2>
             <p className="text-gray-300 text-lg mb-8">
               (Save $400 + & $2,000+ vs. hiring a consultant)
             </p>
-            
+
             {/* Value Points */}
             <div className="max-w-3xl mx-auto mb-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -148,9 +152,9 @@ const PricingComp2 = () => {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <span className="text-gray-300 text-sm">6 proven modules used by 25 Substack Bestsellers</span>
+                  <span className="text-gray-300 text-sm">6 proven modules used by 12 Substack Bestsellers</span>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
@@ -159,7 +163,7 @@ const PricingComp2 = () => {
                   </div>
                   <span className="text-gray-300 text-sm">50+ high-converting templates & frameworks</span>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
@@ -168,7 +172,7 @@ const PricingComp2 = () => {
                   </div>
                   <span className="text-gray-300 text-sm">Private community of $10K+/month creators</span>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
@@ -179,9 +183,85 @@ const PricingComp2 = () => {
                 </div>
               </div>
             </div>
-            {/* Last-chance banner removed per new launch copy */}
+
+            {/* Full-width Last Chance banner (replaces spots/cohort message) */}
+            <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-8 relative group">
+              {/* Squiggles like example (hover reveal) */}
+              <div
+                className="pointer-events-none absolute left-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-3 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 md:flex"
+                style={{ color: '#FACC15' }}
+              >
+                {[0, 1, 2].map((i) => (
+                  <svg
+                    key={`l-${i}`}
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${i === 0 ? '-rotate-12' : i === 2 ? 'rotate-12' : ''}`}
+                  >
+                    <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+                  </svg>
+                ))}
+              </div>
+              <div
+                className="pointer-events-none absolute right-[-84px] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-3 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:flex"
+                style={{ color: '#FACC15' }}
+              >
+                {[0, 1, 2].map((i) => (
+                  <svg
+                    key={`r-${i}`}
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${i === 0 ? 'rotate-12' : i === 2 ? '-rotate-12' : ''}`}
+                  >
+                    <path d="M2 12c3-3 6 3 9 0s6 3 11 0" />
+                  </svg>
+                ))}
+              </div>
+              <button
+                type="button"
+                aria-label="Get Instant Access - scroll to form"
+                onClick={() => {
+                  document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="shine promo-border relative w-full overflow-hidden rounded-none md:rounded-2xl border-y md:border border-yellow-300/60 shadow-lg focus:outline-none focus:ring-4 focus:ring-yellow-500/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 opacity-90" />
+                {/* Deadline pill */}
+                <div className="absolute top-1.5 right-1.5 md:top-2 md:right-3 flex items-center gap-2 bg-black/20 backdrop-blur px-2.5 py-1 rounded-full border border-white/20">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="text-black font-semibold text-[11px] md:text-xs">Instant Access</span>
+                </div>
+                <div className="relative px-6 py-5 md:px-10 md:py-6 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                  <Zap className="w-5 h-5 md:w-6 md:h-6 text-black drop-shadow" />
+                  <div className="text-center">
+                    <div className="text-black font-extrabold text-xl md:text-2xl leading-tight">
+                      Get the Complete System
+                    </div>
+                    <div className="text-black/90 font-semibold text-sm md:text-base">
+                      Watch anytime, anywhere. Lifetime access included.
+                    </div>
+                  </div>
+                  <Zap className="hidden md:block w-6 h-6 text-black drop-shadow" />
+                </div>
+              </button>
+            </div>
           </div>
-          
+
           {/* Form Section */}
           <section id="form-section" className="scroll-mt-20">
             <div className="max-w-2xl mx-auto px-6">
