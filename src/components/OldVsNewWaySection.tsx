@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Check, ArrowRight, Zap } from 'lucide-react';
 import Image from 'next/image';
+import TESTIMONIALS_DATA from '@/data/testimonials.json';
 
 const OldVsNewWaySection = () => {
   const oldWayItems = [
@@ -172,102 +173,39 @@ const OldVsNewWaySection = () => {
 
           {/* Full-width testimonials container - truly full width */}
           <div className="w-full px-8">
-            <div className="grid grid-cols-4 gap-6 max-w-none mx-auto">
-              <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
-                <div className="flex items-center gap-3 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="Emma Wilson"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-white font-semibold text-sm">Emma Wilson</h3>
-                    <p className="text-gray-400 text-xs">Tech Trends Weekly</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-none mx-auto">
+              {TESTIMONIALS_DATA.slice(7, 11).map((testimonial, i) => (
+                <div key={i} className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    {testimonial.AvatarURL ? (
+                      <img
+                        src={testimonial.AvatarURL}
+                        alt={testimonial.Name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                        {testimonial.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-white font-semibold text-sm">{testimonial.Name}</h3>
+                      <p className="text-gray-400 text-[10px] uppercase tracking-wider">{testimonial.Date}</p>
+                    </div>
+                  </div>
+                  <div className="text-yellow-400/90 text-[10px] font-bold uppercase tracking-widest mb-1">{testimonial.additionalinfo}</div>
+                  <p className="text-gray-300 text-xs leading-relaxed mb-3 italic">
+                    "{testimonial.Text}"
+                  </p>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
                   </div>
                 </div>
-                <p className="text-gray-300 text-xs leading-relaxed mb-3">
-                  "I was skeptical at first, but this program completely changed my perspective. The step-by-step guidance helped me launch my newsletter and start making money within weeks."
-                </p>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
-                <div className="flex items-center gap-3 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="David Chen"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-white font-semibold text-sm">David Chen</h3>
-                    <p className="text-gray-400 text-xs">Startup Insights</p>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-xs leading-relaxed mb-3">
-                  "The templates and strategies provided in this program are worth their weight in gold. I've been able to scale my newsletter to 10,000 subscribers and generate consistent revenue."
-                </p>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
-                <div className="flex items-center gap-3 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="Sarah Johnson"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-white font-semibold text-sm">Sarah Johnson</h3>
-                    <p className="text-gray-400 text-xs">Marketing Insights</p>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-xs leading-relaxed mb-3">
-                  "This program exceeded all my expectations. Within 2 months, I grew from 500 to 8,000 subscribers and launched my first paid newsletter tier successfully."
-                </p>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
-                <div className="flex items-center gap-3 mb-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="Michael Rodriguez"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-white font-semibold text-sm">Michael Rodriguez</h3>
-                    <p className="text-gray-400 text-xs">Creator Economy</p>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-xs leading-relaxed mb-3">
-                  "Amazing results! I went from $0 to $4,200/month in newsletter revenue in just 4 months. The community support and Ana's guidance made all the difference."
-                </p>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

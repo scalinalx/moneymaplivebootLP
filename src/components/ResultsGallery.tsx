@@ -12,7 +12,7 @@ const ResultsGallery = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="aspect-w-16 aspect-h-9 mb-4">
             <Image
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
               alt="Growth Chart"
               className="rounded-lg object-cover w-full h-full"
               width={320}
@@ -35,7 +35,7 @@ const ResultsGallery = () => {
         <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200">
           <div className="aspect-w-16 aspect-h-9 mb-4">
             <Image
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80"
               alt="Revenue Chart"
               className="rounded-lg object-cover w-full h-full"
               width={320}

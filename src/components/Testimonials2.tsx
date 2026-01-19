@@ -10,7 +10,7 @@ const Testimonials2 = () => {
       </div>
       {/* First row - all testimonials in a single grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {TESTIMONIALS_DATA.slice(4, 10).map((testimonial, i) => (
+        {TESTIMONIALS_DATA.slice(15, 21).map((testimonial, i) => (
           <div key={i} className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
             <div className="flex items-center gap-4 mb-6">
               {testimonial.AvatarURL ? (
@@ -26,7 +26,7 @@ const Testimonials2 = () => {
               )}
               <div>
                 <h3 className="text-white font-semibold text-lg">{testimonial.Name}</h3>
-                <p className="text-gray-400 text-sm truncate max-w-[150px]">{testimonial.additionalinfo}</p>
+                <div className="text-gray-400 text-[10px] uppercase font-medium tracking-wider mb-1">{testimonial.additionalinfo} • {testimonial.Date}</div>
               </div>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">

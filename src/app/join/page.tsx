@@ -14,6 +14,7 @@ import JoinVSLPlayer from '@/components/JoinVSLPlayer';
 import { MRRGraph } from '@/components/MRRGraph';
 import VideoTestimonialsClone from '@/components/VideoTestimonialsClone';
 import WhySpecificOffer from '@/components/WhySpecificOffer';
+import TESTIMONIALS_DATA from '@/data/testimonials.json';
 
 const HERO_AVATARS = [
   {
@@ -109,101 +110,7 @@ const SCHEDULE_DAY_2: ScheduleItem[] = [
   },
 ];
 
-const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 1,
-    name: 'Sarah K.',
-    role: 'Newsletter Creator',
-    company: '$3,200 in first 14 days',
-    content:
-      'I made $3,200 in my first 14 days after joining. Build to Profit ended 8 months of overthinking.',
-    avatar:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1374',
-  },
-  {
-    id: 2,
-    name: 'Marcus T.',
-    role: 'Content Strategist',
-    company: '$4,500 Week 1 launch',
-    content:
-      "Finally launched after endless planning. Hit $4,500 Week 1. The workshop sessions are everything.",
-    avatar:
-      'https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png',
-  },
-  {
-    id: 3,
-    name: 'Tom Wilson',
-    role: 'Creator Chronicles',
-    company: '15K subs • $8,200/mo',
-    content:
-      'From zero to 15K subscribers in 8 months. The growth strategies actually work. My newsletter is now my main income source at $8,200/month.',
-    avatar:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=1374',
-  },
-  {
-    id: 4,
-    name: 'Rachel Torres',
-    role: 'Business Breakthroughs',
-    company: '12k subs • $5,400/mo',
-    content:
-      'Incredible results! I went from struggling to get 50 opens to 12,000 engaged subscribers and $5,400 monthly revenue. Life-changing program!',
-    avatar:
-      'https://images.unsplash.com/photo-1541216970279-affbfdd55aa8?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    id: 5,
-    name: 'Nate Solon',
-    role: 'Creator',
-    company: '$3,500 from one post',
-    content:
-      'Used Ana’s naming system on one post—converted $3,500 in paid subs. Taking that playbook across every launch now.',
-    avatar:
-      'https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F417f5f06-d7a0-44b8-818e-e535c3ec2c55%2Fattached?alt=media&token=daf7c28f-d537-4943-a21d-585db796f083&_w=1000&_h=667',
-  },
-  {
-    id: 6,
-    name: 'Jake Martinez',
-    role: 'Finance Weekly',
-    company: '5k subs • $2,800/mo',
-    content:
-      'Stuck at 200 subscribers for months. After applying this system, hit 5,000 subscribers and $2,800/month in just 90 days.',
-    avatar:
-      'https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-];
 
-const EXTRA_TESTIMONIALS: Testimonial[] = [
-  {
-    id: 7,
-    name: 'Lisa Chen',
-    role: 'Health & Wellness Hub',
-    company: '$6,500 first month',
-    content:
-      'The monetization frameworks are pure gold. I launched my premium tier and made $6,500 in the first month. This program pays for itself!',
-    avatar:
-      'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    id: 8,
-    name: 'Maria L., 847 subscribers',
-    role: 'Creator',
-    company: '$2,800 Week 1 • $3,100 Week 2',
-    content:
-      '“$2,800 in Week 1. Then $3,100 in Week 2. My list is only 847 people. You don’t need 10K subscribers.”',
-    avatar:
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    id: 9,
-    name: 'Rachel Torres',
-    role: 'Business Breakthroughs',
-    company: '12k subs • $5,400/mo',
-    content:
-      'From struggling to get 50 opens to 12,000 engaged subscribers and $5,400 monthly revenue. Life-changing program!',
-    avatar:
-      'https://images.unsplash.com/photo-1541216970279-affbfdd55aa8?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-];
 
 const FAQ_ITEMS: FAQItem[] = [
   {
@@ -360,81 +267,40 @@ export default function JoinPage() {
         <section className="relative z-10 bg-brand-950 px-4 pt-0 pb-16">
           <div className="mx-auto max-w-6xl">
             <div className="grid gap-6 md:grid-cols-3">
-              {/* David L. */}
-              <div className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex text-yellow-400">
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
+              {TESTIMONIALS_DATA.slice(21, 24).map((t, i) => (
+                <div key={i} className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex text-yellow-400">
+                      <Star className="h-4 w-4 fill-current" />
+                      <Star className="h-4 w-4 fill-current" />
+                      <Star className="h-4 w-4 fill-current" />
+                      <Star className="h-4 w-4 fill-current" />
+                      <Star className="h-4 w-4 fill-current" />
+                    </div>
+                    <span className="text-xs text-brand-grey">{t.Date}</span>
                   </div>
-                  <span className="text-xs text-brand-grey">Nov 11, 2025</span>
-                </div>
-                <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
-                  &quot;$7,486.03 in one week! That&apos;s how much my program made after following your advice. Jeez... why didn&apos;t I do all this earlier? Thank you, thank you, Ana.&quot;
-                </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
-                  <div className="w-10 h-10 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-sm">DL</div>
-                  <div>
-                    <div className="font-display text-sm font-bold text-white">David L.</div>
-                    <div className="text-xs text-brand-grey">$7,486 in one week</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Noemi */}
-              <div className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex text-yellow-400">
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                  </div>
-                  <span className="text-xs text-brand-grey">Oct 7, 2025</span>
-                </div>
-                <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
-                  &quot;I launched my $997 offer to 450 subscribers. Got 4 sales in 5 days. $3,988. I almost didn&apos;t launch because I thought my audience was &apos;too small.&apos; Glad I ignored that.&quot;
-                </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
-                  <div className="w-10 h-10 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-sm">N</div>
-                  <div>
-                    <div className="font-display text-sm font-bold text-white">Noemi</div>
-                    <div className="text-xs text-brand-grey">$3,988 from 450 subscribers</div>
+                  <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
+                    &quot;{t.Text}&quot;
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
+                    {t.AvatarURL ? (
+                      <img
+                        src={t.AvatarURL}
+                        alt={t.Name}
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-sm">
+                        {t.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
+                    <div>
+                      <div className="font-display text-sm font-bold text-white">{t.Name}</div>
+                      <div className="text-xs text-brand-grey">{t.additionalinfo}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Jill Hart */}
-              <div className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex text-yellow-400">
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                    <Star className="h-4 w-4 fill-current" />
-                  </div>
-                  <span className="text-xs text-brand-grey">Jun 26, 2025</span>
-                </div>
-                <p className="text-brand-white/90 text-sm leading-relaxed mb-4">
-                  &quot;I&apos;ve implemented Ana&apos;s money map and made $1,500 over the last month with a less than 400 subscriber base!&quot;
-                </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-brand-800">
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fe6a99c21-4306-4fec-817f-ccab659b69f5%2Favatar?alt=media&token=ab8ae473-f1ba-4034-8ddf-059bc842131b"
-                    alt="Jill Hart"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-display text-sm font-bold text-white">Jill Hart</div>
-                    <div className="text-xs text-brand-grey">$1,500/mo with &lt;400 subs</div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -558,28 +424,34 @@ export default function JoinPage() {
               </span>
             </h3>
             <div className="grid gap-6 md:grid-cols-3">
-              {EXTRA_TESTIMONIALS.map((t) => (
+              {TESTIMONIALS_DATA.slice(24, 27).map((t, i) => (
                 <div
-                  key={t.id}
+                  key={i}
                   className="border border-brand-800 bg-brand-900 p-6 transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      className="h-12 w-12 rounded-full object-cover"
-                    />
+                    {t.AvatarURL ? (
+                      <img
+                        src={t.AvatarURL}
+                        alt={t.Name}
+                        className="h-12 w-12 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="h-12 w-12 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-lg">
+                        {t.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
                     <div>
                       <div className="font-display text-sm font-bold uppercase tracking-wide text-white">
-                        {t.name}
+                        {t.Name}
                       </div>
                       <div className="text-xs text-brand-grey">
-                        {t.role} • {t.company}
+                        {t.additionalinfo} • {t.Date}
                       </div>
                     </div>
                   </div>
                   <p className="text-brand-white/90 text-sm leading-relaxed">
-                    “{t.content}”
+                    “{t.Text}”
                   </p>
                 </div>
               ))}
@@ -701,27 +573,33 @@ export default function JoinPage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
-              {TESTIMONIALS.map((t) => (
+              {TESTIMONIALS_DATA.slice(0, 9).map((t, i) => (
                 <div
-                  key={t.id}
+                  key={i}
                   className="group relative border border-brand-800 bg-brand-900 p-8 transition-transform duration-300 hover:-translate-y-1"
                 >
                   <Quote className="absolute right-6 top-6 h-8 w-8 text-brand-800 transition-colors group-hover:text-brand-lime/20" />
                   <p className="relative z-10 mb-8 text-lg font-light leading-relaxed text-brand-white/90">
-                    &quot;{t.content}&quot;
+                    &quot;{t.Text}&quot;
                   </p>
                   <div className="flex items-center gap-4 border-t border-brand-800 pt-6">
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      className="h-10 w-10 rounded-full grayscale transition-all group-hover:grayscale-0"
-                    />
+                    {t.AvatarURL ? (
+                      <img
+                        src={t.AvatarURL}
+                        alt={t.Name}
+                        className="h-10 w-10 rounded-full grayscale transition-all group-hover:grayscale-0 object-cover"
+                      />
+                    ) : (
+                      <div className="h-10 w-10 rounded-full bg-brand-lime flex items-center justify-center text-brand-950 font-bold text-sm">
+                        {t.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
                     <div>
                       <div className="font-display text-sm font-bold uppercase tracking-wide text-white">
-                        {t.name}
+                        {t.Name}
                       </div>
                       <div className="text-xs text-brand-grey">
-                        {t.role}, {t.company}
+                        {t.additionalinfo} • {t.Date}
                       </div>
                     </div>
                   </div>

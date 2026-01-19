@@ -7,42 +7,10 @@ import AccordionSection from './AccordionSection';
 import ResultsGallery from './ResultsGallery';
 import Testimonials2 from './Testimonials2';
 
-const HERO_AVATARS = [
-  {
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
-    alt: 'Sarah K.',
-  },
-  {
-    src: 'https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png',
-    alt: 'Marcus T.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1685903772095-f07172808761?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
-    alt: 'Priya M.',
-  },
-  {
-    src: 'https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fa5e4510d-697e-412b-a33e-d5503f645c92%2Favatar?alt=media&token=3a4e4b81-9080-436e-bfae-25808b43fc0f',
-    alt: 'Sue',
-  },
-  { src: '/testimavatar/jeff.webp', alt: 'Jeff' },
-  { src: '/testimavatar/46.webp', alt: 'Mary B.' },
-  {
-    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
-    alt: 'Alexandra L.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
-    alt: 'Emma Wilson',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
-    alt: 'Tom Wilson',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1541216970279-affbfdd55aa8?auto=format&fit=facearea&facepad=2&w=120&h=120&q=80',
-    alt: 'Rachel Torres',
-  },
-];
+const HERO_AVATARS = TESTIMONIALS_DATA.slice(0, 10).map(t => ({
+  src: t.AvatarURL,
+  alt: t.Name
+}));
 
 const PricingComponent = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -343,68 +311,37 @@ const PricingComponent = () => {
             <h2 className="text-white text-3xl font-bold mb-2">What Our Students Say</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto mb-8">
-            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
-                  SJ
+            {TESTIMONIALS_DATA.slice(0, 3).map((testimonial, i) => (
+              <div key={i} className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
+                <div className="flex items-center gap-3 mb-4">
+                  {testimonial.AvatarURL ? (
+                    <img
+                      src={testimonial.AvatarURL}
+                      alt={testimonial.Name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                      {testimonial.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </div>
+                  )}
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                "The Newsletter Money Map completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!"
-              </p>
-              <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                Gustavo
-              </a>
-            </div>
-
-            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
-                  MR
-                </div>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
+                <div className="text-gray-400 text-[10px] uppercase font-medium tracking-wider mb-2">{testimonial.Date}</div>
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                  "{testimonial.Text}"
+                </p>
+                <div className="text-blue-400 text-sm font-medium">
+                  {testimonial.Name}
                 </div>
               </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                "Ana's framework is pure gold. I re-launched my newsletter 6 weeks ago and already have 2,755 engaged subscribers. The templates saved me months of work."
-              </p>
-              <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                Maria
-              </a>
-            </div>
-
-            <div className="bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/25 hover:border-white/40 transition-colors duration-200 w-full">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-medium">
-                  KL
-                </div>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                "Best investment I made this year. The community alone is worth the price. I'm now making $2,500/month from my newsletter thanks to this program."
-              </p>
-              <a href="#" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                Kyle
-              </a>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -488,29 +425,30 @@ const PricingComponent = () => {
         {/* Creator Stories Section */}
         <div className="mb-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {TESTIMONIALS_DATA.slice(0, 4).map((testimonial, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <div className={`h-48 bg-gradient-to-br ${i % 4 === 0 ? 'from-orange-300 to-orange-400' :
-                  i % 4 === 1 ? 'from-blue-300 to-blue-400' :
-                    i % 4 === 2 ? 'from-purple-300 to-purple-400' :
-                      'from-emerald-300 to-emerald-400'
-                  } flex items-center justify-center`}>
-                  {testimonial.AvatarURL ? (
-                    <img
-                      src={testimonial.AvatarURL}
-                      alt={testimonial.Name}
-                      className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
-                    />
-                  ) : (
-                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black font-bold text-lg shadow-lg">
-                      {testimonial.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+            {TESTIMONIALS_DATA.slice(3, 7).map((testimonial, i) => (
+              <div key={i} className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/25 hover:border-white/40 transition-colors duration-200">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    {testimonial.AvatarURL ? (
+                      <img
+                        src={testimonial.AvatarURL}
+                        alt={testimonial.Name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                        {testimonial.Name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-white font-bold text-sm">{testimonial.Name}</h3>
+                      <div className="text-gray-400 text-[10px] uppercase font-medium tracking-wider">{testimonial.Date}</div>
                     </div>
-                  )}
+                  </div>
                 </div>
-                <div className="p-6">
-                  <div className="text-gray-500 text-xs font-medium mb-2 tracking-wide uppercase">{testimonial.additionalinfo}</div>
-                  <h3 className="text-black text-xl font-bold mb-3">{testimonial.Name}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                <div className="mb-4">
+                  <div className="text-yellow-400/90 text-[10px] font-bold uppercase tracking-widest mb-1">{testimonial.additionalinfo}</div>
+                  <p className="text-gray-300 text-sm leading-relaxed italic">
                     "{testimonial.Text}"
                   </p>
                 </div>
