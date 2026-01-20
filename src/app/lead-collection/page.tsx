@@ -14,13 +14,29 @@ function LeadCollectionContent() {
   const searchParams = useSearchParams();
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const canceled = searchParams.get('canceled');
 
   const handleLeadSuccess = async (leadData: Lead) => {
-    // Route to upsell page; checkout happens after choice
     setError(null);
-    router.push(`/upsell?leadId=${encodeURIComponent(leadData.id || '')}`);
+    setIsProcessingPayment(true);
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leadId: leadData.id, variant: 'standard' }),
+      });
+      const result: ApiResponse<StripeCheckoutSession> = await response.json();
+      if (result.success && result.data?.url) {
+        window.location.href = result.data.url;
+      } else {
+        setError(result.error || 'Could not start checkout. Please try again.');
+        setIsProcessingPayment(false);
+      }
+    } catch {
+      setError('Network error. Please try again.');
+      setIsProcessingPayment(false);
+    }
   };
 
   const handleLeadError = (errorMessage: string) => {
@@ -39,14 +55,14 @@ function LeadCollectionContent() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Workshop Details
           </button>
-          
+
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Secure Your Workshop Seat
           </h1>
           <p className="text-xl text-gray-600 mb-6">
             Just one step away from transforming your skills
           </p>
-          
+
           {/* Price Display */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border max-w-sm mx-auto mb-8">
             <div className="text-3xl font-bold text-gray-900 mb-2">
@@ -94,7 +110,7 @@ function LeadCollectionContent() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
             Your Information
           </h2>
-          
+
           {isProcessingPayment ? (
             <div className="text-center py-12">
               <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>

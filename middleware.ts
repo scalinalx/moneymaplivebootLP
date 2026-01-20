@@ -14,6 +14,8 @@ export function middleware(req: NextRequest) {
     '/public',
     '/videos',
     '/testimavatar',
+    '/success',
+    '/upsell',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
