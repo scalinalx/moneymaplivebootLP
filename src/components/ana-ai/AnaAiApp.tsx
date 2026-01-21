@@ -130,7 +130,7 @@ const AnaAiApp = () => {
                     {/* Show intro text only if no results yet */}
                     {!result && (
                         <p className="text-lg text-slate-500 mb-10 max-w-2xl mx-auto font-light ana-ai-animate-fade-in">
-                            Welcome inside, {user.name}. Ready to build your empire? Enter your skill below, and our AI will architect the perfect Lead Magnet, Core Offer, Upsell, and Downsell for you.
+                            Welcome inside, {user.name}. Ready to actually make money from your online business? Enter your skill below, and our AI will architect the perfect Lead Magnet, Core Offer, Upsell, and Downsell for you.
                         </p>
                     )}
 

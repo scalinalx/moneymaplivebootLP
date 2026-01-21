@@ -67,7 +67,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                     </h1>
 
                     <p className="text-lg text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
-                        Stop guessing. Build an empire. Enter your details to instantly generate a complete, high-value product ecosystem tailored to your specific expertise.
+                        Stop guessing. Build a $5k/month creator business. Enter your details to instantly generate a complete, high-value product ecosystem tailored to your specific expertise.
                     </p>
 
                     <div className="space-y-4 max-w-md mx-auto md:mx-0 text-left">
