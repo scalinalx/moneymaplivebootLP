@@ -248,6 +248,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                             </div>
                         </div>
                     </div>
+
+                    <div className="mt-16 md:mt-24 flex justify-center w-full">
+                        <img
+                            src="/imgs/ana-ai/g1.gif"
+                            className="max-w-2xl w-full rounded-2xl shadow-xl border border-white/50"
+                            alt="Legacy Proof"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
