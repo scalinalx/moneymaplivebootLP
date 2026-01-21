@@ -84,6 +84,9 @@ body {
   background: linear-gradient(135deg, #be185d 0%, #db2777 50%, #FFD900 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
 }
 
 .ana-ai-glass-panel {

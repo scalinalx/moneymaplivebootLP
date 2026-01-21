@@ -63,7 +63,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                     </div>
 
                     <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-[1.15]">
-                        This takes you from <span className="ana-ai-gradient-text italic">"I don't know what to sell"</span> to actually making money online.
+                        This takes you from <span className="ana-ai-gradient-text italic pl-1">"I don't know what to sell"</span> to actually making money online.
                     </h1>
 
                     <p className="text-base text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
@@ -136,7 +136,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting || !name || !email || !agreed}
-                                className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-4 rounded-xl shadow-lg shadow-slate-900/20 transition-all hover:scale-[1.02] flex items-center justify-center gap-2 mt-4 disabled:opacity-70"
+                                className="w-full bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-900/10 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mt-4 disabled:opacity-70"
                             >
                                 {isSubmitting ? (
                                     <Loader2 size={18} className="animate-spin" />
