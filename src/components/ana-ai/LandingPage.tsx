@@ -63,11 +63,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                     </div>
 
                     <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-[1.15]">
-                        This takes you from <span className="ana-ai-gradient-text italic pl-1">"I don't know what to sell"</span> to actually making money online.
+                        Turn <span className="ana-ai-gradient-text italic pl-1">"I don't know what to sell"</span> into a clear offer people actually want to buy.
                     </h1>
 
                     <p className="text-base text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
-                        Stop guessing. Build a $5k/month creator business. Enter your details to instantly generate a complete, high-value product ecosystem tailored to your specific expertise.
+                        Stop guessing. Instantly see how to package your expertise into products that sell.
                     </p>
 
                     <div className="space-y-4 max-w-md mx-auto md:mx-0 text-left">
