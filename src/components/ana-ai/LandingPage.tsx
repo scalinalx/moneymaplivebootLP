@@ -54,7 +54,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                 <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                     {/* Left Content */}
-                    <div className="space-y-8 text-center md:text-left order-2 md:order-1">
+                    <div className="space-y-8 text-center md:text-left order-1 md:order-1">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100/50 border border-rose-100 text-rose-600 text-xs font-bold uppercase tracking-wider mx-auto md:mx-0">
                             <img
                                 src="https://substackcdn.com/image/fetch/$s_!VUeE!,w_1360,c_limit,f_webp,q_auto:best,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9dc2df7d-6cba-4d7e-94fc-05583eec3cda_1280x1280.png"
@@ -89,7 +89,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                     </div>
 
                     {/* Right Form Card */}
-                    <div className="relative order-1 md:order-2">
+                    <div className="relative order-2 md:order-2">
                         <div className="absolute -inset-1 bg-gradient-to-br from-rose-300 to-pink-500 rounded-2xl blur opacity-30"></div>
                         <div className="relative bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-2xl shadow-2xl">
                             <div className="text-center mb-5">
