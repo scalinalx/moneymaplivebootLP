@@ -249,17 +249,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                         </div>
                     </div>
 
-                    <div className="mt-16 md:mt-24 max-w-4xl mx-auto w-full px-4">
-                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/50 bg-white">
-                            <div style={{ position: 'relative', paddingBottom: '48.645833333333336%', height: 0 }}>
-                                <iframe
-                                    src="https://www.loom.com/embed/e1899a584508411aa5ab53bc9cfe742b"
-                                    frameBorder="0"
-                                    allowFullScreen
-                                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                                />
-                            </div>
-                        </div>
+                    <div className="mt-16 md:mt-24 flex justify-center w-full">
+                        <img
+                            src="/imgs/ana-ai/g2.gif"
+                            className="max-w-2xl w-full rounded-2xl shadow-xl border border-white/50"
+                            alt="Visual Proof"
+                        />
                     </div>
                 </div>
             </div>
