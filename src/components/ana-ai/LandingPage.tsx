@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Lock, CheckCircle2, Loader2 } from 'lucide-react';
+import { ArrowRight, Lock, CheckCircle2, Loader2, ThumbsUp, Heart, Award } from 'lucide-react';
 import { captureLead } from '@/services/ana-ai/leadService';
 
 interface LandingPageProps {
@@ -156,6 +156,108 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                     </div>
                 </div>
 
+            </div>
+
+            {/* Testimonials Section */}
+            <div className="max-w-7xl w-full mt-24 pt-16 border-t border-slate-100 flex flex-col items-center">
+                <div className="text-center mb-12">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">What experts are saying</h3>
+                    <p className="text-slate-500 text-[13px]">Join hundreds of creators who finally found their "perfect offer".</p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
+                    {/* Testimonial 1 */}
+                    <div className="flex gap-3">
+                        <img
+                            src="/imgs/ana-ai/avatar_female_1.png"
+                            className="w-10 h-10 rounded-full flex-shrink-0 shadow-sm border border-slate-100"
+                            alt="Tiff"
+                        />
+                        <div className="flex-1">
+                            <div className="bg-[#F0F2F5] p-3 px-4 rounded-2xl relative">
+                                <div className="flex items-center gap-1.5 mb-1">
+                                    <span className="font-bold text-[13px] text-slate-900 leading-none">Tiff</span>
+                                    <div className="flex items-center gap-1 bg-white px-1.5 py-0.5 rounded-md border border-slate-100 shadow-sm">
+                                        <Award size={10} className="text-slate-400" />
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Top fan</span>
+                                    </div>
+                                </div>
+                                <p className="text-[13px] text-slate-800 leading-normal">
+                                    Best investment I've made this year. I'm already seeing my offer clarity skyrocket as instructed. I love Ana! 😍 and Rose 🌹
+                                </p>
+                                <div className="absolute -right-2 bottom-1 flex items-center gap-0.5 bg-white shadow-sm border border-slate-50 rounded-full p-1 px-1.5 translate-y-1/2">
+                                    <div className="bg-blue-500 rounded-full p-0.5"><ThumbsUp size={8} className="text-white" /></div>
+                                    <div className="bg-rose-500 rounded-full p-0.5"><Heart size={8} className="text-white" /></div>
+                                    <span className="text-[10px] font-medium text-slate-500 ml-0.5">2</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4 mt-1.5 ml-3 text-[11px] font-bold text-slate-500">
+                                <span className="hover:underline cursor-pointer">1d</span>
+                                <span className="text-rose-600 hover:underline cursor-pointer">Love</span>
+                                <span className="hover:underline cursor-pointer">Reply</span>
+                                <span className="text-blue-600 hover:underline cursor-pointer">Send message</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Testimonial 2 */}
+                    <div className="flex gap-3">
+                        <img
+                            src="/imgs/ana-ai/avatar_female_2.png"
+                            className="w-10 h-10 rounded-full flex-shrink-0 shadow-sm border border-slate-100"
+                            alt="Monique"
+                        />
+                        <div className="flex-1">
+                            <div className="bg-[#F0F2F5] p-3 px-4 rounded-2xl relative">
+                                <span className="font-bold text-[13px] text-slate-900 block mb-1 leading-none">Monique</span>
+                                <p className="text-[13px] text-slate-800 leading-normal">
+                                    I was amazed by the logic. The value is incredible. After implementing these offer stacks, I immediately gained confidence in my high ticket business. 💰 The lead-gen secrets are ingenious. Thank you, Ana! ❤️
+                                </p>
+                                <div className="absolute -right-1 bottom-1 bg-white shadow-sm border border-slate-50 rounded-full p-1 translate-y-1/2">
+                                    <div className="bg-rose-500 rounded-full p-0.5"><Heart size={8} className="text-white" /></div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4 mt-1.5 ml-3 text-[11px] font-bold text-slate-500">
+                                <span className="hover:underline cursor-pointer">5d</span>
+                                <span className="text-rose-600 hover:underline cursor-pointer">Love</span>
+                                <span className="hover:underline cursor-pointer">Reply</span>
+                                <span className="text-blue-600 hover:underline cursor-pointer">Send message</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Testimonial 3 */}
+                    <div className="flex gap-3">
+                        <img
+                            src="/imgs/ana-ai/avatar_male_1.png"
+                            className="w-10 h-10 rounded-full flex-shrink-0 shadow-sm border border-slate-100"
+                            alt="David"
+                        />
+                        <div className="flex-1">
+                            <div className="bg-[#F0F2F5] p-3 px-4 rounded-2xl relative">
+                                <div className="flex items-center gap-1.5 mb-1">
+                                    <span className="font-bold text-[13px] text-slate-900 leading-none">David G.</span>
+                                    <div className="flex items-center gap-1 bg-white px-1.5 py-0.5 rounded-md border border-slate-100 shadow-sm">
+                                        <Award size={10} className="text-slate-400" />
+                                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Top fan</span>
+                                    </div>
+                                </div>
+                                <p className="text-[13px] text-slate-800 leading-normal">
+                                    Finally a tool that makes sense. No more guessing what to sell. This helped me package my coaching into a solid ecosystem in minutes. Highly recommended for scaling! 🚀🤝
+                                </p>
+                                <div className="absolute -right-1 bottom-1 bg-white shadow-sm border border-slate-50 rounded-full p-1 translate-y-1/2">
+                                    <div className="bg-blue-500 rounded-full p-0.5"><ThumbsUp size={8} className="text-white" /></div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4 mt-1.5 ml-3 text-[11px] font-bold text-slate-500">
+                                <span className="hover:underline cursor-pointer">2h</span>
+                                <span className="text-blue-600 hover:underline cursor-pointer">Like</span>
+                                <span className="hover:underline cursor-pointer">Reply</span>
+                                <span className="text-blue-600 hover:underline cursor-pointer">Send message</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
