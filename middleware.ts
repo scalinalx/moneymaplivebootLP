@@ -16,6 +16,7 @@ export function middleware(req: NextRequest) {
     '/testimavatar',
     '/success',
     '/upsell',
+    '/ana-ai-offer-flow',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
