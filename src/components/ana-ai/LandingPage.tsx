@@ -161,8 +161,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
             </div>
 
             {/* Testimonials Section */}
-            <div className="max-w-7xl mx-auto px-6 pb-32 mt-16 md:mt-24">
-                <div className="w-full border-t border-slate-100 pt-16 md:pt-24">
+            <div className="max-w-7xl mx-auto px-6 pb-32 mt-8 md:mt-12">
+                <div className="w-full border-t border-slate-100 pt-8 md:pt-12">
                     <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
                         {/* Testimonial 1 */}
                         <div className="flex gap-3">
