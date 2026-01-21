@@ -46,7 +46,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50 relative overflow-x-hidden">
             {/* Hero Section */}
-            <div className="flex flex-col items-center pt-12 md:pt-16 pb-4 px-6 relative overflow-hidden">
+            <div className="flex flex-col items-center pt-24 md:pt-32 pb-4 px-6 relative overflow-hidden">
                 {/* Background Decor */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-rose-200/30 rounded-full blur-[100px] -z-10" />
                 <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-pink-200/20 rounded-full blur-[100px] -z-10" />
@@ -161,8 +161,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
             </div>
 
             {/* Testimonials Section */}
-            <div className="max-w-7xl mx-auto px-6 pb-24 mt-1">
-                <div className="w-full border-t border-slate-100 pt-2">
+            <div className="max-w-7xl mx-auto px-6 pb-24 mt-2">
+                <div className="w-full border-t border-slate-100 pt-8">
                     <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
                         {/* Testimonial 1 */}
                         <div className="flex gap-3">
@@ -177,7 +177,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                         <span className="font-bold text-[13px] text-slate-900 leading-none">Tiff</span>
                                     </div>
                                     <p className="text-[13px] text-slate-800 leading-normal">
-                                        Best find I've made this year. I'm already seeing my offer clarity skyrocket as instructed. I love Ana! 😍 and Rose 🌹
+                                        Best find I've made this year. I'm already seeing my offer clarity skyrocket as instructed. I love Ana! 😍
                                     </p>
                                     <div className="absolute -right-2 bottom-1 flex items-center gap-0.5 bg-white shadow-sm border border-slate-50 rounded-full p-1 px-1.5 translate-y-1/2">
                                         <div className="bg-blue-500 rounded-full p-0.5"><ThumbsUp size={8} className="text-white" /></div>
@@ -205,7 +205,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                 <div className="bg-[#F0F2F5] p-3 px-4 rounded-2xl relative">
                                     <span className="font-bold text-[13px] text-slate-900 block mb-1 leading-none">Monique</span>
                                     <p className="text-[13px] text-slate-800 leading-normal">
-                                        I was amazed by the logic. The value is incredible. After implementing these offer stacks, I immediately gained confidence in my high ticket business. 💰 The lead-gen secrets are ingenious. Thank you, Maria! ❤️
+                                        I was amazed by the logic. The value is incredible. After implementing these offer stacks, I immediately gained confidence in my high ticket business. 💰 The lead-gen secrets are ingenious. Thank you, Ana! ❤️
                                     </p>
                                     <div className="absolute -right-1 bottom-1 bg-white shadow-sm border border-slate-50 rounded-full p-1 translate-y-1/2">
                                         <div className="bg-rose-500 rounded-full p-0.5"><Heart size={8} className="text-white" /></div>
