@@ -291,6 +291,29 @@ const AnaAiApp = () => {
                                 </button>
                             </div>
 
+                            {/* Money Map Bootcamp CTA Section */}
+                            <div className="mt-16 mb-8 max-w-2xl mx-auto">
+                                <div className="bg-gradient-to-br from-emerald-50 via-white to-teal-50 border-2 border-emerald-200 rounded-2xl p-8 shadow-xl">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4 text-center">
+                                        Strong start, huh? 👆
+                                    </h3>
+                                    <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6 text-center">
+                                        If you're serious about turning this into reality, you need to dive deep into building and launching a profitable offer stack. That's the proven path to your first $10k—and the <span className="font-bold text-emerald-700">Money Map Bootcamp</span> will show you exactly how to do it.
+                                    </p>
+                                    <div className="text-center">
+                                        <a
+                                            href="https://www.monetisesubstack.com/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-emerald-900/20 transition-all hover:scale-105 text-lg"
+                                        >
+                                            Join Money Map Bootcamp
+                                            <ArrowRight size={20} />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 )}
