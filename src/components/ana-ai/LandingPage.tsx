@@ -46,7 +46,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50 relative overflow-x-hidden">
             {/* Hero Section */}
-            <div className="min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+            <div className="flex flex-col items-center pt-12 md:pt-16 pb-4 px-6 relative overflow-hidden">
                 {/* Background Decor */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-rose-200/30 rounded-full blur-[100px] -z-10" />
                 <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-pink-200/20 rounded-full blur-[100px] -z-10" />
@@ -161,8 +161,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
             </div>
 
             {/* Testimonials Section */}
-            <div className="max-w-7xl mx-auto px-6 pb-24">
-                <div className="w-full border-t border-slate-100 pt-16">
+            <div className="max-w-7xl mx-auto px-6 pb-24 mt-1">
+                <div className="w-full border-t border-slate-100 pt-2">
                     <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
                         {/* Testimonial 1 */}
                         <div className="flex gap-3">
@@ -177,7 +177,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                         <span className="font-bold text-[13px] text-slate-900 leading-none">Tiff</span>
                                     </div>
                                     <p className="text-[13px] text-slate-800 leading-normal">
-                                        Best purchase I've made this year. I'm already seeing my offer clarity skyrocket as instructed. I love Ana! 😍 and Rose 🌹
+                                        Best find I've made this year. I'm already seeing my offer clarity skyrocket as instructed. I love Ana! 😍 and Rose 🌹
                                     </p>
                                     <div className="absolute -right-2 bottom-1 flex items-center gap-0.5 bg-white shadow-sm border border-slate-50 rounded-full p-1 px-1.5 translate-y-1/2">
                                         <div className="bg-blue-500 rounded-full p-0.5"><ThumbsUp size={8} className="text-white" /></div>
