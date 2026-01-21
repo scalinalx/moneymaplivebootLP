@@ -49,7 +49,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-rose-200/30 rounded-full blur-[100px] -z-10" />
             <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-pink-200/20 rounded-full blur-[100px] -z-10" />
 
-            <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                 {/* Left Content */}
                 <div className="space-y-8 text-center md:text-left order-2 md:order-1">
@@ -142,7 +142,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     <Loader2 size={18} className="animate-spin" />
                                 ) : (
                                     <>
-                                        <span>I Want To Make Money Online</span>
+                                        <span>Show Me What To Sell</span>
                                         <ArrowRight size={18} />
                                     </>
                                 )}
