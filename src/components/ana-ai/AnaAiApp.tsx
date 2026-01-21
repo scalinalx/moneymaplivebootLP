@@ -90,7 +90,11 @@ const AnaAiApp = () => {
 
     // If no user, show Landing Page
     if (!user) {
-        return <LandingPage onSignup={handleSignup} />;
+        return (
+            <div className="ana-ai-root">
+                <LandingPage onSignup={handleSignup} />
+            </div>
+        );
     }
 
     // Main App Interface

@@ -75,8 +75,9 @@ body {
 
 /* ANA AI Styles */
 
-.ana-ai-root {
-  font-family: 'Poppins', sans-serif;
+.ana-ai-root,
+.ana-ai-root * {
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .ana-ai-gradient-text {
