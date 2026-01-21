@@ -62,11 +62,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                         ANA'S OFFER FLOW
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-[1.15]">
+                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-[1.15]">
                         This takes you from <span className="ana-ai-gradient-text italic">"I don't know what to sell"</span> to actually making money online.
                     </h1>
 
-                    <p className="text-lg text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
+                    <p className="text-base text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
                         Stop guessing. Build a $5k/month creator business. Enter your details to instantly generate a complete, high-value product ecosystem tailored to your specific expertise.
                     </p>
 
@@ -89,10 +89,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                 {/* Right Form Card */}
                 <div className="relative order-1 md:order-2">
                     <div className="absolute -inset-1 bg-gradient-to-br from-rose-300 to-pink-500 rounded-2xl blur opacity-30"></div>
-                    <div className="relative bg-white/80 backdrop-blur-xl border border-white/50 p-8 rounded-2xl shadow-2xl">
-                        <div className="text-center mb-8">
-                            <h2 className="text-2xl font-bold text-slate-900 mb-2">Get Instant Access</h2>
-                            <p className="text-slate-500 text-sm">Join the top 1% of creators building smarter offers.</p>
+                    <div className="relative bg-white/80 backdrop-blur-xl border border-white/50 p-7 rounded-2xl shadow-2xl">
+                        <div className="text-center mb-6">
+                            <h2 className="text-xl font-bold text-slate-900 mb-2">Get Instant Access</h2>
+                            <p className="text-slate-500 text-xs">Join the top 1% of creators building smarter offers.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
@@ -103,7 +103,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     required
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900"
+                                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900"
                                     placeholder="Your name"
                                 />
                             </div>
@@ -114,7 +114,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900"
+                                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900"
                                     placeholder="your@email.com"
                                 />
                             </div>
@@ -142,7 +142,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     <Loader2 size={18} className="animate-spin" />
                                 ) : (
                                     <>
-                                        <span>Unlock The Tool</span>
+                                        <span>I Want To Make Money Online</span>
                                         <ArrowRight size={18} />
                                     </>
                                 )}
