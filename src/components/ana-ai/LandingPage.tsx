@@ -62,26 +62,26 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                         ANA'S OFFER FLOW
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-[1.15]">
+                    <h1 className="text-2xl md:text-4xl font-bold text-slate-900 leading-[1.15]">
                         Turn <span className="ana-ai-gradient-text italic pl-1">"I don't know what to sell"</span> into a clear offer people actually want to buy.
                     </h1>
 
-                    <p className="text-base text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
+                    <p className="text-sm text-slate-500 leading-relaxed max-w-lg mx-auto md:mx-0">
                         Stop guessing. Instantly see how to package your expertise into products that sell.
                     </p>
 
-                    <div className="space-y-4 max-w-md mx-auto md:mx-0 text-left">
-                        <div className="flex items-center gap-3 text-slate-700 bg-white/50 p-3 rounded-lg border border-white/60 shadow-sm">
-                            <CheckCircle2 className="text-rose-500 w-5 h-5 flex-shrink-0" />
-                            <span className="font-medium">Generate a full 4-product ecosystem</span>
+                    <div className="space-y-3 max-w-md mx-auto md:mx-0 text-left">
+                        <div className="flex items-center gap-3 text-slate-700 bg-white/50 p-2.5 rounded-lg border border-white/60 shadow-sm">
+                            <CheckCircle2 className="text-rose-500 w-4 h-4 flex-shrink-0" />
+                            <span className="text-sm font-medium text-slate-900">Generate a full 4-product ecosystem</span>
                         </div>
-                        <div className="flex items-center gap-3 text-slate-700 bg-white/50 p-3 rounded-lg border border-white/60 shadow-sm">
-                            <CheckCircle2 className="text-rose-500 w-5 h-5 flex-shrink-0" />
-                            <span className="font-medium">Get high-value psychological anchor pricing</span>
+                        <div className="flex items-center gap-3 text-slate-700 bg-white/50 p-2.5 rounded-lg border border-white/60 shadow-sm">
+                            <CheckCircle2 className="text-rose-500 w-4 h-4 flex-shrink-0" />
+                            <span className="text-sm font-medium text-slate-900">Get high-value psychological anchor pricing</span>
                         </div>
-                        <div className="flex items-center gap-3 text-slate-700 bg-white/50 p-3 rounded-lg border border-white/60 shadow-sm">
-                            <CheckCircle2 className="text-rose-500 w-5 h-5 flex-shrink-0" />
-                            <span className="font-medium">Zero cost to use today</span>
+                        <div className="flex items-center gap-3 text-slate-700 bg-white/50 p-2.5 rounded-lg border border-white/60 shadow-sm">
+                            <CheckCircle2 className="text-rose-500 w-4 h-4 flex-shrink-0" />
+                            <span className="text-sm font-medium text-slate-900">Zero cost to use today</span>
                         </div>
                     </div>
                 </div>
@@ -89,10 +89,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                 {/* Right Form Card */}
                 <div className="relative order-1 md:order-2">
                     <div className="absolute -inset-1 bg-gradient-to-br from-rose-300 to-pink-500 rounded-2xl blur opacity-30"></div>
-                    <div className="relative bg-white/80 backdrop-blur-xl border border-white/50 p-7 rounded-2xl shadow-2xl">
-                        <div className="text-center mb-6">
-                            <h2 className="text-xl font-bold text-slate-900 mb-2">Get Instant Access</h2>
-                            <p className="text-slate-500 text-xs">Join the top 1% of creators building smarter offers.</p>
+                    <div className="relative bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-2xl shadow-2xl">
+                        <div className="text-center mb-5">
+                            <h2 className="text-lg font-bold text-slate-900 mb-1.5">Get Instant Access</h2>
+                            <p className="text-slate-500 text-[10px]">Join the top 1% of creators building smarter offers.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
@@ -103,7 +103,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     required
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900"
+                                    className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900 text-sm"
                                     placeholder="Your name"
                                 />
                             </div>
@@ -114,7 +114,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900"
+                                    className="w-full px-3 py-2 rounded-xl bg-white border border-slate-200 focus:border-rose-300 focus:ring-2 focus:ring-rose-100 outline-none transition-all placeholder:text-slate-300 text-slate-900 text-sm"
                                     placeholder="your@email.com"
                                 />
                             </div>
@@ -126,9 +126,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     checked={agreed}
                                     onChange={(e) => setAgreed(e.target.checked)}
                                     required
-                                    className="w-4 h-4 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer"
+                                    className="w-3.5 h-3.5 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer"
                                 />
-                                <label htmlFor="terms" className="text-sm text-slate-600 cursor-pointer select-none">
+                                <label htmlFor="terms" className="text-xs text-slate-600 cursor-pointer select-none">
                                     Yes, I agree to Terms & Conditions.
                                 </label>
                             </div>
@@ -136,14 +136,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting || !name || !email || !agreed}
-                                className="w-full bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-900/10 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mt-4 disabled:opacity-70"
+                                className="w-full bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-900/10 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mt-4 disabled:opacity-70 text-sm"
                             >
                                 {isSubmitting ? (
                                     <Loader2 size={18} className="animate-spin" />
                                 ) : (
                                     <>
                                         <span>Show Me What To Sell</span>
-                                        <ArrowRight size={18} />
+                                        <ArrowRight size={16} />
                                     </>
                                 )}
                             </button>
