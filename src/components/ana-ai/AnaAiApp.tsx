@@ -25,6 +25,16 @@ const AnaAiApp = () => {
     const resultsRef = useRef<HTMLDivElement>(null);
 
     const handleSignup = (name: string, email: string) => {
+        // Track Facebook Lead Event
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+            (window as any).fbq('track', 'Lead', {
+                content_name: 'Ana AI Offer Flow Signup',
+                user_email: email, // Hashed by FB automatically if pixel is set up for advanced matching
+                value: 2,
+                currency: 'USD'
+            });
+        }
+
         setUser({ name, email });
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
