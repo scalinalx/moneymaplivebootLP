@@ -15,6 +15,7 @@ import { MRRGraph } from '@/components/MRRGraph';
 import VideoTestimonialsClone from '@/components/VideoTestimonialsClone';
 import WhySpecificOffer from '@/components/WhySpecificOffer';
 import TESTIMONIALS_DATA from '@/data/testimonials.json';
+import { FacebookPixelEvent } from '@/components/FacebookPixelEvent';
 
 const HERO_AVATARS = [
   {
@@ -143,6 +144,17 @@ const FAQ_ITEMS: FAQItem[] = [
 export default function JoinPage() {
   return (
     <main className="min-h-screen bg-brand-950 text-brand-white relative overflow-x-hidden">
+      {/* Facebook Pixel - ViewContent Event */}
+      <FacebookPixelEvent
+        event="ViewContent"
+        params={{
+          content_name: 'Build To Profit Workshop',
+          content_category: 'Workshop',
+          value: 497,
+          currency: 'USD'
+        }}
+      />
+
       {/* Background texture */}
       <div className="fixed inset-0 bg-grid-pattern bg-grid opacity-[0.15] pointer-events-none" />
       <div className="fixed top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_50%_0%,rgba(255,210,0,0.05),transparent_70%)] pointer-events-none" />
