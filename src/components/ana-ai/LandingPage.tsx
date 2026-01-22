@@ -258,6 +258,21 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                     </div>
                 </div>
             </div>
+
+            {/* Footer */}
+            <footer className="bg-slate-800 text-slate-300 py-8">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+                        <div className="text-center md:text-left">
+                            <p>© {new Date().getFullYear()} Ana Calin - <a href="https://howwegrowtoday.substack.com/subscribe" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline">How We Grow</a></p>
+                        </div>
+                        <div className="flex gap-6 text-center">
+                            <a href="/terms" className="hover:text-white transition-colors">Terms & Conditions</a>
+                            <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };
