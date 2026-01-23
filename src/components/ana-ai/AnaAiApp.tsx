@@ -7,6 +7,8 @@ import { trackActivity } from '@/services/ana-ai/leadService';
 import { OfferStackResponse } from '@/types/ana-ai';
 import { OfferCard } from '@/components/ana-ai/OfferCard';
 import { LandingPage } from '@/components/ana-ai/LandingPage';
+import { ProductHuntBadge } from '@/components/ProductHuntBadge';
+import { ExitIntentModal } from '@/components/ExitIntentModal';
 
 const AnaAiApp = () => {
     // User Access State
@@ -133,9 +135,13 @@ const AnaAiApp = () => {
 
                 {/* Header Section */}
                 <div className="max-w-5xl mx-auto text-center mb-12">
-                    <h1 className="text-4xl md:text-7xl font-bold mb-8 text-slate-900 leading-tight font-display">
+                    <h1 className="text-4xl md:text-7xl font-bold mb-6 text-slate-900 leading-tight font-display">
                         Turn your <span className="ana-ai-gradient-text">Expertise</span> into a <br className="hidden md:block" /> high-value Product That SELLZ.
                     </h1>
+
+                    <div className="mb-10 flex justify-center">
+                        <ProductHuntBadge />
+                    </div>
 
                     {/* Show intro text only if no results yet */}
                     {!result && (
@@ -302,22 +308,83 @@ const AnaAiApp = () => {
                             </div>
 
                             {/* Money Map Bootcamp CTA Section */}
-                            <div className="mt-16 mb-8 max-w-2xl mx-auto">
-                                <div className="bg-gradient-to-br from-emerald-50 via-white to-teal-50 border-2 border-emerald-200 rounded-2xl p-8 shadow-xl">
+                            <div className="mt-16 mb-8 max-w-4xl mx-auto">
+                                <div className="bg-gradient-to-br from-emerald-50 via-white to-teal-50 border-2 border-emerald-200 rounded-2xl p-8 md:p-10 shadow-xl">
                                     <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4 text-center">
                                         Strong start, huh? 👆
                                     </h3>
-                                    <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6 text-center">
+                                    <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-10 text-center max-w-2xl mx-auto">
                                         If you're serious about turning this into reality, you need to dive deep into building and launching a profitable offer stack. That's the proven path to your first $10k—and the <span className="font-bold text-emerald-700">Money Map Bootcamp</span> will show you exactly how to do it.
                                     </p>
+
+                                    {/* Testimonials Grid */}
+                                    <div className="grid md:grid-cols-3 gap-4 mb-10 text-left">
+                                        {/* Testimonial 1 - Jill Hart */}
+                                        <div className="bg-white/60 p-4 rounded-xl border border-emerald-100 shadow-sm backdrop-blur-sm">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <img
+                                                    src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fe6a99c21-4306-4fec-817f-ccab659b69f5%2Favatar?alt=media&token=ab8ae473-f1ba-4034-8ddf-059bc842131b"
+                                                    alt="Jill"
+                                                    className="w-8 h-8 rounded-full object-cover"
+                                                />
+                                                <div>
+                                                    <p className="font-bold text-xs text-slate-900">Jill Hart</p>
+                                                    <p className="text-[10px] text-emerald-600 font-medium">$1,500/mo with &lt;400 subs</p>
+                                                </div>
+                                            </div>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                "I've implemented Ana's money map and made $1,500 over the last month with a less than 400 subscriber base!"
+                                            </p>
+                                        </div>
+
+                                        {/* Testimonial 2 - Jeanette Martin */}
+                                        <div className="bg-white/60 p-4 rounded-xl border border-emerald-100 shadow-sm backdrop-blur-sm">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <img
+                                                    src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2Fc9cdb423-d612-48be-9745-2665ff95993f%2Favatar?alt=media&token=8cb6ceb6-b40e-4698-8a51-3ab418023d38"
+                                                    alt="Jeanette"
+                                                    className="w-8 h-8 rounded-full object-cover"
+                                                />
+                                                <div>
+                                                    <p className="font-bold text-xs text-slate-900">Jeanette Martin</p>
+                                                    <p className="text-[10px] text-emerald-600 font-medium">Bootcamp Attendee</p>
+                                                </div>
+                                            </div>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                "What a brilliant, actionable, organised, inspiring bootcamp. Thank you, Ana."
+                                            </p>
+                                        </div>
+
+                                        {/* Testimonial 3 - Kyle */}
+                                        <div className="bg-white/60 p-4 rounded-xl border border-emerald-100 shadow-sm backdrop-blur-sm">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <img
+                                                    src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=256&h=256&auto=format&fit=crop"
+                                                    alt="Kyle"
+                                                    className="w-8 h-8 rounded-full object-cover"
+                                                />
+                                                <div>
+                                                    <p className="font-bold text-xs text-slate-900">Kyle</p>
+                                                    <p className="text-[10px] text-emerald-600 font-medium">$2,500/month revenue</p>
+                                                </div>
+                                            </div>
+                                            <p className="text-xs text-slate-600 leading-relaxed">
+                                                "Best investment I made this year. I'm now making $2,500/month from my newsletter thanks to this program."
+                                            </p>
+                                        </div>
+                                    </div>
+
                                     <div className="text-center">
+                                        <p className="text-slate-900 font-bold mb-3 text-lg">
+                                            If you're serious about making $10k/month from your creator business, click here now. 👇
+                                        </p>
                                         <a
                                             href="https://www.monetisesubstack.com/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-emerald-900/20 transition-all hover:scale-105 text-lg"
                                         >
-                                            Join Money Map Bootcamp
+                                            I'm ready to monetize
                                             <ArrowRight size={20} />
                                         </a>
                                     </div>
@@ -328,31 +395,39 @@ const AnaAiApp = () => {
                     </div>
                 )}
 
+                {/* Product Hunt Badge - Secondary Placement */}
+                <div className="mt-20 flex justify-center w-full">
+                    <ProductHuntBadge />
+                </div>
+
                 {/* EXTERNAL CTA BUTTON */}
-                <div className="mt-24 mb-16 flex justify-center w-full">
+                <div className="mt-8 mb-16 flex justify-center w-full">
                     <a
                         href="https://howwegrowtoday.substack.com/subscribe"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
                     relative group
-                    px-8 md:px-12 py-5 rounded-2xl 
-                    bg-[#F59E0B] text-white text-lg md:text-xl font-bold tracking-wide
+                    px-5 md:px-8 py-3 rounded-xl 
+                    bg-[#F59E0B] text-white text-base md:text-lg font-bold tracking-wide
                     shadow-[0_4px_20px_rgba(244,114,182,0.4)]
                     hover:shadow-[0_8px_30px_rgba(244,114,182,0.6)]
                     transform transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1
-                    flex items-center gap-3 overflow-hidden
+                    flex items-center gap-2 overflow-hidden
                 "
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             JOIN 70K+ CREATORS WHO MAKE MONEY
-                            <ExternalLink size={20} className="stroke-[3]" />
+                            <ExternalLink size={18} className="stroke-[3]" />
                         </span>
 
                         {/* Shine effect overlay */}
                         <div className="absolute top-0 -left-[100%] w-[100%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-1000 group-hover:left-[100%]"></div>
                     </a>
                 </div>
+
+                {/* Exit Intent Modal - Only shown after results generated */}
+                {result && <ExitIntentModal />}
 
             </div>
         </div>

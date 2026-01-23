@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Lock, CheckCircle2, Loader2, ThumbsUp, Heart, Award } from 'lucide-react';
 import { captureLead } from '@/services/ana-ai/leadService';
+import { ProductHuntBadge } from '@/components/ProductHuntBadge';
 
 interface LandingPageProps {
     onSignup: (name: string, email: string) => void;
@@ -85,6 +86,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                 <CheckCircle2 className="text-rose-500 w-4 h-4 flex-shrink-0" />
                                 <span className="text-sm font-medium text-slate-900">Zero cost to use today</span>
                             </div>
+                        </div>
+
+                        <div className="mt-8 md:text-left">
+                            <ProductHuntBadge />
                         </div>
                     </div>
 
