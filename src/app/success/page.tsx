@@ -17,10 +17,25 @@ function SuccessContent() {
       // Track conversion with Rewardful
       if (typeof window !== 'undefined' && window.rewardful) {
         window.rewardful('convert', {
-          amount: 597.00, // $597 bootcamp price
+          amount: 497.00, // $497 bootcamp price
           email: null // Will be populated by Rewardful from the checkout session
         });
-        console.log('Rewardful conversion tracked for $597');
+        console.log('Rewardful conversion tracked for $497');
+      }
+
+      // Track conversion with Facebook Pixel
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Purchase', {
+          value: 497,
+          currency: 'USD',
+          contents: [
+            {
+              id: 'mm_btcmp',
+              quantity: 1
+            }
+          ],
+        });
+        console.log('Facebook Pixel Purchase tracked for $497');
       }
     }
   }, [searchParams]);
