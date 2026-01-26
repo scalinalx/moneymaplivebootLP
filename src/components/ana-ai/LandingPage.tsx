@@ -135,8 +135,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                         required
                                         className="w-3.5 h-3.5 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer"
                                     />
-                                    <label htmlFor="terms" className="text-[11px] text-slate-500 cursor-pointer select-none leading-snug">
-                                        I explicitly ACKNOWLEDGE and STRONGLY AGREE to the <a href="/terms" target="_blank" className="text-rose-600 font-bold hover:underline">Terms & Conditions</a>, including mandatory subscription to Ana's "How We Grow" Substack.
+                                    <label htmlFor="terms" className="text-xs text-slate-600 cursor-pointer select-none">
+                                        I agree to receive emails and communications from Ana Calin
                                     </label>
                                 </div>
 
