@@ -118,6 +118,14 @@ export const EmbeddedCheckout: React.FC = () => {
 
             const data = await response.json();
             if (data.success) {
+                // Track Lead with Facebook Pixel
+                if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'Lead', {
+                        value: 2.00,
+                        currency: 'USD'
+                    });
+                }
+
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);

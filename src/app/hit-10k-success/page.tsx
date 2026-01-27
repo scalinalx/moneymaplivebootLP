@@ -12,25 +12,34 @@ function SuccessContent() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        // Track conversion with Facebook Pixel
-        if (typeof window !== 'undefined' && (window as any).fbq) {
-            (window as any).fbq('track', 'Purchase', {
-                value: HIT10K_PRICE / 100,
-                currency: 'USD',
-                contents: [{ id: 'hit10k_workshop', quantity: 1 }],
-            });
-        }
-
         // Fetch lead status if leadId is present
         if (leadId) {
             fetch(`/api/hit10k/get-lead-status?leadId=${leadId}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.success && data.lead.has_order_bump && data.lead.is_paid) {
-                        setHasOrderBump(true);
-                        // Automatically open the link in a new tab
-                        const notionLink = "https://anabubolea.notion.site/THE-2-HOUR-CREATOR-NOTE-GENERATOR-2e49b91e546e80669e63f21c3005fc15?source=copy_link";
-                        window.open(notionLink, '_blank');
+                    const isPaid = data.success && data.lead.is_paid;
+                    const hasBump = data.success && data.lead.has_order_bump;
+
+                    if (isPaid) {
+                        // Track conversion with Facebook Pixel AFTER status is confirmed
+                        if (typeof window !== 'undefined' && (window as any).fbq) {
+                            const totalValue = hasBump
+                                ? (HIT10K_PRICE + (parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP_PRICE || '2700'))) / 100
+                                : HIT10K_PRICE / 100;
+
+                            (window as any).fbq('track', 'Purchase', {
+                                value: totalValue,
+                                currency: 'USD',
+                                contents: [{ id: 'hit10k_workshop', quantity: 1 }],
+                            });
+                        }
+
+                        if (hasBump) {
+                            setHasOrderBump(true);
+                            // Automatically open the link in a new tab
+                            const notionLink = "https://anabubolea.notion.site/THE-2-HOUR-CREATOR-NOTE-GENERATOR-2e49b91e546e80669e63f21c3005fc15?source=copy_link";
+                            window.open(notionLink, '_blank');
+                        }
                     }
                     setIsLoaded(true);
                 })
