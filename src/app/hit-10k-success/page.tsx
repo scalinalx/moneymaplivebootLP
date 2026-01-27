@@ -12,6 +12,17 @@ function SuccessContent() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
+        // ... (Lead status fetching and Purchase tracking)
+
+        // Auto-open calendar link after 3 seconds
+        const timer = setTimeout(() => {
+            window.open('https://calendar.app.google/NyyFt4JK8qjQV16R8', '_blank');
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
         // Fetch lead status if leadId is present
         if (leadId) {
             fetch(`/api/hit10k/get-lead-status?leadId=${leadId}`)
@@ -37,7 +48,7 @@ function SuccessContent() {
                         if (hasBump) {
                             setHasOrderBump(true);
                             // Automatically open the link in a new tab
-                            const notionLink = "https://anabubolea.notion.site/THE-2-HOUR-CREATOR-NOTE-GENERATOR-2e49b91e546e80669e63f21c3005fc15?source=copy_link";
+                            const notionLink = "https://anabubolea.notion.site/Hooks-That-Stop-the-Scroll-17c9b91e546e80b7a0f2c8908465faf2?source=copy_link";
                             window.open(notionLink, '_blank');
                         }
                     }
@@ -64,9 +75,21 @@ function SuccessContent() {
                     You're Registered! 🎉
                 </h1>
 
-                <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-12">
+                <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-8">
                     Congratulations! Your payment was successful and you've secured your spot for the **Hit Your First $10,000 Month** live workshop on February 3rd.
                 </p>
+
+                <div className="mb-12">
+                    <a
+                        href="https://calendar.app.google/NyyFt4JK8qjQV16R8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold py-6 px-12 rounded-xl shadow-[0_10px_30px_rgba(216,17,89,0.3)] transition-all transform hover:scale-105 uppercase tracking-wider text-lg md:text-xl"
+                    >
+                        <Zap className="animate-pulse" size={24} fill="white" />
+                        ADD THIS TO YOUR CALENDAR RIGHT NOW
+                    </a>
+                </div>
 
                 <div className="grid md:grid-cols-2 gap-8 w-full mb-16">
                     <div className="bg-gray-50 p-8 rounded-xl border border-gray-100">
@@ -116,7 +139,7 @@ function SuccessContent() {
                             </div>
 
                             <h2 className="font-anton text-2xl md:text-3xl text-[#333333] mb-4 uppercase text-center">
-                                Thank you for purchasing the <span className="text-[#d81159]">Viral Substack Notes Generator!</span>
+                                Thank you for purchasing <span className="text-[#d81159]">Hooks That Stop the Scroll!</span>
                             </h2>
 
                             <p className="font-lora text-lg text-gray-700 max-w-2xl mb-8">
@@ -124,12 +147,12 @@ function SuccessContent() {
                             </p>
 
                             <a
-                                href="https://anabubolea.notion.site/THE-2-HOUR-CREATOR-NOTE-GENERATOR-2e49b91e546e80669e63f21c3005fc15?source=copy_link"
+                                href="https://anabubolea.notion.site/Hooks-That-Stop-the-Scroll-17c9b91e546e80b7a0f2c8908465faf2?source=copy_link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 bg-[#333333] hover:bg-black text-white font-montserrat font-bold py-5 px-12 rounded-lg shadow-xl transition-all transform hover:-translate-y-1 uppercase tracking-wider"
                             >
-                                ACCESS THE GENERATOR NOW <ExternalLink size={20} />
+                                ACCESS THE HOOKS NOW <ExternalLink size={20} />
                             </a>
                         </div>
 

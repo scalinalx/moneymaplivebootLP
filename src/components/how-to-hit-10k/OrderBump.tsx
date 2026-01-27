@@ -30,10 +30,10 @@ export const OrderBump: React.FC<OrderBumpProps> = ({ isSelected, onToggle }) =>
 
                 <div className="flex-grow">
                     <h4 className="font-montserrat font-bold text-[#333333] text-lg leading-tight mb-2">
-                        Wait! Do you want the Viral Substack Notes Generator?
+                        Wait! Do you want "Hooks That Stop the Scroll"?
                     </h4>
-                    <p className="font-lato text-gray-600 text-sm leading-relaxed mb-3">
-                        <span className="font-bold text-[#d81159]">ONE-TIME OFFER:</span> Get the exact system that I use to generate viral Substack Notes. (Value $197)
+                    <p className="font-lato text-gray-700 text-sm leading-relaxed mb-4 italic">
+                        <span className="font-bold text-[#d81159]">ONE-TIME OFFER:</span> Stop being ignored. Get my vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click your content instantly. (Regularly $197 — Save 86% off today).
                     </p>
                     <div className="flex items-center gap-2">
                         <span className="font-anton text-[#ffc300] text-xl">ONLY ${HIT10K_BUMP_PRICE / 100}</span>
