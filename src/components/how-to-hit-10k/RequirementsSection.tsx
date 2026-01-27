@@ -27,6 +27,7 @@ export const RequirementsSection: React.FC = () => {
 
                 {/* CTA Button */}
                 <button
+                    onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                     className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-5 px-10 md:px-14 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wide"
                 >
                     I'M READY TO HIT $10K!

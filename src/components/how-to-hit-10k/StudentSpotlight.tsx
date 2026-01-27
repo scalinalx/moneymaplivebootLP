@@ -50,9 +50,9 @@ export const StudentSpotlight: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Inline CTA Button */}
                     <div className="flex-shrink-0">
                         <button
+                            onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                             className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg lg:text-xl py-6 px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex flex-col md:flex-row items-center justify-center gap-4 text-center"
                         >
                             <span className="leading-tight whitespace-nowrap">YES! I WANT TO HIT $10K!</span>
