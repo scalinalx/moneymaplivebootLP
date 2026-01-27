@@ -20,6 +20,7 @@ export function middleware(req: NextRequest) {
     '/terms',
     '/privacy',
     '/how-to-hit-10k',
+    '/hit-10k-success',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
