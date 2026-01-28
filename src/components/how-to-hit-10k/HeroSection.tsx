@@ -8,10 +8,10 @@ export const HeroSection: React.FC = () => {
             <div className="max-w-[1100px] w-full flex flex-col items-center text-center">
 
                 {/* Main Headline */}
-                <h1 className="font-anton text-[#06b6d4] leading-[1.05] uppercase mb-10 tracking-wide w-full max-w-[1400px] flex flex-col items-center">
+                <h1 className="font-anton text-[#06b6d4] leading-[1.1] md:leading-[1.05] uppercase mb-10 tracking-wide w-full max-w-[1400px] flex flex-col items-center">
                     <span className="text-[#ffc300] text-xl md:text-2xl lg:text-4xl mb-1">How To</span>
-                    <span className="text-4xl md:text-6xl lg:text-7xl py-1 whitespace-nowrap">Hit Your First $10,000 Month</span>
-                    <span className="text-lg md:text-xl lg:text-2xl mt-1 opacity-80">... Without Changing Your Offer??</span>
+                    <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl py-1 px-2">Hit Your First $10,000 Month</span>
+                    <span className="text-base md:text-xl lg:text-2xl mt-1 opacity-80 px-4">... Without Changing Your Offer??</span>
                 </h1>
 
                 {/* Sub-Headline */}
