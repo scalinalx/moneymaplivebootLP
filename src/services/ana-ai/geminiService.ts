@@ -27,7 +27,7 @@ const responseSchema = {
 export const generateOfferStack = async (expertise: string): Promise<OfferStackResponse> => {
     try {
         const model = ai.getGenerativeModel({
-            model: "gemini-2.0-flash-exp",
+            model: "gemini-2.5-flash",
             generationConfig: {
                 responseMimeType: "application/json",
                 responseSchema: responseSchema,
@@ -91,7 +91,7 @@ export const generateOfferStack = async (expertise: string): Promise<OfferStackR
 export const refineOfferStack = async (expertise: string, currentStack: OfferStackResponse, feedback: string): Promise<OfferStackResponse> => {
     try {
         const model = ai.getGenerativeModel({
-            model: "gemini-2.0-flash-exp",
+            model: "gemini-1.5-flash",
             generationConfig: {
                 responseMimeType: "application/json",
                 responseSchema: responseSchema,
