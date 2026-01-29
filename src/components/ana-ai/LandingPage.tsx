@@ -62,7 +62,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                 alt="Logo"
                                 className="w-4 h-4 rounded-full"
                             />
-                            ANA'S OFFER FLOW
+                            ANA'S OFFER STACK
                         </div>
 
                         <h1 className="text-2xl md:text-4xl font-bold text-slate-900 leading-[1.15]">

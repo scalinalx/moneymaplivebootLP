@@ -9,7 +9,7 @@ export default function TermsPage() {
 
                     <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-4 uppercase tracking-wide text-sm">1. Binding Agreement & Affirmative Consent</h2>
                     <p className="text-slate-700 mb-6 leading-relaxed">
-                        By checking the agreement box and utilizing "Ana's Offer Flow" (the "Tool"), you hereby provide your **irrevocable affirmative consent** to be legally bound by these Terms and Conditions. If you do not agree to every provision herein, you are strictly prohibited from accessing or using the Tool.
+                        By checking the agreement box and utilizing "Ana's Offer Stack" (the "Tool"), you hereby provide your **irrevocable affirmative consent** to be legally bound by these Terms and Conditions. If you do not agree to every provision herein, you are strictly prohibited from accessing or using the Tool.
                     </p>
 
                     <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-4 uppercase tracking-wide text-sm">2. Mandatory Newsletter Subscription (The "Quid Pro Quo")</h2>
@@ -51,7 +51,7 @@ export default function TermsPage() {
 
                 <div className="mt-16 pt-8 border-t border-slate-100 text-center">
                     <a href="/ana-ai-offer-flow" className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 font-bold transition-colors">
-                        <span>← Return to Offer Flow</span>
+                        <span>← Return to Offer Stack</span>
                     </a>
                 </div>
             </div>

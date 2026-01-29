@@ -30,7 +30,7 @@ const AnaAiApp = () => {
         // Track Facebook Lead Event
         if (typeof window !== 'undefined' && (window as any).fbq) {
             (window as any).fbq('track', 'Lead', {
-                content_name: 'Ana AI Offer Flow Signup',
+                content_name: 'Ana AI Offer Stack Signup',
                 user_email: email, // Hashed by FB automatically if pixel is set up for advanced matching
                 value: 2,
                 currency: 'USD'
@@ -123,7 +123,7 @@ const AnaAiApp = () => {
                         />
                     </div>
                     <span className="font-extrabold text-xl tracking-tighter text-slate-900 uppercase">
-                        ANA'S OFFER FLOW
+                        ANA'S OFFER STACK
                     </span>
                 </div>
                 <div className="text-xs font-bold text-slate-500 uppercase tracking-widest hidden sm:block">

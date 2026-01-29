@@ -9,7 +9,7 @@ export default function PrivacyPage() {
 
                     <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">1. Information We Collect</h2>
                     <p className="text-slate-700 mb-4">
-                        We collect information you provide directly to us, including your name and email address when you sign up for Ana's Offer Flow.
+                        We collect information you provide directly to us, including your name and email address when you sign up for Ana's Offer Stack.
                     </p>
 
                     <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">2. How We Use Your Information</h2>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
 
                 <div className="mt-12 text-center">
                     <a href="/" className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 font-medium">
-                        ← Back to Ana's Offer Flow
+                        ← Back to Ana's Offer Stack
                     </a>
                 </div>
             </div>
