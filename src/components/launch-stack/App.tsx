@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import InputForm from './components/InputForm';
 import EmailSequenceDisplay from './components/EmailSequenceDisplay';

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { LaunchFormData } from '../types';
 import { Sparkles, ArrowRight, Calendar, Users, Gift, PlusCircle } from 'lucide-react';

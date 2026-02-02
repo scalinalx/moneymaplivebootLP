@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { EmailDay } from '../types';
 import { Copy, Check, ChevronDown, ChevronUp, Lightbulb, Calendar, Rocket, Clock, CheckCircle } from 'lucide-react';
