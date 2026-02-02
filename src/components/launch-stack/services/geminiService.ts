@@ -190,7 +190,7 @@ Perfect success story
 export const generateEmailSequence = async (data: LaunchFormData): Promise<SequenceResponse> => {
     // Switched to Flash for speed. 
     // It handles large contexts well and is much faster than Pro.
-    const modelId = "gemini-2.0-flash-exp";
+    const modelId = "gemini-2.5-flash";
 
     const textPrompt = `
     You are a world-class direct response copywriter and launch strategist. 
