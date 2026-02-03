@@ -1,40 +1,20 @@
 import React from 'react';
 import { Button } from './Button';
+import { FileText, Video, Users, MessageCircle } from 'lucide-react';
 
 export const LearningOutcomesSection: React.FC = () => {
+    const scrollToCheckout = () => {
+        const element = document.getElementById('checkout');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
-        <section className="w-full bg-white py-20 px-4 md:px-8 flex flex-col items-center">
+        <section className="w-full bg-white py-20 px-4 md:px-8 flex flex-col items-center border-t border-gray-100">
 
-            {/* 1. Learning List */}
-            <div className="max-w-4xl w-full mx-auto mb-16">
-                <h3 className="font-poppins font-bold text-xl md:text-2xl mb-8 text-black">
-                    In The <span className="italic">$10k</span> Launch Lab, you'll learn how to:
-                </h3>
-
-                <ul className="space-y-4 font-poppins text-base md:text-lg text-black leading-relaxed list-disc pl-5 marker:text-black">
-                    <li>
-                        <span className="font-bold">Create brand obsession</span> and the psychology behind making your brand captivate and convert.
-                    </li>
-                    <li>
-                        <span className="font-bold">Focus on the exact things</span> that stops the scrolls, turns heads, and sells for you.
-                    </li>
-                    <li>
-                        <span className="font-bold">Magnetize your messaging</span> to attract the right customers and repel everyone else.
-                    </li>
-                    <li>
-                        <span className="font-bold">Craft polarizing hooks</span> that instantly get people curious.
-                    </li>
-                    <li>
-                        <span className="font-bold">Tell better visual stories</span> and establish signature moments to make your business instantly recognizable.
-                    </li>
-                    <li>
-                        <span className="font-bold">Develop your main-character energy</span> and embrace your brand persona that commands attention & fosters loyalty.
-                    </li>
-                </ul>
-            </div>
-
-            {/* 2. Bundle Mockup Visual */}
-            <div className="w-full max-w-5xl mx-auto mb-16 relative flex items-center justify-center">
+            {/* Bundle Mockup Visual */}
+            <div className="w-full max-w-5xl mx-auto mb-20 relative flex items-center justify-center">
                 {/* Container for the composition */}
                 <div className="relative w-full aspect-[16/9] md:aspect-[2/1] max-h-[500px] flex items-end justify-center">
 
@@ -63,7 +43,6 @@ export const LearningOutcomesSection: React.FC = () => {
                             <span className="text-white font-display text-[8px] md:text-[10px] uppercase tracking-widest text-center leading-tight">THE<br />AUDITOR</span>
                         </div>
                     </div>
-
 
                     {/* CENTER: Laptop */}
                     <div className="relative z-20 w-[280px] md:w-[600px] mb-4">
@@ -131,9 +110,84 @@ export const LearningOutcomesSection: React.FC = () => {
                 </div>
             </div>
 
-            {/* 3. CTA Button */}
+            {/* Features Grid */}
+            <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 px-2">
+
+                {/* 1. Templates */}
+                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                        <FileText className="w-6 h-6 text-black" />
+                    </div>
+                    <h3 className="font-display font-black text-2xl uppercase mb-4">📝 Fill-in-the-Blank Templates</h3>
+                    <p className="font-poppins text-gray-600 mb-4">You're never starting from a blank page. Every asset is templated:</p>
+                    <ul className="space-y-2 font-poppins text-sm md:text-base text-black">
+                        <li>✅ 3 x Sales Page Template</li>
+                        <li>✅ Sales-Email Launch Sequence</li>
+                        <li>✅ Pricing Calculator</li>
+                        <li>✅ Launch Timeline</li>
+                        <li>✅ FAQ Section</li>
+                        <li>✅ Guarantee Builder</li>
+                        <li>✅ Objection Response Scripts</li>
+                    </ul>
+                    <p className="font-bold mt-4 italic">Just fill in the blanks. No copywriting required.</p>
+                </div>
+
+                {/* 2. Walkthroughs */}
+                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                        <Video className="w-6 h-6 text-black" />
+                    </div>
+                    <h3 className="font-display font-black text-2xl uppercase mb-4">🎥 50+ Walkthrough Videos</h3>
+                    <p className="font-poppins text-gray-600 mb-4">Every technical step has a screen-recording video.</p>
+                    <p className="font-bold mb-2">No more:</p>
+                    <ul className="space-y-2 font-poppins text-sm md:text-base text-gray-500 mb-4 pl-4 list-disc">
+                        <li>Googling "how to set up Stripe"</li>
+                        <li>Watching 12 conflicting YouTube tutorials</li>
+                        <li>Getting stuck and giving up</li>
+                    </ul>
+                    <p className="font-bold">Instead: "Click here. Paste this. Hit this button. You're done."</p>
+                </div>
+
+                {/* 3. Live Calls */}
+                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                        <Users className="w-6 h-6 text-black" />
+                    </div>
+                    <h3 className="font-display font-black text-2xl uppercase mb-4">📞 4 Live Weekly Calls</h3>
+                    <p className="font-poppins text-gray-600 mb-4 font-bold">Mondays, 12 PM EST, 60 min each.</p>
+                    <ul className="space-y-2 font-poppins text-sm md:text-base text-black mb-4">
+                        <li>• I review 3-5 people's work LIVE</li>
+                        <li>• Everyone learns from each other's mistakes</li>
+                        <li>• Real-time troubleshooting</li>
+                        <li>• Q&A for your specific situation</li>
+                    </ul>
+                    <p className="text-sm italic text-gray-500">Can't attend live? Recording in your inbox within 2 hours.</p>
+                </div>
+
+                {/* 4. Community */}
+                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                        <MessageCircle className="w-6 h-6 text-black" />
+                    </div>
+                    <h3 className="font-display font-black text-2xl uppercase mb-4">💬 Skool Community</h3>
+                    <p className="font-poppins text-gray-600 mb-4 font-bold">24-Hour Support. You're not doing this alone.</p>
+                    <ul className="space-y-2 font-poppins text-sm md:text-base text-black mb-4">
+                        <li>• Post daily progress</li>
+                        <li>• Ask questions (answered within 24 hours)</li>
+                        <li>• Get feedback on your work</li>
+                        <li>• Celebrate wins together</li>
+                    </ul>
+                    <p className="font-bold mt-4">It's like having a team... without hiring a team.</p>
+                </div>
+
+            </div>
+
+            {/* CTA Button */}
             <div className="w-full flex justify-center pb-8">
-                <Button className="mx-auto px-10 py-5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
+                <Button
+                    onClick={scrollToCheckout}
+                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I'm ready to stand out!</span>
                         <span className="text-xs font-medium normal-case">$597 - The <span className="italic">$10k</span> Launch Lab</span>

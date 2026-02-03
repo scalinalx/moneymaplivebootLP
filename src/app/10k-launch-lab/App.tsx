@@ -8,26 +8,30 @@ import { LearningOutcomesSection } from './components/LearningOutcomesSection';
 import { DeepDiveSection } from './components/DeepDiveSection';
 import { WorkshopDiveSection } from './components/WorkshopDiveSection';
 import { IncludedSection } from './components/IncludedSection';
+import { ReactionSection } from './components/ReactionSection';
 import { BioSection } from './components/BioSection';
 import { DontTakeOurWordSection } from './components/DontTakeOurWordSection';
 import { WinsSection } from './components/WinsSection';
+import { EmbeddedCheckout } from './components/EmbeddedCheckout';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
     return (
         <main className="min-h-screen w-full bg-white text-black overflow-x-hidden selection:bg-brand-neon selection:text-black">
             <Hero />
-            <SocialProofSection />
+            {/* <SocialProofSection /> */}
             <ProblemSolutionSection />
             <MagnetismSection />
             <NotDoingSection />
-            <LearningOutcomesSection />
-            <DeepDiveSection />
-            <WorkshopDiveSection />
             <IncludedSection />
+            <ReactionSection />
+            <LearningOutcomesSection />
+            <WorkshopDiveSection />
             <BioSection />
             <DontTakeOurWordSection />
+            <DeepDiveSection />
             <WinsSection />
+            <EmbeddedCheckout />
             <Footer />
         </main>
     );

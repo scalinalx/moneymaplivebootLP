@@ -1,16 +1,25 @@
 import React from 'react';
-import { MockupGroup } from './MockupGroup';
 import { Button } from './Button';
-import { ArrowRight } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+    const scrollToCheckout = () => {
+        const element = document.getElementById('checkout');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
-        <section className="relative w-full min-h-screen bg-white overflow-hidden pt-10 pb-20 px-4 md:px-8 flex flex-col items-center">
+        <section className="relative w-full min-h-screen bg-white overflow-hidden pt-4 pb-12 px-4 md:px-8 flex flex-col items-center">
 
             {/* Top Nav (Minimal per screenshot) */}
-            <nav className="w-full max-w-6xl mx-auto flex justify-center items-center z-50 mb-12">
-                <div className="font-poppins font-medium text-sm tracking-[0.1em] uppercase">
-                    How We Grow
+            {/* Top Nav (Minimal per screenshot) */}
+            <nav className="w-full max-w-6xl mx-auto flex justify-center items-center z-50 mb-4 md:mb-8">
+                <div className="relative inline-block transform -rotate-1">
+                    <span className="absolute inset-0 bg-brand-neon transform skew-x-[-10deg] scale-105 -z-10 shadow-sm rounded-sm origin-center"></span>
+                    <span className="font-poppins font-black text-sm tracking-[0.1em] uppercase px-2 z-10 relative">
+                        How We Grow
+                    </span>
                 </div>
             </nav>
 
@@ -19,34 +28,41 @@ export const Hero: React.FC = () => {
 
                 {/* 1. Pre-headline */}
                 <p className="font-poppins italic font-semibold text-lg md:text-xl text-gray-800 mb-2">
-                    Learn how to...
+                    30-Day Implementation Program | Cohort Starts Feb 10th
                 </p>
 
-                {/* 2. Main Headline - Size reduced by ~20% */}
-                <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-[5rem] uppercase leading-[0.9] tracking-tight text-black mb-6 flex flex-col items-center w-full">
-                    <span className="block mb-2 md:mb-4 w-full">BUILD A 'TAKE MY MONEY' SUBSTACK</span>
+                {/* 2. Main Headline - Size reduced by 50% */}
+                <h1 className="font-display font-bold text-xl md:text-2xl lg:text-3xl uppercase leading-[0.9] tracking-tight text-black mb-4 flex flex-col items-center w-full">
+                    <span className="block mb-2 md:mb-4 w-full">LAUNCH YOUR OFFER IN 30 DAYS</span>
                     <span className="relative inline-block transform -rotate-1">
                         {/* Neon Highlighter Background */}
                         <span className="absolute inset-0 bg-brand-neon transform skew-x-[-10deg] scale-105 md:scale-110 -z-10 shadow-sm rounded-sm origin-center"></span>
-                        <span className="relative px-2 md:px-4 z-10 block">THAT STOPS THE SCROLL & SELLS FOR YOU</span>
+                        <span className="relative px-2 md:px-4 z-10 block">AND HIT YOUR FIRST $5K-$10K MONTH</span>
                     </span>
                 </h1>
 
                 {/* 3. Subtitle */}
-                <p className="font-poppins italic font-light text-base md:text-2xl text-black mb-4 md:mb-8 max-w-3xl">
-                    in one weekend, without the agency price tag.
+                <p className="font-poppins font-medium text-base md:text-xl text-black mb-4 md:mb-8 max-w-3xl">
+                    <span className="font-bold">ENROLLMENT CLOSES FRIDAY, FEB 7TH AT 11:59 PM EST</span>
                 </p>
 
-                {/* 4. Mockup */}
-                <div className="-mt-4 md:-mt-8 mb-8 md:mb-12 w-full flex justify-center">
-                    <MockupGroup />
+                {/* 4. Hero Image Replace Mockup */}
+                <div className="-mt-4 md:-mt-8 mb-8 md:mb-12 w-full max-w-5xl flex justify-center px-4">
+                    <img
+                        src="/imgs/10k-launch-lab/hero-1.jpeg"
+                        alt="10k Launch Lab Program"
+                        className="w-full h-auto rounded-xl shadow-hard border-2 border-black"
+                    />
                 </div>
 
                 {/* 5. CTA Button Section */}
                 <div className="flex flex-col items-center gap-8 relative z-40 mt-4">
-                    <Button className="px-10 py-4 md:px-14 md:py-6 text-sm md:text-lg group shadow-[4px_4px_0px_#000000] hover:shadow-[2px_2px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-brand-neon hover:bg-[#e6e200] border-2 border-black">
+                    <Button
+                        onClick={scrollToCheckout}
+                        className="px-10 py-3 md:px-14 md:py-4 text-sm md:text-lg group shadow-[4px_4px_0px_#000000] hover:shadow-[2px_2px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-brand-neon hover:bg-[#e6e200] border-2 border-black"
+                    >
                         <span className="flex flex-col items-center leading-none gap-1">
-                            <span className="font-normal text-lg md:text-xl tracking-wide">LET'S GO, I'M READY!</span>
+                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">LET'S GO, I'M READY!</span>
                             <span className="font-medium text-xs md:text-sm normal-case tracking-normal opacity-90">$597 - The <span className="italic">$10k</span> Launch Lab</span>
                         </span>
                     </Button>
