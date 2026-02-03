@@ -6,9 +6,11 @@ export const metadata: Metadata = {
     description: '30-Day Implementation Program to build your system, launch your offer, and hit your first $5k-$10k month. Enrollment closes Feb 7th.',
     openGraph: {
         title: 'Launch Your Offer in 30 Days | The 10k Launch Lab',
-        description: '30-Day Implementation Program to build your system, launch your offer, and hit your first $5k-$10k month. Cohort starts Feb 10th.',
+        description: '30-Day Implementation Program to build your system, launch your offer, and hit your first $5k-$10k month. Enrollment closes Feb 7th.',
         type: 'website',
         url: '/10k-launch-lab',
+        siteName: 'How We Grow',
+        locale: 'en_US',
         images: [
             {
                 url: '/imgs/10k-launch-lab/hero-1.jpeg',
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Launch Your Offer in 30 Days | The 10k Launch Lab',
-        description: '30-Day Implementation Program to build your system, launch your offer, and hit your first $5k-$10k month. Cohort starts Feb 10th.',
+        description: '30-Day Implementation Program to build your system, launch your offer, and hit your first $5k-$10k month. Enrollment closes Feb 7th.',
         images: ['/imgs/10k-launch-lab/hero-1.jpeg'],
     },
 };
