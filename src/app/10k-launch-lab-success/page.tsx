@@ -153,7 +153,7 @@ function SuccessContent() {
                                     </div>
                                     <div className="flex-grow text-center md:text-left">
                                         <h4 className="font-bold text-xl uppercase">The 60-Minute Launch Calendar</h4>
-                                        <p className="text-gray-600">Your Trello & Notion templates have been added to your account library.</p>
+                                        <p className="text-gray-600">Your Notion templates have been added to your account library.</p>
                                     </div>
                                     <a href="#" className="bg-black text-white px-6 py-3 rounded-sm font-bold uppercase text-sm hover:bg-brand-neon hover:text-black transition-all border-2 border-black">
                                         View Calendar

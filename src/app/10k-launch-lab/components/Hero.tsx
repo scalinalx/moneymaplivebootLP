@@ -69,7 +69,7 @@ export const Hero: React.FC = () => {
 
                     {/* 6. Social Proof Phrase */}
                     <p className="font-poppins text-lg md:text-2xl font-bold italic text-center text-black leading-relaxed max-w-xl">
-                        5600+ copies of The <span className="italic">$10k</span> Launch Lab sold. Kinda speaks for itself.<br />
+                        830+ success stories so far from the $10k Launch Lab and How We Grow programs. Kinda speaks for itself.<br />
                         Really. The internet can't shut up about it.
                     </p>
                 </div>

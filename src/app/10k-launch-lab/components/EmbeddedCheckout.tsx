@@ -207,7 +207,7 @@ export const EmbeddedCheckout: React.FC = () => {
                                 isSelected={hasOrderBump2}
                                 onToggle={() => setHasOrderBump2(!hasOrderBump2)}
                                 title='Add "The 60-Minute Launch Calendar"?'
-                                description='Get the exact day-by-day Trello board and Notion template I use to manage 6-figure launches without burnout. Includes email scheduling checklist.'
+                                description='Get the exact day-by-day Notion templates I use to manage 6-figure launches without burnout. Includes email scheduling checklist.'
                                 price={LAUNCHLAB_BUMP2_PRICE}
                                 originalPriceValue={297}
                                 highlightText="SPEED UP:"
