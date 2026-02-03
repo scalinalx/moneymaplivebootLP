@@ -79,7 +79,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
                 className={`w-full mt-8 bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-xl py-5 rounded shadow-lg transition-all transform hover:-translate-y-1 uppercase tracking-wider ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
             >
-                {isProcessing ? 'Processing...' : `YES! RESERVE MY SPOT — $${(hasOrderBump ? (HIT10K_PRICE + HIT10K_BUMP_PRICE) : HIT10K_PRICE) / 100}`}
+                {isProcessing ? 'Processing...' : `GET LIFETIME ACCESS NOW — $${(hasOrderBump ? (HIT10K_PRICE + HIT10K_BUMP_PRICE) : HIT10K_PRICE) / 100}`}
             </button>
 
             <div className="mt-6 flex flex-col items-center gap-3">

@@ -11,15 +11,15 @@ export const FAQSection: React.FC = () => {
     const faqs: FAQItem[] = [
         {
             question: "Is this a live workshop or a recorded course?",
-            answer: "This is a 60-minute LIVE intensive workshop. I'll be teaching the framework in real-time on February 3rd and hosting a live Q&A session at the end to answer your specific questions."
+            answer: "This is a 90-minute intensive video course. recorded and ready to watch immediately. No fluff, just the frameworks."
         },
         {
-            question: "What if the date or time doesn't work for me?",
-            answer: "No problem! Every person who registers gets lifetime access to the recording and all the bonuses (Notion template, worksheetsade, email sequences). You can watch the replay whenever it suits you."
+            question: "How do I access the materials?",
+            answer: "Instantly. You'll receive a welcome email with access to the entire 90 mins of content + BONUSES as soon as you enroll."
         },
         {
-            question: "Do I need a huge following or email list to make this work?",
-            answer: "Absolutely not. In fact, most of my students who hit their first $10k months start with 'tiny' lists (under 500 people). This framework is specifically designed to maximize revenue from the audience you ALREADY have."
+            question: "Do I need a huge following?",
+            answer: "No. This system is designed for 'Tiny Lists' (under 500 people). We focus on extraction efficiency, not raw audience size."
         },
         {
             question: "What if I don't even have a clear offer yet?",
@@ -31,11 +31,11 @@ export const FAQSection: React.FC = () => {
         },
         {
             question: "What's the total investment for the workshop?",
-            answer: `The total investment is just $${HIT10K_PRICE / 100}. This includes the live workshop, the Q&A session, and over $500 worth of bonuses (like the Viral Substack Notes Generator and the Email Sequence templates).`
+            answer: `The total investment is just $${HIT10K_PRICE / 100}. This includes the full 90-minute business course and over $500 worth of bonuses (like the Viral Substack Notes Generator and the Email Sequence templates).`
         },
         {
             question: "Is there a refund policy?",
-            answer: "Due to the digital nature of the materials and the live event seating, all sales are final. However, I am confident that if you apply even ONE of the five steps, you'll see a return on your investment almost immediately."
+            answer: "Due to the digital nature of the materials, all sales are final. However, I am confident that if you apply even ONE of the five steps, you'll see a return on your investment almost immediately."
         }
     ];
 
@@ -89,7 +89,7 @@ export const FAQSection: React.FC = () => {
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg py-4 px-12 rounded-[5px] shadow-lg transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        YES! RESERVE MY SPOT — ${HIT10K_PRICE / 100}
+                        GET LIFETIME ACCESS NOW — ${HIT10K_PRICE / 100}
                     </button>
                 </div>
 

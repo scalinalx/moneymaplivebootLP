@@ -52,27 +52,27 @@ export const OfferStack: React.FC = () => {
 
                 {/* Bridge Headline */}
                 <p className="font-montserrat text-black text-center text-xl md:text-[22px] leading-relaxed max-w-4xl mb-8">
-                    A <span className="font-bold text-[#d81159]">60-minute live intensive</span> revealing the exact positioning, pricing, and launch framework used by my students to scale existing offers to <span className="font-bold underline">5-figure months</span>.
+                    A <span className="font-bold text-[#d81159]">90-minute business course</span> covering the exact positioning, pricing, and launch frameworks to scale your existing offers to <span className="font-bold underline">5-figure months</span>.
                 </p>
 
                 {/* Section Headline */}
                 <h2 className="font-anton text-[rgb(56,170,185)] text-5xl md:text-7xl text-center mb-12 tracking-[0.05em] uppercase">
-                    What's Inside?
+                    The Curriculum
                 </h2>
 
                 {/* The Feature List (The Stack) */}
                 <div className="flex flex-col gap-6 w-full">
                     {[
-                        { bold: "Validation framework", italic: "to pick which ONE offer has the highest chance of hitting $10K in 30 days." },
-                        { bold: "Pricing secrets", italic: "so you stop underpricing. I'll show you why higher prices often sell BETTER." },
-                        { bold: "Launch strategies for tiny lists", italic: "(you don't need 10,000 subscribers to make $5K)." },
-                        { bold: "Messaging formulas", italic: "that make saying 'no' feel like a mistake." },
-                        { bold: "Daily launch checklist", italic: "so you know exactly what to do each day of your launch." },
-                        { bold: "Disaster recovery framework", italic: "for what to do if nobody buys on day one." },
-                        { bold: "Notion sales page template", italic: "(no fancy design skills needed).", isBonus: true },
-                        { bold: "Take-away intensive worksheets", italic: "for every single launch you do.", isBonus: true },
-                        { bold: "5-email launch sequence", italic: "templates included so you just plug and play.", isBonus: true },
-                        { bold: "The \"Viral Substack Notes Generator\"", italic: "($197 value) included for FREE.", isBonus: true }
+                        { bold: "The Validation Framework", italic: "to identify your highest-probability $10k offer." },
+                        { bold: "Premium Pricing Secrets", italic: "so you can charge what you're worth and sell more." },
+                        { bold: "Tiny List Strategies", italic: "for generating $5k+ with under 500 subscribers." },
+                        { bold: "High-Intent Messaging", italic: "that creates immediate psychological buy-in." },
+                        { bold: "Daily Launch Checklist", italic: "the step-by-step roadmap for a 30-day launch." },
+                        { bold: "The Disaster Recovery Playbook", italic: "for what to do if sales start slow." },
+                        { bold: "Notion Sales Page Template", italic: "optimized for conversion.", isBonus: true },
+                        { bold: "Take-away Business Worksheets", italic: "tools for every launch you do.", isBonus: true },
+                        { bold: "5-Email Launch Sequence", italic: "plug-and-play templates included.", isBonus: true },
+                        { bold: "Viral Notes Generator", italic: "($197 value) included for FREE.", isBonus: true }
                     ].map((item, index) => (
                         <div key={index} className="flex items-start gap-5">
                             <div className="flex-shrink-0 mt-1">
@@ -110,7 +110,7 @@ export const OfferStack: React.FC = () => {
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-6 px-10 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex flex-col md:flex-row items-center justify-center gap-3 text-center w-full md:w-auto"
                     >
-                        <span>Reserve My Spot — ${HIT10K_PRICE / 100}</span>
+                        <span>Get Lifetime Access Now — ${HIT10K_PRICE / 100}</span>
                         <ArrowRight className="w-6 h-6 hidden md:block group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
                     <p className="font-lato text-gray-500 mt-4 text-sm">One-time payment. Lifetime access to the recording & templates.</p>

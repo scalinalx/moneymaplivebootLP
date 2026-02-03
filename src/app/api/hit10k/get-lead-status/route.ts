@@ -9,6 +9,11 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ success: false, error: 'Lead ID is required' }, { status: 400 });
     }
 
+    // Development/Preview Bypass
+    if (leadId === 'TEST') {
+        return NextResponse.json({ success: true, lead: { is_paid: true, has_order_bump: true } });
+    }
+
     try {
         const { data, error } = await supabaseAdmin
             .from('hit10k_leads')

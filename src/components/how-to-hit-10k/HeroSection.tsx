@@ -11,12 +11,12 @@ export const HeroSection: React.FC = () => {
                 <h1 className="font-anton text-[#06b6d4] leading-[1.1] md:leading-[1.05] uppercase mb-10 tracking-wide w-full max-w-[1400px] flex flex-col items-center">
                     <span className="text-[#ffc300] text-xl md:text-2xl lg:text-4xl mb-1">How To</span>
                     <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl py-1 px-2">Hit Your First $10,000 Month</span>
-                    <span className="text-base md:text-xl lg:text-2xl mt-1 opacity-80 px-4">... Without Changing Your Offer??</span>
+                    <span className="text-base md:text-xl lg:text-2xl mt-1 opacity-80 px-4">Stop guessing. Start launching.</span>
                 </h1>
 
                 {/* Sub-Headline */}
-                <h2 className="font-lora text-[#333333] text-lg md:text-2xl leading-[1.6] max-w-4xl mb-12 font-normal">
-                    Join me live on February 3rd for a 60-minute intensive revealing the exact positioning, pricing, and launch framework to scale your existing offers to 5-figure months.
+                <h2 className="font-display text-[#333333] text-lg md:text-3xl leading-tight max-w-4xl mb-12 font-bold uppercase italic tracking-tight">
+                    90 minutes of videos covering in-depth the frameworks, strategies, tactics, tools & templates that took my business to $1M
                 </h2>
 
                 {/* Proof Image */}
@@ -36,7 +36,7 @@ export const HeroSection: React.FC = () => {
                         ))}
                     </div>
                     <p className="font-lato text-[#333333] text-lg md:text-[19px] italic max-w-2xl leading-relaxed">
-                        "Using the exact framework I'll be teaching you in this workshop, I was able to scale my revenue to $119,000+ per month."
+                        "Using the exact frameworks I'll be teaching you in this course, I was able to scale my revenue to $119,000+ per month."
                     </p>
                 </div>
 
@@ -46,10 +46,10 @@ export const HeroSection: React.FC = () => {
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-xl md:text-2xl py-5 px-10 md:px-16 rounded shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        YES! RESERVE MY SPOT — ${HIT10K_PRICE / 100}
+                        GET LIFETIME ACCESS NOW — ${HIT10K_PRICE / 100}
                     </button>
                     <p className="font-lora italic text-gray-500 mt-4 text-sm">
-                        *Instant access to bonuses granted upon registration
+                        *Instant access to course & bonuses granted upon registration
                     </p>
                 </div>
 

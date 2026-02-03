@@ -12,7 +12,7 @@ export const AnnouncementBar: React.FC = () => {
         <div className="sticky top-0 z-50 w-full bg-[#d81159] text-white text-center py-2 md:py-3 px-4 shadow-md">
             <p className="font-lato font-bold text-[13px] md:text-[19px] tracking-wide flex items-center justify-center gap-2 leading-tight">
                 <span className="inline-block w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
-                LIVE FEB 3, 10:00AM EST: <span className="text-[#FCD34D]">Join the 60-Minute Intensive</span> — How To Hit Your First $10,000 Month (Simplified)
+                90-MINUTE BUSINESS COURSE: <span className="text-[#FCD34D]">Instant Access</span> — How To Hit Your First $10,000 Month (Simplified)
             </p>
         </div>
     );

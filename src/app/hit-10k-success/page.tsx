@@ -10,16 +10,10 @@ function SuccessContent() {
     const leadId = searchParams.get('leadId');
     const [hasOrderBump, setHasOrderBump] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPaid, setIsPaid] = useState(false);
 
     useEffect(() => {
-        // ... (Lead status fetching and Purchase tracking)
-
-        // Auto-open calendar link after 3 seconds
-        const timer = setTimeout(() => {
-            window.open('https://calendar.app.google/NyyFt4JK8qjQV16R8', '_blank');
-        }, 3000);
-
-        return () => clearTimeout(timer);
+        setIsLoaded(true);
     }, []);
 
     useEffect(() => {
@@ -28,10 +22,11 @@ function SuccessContent() {
             fetch(`/api/hit10k/get-lead-status?leadId=${leadId}`)
                 .then(res => res.json())
                 .then(data => {
-                    const isPaid = data.success && data.lead.is_paid;
+                    const paidStatus = data.success && data.lead.is_paid;
                     const hasBump = data.success && data.lead.has_order_bump;
 
-                    if (isPaid) {
+                    if (paidStatus) {
+                        setIsPaid(true);
                         // Track conversion with Facebook Pixel AFTER status is confirmed
                         if (typeof window !== 'undefined' && (window as any).fbq) {
                             const totalValue = hasBump
@@ -47,21 +42,30 @@ function SuccessContent() {
 
                         if (hasBump) {
                             setHasOrderBump(true);
-                            // Automatically open the link in a new tab
-                            const notionLink = "https://anabubolea.notion.site/Hooks-That-Stop-the-Scroll-17c9b91e546e80b7a0f2c8908465faf2?source=copy_link";
-                            window.open(notionLink, '_blank');
                         }
+                    } else {
+                        // Redirect if not paid
+                        window.location.href = '/how-to-hit-10k';
                     }
                     setIsLoaded(true);
                 })
                 .catch(err => {
                     console.error('Error fetching lead status:', err);
-                    setIsLoaded(true);
+                    window.location.href = '/how-to-hit-10k';
                 });
         } else {
-            setIsLoaded(true);
+            // Redirect if no leadId
+            window.location.href = '/how-to-hit-10k';
         }
     }, [leadId]);
+
+    if (!isLoaded || !isPaid) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-white font-lora text-gray-400 italic">
+                Verifying access...
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-white">
@@ -72,22 +76,22 @@ function SuccessContent() {
                 </div>
 
                 <h1 className="font-anton text-4xl md:text-6xl text-[#333333] mb-6 text-center uppercase">
-                    You're Registered! 🎉
+                    You're In! 🚀
                 </h1>
 
-                <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-8">
-                    Congratulations! Your payment was successful and you've secured your spot for the **Hit Your First $10,000 Month** live workshop on February 3rd.
+                <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-12">
+                    Success! You now have lifetime access to the **Hit Your First $10,000 Month** business course. We're ready to scale your business together.
                 </p>
 
                 <div className="mb-12">
                     <a
-                        href="https://calendar.app.google/NyyFt4JK8qjQV16R8"
+                        href="https://www.youtube.com/watch?v=h23TYuW7EYA"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold py-6 px-12 rounded-xl shadow-[0_10px_30px_rgba(216,17,89,0.3)] transition-all transform hover:scale-105 uppercase tracking-wider text-lg md:text-xl"
+                        className="inline-flex items-center gap-3 bg-[#333333] hover:bg-black text-white font-montserrat font-bold py-6 px-12 rounded-xl shadow-lg transition-all transform hover:scale-105 uppercase tracking-wider text-lg md:text-xl"
                     >
-                        <Zap className="animate-pulse" size={24} fill="white" />
-                        ADD THIS TO YOUR CALENDAR RIGHT NOW
+                        <Zap size={24} fill="white" />
+                        ACCESS THE FULL COURSE NOW
                     </a>
                 </div>
 
@@ -99,33 +103,33 @@ function SuccessContent() {
                                 <Mail className="text-[#D81B60] flex-shrink-0" />
                                 <div>
                                     <p className="font-bold text-[#333333]">Check your inbox</p>
-                                    <p className="text-gray-600 text-sm">We've sent your confirmation email with the calendar invite and Zoom link.</p>
+                                    <p className="text-gray-600 text-sm">We've sent a welcome email with your private access link and bonuses.</p>
                                 </div>
                             </div>
                             <div className="flex gap-4">
-                                <Calendar className="text-[#D81B60] flex-shrink-0" />
+                                <Zap className="text-[#D81B60] flex-shrink-0" />
                                 <div>
-                                    <p className="font-bold text-[#333333]">Save the date</p>
-                                    <p className="text-gray-600 text-sm">February 3rd, 2026 @ 10:00 AM EST (New York Time).</p>
+                                    <p className="font-bold text-[#333333]">Start with Module 1</p>
+                                    <p className="text-gray-600 text-sm">Log in and watch the "Validation Framework" video immediately.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="bg-[#E0F7FA]/30 p-8 rounded-xl border border-[#4DB6AC]/20">
-                        <h3 className="font-anton text-xl text-[#333333] mb-6 uppercase">Workshop Details</h3>
+                        <h3 className="font-anton text-xl text-[#333333] mb-6 uppercase">Course Curriculum</h3>
                         <ul className="space-y-4">
                             <li className="flex items-center gap-3 text-gray-700">
                                 <Users size={18} className="text-[#4DB6AC]" />
-                                <span>60-Min Intensive + Live Q&A</span>
+                                <span>90-Minute Strategic Core Curriculum</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-700">
                                 <CheckCircle size={18} className="text-[#4DB6AC]" />
-                                <span>5-Step $10k Framework</span>
+                                <span>$1M Framework Library</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-700">
                                 <CheckCircle size={18} className="text-[#4DB6AC]" />
-                                <span>Bonus Templates & Sequences</span>
+                                <span>Advanced Conversion Templates</span>
                             </li>
                         </ul>
                     </div>

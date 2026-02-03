@@ -66,7 +66,7 @@ export const BridgeSection: React.FC = () => {
                 <div className="max-w-[1000px] w-full flex flex-col items-center text-center">
                     {/* Story Hook */}
                     <p className="font-lora text-[#333333] font-medium text-xl md:text-3xl leading-relaxed max-w-4xl mb-12">
-                        Stop me if you've been here before: You created your offers. You know WHAT you're selling. But when you sit down to actually launch it... <span className="italic font-bold">You freeze.</span>
+                        You have the offer. You know it works. But when it's time to launch... <span className="italic font-bold text-red-600">the math just doesn't add up.</span>
                     </p>
 
                     {/* Repeated CTA */}
@@ -77,7 +77,7 @@ export const BridgeSection: React.FC = () => {
                         <span>Yes! I Want To Hit $10K</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
-                    <p className="font-lato text-gray-500 text-sm">Join the 60-Minute LIVE Intensive on February 3rd</p>
+                    <p className="font-lato text-gray-500 text-sm">90-Minute Business Course | Instant Lifetime Access</p>
                 </div>
             </div>
 
@@ -110,7 +110,7 @@ export const BridgeSection: React.FC = () => {
                         The problem is almost never WHAT you're selling...
                     </h2>
                     <p className="font-lora italic text-[#333333] text-xl md:text-2xl max-w-3xl">
-                        ...it's how you're positioning, pricing, and launching it. I'll show you why during this 60-minute intensive.
+                        ...it's how you position, price, and launch it. I'll show you the exact "Launch Physics" inside this 90-minute course.
                     </p>
                 </div>
             </div>
@@ -153,7 +153,7 @@ export const BridgeSection: React.FC = () => {
                             onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                             className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-base md:text-xl py-4 px-8 md:px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex items-center justify-center gap-3"
                         >
-                            <span>Reserve Your Spot — ${HIT10K_PRICE / 100}</span>
+                            <span>Get Lifetime Access Now — ${HIT10K_PRICE / 100}</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                         </button>
                     </div>

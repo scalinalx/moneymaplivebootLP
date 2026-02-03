@@ -5,23 +5,23 @@ export const ProcessSection: React.FC = () => {
     const steps = [
         {
             icon: <Target className="w-10 h-10 md:w-12 md:h-12 text-[#d81159]" strokeWidth={1.5} />,
-            title: "Pick Your Winning Offer",
-            subtext: "We'll use my validation framework to choose which ONE offer hits $10K fastest."
+            title: "The Validation Framework",
+            subtext: "Identify the ONE offer in your portfolio ready to hit $10k in 30 days."
         },
         {
             icon: <DollarSign className="w-10 h-10 md:w-12 md:h-12 text-[#d81159]" strokeWidth={1.5} />,
-            title: "Price It Confidently",
-            subtext: "Stop underpricing. I'll show you why higher prices often sell BETTER."
+            title: "Premium Pricing Logic",
+            subtext: "Stop underpricing. Learn why higher prices actually increase conversion rates."
         },
         {
             icon: <Users className="w-10 h-10 md:w-12 md:h-12 text-[#d81159]" strokeWidth={1.5} />,
-            title: "Find Your 100 Buyers",
-            subtext: "You don't need a huge list. Learn how to launch with <500 subscribers."
+            title: "The 'Tiny List' Launch",
+            subtext: "Extract maximum profit from <500 subscribers. No huge audience required."
         },
         {
             icon: <PenTool className="w-10 h-10 md:w-12 md:h-12 text-[#d81159]" strokeWidth={1.5} />,
-            title: "Write Killer Sales Copy",
-            subtext: "The exact messaging formulas that make saying 'no' feel like a mistake."
+            title: "High-Intent Messaging",
+            subtext: "The exact formulas that turn passive readers into high-intent buyers."
         },
         {
             icon: <Zap className="w-10 h-10 md:w-12 md:h-12 text-[#d81159]" strokeWidth={1.5} />,

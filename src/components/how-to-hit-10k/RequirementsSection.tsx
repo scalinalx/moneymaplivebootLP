@@ -22,7 +22,7 @@ export const RequirementsSection: React.FC = () => {
 
                 {/* Impact Statement */}
                 <h3 className="font-montserrat font-extrabold text-black text-2xl md:text-3xl lg:text-[34px] leading-tight max-w-4xl mb-12">
-                    I'll give you the exact framework I used to go from "Offer Confusion" to $119,000+ months when you join this live intensive.
+                    I'll give you the exact frameworks I used to go from "Offer Confusion" to $119,000+ months when you join this business course.
                 </h3>
 
                 {/* CTA Button */}
@@ -30,7 +30,7 @@ export const RequirementsSection: React.FC = () => {
                     onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                     className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-5 px-10 md:px-14 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wide"
                 >
-                    I'M READY TO HIT $10K!
+                    GET LIFETIME ACCESS NOW!
                 </button>
 
             </div>
