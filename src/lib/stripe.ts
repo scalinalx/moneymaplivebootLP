@@ -34,3 +34,7 @@ export const LAUNCHLAB_BUMP_PRICE = Number.isFinite(parsedLaunchLabBump) ? parse
 
 const parsedLaunchLabBump2 = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE || '', 10);
 export const LAUNCHLAB_BUMP2_PRICE = Number.isFinite(parsedLaunchLabBump2) ? parsedLaunchLabBump2 : 9700; // $97
+
+// 10k Launch Lab (1:1 Coaching) Upsell Price
+const parsedLaunchLabCoaching = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE || '', 10);
+export const LAUNCHLAB_COACHING_PRICE = Number.isFinite(parsedLaunchLabCoaching) ? parsedLaunchLabCoaching : 74700; // $747

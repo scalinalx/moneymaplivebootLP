@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     try {
         const { data, error } = await supabaseAdmin
             .from('launch_lab_leads')
-            .select('is_paid, has_order_bump, has_order_bump2')
+            .select('is_paid, has_order_bump, has_order_bump2, has_upsell')
             .eq('id', leadId)
             .single();
 

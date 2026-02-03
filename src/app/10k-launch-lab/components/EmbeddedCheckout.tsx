@@ -38,7 +38,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         const { error, paymentIntent } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${window.location.origin}/10k-launch-lab-success?leadId=${leadId}&success=true`,
+                return_url: `${window.location.origin}/10k-launch-lab-upsell?leadId=${leadId}&success=true`,
             },
             redirect: 'if_required',
         });
@@ -58,7 +58,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
             });
 
             // Redirect to success page or show success message
-            window.location.href = `/10k-launch-lab-success?leadId=${leadId}`;
+            window.location.href = `/10k-launch-lab-upsell?leadId=${leadId}`;
         }
     };
 

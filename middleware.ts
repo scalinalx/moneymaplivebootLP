@@ -24,6 +24,8 @@ export function middleware(req: NextRequest) {
     '/launch-stack',
     '/10k-template',
     '/10k-launch-lab',
+    '/10k-launch-lab-upsell',
+    '/10k-launch-lab-success',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {

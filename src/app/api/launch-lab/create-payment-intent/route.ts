@@ -15,6 +15,15 @@ export async function POST(request: NextRequest) {
         if (hasOrderBump) totalAmount += LAUNCHLAB_BUMP_PRICE;
         if (hasOrderBump2) totalAmount += LAUNCHLAB_BUMP2_PRICE;
 
+        // 0. Create or Retrieve Stripe Customer
+        let customer;
+        const customers = await stripe.customers.list({ email, limit: 1 });
+        if (customers.data.length > 0) {
+            customer = customers.data[0];
+        } else {
+            customer = await stripe.customers.create({ email, name });
+        }
+
         // 1. Create the lead in Supabase first (Pending state)
         const { data: lead, error: supabaseError } = await supabaseAdmin
             .from('launch_lab_leads')
@@ -25,6 +34,7 @@ export async function POST(request: NextRequest) {
                 has_order_bump2: hasOrderBump2,
                 total_paid: totalAmount,
                 is_paid: false,
+                stripe_customer_id: customer.id,
                 created_at: new Date().toISOString()
             })
             .select()
@@ -39,6 +49,8 @@ export async function POST(request: NextRequest) {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: totalAmount,
             currency: 'usd',
+            customer: customer.id,
+            setup_future_usage: 'off_session',
             receipt_email: email,
             metadata: {
                 leadId: lead.id,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnnouncementBar } from './components/AnnouncementBar';
 import { Hero } from './components/Hero';
 import { SocialProofSection } from './components/SocialProofSection';
 import { ProblemSolutionSection } from './components/ProblemSolutionSection';
@@ -18,6 +19,9 @@ import { Footer } from './components/Footer';
 const App: React.FC = () => {
     return (
         <main className="min-h-screen w-full bg-white text-black overflow-x-hidden selection:bg-brand-neon selection:text-black">
+            <AnnouncementBar />
+            {/* Spacer to prevent fixed bar from covering hero on load */}
+            <div className="h-[46px] md:h-[60px]"></div>
             <Hero />
             {/* <SocialProofSection /> */}
             <ProblemSolutionSection />
