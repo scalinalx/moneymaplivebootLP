@@ -23,6 +23,7 @@ export function middleware(req: NextRequest) {
     '/hit-10k-success',
     '/launch-stack',
     '/10k-template',
+    '/10k-launch-lab',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
