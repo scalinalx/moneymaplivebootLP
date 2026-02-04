@@ -41,7 +41,7 @@ export const NotDoingSection: React.FC = () => {
 
             <div className="max-w-3xl w-full mx-auto text-center font-poppins text-lg md:text-xl text-black leading-relaxed">
                 <p>
-                    And in 30 days, you've launched your offer and made your first $5K-$10K.
+                    And in 30 days, you've launched your offer and made your first $10K.
                 </p>
                 <p className="font-bold mt-4">
                     Or you know exactly what to fix for your next launch.

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Hero } from './components/Hero';
+import { UrgencyBadge } from './components/UrgencyBadge';
 import { SocialProofSection } from './components/SocialProofSection';
 import { ProblemSolutionSection } from './components/ProblemSolutionSection';
 import { MagnetismSection } from './components/MagnetismSection';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             {/* Spacer to prevent fixed bar from covering hero on load */}
             <div className="h-[46px] md:h-[60px]"></div>
             <Hero />
+            <UrgencyBadge />
             {/* <SocialProofSection /> */}
             <ProblemSolutionSection />
             <MagnetismSection />

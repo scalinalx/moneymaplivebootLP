@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
                     <span className="relative inline-block transform -rotate-1">
                         {/* Neon Highlighter Background */}
                         <span className="absolute inset-0 bg-brand-neon transform skew-x-[-10deg] scale-105 md:scale-110 -z-10 shadow-sm rounded-sm origin-center"></span>
-                        <span className="relative px-2 md:px-4 z-10 block">AND HIT YOUR FIRST $5K-$10K MONTH</span>
+                        <span className="relative px-2 md:px-4 z-10 block">AND HIT YOUR FIRST $10K MONTH</span>
                     </span>
                 </h1>
 
