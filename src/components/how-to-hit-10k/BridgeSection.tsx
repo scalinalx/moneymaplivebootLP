@@ -71,7 +71,7 @@ export const BridgeSection: React.FC = () => {
 
                     {/* Repeated CTA */}
                     <button
-                        onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-base md:text-xl py-4 px-8 md:px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-6 uppercase flex items-center justify-center gap-2"
                     >
                         <span>Yes! I Want To Hit $10K</span>
@@ -150,7 +150,7 @@ export const BridgeSection: React.FC = () => {
                     {/* Closing CTA */}
                     <div className="mt-24">
                         <button
-                            onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
                             className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-base md:text-xl py-4 px-8 md:px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex items-center justify-center gap-3"
                         >
                             <span>Get Lifetime Access Now — ${HIT10K_PRICE / 100}</span>

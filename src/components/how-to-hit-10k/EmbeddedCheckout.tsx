@@ -141,7 +141,7 @@ export const EmbeddedCheckout: React.FC = () => {
     };
 
     return (
-        <div id="checkout-section" className="w-full max-w-[600px] mx-auto bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
+        <div id="waitlist-section" className="w-full max-w-[600px] mx-auto bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
             <div className="bg-[#333333] py-4 px-6 text-center">
                 <p className="text-white font-montserrat font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2">
                     <Lock size={14} className="text-[#ffc300]" />

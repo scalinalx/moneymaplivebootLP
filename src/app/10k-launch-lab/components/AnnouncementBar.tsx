@@ -26,7 +26,7 @@ export const AnnouncementBar: React.FC = () => {
                     </span>
                     <span className="hidden lg:inline mx-2 opacity-50">|</span>
                     <span className="lg:inline font-black bg-white/10 px-2 py-0.5 rounded-sm ml-1 text-[#FFFB00]">
-                        17 out of 30 spots remaining
+                        12 out of 30 spots remaining
                     </span>
                 </p>
                 <div className="flex-shrink-0 w-2 h-2 bg-white rounded-full animate-ping"></div>
