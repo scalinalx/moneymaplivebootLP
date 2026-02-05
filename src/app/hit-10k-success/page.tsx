@@ -3,7 +3,7 @@
 import { useEffect, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Calendar, Mail, Users, ArrowRight, ExternalLink, Zap } from 'lucide-react';
-import { HIT10K_PRICE } from '@/lib/stripe';
+import { HIT10K_PRICE, HIT10K_BUMP_PRICE } from '@/lib/stripe';
 
 function SuccessContent() {
     const searchParams = useSearchParams();
@@ -30,7 +30,7 @@ function SuccessContent() {
                         // Track conversion with Facebook Pixel AFTER status is confirmed
                         if (typeof window !== 'undefined' && (window as any).fbq) {
                             const totalValue = hasBump
-                                ? (HIT10K_PRICE + (parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP_PRICE || '2700'))) / 100
+                                ? (HIT10K_PRICE + HIT10K_BUMP_PRICE) / 100
                                 : HIT10K_PRICE / 100;
 
                             (window as any).fbq('track', 'Purchase', {

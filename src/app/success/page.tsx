@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Calendar, Mail, Users, Download, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { WORKSHOP_PRICE } from '@/lib/stripe';
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -17,16 +18,16 @@ function SuccessContent() {
       // Track conversion with Rewardful
       if (typeof window !== 'undefined' && window.rewardful) {
         window.rewardful('convert', {
-          amount: 497.00, // $497 bootcamp price
+          amount: WORKSHOP_PRICE / 100, // Dynamic price
           email: null // Will be populated by Rewardful from the checkout session
         });
-        console.log('Rewardful conversion tracked for $497');
+        console.log(`Rewardful conversion tracked for $${WORKSHOP_PRICE / 100}`);
       }
 
       // Track conversion with Facebook Pixel
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Purchase', {
-          value: 497,
+          value: WORKSHOP_PRICE / 100,
           currency: 'USD',
           contents: [
             {

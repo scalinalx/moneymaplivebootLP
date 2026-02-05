@@ -3,7 +3,7 @@
 import { useEffect, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Calendar, Mail, Users, ArrowRight, ExternalLink, Zap, Rocket } from 'lucide-react';
-import { LAUNCHLAB_PRICE, LAUNCHLAB_BUMP_PRICE, LAUNCHLAB_BUMP2_PRICE } from '@/lib/stripe';
+import { LAUNCHLAB_PRICE, LAUNCHLAB_BUMP_PRICE, LAUNCHLAB_BUMP2_PRICE, LAUNCHLAB_COACHING_PRICE } from '@/lib/stripe';
 import '../10k-launch-lab/styles.css';
 
 function SuccessContent() {
@@ -37,6 +37,7 @@ function SuccessContent() {
                                 let totalValue = LAUNCHLAB_PRICE;
                                 if (has_order_bump) totalValue += LAUNCHLAB_BUMP_PRICE;
                                 if (has_order_bump2) totalValue += LAUNCHLAB_BUMP2_PRICE;
+                                if (has_upsell) totalValue += LAUNCHLAB_COACHING_PRICE;
 
                                 (window as any).fbq('track', 'Purchase', {
                                     value: totalValue / 100,
