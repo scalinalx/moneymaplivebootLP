@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '@/components/launch-stack/App';
+import { PasswordGate } from '@/components/launch-stack/PasswordGate';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -19,5 +20,9 @@ export const metadata: Metadata = {
 };
 
 export default function LaunchStackPage() {
-    return <App />;
+    return (
+        <PasswordGate>
+            <App />
+        </PasswordGate>
+    );
 }
