@@ -74,6 +74,12 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Meta Pixel Code */}
+
+        {/* Proof Pixel */}
+        <Script
+          src="https://cdn.useproof.com/proof.js?acc=NkPzIKspvWbApl6A6cwWSfOQ2U03"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
