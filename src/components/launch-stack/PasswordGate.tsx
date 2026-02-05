@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { verifyLaunchStackPassword } from '@/app/launch-stack/actions';
 import { Lock, ArrowRight, Loader2 } from 'lucide-react';
 
 interface PasswordGateProps {
@@ -13,6 +14,7 @@ export const PasswordGate: React.FC<PasswordGateProps> = ({ children }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [shake, setShake] = useState(false);
+    const [isVerifying, setIsVerifying] = useState(false);
 
     useEffect(() => {
         // Check session storage on mount
@@ -23,17 +25,26 @@ export const PasswordGate: React.FC<PasswordGateProps> = ({ children }) => {
         setIsLoading(false);
     }, []);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const correctPassword = process.env.NEXT_PUBLIC_LAUNCH_STACK_PASSWORD;
+        setIsVerifying(true);
 
-        if (password === correctPassword) {
-            sessionStorage.setItem('launch_stack_auth', 'true');
-            setIsAuthenticated(true);
-        } else {
+        try {
+            const isValid = await verifyLaunchStackPassword(password);
+
+            if (isValid) {
+                sessionStorage.setItem('launch_stack_auth', 'true');
+                setIsAuthenticated(true);
+            } else {
+                setError(true);
+                setShake(true);
+                setTimeout(() => setShake(false), 500); // Reset shake animation
+            }
+        } catch (err) {
+            console.error('Verification failed', err);
             setError(true);
-            setShake(true);
-            setTimeout(() => setShake(false), 500); // Reset shake animation
+        } finally {
+            setIsVerifying(false);
         }
     };
 
