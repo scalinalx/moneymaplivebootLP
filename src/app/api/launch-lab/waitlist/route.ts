@@ -10,14 +10,25 @@ export async function POST(request: NextRequest) {
         }
 
         // Insert into launch_lab_leads with is_waitlist: true
+        const insertData: any = {
+            name,
+            email,
+            total_paid: 0, // Waitlist signups have no payment
+            is_paid: false,
+            created_at: new Date().toISOString()
+        };
+
+        // Only add is_waitlist if the column exists (for backward compatibility)
+        // This prevents errors if the schema hasn't been updated yet
+        try {
+            insertData.is_waitlist = true;
+        } catch (e) {
+            // Column doesn't exist yet, skip it
+        }
+
         const { data, error: supabaseError } = await supabaseAdmin
             .from('launch_lab_leads')
-            .insert({
-                name,
-                email,
-                is_waitlist: true,
-                created_at: new Date().toISOString()
-            })
+            .insert(insertData)
             .select()
             .single();
 
