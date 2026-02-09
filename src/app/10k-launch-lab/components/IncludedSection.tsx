@@ -4,7 +4,7 @@ import { Check, Calendar, Video, Users, MessageCircle } from 'lucide-react';
 
 export const IncludedSection: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('checkout');
+        const element = document.getElementById('waitlist');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

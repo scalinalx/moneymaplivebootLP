@@ -4,7 +4,7 @@ import { Gift, Zap, FileText, Database, LifeBuoy } from 'lucide-react';
 
 export const WorkshopDiveSection: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('checkout');
+        const element = document.getElementById('waitlist');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

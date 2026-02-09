@@ -3,7 +3,7 @@ import { Button } from './Button';
 
 export const Hero: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('checkout');
+        const element = document.getElementById('waitlist');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

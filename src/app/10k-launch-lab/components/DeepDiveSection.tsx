@@ -4,7 +4,7 @@ import { Clock, DollarSign, XCircle, CheckCircle } from 'lucide-react';
 
 export const DeepDiveSection: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('checkout');
+        const element = document.getElementById('waitlist');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

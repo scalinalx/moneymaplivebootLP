@@ -4,7 +4,7 @@ import { ShieldCheck, Check } from 'lucide-react';
 
 export const BioSection: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('checkout');
+        const element = document.getElementById('waitlist');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

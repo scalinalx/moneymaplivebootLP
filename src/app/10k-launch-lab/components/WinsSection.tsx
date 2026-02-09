@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp, Calendar, ArrowRight } from 'lucide-react';
 
 export const WinsSection: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('checkout');
+        const element = document.getElementById('waitlist');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
