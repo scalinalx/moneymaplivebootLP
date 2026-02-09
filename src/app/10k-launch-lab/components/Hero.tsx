@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
 
                 {/* 1. Pre-headline */}
                 <p className="font-poppins italic font-semibold text-lg md:text-xl text-gray-800 mb-2">
-                    30-Day Implementation Program | Cohort Starts Feb 10th
+                    30-Day Implementation Program | Next Cohort TBA
                 </p>
 
                 {/* 2. Main Headline - Size reduced by 50% */}
@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
 
                 {/* 3. Subtitle */}
                 <p className="font-poppins font-medium text-base md:text-xl text-black mb-4 md:mb-8 max-w-3xl">
-                    <span className="font-bold">ENROLLMENT CLOSES FRIDAY, FEB 7TH AT 11:59 PM EST</span>
+                    <span className="font-bold">ENROLLMENT IS CLOSED.</span> Join the waitlist to secure your spot in the next cohort—plus get exclusive early-bird pricing.
                 </p>
 
                 {/* 4. Hero Image Replace Mockup */}
@@ -62,8 +62,8 @@ export const Hero: React.FC = () => {
                         className="px-10 py-3 md:px-14 md:py-4 text-sm md:text-lg group shadow-[4px_4px_0px_#000000] hover:shadow-[2px_2px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-brand-neon hover:bg-[#e6e200] border-2 border-black"
                     >
                         <span className="flex flex-col items-center leading-none gap-1">
-                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">LET'S GO, I'M READY!</span>
-                            <span className="font-medium text-xs md:text-sm normal-case tracking-normal opacity-90">$597 - The <span className="italic">$10k</span> Launch Lab</span>
+                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">JOIN THE WAITLIST</span>
+                            <span className="font-medium text-xs md:text-sm normal-case tracking-normal opacity-90">Be first in line for the next cohort</span>
                         </span>
                     </Button>
 

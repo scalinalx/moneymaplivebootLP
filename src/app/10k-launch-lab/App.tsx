@@ -14,7 +14,7 @@ import { ReactionSection } from './components/ReactionSection';
 import { BioSection } from './components/BioSection';
 import { DontTakeOurWordSection } from './components/DontTakeOurWordSection';
 import { WinsSection } from './components/WinsSection';
-import { EmbeddedCheckout } from './components/EmbeddedCheckout';
+import { LaunchLabWaitlistForm } from './components/LaunchLabWaitlistForm';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
@@ -37,7 +37,9 @@ const App: React.FC = () => {
             <DontTakeOurWordSection />
             <DeepDiveSection />
             <WinsSection />
-            <EmbeddedCheckout />
+            <section className="py-20 bg-gray-50 flex justify-center px-6">
+                <LaunchLabWaitlistForm />
+            </section>
             <Footer />
         </main>
     );
