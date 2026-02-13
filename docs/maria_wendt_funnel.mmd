@@ -1,0 +1,164 @@
+
+graph TD
+    %% LAYER 1 - TRAFFIC & CONTENT
+    subgraph TRAFFIC["🎯 TRAFFIC & CONTENT"]
+        T1["Instagram<br/>Reels, Stories, Carousels"]
+        T2["YouTube<br/>Free Courses & Case Studies"]
+        T3["Facebook/Instagram Ads"]
+        T4["Email to Existing List"]
+    end
+
+    %% LAYER 2 - LEAD MAGNETS
+    subgraph LEADS["🎁 LEAD MAGNETS & FREE TRAINING"]
+        L1["Free 88-Page<br/>Digital Products Guide"]
+        L2["Free Get Started<br/>Online Business Training"]
+        L3["Free 1-2 to 3+<br/>Clients/Day Training"]
+        L4["$1 Business<br/>Courses Page"]
+        L5["ManyChat Comment<br/>Keyword Flows"]
+    end
+
+    %% LAYER 3 - ENTRY OFFERS
+    subgraph ENTRY["💰 LOW-TICKET ENTRY OFFERS"]
+        E1["24-for-24 Bundle<br/>(24 Micro-Courses)"]
+        E2["Business Kit /<br/>Successful Online Biz Bundles"]
+        E3["Individual Kits<br/>& Mini-Courses"]
+        E4["How To Create<br/>Digital Products People Love"]
+    end
+
+    %% LAYER 4 - CORE SYSTEMS (4 Pillars)
+    subgraph CORE["🏗️ CORE SYSTEMS PILLARS"]
+        subgraph PILLAR_IG["📱 Digital Products & Instagram"]
+            C1["Passive Income<br/>With Instagram"]
+            C2["Leverage With<br/>Instagram"]
+            C3["IG Content Lab &<br/>Simple IG Funnel"]
+            C4["Make Money On<br/>Instagram Kit"]
+            C5["1K Followers<br/>Challenge"]
+        end
+
+        subgraph PILLAR_LAUNCH["🚀 Launching"]
+            C6["Cash Spike<br/>(2-Day Launch System)"]
+            C7["10k+ Launch Kit"]
+            C8["Black Friday<br/>Launch Kit"]
+            C9["Cash-Generating<br/>Email Machine"]
+        end
+
+        subgraph PILLAR_ADS["📢 Ads & Traffic"]
+            C10["Ads Are<br/>For Everyone"]
+            C11["Ads Accelerator<br/>(Retargeting)"]
+        end
+
+        subgraph PILLAR_INFRA["⚙️ Infrastructure & Planning"]
+            C12["Words Into Money<br/>(Copywriting)"]
+            C13["Business Scripts<br/>Vault"]
+            C14["2026 Business<br/>Gameplan Worksheets"]
+            C15["Advanced Money<br/>Mindset"]
+        end
+    end
+
+    %% LAYER 5 - IMPLEMENTATION ADD-ONS
+    subgraph UPSELLS["📦 IMPLEMENTATION ADD-ONS (Upsells & Order Bumps)"]
+        U1["Mastering Upsells"]
+        U2["Hyperspeed Mode"]
+        U3["Mockups &<br/>Templates"]
+        U4["Sales Funnel<br/>Blueprint Pack"]
+        U5["Automation Sales<br/>Unlocked (ManyChat)"]
+        U6["Selling With<br/>Instagram Stories"]
+        U7["Guide to<br/>Repurposing Content"]
+    end
+
+    %% LAYER 6 - SCALE & AUTOMATION
+    subgraph SCALE["📈 SCALE & AUTOMATION"]
+        S1["Ads Are For Everyone<br/>(if not owned)"]
+        S2["8-Figure<br/>Advertising Lab"]
+        S3["Advertising<br/>Creative Lab"]
+    end
+
+    %% LAYER 7 - COMMUNITY & BACK-END
+    subgraph BACKEND["👥 COMMUNITY & BACK-END"]
+        B1["Maria Wendt<br/>Coaching Group<br/>(Lifetime)"]
+        B2["High-Ticket<br/>Inner Circle &<br/>Live Events"]
+    end
+
+    %% CONNECTIONS - Traffic to Lead Magnets
+    T1 --> L1
+    T1 --> L5
+    T2 --> L1
+    T2 --> L4
+    T3 --> L1
+    T3 --> E1
+    T4 --> L1
+
+    %% Lead Magnets to Entry Offers
+    L1 --> E1
+    L1 --> E4
+    L2 --> E2
+    L2 --> E3
+    L3 --> E3
+    L4 --> E1
+    L4 --> E3
+    L5 --> E1
+    L5 --> E4
+
+    %% Entry Offers to Core Systems
+    E1 --> C1
+    E1 --> C6
+    E1 --> C10
+    E2 --> C1
+    E2 --> C6
+    E3 --> C1
+    E3 --> C3
+    E3 --> C4
+    E4 --> C1
+    E4 --> C2
+
+    %% Core Systems to Implementation Add-Ons
+    C1 --> U1
+    C1 --> U2
+    C1 --> U3
+    C1 --> U5
+    C1 --> U6
+    C2 --> U1
+    C2 --> U2
+    C2 --> U5
+    C6 --> U3
+    C6 --> U4
+    C10 --> U5
+
+    %% Core Systems to Scale
+    C1 --> S1
+    C2 --> S1
+    C6 --> S1
+    C10 --> S2
+    C10 --> S3
+    C11 --> S2
+
+    %% Implementation Add-Ons to Scale
+    U1 --> S1
+    U2 --> S1
+    U3 --> S2
+    U5 --> S2
+
+    %% Scale to Backend
+    S1 --> B1
+    S2 --> B1
+    S3 --> B1
+
+    %% Backend progression
+    B1 --> B2
+
+    %% Styling
+    classDef trafficStyle fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef leadStyle fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef entryStyle fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef coreStyle fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    classDef upsellStyle fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef scaleStyle fill:#fff9c4,stroke:#f9a825,stroke-width:2px
+    classDef backendStyle fill:#e0f2f1,stroke:#00796b,stroke-width:2px
+
+    class T1,T2,T3,T4 trafficStyle
+    class L1,L2,L3,L4,L5 leadStyle
+    class E1,E2,E3,E4 entryStyle
+    class C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15 coreStyle
+    class U1,U2,U3,U4,U5,U6,U7 upsellStyle
+    class S1,S2,S3 scaleStyle
+    class B1,B2 backendStyle

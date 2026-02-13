@@ -38,3 +38,13 @@ export const LAUNCHLAB_BUMP2_PRICE = Number.isFinite(parsedLaunchLabBump2) ? par
 // 10k Launch Lab (1:1 Coaching) Upsell Price
 const parsedLaunchLabCoaching = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE || '', 10);
 export const LAUNCHLAB_COACHING_PRICE = Number.isFinite(parsedLaunchLabCoaching) ? parsedLaunchLabCoaching : 74700; // $747
+
+// 100 Genius Ideas Pricing
+const parsedGeniusIdeas = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS_IDEAS_PRICE || '', 10);
+export const GENIUS_IDEAS_PRICE = Number.isFinite(parsedGeniusIdeas) ? parsedGeniusIdeas : 997; // $9.97
+
+const parsedGeniusIdeasBump = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE || '', 10);
+export const GENIUS_IDEAS_BUMP_PRICE = Number.isFinite(parsedGeniusIdeasBump) ? parsedGeniusIdeasBump : 1700; // $17.00
+
+const parsedGeniusIdeasBump2 = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE || '', 10);
+export const GENIUS_IDEAS_BUMP2_PRICE = Number.isFinite(parsedGeniusIdeasBump2) ? parsedGeniusIdeasBump2 : 8700; // $87.00
