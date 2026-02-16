@@ -76,9 +76,8 @@ export const BioSection: React.FC = () => {
                         className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                     >
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I WANT RESULTS LIKE THE LAB CREW!</span>
+                    </Button>
                 </div>
-            </Button>
-        </div>
 
             </div >
         </section >
