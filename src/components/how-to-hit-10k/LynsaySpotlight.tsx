@@ -14,7 +14,7 @@ export const LynsaySpotlight: React.FC = () => {
                         onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-4 px-8 md:px-10 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wide"
                     >
-                        GET LIFETIME ACCESS NOW!
+                        ACTIVATE THE 10K LAB FRAMEWORK
                     </button>
                 </div>
 

@@ -49,7 +49,7 @@ export const DeepDiveSection: React.FC = () => {
                         onClick={scrollToCheckout}
                         className="w-full py-3 bg-brand-neon hover:bg-[#e6e200] border-2 border-black text-xs md:text-sm uppercase tracking-wider"
                     >
-                        Join Now
+                        LET’S HIT 10K TOGETHER, ANA!
                     </Button>
                 </div>
 

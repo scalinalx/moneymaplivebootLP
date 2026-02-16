@@ -62,8 +62,7 @@ export const Hero: React.FC = () => {
                         className="px-10 py-3 md:px-14 md:py-4 text-sm md:text-lg group shadow-[4px_4px_0px_#000000] hover:shadow-[2px_2px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-brand-neon hover:bg-[#e6e200] border-2 border-black"
                     >
                         <span className="flex flex-col items-center leading-none gap-1">
-                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">JOIN THE WAITLIST</span>
-                            <span className="font-medium text-xs md:text-sm normal-case tracking-normal opacity-90">Be first in line for the next cohort</span>
+                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I WANT MY FIRST 10K MONTH</span>
                         </span>
                     </Button>
 

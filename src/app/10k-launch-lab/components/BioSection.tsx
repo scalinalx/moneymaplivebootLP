@@ -75,14 +75,12 @@ export const BioSection: React.FC = () => {
                         onClick={scrollToCheckout}
                         className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                     >
-                        <div className="flex flex-col items-center leading-tight">
-                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I'm ready to stand out!</span>
-                            <span className="text-xs font-medium normal-case">$597 - The <span className="italic">$10k</span> Launch Lab</span>
-                        </div>
-                    </Button>
+                        <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I WANT RESULTS LIKE THE LAB CREW!</span>
                 </div>
+            </Button>
+        </div>
 
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };

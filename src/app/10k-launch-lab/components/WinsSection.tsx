@@ -106,7 +106,7 @@ export const WinsSection: React.FC = () => {
                     className="mx-auto px-10 py-5 bg-brand-neon text-black hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
-                        <span className="font-normal text-lg md:text-xl tracking-wide uppercase">Choose Path B - Join the Lab</span>
+                        <span className="font-normal text-lg md:text-xl tracking-wide uppercase">OK, I’M CONVINCED—LET’S GO!</span>
                         <ArrowRight className="mt-1 w-5 h-5" />
                     </div>
                 </Button>

@@ -84,7 +84,7 @@ export const HayleyeSpotlight: React.FC = () => {
                     onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
                     className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-4 px-10 md:px-14 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wide"
                 >
-                    I WANT TO HIT $5K-$10K MONTHS!
+                    I’M READY FOR 10K MONTHS
                 </button>
 
             </div>

@@ -89,7 +89,7 @@ export const FAQSection: React.FC = () => {
                         onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg py-4 px-12 rounded-[5px] shadow-lg transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        GET LIFETIME ACCESS NOW — ${HIT10K_PRICE / 100}
+                        YES! RESERVE MY SPOT IN THE LAB
                     </button>
                 </div>
 

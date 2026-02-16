@@ -57,7 +57,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                 <div className="bg-black py-5 px-6 text-center border-b-2 border-black">
                     <p className="text-white font-display font-black text-base uppercase tracking-widest flex items-center justify-center gap-3">
                         <Clock size={18} className="text-brand-neon animate-pulse" />
-                        ENROLLMENT CLOSED — JOIN THE WAITLIST
+                        ENROLLMENT OPEN — RESERVE YOUR SPOT
                     </p>
                 </div>
 
@@ -74,11 +74,11 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                         <>
                             <div className="mb-10 text-center">
                                 <h2 className="font-display font-black text-3xl md:text-4xl text-black uppercase leading-tight mb-4 tracking-tight">
-                                    DOORS ARE CLOSED.
+                                    DOORS ARE OPEN.
                                     <br />
                                     <span className="relative inline-block mt-2">
                                         <span className="absolute inset-0 bg-brand-neon transform -skew-x-12 scale-105 -z-10"></span>
-                                        <span className="relative px-3">BUT YOU CAN GET IN LINE.</span>
+                                        <span className="relative px-3">GET IN LINE NOW.</span>
                                     </span>
                                 </h2>
                                 <p className="font-poppins text-gray-700 text-lg leading-relaxed mt-6 max-w-xl mx-auto">
@@ -136,7 +136,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                     disabled={isSubmitting}
                                     className="w-full bg-brand-neon hover:bg-[#e6e200] text-black font-display font-black text-xl py-5 rounded-lg shadow-[6px_6px_0px_#000000] hover:shadow-[3px_3px_0px_#000000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all transform uppercase tracking-wider border-2 border-black disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {isSubmitting ? 'JOINING LIST...' : 'NOTIFY ME WHEN DOORS OPEN!'}
+                                    {isSubmitting ? 'JOINING LIST...' : 'YES! RESERVE MY SPOT IN THE LAB'}
                                 </button>
 
                                 <div className="mt-8 flex flex-col items-center gap-3">
