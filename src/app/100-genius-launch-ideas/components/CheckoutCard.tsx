@@ -50,16 +50,8 @@ const CheckoutFormContent = ({ clientSecret, leadId, totalAmount }: CheckoutForm
                 // For now, redirecting to a success page or just showing success
                 // User didn't specify a dedicated success page for this, but standard behavior is redirect or show success.
                 // I'll simulate a redirect to a thank you page or use the success state.
-                window.location.href = '/100-genius-launch-ideas/success'; // Assuming we should create this or just use a generic one.
-                // Actually, let's just use the current page's success state if we want to keep it simple, 
-                // but confirmPayment with return_url usually implies a redirect. 
-                // Given the user instructions, I'll redirect to a generic success or just let the user handle it.
-                // Re-reading: "study the embedded checkout... without changing the screen".
-                // So maybe just show success component here?
-                // But confirmPayment might enforce redirect for some payment methods.
-                // 'if_required' handles card payments without redirect.
-                // I'll show a success message here or redirect manually.
-                window.location.href = '/success'; // Generic success for now
+                // Redirect to the dedicated success page with leadId
+                window.location.href = `/100-genius-launch-ideas/success?leadId=${leadId}`;
             } catch (err) {
                 console.error('Confirmation error', err);
                 setIsProcessing(false);

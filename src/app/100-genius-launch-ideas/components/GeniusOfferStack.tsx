@@ -20,34 +20,34 @@ export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: (
                 <div className="flex flex-col gap-6 w-full mb-16">
                     {[
                         {
-                            bold: "100 Vetted Launch Ideas",
-                            italic: "curated specifically for creators & coaches."
+                            bold: "100 Battle-Tested Offer Architectures",
+                            italic: "Complete 8-part viral frameworks that turn 'interest' into 'immediate sales'."
                         },
                         {
-                            bold: "The 'Effort vs Reward' Matrix",
-                            italic: "so you never pick a low-profit/high-stress offer."
+                            bold: "The 3-Tier Rapid Revenue Matrix",
+                            italic: "From $1k weekend 'Springboards' to $30k 'Empire-Builder' high-ticket cohorts."
                         },
                         {
-                            bold: "Niche Compatibility Guide",
-                            italic: "to ensure the offer fits YOUR specific audience."
+                            bold: "Niche Dominance Index",
+                            italic: "Health, Wealth, Relationships, and Growth—10 categories covering every human desire."
                         },
                         {
-                            bold: "Revenue Potential Ratings",
-                            italic: "(Ranked $, $$, $$$) so you can aim for $10k+."
+                            bold: "Proprietary Monetization Psychology",
+                            italic: "Proven frameworks from elite Accelerators that force buyers to say 'YES'."
                         },
                         {
-                            bold: "The Rapid Selection Checklist",
-                            italic: "to go from 'idea' to 'decision' in 10 minutes.",
+                            bold: "The 'Unfair Advantage' Hooks",
+                            italic: "Messaging that makes your competitors look like amateurs instantly.",
                             isBonus: true
                         },
                         {
-                            bold: "Mobile-Optimized Guide",
-                            italic: "read, browse, and plan on any device, anywhere.",
+                            bold: "Passive-Income Money Funnels",
+                            italic: "The exact 'Entry → Upsell → Continuity' architecture for true time freedom.",
                             isBonus: true
                         },
                         {
-                            bold: "Launch Timeline Template",
-                            italic: "know exactly what to do after you pick your idea.",
+                            bold: "184-Page Wealth Repository",
+                            italic: "A business-in-a-box vault designed for the next decade of digital prosperity.",
                             isBonus: true
                         }
                     ].map((item, index) => (

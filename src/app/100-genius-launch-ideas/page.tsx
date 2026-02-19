@@ -38,15 +38,22 @@ export default function GeniusLaunchIdeasPage() {
 
                         {/* Hero Section */}
                         <section className="mb-16 text-center lg:text-left pt-4">
-                            <p className="text-xs md:text-sm font-bold tracking-[3px] uppercase text-rose-500 mb-6">
-                                STOP OVERTHINKING. START EARNING.
+                            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[2px] mb-8 border border-emerald-100 shadow-sm">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                184 Pages of Pure Revenue Infrastructure
+                            </div>
+                            <p className="text-xs md:text-sm font-black tracking-[4px] uppercase text-rose-500 mb-6 drop-shadow-sm">
+                                QUIT THE GUESSWORK. START COLLECTING PAYMENTS.
                             </p>
-                            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-8 text-slate-900">
-                                <span className="text-rose-500">100 Genius Ideas</span><br />
-                                to Launch This Weekend
+                            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-8xl leading-[1.05] tracking-tight mb-8 text-slate-900 italic">
+                                100 <span className="text-rose-600 drop-shadow-sm">GENIUS OFFERS</span><br />
+                                THAT SELL IN 2026
                             </h1>
-                            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed mb-10 max-w-[600px] mx-auto lg:mx-0 font-light">
-                                <strong className="text-slate-900 font-medium">100 validated offer ideas</strong> sorted by revenue potential, audience size, and effort level. Pick one and launch this weekend.
+                            <p className="text-xl md:text-3xl text-slate-700 leading-tight mb-10 max-w-[750px] mx-auto lg:mx-0 font-light tracking-tight">
+                                Skip 6 months of confusion. This is the <strong className="text-slate-900 font-bold underline decoration-rose-500/30">Immediate Revenue Infrastructure</strong> you need to go from $0 to launch-ready in under 60 minutes.
                             </p>
 
                             {/* Social Proof */}

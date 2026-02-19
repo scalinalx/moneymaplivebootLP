@@ -6,24 +6,24 @@ import { ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 export const GeniusFAQ = ({ onScrollToCheckout }: { onScrollToCheckout: () => void }) => {
     const faqs = [
         {
-            question: "I have a tiny audience. Will these ideas work?",
-            answer: "Yes. In fact, Idea #7, #23, and #88 are specifically designed for lists with fewer than 100 people. We label every idea by 'Audience Size Needed' so you never pick something that requires a massive following."
+            question: "I have a tiny audience. Will this work for me?",
+            answer: "Absolutely. Many of these offers are designed for lists of fewer than 100 people. We give you the 'Springboard' models that let you generate cash immediately to fund your growth, rather than waiting years for a 'big' list."
         },
         {
-            question: "Is this just for business coaches?",
-            answer: "No way. We have ideas for fitness, parenting, arts, tech, cooking, personal finance, and even 'weird' niches. If you have knowledge, there is an offer format for you in this list."
+            question: "Is this just for business and marketing niches?",
+            answer: "No. This repository covers the 'Full Human Spectrum'—Health, Wealth, Relationships, Parenting, Spiritual Growth, and Tech. If people have problems, this vault has your solution."
         },
         {
-            question: "Do I need to be an 'expert'?",
-            answer: "Nope. Many of the formats (like 'Curated Directories' or 'Interview Series') position you as the *connector* rather than the guru. You don't need to know everything to sell something valuable."
+            question: "Do I need to be a world-class 'expert' to sell these?",
+            answer: "The 'Expert Trap' is what keeps most people poor. These architectures position you as a high-value guide or curator, allowing you to provide massive transformation without needing decades of credentials."
         },
         {
-            question: "What format is the guide in?",
-            answer: "You get immediate access to the 100 Genius Ideas PDF Guide (optimized for easy reading) so you can save it to your device."
+            question: "What exactly do I get when I buy?",
+            answer: "You get immediate, lifetime access to the 184-page '100 Genius Offers That Sell in 2026' Master Repository. It is the definitive 'Business-In-A-Box' vault for creators who value time and wealth."
         },
         {
-            question: "What if I buy it and still can't pick one?",
-            answer: "That's why we included the 'Rapid Selection Checklist'. It forces you to make a decision based on data, not feelings. Plus, you're covered by our 30-day money-back guarantee."
+            question: "What if I get stuck or can't choose?",
+            answer: "The repository is engineered for clarity. Between the Tiered Effort sections and the 'Rapid Selection Checklist,' you'll have a billion-dollar decision in 10 minutes. If not, our 30-day money-back guarantee has you covered."
         }
     ];
 

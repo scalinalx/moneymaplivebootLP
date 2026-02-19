@@ -37,14 +37,14 @@ export const GeniusBridgeSection = ({ onScrollToCheckout }: { onScrollToCheckout
                 </div>
 
                 {/* Paradigm Shift Box */}
-                <div className="bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-rose-100 border border-rose-100 text-center max-w-3xl relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-rose-500"></div>
-                    <p className="font-display font-bold text-xl md:text-2xl text-slate-900 mb-4">
-                        The problem isn't a lack of ideas...
+                <div className="bg-white p-10 md:p-14 rounded-[3rem] shadow-2xl shadow-rose-200/50 border border-rose-100 text-center max-w-4xl relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500"></div>
+                    <p className="font-display font-bold text-2xl md:text-3xl text-slate-900 mb-6 tracking-tight">
+                        Ideas are cheap. <span className="text-rose-600">Execution is everything.</span>
                     </p>
-                    <p className="font-light text-slate-600 text-lg md:text-xl italic">
-                        It's <span className="font-semibold text-rose-600">selection paralysis</span>.
-                        Most creators stay stuck at $0 because they're terrified of picking the "wrong" thing.
+                    <p className="font-light text-slate-700 text-xl md:text-2xl leading-relaxed italic">
+                        The single biggest killer of wealth, health, and fulfillment is <span className="font-bold text-rose-600 uppercase tracking-wide not-italic">Selection Paralysis</span>.
+                        Most creators spend a lifetime "wondering" while others are "winning." This repository ends the guessing game forever.
                     </p>
                 </div>
 
