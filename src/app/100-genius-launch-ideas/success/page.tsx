@@ -2,7 +2,7 @@
 
 import { useEffect, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { CheckCircle, Download, Mail, Zap, ArrowRight, Shield, Rocket } from 'lucide-react';
+import { CheckCircle, Download, Mail, Zap, ArrowRight, Shield, Rocket, AlertCircle } from 'lucide-react';
 import { GENIUS_IDEAS_PRICE, GENIUS_IDEAS_BUMP_PRICE, GENIUS_IDEAS_BUMP2_PRICE } from '@/lib/stripe';
 
 function SuccessContent() {
@@ -16,6 +16,18 @@ function SuccessContent() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
+        // Local Testing Bypass
+        const isTest = searchParams.get('test') === 'true';
+        if (isTest) {
+            setStatus({
+                isPaid: true,
+                hasBump1: searchParams.get('bump1') === 'true',
+                hasBump2: searchParams.get('bump2') === 'true'
+            });
+            setIsLoaded(true);
+            return;
+        }
+
         if (leadId) {
             fetch(`/api/genius-ideas/get-lead-status?leadId=${leadId}`)
                 .then(res => res.json())
@@ -64,7 +76,21 @@ function SuccessContent() {
 
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-rose-100 selection:text-rose-900">
-            <div className="max-w-4xl mx-auto px-6 py-20 flex flex-col items-center">
+            {/* Urgent Attention Bar - Sticky & High Visibility */}
+            <div className="sticky top-0 z-50 w-full bg-yellow-400 py-4 px-6 border-b-2 border-yellow-500 shadow-xl animate-pulse-subtle">
+                <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8 text-center">
+                    <span className="font-black text-black uppercase tracking-tighter text-lg md:text-xl flex items-center gap-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                        <AlertCircle size={24} className="fill-black text-yellow-400" />
+                        ATTENTION! DO NOT CLOSE THIS PAGE!
+                    </span>
+                    <p className="text-black text-sm md:text-base font-bold leading-tight max-w-3xl" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                        Due to delivery systems, your access email can take up to 12 hours.
+                        <span className="underline decoration-2 underline-offset-4"> Download your file below IMMEDIATELY</span> so you don't lose access.
+                    </p>
+                </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col items-center">
 
                 <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mb-8 border-2 border-emerald-100 shadow-sm">
                     <CheckCircle className="w-12 h-12 text-emerald-500" />
@@ -84,16 +110,16 @@ function SuccessContent() {
                         <Rocket className="w-10 h-10 text-rose-500" />
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">Your 184-Page Master Document</h2>
-                    <p className="text-slate-500 mb-10 max-w-md mx-auto">
-                        Click the button below to download the full repository. Pick an offer, launch it, and start earning this weekend.
+                    <p className="text-slate-500 mb-10 max-w-md mx-auto text-lg leading-relaxed">
+                        Click the button below to download the full repository. Pick an offer, launch it, and start earning today.
                     </p>
 
                     <a
                         href="/downloads/100-Genius-Offers-Sell-2026.pdf"
                         download="100-Genius-Offers-That-Sell-in-2026.pdf"
-                        className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold px-12 py-5 rounded-full shadow-lg shadow-pink-500/30 transition-all hover:-translate-y-1 text-lg group"
+                        className="inline-flex items-center gap-4 bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-black px-14 py-6 rounded-2xl shadow-xl shadow-pink-500/30 transition-all hover:-translate-y-1 text-xl group uppercase tracking-tight"
                     >
-                        <Download size={24} className="group-hover:bounce" />
+                        <Download size={28} className="group-hover:bounce" />
                         DOWNLOAD THE 184-PAGE PDF
                     </a>
                 </div>
@@ -113,7 +139,7 @@ function SuccessContent() {
                                         <h4 className="font-bold text-xl mb-2 italic uppercase tracking-tight">OfferGenius™ AI Engine</h4>
                                         <p className="text-slate-600 text-sm leading-relaxed">Your access to the AI offer builder is being activated. Check your email for the login credentials.</p>
                                     </div>
-                                    <a href="/ana-ai-offer-flow" className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-md shadow-amber-500/20">
+                                    <a href="/ana-offer-genius" className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-md shadow-amber-500/20">
                                         ACCESS ENGINE
                                     </a>
                                 </div>
@@ -126,7 +152,10 @@ function SuccessContent() {
                                     </div>
                                     <div className="flex-grow text-center md:text-left">
                                         <h4 className="font-bold text-xl mb-2 italic uppercase tracking-tight">Launch Stack AI Dashboard</h4>
-                                        <p className="text-slate-600 text-sm leading-relaxed">The "Lazy Launch" email sequence templates are now available in your Launch Stack account.</p>
+                                        <p className="text-slate-600 text-sm leading-relaxed mb-4">The "Lazy Launch" email sequence templates are now available in your Launch Stack account.</p>
+                                        <div className="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg text-xs font-bold border border-indigo-200 uppercase tracking-wider">
+                                            Password: <span className="font-black selection:bg-indigo-300">{process.env.NEXT_PUBLIC_LAUNCH_STACK_PASSWORD || 'mellon_hwg'}</span>
+                                        </div>
                                     </div>
                                     <a href="/launch-stack" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-md shadow-indigo-600/20">
                                         OPEN DASHBOARD
