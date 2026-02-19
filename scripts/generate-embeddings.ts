@@ -13,7 +13,7 @@ if (!API_KEY) {
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "text-embedding-004" });
+const model = genAI.getGenerativeModel({ model: "gemini-embedding-001" });
 
 const KB_PATH = path.join(process.cwd(), 'src/data/offer-genius/knowledge_base.json');
 const OUTPUT_PATH = path.join(process.cwd(), 'src/data/offer-genius/embeddings.json');
@@ -46,7 +46,11 @@ async function generateEmbeddings() {
             console.log(`[${i + 1}/${offers.length}] Embedding: ${offer.title}`);
 
             try {
-                const result = await model.embedContent(textToEmbed);
+                // Following user suggestion for taskType and model refinement
+                const result = await model.embedContent({
+                    content: { role: 'user', parts: [{ text: textToEmbed }] },
+                    taskType: "SEMANTIC_SIMILARITY" as any
+                });
                 const embedding = result.embedding.values;
 
                 results.push({
