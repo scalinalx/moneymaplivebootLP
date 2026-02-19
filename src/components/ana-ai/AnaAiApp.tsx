@@ -9,6 +9,7 @@ import { OfferCard } from '@/components/ana-ai/OfferCard';
 import { LandingPage } from '@/components/ana-ai/LandingPage';
 import { ProductHuntBadge } from '@/components/ProductHuntBadge';
 import { ExitIntentModal } from '@/components/ExitIntentModal';
+import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 const AnaAiApp = () => {
     // User Access State
@@ -105,6 +106,7 @@ const AnaAiApp = () => {
         return (
             <div className="ana-ai-root">
                 <LandingPage onSignup={handleSignup} />
+                <PurchaseNotification />
             </div>
         );
     }
@@ -430,6 +432,7 @@ const AnaAiApp = () => {
                 {result && <ExitIntentModal />}
 
             </div>
+            <PurchaseNotification />
         </div>
     );
 };

@@ -18,6 +18,7 @@ import { GabrielleSpotlight } from '@/components/how-to-hit-10k/GabrielleSpotlig
 import { FAQSection } from '@/components/how-to-hit-10k/FAQSection';
 import { WaitlistForm } from '@/components/how-to-hit-10k/WaitlistForm';
 import { SectionDivider } from '@/components/how-to-hit-10k/SectionDivider';
+import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 const HowToHit10kPage: React.FC = () => {
     return (
@@ -49,6 +50,7 @@ const HowToHit10kPage: React.FC = () => {
             <footer className="py-8 text-center text-gray-400 text-sm font-sans bg-white border-t border-gray-100">
                 <p>&copy; 2026 How We Grow. All rights reserved. Support: <a href="mailto:anaxcalin@gmail.com" className="hover:text-gray-600 transition-colors">anaxcalin@gmail.com</a></p>
             </footer>
+            <PurchaseNotification />
         </div>
     );
 };

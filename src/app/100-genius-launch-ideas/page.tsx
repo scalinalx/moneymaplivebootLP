@@ -10,6 +10,7 @@ import { GeniusTestimonials } from './components/GeniusTestimonials';
 import { GeniusResultsGallery } from './components/GeniusResultsGallery';
 import { GeniusFAQ } from './components/GeniusFAQ';
 import { Star, CheckCircle2, XCircle } from 'lucide-react';
+import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 export default function GeniusLaunchIdeasPage() {
     const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -187,6 +188,7 @@ export default function GeniusLaunchIdeasPage() {
                     onClose={() => setIsCheckoutOpen(false)}
                 />
             </div>
+            <PurchaseNotification />
         </div>
     );
 }
