@@ -152,9 +152,13 @@ function SuccessContent() {
                                     </div>
                                     <div className="flex-grow text-center md:text-left">
                                         <h4 className="font-bold text-xl mb-2 italic uppercase tracking-tight">Launch Stack AI Dashboard</h4>
-                                        <p className="text-slate-600 text-sm leading-relaxed mb-4">The "Lazy Launch" email sequence templates are now available in your Launch Stack account.</p>
-                                        <div className="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg text-xs font-bold border border-indigo-200 uppercase tracking-wider">
-                                            Password: <span className="font-black selection:bg-indigo-300">{process.env.NEXT_PUBLIC_LAUNCH_STACK_PASSWORD || 'mellon_hwg'}</span>
+                                        <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                            The "Lazy Launch" email sequence templates are now available.
+                                            <span className="block font-bold text-slate-900 mt-1">Use the password below to unlock your dashboard immediately:</span>
+                                        </p>
+                                        <div className="inline-flex items-center gap-3 bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-lg font-black shadow-lg shadow-indigo-200 border-2 border-indigo-400 uppercase tracking-widest transform transition-transform hover:scale-105">
+                                            <span className="text-indigo-200 text-xs font-bold mr-1">PASSWORD:</span>
+                                            <span className="selection:bg-indigo-400 select-all font-mono">{process.env.NEXT_PUBLIC_LAUNCH_STACK_PASSWORD || 'mellon_hwg'}</span>
                                         </div>
                                     </div>
                                     <a href="/launch-stack" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all shadow-md shadow-indigo-600/20">

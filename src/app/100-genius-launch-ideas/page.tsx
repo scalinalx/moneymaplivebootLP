@@ -9,7 +9,7 @@ import { GeniusOfferStack } from './components/GeniusOfferStack';
 import { GeniusTestimonials } from './components/GeniusTestimonials';
 import { GeniusResultsGallery } from './components/GeniusResultsGallery';
 import { GeniusFAQ } from './components/GeniusFAQ';
-import { Star, CheckCircle2, XCircle } from 'lucide-react';
+import { Star, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 export default function GeniusLaunchIdeasPage() {
@@ -29,7 +29,7 @@ export default function GeniusLaunchIdeasPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50 font-sans">
             {/* Container */}
-            <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-8 md:py-12">
+            <div className="max-w-[1400px] mx-auto px-4 md:px-6 pt-2 md:pt-4 pb-12">
                 {/* Two Column Layout */}
                 <div className="grid lg:grid-cols-[70%_30%] gap-12">
 
@@ -37,27 +37,27 @@ export default function GeniusLaunchIdeasPage() {
                     <div className="max-w-[800px] mx-auto lg:mx-0">
 
                         {/* Hero Section */}
-                        <section className="mb-16 text-center lg:text-left pt-4">
-                            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[2px] mb-8 border border-emerald-100 shadow-sm">
+                        <section className="mb-10 text-center lg:text-left">
+                            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[2px] mb-4 border border-emerald-100 shadow-sm">
                                 <span className="relative flex h-2 w-2">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                                 </span>
                                 184 Pages of Pure Revenue Infrastructure
                             </div>
-                            <p className="text-xs md:text-sm font-black tracking-[4px] uppercase text-rose-500 mb-6 drop-shadow-sm">
+                            <p className="text-xs md:text-sm font-black tracking-[4px] uppercase text-rose-500 mb-3 drop-shadow-sm">
                                 QUIT THE GUESSWORK. START COLLECTING PAYMENTS.
                             </p>
-                            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-8xl leading-[1.05] tracking-tight mb-8 text-slate-900 italic">
+                            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-8xl leading-[1.05] tracking-tight mb-6 text-slate-900 italic">
                                 100 <span className="text-rose-600 drop-shadow-sm">GENIUS OFFERS</span><br />
                                 THAT SELL IN 2026
                             </h1>
-                            <p className="text-xl md:text-3xl text-slate-700 leading-tight mb-10 max-w-[750px] mx-auto lg:mx-0 font-light tracking-tight">
+                            <p className="text-xl md:text-3xl text-slate-700 leading-tight mb-8 max-w-[750px] mx-auto lg:mx-0 font-light tracking-tight">
                                 Skip 6 months of confusion. This is the <strong className="text-slate-900 font-bold underline decoration-rose-500/30">Immediate Revenue Infrastructure</strong> you need to go from $0 to launch-ready in under 60 minutes.
                             </p>
 
                             {/* Social Proof */}
-                            <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
+                            <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
                                 <div className="flex -space-x-2">
                                     {[1, 2, 3, 4].map((i) => (
                                         <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200">
@@ -78,16 +78,21 @@ export default function GeniusLaunchIdeasPage() {
                                 </div>
                             </div>
 
-                            {/* Product Mockup */}
-                            <div className="relative w-full max-w-[650px] mx-auto my-12 group">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-pink-300 to-rose-300 rounded-3xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                                <div className="relative rounded-3xl overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-[1.01]">
+                            {/* Product Mockup & Direct CTA */}
+                            <div className="relative w-full max-w-[900px] mx-auto my-6 group flex flex-col items-center">
+                                <div className="relative overflow-hidden transform transition-transform duration-500 hover:scale-[1.01] w-full">
                                     <img
-                                        src="/imgs/covergeiuns100ideas.jpeg"
-                                        alt="100 Genius Launch Ideas Cover"
-                                        className="w-full h-auto object-cover"
+                                        src="/imgs/100-genius-offers/bundle_image.png"
+                                        alt="100 Genius Offers Bundle"
+                                        className="w-full h-auto max-h-[500px] object-cover object-top"
                                     />
                                 </div>
+                                <button
+                                    onClick={scrollToCheckout}
+                                    className="mt-8 bg-rose-600 hover:bg-rose-700 text-white font-black px-10 py-5 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 text-xl flex items-center gap-3 uppercase tracking-tight group"
+                                >
+                                    Get Instant Access Now <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                                </button>
                             </div>
                         </section>
 
