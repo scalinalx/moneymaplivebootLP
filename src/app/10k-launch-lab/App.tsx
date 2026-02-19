@@ -16,6 +16,7 @@ import { DontTakeOurWordSection } from './components/DontTakeOurWordSection';
 import { WinsSection } from './components/WinsSection';
 import { LaunchLabWaitlistForm } from './components/LaunchLabWaitlistForm';
 import { Footer } from './components/Footer';
+import { PurchaseNotification } from './components/PurchaseNotification';
 
 const App: React.FC = () => {
     return (
@@ -41,6 +42,7 @@ const App: React.FC = () => {
                 <LaunchLabWaitlistForm />
             </section>
             <Footer />
+            <PurchaseNotification />
         </main>
     );
 };
