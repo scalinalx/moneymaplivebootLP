@@ -1,0 +1,2602 @@
+[
+    {
+        "id": "OFFER_001",
+        "title": "The \"Normal\" Labs Decoder",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Women 35–55",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Your labs are 'normal.' So why do you still feel like shit? Here's what your doctor didn't test.",
+            "value_stack": [
+                "The 12 Labs Most Doctors Skip ($67)",
+                "Symptom-to-Root-Cause Decoder ($47)",
+                "Doctor Conversation Scripts ($27)",
+                "Optimal Range Reference Guide ($27)"
+            ],
+            "total_value": 168
+        },
+        "money_funnel": {
+            "entry": "$47 Decoder",
+            "upsell": "$197 Hormone Deep Dive",
+            "continuity": "$37/mo Lab Review Membership"
+        }
+    },
+    {
+        "id": "OFFER_002",
+        "title": "The 90-Second Cortisol Reset",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "High-achievers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't need a 30-minute meditation. You need a 90-second nervous system hack that works between Zoom calls.",
+            "value_stack": [
+                "5 Audio Reset Protocols ($67)",
+                "Cortisol Biohacking Cheat Sheet ($37)",
+                "HRV Tracking Starter Guide ($27)",
+                "Emergency Regulation Pocket Card ($17)"
+            ],
+            "total_value": 148
+        },
+        "money_funnel": {
+            "entry": "$67 Full Reset System",
+            "upsell": "$197 Advanced Nervous System Workshop",
+            "continuity": "$37/mo Monthly Reset Protocol Drops"
+        }
+    },
+    {
+        "id": "OFFER_003",
+        "title": "$5K/Month With Your ADHD Brain",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "ADHD adults 25–45",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Every system built for focus was built for people who already have it. Here's the one built for your brain.",
+            "value_stack": [
+                "ADHD Income Operating System ($47)",
+                "Hyperfocus Monetization Playbook ($37)",
+                "ADHD-Proof Business Model Guide ($27)",
+                "Offer Ideation Framework ($27)"
+            ],
+            "total_value": 138
+        },
+        "money_funnel": {
+            "entry": "$47 Full System (Giveaway Model)",
+            "upsell": "$147 ADHD Business Deep Dive",
+            "continuity": "$27/mo ADHD Success Club"
+        }
+    },
+    {
+        "id": "OFFER_004",
+        "title": "The 7-Day Inflammation Kill Kit",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Women 35–55",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Inflammation is the silent engine behind every symptom you've been told to 'just manage.' Here's the 7-day reset.",
+            "value_stack": [
+                "7-Day Anti-Inflammation Protocol ($47)",
+                "Inflammation Trigger Food Guide ($37)",
+                "Supplement Stack by Symptom ($27)",
+                "Symptom Tracking Journal ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "$37 PDF Kit (Decoy Pricing)",
+            "upsell": "$147 Inflammation Mastery Workshop",
+            "continuity": "$27/mo Monthly Anti-Inflammatory Protocol"
+        }
+    },
+    {
+        "id": "OFFER_005",
+        "title": "How To Sleep 8 Hours Without Pills",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Stressed adults",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Sleep hygiene advice didn't work because your nervous system is still in go-mode. Here's how to actually switch off.",
+            "value_stack": [
+                "The 8-Hour Sleep Protocol ($47)",
+                "Sleep Onset Audio ($37)",
+                "Evening Wind-Down Ritual Guide ($27)",
+                "Racing Mind Emergency Toolkit ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "$47 Full Kit",
+            "upsell": "$147 Sleep Mastery Program",
+            "continuity": "$27/mo Monthly Sleep Protocol Drops"
+        }
+    },
+    {
+        "id": "OFFER_006",
+        "title": "The 30-Day Energy Comeback Tracker",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Women 30–50",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You can't fix what you don't track. 30 days of data will tell you more than 10 years of guessing.",
+            "value_stack": [
+                "30-Day Energy Tracking System ($37)",
+                "Energy Drain Root Cause Guide ($27)",
+                "Quick Win Protocols ($27)",
+                "Weekly Review Templates ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "$37 Tracker + System (Win Money Back)",
+            "upsell": "$197 Energy Mastery Program",
+            "continuity": "$27/mo Monthly Energy Optimization Drops"
+        }
+    },
+    {
+        "id": "OFFER_007",
+        "title": "The Hormone-to-Symptom Matcher",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 27,
+        "audience": {
+            "icp": "Women 35–55",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Stop Googling individual symptoms. This chart shows you the full hormonal picture in under 60 seconds.",
+            "value_stack": [
+                "Hormone-to-Symptom Master Chart ($37)",
+                "Symptom Cluster Decoder ($27)",
+                "Natural Support Options by Hormone ($27)",
+                "Symptom Tracking Workbook ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "$27 Chart + Decoder",
+            "upsell": "$147 Hormone Mastery Workshop",
+            "continuity": "$17/mo Monthly Hormone Insights"
+        }
+    },
+    {
+        "id": "OFFER_008",
+        "title": "The $200/Month Supplement Savings Guide",
+        "niche": "Health & Wellness",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Supplement buyers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "The supplement industry preys on confusion. Here's the protocol-based approach that saves $100–$200/month.",
+            "value_stack": [
+                "The Only Supplements Worth Taking ($37)",
+                "At-Home Testing Guide ($27)",
+                "Interaction & Timing Cheat Sheet ($27)",
+                "Cost-Per-Result Calculator ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "$37 Full Guide",
+            "upsell": "$147 Personalized Supplement Audit",
+            "continuity": "$17/mo Monthly Supplement Science Updates"
+        }
+    },
+    {
+        "id": "OFFER_009",
+        "title": "The $3K Client Positioning Kit",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Coaches & consultants",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You're not losing clients because you're not good enough. You're losing them because you sound like everyone else.",
+            "value_stack": [
+                "The Positioning Profit Framework ($67)",
+                "Niche Clarity Worksheet ($47)",
+                "10-Second Pitch Builder ($27)",
+                "Bio + About Page Templates ($27)"
+            ],
+            "total_value": 168
+        },
+        "money_funnel": {
+            "entry": "$67 Kit",
+            "upsell": "$297 Positioning Workshop",
+            "continuity": "$97/qtr Quarterly Brand Audits"
+        }
+    },
+    {
+        "id": "OFFER_010",
+        "title": "The 50-Email Launch Library",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Course creators",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your course is great. Your launch emails are killing it. Here are 50 proven emails that made real money.",
+            "value_stack": [
+                "50 Launch Email Templates ($97)",
+                "5 Complete Launch Sequences ($67)",
+                "Urgency + Scarcity Swipe Folder ($37)",
+                "Cart Close Email Pack ($27)"
+            ],
+            "total_value": 228
+        },
+        "money_funnel": {
+            "entry": "$97 Access (Buy X Get Y)",
+            "upsell": "$297 Launch Email Mastery Workshop",
+            "continuity": "$37/mo Monthly New Template Drops"
+        }
+    },
+    {
+        "id": "OFFER_011",
+        "title": "The 7-Close Sales Call Vault",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Coaches & service providers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Sales scripts feel gross because yours were written by someone who's never sold what you sell.",
+            "value_stack": [
+                "7 Complete Call Scripts ($67)",
+                "Objection Handler Audio Walkthroughs ($47)",
+                "Pre-Call Prep Checklist ($27)",
+                "Follow-Up Message Templates ($17)"
+            ],
+            "total_value": 158
+        },
+        "money_funnel": {
+            "entry": "$67 Full Vault",
+            "upsell": "$297 Sales Call Mastery Workshop",
+            "continuity": "$37/mo Monthly Sales Scenario Updates"
+        }
+    },
+    {
+        "id": "OFFER_012",
+        "title": "The Premium Pricing Psychology Kit",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Undercharging service providers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Undercharging isn't a pricing problem. It's a psychology problem. Here's how to fix the belief, then fix the price.",
+            "value_stack": [
+                "Pricing Psychology Masterguide ($67)",
+                "Premium Price Point Calculator ($37)",
+                "Rate Raise Conversation Scripts ($37)",
+                "Objection Reframe Cheat Sheet ($27)"
+            ],
+            "total_value": 168
+        },
+        "money_funnel": {
+            "entry": "$67 Full Kit (Win Money Back)",
+            "upsell": "$297 Pricing Mastery Intensive",
+            "continuity": "$67/qtr Quarterly Pricing Reviews"
+        }
+    },
+    {
+        "id": "OFFER_013",
+        "title": "The 48-Hour Brand Emergency Kit",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Pivoting entrepreneurs",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't need a $15K rebrand. You need clarity, consistency, and copy that converts — by Monday.",
+            "value_stack": [
+                "48-Hour Brand Clarity Framework ($47)",
+                "Positioning Statement Builder ($37)",
+                "Bio, Tagline + Pitch Templates ($27)",
+                "Brand Consistency Checklist ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "$47 Full Kit",
+            "upsell": "$197 Brand Story Formula",
+            "continuity": "$47/qtr Quarterly Brand Refresh"
+        }
+    },
+    {
+        "id": "OFFER_014",
+        "title": "The Email List Money Map",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Newsletter writers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You don't need 10,000 subscribers to make $5K/month. You need this map.",
+            "value_stack": [
+                "The $5K Flywheel Blueprint ($97)",
+                "Monetization Email Templates ($47)",
+                "Paid Tier Positioning Guide ($37)",
+                "Revenue Tracker Dashboard ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$97 Full Map",
+            "upsell": "$297 Newsletter Revenue Workshop",
+            "continuity": "$47/mo Monthly Strategy Updates"
+        }
+    },
+    {
+        "id": "OFFER_015",
+        "title": "The 10-Client Magnet Script Pack",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Coaches, freelancers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Client attraction isn't about having the right strategy. It's about having the right words. Here are the exact ones.",
+            "value_stack": [
+                "10 Client Magnet Scripts ($47)",
+                "Platform-Specific Variations ($37)",
+                "Ideal Client Targeting Guide ($27)",
+                "Response Rate Tracker ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Script (Losers get 50% off)",
+            "upsell": "$197 Client Attraction Mastery",
+            "continuity": "$27/mo Monthly New Script Drops"
+        }
+    },
+    {
+        "id": "OFFER_016",
+        "title": "The 5-Star Testimonial Generator",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Coaches & course creators",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "A testimonial that says 'I loved it!' is worth nothing. Here's how to extract the specific story that makes new buyers buy.",
+            "value_stack": [
+                "The 7-Day Testimonial Collection System ($37)",
+                "12 Testimonial Prompt Templates ($27)",
+                "Testimonial Placement Guide ($27)",
+                "Testimonial Editing Cheat Sheet ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "$37 Full System",
+            "upsell": "$147 Social Proof Mastery Workshop",
+            "continuity": "$27/mo Monthly Conversion Copy Reviews"
+        }
+    },
+    {
+        "id": "OFFER_017",
+        "title": "The $0-to-Yes Objection Handler Vault",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Coaches & service providers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Objections aren't rejections. They're unanswered questions. Here are the answers to every question you've ever been asked.",
+            "value_stack": [
+                "50 Objection-to-Response Scripts ($67)",
+                "Objection Psychology Decoder ($37)",
+                "Industry-Specific Variation Guide ($27)",
+                "Follow-Up Sequence Templates ($17)"
+            ],
+            "total_value": 148
+        },
+        "money_funnel": {
+            "entry": "$67 Full Vault",
+            "upsell": "$197 Sales Mastery Deep Dive",
+            "continuity": "$37/mo Monthly Sales Scenario Updates"
+        }
+    },
+    {
+        "id": "OFFER_018",
+        "title": "The 72-Hour Follow-Up Formula",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Coaches & consultants",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "The fortune is in the follow-up. Here's the exact 72-hour sequence that closes deals without feeling like a stalker.",
+            "value_stack": [
+                "The 5-Touch Follow-Up Sequence ($37)",
+                "DM + Text Follow-Up Variations ($27)",
+                "Follow-Up Timing Cheat Sheet ($17)",
+                "Dead Lead Revival Template ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Scholarship (Losers get 50% off)",
+            "upsell": "$147 Sales System Masterclass",
+            "continuity": "$27/mo Monthly Sales Script Drops"
+        }
+    },
+    {
+        "id": "OFFER_019",
+        "title": "The $100K Niche Clarity Worksheet",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 27,
+        "audience": {
+            "icp": "New & pivoting entrepreneurs",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Vague niches attract vague clients. Here's the worksheet that takes you to a specific, profitable niche in under an hour.",
+            "value_stack": [
+                "5-Step Niche Clarity Worksheet ($37)",
+                "ICP Deep-Dive Workbook ($27)",
+                "Niche Test: 10 Validation Questions ($17)",
+                "Positioning Statement Formula ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$27 Full Worksheet Kit",
+            "upsell": "$147 Niche Mastery Workshop",
+            "continuity": "$47/qtr Quarterly Positioning Reviews"
+        }
+    },
+    {
+        "id": "OFFER_020",
+        "title": "The 10X Retention Onboarding Kit",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Coaches & subscription businesses",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Clients don't quit because they stop caring. They quit because they feel lost in week one. Here's how to fix that permanently.",
+            "value_stack": [
+                "7-Day New Client Journey Map ($57)",
+                "Welcome Sequence Email Templates ($47)",
+                "Onboarding Checklist by Business Type ($27)",
+                "First-Week Check-In Scripts ($17)"
+            ],
+            "total_value": 148
+        },
+        "money_funnel": {
+            "entry": "$67 Full Kit (Win Money Back)",
+            "upsell": "$297 Retention Mastery Program",
+            "continuity": "$37/mo Monthly Client Experience Updates"
+        }
+    },
+    {
+        "id": "OFFER_021",
+        "title": "The $1K Value Stack Builder",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Course & program creators",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "People don't buy on price. They buy on perceived value. Here's how to stack value until your $497 course feels like a steal.",
+            "value_stack": [
+                "The Value Stack Architecture Framework ($47)",
+                "Bonus Design Blueprint ($37)",
+                "Value Stack Copy Templates ($27)",
+                "Price Anchoring Cheat Sheet ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "$47 Full Builder",
+            "upsell": "$197 Offer Architecture Workshop",
+            "continuity": "$47/mo Monthly Offer Critique Sessions"
+        }
+    },
+    {
+        "id": "OFFER_022",
+        "title": "The $27-$297 Mini-Offer Creator",
+        "niche": "Business & Marketing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Coaches & consultants",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Your $3K offer is great. But most people need to trust you first. Here's how to build a $27 product that creates buyers.",
+            "value_stack": [
+                "Mini-Offer Ideation Framework ($47)",
+                "Price Point Decision Matrix ($27)",
+                "Funnel Integration Guide ($27)",
+                "Sales Page Skeleton Template ($17)"
+            ],
+            "total_value": 118
+        },
+        "money_funnel": {
+            "entry": "$47 Full Creator",
+            "upsell": "$197 Mini-Offer to $10K Funnel Workshop",
+            "continuity": "$37/mo Monthly Funnel Optimization Reviews"
+        }
+    },
+    {
+        "id": "OFFER_023",
+        "title": "The Story-to-$10K Sales Vault",
+        "niche": "Content & Writing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Creators & coaches",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Storytelling without strategy is just content. Here's the exact framework that turns your story into a sales engine.",
+            "value_stack": [
+                "The Story-to-Sale Architecture Framework ($67)",
+                "25 Story Prompt Templates ($47)",
+                "Story-to-CTA Bridge Scripts ($37)",
+                "Platform-Specific Story Formats ($27)"
+            ],
+            "total_value": 178
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Scholarship (Losers get 50% off)",
+            "upsell": "$297 Story Selling Mastery",
+            "continuity": "$47/mo Monthly Story Review Sessions"
+        }
+    },
+    {
+        "id": "OFFER_024",
+        "title": "The 1-to-30 Content Multiplication System",
+        "niche": "Content & Writing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Content creators & entrepreneurs",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Content volume doesn't come from more ideas. It comes from more angles on the same idea. Here's the system.",
+            "value_stack": [
+                "The 30-Asset Content Multiplication Map ($57)",
+                "Platform Repurposing Matrix ($37)",
+                "Angle Generator Prompts ($27)",
+                "Content Calendar Template ($17)"
+            ],
+            "total_value": 138
+        },
+        "money_funnel": {
+            "entry": "$47 Full Notion System",
+            "upsell": "$197 Content Strategy Intensive",
+            "continuity": "$37/mo Monthly Content Audit Sessions"
+        }
+    },
+    {
+        "id": "OFFER_025",
+        "title": "The 500-Hook Swipe File",
+        "niche": "Content & Writing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Content creators & marketers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your content isn't bad. Your first line is. Here are 500 hooks that have stopped the scroll, organised by outcome.",
+            "value_stack": [
+                "500 Hooks (Organised by Emotion) ($67)",
+                "Hook Psychology Guide ($37)",
+                "Platform-Specific Hook Variations ($27)",
+                "Hook Testing Tracker ($17)"
+            ],
+            "total_value": 148
+        },
+        "money_funnel": {
+            "entry": "$67 Access (Buy X Get Y)",
+            "upsell": "$197 Hook Writing Mastery Workshop",
+            "continuity": "$17/mo Monthly 50-Hook Drops"
+        }
+    },
+    {
+        "id": "OFFER_026",
+        "title": "The Viral Caption Formula Vault",
+        "niche": "Content & Writing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Social media creators",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Virality isn't luck. It's a formula. Here are the patterns behind every caption that has ever broken the algorithm.",
+            "value_stack": [
+                "100 Viral Caption Templates by Niche ($47)",
+                "Algorithm Trigger Decoder ($37)",
+                "Engagement Pattern Analysis Guide ($27)",
+                "Caption Audit Checklist ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "$47 Full Vault",
+            "upsell": "$197 Viral Content Mastery",
+            "continuity": "$17/mo Monthly Algorithm Update Briefings"
+        }
+    },
+    {
+        "id": "OFFER_027",
+        "title": "The Blog-to-15-Assets Converter",
+        "niche": "Content & Writing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Bloggers & content marketers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "One blog post should last a month. Here's the exact conversion system that turns every article into 15 pieces of content.",
+            "value_stack": [
+                "Blog-to-15 Conversion Framework ($47)",
+                "Platform Adaptation Guide ($37)",
+                "Copy Variation Templates ($27)",
+                "Distribution Schedule Planner ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "$37 Full System",
+            "upsell": "$197 Content Empire Workshop",
+            "continuity": "$27/mo Monthly Content System Reviews"
+        }
+    },
+    {
+        "id": "OFFER_028",
+        "title": "The 5X Engagement Booster Script Pack",
+        "niche": "Content & Writing",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Coaches & course creators",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Engagement isn't about the algorithm. It's about asking the right question. Here are the scripts that wake up your audience.",
+            "value_stack": [
+                "20 Engagement Trigger Scripts ($37)",
+                "Engagement-to-Sale Conversion Map ($27)",
+                "Platform-Specific Engagement Tactics ($27)",
+                "DM Conversation Starter Templates ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Script Pack (Losers get 50% off)",
+            "upsell": "$147 Community Building Masterclass",
+            "continuity": "$17/mo Monthly Engagement Prompt Drops"
+        }
+    },
+    {
+        "id": "OFFER_029",
+        "title": "The Human AI System",
+        "niche": "Tech & AI",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Entrepreneurs & creators",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "AI doesn't replace your voice. It amplifies it. Here's the system that keeps your personality while multiplying your output.",
+            "value_stack": [
+                "The Human AI Content System ($67)",
+                "Voice Training Prompt Library ($47)",
+                "AI Quality Control Checklist ($27)",
+                "Output Workflow by Content Type ($17)"
+            ],
+            "total_value": 158
+        },
+        "money_funnel": {
+            "entry": "$67 Full Notion System",
+            "upsell": "$247 AI Content Mastery Workshop",
+            "continuity": "$27/mo Monthly AI Tool + Prompt Updates"
+        }
+    },
+    {
+        "id": "OFFER_030",
+        "title": "The 1,000-Prompt ChatGPT Command Library",
+        "niche": "Tech & AI",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Entrepreneurs & marketers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "The difference between a $0 prompt and a $500 result is 12 words. Here are 1,000 prompts that produce outcome-driven results.",
+            "value_stack": [
+                "1,000 Categorised Prompts ($97)",
+                "Prompt Engineering Masterguide ($47)",
+                "Custom GPT Build Templates ($37)",
+                "Output Quality Scoring System ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$67 Access (Buy X Get Y)",
+            "upsell": "$247 AI Automation Workshop",
+            "continuity": "$27/mo Monthly 100-Prompt Drops"
+        }
+    },
+    {
+        "id": "OFFER_031",
+        "title": "The 3X AI Prompt Optimizer",
+        "niche": "Tech & AI",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "AI users & entrepreneurs",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Bad output isn't an AI problem. It's a prompt problem. Here's the framework that turns vague requests into precise instructions.",
+            "value_stack": [
+                "The CRISP Prompt Framework ($37)",
+                "Prompt Diagnostic Checklist ($27)",
+                "Before/After Prompt Comparison Library ($27)",
+                "Output Quality Scoring Rubric ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "$37 Full Optimizer",
+            "upsell": "$147 AI Mastery System",
+            "continuity": "$17/mo Monthly Prompt Optimization Reviews"
+        }
+    },
+    {
+        "id": "OFFER_032",
+        "title": "The 5-Hour Automation Starter Pack",
+        "niche": "Tech & AI",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Solopreneurs & small business",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't have a time problem. You have an automation problem. Here's how to buy back 5 hours a week without hiring.",
+            "value_stack": [
+                "5 Core Business Automation Blueprints ($57)",
+                "Tool Setup Guides ($37)",
+                "Automation Audit Checklist ($27)",
+                "ROI Calculator ($17)"
+            ],
+            "total_value": 138
+        },
+        "money_funnel": {
+            "entry": "$67 Full Pack (Win Money Back)",
+            "upsell": "$297 Business Automation Workshop",
+            "continuity": "$27/mo Monthly Automation Recipes"
+        }
+    },
+    {
+        "id": "OFFER_033",
+        "title": "The Launch in Days Not Months Protocol",
+        "niche": "Personal Development",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Perfectionists & overthinkers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Perfectionism is just fear wearing a productivity costume. Here's the protocol that gets you launched in days, not months.",
+            "value_stack": [
+                "The 72-Hour Launch Protocol ($57)",
+                "Perfectionism Pattern Breaker Workbook ($37)",
+                "Launch Readiness Checklist ($27)",
+                "Minimum Viable Offer Builder ($17)"
+            ],
+            "total_value": 138
+        },
+        "money_funnel": {
+            "entry": "$67 Full Protocol",
+            "upsell": "$297 Done Over Perfect Intensive",
+            "continuity": "$47/mo Monthly Accountability Check-Ins"
+        }
+    },
+    {
+        "id": "OFFER_034",
+        "title": "The 10-Minute Decision Maker",
+        "niche": "Personal Development",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Overthinkers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't have a decision problem. You have a fear problem dressed up as research. Here's the 10-minute framework to end the spiral.",
+            "value_stack": [
+                "The 5-Step Decision Framework ($37)",
+                "Decision Diagnostic Worksheet ($27)",
+                "Fear vs. Data Separator Tool ($17)",
+                "Emergency Decision Protocol ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$37 Full Kit",
+            "upsell": "$147 Clarity & Decision Mastery Workshop",
+            "continuity": "$27/mo Monthly Mindset Clarity Sessions"
+        }
+    },
+    {
+        "id": "OFFER_035",
+        "title": "The Overthinking Exit",
+        "niche": "Personal Development",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Chronic overthinkers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't need more information. You need to stop collecting it. Here's the exit ramp from the overthinking loop.",
+            "value_stack": [
+                "The Overthinking Exit Framework ($57)",
+                "Pattern Interrupt Audio ($37)",
+                "7-Day Action Sprint Planner ($27)",
+                "Progress-Not-Perfection Tracking Sheet ($17)"
+            ],
+            "total_value": 138
+        },
+        "money_funnel": {
+            "entry": "$67 Full Exit Kit (Win Money Back)",
+            "upsell": "$297 Action Takers Intensive",
+            "continuity": "$37/mo Monthly Sprint Accountability"
+        }
+    },
+    {
+        "id": "OFFER_036",
+        "title": "The 5AM Morning Routine Starter Pack",
+        "niche": "Personal Development",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Ambitious professionals",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't need more willpower. You need a better system. Here's the 7-day protocol that makes 5am feel inevitable.",
+            "value_stack": [
+                "The 7-Day Morning Routine Builder ($37)",
+                "5AM Wake-Up Audio Protocol ($27)",
+                "Habit Stack Cheat Sheet ($17)",
+                "30-Day Consistency Tracker ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$37 Full Starter Pack",
+            "upsell": "$147 High Performance Morning Mastery",
+            "continuity": "$17/mo Monthly Routine Optimisation Drops"
+        }
+    },
+    {
+        "id": "OFFER_037",
+        "title": "The 90-Day Confidence Comeback Kit",
+        "niche": "Personal Development",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 57,
+        "audience": {
+            "icp": "Professionals post-setback",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Confidence isn't a personality trait. It's a skill you build with evidence. Here's the 90-day system to rebuild from the inside out.",
+            "value_stack": [
+                "90-Day Confidence Architecture Plan ($57)",
+                "Daily Identity Reset Audio ($37)",
+                "Evidence Journal Templates ($27)",
+                "Courage Challenge Calendar ($17)"
+            ],
+            "total_value": 138
+        },
+        "money_funnel": {
+            "entry": "$57 Full Kit",
+            "upsell": "$247 Confidence Mastery Intensive",
+            "continuity": "$27/mo Monthly Courage Challenge Drops"
+        }
+    },
+    {
+        "id": "OFFER_038",
+        "title": "The Self-Sabotage Spotter",
+        "niche": "Personal Development",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "High-achievers with self-destructive patterns",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Self-sabotage isn't weakness. It's your nervous system protecting you. Here's how to spot it coming and stop it.",
+            "value_stack": [
+                "The 12 Self-Sabotage Patterns Decoded ($47)",
+                "Personal Trigger Mapping Workbook ($37)",
+                "Pattern Interrupt Toolkit ($27)",
+                "Weekly Self-Awareness Check-In ($17)"
+            ],
+            "total_value": 128
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Quiz (Losers get 50% off)",
+            "upsell": "$247 Pattern Breaking Deep Dive",
+            "continuity": "$37/mo Monthly Behaviour Pattern Reviews"
+        }
+    },
+    {
+        "id": "OFFER_039",
+        "title": "The 10 Hard Conversation Scripts",
+        "niche": "Relationships",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "Professionals & entrepreneurs",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Hard conversations don't get easier with time. They get more expensive. Here are the exact scripts for the 10 conversations people avoid.",
+            "value_stack": [
+                "10 Complete Conversation Scripts ($47)",
+                "Conversation Psychology Primer ($27)",
+                "Pre-Conversation Prep Checklist ($17)",
+                "Post-Conversation Recovery Guide ($17)"
+            ],
+            "total_value": 108
+        },
+        "money_funnel": {
+            "entry": "$47 Full Pack",
+            "upsell": "$197 Difficult Conversations Mastery Workshop",
+            "continuity": "$17/mo Monthly Communication Scripts"
+        }
+    },
+    {
+        "id": "OFFER_040",
+        "title": "The 21-Day Reconnection Ritual Library",
+        "niche": "Relationships",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Couples & close relationships",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "Reconnection doesn't happen by accident. It happens by design. Here are 21 rituals that rebuild intimacy in minutes a day.",
+            "value_stack": [
+                "21-Day Reconnection Ritual Calendar ($37)",
+                "Couples Listening Audio Exercise ($27)",
+                "Daily Connection Conversation Starters ($17)",
+                "Emotional Check-In Templates ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$37 Full Library",
+            "upsell": "$197 Relationship Mastery Intensive",
+            "continuity": "$17/mo Monthly Connection Ritual Drops"
+        }
+    },
+    {
+        "id": "OFFER_041",
+        "title": "The 60-Second Meltdown De-Escalation Scripts",
+        "niche": "Parenting",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Parents of 2–10 year olds",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You can't logic your way through a meltdown. You need a script your nervous system can access. Here they are.",
+            "value_stack": [
+                "20 Age-Specific De-Escalation Scripts ($37)",
+                "Meltdown Trigger Decoder ($27)",
+                "Parent Self-Regulation Cheat Sheet ($17)",
+                "Post-Meltdown Repair Guide ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$37 Full Pack",
+            "upsell": "$147 Conscious Parenting Masterclass",
+            "continuity": "$17/mo Monthly Parenting Script Drops"
+        }
+    },
+    {
+        "id": "OFFER_042",
+        "title": "The Guilt-Free Screen Time System",
+        "niche": "Parenting",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "Parents of 3–12 year olds",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "The screen time debate is exhausting because you're fighting the wrong battle. Here's the system that makes boundaries stick.",
+            "value_stack": [
+                "The Screen Time Boundary System ($37)",
+                "Screen Time Negotiation Scripts ($27)",
+                "Transition Warning Protocol ($17)",
+                "Screen-Free Alternative Activity Bank ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$37 Full System",
+            "upsell": "$147 Family Harmony Blueprint",
+            "continuity": "$17/mo Monthly Parenting System Updates"
+        }
+    },
+    {
+        "id": "OFFER_043",
+        "title": "The 72-Hour Product Builder",
+        "niche": "Universal",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Aspiring digital product creators",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't need 6 months to build a product. You need 72 hours and a system. Here's the exact system for one weekend.",
+            "value_stack": [
+                "The 72-Hour Product Build Blueprint ($67)",
+                "Weekend Product Launch Checklist ($37)",
+                "Sales Page Template ($37)",
+                "Launch Email Sequence ($27)"
+            ],
+            "total_value": 168
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Build Scholarship (Losers get 50% off)",
+            "upsell": "$297 Product Launch Mastery",
+            "continuity": "$37/mo Monthly Product Builders Circle"
+        }
+    },
+    {
+        "id": "OFFER_044",
+        "title": "The 20 No-Guilt Boundary Scripts",
+        "niche": "Universal",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 37,
+        "audience": {
+            "icp": "People-pleasers & high-achievers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "You don't have a boundaries problem. You have a script problem. Here are 20 ways to say no that are clear and kind.",
+            "value_stack": [
+                "20 No-Guilt Boundary Scripts ($37)",
+                "People-Pleasing Pattern Decoder ($27)",
+                "Boundary-Setting Decision Tree ($17)",
+                "Post-No Guilt Recovery Guide ($17)"
+            ],
+            "total_value": 98
+        },
+        "money_funnel": {
+            "entry": "$37 Full Pack",
+            "upsell": "$197 Boundaries Mastery Intensive",
+            "continuity": "$17/mo Monthly Boundary Scripts"
+        }
+    },
+    {
+        "id": "OFFER_045",
+        "title": "How To Handle The Chair-Throwing Kid",
+        "niche": "Teachers",
+        "effort_level": "Low-Effort (1-3 Days)",
+        "launch_price": 47,
+        "audience": {
+            "icp": "First-year teachers",
+            "list_size": "<100"
+        },
+        "framework": {
+            "unfair_hook": "They taught you how to plan a lesson. Nobody taught you how to handle the kid who throws chairs. Here's what your training left out.",
+            "value_stack": [
+                "Behaviour Intervention Playbook ($47)",
+                "Verbal De-Escalation Script Library ($37)",
+                "Incident Documentation Templates ($17)",
+                "Parent Communication Scripts ($17)"
+            ],
+            "total_value": 118
+        },
+        "money_funnel": {
+            "entry": "$47 Full Survival Kit",
+            "upsell": "$197 First Year Teacher Mastery Course",
+            "continuity": "$27/mo Monthly Classroom Management Scenarios"
+        }
+    },
+    {
+        "id": "OFFER_046",
+        "title": "$5K/Month With Your Perimenopause Story",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Women 40–55 in perimenopause",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You spent years figuring out perimenopause. Now someone else is where you were 3 years ago. Here's how to turn that into $5K/month.",
+            "value_stack": [
+                "The Perimenopause Business Blueprint ($97)",
+                "Your Story-to-Offer Extractor ($67)",
+                "Niche Positioning System ($47)",
+                "$5K/Month Revenue Roadmap ($37)"
+            ],
+            "total_value": 248
+        },
+        "money_funnel": {
+            "entry": "$97 Full Blueprint (Win Money Back)",
+            "upsell": "$497 Hell Yes Midlife Accelerator",
+            "continuity": "$47/mo Rebel Royalty Monthly Circle"
+        }
+    },
+    {
+        "id": "OFFER_047",
+        "title": "The 40+ Pregnancy Peace Protocol",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Pregnant women 40+",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your pregnancy is high-risk on paper. Your anxiety doesn't have to be. Here's the trimester-by-trimester peace protocol.",
+            "value_stack": [
+                "3-Trimester Anxiety Management Protocol ($67)",
+                "Daily Pregnancy Calm Audio ($47)",
+                "Doctor Conversation Scripts ($27)",
+                "Symptom Spiral Interruption Toolkit ($17)"
+            ],
+            "total_value": 158
+        },
+        "money_funnel": {
+            "entry": "Free 7-day trial (Trial With Penalty)",
+            "upsell": "$197 Pregnancy Mastery Program",
+            "continuity": "$47/mo Postpartum Support Circle"
+        }
+    },
+    {
+        "id": "OFFER_048",
+        "title": "The 30-Day Burnout Reversal System",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "High-achievers in burnout",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Burnout isn't solved by a holiday. It's solved by a system. Here's the 30-day protocol that reverses burnout while you stay in your life.",
+            "value_stack": [
+                "30-Day Burnout Reversal Protocol ($77)",
+                "Daily Nervous System Recalibration Audio ($47)",
+                "Burnout Root Cause Diagnostic ($37)",
+                "Energy Recovery Tracking System ($27)"
+            ],
+            "total_value": 188
+        },
+        "money_funnel": {
+            "entry": "$97 Full System",
+            "upsell": "$397 Burnout to Brilliance Intensive",
+            "continuity": "$47/mo Monthly Energy Optimisation Protocols"
+        }
+    },
+    {
+        "id": "OFFER_049",
+        "title": "The 90-Day Body Recomposition Blueprint",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Women 40–55",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "What worked at 32 won't work at 42. Your hormones changed. Your protocol needs to change with them.",
+            "value_stack": [
+                "90-Day Hormone-Aware Training Protocol ($97)",
+                "Metabolic Nutrition Guide ($67)",
+                "Progress Tracking System ($37)",
+                "Supplement Stack for Recomposition ($27)"
+            ],
+            "total_value": 228
+        },
+        "money_funnel": {
+            "entry": "$97 Full Blueprint (Win Money Back)",
+            "upsell": "$397 6-Month Body Transformation Lab",
+            "continuity": "$47/mo Monthly Protocol Updates"
+        }
+    },
+    {
+        "id": "OFFER_050",
+        "title": "The 12-Week Somatic Trauma Release",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Trauma survivors",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your body kept the score. Talking about it won't change what your nervous system learned. Here's the body-based protocol.",
+            "value_stack": [
+                "12-Week Somatic Release Protocol ($97)",
+                "Weekly Guided Somatic Exercises ($77)",
+                "Body Sensation Vocabulary Guide ($27)",
+                "Weekly Check-In Journal ($27)"
+            ],
+            "total_value": 228
+        },
+        "money_funnel": {
+            "entry": "$97 Full Protocol",
+            "upsell": "$397 Somatic Healing Deep Dive",
+            "continuity": "$47/mo Monthly Somatic Practice Circle"
+        }
+    },
+    {
+        "id": "OFFER_051",
+        "title": "The 21-Day Metabolic Reset Protocol",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 67,
+        "audience": {
+            "icp": "Women 35–55 with slow metabolism",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your metabolism isn't broken. It's been trained to be efficient. Here's the 21-day protocol to retrain it.",
+            "value_stack": [
+                "21-Day Metabolic Reset Protocol ($67)",
+                "Metabolic Activation Meal Guide ($47)",
+                "Metabolism Support Supplement Guide ($27)",
+                "Metabolic Response Tracker ($17)"
+            ],
+            "total_value": 158
+        },
+        "money_funnel": {
+            "entry": "$67 Full Protocol",
+            "upsell": "$197 Metabolic Mastery Workshop",
+            "continuity": "$37/mo Monthly Metabolic Optimisation Protocols"
+        }
+    },
+    {
+        "id": "OFFER_052",
+        "title": "The 30-Day Stress-Eating Solution",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 77,
+        "audience": {
+            "icp": "Emotional eaters",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You're not addicted to food. You're addicted to relief. Here's the 30-day protocol for a better off-ramp than the biscuit tin.",
+            "value_stack": [
+                "Stress-Eating Root Cause Decoder ($57)",
+                "Craving Interruption Audio Protocol ($47)",
+                "30-Day Emotional Eating Journal ($37)",
+                "Emergency Stress Relief Toolkit ($27)"
+            ],
+            "total_value": 168
+        },
+        "money_funnel": {
+            "entry": "Free 7-day trial (Trial With Penalty)",
+            "upsell": "$297 Emotional Eating Mastery Program",
+            "continuity": "$37/mo Monthly Nervous System Nutrition Protocols"
+        }
+    },
+    {
+        "id": "OFFER_053",
+        "title": "The Pain-Free Movement System",
+        "niche": "Health & Wellness",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Active adults 40+ with chronic pain",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Pain isn't a stop sign. It's a miscommunication. Here's how to fix the signal and get back to moving.",
+            "value_stack": [
+                "Pain-Free Movement Protocol ($77)",
+                "Daily Joint Mobility Audio Routine ($47)",
+                "Pain Pattern Decoder ($37)",
+                "Progress Tracking System ($27)"
+            ],
+            "total_value": 188
+        },
+        "money_funnel": {
+            "entry": "$97 Full System (Win Money Back)",
+            "upsell": "$397 Pain-Free Performance Program",
+            "continuity": "$47/mo Monthly Movement Protocol Updates"
+        }
+    },
+    {
+        "id": "OFFER_054",
+        "title": "The Irresistible Offer Formula",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Coaches, consultants & course creators",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your offer isn't bad. Its architecture is wrong. Here's the formula behind every offer that makes people say 'I need this'.",
+            "value_stack": [
+                "The Offer Architecture Framework ($97)",
+                "Offer Audit Workbook ($67)",
+                "Offer Naming + Positioning System ($47)",
+                "Price Point Decision Matrix ($37)"
+            ],
+            "total_value": 248
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Audit Scholarship",
+            "upsell": "$497 Offer Mastery Intensive",
+            "continuity": "$67/mo Monthly Offer Critique Sessions"
+        }
+    },
+    {
+        "id": "OFFER_055",
+        "title": "The Anti-Launch System",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Exhausted launchers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Launches are theatre. Evergreen is business. Here's the system that generates $3K+ per week on autopilot.",
+            "value_stack": [
+                "The Evergreen Revenue Architecture ($97)",
+                "Anti-Launch Funnel Blueprint ($67)",
+                "Evergreen Email Sequence ($47)",
+                "Revenue Consistency Tracker ($27)"
+            ],
+            "total_value": 238
+        },
+        "money_funnel": {
+            "entry": "$97 Full System",
+            "upsell": "$497 Evergreen Mastery Intensive",
+            "continuity": "$67/mo Monthly Funnel Optimisation Reviews"
+        }
+    },
+    {
+        "id": "OFFER_056",
+        "title": "The Expert-to-$10K System Converter",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Experts trading time for money",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You don't have a knowledge problem. You have a packaging problem. Here's how to turn what's in your head into a system.",
+            "value_stack": [
+                "Expertise Extraction Framework ($77)",
+                "System Packaging Blueprint ($67)",
+                "Monetisation Model Decision Guide ($47)",
+                "First $10K Launch Checklist ($27)"
+            ],
+            "total_value": 218
+        },
+        "money_funnel": {
+            "entry": "$97 Full Converter (Win Money Back)",
+            "upsell": "$497 Expert Empire Intensive",
+            "continuity": "$67/mo Monthly System Builders Circle"
+        }
+    },
+    {
+        "id": "OFFER_057",
+        "title": "The 6-Month-Out Retreat Filler",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Retreat leaders",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your retreat is full before most leaders have even announced theirs. Here's the 6-month-out system that makes panic a thing of the past.",
+            "value_stack": [
+                "6-Month Retreat Marketing Timeline ($77)",
+                "Email Sequence Library ($57)",
+                "Social Content Calendar ($47)",
+                "Pricing + Early Bird Strategy Guide ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$97 Full Notion System",
+            "upsell": "$497 Retreat Business Mastery",
+            "continuity": "$67/mo Monthly Retreat Marketing Support"
+        }
+    },
+    {
+        "id": "OFFER_058",
+        "title": "The $100K Brand Story Formula",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Business owners sounding generic",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your story isn't just background. It's your unfair advantage. Here's the formula that turns your experience into premium pricing.",
+            "value_stack": [
+                "The Brand Story Architecture Framework ($77)",
+                "Story-to-Sales Page Translation Guide ($57)",
+                "About Page + Bio Rewrite Templates ($37)",
+                "Brand Differentiation Positioning System ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full Formula",
+            "upsell": "$497 Brand Story Intensive",
+            "continuity": "$97/qtr Quarterly Brand Narrative Reviews"
+        }
+    },
+    {
+        "id": "OFFER_059",
+        "title": "The Invisible Expertise Extractor",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Underearning experts",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "The thing you know so well you give it away for free? Someone else charges $500/hour for that. Here's how to find and package it.",
+            "value_stack": [
+                "Expertise Audit Framework ($77)",
+                "Market Rate Positioning Guide ($57)",
+                "Knowledge Packaging System ($47)",
+                "Premium Pricing Justification Builder ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$97 Full Extractor (Win Money Back)",
+            "upsell": "$497 Expert Monetisation Intensive",
+            "continuity": "$67/mo Monthly Expertise Monetisation Reviews"
+        }
+    },
+    {
+        "id": "OFFER_060",
+        "title": "Sell Without The Cringe System",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Coaches who hate selling",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You don't hate selling. You hate the version of selling you've been taught. Here's the system that converts without manipulation.",
+            "value_stack": [
+                "Authentic Selling Framework ($77)",
+                "Cringe-Free Sales Script Library ($57)",
+                "Ethical Marketing Content System ($47)",
+                "Sales Identity Reset Workbook ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$97 Full System",
+            "upsell": "$497 Ethical Sales Mastery Intensive",
+            "continuity": "$47/mo Monthly Sales Confidence Sessions"
+        }
+    },
+    {
+        "id": "OFFER_061",
+        "title": "The $50K Retreat Leader Playbook",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Struggling retreat leaders",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "The retreat that nearly broke you didn't fail because people don't want what you offer. It failed because nobody gave you the business model.",
+            "value_stack": [
+                "Complete Retreat Business Blueprint ($97)",
+                "Retreat Profit Calculator ($57)",
+                "Venue + Legal + Logistics Checklist ($47)",
+                "Pricing Strategy + Break-Even Guide ($37)"
+            ],
+            "total_value": 238
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Profit Calculator",
+            "upsell": "$597 Retreat Business Mastery Program",
+            "continuity": "$67/mo Monthly Retreat Leaders Circle"
+        }
+    },
+    {
+        "id": "OFFER_062",
+        "title": "The 5-Star Client Experience Designer",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Service businesses with high churn",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Happy clients don't automatically become loyal clients. Loyalty is designed. Here's the system that makes referrals automatic.",
+            "value_stack": [
+                "Client Journey Architecture Map ($77)",
+                "Touchpoint Communication Template Library ($57)",
+                "5-Star Moment Design Guide ($37)",
+                "Client Experience Metrics Dashboard ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full Notion System",
+            "upsell": "$397 Client Experience Mastery Workshop",
+            "continuity": "$47/mo Monthly CX Optimisation Reviews"
+        }
+    },
+    {
+        "id": "OFFER_063",
+        "title": "The 10-Referral-Per-Month Machine",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 77,
+        "audience": {
+            "icp": "Service businesses",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Referrals aren't luck. They're a system. Here's how to generate 10 qualified referrals every month without asking awkwardly.",
+            "value_stack": [
+                "The Referral Machine Blueprint ($77)",
+                "Referral Request Scripts ($47)",
+                "Referral Partner Outreach Templates ($37)",
+                "Referral Tracking Dashboard ($27)"
+            ],
+            "total_value": 188
+        },
+        "money_funnel": {
+            "entry": "$77 Full Machine",
+            "upsell": "$297 Referral Mastery Intensive",
+            "continuity": "$47/mo Monthly Referral Strategy Reviews"
+        }
+    },
+    {
+        "id": "OFFER_064",
+        "title": "The Workshop-to-$10K Product Converter",
+        "niche": "Business & Marketing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Coaches running workshops",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Your workshop isn't the product. It's the acquisition channel. Here's how to build the $10K funnel that starts the moment someone signs up.",
+            "value_stack": [
+                "Workshop-to-Funnel Conversion Blueprint ($77)",
+                "Post-Workshop Email Sequence ($57)",
+                "Workshop Upsell Script Library ($47)",
+                "Conversion Rate Optimisation Tracker ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$97 Full Converter (Win Money Back)",
+            "upsell": "$497 Workshop Empire Program",
+            "continuity": "$67/mo Monthly Workshop Optimisation Reviews"
+        }
+    },
+    {
+        "id": "OFFER_065",
+        "title": "How To Finish Your Novel in 90 Days",
+        "niche": "Content & Writing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Anxious fiction writers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Writer's block isn't a creativity problem. It's a nervous system problem. Here's the 90-day system that gets your novel finished.",
+            "value_stack": [
+                "90-Day Novel Completion System ($77)",
+                "Weekly Writing Unblock Audios ($67)",
+                "Anxious Writer's Toolkit ($37)",
+                "Daily Word Count + Momentum Tracker ($17)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full System (Win Money Back)",
+            "upsell": "$397 Writer's Breakthrough Intensive",
+            "continuity": "$47/mo Monthly Writers Circle"
+        }
+    },
+    {
+        "id": "OFFER_066",
+        "title": "The 300-Sub to $5K Money Machine",
+        "niche": "Content & Writing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Newsletter writers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You don't need 10,000 subscribers. You need a monetisation flywheel. Here's the math: 300 subs @ 5% conv = $1,455 per launch.",
+            "value_stack": [
+                "The Newsletter Monetisation Flywheel Blueprint ($97)",
+                "Paid Tier Launch Email Sequence ($57)",
+                "Offer Design Guide ($37)",
+                "Revenue Tracking Dashboard ($27)"
+            ],
+            "total_value": 218
+        },
+        "money_funnel": {
+            "entry": "$97 Full Machine",
+            "upsell": "$397 Newsletter Revenue Mastery",
+            "continuity": "$67/mo Monthly Newsletter Strategy Sessions"
+        }
+    },
+    {
+        "id": "OFFER_067",
+        "title": "The 6-Month Authority Content System",
+        "niche": "Content & Writing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Coaches building thought leadership",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Authority isn't built by posting more. It's built by posting strategically. Here's the 6-month system planned in one afternoon.",
+            "value_stack": [
+                "6-Month Authority Content Calendar ($97)",
+                "Content Pillar Architecture Framework ($57)",
+                "Authority Post Templates ($47)",
+                "Authority Score Tracking System ($27)"
+            ],
+            "total_value": 228
+        },
+        "money_funnel": {
+            "entry": "$97 Access (Buy X Get Y)",
+            "upsell": "$497 Authority Brand Mastery Intensive",
+            "continuity": "$67/mo Monthly Content Strategy Reviews"
+        }
+    },
+    {
+        "id": "OFFER_068",
+        "title": "The Viral Content Formula",
+        "niche": "Content & Writing",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Content creators chasing reach",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Virality isn't random. It's a pattern. Here's the formula behind every piece of content that broke the algorithm.",
+            "value_stack": [
+                "The Viral Content Pattern Decoder ($77)",
+                "Platform Algorithm Cheat Sheet ($47)",
+                "100 Viral Post Templates ($47)",
+                "Viral Probability Scoring System ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Viral Pattern Quiz",
+            "upsell": "$397 Viral Content Mastery Program",
+            "continuity": "$27/mo Monthly Algorithm Update Briefings"
+        }
+    },
+    {
+        "id": "OFFER_069",
+        "title": "The Ethical AI Advantage",
+        "niche": "Tech & AI",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 147,
+        "audience": {
+            "icp": "Business owners",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "AI ethics isn't compliance theater. It's your next unfair competitive advantage.",
+            "value_stack": [
+                "The Ethical AI Business Framework ($97)",
+                "AI Ethics Audit Checklist ($67)",
+                "Transparency Communication Templates ($47)",
+                "Ethical AI Brand Positioning Guide ($37)"
+            ],
+            "total_value": 248
+        },
+        "money_funnel": {
+            "entry": "$147 Full Framework (Win Money Back)",
+            "upsell": "$1,997 AI Strategy Consulting Package",
+            "continuity": "$197/qtr Quarterly Ethics Review Sessions"
+        }
+    },
+    {
+        "id": "OFFER_070",
+        "title": "The $100K Identity",
+        "niche": "Personal Development",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 127,
+        "audience": {
+            "icp": "Ambitious entrepreneurs stuck",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You can't out-strategy an identity that believes it doesn't deserve what it's building. Here's how to become the $100K version of yourself.",
+            "value_stack": [
+                "The Identity Architecture Framework ($97)",
+                "Daily Identity Embodiment Audios ($77)",
+                "Belief System Audit Workbook ($47)",
+                "Identity Evidence Journal ($27)"
+            ],
+            "total_value": 248
+        },
+        "money_funnel": {
+            "entry": "$127 Full System",
+            "upsell": "$597 Identity Mastery Intensive",
+            "continuity": "$67/mo Monthly Identity Work Sessions"
+        }
+    },
+    {
+        "id": "OFFER_071",
+        "title": "The 90-Day Pattern-Breaking Protocol",
+        "niche": "Personal Development",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "High-achievers in repetitive patterns",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Understanding a pattern doesn't break it. Interrupting it does. Here's the 90-day protocol that changes the pattern at the nervous system level.",
+            "value_stack": [
+                "90-Day Pattern Interruption Protocol ($77)",
+                "Weekly Pattern Interrupt Audio Exercises ($67)",
+                "Pattern Mapping Workbook ($37)",
+                "Weekly Progress Tracker ($17)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full Protocol (Win Money Back)",
+            "upsell": "$497 Pattern Breaking Deep Dive",
+            "continuity": "$47/mo Monthly Pattern Work Sessions"
+        }
+    },
+    {
+        "id": "OFFER_072",
+        "title": "The Post-Divorce $10K Glow-Up Plan",
+        "niche": "Personal Development",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Divorced women 35-55",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Divorce isn't the end of your story. It's the chapter where the protagonist finally gets to become who she was always supposed to be.",
+            "value_stack": [
+                "Post-Divorce Identity Rebuild Framework ($77)",
+                "Financial Independence Starter Guide ($57)",
+                "Weekly Confidence Rebuild Audios ($47)",
+                "90-Day Glow-Up Action Planner ($27)"
+            ],
+            "total_value": 208
+        },
+        "money_funnel": {
+            "entry": "$97 Full Plan",
+            "upsell": "$397 Post-Divorce Thriving Intensive",
+            "continuity": "$47/mo Monthly Rebuild Circle"
+        }
+    },
+    {
+        "id": "OFFER_073",
+        "title": "The 6-Month Self-Trust Rebuild",
+        "niche": "Personal Development",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "High-achievers who lost confidence",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Self-trust isn't rebuilt by making better decisions. It's rebuilt by honouring small commitments to yourself consistently.",
+            "value_stack": [
+                "6-Month Self-Trust Architecture Plan ($77)",
+                "Weekly Trust-Building Audio Practices ($67)",
+                "Commitment-Keeping System ($37)",
+                "Trust Score Tracker ($17)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full Rebuild",
+            "upsell": "$497 Confidence & Trust Mastery Intensive",
+            "continuity": "$47/mo Monthly Self-Trust Practice Circle"
+        }
+    },
+    {
+        "id": "OFFER_074",
+        "title": "The Before-You-Break Burnout Prevention",
+        "niche": "Personal Development",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "High-performers pre-burnout",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Burnout prevention isn't about doing less. It's about doing the right things to maintain capacity.",
+            "value_stack": [
+                "Burnout Prevention Architecture System ($77)",
+                "Energy Audit + Depletion Early Warning System ($57)",
+                "Daily Recovery Protocol Audios ($37)",
+                "Sustainable Performance Design Guide ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full System (Decoy Pricing)",
+            "upsell": "$397 High Performance Sustainability Intensive",
+            "continuity": "$47/mo Monthly Performance Reviews"
+        }
+    },
+    {
+        "id": "OFFER_075",
+        "title": "The 30-Day Life Audit Framework",
+        "niche": "Personal Development",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 77,
+        "audience": {
+            "icp": "Professionals at a crossroads",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You can't change your life by thinking about it harder. You need a systematic audit that shows you exactly where the gaps are.",
+            "value_stack": [
+                "30-Day Life Audit Framework ($77)",
+                "8-Domain Life Assessment Tool ($47)",
+                "Gap Analysis + Priority Decision System ($37)",
+                "30-Day Clarity Action Planner ($27)"
+            ],
+            "total_value": 188
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Free Mini-Assessment",
+            "upsell": "$497 Life Redesign Intensive",
+            "continuity": "$77/qtr Quarterly Life Audit Reviews"
+        }
+    },
+    {
+        "id": "OFFER_076",
+        "title": "The Narcissist Detox Vault",
+        "niche": "Relationships",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 127,
+        "audience": {
+            "icp": "Narcissistic abuse survivors",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "You're not broken. You're recalibrating from a relationship designed to make you doubt yourself. Here's the 90-day recovery vault.",
+            "value_stack": [
+                "90-Day Narcissistic Abuse Recovery Protocol ($97)",
+                "Weekly Trauma Recovery Audios ($77)",
+                "Reality Recalibration Workbook ($47)",
+                "Boundary Rebuild Scripts ($37)"
+            ],
+            "total_value": 258
+        },
+        "money_funnel": {
+            "entry": "$127 Full Vault",
+            "upsell": "$497 Narcissist Recovery Deep Dive",
+            "continuity": "$67/mo Monthly Recovery Support Circle"
+        }
+    },
+    {
+        "id": "OFFER_077",
+        "title": "The No-Guilt Parent Playbook",
+        "niche": "Parenting",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Mothers with chronic guilt",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Mom guilt isn't evidence that you're a bad mother. It's evidence that you care deeply while operating in an impossible system.",
+            "value_stack": [
+                "The No-Guilt Parenting Framework ($77)",
+                "Weekly Mom Guilt Release Audios ($57)",
+                "Good Enough Parent Workbook ($37)",
+                "Self-Compassion Script Library ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full Playbook (Win Money Back)",
+            "upsell": "$397 Conscious Parenting Intensive",
+            "continuity": "$47/mo Monthly Parenting Support Circle"
+        }
+    },
+    {
+        "id": "OFFER_078",
+        "title": "The Practical Magic Vault",
+        "niche": "Spiritual",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Spiritual seekers allergic to toxic positivity",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "This isn't The Secret. This is applied spirituality — 52 weeks of rituals rooted in energy management and nervous system science.",
+            "value_stack": [
+                "52-Week Ritual Library ($97)",
+                "Energy Management Framework ($57)",
+                "Ritual Customisation Guide ($37)",
+                "Ritual Impact Tracking System ($27)"
+            ],
+            "total_value": 218
+        },
+        "money_funnel": {
+            "entry": "$97 Access (Buy X Get Y)",
+            "upsell": "$297 Advanced Energy Mastery Workshop",
+            "continuity": "$37/mo Monthly Magic Labs"
+        }
+    },
+    {
+        "id": "OFFER_079",
+        "title": "The Momentum Without Burnout Method",
+        "niche": "Universal",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Solopreneurs in start-stop cycles",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "Consistency beats intensity every single time. Here's the method that makes 20 minutes a day feel like enough.",
+            "value_stack": [
+                "The 20-Minute Business Build System ($77)",
+                "Momentum Calendar ($57)",
+                "Consistency Psychology Guide ($37)",
+                "Daily Momentum Score Tracker ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "Free 14-day trial (Trial With Penalty)",
+            "upsell": "$397 Momentum Mastery Intensive",
+            "continuity": "$47/mo Monthly Momentum Reviews"
+        }
+    },
+    {
+        "id": "OFFER_080",
+        "title": "How To Teach Future Skills",
+        "niche": "Teachers",
+        "effort_level": "Mid-Effort (4-7 Days)",
+        "launch_price": 97,
+        "audience": {
+            "icp": "Forward-thinking teachers & homeschoolers",
+            "list_size": "100–500"
+        },
+        "framework": {
+            "unfair_hook": "AI can already answer every factual question. What it can't replace is a child who knows how to think, create, and solve.",
+            "value_stack": [
+                "Future Skills Curriculum Framework ($77)",
+                "12-Month Lesson Plan Library ($57)",
+                "Critical Thinking Exercise Bank ($37)",
+                "Financial Literacy for Kids Module ($27)"
+            ],
+            "total_value": 198
+        },
+        "money_funnel": {
+            "entry": "$97 Full System",
+            "upsell": "$397 Future-Ready Classroom Certification",
+            "continuity": "$37/mo Monthly New Lesson Drops"
+        }
+    },
+    {
+        "id": "OFFER_081",
+        "title": "The $10K Hormone Mastery Certification",
+        "niche": "Health & Wellness",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 497,
+        "audience": {
+            "icp": "Health coaches",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "Hormone health is the most underserved, most searched, and highest-converting niche in women's wellness.",
+            "value_stack": [
+                "12-Module Hormone Mastery Curriculum ($497)",
+                "Clinical Protocol Library ($197)",
+                "Lab Interpretation Masterclass ($147)",
+                "Hormone Practice Business Blueprint ($97)"
+            ],
+            "total_value": 1035
+        },
+        "money_funnel": {
+            "entry": "$497 Full Certification",
+            "upsell": "$1,997 Advanced Hormone Practitioner Program",
+            "continuity": "$97/mo Monthly Hormone Mastery Circle"
+        }
+    },
+    {
+        "id": "OFFER_082",
+        "title": "The $50K Wellness Coach Accelerator",
+        "niche": "Health & Wellness",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 997,
+        "audience": {
+            "icp": "Struggling wellness coaches",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You have the skills. You have the passion. You're missing the business. Here's the 6-month accelerator that builds the offer and systems.",
+            "value_stack": [
+                "6-Month Business Build Curriculum ($997)",
+                "Bi-Weekly Group Coaching Calls ($497)",
+                "Private Community ($297)",
+                "Done-With-You Offer Build Workshop ($197)"
+            ],
+            "total_value": 2085
+        },
+        "money_funnel": {
+            "entry": "$997 Full Accelerator (Win Money Back)",
+            "upsell": "$4,997 Advanced Business Mastery",
+            "continuity": "$197/mo Monthly Mastermind"
+        }
+    },
+    {
+        "id": "OFFER_083",
+        "title": "The 12-Week Body Transformation Lab",
+        "niche": "Health & Wellness",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 997,
+        "audience": {
+            "icp": "Women 35–55 who've failed every program",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "This isn't another fitness program. It's a complete body education — built specifically for the female body after 35.",
+            "value_stack": [
+                "12-Week Transformation Curriculum ($497)",
+                "Metabolic Nutrition System ($297)",
+                "Weekly Group Coaching Calls ($297)",
+                "Lab Testing + Interpretation Module ($197)"
+            ],
+            "total_value": 1485
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Full Scholarship",
+            "upsell": "$2,997 12-Month Body Mastery Membership",
+            "continuity": "$97/mo Monthly Maintenance Protocol"
+        }
+    },
+    {
+        "id": "OFFER_084",
+        "title": "The $100K Business Model Redesign",
+        "niche": "Business & Marketing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Stuck-at-6-figures entrepreneurs",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You don't have a marketing problem. You have a model problem. Here's the complete business architecture redesign that breaks the ceiling.",
+            "value_stack": [
+                "Business Model Redesign Curriculum ($997)",
+                "Bi-Weekly Group Strategy Sessions ($497)",
+                "Revenue Architecture Dashboard ($197)",
+                "Offer Ecosystem Blueprint Workshop ($197)"
+            ],
+            "total_value": 2085
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Redesign",
+            "upsell": "$4,997 Done-With-You Revenue Architecture",
+            "continuity": "$197/mo Monthly Business Model Reviews"
+        }
+    },
+    {
+        "id": "OFFER_085",
+        "title": "The $50K Scalable Service System",
+        "niche": "Business & Marketing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 997,
+        "audience": {
+            "icp": "Service providers hitting capacity ceiling",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You've built a great service. Now build a great system. Here's how to convert your bespoke service into a productised offer.",
+            "value_stack": [
+                "Service Productisation Curriculum ($597)",
+                "Complete SOPs + Process Template Library ($297)",
+                "Weekly Group Coaching Calls ($297)",
+                "Team Hiring + Training System ($197)"
+            ],
+            "total_value": 1485
+        },
+        "money_funnel": {
+            "entry": "$997 Full System (Win Money Back)",
+            "upsell": "$4,997 Agency Builder Intensive",
+            "continuity": "$197/mo Monthly Scale Reviews"
+        }
+    },
+    {
+        "id": "OFFER_086",
+        "title": "The Premium Program Builder",
+        "niche": "Business & Marketing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Coaches ready to go high-ticket",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "High-ticket isn't about charging more for the same thing. It's about designing an entirely different kind of result.",
+            "value_stack": [
+                "Premium Program Design Curriculum ($797)",
+                "Weekly Hot Seat Coaching Calls ($497)",
+                "High-Ticket Sales System ($297)",
+                "Program Architecture Templates ($197)"
+            ],
+            "total_value": 1985
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Builder",
+            "upsell": "$4,997 High-Ticket Launch Accelerator",
+            "continuity": "$197/mo Monthly Premium Seller's Circle"
+        }
+    },
+    {
+        "id": "OFFER_087",
+        "title": "The Corporate-to-$20K Escape Plan",
+        "niche": "Business & Marketing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Corporate professionals ready to leave",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You're not trapped. You're just without a plan. Here's the 12-month roadmap that builds your income before you resign.",
+            "value_stack": [
+                "12-Month Corporate Exit Roadmap ($797)",
+                "Bi-Weekly Group Coaching Calls ($497)",
+                "Income Replacement Calculator ($197)",
+                "Private Community ($197)"
+            ],
+            "total_value": 1885
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Full Scholarship",
+            "upsell": "$4,997 Corporate Exit VIP Intensive",
+            "continuity": "$197/mo Monthly Escapees Mastermind"
+        }
+    },
+    {
+        "id": "OFFER_088",
+        "title": "The $100K Agency in a Box",
+        "niche": "Business & Marketing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Freelancers building agencies",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "An agency isn't a bigger freelance business. It's a different business model. Here's every system you need to build one.",
+            "value_stack": [
+                "Agency Build Curriculum ($997)",
+                "Complete Agency SOP Template Library ($397)",
+                "Weekly Group Coaching Calls ($397)",
+                "Agency Revenue Dashboard ($197)"
+            ],
+            "total_value": 2185
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Box",
+            "upsell": "$4,997 Agency Growth Accelerator",
+            "continuity": "$197/mo Monthly Agency Owners Circle"
+        }
+    },
+    {
+        "id": "OFFER_089",
+        "title": "The $50K Author Authority Program",
+        "niche": "Content & Writing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Experts writing a book",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "Most business books don't make money from sales. They make money from what the book creates — clients, gigs, and credibility.",
+            "value_stack": [
+                "Book Writing + Publishing Curriculum ($797)",
+                "Bi-Weekly Author Coaching Calls ($497)",
+                "Book-to-Business Monetisation System ($297)",
+                "Done-With-You Chapter Reviews ($297)"
+            ],
+            "total_value": 2085
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Program (Win Money Back)",
+            "upsell": "$4,997 Book Launch Accelerator",
+            "continuity": "$97/mo Monthly Authors Circle"
+        }
+    },
+    {
+        "id": "OFFER_090",
+        "title": "The 6-Figure Content Empire Builder",
+        "niche": "Content & Writing",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Content creators monetizing",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You don't have an audience problem. You have a monetisation problem. Here's how to build 5 income streams from your content.",
+            "value_stack": [
+                "Content Empire Architecture Curriculum ($997)",
+                "Weekly Group Strategy Calls ($497)",
+                "5-Stream Revenue Build Workshops ($397)",
+                "Content Revenue Dashboard ($197)"
+            ],
+            "total_value": 2285
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Program",
+            "upsell": "$4,997 Content Empire VIP Accelerator",
+            "continuity": "$197/mo Monthly Revenue Reviews"
+        }
+    },
+    {
+        "id": "OFFER_091",
+        "title": "The 21-Day Roommates to Lovers Reboot",
+        "niche": "Relationships",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 297,
+        "audience": {
+            "icp": "Long-term couples drifted apart",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You didn't fall out of love. You fell out of intentionality. Here's the 21-day experience that rebuilds the connection.",
+            "value_stack": [
+                "21-Day Couple Reconnection Curriculum ($297)",
+                "Daily Connection Audio Exercises ($197)",
+                "Intimacy Rebuild Workbook ($97)",
+                "Conversation Starter Library ($67)"
+            ],
+            "total_value": 695
+        },
+        "money_funnel": {
+            "entry": "$297 Full Reboot",
+            "upsell": "$997 Couples Mastery Intensive",
+            "continuity": "$47/mo Monthly Relationship Maintenance Program"
+        }
+    },
+    {
+        "id": "OFFER_092",
+        "title": "The 90-Day Pleasure Reconnection",
+        "niche": "Relationships",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 397,
+        "audience": {
+            "icp": "High-achieving women disconnected from body",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "Nothing is wrong with you. You were trained to perform, leaving no room for pleasure. Here's the 90-day reconnection.",
+            "value_stack": [
+                "90-Day Pleasure Reconnection Curriculum ($397)",
+                "Weekly Body Reconnection Audios ($247)",
+                "Sensory Awakening Practice Guide ($97)",
+                "Private Women's Circle ($97)"
+            ],
+            "total_value": 885
+        },
+        "money_funnel": {
+            "entry": "$397 Full Program (Win Money Back)",
+            "upsell": "$1,997 Embodied Woman Intensive",
+            "continuity": "$67/mo Monthly Pleasure Practice Circle"
+        }
+    },
+    {
+        "id": "OFFER_093",
+        "title": "The 21-Day Marriage Makeover Intensive",
+        "niche": "Relationships",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 497,
+        "audience": {
+            "icp": "Married couples in stagnation",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You don't need years of therapy. You need 21 days of deliberate, structured daily practice with both partners committed.",
+            "value_stack": [
+                "21-Day Marriage Intensive Curriculum ($397)",
+                "Daily Couple Practice Audios ($247)",
+                "Weekly Group Coaching Calls ($197)",
+                "Marriage Dynamic Decoder Workbook ($97)"
+            ],
+            "total_value": 1005
+        },
+        "money_funnel": {
+            "entry": "$497 Full Intensive",
+            "upsell": "$1,997 Marriage Mastery Year Program",
+            "continuity": "$67/mo Monthly Couples Maintenance Sessions"
+        }
+    },
+    {
+        "id": "OFFER_094",
+        "title": "The Couples Communication Certification",
+        "niche": "Relationships",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Coaches wanting to work with couples",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "Couples communication coaching is highly paid and underserved. Here's the certification that qualifies you to serve them.",
+            "value_stack": [
+                "Couples Communication Mastery Curriculum ($997)",
+                "Bi-Weekly Supervision Calls ($497)",
+                "Complete Client Framework + Tools ($297)",
+                "Certification + Digital Badge ($197)"
+            ],
+            "total_value": 2085
+        },
+        "money_funnel": {
+            "entry": "Giveaway: Full Scholarship",
+            "upsell": "$2,997 Couples Practice Business Builder",
+            "continuity": "$147/mo Monthly Supervision Circle"
+        }
+    },
+    {
+        "id": "OFFER_095",
+        "title": "The $50K Promoted Mom",
+        "niche": "Parenting / Career",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 997,
+        "audience": {
+            "icp": "Ambitious working mothers",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "The motherhood penalty is real. So is the strategy to beat it. Here's the system for getting the promotion without sacrificing your family.",
+            "value_stack": [
+                "Promotion Strategy Curriculum ($597)",
+                "Bi-Weekly Group Coaching Calls ($397)",
+                "Executive Presence + Visibility System ($197)",
+                "Negotiation Script Library ($147)"
+            ],
+            "total_value": 1435
+        },
+        "money_funnel": {
+            "entry": "$997 Full Program (Win Money Back)",
+            "upsell": "$3,997 Executive Leadership Intensive",
+            "continuity": "$97/mo Monthly Working Mothers Mastermind"
+        }
+    },
+    {
+        "id": "OFFER_096",
+        "title": "The 12-Week Conscious Parenting Program",
+        "niche": "Parenting",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 797,
+        "audience": {
+            "icp": "Parents wanting conscious parenting",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "Knowing is different from doing. Here's how to apply conscious parenting when your four-year-old is having a meltdown.",
+            "value_stack": [
+                "12-Week Conscious Parenting Curriculum ($597)",
+                "Weekly Group Coaching Calls ($397)",
+                "Daily Parent Regulation Audio ($197)",
+                "Scenario Workbook ($97)"
+            ],
+            "total_value": 1385
+        },
+        "money_funnel": {
+            "entry": "$797 Full Program",
+            "upsell": "$2,997 Conscious Parenting Practitioner Training",
+            "continuity": "$67/mo Monthly Parenting Support Circle"
+        }
+    },
+    {
+        "id": "OFFER_097",
+        "title": "The $100K Working Parent",
+        "niche": "Parenting / Business",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Ambitious parents",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "The $100K working parent isn't a myth. They built systems instead of hours. Here's how they did it.",
+            "value_stack": [
+                "$100K Business Architecture Curriculum ($797)",
+                "Bi-Weekly Group Coaching Calls ($497)",
+                "Family-Proof Systems Blueprint ($297)",
+                "Integrated Life Design System ($197)"
+            ],
+            "total_value": 1885
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Program (Decoy Pricing)",
+            "upsell": "$4,997 $250K Working Parent Mastermind",
+            "continuity": "$197/mo Monthly Working Parents Mastermind"
+        }
+    },
+    {
+        "id": "OFFER_098",
+        "title": "The $50K Life Redesign Intensive",
+        "niche": "Personal Development",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1997,
+        "audience": {
+            "icp": "High-achievers at a crossroads",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You achieved everything you thought you wanted. Now what? Here's the 90-day intensive that rebuilds your life from the inside out.",
+            "value_stack": [
+                "90-Day Life Redesign Curriculum ($997)",
+                "Weekly Group Coaching Calls ($597)",
+                "Daily Identity Work Audios ($297)",
+                "Life Architecture Design System ($197)"
+            ],
+            "total_value": 2185
+        },
+        "money_funnel": {
+            "entry": "$1,997 Full Intensive",
+            "upsell": "$9,997 1:1 Life Architecture Mentorship",
+            "continuity": "$197/mo Monthly Redesigners Circle"
+        }
+    },
+    {
+        "id": "OFFER_099",
+        "title": "The 6-Figure Legacy Builder Program",
+        "niche": "Personal Development",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 2497,
+        "audience": {
+            "icp": "Successful entrepreneurs wanting meaning",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "You built a great business. Now build one that matters. Here's the program that aligns your income with your legacy.",
+            "value_stack": [
+                "Legacy Architecture Curriculum ($1,197)",
+                "Monthly Group Mastermind Calls ($697)",
+                "Impact Business Design Workshop ($497)",
+                "Legacy Design System ($297)"
+            ],
+            "total_value": 2885
+        },
+        "money_funnel": {
+            "entry": "$2,497 Full Program (Win Money Back)",
+            "upsell": "$12,000 1:1 Legacy Mentorship",
+            "continuity": "$1,997/year Annual Legacy Builders Retreat"
+        }
+    },
+    {
+        "id": "OFFER_100",
+        "title": "The Unburnt-Out Teacher Certification",
+        "niche": "Teachers",
+        "effort_level": "High-Effort (2-4 Weeks)",
+        "launch_price": 1497,
+        "audience": {
+            "icp": "Experienced teachers wanting to pivot",
+            "list_size": "500–2K"
+        },
+        "framework": {
+            "unfair_hook": "Teaching cannibalises its own wellbeing. Here's the certification that trains you to fix that — and the business model to leave the classroom.",
+            "value_stack": [
+                "Teacher Wellbeing Coach Certification ($997)",
+                "Bi-Weekly Supervision Calls ($497)",
+                "School Consulting Business System ($297)",
+                "Teacher Wellbeing Assessment ($197)"
+            ],
+            "total_value": 2185
+        },
+        "money_funnel": {
+            "entry": "$1,497 Full Certification",
+            "upsell": "$4,997 School Wellbeing Consulting Accelerator",
+            "continuity": "$147/mo Monthly Certified Coaches Circle"
+        }
+    }
+]
