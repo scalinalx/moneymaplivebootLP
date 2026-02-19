@@ -28,6 +28,7 @@ export function middleware(req: NextRequest) {
     '/10k-launch-lab-success',
     '/ana-offer-genius',
     '/100-genius-launch-ideas',
+    '/100-genius-launch-ideas-success',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
