@@ -3,7 +3,7 @@
 import { useEffect, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Download, Mail, Zap, ArrowRight, Shield, Rocket, AlertCircle } from 'lucide-react';
-import { GENIUS_IDEAS_PRICE, GENIUS_IDEAS_BUMP_PRICE, GENIUS_IDEAS_BUMP2_PRICE } from '@/lib/stripe';
+import { GENIUS_IDEAS_PRICE, GENIUS_IDEAS_BUMP_PRICE, GENIUS_IDEAS_BUMP2_PRICE } from '@/lib/constants';
 
 function SuccessContent() {
     const searchParams = useSearchParams();

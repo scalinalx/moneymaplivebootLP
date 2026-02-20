@@ -52,10 +52,9 @@ export const GeniusBridgeSection = ({ onScrollToCheckout }: { onScrollToCheckout
                 <div className="mt-16">
                     <button
                         onClick={onScrollToCheckout}
-                        className="group relative bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-lg md:text-xl py-4 px-10 rounded-full shadow-lg shadow-pink-500/30 hover:shadow-pink-500/40 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3"
+                        className="group relative bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-lg md:text-xl py-4 px-10 rounded-full shadow-lg shadow-pink-500/30 hover:shadow-pink-500/40 transition-all duration-300 transform hover:-translate-y-1"
                     >
-                        <span>Find My $10k Idea Now</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <span>Unlock The 100 Genius Offers!</span>
                     </button>
                 </div>
 

@@ -9,8 +9,10 @@ import { GeniusOfferStack } from './components/GeniusOfferStack';
 import { GeniusTestimonials } from './components/GeniusTestimonials';
 import { GeniusResultsGallery } from './components/GeniusResultsGallery';
 import { GeniusFAQ } from './components/GeniusFAQ';
+import { GeniusOutcomesSection } from './components/GeniusOutcomesSection';
 import { Star, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
+import { GENIUS_IDEAS_PRICE } from '@/lib/constants';
 
 export default function GeniusLaunchIdeasPage() {
     const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -34,30 +36,61 @@ export default function GeniusLaunchIdeasPage() {
                 <div className="grid lg:grid-cols-[70%_30%] gap-12">
 
                     {/* LEFT COLUMN: Sales Copy */}
-                    <div className="max-w-[800px] mx-auto lg:mx-0">
+                    <div className="max-w-[1000px] mx-auto lg:mx-0">
 
                         {/* Hero Section */}
-                        <section className="mb-10 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[2px] mb-4 border border-emerald-100 shadow-sm">
+                        <section className="mb-10 text-center">
+                            <div className="inline-flex items-center gap-2 bg-amber-400 text-slate-900 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[2px] mb-6 border-b-2 border-amber-500 shadow-md">
                                 <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-900 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-900"></span>
                                 </span>
-                                184 Pages of Pure Revenue Infrastructure
+                                Pure PROVEN Revenue Infrastructure
                             </div>
-                            <p className="text-xs md:text-sm font-black tracking-[4px] uppercase text-rose-500 mb-3 drop-shadow-sm">
-                                QUIT THE GUESSWORK. START COLLECTING PAYMENTS.
-                            </p>
-                            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-8xl leading-[1.05] tracking-tight mb-6 text-slate-900 italic">
-                                100 <span className="text-rose-600 drop-shadow-sm">GENIUS OFFERS</span><br />
+
+                            <div className="font-sans font-black text-slate-900 text-3xl md:text-5xl uppercase tracking-tighter mb-2">
+                                GET
+                            </div>
+                            <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-4 text-slate-900 italic">
+                                100 <span className="text-rose-500 drop-shadow-sm">GENIUS OFFERS</span><br />
                                 THAT SELL IN 2026
                             </h1>
-                            <p className="text-xl md:text-3xl text-slate-700 leading-tight mb-8 max-w-[750px] mx-auto lg:mx-0 font-light tracking-tight">
-                                Skip 6 months of confusion. This is the <strong className="text-slate-900 font-bold underline decoration-rose-500/30">Immediate Revenue Infrastructure</strong> you need to go from $0 to launch-ready in under 60 minutes.
-                            </p>
+
+                            <div className="text-slate-400 italic text-sm md:text-base mb-6 w-full text-center px-4">
+                                *limited time offer*
+                            </div>
+
+                            <div className="mb-8 max-w-[750px] bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-rose-100 shadow-sm mx-auto">
+                                <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed text-center">
+                                    Every single offer in this repository has been <span className="text-rose-600 font-bold underline decoration-rose-500/20">pre-validated</span> based on my direct work with <span className="text-slate-900 font-black">600+ creators like you across many different niches</span>. No theory. No guesswork. Only what’s clearing Stripe accounts right now.
+                                </p>
+                            </div>
+
+                            {/* Product Mockup */}
+                            <div className="relative w-full max-w-[900px] mx-auto lg:mx-0 mb-10 transform transition-transform duration-500 hover:scale-[1.01]">
+                                <img
+                                    src="/imgs/100-genius-offers/bundle_image.png"
+                                    alt="100 Genius Offers Bundle"
+                                    className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
+                                />
+                            </div>
+
+                            {/* Primary CTA */}
+                            <div className="flex flex-col items-center gap-6">
+                                <button
+                                    onClick={scrollToCheckout}
+                                    className="bg-rose-600 hover:bg-rose-700 text-white font-black px-12 py-6 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 text-xl uppercase tracking-tight"
+                                >
+                                    Unlock 100 Genius Offers That Sell!
+                                </button>
+
+                                <p className="text-lg md:text-2xl text-slate-500 leading-tight max-w-[750px] font-light tracking-tight italic text-center">
+                                    Skip 6 months of confusion. This is the <strong className="text-slate-900 font-bold underline decoration-rose-500/30">Immediate Revenue Infrastructure</strong> you need to go from $0 to launch-ready in under 60 minutes.
+                                </p>
+                            </div>
 
                             {/* Social Proof */}
-                            <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+                            <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 mt-12">
                                 <div className="flex -space-x-2">
                                     {[1, 2, 3, 4].map((i) => (
                                         <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200">
@@ -77,24 +110,10 @@ export default function GeniusLaunchIdeasPage() {
                                     <span className="text-sm text-slate-500 font-medium">Trusted by 500+ creators</span>
                                 </div>
                             </div>
-
-                            {/* Product Mockup & Direct CTA */}
-                            <div className="relative w-full max-w-[900px] mx-auto my-6 group flex flex-col items-center">
-                                <div className="relative overflow-hidden transform transition-transform duration-500 hover:scale-[1.01] w-full">
-                                    <img
-                                        src="/imgs/100-genius-offers/bundle_image.png"
-                                        alt="100 Genius Offers Bundle"
-                                        className="w-full h-auto max-h-[500px] object-cover object-top"
-                                    />
-                                </div>
-                                <button
-                                    onClick={scrollToCheckout}
-                                    className="mt-8 bg-rose-600 hover:bg-rose-700 text-white font-black px-10 py-5 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 text-xl flex items-center gap-3 uppercase tracking-tight group"
-                                >
-                                    Get Instant Access Now <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-                                </button>
-                            </div>
                         </section>
+
+                        {/* NEW: Modular Outcomes Section */}
+                        <GeniusOutcomesSection onScrollToCheckout={scrollToCheckout} />
 
                         {/* NEW: Bridge Section (The "Problem" Shift) */}
                         <GeniusBridgeSection onScrollToCheckout={scrollToCheckout} />
@@ -179,16 +198,16 @@ export default function GeniusLaunchIdeasPage() {
             <div className="lg:hidden fixed bottom-4 left-4 right-4 z-[999]">
                 <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-slate-200 flex items-center justify-between">
                     <div>
-                        <div className="text-xs text-slate-400 font-bold uppercase tracking-wider line-through decoration-rose-500">$27</div>
+                        <div className="text-xs text-slate-400 font-bold uppercase tracking-wider line-through decoration-rose-500">$97</div>
                         <div className="font-display font-bold text-3xl bg-gradient-to-r from-pink-600 to-rose-500 bg-clip-text text-transparent">
-                            $9.97
+                            ${(GENIUS_IDEAS_PRICE / 100).toFixed(2)}
                         </div>
                     </div>
                     <button
                         onClick={() => setIsCheckoutOpen(true)}
                         className="bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold px-8 py-3 rounded-full hover:shadow-lg hover:shadow-pink-500/25 transition-all active:scale-95"
                     >
-                        Buy Now
+                        Unlock The 100 Genius Offers!
                     </button>
                 </div>
             </div>

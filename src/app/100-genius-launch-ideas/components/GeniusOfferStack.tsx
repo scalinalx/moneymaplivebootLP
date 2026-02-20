@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { GENIUS_IDEAS_PRICE } from '@/lib/constants';
+
 
 export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: () => void }) => {
     return (
@@ -82,7 +84,7 @@ export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: (
 
                         <div className="flex items-center justify-center gap-4 mb-10">
                             <span className="font-display font-bold text-6xl md:text-8xl text-white tracking-tight">
-                                $9.97
+                                ${(GENIUS_IDEAS_PRICE / 100).toFixed(2)}
                             </span>
                             <span className="text-left leading-tight text-slate-400 text-sm md:text-base font-light">
                                 One-time<br />payment
@@ -91,10 +93,9 @@ export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: (
 
                         <button
                             onClick={onScrollToCheckout}
-                            className="w-full md:w-auto bg-white hover:bg-slate-50 text-slate-900 font-bold text-lg md:text-xl py-5 px-12 rounded-full shadow-xl shadow-white/10 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 mx-auto"
+                            className="w-full md:w-auto bg-white hover:bg-slate-50 text-slate-900 font-bold text-lg md:text-xl py-5 px-12 rounded-full shadow-xl shadow-white/10 transition-all duration-300 transform hover:-translate-y-1 mx-auto"
                         >
-                            <span>Download The Bundle Now</span>
-                            <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
+                            <span>Unlock The 100 Genius Offers!</span>
                         </button>
 
                         <p className="text-slate-500 mt-6 text-sm font-light">

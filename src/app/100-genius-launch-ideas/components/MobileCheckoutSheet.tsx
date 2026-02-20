@@ -3,6 +3,7 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import { CheckoutForm } from './CheckoutCard';
+import { GENIUS_IDEAS_PRICE } from '@/lib/constants';
 
 interface MobileCheckoutSheetProps {
     isOpen: boolean;
@@ -48,9 +49,9 @@ export function MobileCheckoutSheet({ isOpen, onClose }: MobileCheckoutSheetProp
 
                 {/* Pricing */}
                 <div className="text-center pb-6 mb-6 border-b border-slate-100">
-                    <span className="text-slate-400 line-through text-lg mr-3">$27</span>
+                    <span className="text-slate-400 line-through text-lg mr-3">$97</span>
                     <span className="font-display font-bold text-4xl bg-gradient-to-r from-pink-600 to-rose-500 bg-clip-text text-transparent">
-                        $9.97
+                        ${(GENIUS_IDEAS_PRICE / 100).toFixed(2)}
                     </span>
                 </div>
 

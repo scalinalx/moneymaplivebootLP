@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { Loader2, Lock, CheckCircle2, Shield, AlertCircle, ArrowRight, Zap, Mail } from 'lucide-react';
-import { GENIUS_IDEAS_PRICE, GENIUS_IDEAS_BUMP_PRICE, GENIUS_IDEAS_BUMP2_PRICE } from '@/lib/stripe';
+import { GENIUS_IDEAS_PRICE, GENIUS_IDEAS_BUMP_PRICE, GENIUS_IDEAS_BUMP2_PRICE } from '@/lib/constants';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -329,9 +329,9 @@ export function CheckoutCard() {
                             Limited Time Offer
                         </div>
                         <div className="flex items-center justify-center gap-3 mb-2">
-                            <span className="text-slate-400 line-through text-xl">$27</span>
+                            <span className="text-slate-400 line-through text-xl">$97</span>
                             <span className="font-display font-bold text-5xl bg-gradient-to-r from-pink-600 to-rose-500 bg-clip-text text-transparent">
-                                $9.97
+                                ${(GENIUS_IDEAS_PRICE / 100).toFixed(2)}
                             </span>
                         </div>
                         <p className="text-sm text-slate-500">One-time payment • Instant access</p>

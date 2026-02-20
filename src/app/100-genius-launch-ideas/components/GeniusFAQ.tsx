@@ -72,10 +72,9 @@ export const GeniusFAQ = ({ onScrollToCheckout }: { onScrollToCheckout: () => vo
                 <div className="text-center">
                     <button
                         onClick={onScrollToCheckout}
-                        className="group relative bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-lg py-4 px-12 rounded-full shadow-lg shadow-pink-500/20 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 mx-auto"
+                        className="group relative bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-lg py-4 px-12 rounded-full shadow-lg shadow-pink-500/20 transition-all duration-300 transform hover:-translate-y-1 mx-auto"
                     >
-                        <span>Download The Ideas List</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <span>Unlock The 100 Genius Offers Vault!</span>
                     </button>
                     <p className="font-light text-slate-400 mt-4 text-sm">
                         30-Day Money Back Guarantee
