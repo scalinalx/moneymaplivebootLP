@@ -46,10 +46,10 @@ async function generateEmbeddings() {
             console.log(`[${i + 1}/${offers.length}] Embedding: ${offer.title}`);
 
             try {
-                // Following user suggestion for taskType and model refinement
+                // Following user suggestion and API best practices
                 const result = await model.embedContent({
                     content: { role: 'user', parts: [{ text: textToEmbed }] },
-                    taskType: "SEMANTIC_SIMILARITY" as any
+                    taskType: "RETRIEVAL_DOCUMENT" as any
                 });
                 const embedding = result.embedding.values;
 
