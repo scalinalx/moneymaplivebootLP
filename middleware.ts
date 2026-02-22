@@ -11,6 +11,7 @@ export function middleware(req: NextRequest) {
     '/_next',
     '/favicon',
     '/imgs',
+    '/downloads',
     '/public',
     '/videos',
     '/testimavatar',

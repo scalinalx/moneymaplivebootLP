@@ -13,6 +13,7 @@ import { GeniusOutcomesSection } from './components/GeniusOutcomesSection';
 import { GeniusSegmentSection } from './components/GeniusSegmentSection';
 import { GeniusWhatIncluded } from './components/GeniusWhatIncluded';
 import { GeniusWorkForMe } from './components/GeniusWorkForMe';
+import { GeniusValueStack } from './components/GeniusValueStack';
 import { Star, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
 import { GENIUS_IDEAS_PRICE } from '@/lib/constants';
@@ -85,11 +86,11 @@ export default function GeniusLaunchIdeasPage() {
                             </div>
 
                             {/* Product Mockup */}
-                            <div className="relative w-full max-w-[900px] mx-auto lg:mx-0 mb-10 transform transition-transform duration-500 hover:scale-[1.01]">
+                            <div className="relative w-full max-w-[900px] mx-auto lg:mx-0 mb-10 overflow-hidden rounded-2xl transform transition-transform duration-500 hover:scale-[1.01]">
                                 <img
                                     src="/imgs/100-genius-offers/bundle_image.webp"
                                     alt="100 Genius Offers Bundle"
-                                    className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
+                                    className="w-full h-auto block"
                                 />
                             </div>
 
@@ -233,8 +234,12 @@ export default function GeniusLaunchIdeasPage() {
                             </div>
                         </section>
 
+                        {/* NEW: Value Stack — $729 → $27 */}
+                        <GeniusValueStack onScrollToCheckout={scrollToCheckout} />
+
                         {/* NEW: Offer Stack Section (The "What's Inside") */}
                         <GeniusOfferStack onScrollToCheckout={scrollToCheckout} />
+
 
                         {/* NEW: Results Gallery (Visual Evidence) */}
                         <GeniusResultsGallery />
