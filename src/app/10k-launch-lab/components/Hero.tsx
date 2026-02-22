@@ -3,7 +3,7 @@ import { Button } from './Button';
 
 export const Hero: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('waitlist');
+        const element = document.getElementById('checkout');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
 
                 {/* 1. Pre-headline */}
                 <p className="font-poppins italic font-semibold text-lg md:text-xl text-gray-800 mb-2">
-                    30-Day Implementation Program | Next Cohort TBA
+                    30-Day Implementation Program | Enrollment Open Now
                 </p>
 
                 {/* 2. Main Headline - Size reduced by 50% */}
@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
 
                 {/* 3. Subtitle */}
                 <p className="font-poppins font-medium text-base md:text-xl text-black mb-4 md:mb-8 max-w-3xl">
-                    <span className="font-bold">ENROLLMENT IS CLOSED.</span> Join the waitlist to secure your spot in the next cohort—plus get exclusive early-bird pricing.
+                    <span className="font-bold">Doors are OPEN — but not for long.</span> Grab your spot at today's price before this cohort closes and the price goes back to $1,997.
                 </p>
 
                 {/* 4. Hero Image Replace Mockup */}

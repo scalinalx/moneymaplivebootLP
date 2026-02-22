@@ -4,15 +4,14 @@ export const AnnouncementBar: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        // Entrance animation delay
         const timer = setTimeout(() => {
             setIsVisible(true);
         }, 500);
         return () => clearTimeout(timer);
     }, []);
 
-    const scrollToWaitlist = () => {
-        const element = document.getElementById('waitlist');
+    const scrollToCheckout = () => {
+        const element = document.getElementById('checkout');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -25,17 +24,17 @@ export const AnnouncementBar: React.FC = () => {
         >
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
                 <p className="font-display font-black text-[13px] sm:text-[15px] md:text-[18px] lg:text-[20px] tracking-[0.02em] leading-tight uppercase">
-                    🚫 Enrollment in the <span className="text-brand-neon">10K LAUNCH LAB</span> is now CLOSED!
+                    🚀 Doors are OPEN — <span className="text-brand-neon">10K LAUNCH LAB</span> enrollment is LIVE!
                     <span className="hidden sm:inline mx-2 opacity-50">|</span>
                     <span className="block sm:inline mt-1 sm:mt-0 text-white/90">
-                        Join the waitlist to be the <span className="text-brand-neon font-black">FIRST</span> to know when we open doors again
+                        Join now at the <span className="text-brand-neon font-black">TODAY ONLY</span> price before it goes back up
                     </span>
                 </p>
                 <button
-                    onClick={scrollToWaitlist}
+                    onClick={scrollToCheckout}
                     className="flex-shrink-0 bg-brand-neon hover:bg-[#e6e200] text-black font-display font-black text-xs md:text-sm px-4 md:px-6 py-2 md:py-2.5 rounded-md uppercase tracking-wider transition-all shadow-[3px_3px_0px_#FFFB00] hover:shadow-[1px_1px_0px_#FFFB00] hover:translate-x-[2px] hover:translate-y-[2px] border border-black"
                 >
-                    Join Waitlist →
+                    Enroll Now →
                 </button>
             </div>
         </div>

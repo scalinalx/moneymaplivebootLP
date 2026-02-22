@@ -14,7 +14,8 @@ import { ReactionSection } from './components/ReactionSection';
 import { BioSection } from './components/BioSection';
 import { DontTakeOurWordSection } from './components/DontTakeOurWordSection';
 import { WinsSection } from './components/WinsSection';
-import { LaunchLabWaitlistForm } from './components/LaunchLabWaitlistForm';
+import { LaunchLabValueStack } from './components/LaunchLabValueStack';
+import { EmbeddedCheckout } from './components/EmbeddedCheckout';
 import { Footer } from './components/Footer';
 import { PurchaseNotification } from '../../components/PurchaseNotification';
 
@@ -38,9 +39,10 @@ const App: React.FC = () => {
             <DontTakeOurWordSection />
             <DeepDiveSection />
             <WinsSection />
-            <section className="py-20 bg-gray-50 flex justify-center px-6">
-                <LaunchLabWaitlistForm />
-            </section>
+            {/* Value Stack — $1,997 → $597 */}
+            <LaunchLabValueStack />
+            {/* Checkout Form */}
+            <EmbeddedCheckout />
             <Footer />
             <PurchaseNotification />
         </main>

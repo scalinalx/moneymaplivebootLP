@@ -10,6 +10,9 @@ import { GeniusTestimonials } from './components/GeniusTestimonials';
 import { GeniusResultsGallery } from './components/GeniusResultsGallery';
 import { GeniusFAQ } from './components/GeniusFAQ';
 import { GeniusOutcomesSection } from './components/GeniusOutcomesSection';
+import { GeniusSegmentSection } from './components/GeniusSegmentSection';
+import { GeniusWhatIncluded } from './components/GeniusWhatIncluded';
+import { GeniusWorkForMe } from './components/GeniusWorkForMe';
 import { Star, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
 import { GENIUS_IDEAS_PRICE } from '@/lib/constants';
@@ -20,11 +23,26 @@ export default function GeniusLaunchIdeasPage() {
     // Function to scroll to the checkout (desktop) or open sheet (mobile)
     const scrollToCheckout = () => {
         if (window.innerWidth >= 1024) {
-            // Desktop: Scroll to sticky checkout
+            // Desktop: Scroll to the sticky checkout card and focus the name input
+            const checkoutEl = document.getElementById('checkout-card');
+            if (checkoutEl) {
+                checkoutEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            // Also scroll the left column to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Dispatch a custom event that CheckoutForm listens for
+            setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('focus-checkout'));
+            }, 600);
         } else {
             // Mobile: Open sheet
             setIsCheckoutOpen(true);
+            // Focus first input after sheet opens
+            setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('focus-checkout'));
+            }, 400);
         }
     };
 
@@ -69,7 +87,7 @@ export default function GeniusLaunchIdeasPage() {
                             {/* Product Mockup */}
                             <div className="relative w-full max-w-[900px] mx-auto lg:mx-0 mb-10 transform transition-transform duration-500 hover:scale-[1.01]">
                                 <img
-                                    src="/imgs/100-genius-offers/bundle_image.png"
+                                    src="/imgs/100-genius-offers/bundle_image.webp"
                                     alt="100 Genius Offers Bundle"
                                     className="w-full h-auto max-h-[500px] object-cover object-top rounded-2xl"
                                 />
@@ -112,8 +130,47 @@ export default function GeniusLaunchIdeasPage() {
                             </div>
                         </section>
 
-                        {/* NEW: Modular Outcomes Section */}
                         <GeniusOutcomesSection onScrollToCheckout={scrollToCheckout} />
+
+                        <div className="mt-8 mb-20 space-y-12">
+                            <GeniusSegmentSection
+                                outcome="a quick cash injection"
+                                description="If you need to clear an extra $1,000 - $3,000 this week to fund a project or pay a bill, focus on these:"
+                                ideas={["The 4-Day Beta Launch", "The $500 'Save My Seat' Workshop", "The Flash-Sale Cash Machine"]}
+                                variant="rose"
+                                onScrollToCheckout={scrollToCheckout}
+                            />
+
+                            <GeniusSegmentSection
+                                outcome="a 5-figure launch"
+                                description="If you have an audience ready for a major payday and want to crack the $10k+ mark with one offer, focus on these:"
+                                ideas={["The High-Conversion 'Vault' Launch", "The 7-Day Profit Sprint", "The Milestone Celebration Offer"]}
+                                variant="emerald"
+                                onScrollToCheckout={scrollToCheckout}
+                            />
+
+                            <GeniusSegmentSection
+                                outcome="long-term freedom"
+                                description="If you're ready to build a real business that pays you while you sleep, focus on these:"
+                                ideas={["The Monthly Membership Vault", "The Passive Digital Asset", "The Evergreen Sales Machine"]}
+                                variant="rose"
+                                onScrollToCheckout={scrollToCheckout}
+                            />
+
+                            <GeniusSegmentSection
+                                outcome="elite high-ticket pricing"
+                                description="If you're ready to stop selling $97 courses and start commanding $5k+ for your direct help, focus on these:"
+                                ideas={["The $5k Signature Service", "The Elite Mastermind Offer", "The Done-For-You Accelerator"]}
+                                variant="emerald"
+                                onScrollToCheckout={scrollToCheckout}
+                            />
+                        </div>
+
+                        {/* NEW: What's Included (Table of Contents) */}
+                        <GeniusWhatIncluded onScrollToCheckout={scrollToCheckout} />
+
+                        {/* NEW: Will this work for me? (Niche Social Proof) */}
+                        <GeniusWorkForMe onScrollToCheckout={scrollToCheckout} />
 
                         {/* NEW: Bridge Section (The "Problem" Shift) */}
                         <GeniusBridgeSection onScrollToCheckout={scrollToCheckout} />
@@ -123,6 +180,7 @@ export default function GeniusLaunchIdeasPage() {
 
                         {/* NEW: Process Section (The "Mechanism") */}
                         <GeniusProcessSection />
+
 
                         {/* Who This Is For Section (Kept from original but styled) */}
                         <section className="mb-20 pt-20 border-t border-rose-100">
@@ -183,6 +241,23 @@ export default function GeniusLaunchIdeasPage() {
 
                         {/* NEW: FAQ Section */}
                         <GeniusFAQ onScrollToCheckout={scrollToCheckout} />
+
+                        {/* COMPLIANT FOOTER */}
+                        <footer className="mt-20 py-12 border-t border-slate-200">
+                            <div className="max-w-[800px] mx-auto text-center px-6">
+                                <p className="text-slate-900 font-black tracking-tighter text-sm mb-6 uppercase">
+                                    © ANA CALIN, HOW WE GROW 2026, All Rights Reserved.
+                                </p>
+                                <div className="space-y-4 text-slate-400 text-[10px] md:text-xs leading-relaxed font-medium">
+                                    <p>
+                                        This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way.
+                                    </p>
+                                    <p>
+                                        FACEBOOK is a trademark of FACEBOOK, Inc.
+                                    </p>
+                                </div>
+                            </div>
+                        </footer>
 
                     </div>
 

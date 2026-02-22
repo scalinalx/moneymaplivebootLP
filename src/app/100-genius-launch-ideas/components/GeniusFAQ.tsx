@@ -33,6 +33,10 @@ export const GeniusFAQ = ({ onScrollToCheckout }: { onScrollToCheckout: () => vo
         <div className="w-full flex justify-center py-20 px-6 bg-slate-50">
             <div className="max-w-[800px] w-full flex flex-col items-center">
 
+                <p className="text-slate-400 text-sm italic text-center mb-8 max-w-[600px] leading-relaxed">
+                    Please note: Due to the digital nature of these products, we do not offer refunds. This product is sold exact as listed on this page.
+                </p>
+
                 <h2 className="font-display font-bold text-3xl md:text-5xl text-slate-900 mb-12 text-center">
                     Frequently Asked <span className="text-rose-500">Questions</span>
                 </h2>

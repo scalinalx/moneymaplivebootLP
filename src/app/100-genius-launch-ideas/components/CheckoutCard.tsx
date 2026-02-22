@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { Loader2, Lock, CheckCircle2, Shield, AlertCircle, ArrowRight, Zap, Mail } from 'lucide-react';
@@ -105,6 +105,19 @@ export function CheckoutForm() {
     const [clientSecret, setClientSecret] = useState<string | null>(null);
     const [leadId, setLeadId] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const nameInputRef = useRef<HTMLInputElement>(null);
+
+    // Listen for CTA-triggered focus events
+    useEffect(() => {
+        const handleFocusCheckout = () => {
+            if (step === 1 && nameInputRef.current) {
+                nameInputRef.current.focus();
+                nameInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        };
+        window.addEventListener('focus-checkout', handleFocusCheckout);
+        return () => window.removeEventListener('focus-checkout', handleFocusCheckout);
+    }, [step]);
 
     const basePrice = GENIUS_IDEAS_PRICE; // 997
     const bump1Price = GENIUS_IDEAS_BUMP_PRICE; // 1700
@@ -189,6 +202,7 @@ export function CheckoutForm() {
                 <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
                 <input
                     type="text"
+                    ref={nameInputRef}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -316,7 +330,7 @@ export function CheckoutForm() {
 
 export function CheckoutCard() {
     return (
-        <div className="sticky top-6 z-30 max-h-[calc(100vh-3rem)] overflow-y-auto scrollbar-hide rounded-2xl">
+        <div id="checkout-card" className="sticky top-6 z-30 max-h-[calc(100vh-3rem)] overflow-y-auto scrollbar-hide rounded-2xl">
             <div className="relative">
                 {/* Glow Effect */}
                 <div className="absolute -inset-1 bg-gradient-to-b from-pink-200 to-rose-200 rounded-2xl blur opacity-25"></div>

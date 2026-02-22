@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         siteName: 'Build To Profit',
         images: [
             {
-                url: '/imgs/100-genius-offers/bundle_image.png',
+                url: '/imgs/100-genius-offers/bundle_image.webp',
                 width: 1200,
                 height: 630,
                 alt: '100 Genius Offers Bundle',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: "100 Genius Offers That Sell in 2026",
         description: "Skip 6 months of confusion. The immediate revenue infrastructure you need to go from $0 to launch-ready in under 60 minutes.",
-        images: ['/imgs/100-genius-offers/bundle_image.png'],
+        images: ['/imgs/100-genius-offers/bundle_image.webp'],
         creator: '@howwegrow',
     },
 };

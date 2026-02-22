@@ -3,7 +3,7 @@ import { Button } from './Button';
 
 export const MagnetismSection: React.FC = () => {
     const scrollToCheckout = () => {
-        const element = document.getElementById('waitlist');
+        const element = document.getElementById('checkout');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

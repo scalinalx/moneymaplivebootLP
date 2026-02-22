@@ -79,7 +79,7 @@ export const GeniusResultsGallery = () => {
             image: "/imgs/testimonials/testimonial-david.png",
             text: "I spent 3 years trying to build a 'perfect' course. Then I found Idea #81 in this guide. Launched a simple PDF + Loom video bundle in 48 hours. Just crossed $4k in sales. I feel so stupid for waiting this long. 🤯",
             time: "3h ago",
-            likes: 421
+            likes: 7
         },
         {
             name: "Emma Sterling",
@@ -87,7 +87,7 @@ export const GeniusResultsGallery = () => {
             image: "/imgs/testimonials/testimonial-emma.png",
             text: "The 'Niche Compatibility' breakdown is worth 10x the price. I didn't realize my audience was too small for a membership, but PERFECT for a 'VIP Day' offer (Idea #12). Booked 3 clients at $500 each this week. 💸",
             time: "7h ago",
-            likes: 385
+            likes: 14
         },
         {
             name: "Alex Mercer",
@@ -95,7 +95,7 @@ export const GeniusResultsGallery = () => {
             image: "/imgs/testimonials/testimonial-alex.png",
             text: "Honest review: most 'idea lists' are trash. This one is dangerous. I bookmarked 15 feasible ideas in the first 10 minutes. Executed #04 (Resource Library) and added 200 subs to my list in 2 days. 🚀",
             time: "1d ago",
-            likes: 892
+            likes: 11
         }
     ];
 
