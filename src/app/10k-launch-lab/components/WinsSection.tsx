@@ -69,18 +69,6 @@ export const WinsSection: React.FC = () => {
                 </div>
             </div>
 
-            {/* Important Dates */}
-            <div className="max-w-4xl w-full mx-auto mb-20 text-center">
-                <div className="bg-black text-white p-8 md:p-12 rounded-lg shadow-hard">
-                    <h2 className="font-display font-black text-3xl md:text-5xl uppercase mb-8">⏰ IMPORTANT DATES:</h2>
-                    <ul className="space-y-4 font-mono text-base md:text-xl text-left inline-block">
-                        <li className="flex gap-4"><span className="text-brand-neon font-bold">TODAY:</span> Enrollment opens</li>
-                        <li className="flex gap-4"><span className="text-brand-neon font-bold">FEB 7:</span> Enrollment CLOSES (11:59 PM EST)</li>
-                        <li className="flex gap-4"><span className="text-brand-neon font-bold">FEB 9:</span> Day 1 unlocks (Cohort starts)</li>
-                        <li className="flex gap-4"><span className="text-brand-neon font-bold">MARCH 12:</span> Day 30 (Launch Deadline)</li>
-                    </ul>
-                </div>
-            </div>
 
             {/* Final Thought / Real Question */}
             <div className="max-w-4xl w-full mx-auto text-center font-poppins text-lg md:text-xl leading-relaxed mb-16">
