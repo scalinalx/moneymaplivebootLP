@@ -45,6 +45,14 @@ export const GeniusOutcomesSection = ({ onScrollToCheckout }: GeniusOutcomesSect
                     ... and so much more
                 </p>
 
+                <div className="mb-12 w-full max-w-[800px] mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                    <img
+                        src="/imgs/100-genius-offers/232_Discord___pdf-documents___HowWeGrow-Internal_-_24_February_2026.gif"
+                        alt="100 Genius Offers Preview"
+                        className="w-full h-auto"
+                    />
+                </div>
+
                 <div className="flex flex-col items-center gap-8">
                     <button
                         onClick={onScrollToCheckout}

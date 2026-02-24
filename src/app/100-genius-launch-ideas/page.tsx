@@ -138,6 +138,7 @@ export default function GeniusLaunchIdeasPage() {
                                 outcome="a quick cash injection"
                                 description="If you need to clear an extra $1,000 - $3,000 this week to fund a project or pay a bill, focus on these:"
                                 ideas={["The 4-Day Beta Launch", "The $500 'Save My Seat' Workshop", "The Flash-Sale Cash Machine"]}
+                                imageUrl="/imgs/100-genius-offers/p1.png"
                                 variant="rose"
                                 onScrollToCheckout={scrollToCheckout}
                             />
@@ -146,6 +147,7 @@ export default function GeniusLaunchIdeasPage() {
                                 outcome="a 5-figure launch"
                                 description="If you have an audience ready for a major payday and want to crack the $10k+ mark with one offer, focus on these:"
                                 ideas={["The High-Conversion 'Vault' Launch", "The 7-Day Profit Sprint", "The Milestone Celebration Offer"]}
+                                imageUrl="/imgs/100-genius-offers/p2.png"
                                 variant="emerald"
                                 onScrollToCheckout={scrollToCheckout}
                             />
@@ -154,6 +156,7 @@ export default function GeniusLaunchIdeasPage() {
                                 outcome="long-term freedom"
                                 description="If you're ready to build a real business that pays you while you sleep, focus on these:"
                                 ideas={["The Monthly Membership Vault", "The Passive Digital Asset", "The Evergreen Sales Machine"]}
+                                imageUrl="/imgs/100-genius-offers/p3.png"
                                 variant="rose"
                                 onScrollToCheckout={scrollToCheckout}
                             />
@@ -162,6 +165,7 @@ export default function GeniusLaunchIdeasPage() {
                                 outcome="elite high-ticket pricing"
                                 description="If you're ready to stop selling $97 courses and start commanding $5k+ for your direct help, focus on these:"
                                 ideas={["The $5k Signature Service", "The Elite Mastermind Offer", "The Done-For-You Accelerator"]}
+                                imageUrl="/imgs/100-genius-offers/p4.png"
                                 variant="emerald"
                                 onScrollToCheckout={scrollToCheckout}
                             />
