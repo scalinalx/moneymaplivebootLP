@@ -223,76 +223,83 @@ export function CheckoutForm() {
             </div>
 
             {/* Bump 1: OfferGenius */}
-            <div className="relative overflow-hidden rounded-xl border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-yellow-50 p-4 transition-all hover:border-amber-300 shadow-sm">
-                {hasBump1 && (
-                    <div className="absolute top-0 right-0 bg-amber-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg shadow-sm">
-                        ADDED
+            <div className="relative overflow-hidden border-2 border-[#f0e6dd] bg-[#faefe5] p-5 transition-all shadow-sm">
+                <label className="flex flex-col gap-4 cursor-pointer select-none">
+                    <div className="space-y-3">
+                        <h4 className="font-bold text-[#0c72d6] text-2xl md:text-3xl leading-tight font-display tracking-tight">
+                            The "Grand Slam" Offer Builder
+                        </h4>
+
+                        {/* Placeholder for the order bump image */}
+                        <div className="w-full bg-white/50 rounded-lg p-2 mb-4">
+                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Offer Builder Bundle" className="w-full h-auto object-contain mx-auto mix-blend-multiply" />
+                        </div>
+
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                            <span className="font-bold underline text-slate-900">[STRONGLY RECOMMEND]:</span> Unlock the AI engine that instantly builds your entire high-ticket product stack.
+                        </p>
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold">
+                            Most launches fail because the offer is weak. Stop guessing what to sell.
+                        </p>
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
+                            OfferGenius™ generates the names, deliverables, bonuses, and guarantees using the $100M Framework. This tool will save you THOUSANDS of wasted dollars on ads, because you'll create winning, profitable offers right from the start!
+                        </p>
+
+                        <div className="flex items-center gap-2 mt-4 mb-2">
+                            <span className="font-bold text-rose-500 text-2xl">${(bump1Price / 100).toFixed(2)}</span>
+                            <span className="text-rose-300 line-through text-lg">$197.00</span>
+                        </div>
                     </div>
-                )}
-                <label className="flex items-start gap-3 cursor-pointer select-none">
-                    <div className="pt-1">
+
+                    <div className="bg-white p-3 border border-slate-200 flex items-center gap-3 w-full">
                         <input
                             type="checkbox"
                             checked={hasBump1}
                             onChange={(e) => setHasBump1(e.target.checked)}
-                            className="w-5 h-5 text-pink-600 border-slate-300 rounded focus:ring-pink-500 cursor-pointer"
+                            className="w-6 h-6 text-[#0c72d6] border-slate-300 rounded focus:ring-[#0c72d6] cursor-pointer"
                         />
-                    </div>
-                    <div className="space-y-2">
-                        <div className="flex items-center gap-2 mb-1 flex-wrap">
-                            <span className="font-bold text-slate-900 text-base">Yes, I Want The "Grand Slam" Offer Builder</span>
-                            <span className="bg-amber-100 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-full border border-amber-200">
-                                Only ${(bump1Price / 100).toFixed(0)}
-                            </span>
-                        </div>
-                        <p className="text-sm text-slate-700 leading-relaxed font-medium">
-                            <span className="text-rose-600 font-bold">⚠️ Most launches fail because the offer is weak.</span>
-                        </p>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                            Stop guessing what to sell. <span className="font-bold">OfferGenius™</span> is the AI engine that instantly builds your entire high-ticket product stack—names, deliverables, bonuses, and guarantees—using the <span className="font-bold">$100M Framework</span>.
-                        </p>
-                        <p className="text-xs text-slate-500 italic border-l-2 border-amber-300 pl-2 mt-2">
-                            "I went from $0 to $10k/mo because I finally had an offer so good people felt stupid saying no."
-                        </p>
+                        <span className="font-bold text-slate-700">Add to order</span>
                     </div>
                 </label>
             </div>
 
-            {/* Bump 2: Launch Stack (NEW) */}
-            <div className="relative overflow-hidden rounded-xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-50 p-4 transition-all hover:border-indigo-300 shadow-sm">
-                {hasBump2 && (
-                    <div className="absolute top-0 right-0 bg-indigo-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg shadow-sm">
-                        ADDED
+            {/* Bump 2: Launch Stack */}
+            <div className="relative overflow-hidden border-2 border-[#f0e6dd] bg-[#faefe5] p-5 transition-all shadow-sm">
+                <label className="flex flex-col gap-4 cursor-pointer select-none">
+                    <div className="space-y-3">
+                        <h4 className="font-bold text-[#0c72d6] text-2xl md:text-3xl leading-tight font-display tracking-tight">
+                            The "Lazy Launch" Email System
+                        </h4>
+
+                        {/* Placeholder for the order bump image */}
+                        <div className="w-full bg-white/50 rounded-lg p-2 mb-4">
+                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Email System Bundle" className="w-full h-auto object-contain mx-auto mix-blend-multiply" />
+                        </div>
+
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+                            <span className="font-bold underline text-slate-900">[STRONGLY RECOMMEND]:</span> Unlock the exact psychological email sequences we use to force the sale.
+                        </p>
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold">
+                            Writing sales emails is the #1 revenue killer. Skip the writer's block.
+                        </p>
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
+                            Launch Stack AI generates the emails that sell—without being salesy. This system will save you THOUSANDS of wasted hours, because you'll have plug-and-play sequences that turn your list into an ATM right from the start!
+                        </p>
+
+                        <div className="flex items-center gap-2 mt-4 mb-2">
+                            <span className="font-bold text-rose-500 text-2xl">${(bump2Price / 100).toFixed(2)}</span>
+                            <span className="text-rose-300 line-through text-lg">$297.00</span>
+                        </div>
                     </div>
-                )}
-                <label className="flex items-start gap-3 cursor-pointer select-none">
-                    <div className="pt-1">
+
+                    <div className="bg-white p-3 border border-slate-200 flex items-center gap-3 w-full">
                         <input
                             type="checkbox"
                             checked={hasBump2}
                             onChange={(e) => setHasBump2(e.target.checked)}
-                            className="w-5 h-5 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500 cursor-pointer"
+                            className="w-6 h-6 text-[#0c72d6] border-slate-300 rounded focus:ring-[#0c72d6] cursor-pointer"
                         />
-                    </div>
-                    <div className="space-y-2">
-                        <div className="flex items-center gap-2 mb-1 flex-wrap">
-                            <span className="font-bold text-slate-900 flex items-center gap-1 text-base">
-                                <Zap size={16} className="text-indigo-600 fill-indigo-600" />
-                                Unlock The "Lazy Launch" Email System
-                            </span>
-                            <span className="bg-indigo-100 text-indigo-700 text-xs font-bold px-2 py-0.5 rounded-full border border-indigo-200">
-                                Only ${(bump2Price / 100).toFixed(0)}
-                            </span>
-                        </div>
-                        <p className="text-sm text-slate-700 leading-relaxed font-medium">
-                            <span className="text-indigo-600 font-bold">This is the asset that pays you while you sleep.</span>
-                        </p>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                            Writing sales emails is the #1 revenue killer. Skip the writer's block. <span className="font-bold">Launch Stack AI</span> generates the exact psychological email sequence I use to force the sale—without being salesy.
-                        </p>
-                        <p className="text-xs text-slate-500 italic border-l-2 border-indigo-300 pl-2 mt-2">
-                            "Plug-and-play email sequences that turn your list into an ATM."
-                        </p>
+                        <span className="font-bold text-slate-700">Add to order</span>
                     </div>
                 </label>
             </div>
