@@ -21,16 +21,16 @@ export const GeniusOutcomesSection = ({ onScrollToCheckout }: GeniusOutcomesSect
 
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-[900px] mx-auto mb-16 text-left">
                     {[
-                        "Make more money from your audience",
-                        "Grow your bank balance every month",
-                        "Quit your 9-5 and go full time in your biz",
-                        "Launch your next offer this month",
-                        "Stop guessing what people want to buy",
+                        "Make a quick cash injection this week",
+                        "Prove your idea works before going all-in",
+                        "Have your first (or next) $10k+ launch",
+                        "Scale your revenue without launching every month",
+                        "Quit your 9-5 and go full-time in your biz",
                         "Get paid for what you already know",
-                        "Build a business that gives you freedom",
-                        "Finally see those Stripe notifications"
+                        "Build a sellable asset that pays you while you sleep",
+                        "Finally see those Stripe notifications on repeat"
                     ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-4 group transition-transform hover:translate-x-1">
+                        <div key={i} className={`flex items-center gap-4 group transition-transform hover:translate-x-1 p-4 rounded-xl ${i % 2 === 0 ? 'bg-white/80' : 'bg-rose-50/50'}`}>
                             <div className="bg-emerald-500 rounded-full p-1.5 flex-shrink-0 shadow-lg shadow-emerald-500/20">
                                 <CheckCircle2 size={20} className="text-white" strokeWidth={3} />
                             </div>
