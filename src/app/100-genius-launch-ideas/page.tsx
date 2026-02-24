@@ -79,7 +79,7 @@ export default function GeniusLaunchIdeasPage() {
                                 *limited time offer*
                             </div>
 
-                            <div className="mb-8 max-w-[750px] bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-rose-100 shadow-sm mx-auto">
+                            <div className="hidden mb-8 max-w-[750px] bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-rose-100 shadow-sm mx-auto">
                                 <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed text-center">
                                     Every single offer in this repository has been <span className="text-rose-600 font-bold underline decoration-rose-500/20">pre-validated</span> based on my direct work with <span className="text-slate-900 font-black">600+ creators like you across many different niches</span>. No theory. No guesswork. Only what’s clearing Stripe accounts right now.
                                 </p>
