@@ -223,83 +223,103 @@ export function CheckoutForm() {
             </div>
 
             {/* Bump 1: OfferGenius */}
-            <div className="relative overflow-hidden border-2 border-[#f0e6dd] bg-[#faefe5] p-5 transition-all shadow-sm">
+            <div className="relative overflow-hidden bg-[#f4f6fb] p-6 transition-all shadow-sm rounded-lg border border-slate-100 mb-4">
                 <label className="flex flex-col gap-4 cursor-pointer select-none">
-                    <div className="space-y-3">
-                        <h4 className="font-bold text-[#0c72d6] text-2xl md:text-3xl leading-tight font-display tracking-tight">
-                            The "Grand Slam" Offer Builder
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-[#4353e8] text-2xl md:text-3xl leading-tight font-display tracking-tight uppercase">
+                            CUSTOM CODED:<br />OfferGenius™ AI Builder
                         </h4>
 
-                        {/* Placeholder for the order bump image */}
-                        <div className="w-full bg-white/50 rounded-lg p-2 mb-4">
-                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Offer Builder Bundle" className="w-full h-auto object-contain mx-auto mix-blend-multiply" />
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
+                            We felt this tool is SO essential for your success that we recorded a quick walk-through so you can see exactly how it works. I highly recommend you watch it here ⬇
+                        </p>
+
+                        {/* Placeholder for the order bump image/video */}
+                        <div className="w-full bg-black rounded-lg overflow-hidden relative shadow-lg">
+                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Offer Builder Bundle" className="w-full h-auto object-cover opacity-80" />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div className="bg-black/80 rounded-lg px-4 py-3 flex items-center justify-center">
+                                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                                </div>
+                            </div>
                         </div>
 
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
-                            <span className="font-bold underline text-slate-900">[STRONGLY RECOMMEND]:</span> Unlock the AI engine that instantly builds your entire high-ticket product stack.
-                        </p>
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold">
-                            Most launches fail because the offer is weak. Stop guessing what to sell.
-                        </p>
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
-                            OfferGenius™ generates the names, deliverables, bonuses, and guarantees using the $100M Framework. This tool will save you THOUSANDS of wasted dollars on ads, because you'll create winning, profitable offers right from the start!
+                        <p className="text-sm md:text-base text-slate-800 leading-relaxed">
+                            <span className="font-bold uppercase tracking-wide">RELEASED SPECIALLY FOR THIS BUNDLE:</span> We coded a new, custom AI tool that is immensely valuable because it completely eliminates checkout hesitation.
+                            <br /><br />
+                            <span className="font-bold text-slate-900">Not only does this custom-coded tool save you massive amounts of time, but it perfectly customizes the offer for YOU. It ensures YOU will launch the exact perfect thing for YOUR specific audience.</span>
+                            <br /><br />
+                            It delivers tremendous results by letting you launch offers that are guaranteed to bring money into your bank account. This custom software is a game-changer, giving you everything you need to launch immediately.
                         </p>
 
-                        <div className="flex items-center gap-2 mt-4 mb-2">
-                            <span className="font-bold text-rose-500 text-2xl">${(bump1Price / 100).toFixed(2)}</span>
-                            <span className="text-rose-300 line-through text-lg">$197.00</span>
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold italic">
+                            <span className="underline uppercase tracking-wide">PLEASE NOTE:</span> we thought this tool was SO important for you to have that we chose to make it available right here so you can focus on getting (& using) it immediately.
+                        </p>
+
+                        <div className="mt-4 mb-2">
+                            <span className="font-bold text-[#ff7a59] text-3xl md:text-4xl tracking-tight">${(bump1Price / 100).toFixed(2)}</span>
                         </div>
                     </div>
 
-                    <div className="bg-white p-3 border border-slate-200 flex items-center gap-3 w-full">
+                    <div className="bg-white p-4 border border-slate-200 flex items-start gap-4 w-full shadow-sm rounded-md hover:border-slate-300 transition-colors">
                         <input
                             type="checkbox"
                             checked={hasBump1}
                             onChange={(e) => setHasBump1(e.target.checked)}
-                            className="w-6 h-6 text-[#0c72d6] border-slate-300 rounded focus:ring-[#0c72d6] cursor-pointer"
+                            className="w-6 h-6 mt-1 border-slate-300 rounded cursor-pointer accent-[#ff7a59]"
                         />
-                        <span className="font-bold text-slate-700">Add to order</span>
+                        <span className="font-bold text-slate-600 text-sm md:text-base leading-snug">
+                            Yes, I need this AI Offer tool! <br className="hidden md:block" /><span className="text-slate-500 font-semibold">[ADD TO ORDER]</span>
+                        </span>
                     </div>
                 </label>
             </div>
 
             {/* Bump 2: Launch Stack */}
-            <div className="relative overflow-hidden border-2 border-[#f0e6dd] bg-[#faefe5] p-5 transition-all shadow-sm">
+            <div className="relative overflow-hidden bg-[#f4f6fb] p-6 transition-all shadow-sm rounded-lg border border-slate-100">
                 <label className="flex flex-col gap-4 cursor-pointer select-none">
-                    <div className="space-y-3">
-                        <h4 className="font-bold text-[#0c72d6] text-2xl md:text-3xl leading-tight font-display tracking-tight">
-                            The "Lazy Launch" Email System
+                    <div className="space-y-4">
+                        <h4 className="font-bold text-[#4353e8] text-2xl md:text-3xl leading-tight font-display tracking-tight uppercase">
+                            CUSTOM TRAINED:<br />"Lazy Launch" Email System
                         </h4>
 
-                        {/* Placeholder for the order bump image */}
-                        <div className="w-full bg-white/50 rounded-lg p-2 mb-4">
-                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Email System Bundle" className="w-full h-auto object-contain mx-auto mix-blend-multiply" />
+                        <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
+                            We felt this system is SO essential for your launches that we filmed a video walk-through for you to see exactly how it works. I highly recommend you watch until the end ⬇
+                        </p>
+
+                        {/* Placeholder for the order bump image/video */}
+                        <div className="w-full bg-black rounded-lg overflow-hidden relative shadow-lg">
+                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Email System Bundle" className="w-full h-auto object-cover opacity-80" />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div className="bg-black/80 rounded-lg px-4 py-3 flex items-center justify-center">
+                                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                                </div>
+                            </div>
                         </div>
 
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
-                            <span className="font-bold underline text-slate-900">[STRONGLY RECOMMEND]:</span> Unlock the exact psychological email sequences we use to force the sale.
-                        </p>
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold">
-                            Writing sales emails is the #1 revenue killer. Skip the writer's block.
-                        </p>
-                        <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
-                            Launch Stack AI generates the emails that sell—without being salesy. This system will save you THOUSANDS of wasted hours, because you'll have plug-and-play sequences that turn your list into an ATM right from the start!
+                        <p className="text-sm md:text-base text-slate-800 leading-relaxed">
+                            <span className="font-bold uppercase tracking-wide">RELEASED SPECIALLY FOR YOU:</span> We custom-trained an AI system to write the exact psychological email sequences we use to force the sale. We rarely share these templates because they took years of testing to perfect.
+                            <br /><br />
+                            <span className="font-bold text-slate-900">Not only that, but this Lazy Launch Email System generates sequences that sell without sounding "salesy" so you don’t have to guess what to write.</span>
+                            <br /><br />
+                            Writing sales emails is the #1 revenue killer. This system will save you THOUSANDS of wasted writing hours, giving you plug-and-play sequences that turn your list into an ATM right away!
                         </p>
 
-                        <div className="flex items-center gap-2 mt-4 mb-2">
-                            <span className="font-bold text-rose-500 text-2xl">${(bump2Price / 100).toFixed(2)}</span>
-                            <span className="text-rose-300 line-through text-lg">$297.00</span>
+                        <div className="mt-4 mb-2">
+                            <span className="font-bold text-[#ff7a59] text-3xl md:text-4xl tracking-tight">${(bump2Price / 100).toFixed(2)}</span>
                         </div>
                     </div>
 
-                    <div className="bg-white p-3 border border-slate-200 flex items-center gap-3 w-full">
+                    <div className="bg-white p-4 border border-slate-200 flex items-start gap-4 w-full shadow-sm rounded-md hover:border-slate-300 transition-colors">
                         <input
                             type="checkbox"
                             checked={hasBump2}
                             onChange={(e) => setHasBump2(e.target.checked)}
-                            className="w-6 h-6 text-[#0c72d6] border-slate-300 rounded focus:ring-[#0c72d6] cursor-pointer"
+                            className="w-6 h-6 mt-1 border-slate-300 rounded cursor-pointer accent-[#ff7a59]"
                         />
-                        <span className="font-bold text-slate-700">Add to order</span>
+                        <span className="font-bold text-slate-600 text-sm md:text-base leading-snug">
+                            Yes, I need this Email System! <br className="hidden md:block" /><span className="text-slate-500 font-semibold">[ADD TO ORDER]</span>
+                        </span>
                     </div>
                 </label>
             </div>

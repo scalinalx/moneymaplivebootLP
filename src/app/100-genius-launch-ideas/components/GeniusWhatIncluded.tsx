@@ -79,6 +79,11 @@ export const GeniusWhatIncluded = ({ onScrollToCheckout }: { onScrollToCheckout:
 
                 <div className="text-center bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500"></div>
+
+                    <div className="mb-10 w-full max-w-[800px] mx-auto rounded-3xl overflow-hidden shadow-xl border-4 border-slate-50">
+                        <img src="/imgs/100-genius-offers/bundle_niches.jpeg" alt="Included Niches" className="w-full h-auto object-cover" />
+                    </div>
+
                     <h3 className="font-display font-bold text-3xl md:text-4xl text-slate-900 mb-8">
                         Ready to see the other 80+ ideas?
                     </h3>
