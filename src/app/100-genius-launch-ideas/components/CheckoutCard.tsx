@@ -236,7 +236,7 @@ export function CheckoutForm() {
 
                         {/* Placeholder for the order bump image/video */}
                         <div className="w-full bg-black rounded-lg overflow-hidden relative shadow-lg">
-                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Offer Builder Bundle" className="w-full h-auto object-cover opacity-80" />
+                            <img src="/imgs/100-genius-offers/offergenius_thumb.jpeg" alt="Offer Builder Bundle" className="w-full h-auto object-cover opacity-80" />
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div className="bg-black/80 rounded-lg px-4 py-3 flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
@@ -280,7 +280,7 @@ export function CheckoutForm() {
                 <label className="flex flex-col gap-4 cursor-pointer select-none">
                     <div className="space-y-4">
                         <h4 className="font-bold text-[#4353e8] text-2xl md:text-3xl leading-tight font-display tracking-tight uppercase">
-                            CUSTOM TRAINED:<br />"Lazy Launch" Email System
+                            CUSTOM TRAINED:<br />"Lazy Launch" AI EMAIL WRITER
                         </h4>
 
                         <p className="text-sm md:text-base text-slate-700 leading-relaxed italic">
@@ -289,7 +289,7 @@ export function CheckoutForm() {
 
                         {/* Placeholder for the order bump image/video */}
                         <div className="w-full bg-black rounded-lg overflow-hidden relative shadow-lg">
-                            <img src="/imgs/100-genius-offers/bundle_image.webp" alt="Email System Bundle" className="w-full h-auto object-cover opacity-80" />
+                            <img src="/imgs/100-genius-offers/launchstack_thumb.jpeg" alt="Email System Bundle" className="w-full h-auto object-cover opacity-80" />
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div className="bg-black/80 rounded-lg px-4 py-3 flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
