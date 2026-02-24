@@ -68,11 +68,11 @@ export default function GeniusLaunchIdeasPage() {
                             </div>
 
                             <div className="font-sans font-black text-slate-900 text-3xl md:text-5xl uppercase tracking-tighter mb-2">
-                                GET
+                                GET THE OFFER VAULT
                             </div>
                             <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-4 text-slate-900 italic">
-                                100 <span className="text-rose-500 drop-shadow-sm">GENIUS OFFERS</span><br />
-                                THAT SELL IN 2026
+                                Stop Starting From Scratch: <span className="text-rose-500 drop-shadow-sm">100 Pre-Validated Offers</span><br />
+                                That Are Clearing Stripe Accounts Right Now
                             </h1>
 
                             <div className="text-slate-400 italic text-sm md:text-base mb-6 w-full text-center px-4">
