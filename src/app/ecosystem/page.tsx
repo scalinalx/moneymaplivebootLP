@@ -1,306 +1,302 @@
-import { Metadata } from 'next';
-import {
-    BookOpen, Zap, DollarSign, Settings, Database,
-    Code, Server, AppWindow, ShieldCheck, Mail, Globe, Sparkles
-} from 'lucide-react';
+import React from 'react';
+import { Network, Server, BookOpen, Presentation, Sparkles, DollarSign, ArrowRight, ShieldCheck, Database, AppWindow, RefreshCcw } from 'lucide-react';
 import Link from 'next/link';
+import ecosystemData from '@/data/ecosystem.json';
 
-export const metadata: Metadata = {
-    title: 'Ecosystem Map | Monetise Substack',
-    description: 'Visual blueprint of the Monetise Substack software and product ecosystem.',
+// Helper to grab icons dynamically
+const iconMap: { [key: string]: any } = {
+    BookOpen: BookOpen,
+    Sparkles: Sparkles,
+    AppWindow: AppWindow,
+    DollarSign: DollarSign,
+};
+
+// Helper for Tailwind color mappings to ensure they aren't purged
+const colorStyles: { [key: string]: string } = {
+    blue: "text-blue-500 bg-blue-50 border-blue-100",
+    purple: "text-purple-500 bg-purple-50 border-purple-100",
+    "brand-neon": "text-brand-neon bg-[#CCFF00]/10 border-brand-neon/20",
+    rose: "text-rose-500 bg-rose-50 border-rose-100",
 };
 
 export default function EcosystemPage() {
+    // Extract sections directly from JSON
+    const cpSection = ecosystemData.sections.find((s) => s.id === "core-programs");
+    const mwSection = ecosystemData.sections.find((s) => s.id === "mini-workshops");
+    const aiSection = ecosystemData.sections.find((s) => s.id === "ai-software");
+    const buSection = ecosystemData.sections.find((s) => s.id === "bumps-upsells");
+    const inSection = ecosystemData.sections.find((s) => s.id === "backend-infrastructure");
+    const trSection = ecosystemData.sections.find((s) => s.id === "integrations-tracking");
+
     return (
-        <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-brand-neon/30 pb-24">
+        <div className="min-h-screen bg-slate-50 text-slate-800 font-sans pb-24">
             {/* Header */}
-            <header className="bg-black text-white pt-20 pb-16 px-6 border-b-8 border-brand-neon relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/imgs/noise.png')] opacity-20 mix-blend-overlay"></div>
-                <div className="max-w-6xl mx-auto relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full border border-white/20 text-xs font-bold uppercase tracking-widest text-brand-neon mb-6">
-                        <Globe size={14} /> Live Architecture
-                    </div>
-                    <h1 className="font-display font-black text-5xl md:text-7xl tracking-tighter uppercase leading-none mb-6">
-                        Ecosystem <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon to-yellow-300">Blueprint</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-slate-300 font-light max-w-2xl leading-relaxed">
-                        A comprehensive map of all products, funnels, AI tools, and backend infrastructure currently live on Monetise Substack.
-                    </p>
+            <div className="bg-slate-900 text-white pt-20 pb-32 px-6 md:px-12 relative overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-neon/10 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
                 </div>
-            </header>
-
-            <main className="max-w-6xl mx-auto px-6 mt-16 space-y-20">
-
-                {/* Section: Core Programs */}
-                <section>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-blue-100 text-blue-600 rounded-xl">
-                            <BookOpen size={28} />
+                <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div>
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="bg-white/10 p-2 rounded-lg border border-white/20">
+                                <Network className="text-brand-neon" size={24} />
+                            </span>
+                            <span className="text-brand-neon font-bold tracking-widest text-sm uppercase">Business Architecture</span>
                         </div>
-                        <h2 className="font-display font-black text-3xl uppercase tracking-tight">Core Educational Programs</h2>
+                        <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight leading-tight">
+                            The Complete <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon to-brand-neon/50">Ecosystem Map</span>
+                        </h1>
+                        <p className="text-slate-400 text-lg max-w-2xl">
+                            {ecosystemData.description}
+                        </p>
                     </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 hover:shadow-md transition-shadow">
-                            <div className="flex justify-between items-start mb-4">
-                                <h3 className="font-bold text-xl uppercase tracking-tight">Build to Profit Live Workshop</h3>
-                                <span className="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm">$497</span>
-                            </div>
-                            <p className="text-slate-500 text-sm mb-6 leading-relaxed">The flagship live workshop offering, teaching foundational monetization strategies.</p>
-                            <div className="space-y-3 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
-                                <div className="flex justify-between"><span className="text-slate-500">Sales:</span> <Link href="/landing" className="font-medium text-blue-600 hover:underline">/landing</Link></div>
-                                <div className="flex justify-between"><span className="text-slate-500">Checkout:</span> <Link href="/checkout-step1" className="font-medium text-blue-600 hover:underline">/checkout-step1</Link></div>
-                                <div className="flex justify-between"><span className="text-slate-500">Success:</span> <Link href="/success" className="font-medium text-blue-600 hover:underline">/success</Link></div>
-                            </div>
+                    <div className="bg-black/40 backdrop-blur-xl border border-white/10 p-6 rounded-2xl md:min-w-[300px]">
+                        <div className="flex items-center justify-between mb-4">
+                            <span className="text-slate-400 font-medium">Status</span>
+                            <span className="flex items-center gap-2 text-xs font-bold text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full"><div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div> All Systems Operational</span>
                         </div>
-
-                        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 hover:shadow-md transition-shadow">
-                            <div className="flex justify-between items-start mb-4">
-                                <h3 className="font-bold text-xl uppercase tracking-tight">The $10k Launch Lab</h3>
-                                <span className="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm">$597</span>
-                            </div>
-                            <p className="text-slate-500 text-sm mb-6 leading-relaxed">A higher-tier workshop focused on consistent $10k launches.</p>
-                            <div className="space-y-3 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
-                                <div className="flex justify-between"><span className="text-slate-500">Sales:</span> <Link href="/10k-launch-lab" className="font-medium text-blue-600 hover:underline">/10k-launch-lab</Link></div>
-                                <div className="flex justify-between"><span className="text-slate-500">Upsell:</span> <Link href="/10k-launch-lab-upsell" className="font-medium text-blue-600 hover:underline">/...-upsell</Link></div>
-                                <div className="flex justify-between"><span className="text-slate-500">Success:</span> <Link href="/10k-launch-lab-success" className="font-medium text-blue-600 hover:underline">/...-success</Link></div>
-                            </div>
-                        </div>
-
-                        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 hover:shadow-md transition-shadow">
-                            <div className="flex justify-between items-start mb-4">
-                                <h3 className="font-bold text-xl uppercase tracking-tight">The Money Map</h3>
-                                <span className="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm">$497</span>
-                            </div>
-                            <p className="text-slate-500 text-sm mb-6 leading-relaxed">A complete strategy course covering ICP, offer, positioning, messaging, and copy.</p>
-                            <div className="space-y-3 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
-                                <div className="flex justify-between"><span className="text-slate-500">Sales:</span> <Link href="/" className="font-medium text-blue-600 hover:underline">/</Link></div>
-                                <div className="flex justify-between text-xs text-orange-600 bg-orange-50 p-2 rounded col-span-2">Sold as $300 Bump on Build to Profit</div>
-                            </div>
+                        <div className="space-y-3">
+                            <div className="flex justify-between items-center text-sm"><span className="text-slate-500">Node JS</span><span className="text-white font-mono">v20+</span></div>
+                            <div className="flex justify-between items-center text-sm"><span className="text-slate-500">Framework</span><span className="text-white font-mono">Next.js 14 (App Router)</span></div>
+                            <div className="flex justify-between items-center text-sm"><span className="text-slate-500">Database</span><span className="text-white font-mono">Supabase PostgreSQL</span></div>
+                            <div className="flex justify-between items-center text-sm"><span className="text-slate-500">Payments</span><span className="text-white font-mono">Stripe Webhooks</span></div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                {/* Section: Sub Products */}
-                <section>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-purple-100 text-purple-600 rounded-xl">
-                            <Sparkles size={28} />
-                        </div>
-                        <h2 className="font-display font-black text-3xl uppercase tracking-tight">Mini-Workshops & Info Products</h2>
-                    </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 -mt-16 relative z-20 space-y-12">
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col justify-between">
-                            <div>
-                                <div className="flex justify-between items-start mb-4">
-                                    <h3 className="font-bold text-xl uppercase tracking-tight">How to Hit 10k</h3>
-                                    <span className="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm">$97</span>
+                {/* Core & Mini Workshops Grid */}
+                <div className="grid lg:grid-cols-2 gap-8">
+                    {/* Core Programs */}
+                    {cpSection && (
+                        <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className={`p-4 rounded-2xl ${colorStyles[cpSection?.color || "blue"]}`}>
+                                    {React.createElement(iconMap[cpSection?.icon || "BookOpen"] || BookOpen, { size: 28 })}
                                 </div>
-                                <p className="text-slate-500 text-sm mb-6 leading-relaxed">A lower barrier-to-entry challenge and curriculum mapping to your first $10k month.</p>
-                            </div>
-                            <div className="space-y-3 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
-                                <div className="flex justify-between"><span className="text-slate-500">Checkout:</span> <Link href="/how-to-hit-10k" className="font-medium text-purple-600 hover:underline">/how-to-hit-10k</Link></div>
-                                <div className="flex justify-between"><span className="text-slate-500">Success:</span> <Link href="/hit-10k-success" className="font-medium text-purple-600 hover:underline">/hit-10k-success</Link></div>
-                            </div>
-                        </div>
-
-                        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col justify-between">
-                            <div>
-                                <div className="flex justify-between items-start mb-4">
-                                    <h3 className="font-bold text-xl uppercase tracking-tight">100 Genius Launch Ideas</h3>
-                                    <span className="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm">$27</span>
-                                </div>
-                                <p className="text-slate-500 text-sm mb-6 leading-relaxed">A 184-page PDF detailing successful launch frameworks and plug-and-play ideas.</p>
-                            </div>
-                            <div className="space-y-3 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
-                                <div className="flex justify-between"><span className="text-slate-500">Checkout:</span> <Link href="/100-genius-launch-ideas" className="font-medium text-purple-600 hover:underline">/100-genius-launch-ideas</Link></div>
-                                <div className="flex justify-between"><span className="text-slate-500">Success:</span> <Link href="/100-genius-launch-ideas/success" className="font-medium text-purple-600 hover:underline">/.../success</Link></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Section: AI Software */}
-                <section>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-brand-neon/20 text-yellow-600 border border-brand-neon/50 rounded-xl">
-                            <AppWindow size={28} />
-                        </div>
-                        <h2 className="font-display font-black text-3xl uppercase tracking-tight">AI Software & Custom Tools</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-slate-900 text-white rounded-2xl shadow-xl border-2 border-brand-neon p-8 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform"><Code size={120} /></div>
-                            <div className="relative z-10">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h3 className="font-bold text-2xl uppercase tracking-tight text-brand-neon">Show Don't Tell</h3>
-                                    <span className="bg-white/10 text-white border border-white/20 font-bold px-3 py-1 rounded-full text-sm">Token Model</span>
-                                </div>
-                                <p className="text-slate-300 text-sm mb-6 leading-relaxed pr-12">
-                                    Viral Thumbnail Generator connected to Gemini 2.5 Flash. Generates high-converting creator graphics.
-                                </p>
-                                <div className="grid grid-cols-2 gap-4 mb-6">
-                                    <div className="bg-white/5 border border-white/10 p-3 rounded-lg"><span className="block text-xs text-slate-400">Starter</span><span className="font-bold">$19.97 (200 Cr)</span></div>
-                                    <div className="bg-white/5 border border-brand-neon/50 p-3 rounded-lg"><span className="block text-xs text-brand-neon">Pro Value</span><span className="font-bold">$247.00 (2.5k Cr)</span></div>
-                                </div>
-                                <div className="space-y-3 bg-black/50 p-4 rounded-xl text-sm border border-white/10">
-                                    <div className="flex justify-between"><span className="text-slate-400">App Home:</span> <Link href="/show-dont-tell" className="font-medium text-brand-neon hover:underline">/show-dont-tell</Link></div>
-                                    <div className="flex justify-between"><span className="text-slate-400">Purchase:</span> <Link href="/show-dont-tell/purchase" className="font-medium text-brand-neon hover:underline">/show-dont-tell/purchase</Link></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-rows-3 gap-4">
-                            <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center justify-between hover:border-slate-300 transition-colors">
                                 <div>
-                                    <h4 className="font-bold uppercase flex items-center gap-2"><Globe size={16} className="text-indigo-500" /> Ana AI Offer Flow</h4>
-                                    <p className="text-xs text-slate-500 mt-1">Free interactive clarity tool</p>
+                                    <h2 className="text-2xl font-black text-slate-800">{cpSection.title}</h2>
+                                    <p className="text-slate-500 font-medium text-sm">Main high-ticket funnels</p>
                                 </div>
-                                <Link href="/ana-ai-offer-flow" className="text-xs font-bold px-3 py-2 bg-slate-100 rounded hover:bg-slate-200 transition-colors">/ana-ai-offer-flow</Link>
                             </div>
-                            <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center justify-between hover:border-slate-300 transition-colors">
-                                <div>
-                                    <h4 className="font-bold uppercase flex items-center gap-2"><Zap size={16} className="text-orange-500" /> OfferGenius™</h4>
-                                    <p className="text-xs text-slate-500 mt-1">Sold as $37 Order Bump</p>
-                                </div>
-                                <Link href="/ana-offer-genius" className="text-xs font-bold px-3 py-2 bg-slate-100 rounded hover:bg-slate-200 transition-colors">/ana-offer-genius</Link>
+                            <div className="space-y-6">
+                                {cpSection?.items?.map((item: any, idx: number) => (
+                                    <div key={idx} className="group border border-slate-100 p-5 rounded-2xl hover:border-blue-200 hover:shadow-lg transition-all">
+                                        <div className="flex justify-between items-start mb-3">
+                                            <h3 className="font-bold text-lg text-slate-900">{item.name}</h3>
+                                            <div className="text-right">
+                                                <span className="inline-block bg-emerald-50 text-emerald-600 font-black text-sm px-3 py-1 rounded-full shadow-sm border border-emerald-100">{item.price}</span>
+                                            </div>
+                                        </div>
+                                        <p className="text-slate-500 text-sm mb-4 leading-relaxed">{item.description}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {item.links.map((link: any, i: number) => (
+                                                <Link key={i} href={link.url} className="text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                                                    {link.label} <ArrowRight size={12} />
+                                                </Link>
+                                            ))}
+                                        </div>
+                                        {item.callout && (
+                                            <div className="mt-3 text-xs font-medium text-amber-600 bg-amber-50 inline-block px-3 py-1 rounded-md border border-amber-100">Note: {item.callout}</div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
-                            <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center justify-between hover:border-slate-300 transition-colors">
-                                <div>
-                                    <h4 className="font-bold uppercase flex items-center gap-2"><Mail size={16} className="text-cyan-500" /> Launch Stack</h4>
-                                    <p className="text-xs text-slate-500 mt-1">Sold as $67 Email Sequence AI</p>
+                        </div>
+                    )}
+
+                    {/* Mini Workshops */}
+                    {mwSection && (
+                        <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className={`p-4 rounded-2xl ${colorStyles[mwSection?.color || "purple"]}`}>
+                                    {React.createElement(iconMap[mwSection?.icon || "Sparkles"] || Sparkles, { size: 28 })}
                                 </div>
-                                <Link href="/launch-stack" className="text-xs font-bold px-3 py-2 bg-slate-100 rounded hover:bg-slate-200 transition-colors">/launch-stack</Link>
+                                <div>
+                                    <h2 className="text-2xl font-black text-slate-800">{mwSection.title}</h2>
+                                    <p className="text-slate-500 font-medium text-sm">Low barrier-to-entry products</p>
+                                </div>
+                            </div>
+                            <div className="space-y-6">
+                                {mwSection?.items?.map((item: any, idx: number) => (
+                                    <div key={idx} className="group border border-slate-100 p-5 rounded-2xl hover:border-purple-200 hover:shadow-lg transition-all">
+                                        <div className="flex justify-between items-start mb-3">
+                                            <h3 className="font-bold text-lg text-slate-900">{item.name}</h3>
+                                            <span className="inline-block bg-emerald-50 text-emerald-600 font-black text-sm px-3 py-1 rounded-full shadow-sm border border-emerald-100">{item.price}</span>
+                                        </div>
+                                        <p className="text-slate-500 text-sm mb-4 leading-relaxed">{item.description}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {item.links.map((link: any, i: number) => (
+                                                <Link key={i} href={link.url} className="text-xs font-bold text-purple-600 bg-purple-50 hover:bg-purple-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                                                    {link.label} <ArrowRight size={12} />
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* AI Software Tools */}
+                {aiSection && (
+                    <div className="bg-slate-900 rounded-3xl p-1 shadow-2xl overflow-hidden relative group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-brand-neon/20 via-purple-500/20 to-blue-500/20 opacity-50 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                        <div className="bg-slate-900 rounded-[23px] p-8 md:p-12 relative z-10">
+                            <div className="flex items-center gap-4 mb-10">
+                                <div className={`p-4 rounded-2xl ${colorStyles[aiSection?.color || "brand-neon"]}`}>
+                                    {React.createElement(iconMap[aiSection?.icon || "AppWindow"] || AppWindow, { size: 28 })}
+                                </div>
+                                <div>
+                                    <h2 className="text-3xl font-black text-white">{aiSection.title}</h2>
+                                    <p className="text-slate-400 font-medium">Custom coded programmatic tools</p>
+                                </div>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {aiSection.apps?.map((app: any, idx: number) => (
+                                    <div key={idx} className={`p-6 rounded-2xl border ${app.packages ? 'border-brand-neon/30 bg-black/50 shadow-[0_0_30px_rgba(204,255,0,0.05)]' : 'border-white/10 bg-white/5'}`}>
+                                        <div className="flex justify-between items-start mb-4">
+                                            <h3 className="font-bold text-xl text-white">{app.name}</h3>
+                                            {app.type && <span className="text-xs font-black uppercase tracking-widest text-brand-neon bg-brand-neon/10 px-2 py-1 rounded">{app.type}</span>}
+                                        </div>
+                                        <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                                            {app.description}
+                                        </p>
+
+                                        {/* Handle Packages if they exist */}
+                                        {app.packages && (
+                                            <div className="grid grid-cols-2 gap-4 mb-6">
+                                                {app.packages.map((pkg: any, i: number) => (
+                                                    <div key={i} className={`p-3 rounded-lg border ${pkg.badge ? 'bg-white/5 border-brand-neon/50' : 'bg-white/5 border-white/10'}`}>
+                                                        <span className={`block text-xs ${pkg.badge ? 'text-brand-neon' : 'text-slate-400'}`}>{pkg.name.replace(' Package', '')}</span>
+                                                        <span className="font-bold text-white">{pkg.price} <span className="text-xs text-slate-500 font-normal">({pkg.details.split('Grants ')[1].split(' Image')[0]} Cr)</span></span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {/* Links or URL */}
+                                        {app.links ? (
+                                            <div className="flex gap-3">
+                                                {app.links.map((link: any, i: number) => (
+                                                    <Link key={i} href={link.url} className={`text-xs font-bold px-4 py-2 rounded-lg transition-colors flex items-center gap-1 ${i === 0 ? 'bg-brand-neon text-black hover:bg-white' : 'text-slate-300 hover:text-white bg-white/10 hover:bg-white/20'}`}>
+                                                        {link.label} {i === 0 && <ArrowRight size={14} />}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <Link href={app.url} className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-brand-neon transition-colors">
+                                                Open App <ArrowRight size={16} />
+                                            </Link>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </section>
+                )}
 
-                {/* Section: Bumps and Upsells */}
-                <section>
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-rose-100 text-rose-600 rounded-xl">
-                            <DollarSign size={28} />
+                {/* Order Bumps Database View */}
+                {buSection && (
+                    <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+                        <div className="p-8 border-b border-slate-100">
+                            <div className="flex items-center gap-4">
+                                <div className={`p-4 rounded-2xl ${colorStyles[buSection?.color || "emerald"]}`}>
+                                    {React.createElement(iconMap[buSection?.icon || "DollarSign"] || DollarSign, { size: 28 })}
+                                </div>
+                                <div>
+                                    <h2 className="text-2xl font-black text-slate-800">{buSection.title}</h2>
+                                    <p className="text-slate-500 font-medium text-sm">{buSection.subtitle}</p>
+                                </div>
+                            </div>
                         </div>
-                        <h2 className="font-display font-black text-3xl uppercase tracking-tight">Bumps & Upsells</h2>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse">
+                                <thead>
+                                    <tr className="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-widest text-slate-500">
+                                        <th className="p-4 font-bold pl-8">Product Name</th>
+                                        <th className="p-4 font-bold">Price</th>
+                                        <th className="p-4 font-bold">Type</th>
+                                        <th className="p-4 font-bold max-w-[200px]">Connected Funnels</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-sm">
+                                    {buSection.table?.map((row: any, idx: number) => (
+                                        <tr key={idx} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                                            <td className="p-4 pl-8">
+                                                <div className="font-bold text-slate-900">{row.name}</div>
+                                                <div className="text-xs text-slate-500 mt-1 max-w-sm truncate">{row.details}</div>
+                                            </td>
+                                            <td className="p-4">
+                                                <span className="inline-block bg-emerald-50 text-emerald-700 font-black px-2 py-1 rounded-md">{row.price}</span>
+                                            </td>
+                                            <td className="p-4">
+                                                <span className={`inline-block px-2 py-1 rounded text-xs font-bold uppercase tracking-wider ${row.type.includes('Upsell') ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-600'}`}>
+                                                    {row.type}
+                                                </span>
+                                            </td>
+                                            <td className="p-4 text-slate-600 font-medium">
+                                                {row.offeredOn}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                )}
 
-                    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                        <table className="w-full text-left text-sm">
-                            <thead className="bg-slate-50 border-b border-slate-200 font-bold uppercase tracking-wider text-xs text-slate-500">
-                                <tr>
-                                    <th className="p-4">Offer Name</th>
-                                    <th className="p-4">Price</th>
-                                    <th className="p-4">Type</th>
-                                    <th className="p-4">Offered On</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-100">
-                                <tr className="hover:bg-slate-50">
-                                    <td className="p-4 font-bold text-slate-900">Hooks That Stop the Scroll</td>
-                                    <td className="p-4 text-green-600 font-bold">$27</td>
-                                    <td className="p-4"><span className="bg-rose-100 text-rose-700 px-2 py-1 rounded text-xs font-bold">Order Bump</span></td>
-                                    <td className="p-4 text-slate-500">10k Lab, How to Hit 10k</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50">
-                                    <td className="p-4 font-bold text-slate-900">The 60-Minute Launch Calendar</td>
-                                    <td className="p-4 text-green-600 font-bold">$69</td>
-                                    <td className="p-4"><span className="bg-rose-100 text-rose-700 px-2 py-1 rounded text-xs font-bold">Order Bump</span></td>
-                                    <td className="p-4 text-slate-500">10k Launch Lab</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50">
-                                    <td className="p-4 font-bold text-slate-900">OfferGenius™ AI Builder</td>
-                                    <td className="p-4 text-green-600 font-bold">$37</td>
-                                    <td className="p-4"><span className="bg-rose-100 text-rose-700 px-2 py-1 rounded text-xs font-bold">Order Bump</span></td>
-                                    <td className="p-4 text-slate-500">100 Genius Ideas</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50">
-                                    <td className="p-4 font-bold text-slate-900">Launch Stack / Lazy Launch Writer</td>
-                                    <td className="p-4 text-green-600 font-bold">$67</td>
-                                    <td className="p-4"><span className="bg-rose-100 text-rose-700 px-2 py-1 rounded text-xs font-bold">Order Bump</span></td>
-                                    <td className="p-4 text-slate-500">100 Genius Ideas</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50">
-                                    <td className="p-4 font-bold text-slate-900">Money Map Bundle</td>
-                                    <td className="p-4 text-green-600 font-bold">+$300</td>
-                                    <td className="p-4"><span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs font-bold">Upsell</span></td>
-                                    <td className="p-4 text-slate-500">Workshop Checkout</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50">
-                                    <td className="p-4 font-bold text-slate-900">1:1 Sales Coaching Session</td>
-                                    <td className="p-4 text-green-600 font-bold">$747</td>
-                                    <td className="p-4"><span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs font-bold">Upsell (Dedicated)</span></td>
-                                    <td className="p-4 text-slate-500">/10k-launch-lab-upsell</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                {/* Section: Infrastructure & DB */}
+                {/* Infrastructure Details */}
                 <div className="grid md:grid-cols-2 gap-8">
-                    <section>
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="p-2 bg-slate-200 rounded-lg">
-                                <Database size={20} />
+                    {/* Database */}
+                    {inSection && (
+                        <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-6">
+                                <Database className="text-blue-500" size={24} />
+                                <h2 className="text-xl font-black text-slate-800">Supabase Architecture</h2>
                             </div>
-                            <h2 className="font-bold text-xl uppercase tracking-tight">Supabase Tables</h2>
+                            <div className="space-y-3">
+                                {inSection.tables?.map((table: any, idx: number) => (
+                                    <div key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                        <div className="mt-1"><Server size={14} className="text-slate-400" /></div>
+                                        <div>
+                                            <div className="font-mono text-sm font-bold text-slate-700">{table.name}</div>
+                                            <div className="text-xs text-slate-500 mt-0.5">{table.description}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <ul className="space-y-3">
-                            <li className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm hover:border-slate-300">
-                                <span className="font-mono font-bold text-sm text-slate-800 block mb-1">leads_bootcamp_brands</span>
-                                <span className="text-xs text-slate-500">Stores data for the Build to profit workshop.</span>
-                            </li>
-                            <li className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm hover:border-slate-300">
-                                <span className="font-mono font-bold text-sm text-slate-800 block mb-1">launch_lab_leads</span>
-                                <span className="text-xs text-slate-500">Stores data and order bumps for the 10k Launch Lab.</span>
-                            </li>
-                            <li className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm hover:border-slate-300">
-                                <span className="font-mono font-bold text-sm text-slate-800 block mb-1">hit10k_leads & genius_ideas_leads</span>
-                                <span className="text-xs text-slate-500">Data for Hit 10k Challenge and 100 Genius Ideas.</span>
-                            </li>
-                            <li className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm hover:border-slate-300">
-                                <span className="font-mono font-bold text-sm text-slate-800 flex items-center gap-2 mb-1"><Zap size={14} className="text-brand-neon" /> show_dont_tell_users</span>
-                                <span className="text-xs text-slate-500">Tokens, expiration, and credits for Thumbnail Generator.</span>
-                            </li>
-                            <li className="bg-white border border-slate-200 p-4 rounded-xl shadow-sm hover:border-slate-300 border-l-4 border-l-blue-500">
-                                <span className="font-mono font-bold text-sm text-slate-800 block mb-1">ana_ai_leads</span>
-                                <span className="text-xs text-slate-500">Stores leads and usage data for the free Ana AI Offer Flow tool.</span>
-                            </li>
-                        </ul>
-                    </section>
+                    )}
 
-                    <section>
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="p-2 bg-slate-200 rounded-lg">
-                                <ShieldCheck size={20} />
+                    {/* Tracking */}
+                    {trSection && (
+                        <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
+                            <div className="flex items-center gap-3 mb-6">
+                                <ShieldCheck className="text-rose-500" size={24} />
+                                <h2 className="text-xl font-black text-slate-800">Tracking & APIs</h2>
                             </div>
-                            <h2 className="font-bold text-xl uppercase tracking-tight">3rd-Party & APIs</h2>
-                        </div>
-                        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-                            <div>
-                                <h4 className="font-bold text-sm mb-2 flex items-center gap-2 border-b border-slate-100 pb-2"><img src="https://cdn.iconscout.com/icon/free/png-256/free-stripe-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-company-brand-vol-6-pack-logos-icons-2945037.png" className="w-4 h-4" alt="Stripe" /> Stripe Payments</h4>
-                                <p className="text-xs text-slate-600">Frontend elements (`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`) and secure `/api/webhooks/stripe` routing for fulfillment.</p>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-sm mb-2 flex items-center gap-2 border-b border-slate-100 pb-2"><img src="https://seeklogo.com/images/G/google-gemini-logo-A5787B2669-seeklogo.com.png" className="w-4 h-4 rounded-full" alt="Gemini" /> Google Gemini 2.5</h4>
-                                <p className="text-xs text-slate-600">Uses `NEXT_PUBLIC_GEMINI_API_KEY` to securely generate images on edge networks for Show Don't Tell.</p>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-sm mb-2 flex items-center gap-2 border-b border-slate-100 pb-2"><Settings size={16} className="text-slate-500" /> Marketing Pixels</h4>
-                                <ul className="text-xs text-slate-600 space-y-1 mt-2 list-disc pl-4">
-                                    <li>Meta Pixel (`925153509944098`)</li>
-                                    <li>Google Analytics (`G-CC592MQH07`)</li>
-                                    <li>Rewardful Affiliates (`68083c`)</li>
-                                    <li>UseProof Social Proof Popups</li>
-                                </ul>
+                            <div className="space-y-4">
+                                {trSection.items?.map((item: any, idx: number) => (
+                                    <div key={idx} className="border-l-2 border-rose-200 pl-4 py-1">
+                                        <div className="font-bold text-slate-800 flex items-center justify-between">
+                                            {item.name}
+                                            {item.id && <span className="font-mono text-xs bg-slate-100 px-2 py-0.5 rounded text-slate-500">{item.id}</span>}
+                                        </div>
+                                        <div className="text-xs text-slate-500 mt-1">{item.description}</div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    </section>
+                    )}
                 </div>
-            </main>
+
+            </div>
         </div>
     );
 }

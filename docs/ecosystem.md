@@ -2,146 +2,117 @@
 
 This document serves as a comprehensive map of all URLs, products, price points, freebies, and backend configurations active on the `https://www.monetisesubstack.com` domain.
 
-## Core Educational Programs & Workshops
+> **Note:** This file is auto-generated from `src/data/ecosystem.json`. Do not edit this markdown file directly. Instead, update the JSON file and run `npm run generate:docs`.
 
-### 1. Build to Profit Live Workshop
-The flagship live workshop offering, teaching foundational monetization strategies.
-*   **Main Sales Page:** `/landing`
-*   **Checkout Entry (Lead Capture):** `/join`
-*   **Checkout Steps:**
-    *   Step 1 (Payment Info): `/checkout-step1`
-    *   Upsell Page: `/upsell`
-    *   Success Page: `/success`
-*   **Pricing Options:**
-    *   Standard Workshop: **$497** (`WORKSHOP_PRICE` in `.env.local`)
+## 1. Core Educational Programs & Workshops
 
-### 2. The $10k Launch Lab
-A higher-tier workshop focused on consistent 10k launches.
-*   **Main Sales Page / Checkout:** `/10k-launch-lab`
-*   **Upsell Page:** `/10k-launch-lab-upsell`
-*   **Success Page:** `/10k-launch-lab-success`
-*   **Pricing Options:**
-    *   Core Lab Access: **$597** (`NEXT_PUBLIC_LAUNCHLAB_PRICE`)
-
-### 3. The Money Map
-A complete strategy course covering ICP, offer, positioning, segmentation, messaging, and copy. 
-*   **Main Sales Page:** `/` (Root domain)
-    *   *Note: Currently, the root domain `/` is set in `src/app/page.tsx` to automatically redirect traffic to `/10k-launch-lab`.*
-*   **Pricing Options:**
-    *   Standalone Value: **$497**
+*   **Build to Profit Live Workshop**: **$497** (`WORKSHOP_PRICE` in `.env.local`)
+    *   The flagship live workshop offering, teaching foundational monetization strategies.
+    *   *Links:* [Sales](/landing) | [Checkout](/checkout-step1) | [Upsell](/upsell) | [Success](/success)
+*   **The $10k Launch Lab**: **$597** (`NEXT_PUBLIC_LAUNCHLAB_PRICE`)
+    *   A higher-tier workshop focused on consistent 10k launches.
+    *   *Links:* [Sales](/10k-launch-lab) | [Upsell](/10k-launch-lab-upsell) | [Success](/10k-launch-lab-success)
+*   **The Money Map**: **$497** (Standalone Value)
+    *   A complete strategy course covering ICP, offer, positioning, segmentation, messaging, and copy. Note: Currently, the root domain `/` is set in `src/app/page.tsx` to automatically redirect traffic to `/10k-launch-lab`.
+    *   *Links:* [Sales](/)
+    *   **Note:** Sold as $300 Bump on Build to Profit
 
 ---
 
-## Targeted Mini-Workshops & Idea Products
+## 2. Targeted Mini-Workshops & Idea Products
 
-### 4. How to Hit 10k Workshop
-A lower barrier-to-entry challenge or mini-workshop.
-*   **Main Sales Page / Waitlist / Checkout:** `/how-to-hit-10k`
-*   **Success Page:** `/hit-10k-success`
-*   **Pricing Options:**
-    *   Core Workshop: **$97** (`NEXT_PUBLIC_HIT10K_PRICE`)
-
-### 5. 100 Genius Launch Ideas
-A digital product detailing successful launch ideas and frameworks.
-*   **Main Sales Page / Checkout:** `/100-genius-launch-ideas`
-*   **Success Page:** `/100-genius-launch-ideas/success`
-*   **Pricing Options:**
-    *   Core Ideas Book/Guide: **$27** (`NEXT_PUBLIC_GENIUS_IDEAS_PRICE`)
+*   **How to Hit 10k Workshop**: **$97** (`NEXT_PUBLIC_HIT10K_PRICE`)
+    *   A lower barrier-to-entry challenge or mini-workshop.
+    *   *Links:* [Checkout](/how-to-hit-10k) | [Success](/hit-10k-success)
+*   **100 Genius Launch Ideas**: **$27** (`NEXT_PUBLIC_GENIUS_IDEAS_PRICE`)
+    *   A digital product detailing successful launch ideas and frameworks.
+    *   *Links:* [Checkout](/100-genius-launch-ideas) | [Success](/100-genius-launch-ideas/success)
 
 ---
 
-## Order Bumps (In-Checkout Add-ons)
-These are lower-ticket items offered directly on the checkout pages before the user completes their initial purchase.
+## 3. AI Software & Custom Tools (Freebies & Paid Add-ons)
 
-*   **1. "Hooks That Stop the Scroll"**
-    *   **Offered On:** The $10k Launch Lab (`/10k-launch-lab`), How to Hit 10k Workshop (`/how-to-hit-10k`)
-    *   **Price:** **$27** (`NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE`, `NEXT_PUBLIC_HIT10K_BUMP_PRICE`)
-    *   **Details:** A vault of high-converting headline frameworks and opening loops designed to capture attention instantly.
-*   **2. "The 60-Minute Launch Calendar"**
-    *   **Offered On:** The $10k Launch Lab (`/10k-launch-lab`)
-    *   **Price:** **$69** (`NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE`)
-    *   **Details:** The exact day-by-day Notion templates used to manage 6-figure launches without burnout.
-*   **3. "CUSTOM CODED: OfferGenius™ AI Builder"**
-    *   **Offered On:** 100 Genius Launch Ideas (`/100-genius-launch-ideas`)
-    *   **Price:** **$37** (`NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE`)
-    *   **Details:** A custom AI tool that automatically perfectly customizes an offer for a specific audience to eliminate checkout hesitation.
-*   **4. "CUSTOM TRAINED: 'Lazy Launch' AI EMAIL WRITER" (The Launch Stack)**
-    *   **Offered On:** 100 Genius Launch Ideas (`/100-genius-launch-ideas`)
-    *   **Price:** **$67** (`NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE`)
-    *   **Details:** A custom-trained AI system pre-loaded with psychological email sequences designed to sell without sounding "salesy".
+### Show Don't Tell - Viral Thumbnail Generator
 
----
+A custom-coded AI agent connecting to Nano Banana (Gemini 2.5 Flash Image) to dynamically generate scroll-stopping brand thumbnails. Protected by a `TokenID` access model.
+*   **Access/Type:** Token Model
+*   **Pricing Packages:**
+    *   **Starter Package:** **$24.00** (Grants 200 Image Credits / ~100 Generations)
+    *   **Pro Creator Package ("Best Value"):** **$247.00** (Grants 2,500 Image Credits / ~1250 Generations)
+*   **App Home Page:** `/show-dont-tell`
+*   **Purchase Page:** `/show-dont-tell/purchase`
+*   **Success Page:** `/show-dont-tell/success`
 
-## Upsells & Bundles (Post-Checkout or Cross-Sells)
-These are higher-ticket supplementary items offered either immediately after a core purchase or via dedicated sales prompts.
+### Ana Ai Offer Flow
 
-*   **1. The Money Map Bundle**
-    *   **Offered On:** Build to Profit Live Workshop (`/upsell`)
-    *   **Price Added:** **+$300** (`BUNDLE_PRICE` = $797 total)
-    *   **Details:** Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497.
-*   **2. 1:1 Sales Coaching Session with Ana**
-    *   **Offered On:** The $10k Launch Lab (`/10k-launch-lab-upsell`)
-    *   **Price:** **$747** (`NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE`)
-    *   **Details:** A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates.
+An interactive AI tool designed to clarify and flow out product offerings.
+*   **Access/Type:** Open / Freebie tool
+*   **App URL:** `/ana-ai-offer-flow`
+
+### Ana Offer Genius
+
+An AI-powered builder that helps users craft high-converting offers.
+*   **Access/Type:** Initially internal/gated; sold as an Order Bump on various funnels (usually **$27 - $37** value).
+*   **App URL:** `/ana-offer-genius`
+
+### The Launch Stack
+
+A comprehensive launch project management tool or dashboard.
+*   **Access/Type:** Password Protected (Requires the master password `mellon_hwg`, defined in `.env.local`). Also sold as an Order Bump (usually **$67 - $69** value).
+*   **App URL:** `/launch-stack`
 
 ---
 
-## Success & Thank You Pages (Fulfillment)
+## 4. Bumps & Upsells
+
+_Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)_
+
+| Name | Price | Type | Offered On | Variables |
+| :--- | :--- | :--- | :--- | :--- |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | 10k Lab, How to Hit 10k | `NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE`<br>`NEXT_PUBLIC_HIT10K_BUMP_PRICE` |
+| ↳ _Details_ | <td colspan="4">_A vault of high-converting headline frameworks and opening loops designed to capture attention instantly._</td> |
+| **The 60-Minute Launch Calendar** | $69 | Order Bump | 10k Launch Lab | `NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE` |
+| ↳ _Details_ | <td colspan="4">_The exact day-by-day Notion templates used to manage 6-figure launches without burnout._</td> |
+| **CUSTOM CODED: OfferGenius™ AI Builder** | $37 | Order Bump | 100 Genius Ideas | `NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE` |
+| ↳ _Details_ | <td colspan="4">_A custom AI tool that automatically perfectly customizes an offer for a specific audience to eliminate checkout hesitation._</td> |
+| **CUSTOM TRAINED: 'Lazy Launch' AI EMAIL WRITER** | $67 | Order Bump | 100 Genius Ideas | `NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE` |
+| ↳ _Details_ | <td colspan="4">_A custom-trained AI system pre-loaded with psychological email sequences designed to sell without sounding "salesy"._</td> |
+| **The Money Map Bundle** | +$300 | Upsell | Workshop Checkout | `BUNDLE_PRICE` = $797 total |
+| ↳ _Details_ | <td colspan="4">_Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497._</td> |
+| **1:1 Sales Coaching Session** | $747 | Upsell (Dedicated) | /10k-launch-lab-upsell | `NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE` |
+| ↳ _Details_ | <td colspan="4">_A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates._</td> |
+
+---
+
+## 5. Success & Thank You Pages (Fulfillment)
+
 These pages handle the post-purchase experience, dynamic rendering of purchased bumps, and direct access links.
 
-*   **1. General Build to Profit Success (`/success`)**
+*   **General Build to Profit Success**
     *   **Redirect:** Displays a 3-second countdown before automatically redirecting the user to a Google Doc containing instructions to join a private Substack community.
     *   **Content:** Confirms the order, details next steps (check email, calendar reminders), and lists bonuses (Resource Pack, Recordings).
-*   **2. 10k Launch Lab Success (`/10k-launch-lab-success`)**
+*   **10k Launch Lab Success**
     *   **Content:** Welcomes users to the 10k Launch Lab. Instructs them to check email and start Day 1 immediately.
     *   **Dynamic Bump/Upsell Rendering:**
         *   If Upsell bought: Displays a block to book the 1:1 Coaching session via a `calendly.com/anacalin/30min` link.
         *   If Bump 1 bought: Instructs the user to access "Hooks That Stop the Scroll" in their dashboard.
         *   If Bump 2 bought: Instructs the user to view their Notion "60-Minute Launch Calendar" templates.
-*   **3. How to Hit 10k Success (`/hit-10k-success`)**
+*   **How to Hit 10k Success**
     *   **Content:** Welcomes users to the "Hit Your First $10,000 Month" course. Gives a direct link to a YouTube video.
-    *   **Dynamic Bump Rendering:**
+    *   **Dynamic Bump/Upsell Rendering:**
         *   If Bump bought: Unlocks a high-visibility block for "Hooks That Stop the Scroll!" linking directly to a public Notion page (`anabubolea.notion.site/Hooks-That-Stop...`).
-*   **4. 100 Genius Ideas Success (`/100-genius-launch-ideas/success`)**
+*   **100 Genius Ideas Success**
     *   **Content:** Highlights an urgent "Do Not Close This Page" banner. Provides a direct local download link to the `100-Genius-Offers-Sell-2026.pdf` file.
-    *   **Dynamic Bump Rendering:**
+    *   **Dynamic Bump/Upsell Rendering:**
         *   If Bump 1 bought: Shows the OfferGenius block with a direct link to the `/ana-offer-genius` protected app.
         *   If Bump 2 bought: Shows the Launch Stack block, revealing the password (`mellon_hwg`) required to access `/launch-stack` and links directly to it.
-*   **5. Show Don't Tell Success (`/show-dont-tell/success`)**
+*   **Show Don't Tell Success**
     *   **Content:** A secure page that extracts the newly created programmatic `token_id` from the Stripe redirect URL (e.g. `SDT-XXXXXXXXXXXX`) and displays it in large text.
     *   **Features:** Provides a one-click "Copy to Clipboard" button and directs the user to immediately go to `/show-dont-tell` to login with their token.
 
 ---
 
-## AI Software & Custom Tools (Freebies & Paid Add-ons)
-
-### 6. Show Don't Tell - Viral Thumbnail Generator
-A custom-coded AI agent connecting to Nano Banana (Gemini 2.5 Flash Image) to dynamically generate scroll-stopping brand thumbnails. Protected by a `TokenID` access model.
-*   **Main App URL (Login/Generator):** `/show-dont-tell`
-*   **Purchase Packages Page:** `/show-dont-tell/purchase`
-*   **Success & Access Key Page:** `/show-dont-tell/success`
-*   **Pricing Packages:**
-    *   **Starter Package:** **$19.97** (Grants 200 Image Credits / ~100 Generations)
-    *   **Pro Creator Package (“Best Value”):** **$247.00** (Grants 2,500 Image Credits / ~1250 Generations)
-
-### 7. Ana Ai Offer Flow
-An interactive AI tool designed to clarify and flow out product offerings.
-*   **App URL:** `/ana-ai-offer-flow`
-*   **Access:** Open / Freebie tool
-
-### 8. Ana Offer Genius
-An AI-powered builder that helps users craft high-converting offers.
-*   **App URL:** `/ana-offer-genius`
-*   **Access:** Initially internal/gated; sold as an Order Bump on various funnels (usually **$27 - $37** value).
-
-### 9. The Launch Stack
-A comprehensive launch project management tool or dashboard.
-*   **App URL:** `/launch-stack`
-*   **Access Requirements:** Password Protected (Requires the master password `mellon_hwg`, defined in `.env.local`). Also sold as an Order Bump (usually **$67 - $69** value).
-
----
-
-## Additional Legal & Utility Pages
+## 6. Additional Legal & Utility Pages
 
 *   **Lead Magnet / General Email Capture:** `/lead-collection`
 *   **Scarcity Redirect (When time-limited offers expire):** `/offer-expired`
@@ -151,18 +122,22 @@ A comprehensive launch project management tool or dashboard.
 
 ---
 
-## Backend Infrastructure Overview (API Ecosystem)
+## 7. Backend Infrastructure Overview (API Ecosystem)
 
 These APIs run silently in the background routing traffic and managing state:
-*   **/api/leads**: Manages lead collection for `/join` funnel.
-*   **/api/webhooks/stripe**: Listens for successful Stripe `checkout.session.completed` events to fulfill leads, unlock Token IDs, setup credits, and log amounts paid across all tables.
-*   **/api/create-checkout-session**: Creates Stripe checkout sessions for the Build to Profit funnel.
-*   **/api/show-dont-tell/create-checkout**: Creates Stripe checkout sessions for the Thumbnail Generator credit packages.
-*   **/api/show-dont-tell/auth**: Validates Token IDs and returns credit usage.
-*   **/api/show-dont-tell/generate**: Manages credit deduction and invokes Google's Gemini SDK for thumbnail building.
-*   **/api/[product]/create-payment-intent**: Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions.
 
-### Underlying Database Tables (Supabase)
+### Active Server Routes
+
+*   **`/api/leads`**: Manages lead collection for `/join` funnel.
+*   **`/api/webhooks/stripe`**: Listens for successful Stripe `checkout.session.completed` events to fulfill leads, unlock Token IDs, setup credits, and log amounts paid across all tables.
+*   **`/api/create-checkout-session`**: Creates Stripe checkout sessions for the Build to Profit funnel.
+*   **`/api/show-dont-tell/create-checkout`**: Creates Stripe checkout sessions for the Thumbnail Generator credit packages.
+*   **`/api/show-dont-tell/auth`**: Validates Token IDs and returns credit usage.
+*   **`/api/show-dont-tell/generate`**: Manages credit deduction and invokes Google's Gemini SDK for thumbnail building.
+*   **`/api/[product]/create-payment-intent`**: Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions.
+
+### Supabase Tables
+
 *   **leads_bootcamp_brands:** Stores data for the Build to profit workshop.
 *   **launch_lab_leads:** Stores data and order bumps for the 10k Launch Lab.
 *   **hit10k_leads:** Stores data for the How to Hit 10k Challenge.
@@ -172,36 +147,45 @@ These APIs run silently in the background routing traffic and managing state:
 
 ---
 
-## Third-Party Integrations & Tracking
+## 8. Third-Party Integrations & Tracking
 
-*   **Facebook (Meta) Pixel:** (`ID: 925153509944098`)
+*   **Facebook (Meta) Pixel**
     *   Tracks page views and triggers 'Lead' or 'Purchase' events across all active funnels.
-*   **Google Analytics:** (`ID: G-CC592MQH07`)
+    *   (`ID: 925153509944098`)
+*   **Google Analytics**
     *   Global traffic and behavior tracking.
-*   **Rewardful Affiliate Tracking:** (`ID: 68083c`)
+    *   (`ID: G-CC592MQH07`)
+*   **Rewardful Affiliate Tracking**
     *   Tracks affiliate referrals and confirms conversions on the `/success` page.
-*   **UseProof:**
+    *   (`ID: 68083c`)
+*   **UseProof**
     *   Provides social proof popups across the site (dynamically injected via `cdn.useproof.com`).
 
 ---
 
-## Environment Variables & Core Services
+## 9. Environment Variables & Core Services
 
 Every production deployment relies on the following backend services and environment variables (defined in `.env.local`):
 
-### 1. Supabase (Database & Auth)
+### Supabase (Database & Auth)
+
 *   **`NEXT_PUBLIC_SUPABASE_URL`**: Base API route.
 *   **`NEXT_PUBLIC_SUPABASE_ANON_KEY`**: Client-side query key.
 *   **`SUPABASE_SERVICE_ROLE_KEY`**: Server-side admin key for backend webhooks.
 
-### 2. Stripe (Payments)
+### Stripe (Payments)
+
 *   **`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`**: Mounts Stripe Elements on frontend checkouts.
 *   **`STRIPE_SECRET_KEY`**: Server-side key for creating PaymentIntents and Sessions.
 *   **`STRIPE_WEBHOOK_SECRET`**: Validates webhook authenticity to fulfill products safely.
 
-### 3. Google Gemini (AI Engine)
+### Google Gemini (AI Engine)
+
 *   **`NEXT_PUBLIC_GEMINI_API_KEY`**: Invokes the `gemini-2.5-flash` environment for the "Show Don't Tell" thumbnail generator.
 
-### 4. Global Configurations
+### Global Configurations
+
 *   **`NEXT_PUBLIC_APP_URL`**: Used for redirect URLs, webhooks, and SEO metadata.
-*   **`NEXT_PUBLIC_LAUNCH_STACK_PASSWORD`** / `LAUNCH_STACK_PASSWORD`: The master password protecting the `/launch-stack` dashboard (Defaults to `mellon_hwg`).
+*   **`NEXT_PUBLIC_LAUNCH_STACK_PASSWORD / LAUNCH_STACK_PASSWORD`**: The master password protecting the `/launch-stack` dashboard (Defaults to `mellon_hwg`).
+
+---

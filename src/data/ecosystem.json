@@ -1,0 +1,460 @@
+{
+    "title": "Monetise Substack Ecosystem Map",
+    "description": "This document serves as a comprehensive map of all URLs, products, price points, freebies, and backend configurations active on the `https://www.monetisesubstack.com` domain.",
+    "sections": [
+        {
+            "id": "core-programs",
+            "title": "Core Educational Programs & Workshops",
+            "icon": "BookOpen",
+            "color": "blue",
+            "items": [
+                {
+                    "name": "Build to Profit Live Workshop",
+                    "description": "The flagship live workshop offering, teaching foundational monetization strategies.",
+                    "price": "$497",
+                    "priceNote": "(`WORKSHOP_PRICE` in `.env.local`)",
+                    "links": [
+                        {
+                            "label": "Sales",
+                            "url": "/landing"
+                        },
+                        {
+                            "label": "Checkout",
+                            "url": "/checkout-step1"
+                        },
+                        {
+                            "label": "Upsell",
+                            "url": "/upsell"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/success"
+                        }
+                    ]
+                },
+                {
+                    "name": "The $10k Launch Lab",
+                    "description": "A higher-tier workshop focused on consistent 10k launches.",
+                    "price": "$597",
+                    "priceNote": "(`NEXT_PUBLIC_LAUNCHLAB_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Sales",
+                            "url": "/10k-launch-lab"
+                        },
+                        {
+                            "label": "Upsell",
+                            "url": "/10k-launch-lab-upsell"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/10k-launch-lab-success"
+                        }
+                    ]
+                },
+                {
+                    "name": "The Money Map",
+                    "description": "A complete strategy course covering ICP, offer, positioning, segmentation, messaging, and copy. Note: Currently, the root domain `/` is set in `src/app/page.tsx` to automatically redirect traffic to `/10k-launch-lab`.",
+                    "price": "$497",
+                    "priceNote": "(Standalone Value)",
+                    "links": [
+                        {
+                            "label": "Sales",
+                            "url": "/"
+                        }
+                    ],
+                    "callout": "Sold as $300 Bump on Build to Profit"
+                }
+            ]
+        },
+        {
+            "id": "mini-workshops",
+            "title": "Targeted Mini-Workshops & Idea Products",
+            "icon": "Sparkles",
+            "color": "purple",
+            "items": [
+                {
+                    "name": "How to Hit 10k Workshop",
+                    "description": "A lower barrier-to-entry challenge or mini-workshop.",
+                    "price": "$97",
+                    "priceNote": "(`NEXT_PUBLIC_HIT10K_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Checkout",
+                            "url": "/how-to-hit-10k"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/hit-10k-success"
+                        }
+                    ]
+                },
+                {
+                    "name": "100 Genius Launch Ideas",
+                    "description": "A digital product detailing successful launch ideas and frameworks.",
+                    "price": "$27",
+                    "priceNote": "(`NEXT_PUBLIC_GENIUS_IDEAS_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Checkout",
+                            "url": "/100-genius-launch-ideas"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/100-genius-launch-ideas/success"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-software",
+            "title": "AI Software & Custom Tools (Freebies & Paid Add-ons)",
+            "icon": "AppWindow",
+            "color": "brand-neon",
+            "apps": [
+                {
+                    "name": "Show Don't Tell - Viral Thumbnail Generator",
+                    "description": "A custom-coded AI agent connecting to Nano Banana (Gemini 2.5 Flash Image) to dynamically generate scroll-stopping brand thumbnails. Protected by a `TokenID` access model.",
+                    "type": "Token Model",
+                    "packages": [
+                        {
+                            "name": "Starter Package",
+                            "price": "$24.00",
+                            "details": "Grants 200 Image Credits / ~100 Generations"
+                        },
+                        {
+                            "name": "Pro Creator Package",
+                            "price": "$247.00",
+                            "badge": "Best Value",
+                            "details": "Grants 2,500 Image Credits / ~1250 Generations"
+                        }
+                    ],
+                    "links": [
+                        {
+                            "label": "App Home",
+                            "url": "/show-dont-tell"
+                        },
+                        {
+                            "label": "Purchase",
+                            "url": "/show-dont-tell/purchase"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/show-dont-tell/success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Ana Ai Offer Flow",
+                    "description": "An interactive AI tool designed to clarify and flow out product offerings.",
+                    "access": "Open / Freebie tool",
+                    "url": "/ana-ai-offer-flow"
+                },
+                {
+                    "name": "Ana Offer Genius",
+                    "description": "An AI-powered builder that helps users craft high-converting offers.",
+                    "access": "Initially internal/gated; sold as an Order Bump on various funnels (usually **$27 - $37** value).",
+                    "url": "/ana-offer-genius"
+                },
+                {
+                    "name": "The Launch Stack",
+                    "description": "A comprehensive launch project management tool or dashboard.",
+                    "access": "Password Protected (Requires the master password `mellon_hwg`, defined in `.env.local`). Also sold as an Order Bump (usually **$67 - $69** value).",
+                    "url": "/launch-stack"
+                }
+            ]
+        },
+        {
+            "id": "bumps-upsells",
+            "title": "Bumps & Upsells",
+            "subtitle": "Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)",
+            "icon": "DollarSign",
+            "color": "rose",
+            "table": [
+                {
+                    "name": "Hooks That Stop the Scroll",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "10k Lab, How to Hit 10k",
+                    "details": "A vault of high-converting headline frameworks and opening loops designed to capture attention instantly.",
+                    "varies": [
+                        "`NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE`",
+                        "`NEXT_PUBLIC_HIT10K_BUMP_PRICE`"
+                    ]
+                },
+                {
+                    "name": "The 60-Minute Launch Calendar",
+                    "price": "$69",
+                    "type": "Order Bump",
+                    "offeredOn": "10k Launch Lab",
+                    "details": "The exact day-by-day Notion templates used to manage 6-figure launches without burnout.",
+                    "varies": [
+                        "`NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE`"
+                    ]
+                },
+                {
+                    "name": "CUSTOM CODED: OfferGenius™ AI Builder",
+                    "price": "$37",
+                    "type": "Order Bump",
+                    "offeredOn": "100 Genius Ideas",
+                    "details": "A custom AI tool that automatically perfectly customizes an offer for a specific audience to eliminate checkout hesitation.",
+                    "varies": [
+                        "`NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE`"
+                    ]
+                },
+                {
+                    "name": "CUSTOM TRAINED: 'Lazy Launch' AI EMAIL WRITER",
+                    "price": "$67",
+                    "type": "Order Bump",
+                    "offeredOn": "100 Genius Ideas",
+                    "details": "A custom-trained AI system pre-loaded with psychological email sequences designed to sell without sounding \"salesy\".",
+                    "varies": [
+                        "`NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE`"
+                    ]
+                },
+                {
+                    "name": "The Money Map Bundle",
+                    "price": "+$300",
+                    "type": "Upsell",
+                    "offeredOn": "Workshop Checkout",
+                    "details": "Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497.",
+                    "varies": [
+                        "`BUNDLE_PRICE` = $797 total"
+                    ]
+                },
+                {
+                    "name": "1:1 Sales Coaching Session",
+                    "price": "$747",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/10k-launch-lab-upsell",
+                    "details": "A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates.",
+                    "varies": [
+                        "`NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE`"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "success-pages",
+            "title": "Success & Thank You Pages (Fulfillment)",
+            "description": "These pages handle the post-purchase experience, dynamic rendering of purchased bumps, and direct access links.",
+            "items": [
+                {
+                    "path": "/success",
+                    "name": "General Build to Profit Success",
+                    "redirect": "Displays a 3-second countdown before automatically redirecting the user to a Google Doc containing instructions to join a private Substack community.",
+                    "content": "Confirms the order, details next steps (check email, calendar reminders), and lists bonuses (Resource Pack, Recordings)."
+                },
+                {
+                    "path": "/10k-launch-lab-success",
+                    "name": "10k Launch Lab Success",
+                    "content": "Welcomes users to the 10k Launch Lab. Instructs them to check email and start Day 1 immediately.",
+                    "dynamicRendering": [
+                        "If Upsell bought: Displays a block to book the 1:1 Coaching session via a `calendly.com/anacalin/30min` link.",
+                        "If Bump 1 bought: Instructs the user to access \"Hooks That Stop the Scroll\" in their dashboard.",
+                        "If Bump 2 bought: Instructs the user to view their Notion \"60-Minute Launch Calendar\" templates."
+                    ]
+                },
+                {
+                    "path": "/hit-10k-success",
+                    "name": "How to Hit 10k Success",
+                    "content": "Welcomes users to the \"Hit Your First $10,000 Month\" course. Gives a direct link to a YouTube video.",
+                    "dynamicRendering": [
+                        "If Bump bought: Unlocks a high-visibility block for \"Hooks That Stop the Scroll!\" linking directly to a public Notion page (`anabubolea.notion.site/Hooks-That-Stop...`)."
+                    ]
+                },
+                {
+                    "path": "/100-genius-launch-ideas/success",
+                    "name": "100 Genius Ideas Success",
+                    "content": "Highlights an urgent \"Do Not Close This Page\" banner. Provides a direct local download link to the `100-Genius-Offers-Sell-2026.pdf` file.",
+                    "dynamicRendering": [
+                        "If Bump 1 bought: Shows the OfferGenius block with a direct link to the `/ana-offer-genius` protected app.",
+                        "If Bump 2 bought: Shows the Launch Stack block, revealing the password (`mellon_hwg`) required to access `/launch-stack` and links directly to it."
+                    ]
+                },
+                {
+                    "path": "/show-dont-tell/success",
+                    "name": "Show Don't Tell Success",
+                    "content": "A secure page that extracts the newly created programmatic `token_id` from the Stripe redirect URL (e.g. `SDT-XXXXXXXXXXXX`) and displays it in large text.",
+                    "features": "Provides a one-click \"Copy to Clipboard\" button and directs the user to immediately go to `/show-dont-tell` to login with their token."
+                }
+            ]
+        },
+        {
+            "id": "utility-pages",
+            "title": "Additional Legal & Utility Pages",
+            "links": [
+                {
+                    "name": "Lead Magnet / General Email Capture",
+                    "url": "/lead-collection"
+                },
+                {
+                    "name": "Scarcity Redirect (When time-limited offers expire)",
+                    "url": "/offer-expired"
+                },
+                {
+                    "name": "General Post-Lead Action",
+                    "url": "/thankyou"
+                },
+                {
+                    "name": "Terms of Service",
+                    "url": "/terms"
+                },
+                {
+                    "name": "Privacy Policy",
+                    "url": "/privacy"
+                }
+            ]
+        },
+        {
+            "id": "backend-infrastructure",
+            "title": "Backend Infrastructure Overview (API Ecosystem)",
+            "description": "These APIs run silently in the background routing traffic and managing state:",
+            "apis": [
+                {
+                    "path": "/api/leads",
+                    "description": "Manages lead collection for `/join` funnel."
+                },
+                {
+                    "path": "/api/webhooks/stripe",
+                    "description": "Listens for successful Stripe `checkout.session.completed` events to fulfill leads, unlock Token IDs, setup credits, and log amounts paid across all tables."
+                },
+                {
+                    "path": "/api/create-checkout-session",
+                    "description": "Creates Stripe checkout sessions for the Build to Profit funnel."
+                },
+                {
+                    "path": "/api/show-dont-tell/create-checkout",
+                    "description": "Creates Stripe checkout sessions for the Thumbnail Generator credit packages."
+                },
+                {
+                    "path": "/api/show-dont-tell/auth",
+                    "description": "Validates Token IDs and returns credit usage."
+                },
+                {
+                    "path": "/api/show-dont-tell/generate",
+                    "description": "Manages credit deduction and invokes Google's Gemini SDK for thumbnail building."
+                },
+                {
+                    "path": "/api/[product]/create-payment-intent",
+                    "description": "Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions."
+                }
+            ],
+            "tables": [
+                {
+                    "name": "leads_bootcamp_brands",
+                    "description": "Stores data for the Build to profit workshop."
+                },
+                {
+                    "name": "launch_lab_leads",
+                    "description": "Stores data and order bumps for the 10k Launch Lab."
+                },
+                {
+                    "name": "hit10k_leads",
+                    "description": "Stores data for the How to Hit 10k Challenge."
+                },
+                {
+                    "name": "genius_ideas_leads",
+                    "description": "Stores data for the 100 Genius Ideas funnel."
+                },
+                {
+                    "name": "show_dont_tell_users",
+                    "description": "Manages tokens, expiration dates, and credits for the Thumbnail Generator."
+                },
+                {
+                    "name": "ana_ai_leads",
+                    "description": "Stores leads and usage data for the free Ana AI Offer Flow tool."
+                }
+            ]
+        },
+        {
+            "id": "integrations-tracking",
+            "title": "Third-Party Integrations & Tracking",
+            "items": [
+                {
+                    "name": "Facebook (Meta) Pixel",
+                    "id": "925153509944098",
+                    "description": "Tracks page views and triggers 'Lead' or 'Purchase' events across all active funnels."
+                },
+                {
+                    "name": "Google Analytics",
+                    "id": "G-CC592MQH07",
+                    "description": "Global traffic and behavior tracking."
+                },
+                {
+                    "name": "Rewardful Affiliate Tracking",
+                    "id": "68083c",
+                    "description": "Tracks affiliate referrals and confirms conversions on the `/success` page."
+                },
+                {
+                    "name": "UseProof",
+                    "description": "Provides social proof popups across the site (dynamically injected via `cdn.useproof.com`)."
+                }
+            ]
+        },
+        {
+            "id": "env-vars",
+            "title": "Environment Variables & Core Services",
+            "description": "Every production deployment relies on the following backend services and environment variables (defined in `.env.local`):",
+            "services": [
+                {
+                    "name": "Supabase (Database & Auth)",
+                    "vars": [
+                        {
+                            "key": "NEXT_PUBLIC_SUPABASE_URL",
+                            "description": "Base API route."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+                            "description": "Client-side query key."
+                        },
+                        {
+                            "key": "SUPABASE_SERVICE_ROLE_KEY",
+                            "description": "Server-side admin key for backend webhooks."
+                        }
+                    ]
+                },
+                {
+                    "name": "Stripe (Payments)",
+                    "vars": [
+                        {
+                            "key": "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+                            "description": "Mounts Stripe Elements on frontend checkouts."
+                        },
+                        {
+                            "key": "STRIPE_SECRET_KEY",
+                            "description": "Server-side key for creating PaymentIntents and Sessions."
+                        },
+                        {
+                            "key": "STRIPE_WEBHOOK_SECRET",
+                            "description": "Validates webhook authenticity to fulfill products safely."
+                        }
+                    ]
+                },
+                {
+                    "name": "Google Gemini (AI Engine)",
+                    "vars": [
+                        {
+                            "key": "NEXT_PUBLIC_GEMINI_API_KEY",
+                            "description": "Invokes the `gemini-2.5-flash` environment for the \"Show Don't Tell\" thumbnail generator."
+                        }
+                    ]
+                },
+                {
+                    "name": "Global Configurations",
+                    "vars": [
+                        {
+                            "key": "NEXT_PUBLIC_APP_URL",
+                            "description": "Used for redirect URLs, webhooks, and SEO metadata."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_LAUNCH_STACK_PASSWORD / LAUNCH_STACK_PASSWORD",
+                            "description": "The master password protecting the `/launch-stack` dashboard (Defaults to `mellon_hwg`)."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

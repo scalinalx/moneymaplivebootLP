@@ -128,7 +128,7 @@ const PurchaseApp = () => {
                         <div className="mb-6">
                             <h3 className="text-2xl font-black text-slate-900 mb-2">Starter</h3>
                             <div className="flex items-baseline gap-2">
-                                <span className="text-5xl font-black text-rose-500">$19.97</span>
+                                <span className="text-5xl font-black text-rose-500">$24</span>
                             </div>
                             <p className="text-slate-500 font-medium mt-4">Perfect for getting started and testing multiple viral concepts.</p>
                         </div>

@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
 
         // Pricing Config
         const packages = {
-            'starter': { price: 1997, credits: 200, name: 'Starter Package (200 Credits)', description: 'Generate 100 viral thumbnails' },
+            'starter': { price: 2400, credits: 200, name: 'Starter Package (200 Credits)', description: 'Generate 100 viral thumbnails' },
             'pro': { price: 24700, credits: 2500, name: 'Pro Package (2500 Credits)', description: 'Generate 1250 viral thumbnails' },
         };
 
