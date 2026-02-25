@@ -62,7 +62,7 @@ export const TokenLogin: React.FC<TokenLoginProps> = ({ onLoginSuccess }) => {
                 {/* Main Card */}
                 <div className="bg-white/90 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-white/50 text-center relative">
                     <h1 className="text-3xl font-black text-slate-900 mb-2 font-display uppercase tracking-tight">Access Required</h1>
-                    <p className="text-slate-500 mb-8 font-light">Enter your Lifetime Access Token ID to enter the Viral Image Generator.</p>
+                    <p className="text-slate-500 mb-8 font-light">Enter your Access Token ID to enter the Viral Image Generator.</p>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2 text-left">
@@ -106,7 +106,7 @@ export const TokenLogin: React.FC<TokenLoginProps> = ({ onLoginSuccess }) => {
                 {/* Footer Link */}
                 <div className="text-center mt-8">
                     <p className="text-xs text-slate-400 font-medium">
-                        Don't have a token? <a href="#" className="text-rose-500 hover:text-rose-600 underline underline-offset-4 decoration-rose-200 uppercase tracking-wider font-bold">Purchase Lifetime Access</a>
+                        Don't have a token? <a href="/show-dont-tell/purchase" className="text-rose-500 hover:text-rose-600 underline underline-offset-4 decoration-rose-200 uppercase tracking-wider font-bold">Purchase Access</a>
                     </p>
                 </div>
             </div>
