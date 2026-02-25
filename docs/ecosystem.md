@@ -168,3 +168,40 @@ These APIs run silently in the background routing traffic and managing state:
 *   **hit10k_leads:** Stores data for the How to Hit 10k Challenge.
 *   **genius_ideas_leads:** Stores data for the 100 Genius Ideas funnel.
 *   **show_dont_tell_users:** Manages tokens, expiration dates, and credits for the Thumbnail Generator.
+*   **ana_ai_leads:** Stores leads and usage data for the free Ana AI Offer Flow tool.
+
+---
+
+## Third-Party Integrations & Tracking
+
+*   **Facebook (Meta) Pixel:** (`ID: 925153509944098`)
+    *   Tracks page views and triggers 'Lead' or 'Purchase' events across all active funnels.
+*   **Google Analytics:** (`ID: G-CC592MQH07`)
+    *   Global traffic and behavior tracking.
+*   **Rewardful Affiliate Tracking:** (`ID: 68083c`)
+    *   Tracks affiliate referrals and confirms conversions on the `/success` page.
+*   **UseProof:**
+    *   Provides social proof popups across the site (dynamically injected via `cdn.useproof.com`).
+
+---
+
+## Environment Variables & Core Services
+
+Every production deployment relies on the following backend services and environment variables (defined in `.env.local`):
+
+### 1. Supabase (Database & Auth)
+*   **`NEXT_PUBLIC_SUPABASE_URL`**: Base API route.
+*   **`NEXT_PUBLIC_SUPABASE_ANON_KEY`**: Client-side query key.
+*   **`SUPABASE_SERVICE_ROLE_KEY`**: Server-side admin key for backend webhooks.
+
+### 2. Stripe (Payments)
+*   **`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`**: Mounts Stripe Elements on frontend checkouts.
+*   **`STRIPE_SECRET_KEY`**: Server-side key for creating PaymentIntents and Sessions.
+*   **`STRIPE_WEBHOOK_SECRET`**: Validates webhook authenticity to fulfill products safely.
+
+### 3. Google Gemini (AI Engine)
+*   **`NEXT_PUBLIC_GEMINI_API_KEY`**: Invokes the `gemini-2.5-flash` environment for the "Show Don't Tell" thumbnail generator.
+
+### 4. Global Configurations
+*   **`NEXT_PUBLIC_APP_URL`**: Used for redirect URLs, webhooks, and SEO metadata.
+*   **`NEXT_PUBLIC_LAUNCH_STACK_PASSWORD`** / `LAUNCH_STACK_PASSWORD`: The master password protecting the `/launch-stack` dashboard (Defaults to `mellon_hwg`).

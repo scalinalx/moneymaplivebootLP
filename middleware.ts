@@ -31,6 +31,7 @@ export function middleware(req: NextRequest) {
     '/100-genius-launch-ideas',
     '/100-genius-launch-ideas-success',
     '/show-dont-tell',
+    '/ecosystem',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
