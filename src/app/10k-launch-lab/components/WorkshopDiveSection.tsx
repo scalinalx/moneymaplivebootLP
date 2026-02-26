@@ -28,7 +28,7 @@ export const WorkshopDiveSection: React.FC = () => {
             <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 px-2">
 
                 {/* Bonus 1 */}
-                <div className="bg-white border-2 border-black p-6 rounded-lg relative overflow-hidden group hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1 transition-all duration-300">
+                <div className="bg-white border border-gray-100 p-6 rounded-lg relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                     <div className="absolute top-0 right-0 bg-black text-white text-xs font-bold px-2 py-1">BONUS #1</div>
                     <div className="mb-4 text-brand-neon"><Zap className="w-8 h-8 fill-brand-neon stroke-black" /></div>
                     <h3 className="font-display font-bold text-xl uppercase mb-2">AI Offer Stack Tool</h3>
@@ -38,7 +38,7 @@ export const WorkshopDiveSection: React.FC = () => {
                 </div>
 
                 {/* Bonus 2 */}
-                <div className="bg-white border-2 border-black p-6 rounded-lg relative overflow-hidden group hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1 transition-all duration-300">
+                <div className="bg-white border border-gray-100 p-6 rounded-lg relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                     <div className="absolute top-0 right-0 bg-black text-white text-xs font-bold px-2 py-1">BONUS #2</div>
                     <div className="mb-4 text-brand-neon"><Zap className="w-8 h-8 fill-brand-neon stroke-black" /></div>
                     <h3 className="font-display font-bold text-xl uppercase mb-2">AI Launch Stack Tool</h3>
@@ -48,7 +48,7 @@ export const WorkshopDiveSection: React.FC = () => {
                 </div>
 
                 {/* Bonus 3 */}
-                <div className="bg-white border-2 border-black p-6 rounded-lg relative overflow-hidden group hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1 transition-all duration-300 md:col-span-2">
+                <div className="bg-white border border-gray-100 p-6 rounded-lg relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 md:col-span-2">
                     <div className="absolute top-0 right-0 bg-black text-white text-xs font-bold px-2 py-1">BONUS #3</div>
                     <div className="mb-4 text-brand-neon"><FileText className="w-8 h-8 fill-brand-neon stroke-black" /></div>
                     <h3 className="font-display font-bold text-xl uppercase mb-2">3 x Sales Page Templates</h3>
@@ -67,7 +67,7 @@ export const WorkshopDiveSection: React.FC = () => {
                 </div>
 
                 {/* Bonus 4 */}
-                <div className="bg-white border-2 border-black p-6 rounded-lg relative overflow-hidden group hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1 transition-all duration-300">
+                <div className="bg-white border border-gray-100 p-6 rounded-lg relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                     <div className="absolute top-0 right-0 bg-black text-white text-xs font-bold px-2 py-1">BONUS #4</div>
                     <div className="mb-4 text-brand-neon"><Database className="w-8 h-8 fill-brand-neon stroke-black" /></div>
                     <h3 className="font-display font-bold text-xl uppercase mb-2">Swipe File Vault</h3>
@@ -76,7 +76,7 @@ export const WorkshopDiveSection: React.FC = () => {
                 </div>
 
                 {/* Bonus 5 */}
-                <div className="bg-white border-2 border-black p-6 rounded-lg relative overflow-hidden group hover:shadow-[8px_8px_0px_#000] hover:-translate-y-1 transition-all duration-300">
+                <div className="bg-white border border-gray-100 p-6 rounded-lg relative overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                     <div className="absolute top-0 right-0 bg-black text-white text-xs font-bold px-2 py-1">BONUS #5</div>
                     <div className="mb-4 text-brand-neon"><LifeBuoy className="w-8 h-8 fill-brand-neon stroke-black" /></div>
                     <h3 className="font-display font-bold text-xl uppercase mb-2">"Disaster Recovery Playbook"</h3>
@@ -91,7 +91,7 @@ export const WorkshopDiveSection: React.FC = () => {
             <div className="w-full flex justify-center pb-8">
                 <Button
                     onClick={scrollToCheckout}
-                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">ACTIVATE THE STEALTH SALES MACHINE</span>

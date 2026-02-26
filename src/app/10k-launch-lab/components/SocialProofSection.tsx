@@ -10,7 +10,7 @@ export const SocialProofSection: React.FC = () => {
                 <div className="max-w-4xl mx-auto relative mb-32 flex flex-col items-center">
 
                     {/* First Note */}
-                    <div className="bg-[#1a1a1a] text-white p-6 md:p-10 rounded-sm shadow-xl max-w-2xl transform -rotate-1 relative z-10 mx-auto w-full">
+                    <div className="bg-[#1a1a1a] text-white p-6 md:p-10 rounded-2xl shadow-xl max-w-2xl transform -rotate-1 relative z-10 mx-auto w-full">
                         <p className="font-poppins text-sm md:text-lg leading-relaxed">
                             <span className="font-bold block mb-4 text-gray-200">Dear Ana,</span>
                             I bought your <span className="font-bold text-white">The <span className="italic">$10k</span> Launch Lab</span> yesterday and felt a strong impulse to reach out and say thank you. I'm genuinely blown away by your approach. I've invested in countless courses and coaching programs over the years, and this one feels like a <span className="font-bold text-white">deep exhale</span>. More than anything, it has brought back a sense of <span className="font-bold text-white">hope</span>.
@@ -26,7 +26,7 @@ export const SocialProofSection: React.FC = () => {
                     </div>
 
                     {/* Second Note */}
-                    <div className="bg-[#1a1a1a] text-white p-6 md:p-10 rounded-sm shadow-xl max-w-2xl transform rotate-1 relative z-10 w-full mt-4 md:mt-0 md:ml-24 border border-gray-800">
+                    <div className="bg-[#1a1a1a] text-white p-6 md:p-10 rounded-2xl shadow-xl max-w-2xl transform rotate-1 relative z-10 w-full mt-4 md:mt-0 md:ml-24 border border-gray-800">
                         <p className="font-poppins text-sm md:text-lg leading-relaxed font-medium">
                             <span className="text-brand-neon block mb-2 text-2xl font-hand">Omg.</span>
                             I just had to stop working through your workbook to say, THIS IS THE BEST $597 I'VE EVER SPENT! Wow. I am just blown away by the value that you put into The <span className="italic">$10k</span> Launch Lab. Just amazing!! Thank you so much, and I'm not even finished yet!!
@@ -62,7 +62,7 @@ export const SocialProofSection: React.FC = () => {
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 px-2 md:px-4">
 
                     {/* Left: Comment Thread Style */}
-                    <div className="bg-black p-6 md:p-10 relative group border-2 border-black shadow-hard-sm md:shadow-hard">
+                    <div className="bg-black p-6 md:p-10 relative group border border-gray-100 shadow-lg md:shadow-2xl">
                         <svg className="absolute -top-8 -left-8 w-24 h-24 text-brand-neon z-30 transform -rotate-12" viewBox="0 0 100 100">
                             <path d="M50 50 L50 20 M50 50 L80 50 M50 50 L50 80 M50 50 L20 50 M50 50 L71 29 M50 50 L71 71 M50 50 L29 71 M50 50 L29 29" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
                         </svg>
@@ -93,7 +93,7 @@ export const SocialProofSection: React.FC = () => {
                     </div>
 
                     {/* Right: Long Text */}
-                    <div className="bg-black p-6 md:p-10 relative flex items-center border-2 border-black shadow-hard-sm md:shadow-hard">
+                    <div className="bg-black p-6 md:p-10 relative flex items-center border border-gray-100 shadow-lg md:shadow-2xl">
                         <div className="bg-white text-black p-6 rounded-xl relative">
                             <div className="absolute top-6 -left-3 w-6 h-6 bg-white transform rotate-45"></div>
                             <p className="font-poppins text-sm md:text-base leading-relaxed relative z-10">
@@ -111,7 +111,7 @@ export const SocialProofSection: React.FC = () => {
             </div>
 
             {/* --- PART 2: NEW BLACK BACKGROUND SECTION --- */}
-            <div className="w-full bg-black py-20 px-4 md:px-8 border-t-2 border-black">
+            <div className="w-full bg-black py-20 px-4 md:px-8 border-t border-gray-100">
                 <div className="max-w-6xl mx-auto flex flex-col gap-24">
 
                     {/* 1. "The Tea is Hot" Single Card */}
@@ -134,7 +134,7 @@ export const SocialProofSection: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 w-full items-start">
 
                         {/* Left: Long Text Card */}
-                        <div className="bg-white p-8 md:p-10 rounded-sm shadow-2xl relative">
+                        <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl relative">
                             <p className="font-poppins text-sm md:text-base leading-relaxed text-black font-medium">
                                 Hi! I just want to directly reach out to tell you how happy I am with the <span className="font-bold">EXTREME</span> value you are providing with this program.<br /><br />
                                 I chose to buy because it was not expensive and I am a rebel to my core but never thought it would take me that far and that deep and focus that much on the very foundation of identity and vision.<br /><br />

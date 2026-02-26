@@ -29,13 +29,13 @@ export const OrderBump: React.FC<OrderBumpProps> = ({
                 }`}
         >
             {isSelected && (
-                <div className="absolute top-0 right-0 bg-brand-neon text-black px-3 py-1 text-[10px] font-bold uppercase rounded-bl-lg border-b-2 border-l-2 border-black">
+                <div className="absolute top-0 right-0 bg-[#d81159] text-white px-3 py-1 text-[10px] font-bold uppercase rounded-bl-lg border-b-2 border-l border-gray-100">
                     Selected
                 </div>
             )}
 
             <div className="flex items-start gap-4 text-black">
-                <div className={`flex-shrink-0 w-6 h-6 rounded border-2 border-black flex items-center justify-center mt-1 transition-colors ${isSelected ? 'bg-brand-neon' : 'bg-white'
+                <div className={`flex-shrink-0 w-6 h-6 rounded-2xl border border-gray-100 flex items-center justify-center mt-1 transition-colors ${isSelected ? 'bg-rose-50' : 'bg-white'
                     }`}>
                     {isSelected && <Check size={16} className="text-black" strokeWidth={4} />}
                 </div>

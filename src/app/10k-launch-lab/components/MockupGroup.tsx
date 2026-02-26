@@ -9,7 +9,7 @@ export const MockupGroup: React.FC = () => {
 
             {/* Left Element: The Playbook/Workbook */}
             <div className="absolute left-2 md:left-4 bottom-4 md:bottom-12 z-10 transform -rotate-6 w-36 md:w-56 transition-transform hover:-rotate-2 duration-500">
-                <div className="bg-white p-1 md:p-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] border-2 border-black rounded-sm">
+                <div className="bg-white p-1 md:p-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] border border-gray-100 rounded-2xl">
                     <div className="bg-[#fcfcfc] aspect-[3/4] p-4 flex flex-col items-center justify-between text-center relative overflow-hidden border border-gray-100">
                         {/* Decorative header */}
                         <div className="w-full pt-2">
@@ -34,7 +34,7 @@ export const MockupGroup: React.FC = () => {
             {/* Center Element: Laptop - Dashboard View */}
             <div className="relative z-20 w-[260px] md:w-[600px] transform transition-transform hover:scale-[1.02] duration-500">
                 {/* Laptop Body */}
-                <div className="bg-white rounded-t-xl p-2 md:p-3 shadow-2xl border-2 border-black">
+                <div className="bg-white rounded-t-xl p-2 md:p-3 shadow-2xl border border-gray-100">
                     {/* Screen */}
                     <div className="bg-black aspect-[16/10] relative overflow-hidden flex flex-col border border-gray-800">
                         {/* Screen Content - Dark Mode Dashboard for Contrast */}
@@ -60,7 +60,7 @@ export const MockupGroup: React.FC = () => {
                     </div>
                 </div>
                 {/* Laptop Bottom */}
-                <div className="bg-[#1a1a1a] h-2 md:h-5 rounded-b-lg relative shadow-md mx-4 md:mx-8 border-b-2 border-l-2 border-r-2 border-black"></div>
+                <div className="bg-[#1a1a1a] h-2 md:h-5 rounded-b-lg relative shadow-md mx-4 md:mx-8 border-b-2 border-l-2 border-r border-gray-100"></div>
             </div>
 
             {/* Right Element: Phone - Newsletter View */}
@@ -68,7 +68,7 @@ export const MockupGroup: React.FC = () => {
                 <div className="bg-black rounded-[1.5rem] p-1.5 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] border border-gray-800">
                     <div className="bg-white rounded-[1.2rem] h-40 md:h-64 overflow-hidden relative border border-gray-300 flex flex-col">
                         {/* Header */}
-                        <div className="bg-brand-neon h-12 md:h-16 flex items-center justify-center relative overflow-hidden">
+                        <div className="bg-rose-50 h-12 md:h-16 flex items-center justify-center relative overflow-hidden">
                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-200 to-transparent opacity-50"></div>
                             <span className="font-rock text-[10px] md:text-xs text-black relative z-10">How We Grow</span>
                         </div>
@@ -76,14 +76,14 @@ export const MockupGroup: React.FC = () => {
                         <div className="p-2 md:p-3 space-y-2 bg-gray-50 flex-1">
                             <div className="flex gap-1 mb-2">
                                 <div className="w-4 h-4 rounded-full bg-gray-300"></div>
-                                <div className="h-2 w-16 bg-gray-200 rounded mt-1"></div>
+                                <div className="h-2 w-16 bg-gray-200 rounded-2xl mt-1"></div>
                             </div>
-                            <div className="h-16 w-full bg-white rounded border border-gray-100 p-2">
-                                <div className="h-1.5 w-full bg-gray-100 rounded mb-1"></div>
-                                <div className="h-1.5 w-3/4 bg-gray-100 rounded"></div>
+                            <div className="h-16 w-full bg-white rounded-2xl border border-gray-100 p-2">
+                                <div className="h-1.5 w-full bg-gray-100 rounded-2xl mb-1"></div>
+                                <div className="h-1.5 w-3/4 bg-gray-100 rounded-2xl"></div>
                             </div>
 
-                            <div className="mt-2 p-1 bg-black rounded text-center">
+                            <div className="mt-2 p-1 bg-black rounded-2xl text-center">
                                 <p className="text-[4px] text-white font-bold uppercase tracking-widest">Read Now</p>
                             </div>
                         </div>

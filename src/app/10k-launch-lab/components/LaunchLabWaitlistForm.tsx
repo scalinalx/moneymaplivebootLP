@@ -53,8 +53,8 @@ export const LaunchLabWaitlistForm: React.FC = () => {
 
     return (
         <>
-            <div id="waitlist" className="w-full max-w-[700px] mx-auto bg-white rounded-3xl shadow-[8px_8px_0px_#000000] border-2 border-black overflow-hidden">
-                <div className="bg-black py-5 px-6 text-center border-b-2 border-black">
+            <div id="waitlist" className="w-full max-w-[700px] mx-auto bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+                <div className="bg-black py-5 px-6 text-center border-b border-gray-100">
                     <p className="text-white font-display font-black text-base uppercase tracking-widest flex items-center justify-center gap-3">
                         <Clock size={18} className="text-brand-neon animate-pulse" />
                         ENROLLMENT OPEN — RESERVE YOUR SPOT
@@ -77,7 +77,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                     DOORS ARE OPEN.
                                     <br />
                                     <span className="relative inline-block mt-2">
-                                        <span className="absolute inset-0 bg-brand-neon transform -skew-x-12 scale-105 -z-10"></span>
+                                        <span className="absolute inset-0 bg-rose-50 transform -skew-x-12 scale-105 -z-10"></span>
                                         <span className="relative px-3">GET IN LINE NOW.</span>
                                     </span>
                                 </h2>
@@ -85,7 +85,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                     The February cohort is full. But here's the truth: <span className="font-bold text-black">waitlist members get first dibs</span> when we reopen—plus exclusive early-bird pricing.
                                 </p>
                                 <div className="mt-4">
-                                    <span className="bg-brand-neon text-black px-4 py-2 rounded-lg inline-block font-display font-bold text-sm uppercase tracking-wide border-2 border-black shadow-[4px_4px_0px_#000000]">
+                                    <span className="bg-[#d81159] text-white px-4 py-2 rounded-lg inline-block font-display font-bold text-sm uppercase tracking-wide border border-gray-100 shadow-xl">
                                         Be First. Get Notified. Save Money.
                                     </span>
                                 </div>
@@ -103,7 +103,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                             type="text"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            className="w-full pl-11 pr-4 py-4 rounded-lg border-2 border-black focus:border-brand-neon focus:ring-2 focus:ring-brand-neon/20 outline-none transition-all font-poppins text-black shadow-[2px_2px_0px_#000000]"
+                                            className="w-full pl-11 pr-4 py-4 rounded-lg border border-gray-100 focus:border-brand-neon focus:ring-2 focus:ring-brand-neon/20 outline-none transition-all font-poppins text-black shadow-[2px_2px_0px_#000000]"
                                             placeholder="Enter your full name"
                                         />
                                     </div>
@@ -119,7 +119,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                             type="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
-                                            className="w-full pl-11 pr-4 py-4 rounded-lg border-2 border-black focus:border-brand-neon focus:ring-2 focus:ring-brand-neon/20 outline-none transition-all font-poppins text-black shadow-[2px_2px_0px_#000000]"
+                                            className="w-full pl-11 pr-4 py-4 rounded-lg border border-gray-100 focus:border-brand-neon focus:ring-2 focus:ring-brand-neon/20 outline-none transition-all font-poppins text-black shadow-[2px_2px_0px_#000000]"
                                             placeholder="name@example.com"
                                         />
                                     </div>
@@ -134,7 +134,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
 
                                 <button
                                     disabled={isSubmitting}
-                                    className="w-full bg-brand-neon hover:bg-[#e6e200] text-black font-display font-black text-xl py-5 rounded-lg shadow-[6px_6px_0px_#000000] hover:shadow-[3px_3px_0px_#000000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all transform uppercase tracking-wider border-2 border-black disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full bg-[#d81159] hover:bg-[#b30e4a] text-white font-display font-black text-xl py-5 rounded-lg shadow-2xl hover:shadow-lg hover:-translate-y-1 transition-all transform uppercase tracking-wider border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isSubmitting ? 'JOINING LIST...' : 'YES! RESERVE MY SPOT IN THE LAB'}
                                 </button>

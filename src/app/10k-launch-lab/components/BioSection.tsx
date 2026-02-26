@@ -18,9 +18,9 @@ export const BioSection: React.FC = () => {
                     {/* Image Column */}
                     <div className="w-full md:w-1/3 flex justify-center relative">
                         {/* Decorative backing for the image */}
-                        <div className="absolute inset-0 bg-brand-neon transform rotate-3 rounded-lg scale-95 -z-10 shadow-hard"></div>
+                        <div className="absolute inset-0 bg-rose-50 transform rotate-3 rounded-lg scale-95 -z-10 shadow-2xl"></div>
 
-                        <div className="relative w-64 md:w-full aspect-[3/4] shadow-[10px_10px_0px_rgba(0,0,0,0.1)] overflow-hidden rounded-sm rotate-[-2deg] border-4 border-black transition-transform hover:rotate-0 duration-500 bg-white p-2">
+                        <div className="relative w-64 md:w-full aspect-[3/4] shadow-[10px_10px_0px_rgba(0,0,0,0.1)] overflow-hidden rounded-2xl rotate-[-2deg] border-4 border-black transition-transform hover:rotate-0 duration-500 bg-white p-2">
                             {/* Placeholder for Ana - using a stylish stock photo that fits the vibe */}
                             <img
                                 src="/imgs/ana-calin.jpg"
@@ -73,7 +73,7 @@ export const BioSection: React.FC = () => {
                 <div className="w-full flex justify-center">
                     <Button
                         onClick={scrollToCheckout}
-                        className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                        className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                     >
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I WANT RESULTS LIKE THE LAB CREW!</span>
                     </Button>

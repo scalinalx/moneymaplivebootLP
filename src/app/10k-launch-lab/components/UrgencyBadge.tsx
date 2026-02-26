@@ -4,7 +4,7 @@ export const UrgencyBadge: React.FC = () => {
     return (
         <section className="w-full bg-white py-8 px-4 md:px-8 flex justify-center">
             <div className="w-full max-w-xl mx-auto transform rotate-2 hover:rotate-0 transition-all duration-500 hover:scale-105">
-                <div className="bg-brand-neon p-6 md:p-8 rounded-[2rem] rounded-tl-none shadow-hard text-center border-2 border-black relative overflow-hidden group">
+                <div className="bg-rose-50 p-6 md:p-8 rounded-[2rem] rounded-tl-none shadow-2xl text-center border border-gray-100 relative overflow-hidden group">
                     {/* Animated background element */}
                     <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
 

@@ -17,7 +17,7 @@ export const NotDoingSection: React.FC = () => {
 
                 <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 shadow-sm text-left mx-auto max-w-3xl">
                     <p className="font-poppins text-lg md:text-xl text-black leading-relaxed mb-8">
-                        It's a <span className="font-bold bg-brand-neon px-1">30-day implementation system</span> where every single day has <span className="font-bold">ONE focused task</span>.
+                        It's a <span className="font-bold text-[#d81159]">30-day implementation system</span> where every single day has <span className="font-bold">ONE focused task</span>.
                     </p>
 
                     <ul className="space-y-4 mb-8">
@@ -32,7 +32,7 @@ export const NotDoingSection: React.FC = () => {
                         </li>
                     </ul>
 
-                    <div className="bg-white border-2 border-black p-6 shadow-[4px_4px_0px_#000] text-center">
+                    <div className="bg-white border border-gray-100 p-6 shadow-xl text-center">
                         <p className="font-poppins font-bold text-xl md:text-2xl uppercase">
                             You open today's module. You do the task. You check the box.
                         </p>
@@ -53,7 +53,7 @@ export const NotDoingSection: React.FC = () => {
             <div className="w-full flex justify-center mt-12">
                 <Button
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I’M READY TO DEPLOY THIS SYSTEM</span>

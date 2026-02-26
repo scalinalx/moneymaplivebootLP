@@ -15,7 +15,7 @@ export const DontTakeOurWordSection: React.FC = () => {
             <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
 
                 {/* Success Story 1 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-hard flex flex-col justify-between">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col justify-between">
                     <div>
                         <div className="flex items-center gap-1 mb-4">
                             {[1, 2, 3, 4, 5].map((i) => (
@@ -33,7 +33,7 @@ export const DontTakeOurWordSection: React.FC = () => {
                 </div>
 
                 {/* Success Story 2 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-hard flex flex-col justify-between">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col justify-between">
                     <div>
                         <div className="flex items-center gap-1 mb-4">
                             {[1, 2, 3, 4, 5].map((i) => (
@@ -51,7 +51,7 @@ export const DontTakeOurWordSection: React.FC = () => {
                 </div>
 
                 {/* Success Story 3 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-hard flex flex-col justify-between">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col justify-between">
                     <div>
                         <div className="flex items-center gap-1 mb-4">
                             {[1, 2, 3, 4, 5].map((i) => (
@@ -74,7 +74,7 @@ export const DontTakeOurWordSection: React.FC = () => {
             <div className="w-full flex justify-center mt-12">
                 <Button
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">SIGN ME UP! I’M IN, ANA!</span>

@@ -28,7 +28,7 @@ export const IncludedSection: React.FC = () => {
             <div className="max-w-5xl w-full mx-auto space-y-12 mb-16">
 
                 {/* WEEK 1 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-[4px_4px_0px_#000]">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
                     <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 1: Validate & Position Your Offer <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 1-7)</span></h4>
                     <ul className="space-y-2 mb-6 font-poppins text-black">
                         <li><span className="font-bold">Day 1:</span> Offer Validation Worksheet (which offer to launch?)</li>
@@ -39,13 +39,13 @@ export const IncludedSection: React.FC = () => {
                         <li><span className="font-bold">Day 6:</span> Guarantee Builder (craft your risk reversal)</li>
                         <li><span className="font-bold">Day 7:</span> Sales Page Outline (structure your pitch)</li>
                     </ul>
-                    <div className="bg-white border border-black p-4 inline-block rounded-md shadow-sm">
+                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
                         <span className="font-bold">📞 Live Call #1:</span> Hot Seat Offer Audits
                     </div>
                 </div>
 
                 {/* WEEK 2 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-[4px_4px_0px_#000]">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
                     <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 2: Build Your Sales Assets <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 8-14)</span></h4>
                     <ul className="space-y-2 mb-6 font-poppins text-black">
                         <li><span className="font-bold">Day 8:</span> Headline Formula (write 10 options, pick the winner)</li>
@@ -56,13 +56,13 @@ export const IncludedSection: React.FC = () => {
                         <li><span className="font-bold">Day 13:</span> Stack & Bonus Builder (make it irresistible)</li>
                         <li><span className="font-bold">Day 14:</span> CTA & Urgency (scarcity mechanics)</li>
                     </ul>
-                    <div className="bg-white border border-black p-4 inline-block rounded-md shadow-sm">
+                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
                         <span className="font-bold">📞 Live Call #2:</span> Sales Page Roast Sessions
                     </div>
                 </div>
 
                 {/* WEEK 3 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-[4px_4px_0px_#000]">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
                     <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 3: Tech Setup & Pre-Launch <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 15-21)</span></h4>
                     <ul className="space-y-2 mb-6 font-poppins text-black">
                         <li><span className="font-bold">Day 15:</span> Email #1 Template (teaser/announcement)</li>
@@ -73,13 +73,13 @@ export const IncludedSection: React.FC = () => {
                         <li><span className="font-bold">Day 20:</span> Payment Setup Walkthrough (Stripe/Gumroad - 5 min Loom)</li>
                         <li><span className="font-bold">Day 21:</span> Email Tool Setup (schedule your sequence)</li>
                     </ul>
-                    <div className="bg-white border border-black p-4 inline-block rounded-md shadow-sm">
+                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
                         <span className="font-bold">📞 Live Call #3:</span> Tech Troubleshooting + Email Sequence Feedback
                     </div>
                 </div>
 
                 {/* WEEK 4 */}
-                <div className="bg-gray-50 border-2 border-black p-6 md:p-8 rounded-lg shadow-[4px_4px_0px_#000]">
+                <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
                     <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 4: Launch & Optimize <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 22-30)</span></h4>
                     <ul className="space-y-2 mb-6 font-poppins text-black">
                         <li><span className="font-bold">Day 22:</span> Pre-Launch Hype Plan (warm up your list)</li>
@@ -92,7 +92,7 @@ export const IncludedSection: React.FC = () => {
                         <li><span className="font-bold">Day 29:</span> Data Analysis Template (what worked/didn't)</li>
                         <li><span className="font-bold">Day 30:</span> Next Launch Planning (do it again, faster)</li>
                     </ul>
-                    <div className="bg-white border border-black p-4 inline-block rounded-md shadow-sm">
+                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
                         <span className="font-bold">📞 Live Call #4:</span> Launch War Room
                     </div>
                 </div>
@@ -103,7 +103,7 @@ export const IncludedSection: React.FC = () => {
             <div className="w-full flex justify-center pb-8">
                 <Button
                     onClick={scrollToCheckout}
-                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">STOP BUILDING IN THE DARK—I'M IN!</span>

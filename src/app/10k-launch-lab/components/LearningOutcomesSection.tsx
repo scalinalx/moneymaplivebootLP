@@ -27,7 +27,7 @@ export const LearningOutcomesSection: React.FC = () => {
                             <div className="h-1/2 bg-gray-200 mb-2 overflow-hidden relative grayscale">
                                 {/* Placeholder Texture */}
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-400 to-gray-800 opacity-20"></div>
-                                <div className="absolute bottom-0 w-full text-[8px] font-bold text-center bg-brand-neon py-0.5">The $10k LAUNCH LAB</div>
+                                <div className="absolute bottom-0 w-full text-[8px] font-bold text-center bg-rose-50 py-0.5">The $10k LAUNCH LAB</div>
                             </div>
                             <div className="text-center mt-1">
                                 <h4 className="font-display font-black text-xs md:text-lg uppercase leading-none mb-1 text-black">REBEL<br />PLAYBOOK</h4>
@@ -39,7 +39,7 @@ export const LearningOutcomesSection: React.FC = () => {
                     <div className="absolute left-8 md:left-32 bottom-20 z-0 w-20 md:w-32 aspect-[3/4] transform -rotate-[20deg] origin-bottom-right">
                         <div className="w-full h-full bg-zinc-900 border border-gray-700 shadow-xl p-2 flex flex-col items-center justify-center relative overflow-hidden">
                             <div className="absolute inset-0 bg-noise opacity-20"></div>
-                            <div className="w-8 h-8 rounded-full bg-brand-neon mb-2 shadow-[0_0_10px_rgba(255,251,0,0.5)]"></div>
+                            <div className="w-8 h-8 rounded-full bg-rose-50 mb-2 shadow-[0_0_10px_rgba(255,251,0,0.5)]"></div>
                             <span className="text-white font-display text-[8px] md:text-[10px] uppercase tracking-widest text-center leading-tight">THE<br />AUDITOR</span>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ export const LearningOutcomesSection: React.FC = () => {
                                         <span className="text-red-500 font-bold bg-red-50 px-0.5">You're not most people.</span> This exists to help you discover your authentic brand voice.
                                     </div>
                                     {/* Fake Button */}
-                                    <div className="mt-2 w-full bg-black text-white py-1 rounded text-center font-bold tracking-wider">
+                                    <div className="mt-2 w-full bg-black text-white py-1 rounded-2xl text-center font-bold tracking-wider">
                                         START HERE, REBEL ⚡️
                                     </div>
                                 </div>
@@ -114,8 +114,8 @@ export const LearningOutcomesSection: React.FC = () => {
             <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 px-2">
 
                 {/* 1. Templates */}
-                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
-                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                <div className="bg-gray-50 border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-2xl transition-shadow">
+                    <div className="w-12 h-12 bg-white border border-gray-100 rounded-lg flex items-center justify-center mb-6 shadow-lg">
                         <FileText className="w-6 h-6 text-black" />
                     </div>
                     <h3 className="font-display font-black text-2xl uppercase mb-4">📝 Fill-in-the-Blank Templates</h3>
@@ -133,8 +133,8 @@ export const LearningOutcomesSection: React.FC = () => {
                 </div>
 
                 {/* 2. Walkthroughs */}
-                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
-                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                <div className="bg-gray-50 border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-2xl transition-shadow">
+                    <div className="w-12 h-12 bg-white border border-gray-100 rounded-lg flex items-center justify-center mb-6 shadow-lg">
                         <Video className="w-6 h-6 text-black" />
                     </div>
                     <h3 className="font-display font-black text-2xl uppercase mb-4">🎥 50+ Walkthrough Videos</h3>
@@ -149,8 +149,8 @@ export const LearningOutcomesSection: React.FC = () => {
                 </div>
 
                 {/* 3. Live Calls */}
-                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
-                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                <div className="bg-gray-50 border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-2xl transition-shadow">
+                    <div className="w-12 h-12 bg-white border border-gray-100 rounded-lg flex items-center justify-center mb-6 shadow-lg">
                         <Users className="w-6 h-6 text-black" />
                     </div>
                     <h3 className="font-display font-black text-2xl uppercase mb-4">📞 4 Live Weekly Calls</h3>
@@ -165,8 +165,8 @@ export const LearningOutcomesSection: React.FC = () => {
                 </div>
 
                 {/* 4. Community */}
-                <div className="bg-gray-50 border border-black p-8 rounded-lg shadow-sm hover:shadow-hard transition-shadow">
-                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center mb-6 shadow-hard-sm">
+                <div className="bg-gray-50 border border-gray-100 p-8 rounded-lg shadow-sm hover:shadow-2xl transition-shadow">
+                    <div className="w-12 h-12 bg-white border border-gray-100 rounded-lg flex items-center justify-center mb-6 shadow-lg">
                         <MessageCircle className="w-6 h-6 text-black" />
                     </div>
                     <h3 className="font-display font-black text-2xl uppercase mb-4">💬 Skool Community</h3>
@@ -186,7 +186,7 @@ export const LearningOutcomesSection: React.FC = () => {
             <div className="w-full flex justify-center pb-8">
                 <Button
                     onClick={scrollToCheckout}
-                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">OK, ANA, LET’S POSITION MY OFFER RIGHT</span>

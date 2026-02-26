@@ -84,7 +84,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
 
             <button
                 disabled={isProcessing || !stripe}
-                className={`w-full mt-8 bg-brand-neon text-black font-display font-bold text-xl py-3.5 rounded-sm border-2 border-black shadow-hard hover:shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all uppercase tracking-wider ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''
+                className={`w-full mt-8 bg-[#d81159] text-white font-display font-bold text-xl py-3.5 rounded-2xl border border-gray-100 shadow-2xl hover:shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wider ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
             >
                 {isProcessing ? 'Processing...' : `LET'S GO, I'M READY! — $${calculateTotal()}`}
@@ -157,8 +157,8 @@ export const EmbeddedCheckout: React.FC = () => {
     };
 
     return (
-        <section id="checkout" className="w-full bg-white py-20 px-4 md:px-8 border-t-2 border-black">
-            <div className="w-full max-w-[600px] mx-auto bg-white rounded-xl shadow-hard border-2 border-black overflow-hidden">
+        <section id="checkout" className="w-full bg-white py-20 px-4 md:px-8 border-t border-gray-100">
+            <div className="w-full max-w-[600px] mx-auto bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
                 <div className="bg-black py-4 px-6 text-center">
                     <p className="text-white font-poppins font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2">
                         <Lock size={14} className="text-brand-neon" />
@@ -176,7 +176,7 @@ export const EmbeddedCheckout: React.FC = () => {
                                     type="text"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="w-full px-4 py-4 rounded-sm border-2 border-black focus:bg-yellow-50 outline-none transition-all font-poppins text-black"
+                                    className="w-full px-4 py-4 rounded-2xl border border-gray-100 focus:bg-yellow-50 outline-none transition-all font-poppins text-black"
                                     placeholder="Enter your full name"
                                 />
                             </div>
@@ -187,7 +187,7 @@ export const EmbeddedCheckout: React.FC = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-4 rounded-sm border-2 border-black focus:bg-yellow-50 outline-none transition-all font-poppins text-black"
+                                    className="w-full px-4 py-4 rounded-2xl border border-gray-100 focus:bg-yellow-50 outline-none transition-all font-poppins text-black"
                                     placeholder="name@example.com"
                                 />
                             </div>
@@ -215,7 +215,7 @@ export const EmbeddedCheckout: React.FC = () => {
 
                             <button
                                 disabled={isInitializing}
-                                className="w-full bg-brand-neon hover:bg-[#e6e200] text-black font-display font-bold text-xl py-3.5 rounded-sm border-2 border-black shadow-hard hover:shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all uppercase tracking-wider"
+                                className="w-full bg-[#d81159] hover:bg-[#b30e4a] text-white font-display font-bold text-xl py-3.5 rounded-2xl border border-gray-100 shadow-2xl hover:shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wider"
                             >
                                 {isInitializing ? 'Preparing...' : 'Next: Payment Details'}
                             </button>

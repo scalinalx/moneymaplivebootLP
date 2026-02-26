@@ -92,7 +92,7 @@ export const ProblemSolutionSection: React.FC = () => {
 
                 {/* BEFORE PREVIEW */}
                 <div className="flex flex-col items-center">
-                    <div className="font-display font-black text-2xl uppercase text-red-500 bg-red-50 px-6 py-2 rounded rotate-2 mb-8 shadow-sm border border-red-100">
+                    <div className="font-display font-black text-2xl uppercase text-red-500 bg-red-50 px-6 py-2 rounded-2xl rotate-2 mb-8 shadow-sm border border-red-100">
                         BEFORE
                     </div>
 
@@ -117,7 +117,7 @@ export const ProblemSolutionSection: React.FC = () => {
 
                 {/* AFTER PREVIEW */}
                 <div className="flex flex-col items-center">
-                    <div className="font-display font-black text-2xl uppercase text-green-500 bg-green-50 px-6 py-2 rounded -rotate-2 mb-8 shadow-sm border border-green-100">
+                    <div className="font-display font-black text-2xl uppercase text-green-500 bg-green-50 px-6 py-2 rounded-2xl -rotate-2 mb-8 shadow-sm border border-green-100">
                         AFTER
                     </div>
 
@@ -170,7 +170,7 @@ export const ProblemSolutionSection: React.FC = () => {
             <div className="w-full flex justify-center mt-12">
                 <Button
                     onClick={() => document.getElementById('checkout')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">ENTER THE 10K LAB NOW</span>

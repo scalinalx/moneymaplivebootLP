@@ -13,63 +13,52 @@ export const Hero: React.FC = () => {
         <section className="relative w-full min-h-screen bg-white overflow-hidden pt-4 pb-12 px-4 md:px-8 flex flex-col items-center">
 
             {/* Top Nav (Minimal per screenshot) */}
-            {/* Top Nav (Minimal per screenshot) */}
-            <nav className="w-full max-w-6xl mx-auto flex justify-center items-center z-50 mb-4 md:mb-8">
-                <div className="relative inline-block transform -rotate-1">
-                    <span className="absolute inset-0 bg-brand-neon transform skew-x-[-10deg] scale-105 -z-10 shadow-sm rounded-sm origin-center"></span>
-                    <span className="font-poppins font-black text-sm tracking-[0.1em] uppercase px-2 z-10 relative">
-                        How We Grow
-                    </span>
+            <nav className="w-full max-w-6xl mx-auto flex justify-center items-center z-50 mb-8 md:mb-12">
+                <div className="inline-flex items-center justify-center bg-gray-100 text-gray-500 rounded-full px-4 py-1.5 font-montserrat font-bold text-xs uppercase tracking-[0.2em]">
+                    How We Grow
                 </div>
             </nav>
 
-            {/* Main Content Stack - Increased max-width to 7xl for wider headline */}
-            <div className="max-w-7xl mx-auto w-full flex flex-col items-center text-center z-10">
+            {/* Main Content Stack */}
+            <div className="max-w-5xl mx-auto w-full flex flex-col items-center text-center z-10">
 
                 {/* 1. Pre-headline */}
-                <p className="font-poppins italic font-semibold text-lg md:text-xl text-gray-800 mb-2">
+                <p className="font-montserrat font-bold text-sm md:text-base text-gray-500 mb-4 uppercase tracking-[0.2em]">
                     30-Day Implementation Program | Enrollment Open Now
                 </p>
 
-                {/* 2. Main Headline - Size reduced by 50% */}
-                <h1 className="font-display font-bold text-xl md:text-2xl lg:text-3xl uppercase leading-[0.9] tracking-tight text-black mb-4 flex flex-col items-center w-full">
+                {/* 2. Main Headline */}
+                <h1 className="font-anton text-[#06b6d4] text-5xl md:text-6xl lg:text-7xl uppercase leading-[1.1] md:leading-[1.05] tracking-wide text-center mb-6 w-full flex flex-col items-center">
                     <span className="block mb-2 md:mb-4 w-full">LAUNCH YOUR OFFER IN 30 DAYS</span>
-                    <span className="relative inline-block transform -rotate-1">
-                        {/* Neon Highlighter Background */}
-                        <span className="absolute inset-0 bg-brand-neon transform skew-x-[-10deg] scale-105 md:scale-110 -z-10 shadow-sm rounded-sm origin-center"></span>
-                        <span className="relative px-2 md:px-4 z-10 block">AND HIT YOUR FIRST $10K MONTH</span>
-                    </span>
+                    <span className="text-[#ffc300] block mt-2">AND HIT YOUR FIRST $10K MONTH</span>
                 </h1>
 
                 {/* 3. Subtitle */}
-                <p className="font-poppins font-medium text-base md:text-xl text-black mb-4 md:mb-8 max-w-3xl">
-                    <span className="font-bold">Doors are OPEN — but not for long.</span> Grab your spot at today's price before this cohort closes and the price goes back to $1,997.
-                </p>
+                <h2 className="font-display text-[#333333] font-bold italic text-xl md:text-3xl max-w-4xl tracking-tight leading-tight mb-8">
+                    Doors are OPEN — but not for long. Grab your spot at today's price before this cohort closes and the price goes back to $1,997.
+                </h2>
 
                 {/* 4. Hero Image Replace Mockup */}
-                <div className="-mt-4 md:-mt-8 mb-8 md:mb-12 w-full max-w-5xl flex justify-center px-4">
+                <div className="mb-8 md:mb-12 w-full max-w-5xl flex justify-center px-4">
                     <img
                         src="/imgs/10k-launch-lab/hero-1.jpeg"
                         alt="10k Launch Lab Program"
-                        className="w-full h-auto rounded-xl shadow-hard border-2 border-black"
+                        className="w-full h-auto rounded-2xl shadow-2xl border border-gray-100"
                     />
                 </div>
 
                 {/* 5. CTA Button Section */}
                 <div className="flex flex-col items-center gap-8 relative z-40 mt-4">
-                    <Button
+                    <button
                         onClick={scrollToCheckout}
-                        className="px-10 py-3 md:px-14 md:py-4 text-sm md:text-lg group shadow-[4px_4px_0px_#000000] hover:shadow-[2px_2px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-brand-neon hover:bg-[#e6e200] border-2 border-black"
+                        className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-4 md:py-5 px-10 md:px-14 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        <span className="flex flex-col items-center leading-none gap-1">
-                            <span className="font-normal text-lg md:text-xl tracking-wide uppercase">I WANT MY FIRST 10K MONTH</span>
-                        </span>
-                    </Button>
+                        <span>I WANT MY FIRST 10K MONTH</span>
+                    </button>
 
                     {/* 6. Social Proof Phrase */}
-                    <p className="font-poppins text-lg md:text-2xl font-bold italic text-center text-black leading-relaxed max-w-xl">
-                        830+ success stories so far from the $10k Launch Lab and How We Grow programs. Kinda speaks for itself.<br />
-                        Really. The internet can't shut up about it.
+                    <p className="font-lora text-lg md:text-xl italic text-center text-gray-600 leading-relaxed max-w-2xl px-4">
+                        "830+ success stories so far from the $10k Launch Lab and How We Grow programs. The internet can't shut up about it."
                     </p>
                 </div>
 
@@ -77,8 +66,9 @@ export const Hero: React.FC = () => {
 
             {/* Decorative Background Patterns */}
             <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden -z-10">
-                <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-brand-neon rounded-full mix-blend-multiply filter blur-[100px] opacity-20"></div>
-                <div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-pink-100 rounded-full mix-blend-multiply filter blur-[100px] opacity-30"></div>
+                <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-cyan-100/50 rounded-full mix-blend-multiply filter blur-[100px] opacity-40"></div>
+                <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-pink-100/50 rounded-full mix-blend-multiply filter blur-[100px] opacity-40"></div>
+                <div className="absolute top-[40%] right-[20%] w-[300px] h-[300px] bg-yellow-100/40 rounded-full mix-blend-multiply filter blur-[100px] opacity-30"></div>
             </div>
 
         </section>

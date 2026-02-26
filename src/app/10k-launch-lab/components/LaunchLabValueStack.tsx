@@ -29,7 +29,7 @@ export const LaunchLabValueStack: React.FC = () => {
 
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <span className="inline-block bg-brand-neon text-black font-display font-black text-xs uppercase tracking-widest px-4 py-2 border-2 border-black mb-6">
+                    <span className="inline-block bg-[#d81159] text-white font-display font-black text-xs uppercase tracking-widest px-4 py-2 border border-gray-100 mb-6">
                         ⚡ Today Only — Limited Enrollment
                     </span>
                     <h2 className="font-display font-black text-4xl md:text-5xl uppercase leading-tight tracking-tight mb-4">
@@ -72,7 +72,7 @@ export const LaunchLabValueStack: React.FC = () => {
                     </p>
                     <button
                         onClick={scrollToCheckout}
-                        className="w-full bg-brand-neon hover:bg-[#e6e200] text-black font-display font-black text-xl py-5 rounded-sm border-2 border-black shadow-[6px_6px_0px_#FFFB00] hover:shadow-[3px_3px_0px_#FFFB00] hover:translate-x-[3px] hover:translate-y-[3px] transition-all uppercase tracking-wider"
+                        className="w-full bg-[#d81159] hover:bg-[#b30e4a] text-white font-display font-black text-xl py-5 rounded-2xl border border-gray-100 shadow-2xl hover:shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wider"
                     >
                         YES — I WANT MY FIRST $10K MONTH!
                     </button>

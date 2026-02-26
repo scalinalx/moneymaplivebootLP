@@ -32,7 +32,7 @@ export const AnnouncementBar: React.FC = () => {
                 </p>
                 <button
                     onClick={scrollToCheckout}
-                    className="flex-shrink-0 bg-brand-neon hover:bg-[#e6e200] text-black font-display font-black text-xs md:text-sm px-4 md:px-6 py-2 md:py-2.5 rounded-md uppercase tracking-wider transition-all shadow-[3px_3px_0px_#FFFB00] hover:shadow-[1px_1px_0px_#FFFB00] hover:translate-x-[2px] hover:translate-y-[2px] border border-black"
+                    className="flex-shrink-0 bg-[#d81159] hover:bg-[#b30e4a] text-white font-display font-black text-xs md:text-sm px-4 md:px-6 py-2 md:py-2.5 rounded-md uppercase tracking-wider transition-all shadow-lg hover:shadow-lg hover:-translate-y-1 border border-gray-100"
                 >
                     Enroll Now →
                 </button>

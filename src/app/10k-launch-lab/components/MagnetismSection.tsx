@@ -41,27 +41,27 @@ export const MagnetismSection: React.FC = () => {
                 </div>
 
                 {/* 2. The Solution Quote / Shift */}
-                <div className="w-full py-8 md:py-12 my-8 border-y-2 border-white/20 bg-gray-900 p-6 md:p-10 rounded-sm overflow-hidden relative">
+                <div className="w-full py-8 md:py-12 my-8 border-y-2 border-white/20 bg-gray-900 p-6 md:p-10 rounded-2xl overflow-hidden relative">
                     <h3 className="font-display font-bold text-2xl md:text-3xl uppercase mb-6 z-10 relative">
                         Then Marcus joined the 10K Launch Lab.
                     </h3>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="space-y-4 font-mono text-sm md:text-base z-10 relative">
-                            <p><span className="font-bold bg-brand-neon px-1 text-black">Day 1:</span> Open module → "Complete Offer Validation Worksheet" → 30 minutes → Done</p>
-                            <p><span className="font-bold bg-brand-neon px-1 text-black">Day 7:</span> Sales page complete (used fill-in-the-blank template)</p>
-                            <p><span className="font-bold bg-brand-neon px-1 text-black">Day 14:</span> 5-email sequence scheduled (used templates)</p>
-                            <p><span className="font-bold bg-brand-neon px-1 text-black">Day 22:</span> Launched</p>
-                            <p><span className="font-bold bg-brand-neon px-1 text-black">Day 27:</span> $5,200 in revenue</p>
+                            <p><span className="font-bold text-[#d81159] text-black">Day 1:</span> Open module → "Complete Offer Validation Worksheet" → 30 minutes → Done</p>
+                            <p><span className="font-bold text-[#d81159] text-black">Day 7:</span> Sales page complete (used fill-in-the-blank template)</p>
+                            <p><span className="font-bold text-[#d81159] text-black">Day 14:</span> 5-email sequence scheduled (used templates)</p>
+                            <p><span className="font-bold text-[#d81159] text-black">Day 22:</span> Launched</p>
+                            <p><span className="font-bold text-[#d81159] text-black">Day 27:</span> $5,200 in revenue</p>
                         </div>
 
                         {/* ICPs Image - Added as requested */}
                         <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <div className="absolute inset-0 bg-brand-neon transform translate-x-1 translate-y-1 rounded-sm -z-10"></div>
+                            <div className="absolute inset-0 bg-rose-50 transform translate-x-1 translate-y-1 rounded-2xl -z-10"></div>
                             <img
                                 src="/imgs/10k-launch-lab/offer-ICPs.jpeg"
                                 alt="10k Launch Lab Offer ICPs"
-                                className="w-full rounded-sm border-2 border-white/20 grayscale hover:grayscale-0 transition-all duration-300"
+                                className="w-full rounded-2xl border-2 border-white/20 grayscale hover:grayscale-0 transition-all duration-300"
                             />
                         </div>
                     </div>
@@ -77,7 +77,7 @@ export const MagnetismSection: React.FC = () => {
 
                     <h3 className="font-display font-black text-2xl md:text-4xl uppercase leading-tight">
                         The only difference?<br />
-                        <span className="text-black bg-brand-neon px-2 inline-block transform -rotate-1 mt-2">He had a paint-by-numbers system</span><br />
+                        <span className="text-black text-[#d81159] text-xl py-2 inline-block mt-2">He had a paint-by-numbers system</span><br />
                         that made it impossible to get lost.
                     </h3>
                 </div>
@@ -86,7 +86,7 @@ export const MagnetismSection: React.FC = () => {
                 <div className="w-full flex justify-center">
                     <Button
                         onClick={scrollToCheckout}
-                        className="mx-auto px-10 py-3.5 bg-brand-neon hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                        className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                     >
                         <div className="flex flex-col items-center leading-tight">
                             <span className="font-normal text-lg md:text-xl tracking-wide uppercase">GIVE ME THE 10K REVENUE ENGINE</span>

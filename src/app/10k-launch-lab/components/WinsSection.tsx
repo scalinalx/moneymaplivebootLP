@@ -51,7 +51,7 @@ export const WinsSection: React.FC = () => {
                 <h2 className="font-display font-black text-3xl md:text-5xl uppercase mb-12 text-center">❓ FAQ</h2>
                 <div className="space-y-4">
                     {faqs.map((faq, idx) => (
-                        <div key={idx} className="border-2 border-black rounded-lg overflow-hidden">
+                        <div key={idx} className="border border-gray-100 rounded-lg overflow-hidden">
                             <button
                                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                                 className="w-full p-6 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition-colors"
@@ -60,7 +60,7 @@ export const WinsSection: React.FC = () => {
                                 {openIndex === idx ? <ChevronUp /> : <ChevronDown />}
                             </button>
                             {openIndex === idx && (
-                                <div className="p-6 bg-white border-t-2 border-black font-poppins text-gray-700 leading-relaxed">
+                                <div className="p-6 bg-white border-t border-gray-100 font-poppins text-gray-700 leading-relaxed">
                                     {faq.answer}
                                 </div>
                             )}
@@ -77,11 +77,11 @@ export const WinsSection: React.FC = () => {
                 <p className="mb-8 font-bold text-2xl">This is about the next 30 days of your life.</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
-                    <div className="bg-gray-100 p-6 rounded border border-gray-300">
+                    <div className="bg-gray-100 p-6 rounded-2xl border border-gray-300">
                         <h4 className="font-bold mb-2">Path A:</h4>
                         <p>Trying to "figure it out" on your own, getting stuck, giving up.</p>
                     </div>
-                    <div className="bg-brand-neon p-6 rounded border-2 border-black shadow-hard-sm">
+                    <div className="bg-rose-50 p-6 rounded-2xl border border-gray-100 shadow-lg">
                         <h4 className="font-bold mb-2">Path B:</h4>
                         <p>Following a proven system, getting support, actually launching.</p>
                     </div>
@@ -91,7 +91,7 @@ export const WinsSection: React.FC = () => {
 
                 <Button
                     onClick={scrollToCheckout}
-                    className="mx-auto px-10 py-5 bg-brand-neon text-black hover:bg-[#e6e200] border-2 border-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    className="mx-auto px-10 py-5 bg-[#d81159] text-white hover:bg-[#b30e4a] border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                 >
                     <div className="flex flex-col items-center leading-tight">
                         <span className="font-normal text-lg md:text-xl tracking-wide uppercase">OK, I’M CONVINCED—LET’S GO!</span>
