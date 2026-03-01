@@ -13,10 +13,9 @@ interface ProductBreakdown {
     name: string; revenue: number; count: number;
 }
 interface LeadRow {
-    id: string; email: string; name: string;
-    has_paid: boolean; amount_paid: number | null;
-    product_name: string | null; payment_completed_at: string | null;
-    created_at: string;
+    id: string; name: string; email: string;
+    product: string; date: string; source: string;
+    debugId: string;
 }
 interface DatabaseTable {
     name: string;
@@ -25,10 +24,13 @@ interface DatabaseTable {
     rowCount: number | string;
 }
 interface Metrics {
-    totalRevenue30d: number; allTimeRevenue: number;
-    totalLeads: number; paidLeads: number; conversionRate: string;
+    totalRevenue: number;
+    totalLeads: number;
     productBreakdown: ProductBreakdown[];
-    recentSales: Sale[]; recentLeads: LeadRow[];
+    recentSales: Sale[];
+    recentLeads: LeadRow[];
+    range: string;
+    limit: number;
 }
 
 // ── Helpers ───────────────────────────────────────────────────────
@@ -101,11 +103,13 @@ function Dashboard({ password }: { password: string }) {
     const [activeTab, setActiveTab] = useState<'sales' | 'leads' | 'tables'>('sales');
     const [tables, setTables] = useState<DatabaseTable[]>([]);
     const [loadingTables, setLoadingTables] = useState(false);
+    const [range, setRange] = useState('last30d');
+    const [limit, setLimit] = useState(50);
 
     const load = useCallback(async () => {
         setLoading(true); setError(null);
         try {
-            const res = await fetch('/api/admidash/metrics', {
+            const res = await fetch(`/api/admidash/metrics?range=${range}&limit=${limit}`, {
                 headers: { Authorization: `Bearer ${password}` },
             });
             if (!res.ok) throw new Error(`Error ${res.status}`);
@@ -117,7 +121,7 @@ function Dashboard({ password }: { password: string }) {
         } finally {
             setLoading(false);
         }
-    }, [password]);
+    }, [password, range, limit]);
 
     const loadTables = useCallback(async () => {
         setLoadingTables(true);
@@ -176,27 +180,49 @@ function Dashboard({ password }: { password: string }) {
             {/* Hero metrics */}
             <div className="ad-hero">
                 <div className="ad-hero-cell">
-                    <div className="ad-metric-label">Revenue — Last 30 days</div>
-                    <div className="ad-metric-value">{fmt(m.totalRevenue30d)}</div>
+                    <div className="ad-metric-label">Revenue ({range})</div>
+                    <div className="ad-metric-value">{fmt(m.totalRevenue)}</div>
                     <div className="ad-metric-sub">{m.recentSales.length} transactions</div>
                 </div>
                 <div className="ad-hero-cell">
-                    <div className="ad-metric-label">Total Leads</div>
+                    <div className="ad-metric-label">Leads ({range})</div>
                     <div className="ad-metric-value">{m.totalLeads.toLocaleString()}</div>
-                    <div className="ad-metric-sub">{m.paidLeads} converted to paid</div>
+                    <div className="ad-metric-sub">Across all database tables</div>
                 </div>
                 <div className="ad-hero-cell">
-                    <div className="ad-metric-label">Conversion Rate</div>
-                    <div className="ad-metric-value">{m.conversionRate}%</div>
-                    <div className="ad-metric-sub">leads → paid customers</div>
+                    <div className="ad-metric-label">Filters</div>
+                    <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+                        <select
+                            className="ad-select"
+                            value={range}
+                            onChange={e => setRange(e.target.value)}
+                        >
+                            <option value="today">Today</option>
+                            <option value="yesterday">Yesterday</option>
+                            <option value="last7d">Last 7 Days</option>
+                            <option value="last30d">Last 30 Days</option>
+                            <option value="all">All Time</option>
+                        </select>
+                        <select
+                            className="ad-select"
+                            value={limit}
+                            onChange={e => setLimit(parseInt(e.target.value))}
+                        >
+                            <option value="20">Last 20</option>
+                            <option value="50">Last 50</option>
+                            <option value="100">Last 100</option>
+                            <option value="500">Last 500</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
+
             {/* Product breakdown */}
-            {m.productBreakdown.length > 0 && (
+            {m.productBreakdown && m.productBreakdown.length > 0 && (
                 <>
                     <div className="ad-section-head">
-                        <span className="ad-section-title">Products — Last 30 Days</span>
+                        <span className="ad-section-title">Product Distribution ({range})</span>
                         <div className="ad-section-line" />
                     </div>
                     <div className="ad-product-grid">
@@ -242,8 +268,8 @@ function Dashboard({ password }: { password: string }) {
             {activeTab === 'sales' && (
                 <div className="ad-table-wrap">
                     <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
-                        📝 <b>Sales Logic</b>: Showing "Verified" sales from Supabase (updated via webhook) and
-                        "Raw" Stripe charges that haven't been linked to a database record yet.
+                        📝 <b>Sales Logic</b>: Showing rows from all 5 product tables where payment is marked,
+                        merged with raw Stripe charges that haven't been linked by email.
                     </div>
                     <table className="ad-table">
                         <thead>
@@ -259,7 +285,7 @@ function Dashboard({ password }: { password: string }) {
                             {m.recentSales.length === 0 ? (
                                 <tr>
                                     <td colSpan={5} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
-                                        No sales in last 30 days
+                                        No sales found for this range
                                     </td>
                                 </tr>
                             ) : m.recentSales.map(s => (
@@ -287,8 +313,8 @@ function Dashboard({ password }: { password: string }) {
             {activeTab === 'leads' && (
                 <div className="ad-table-wrap">
                     <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
-                        👥 <b>Leads Logic</b>: Showing all records in <code>leads_bootcamp_brands</code>.
-                        "Paid" status is updated automatically when a Stripe checkout session completes for that lead's email.
+                        👥 <b>Leads Logic</b>: Showing all records across tables (Hit 10k, Launch Lab, etc.)
+                        that have no recorded payment in the database or via Stripe.
                     </div>
                     <table className="ad-table">
                         <thead>
@@ -297,30 +323,29 @@ function Dashboard({ password }: { password: string }) {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Product</th>
-                                <th>Amount</th>
-                                <th>Status</th>
+                                <th>Source / Audit Trail</th>
                             </tr>
                         </thead>
                         <tbody>
                             {m.recentLeads.length === 0 ? (
                                 <tr>
-                                    <td colSpan={6} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
+                                    <td colSpan={5} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
                                         No leads found
                                     </td>
                                 </tr>
                             ) : m.recentLeads.map(l => (
-                                <tr key={l.id}>
-                                    <td className="dim">{fmtDate(l.created_at)}</td>
+                                <tr key={l.id + l.source}>
+                                    <td className="dim">{fmtDate(l.date)}</td>
                                     <td className="primary">{l.name || '—'}</td>
                                     <td className="dim">{l.email}</td>
-                                    <td className="dim">{l.product_name || '—'}</td>
-                                    <td className={l.has_paid ? 'amber' : 'dim'}>
-                                        {l.amount_paid ? fmt(l.amount_paid) : '—'}
-                                    </td>
+                                    <td className="dim">{l.product}</td>
                                     <td>
-                                        <span className={`ad-badge ${l.has_paid ? 'paid' : 'unpaid'}`}>
-                                            {l.has_paid ? 'Paid' : 'Lead'}
-                                        </span>
+                                        <div style={{ fontSize: '10px', color: 'var(--text-mid)' }}>
+                                            {l.source}
+                                        </div>
+                                        <div style={{ fontSize: '9px', color: 'var(--text-dim)', marginTop: '2px' }}>
+                                            ID: {l.debugId}
+                                        </div>
                                     </td>
                                 </tr>
                             ))}

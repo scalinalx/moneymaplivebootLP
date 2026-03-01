@@ -32,81 +32,145 @@ function normalizeProduct(raw: string | null | undefined): string {
     return raw;
 }
 
+const TABLES_MAP = [
+    { name: 'leads_bootcamp_brands', emailCol: 'email', dateCol: 'created_at', paidCol: 'has_paid' },
+    { name: 'hit10k_leads', emailCol: 'email', dateCol: 'created_at', paidCol: 'is_paid' },
+    { name: 'launch_lab_leads', emailCol: 'email', dateCol: 'created_at', paidCol: 'is_paid' },
+    { name: 'genius_ideas_leads', emailCol: 'email', dateCol: 'created_at', paidCol: 'is_paid' },
+    { name: 'show_dont_tell_users', emailCol: 'email', dateCol: 'created_at', paidCol: null }, // Treat all as paid
+];
+
 export async function GET(req: NextRequest) {
     if (!verifyAuth(req)) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     try {
-        const since = Math.floor(Date.now() / 1000) - 30 * 24 * 60 * 60;
-        const sinceISO = new Date(since * 1000).toISOString();
+        const { searchParams } = new URL(req.url);
+        const range = searchParams.get('range') || 'last30d';
+        const limit = parseInt(searchParams.get('limit') || '50');
 
-        // 1. Fetch Supabase Leads (all time or recent)
-        const { data: supabaseLeads, error: leadsErr } = await supabaseAdmin
-            .from('leads_bootcamp_brands')
-            .select('*')
-            .order('created_at', { ascending: false })
-            .limit(500);
+        let startDate = new Date();
+        let endDate = new Date();
 
-        if (leadsErr) throw leadsErr;
+        if (range === 'today') {
+            startDate.setHours(0, 0, 0, 0);
+        } else if (range === 'yesterday') {
+            startDate.setDate(startDate.getDate() - 1);
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setDate(endDate.getDate() - 1);
+            endDate.setHours(23, 59, 59, 999);
+        } else if (range === 'last7d') {
+            startDate.setDate(startDate.getDate() - 7);
+        } else if (range === 'last30d') {
+            startDate.setDate(startDate.getDate() - 30);
+        } else if (range === 'all') {
+            startDate = new Date(0);
+        }
 
-        // 2. Fetch Stripe Charges (last 30 days)
+        const startISO = startDate.toISOString();
+        const endISO = endDate.toISOString();
+
+        // 1. Fetch Stripe Charges for the range
         const stripeCharges = await stripe.charges.list({
             limit: 100,
-            created: { gte: since },
+            created: {
+                gte: Math.floor(startDate.getTime() / 1000),
+                lte: Math.floor(endDate.getTime() / 1000)
+            },
         });
 
-        // 3. Process Verified Sales (from Supabase where has_paid = true)
-        const verifiedSales = (supabaseLeads || [])
-            .filter(l => l.has_paid)
-            .map(l => ({
-                id: l.id,
-                amount: l.amount_paid || 0,
-                currency: l.currency || 'USD',
-                product: normalizeProduct(l.product_name),
-                email: l.email,
-                date: l.payment_completed_at || l.created_at,
-                source: `Supabase: leads_bootcamp_brands`,
-                debugId: l.id,
-                stripeId: l.stripe_session_id || '—',
+        const successfulStripeEmails = new Set(
+            stripeCharges.data
+                .filter(c => c.paid && !c.refunded)
+                .map(c => c.billing_details?.email?.toLowerCase())
+                .filter(Boolean)
+        );
+
+        // 2. Fetch data from all tables in parallel
+        const tableResults = await Promise.all(TABLES_MAP.map(async (t) => {
+            let query = supabaseAdmin
+                .from(t.name)
+                .select('*')
+                .gte(t.dateCol, startISO)
+                .lte(t.dateCol, endISO)
+                .order(t.dateCol, { ascending: false })
+                .limit(limit);
+
+            const { data, error } = await query;
+            if (error) {
+                console.error(`Error fetching from ${t.name}:`, error);
+                return [];
+            }
+            return (data || []).map(row => ({
+                ...row,
+                _sourceTable: t.name,
+                _email: row[t.emailCol],
+                _date: row[t.dateCol],
+                _isPaid: t.paidCol ? row[t.paidCol] : true, // show_dont_tell defaults to true
+            }));
+        }));
+
+        const allRecords = tableResults.flat();
+
+        // 3. Separate into Sales and Leads
+        // A "Sale" is either marked paid in DB OR has a successful Stripe charge
+        const sales = allRecords
+            .filter(r => r._isPaid || successfulStripeEmails.has(r._email?.toLowerCase()))
+            .map(r => ({
+                id: r.id,
+                amount: r.amount_paid || r.amount || 0,
+                currency: r.currency || 'USD',
+                product: normalizeProduct(r.product_name || r._sourceTable),
+                email: r._email || '—',
+                date: r.payment_completed_at || r.paid_at || r._date,
+                source: r._sourceTable,
+                debugId: r.id,
                 type: 'verified'
             }));
 
-        // 4. Process Raw Stripe Sales (to find charges not linked to Supabase)
-        const rawStripeSales = stripeCharges.data
-            .filter(c => c.paid && !c.refunded)
-            .map(c => {
-                const isLinked = verifiedSales.some(v =>
-                    v.stripeId === c.id ||
-                    v.stripeId === c.payment_intent ||
-                    v.email.toLowerCase() === c.billing_details?.email?.toLowerCase()
-                );
+        // A "Lead" is someone who hasn't paid in any source
+        const leads = allRecords
+            .filter(r => !r._isPaid && !successfulStripeEmails.has(r._email?.toLowerCase()))
+            .map(r => ({
+                id: r.id,
+                name: r.name || '—',
+                email: r._email || '—',
+                product: normalizeProduct(r.product_name || r._sourceTable),
+                date: r._date,
+                source: r._sourceTable,
+                debugId: r.id,
+            }));
 
-                return {
-                    id: c.id,
-                    amount: c.amount,
-                    currency: c.currency.toUpperCase(),
-                    product: normalizeProduct(c.metadata?.product_name || c.metadata?.program || c.description),
-                    email: c.billing_details?.email || c.metadata?.email || '—',
-                    date: new Date(c.created * 1000).toISOString(),
-                    source: `Stripe: Charge`,
-                    debugId: c.id,
-                    stripeId: c.id,
-                    type: isLinked ? 'linked' : 'unlinked'
-                };
-            });
+        // 4. Add "Raw" Stripe Sales (charges that don't match any DB record email)
+        const dbEmails = new Set(allRecords.map(r => r._email?.toLowerCase()).filter(Boolean));
+        const standaloneStripe = stripeCharges.data
+            .filter(c => c.paid && !c.refunded && !dbEmails.has(c.billing_details?.email?.toLowerCase()))
+            .map(c => ({
+                id: c.id,
+                amount: c.amount,
+                currency: c.currency.toUpperCase(),
+                product: normalizeProduct(c.metadata?.product_name || c.metadata?.program || c.description),
+                email: c.billing_details?.email || '—',
+                date: new Date(c.created * 1000).toISOString(),
+                source: 'Stripe: Charge',
+                debugId: c.id,
+                type: 'unlinked'
+            }));
 
-        // Combine for "Recent Sales" view - prefer verified, then unlinked raw charges
-        const unlinkedStripe = rawStripeSales.filter(s => s.type === 'unlinked');
-        const recentSales = [...verifiedSales, ...unlinkedStripe]
+        const allSales = [...sales, ...standaloneStripe]
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .slice(0, 50);
+            .slice(0, limit);
 
-        const totalRevenue30d = recentSales.reduce((s, c) => s + c.amount, 0);
+        const allLeads = leads
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .slice(0, limit);
 
-        // Product breakdown
+        const totalRevenue = allSales.reduce((sum, s) => sum + s.amount, 0);
+
+        // 5. Product Breakdown
         const productMap: Record<string, { revenue: number; count: number }> = {};
-        for (const s of recentSales) {
+        for (const s of allSales) {
             if (!productMap[s.product]) productMap[s.product] = { revenue: 0, count: 0 };
             productMap[s.product].revenue += s.amount;
             productMap[s.product].count += 1;
@@ -115,20 +179,14 @@ export async function GET(req: NextRequest) {
             .map(([name, data]) => ({ name, ...data }))
             .sort((a, b) => b.revenue - a.revenue);
 
-        // 5. Leads Logic: Any record in leads_bootcamp_brands that HAS NOT paid
-        const totalLeadsCount = supabaseLeads?.length || 0;
-        const paidLeads = verifiedSales.length;
-        const conversionRate = totalLeadsCount > 0 ? ((paidLeads / totalLeadsCount) * 100).toFixed(1) : '0.0';
-
         return NextResponse.json({
-            totalRevenue30d,
-            allTimeRevenue: verifiedSales.reduce((s, v) => s + v.amount, 0),
-            totalLeads: totalLeadsCount,
-            paidLeads,
-            conversionRate,
+            totalRevenue,
+            totalLeads: allLeads.length,
             productBreakdown,
-            recentSales,
-            recentLeads: (supabaseLeads || []).slice(0, 50),
+            recentSales: allSales,
+            recentLeads: allLeads,
+            range,
+            limit
         });
     } catch (err: any) {
         console.error('[admidash/metrics]', err);
