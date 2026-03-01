@@ -83,6 +83,36 @@ export async function POST(request: NextRequest) {
 
         const session = await stripe.checkout.sessions.create(checkoutParams);
 
+        // --- NEW: Lead Capture at Initiation ---
+        try {
+            const { data: existing } = await supabaseAdmin
+                .from('show_dont_tell_users')
+                .select('id')
+                .eq('token_id', tokenId)
+                .single();
+
+            if (existing) {
+                await supabaseAdmin.from('show_dont_tell_users').update({
+                    payment_status: 'initiated',
+                    stripe_session_id: session.id,
+                    last_active_at: new Date().toISOString()
+                }).eq('id', existing.id);
+            } else {
+                await supabaseAdmin.from('show_dont_tell_users').insert({
+                    email,
+                    name: name || 'Customer',
+                    token_id: tokenId,
+                    payment_status: 'initiated',
+                    stripe_session_id: session.id,
+                    credits: 0 // Will be added on completion
+                });
+            }
+        } catch (dbErr) {
+            console.error('❌ Failed to capture SDT lead initiation:', dbErr);
+            // Non-blocking for the user
+        }
+        // --- END NEW ---
+
         return NextResponse.json({
             success: true,
             url: session.url

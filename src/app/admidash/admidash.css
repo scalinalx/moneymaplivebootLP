@@ -11,8 +11,10 @@
     --border: rgba(255, 255, 255, 0.07);
     --border2: rgba(255, 255, 255, 0.12);
     --text: #F0EDE6;
-    --text-dim: #7A7870;
-    --text-mid: #B8B4AC;
+    --text-dim: #9A9890;
+    /* Increased contrast from #7A7870 */
+    --text-mid: #D8D4CC;
+    /* Increased contrast from #B8B4AC */
     --amber: #F5A623;
     --amber-dim: rgba(245, 166, 35, 0.15);
     --amber-glow: 0 0 40px rgba(245, 166, 35, 0.12);
@@ -394,7 +396,48 @@
     color: var(--text-dim);
 }
 
-/* ── TABLES ──────────────────────────────────────────────────── */
+/* ── TABLES & TABS ───────────────────────────────────────────── */
+.ad-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+}
+
+.ad-tab {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--text-dim);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ad-tab:hover {
+    border-color: var(--border2);
+    color: var(--text-mid);
+}
+
+.ad-tab.active {
+    background: var(--amber-dim);
+    border-color: var(--amber);
+    color: var(--amber);
+}
+
+.ad-tab-count {
+    opacity: 0.6;
+    font-size: 10px;
+}
+
 .ad-table-wrap {
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -438,7 +481,8 @@ table.ad-table {
 }
 
 .ad-table td {
-    padding: 10px 16px;
+    padding: 14px 16px;
+    /* Increased from 10px */
     color: var(--text-mid);
     white-space: nowrap;
 }
@@ -517,6 +561,83 @@ table.ad-table {
     color: var(--red);
     font-size: 12px;
     margin: 32px 0;
+}
+
+/* ── LOADING OVERLAY ────────────────────────────────────────── */
+.ad-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 11, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.ad-overlay-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.ad-overlay-title {
+    font-family: var(--display);
+    font-size: 24px;
+    color: var(--text);
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.ad-overlay-sub {
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ── ABANDONMENT REPORT ──────────────────────────────────────── */
+.ad-report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.ad-report-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.ad-report-name {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.ad-report-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.ad-report-count {
+    font-family: var(--display);
+    font-size: 32px;
+    color: var(--red);
+}
+
+.ad-report-rev {
+    color: var(--text-mid);
+    font-size: 14px;
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */

@@ -167,26 +167,58 @@ export async function GET(req: NextRequest) {
                     name: supabaseMatch?._name || c.billing_details?.name || '—',
                     product: normalizeProduct(supabaseMatch?._product || c.description || 'Abandoned Checkout'),
                     date: new Date(c.created * 1000).toISOString(),
-                    reason: c.amount === 0 ? '$0 Session' : 'Unpaid Charge',
-                    source: 'Stripe'
+                    reason: (c.amount === 0 && c.paid) ? '$0 Session' : 'Unpaid Charge',
+                    source: 'Stripe',
+                    potentialRevenue: c.amount || 0
                 };
             });
 
         const supabaseAbandonments = allSupabaseRecords
-            .filter(r => !r._isPaid && !successfulEmails.has(r._email) && (r.checkout_started_at || r.checkout_status === 'lead_captured'))
+            .filter(r => {
+                if (r._isPaid) return false;
+                if (successfulEmails.has(r._email)) return false;
+
+                // ── Rule A: Explicit Checkout Indicators ────────────────
+                const hasStartedCheckout = r.checkout_started_at || r.checkout_status === 'lead_captured';
+                const hasStripeIntent = r.stripe_payment_intent_id || r.stripe_session_id || r.stripe_customer_id;
+
+                // ── Rule B: Automatic Abandonment for Core Tables ───────
+                const isProductSpecific = ['launch_lab_leads', 'hit10k_leads', 'genius_ideas_leads', 'leads_bootcamp_brands'].includes(r._sourceTable);
+                const notWaitlist = r.is_waitlist === false || r.is_waitlist === null;
+
+                // ── Rule C: SDT Initiated Status ────────────────────────
+                const isSDTInitiated = r._sourceTable === 'show_dont_tell_users' && r.payment_status === 'initiated';
+
+                return hasStartedCheckout || hasStripeIntent || (isProductSpecific && notWaitlist) || isSDTInitiated;
+            })
             .map(r => ({
                 id: r.id,
                 email: r._email,
-                name: r._name,
+                name: r._name || '—',
                 product: r._product,
                 date: r.checkout_started_at || r._date,
-                reason: 'Incomplete Checkout',
-                source: r._sourceTable
+                reason: r.payment_status === 'initiated' ? 'Payment Initiated' :
+                    r.stripe_payment_intent_id ? 'Stripe Intent Created' :
+                        'Incomplete Checkout',
+                source: r._sourceTable,
+                potentialRevenue: r.total_paid || r.amount_paid || r.amount || 0
             }));
 
         const abandonedCarts = [...stripeAbandonments, ...supabaseAbandonments]
-            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .slice(0, limit);
+            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+        // 5. Abandonment Report (By Product)
+        const abandonmentMap: Record<string, { count: number; potentialRevenue: number }> = {};
+        abandonedCarts.forEach(a => {
+            if (!abandonmentMap[a.product]) abandonmentMap[a.product] = { count: 0, potentialRevenue: 0 };
+            abandonmentMap[a.product].count += 1;
+            // potentialRevenue is optional in the object
+            // @ts-ignore
+            if (a.potentialRevenue) abandonmentMap[a.product].potentialRevenue += a.potentialRevenue;
+        });
+        const abandonmentReport = Object.entries(abandonmentMap)
+            .map(([name, data]) => ({ name, ...data }))
+            .sort((a, b) => b.count - a.count);
 
         function t_id_key(table: string) {
             if (table === 'show_dont_tell_users') return 'token_id';
@@ -236,7 +268,8 @@ export async function GET(req: NextRequest) {
             productBreakdown,
             recentSales: allSales,
             recentLeads: allLeads,
-            abandonedCarts,
+            abandonedCarts: abandonedCarts.slice(0, limit),
+            abandonmentReport,
             range,
             limit,
             startDate: startISO,

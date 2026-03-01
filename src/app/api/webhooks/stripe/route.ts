@@ -62,17 +62,27 @@ export async function POST(request: NextRequest) {
           const newExpiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
           await supabaseAdmin.from('show_dont_tell_users').update({
             credits: (existingUser.credits || 0) + creditsToAdd,
-            expires_at: newExpiresAt
+            expires_at: newExpiresAt,
+            payment_status: 'completed',
+            payment_completed_at: new Date().toISOString(),
+            stripe_customer_id: session.customer,
+            amount_paid: session.amount_total,
+            stripe_session_id: session.id
           }).eq('id', existingUser.id);
-          console.log(`✅ Topped up Token ID ${tokenId}`);
+          console.log(`✅ Updated/Topped up SDT User: Token ID ${tokenId}`);
         } else {
           await supabaseAdmin.from('show_dont_tell_users').insert({
             email: customerEmail,
             name: customerName,
             token_id: tokenId,
-            credits: creditsToAdd
+            credits: creditsToAdd,
+            payment_status: 'completed',
+            payment_completed_at: new Date().toISOString(),
+            stripe_customer_id: session.customer,
+            amount_paid: session.amount_total,
+            stripe_session_id: session.id
           });
-          console.log(`✅ Created NEW user for Token ID ${tokenId}`);
+          console.log(`✅ Created NEW SDT user for Token ID ${tokenId}`);
         }
         return NextResponse.json({ received: true });
       } catch (err) {

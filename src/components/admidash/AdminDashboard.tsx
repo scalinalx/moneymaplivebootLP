@@ -27,6 +27,9 @@ interface DatabaseTable {
     columns: number;
     rowCount: number | string;
 }
+interface AbandonmentReportItem {
+    name: string; count: number; potentialRevenue: number;
+}
 interface Metrics {
     totalRevenue: number;
     totalLeads: number;
@@ -34,6 +37,7 @@ interface Metrics {
     recentSales: Sale[];
     recentLeads: LeadRow[];
     abandonedCarts: AbandonedCart[];
+    abandonmentReport: AbandonmentReportItem[];
     range: string;
     limit: number;
     startDate?: string;
@@ -97,6 +101,19 @@ function LockScreen({ onUnlock }: { onUnlock: (pw: string) => void }) {
                 <button className="ad-lock-btn" onClick={attempt} disabled={loading}>
                     {loading ? 'Verifying...' : 'Unlock →'}
                 </button>
+            </div>
+        </div>
+    );
+}
+
+// ── Loading Overlay ──────────────────────────────────────────────
+function LoadingOverlay() {
+    return (
+        <div className="ad-overlay">
+            <div className="ad-overlay-card">
+                <div className="ad-spinner" style={{ width: '40px', height: '40px', borderWidth: '3px', margin: '0 auto' }} />
+                <h2 className="ad-overlay-title">Synchronizing Data</h2>
+                <p className="ad-overlay-sub">Fetching latest business metrics…</p>
             </div>
         </div>
     );
@@ -213,23 +230,59 @@ function DashboardContent({ password }: { password: string }) {
         document.body.removeChild(link);
     };
 
-    if (loading && !m) {
-        return (
-            <div className="ad-loading">
-                <div className="ad-spinner" />
-                Loading Command Centre…
-            </div>
-        );
-    }
+    const exportSalesCSV = () => {
+        if (!m?.recentSales.length) return;
+        const headers = ["Date", "Amount", "Currency", "Product", "Customer", "Email", "Source", "ID"];
+        const rows = m.recentSales.map(s => [
+            fmtDate(s.date),
+            s.amount / 100,
+            s.currency,
+            (s.product || '').replace(/,/g, ''),
+            (s.customerName || '').replace(/,/g, ''),
+            s.email,
+            s.source,
+            s.debugId
+        ]);
+        const csvContent = "data:text/csv;charset=utf-8,"
+            + headers.join(",") + "\n"
+            + rows.map(e => e.join(",")).join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `sales_export_${new Date().toISOString().split('T')[0]}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
-    if (error && !m) {
-        return <div className="ad-error">⚠ {error}</div>;
-    }
+    const exportAbandonedCSV = () => {
+        if (!m?.abandonedCarts.length) return;
+        const headers = ["Date", "Name", "Email", "Product", "Reason", "Source"];
+        const rows = m.abandonedCarts.map(a => [
+            fmtDate(a.date),
+            (a.name || '').replace(/,/g, ''),
+            a.email,
+            (a.product || '').replace(/,/g, ''),
+            a.reason,
+            a.source
+        ]);
+        const csvContent = "data:text/csv;charset=utf-8,"
+            + headers.join(",") + "\n"
+            + rows.map(e => e.join(",")).join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `abandoned_export_${new Date().toISOString().split('T')[0]}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     const metrics = m!;
 
     return (
         <div className="ad-wrap">
+            {loading && <LoadingOverlay />}
             {/* Top Bar */}
             <div className="ad-topbar">
                 <div className="ad-brand">
@@ -293,7 +346,7 @@ function DashboardContent({ password }: { password: string }) {
             {metrics.productBreakdown && metrics.productBreakdown.length > 0 && (
                 <>
                     <div className="ad-section-head">
-                        <span className="ad-section-title">Product Distribution ({range})</span>
+                        <span className="ad-section-title">Revenue by Product ({range})</span>
                         <div className="ad-section-line" />
                     </div>
                     <div className="ad-product-grid">
@@ -308,22 +361,50 @@ function DashboardContent({ password }: { password: string }) {
                 </>
             )}
 
+            {/* Abandonment Report */}
+            {metrics.abandonmentReport && metrics.abandonmentReport.length > 0 && (
+                <>
+                    <div className="ad-section-head">
+                        <span className="ad-section-title">Abandonment Analysis ({range})</span>
+                        <div className="ad-section-line" />
+                    </div>
+                    <div className="ad-report-grid">
+                        {metrics.abandonmentReport.map(r => (
+                            <div key={r.name} className="ad-report-card">
+                                <div className="ad-report-name">{r.name}</div>
+                                <div className="ad-report-stats">
+                                    <div className="ad-report-count">{r.count}</div>
+                                    <div className="ad-report-rev">Potential: {fmt(r.potentialRevenue)}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+
             {/* Tabs Navigation */}
-            <div className="ad-section-head" style={{ marginTop: 40 }}>
-                <div className="ad-tabs">
-                    <button className={`ad-tab ${activeTab === 'sales' ? 'active' : ''}`} onClick={() => setActiveTab('sales')}>Recent Sales ({metrics.recentSales.length})</button>
-                    <button className={`ad-tab ${activeTab === 'leads' ? 'active' : ''}`} onClick={() => setActiveTab('leads')}>All Leads ({metrics.recentLeads.length})</button>
-                    <button className={`ad-tab ${activeTab === 'abandoned' ? 'active' : ''}`} onClick={() => setActiveTab('abandoned')}>Abandoned Carts ({metrics.abandonedCarts.length})</button>
-                    <button className={`ad-tab ${activeTab === 'databases' ? 'active' : ''}`} onClick={() => setActiveTab('databases')}>Databases</button>
-                </div>
+            <div className="ad-tabs" style={{ marginTop: 40 }}>
+                <button className={`ad-tab ${activeTab === 'sales' ? 'active' : ''}`} onClick={() => setActiveTab('sales')}>
+                    Recent Sales <span className="ad-tab-count">({metrics.recentSales.length})</span>
+                </button>
+                <button className={`ad-tab ${activeTab === 'leads' ? 'active' : ''}`} onClick={() => setActiveTab('leads')}>
+                    All Leads <span className="ad-tab-count">({metrics.totalLeads})</span>
+                </button>
+                <button className={`ad-tab ${activeTab === 'abandoned' ? 'active' : ''}`} onClick={() => setActiveTab('abandoned')}>
+                    Abandoned Carts <span className="ad-tab-count">({metrics.abandonedCarts.length})</span>
+                </button>
+                <button className={`ad-tab ${activeTab === 'databases' ? 'active' : ''}`} onClick={() => setActiveTab('databases')}>
+                    Databases
+                </button>
             </div>
 
             {/* Tab Content */}
             <div className="ad-table-wrap">
                 {activeTab === 'sales' && (
                     <>
-                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
-                            📝 <b>Sales Logic</b>: Showing all Stripe charges &gt; $0. Cross-referenced with DB for name/product context.
+                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-mid)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>📝 <b>Sales Logic</b>: Showing all Stripe charges &gt; $0. Cross-referenced with DB for name/product context.</div>
+                            <button onClick={exportSalesCSV} className="ad-btn" style={{ padding: '4px 8px', fontSize: '10px', background: 'var(--bg4)' }}>Export CSV</button>
                         </div>
                         <table className="ad-table">
                             <thead>
@@ -380,8 +461,9 @@ function DashboardContent({ password }: { password: string }) {
 
                 {activeTab === 'abandoned' && (
                     <>
-                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-mid)' }}>
-                            🛒 <b>Abandoned Carts Logic</b>: Tracking $0 sessions and started checkouts with no sale.
+                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-mid)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>🛒 <b>Abandoned Carts Logic</b>: Tracking $0 sessions and started checkouts with no sale.</div>
+                            <button onClick={exportAbandonedCSV} className="ad-btn" style={{ padding: '4px 8px', fontSize: '10px', background: 'var(--bg4)' }}>Export CSV</button>
                         </div>
                         <table className="ad-table">
                             <thead>
