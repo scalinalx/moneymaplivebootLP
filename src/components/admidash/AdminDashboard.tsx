@@ -16,6 +16,12 @@ interface LeadRow {
     product_name: string | null; payment_completed_at: string | null;
     created_at: string;
 }
+interface DatabaseTable {
+    name: string;
+    description: string;
+    columns: number;
+    rowCount: number | string;
+}
 interface Metrics {
     totalRevenue30d: number; allTimeRevenue: number;
     totalLeads: number; paidLeads: number; conversionRate: string;
@@ -90,7 +96,9 @@ function Dashboard({ password }: { password: string }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [lastRefresh, setLastRefresh] = useState(new Date());
-    const [activeTab, setActiveTab] = useState<'sales' | 'leads'>('sales');
+    const [activeTab, setActiveTab] = useState<'sales' | 'leads' | 'tables'>('sales');
+    const [tables, setTables] = useState<DatabaseTable[]>([]);
+    const [loadingTables, setLoadingTables] = useState(false);
 
     const load = useCallback(async () => {
         setLoading(true); setError(null);
@@ -109,7 +117,26 @@ function Dashboard({ password }: { password: string }) {
         }
     }, [password]);
 
-    useEffect(() => { load(); }, [load]);
+    const loadTables = useCallback(async () => {
+        setLoadingTables(true);
+        try {
+            const res = await fetch('/api/admidash/tables', {
+                headers: { Authorization: `Bearer ${password}` },
+            });
+            if (!res.ok) throw new Error(`Error ${res.status}`);
+            const data = await res.json();
+            setTables(data.tables || []);
+        } catch (e: any) {
+            console.error('Failed to load tables:', e);
+        } finally {
+            setLoadingTables(false);
+        }
+    }, [password]);
+
+    useEffect(() => {
+        load();
+        loadTables();
+    }, [load, loadTables]);
 
     if (loading && !metrics) {
         return (
@@ -138,7 +165,7 @@ function Dashboard({ password }: { password: string }) {
                     <span className="ad-ts">
                         Refreshed {lastRefresh.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                     </span>
-                    <button className="ad-refresh-btn" onClick={load} disabled={loading}>
+                    <button className="ad-refresh-btn" onClick={() => { load(); loadTables(); }} disabled={loading}>
                         {loading ? '↻ Loading' : '↻ Refresh'}
                     </button>
                 </div>
@@ -198,6 +225,14 @@ function Dashboard({ password }: { password: string }) {
                     onClick={() => setActiveTab('leads')}
                 >
                     Recent Leads ({m.recentLeads.length})
+                </span>
+                <div className="ad-section-line" />
+                <span
+                    className="ad-section-title"
+                    style={{ cursor: 'pointer', color: activeTab === 'tables' ? 'var(--amber)' : undefined }}
+                    onClick={() => setActiveTab('tables')}
+                >
+                    Databases ({tables.length})
                 </span>
             </div>
 
@@ -274,6 +309,46 @@ function Dashboard({ password }: { password: string }) {
                             ))}
                         </tbody>
                     </table>
+                </div>
+            )}
+            {/* Tables Explorer */}
+            {activeTab === 'tables' && (
+                <div className="ad-table-wrap">
+                    {loadingTables ? (
+                        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-dim)' }}>
+                            <div className="ad-spinner" style={{ margin: '0 auto 12px' }} />
+                            Fetching table definitions…
+                        </div>
+                    ) : (
+                        <table className="ad-table">
+                            <thead>
+                                <tr>
+                                    <th>Table Name</th>
+                                    <th>Description</th>
+                                    <th>Columns</th>
+                                    <th>Rows</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tables.length === 0 ? (
+                                    <tr>
+                                        <td colSpan={4} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
+                                            No public tables found
+                                        </td>
+                                    </tr>
+                                ) : tables.map(t => (
+                                    <tr key={t.name}>
+                                        <td className="primary">{t.name}</td>
+                                        <td className="dim" style={{ whiteSpace: 'normal', maxWidth: '300px' }}>
+                                            {t.description}
+                                        </td>
+                                        <td className="dim">{t.columns}</td>
+                                        <td className="amber">{t.rowCount.toLocaleString()}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
                 </div>
             )}
         </>
