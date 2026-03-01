@@ -6,6 +6,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 interface Sale {
     id: string; amount: number; currency: string;
     product: string; email: string; date: string;
+    customerName: string;
     source: string; debugId: string;
     type: 'verified' | 'linked' | 'unlinked';
 }
@@ -16,6 +17,9 @@ interface LeadRow {
     id: string; name: string; email: string;
     product: string; date: string; source: string;
     debugId: string;
+}
+interface AbandonedCart {
+    id: string; email: string; name: string; product: string; date: string; reason: string; source: string;
 }
 interface DatabaseTable {
     name: string;
@@ -29,8 +33,11 @@ interface Metrics {
     productBreakdown: ProductBreakdown[];
     recentSales: Sale[];
     recentLeads: LeadRow[];
+    abandonedCarts: AbandonedCart[];
     range: string;
     limit: number;
+    startDate?: string;
+    endDate?: string;
 }
 
 // ── Helpers ───────────────────────────────────────────────────────
@@ -41,6 +48,7 @@ function fmt(cents: number, currency = 'USD') {
     }).format(cents / 100);
 }
 function fmtDate(iso: string) {
+    if (!iso) return '—';
     return new Date(iso).toLocaleDateString('en-GB', {
         day: '2-digit', month: 'short', year: '2-digit'
     });
@@ -94,74 +102,135 @@ function LockScreen({ onUnlock }: { onUnlock: (pw: string) => void }) {
     );
 }
 
-// ── Dashboard ─────────────────────────────────────────────────────
-function Dashboard({ password }: { password: string }) {
-    const [metrics, setMetrics] = useState<Metrics | null>(null);
+// ── Table Explorer ────────────────────────────────────────────────
+function DatabaseExplorer({ password }: { password: string }) {
+    const [tables, setTables] = useState<DatabaseTable[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const loadTables = useCallback(async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/admidash/tables', {
+                headers: { 'Authorization': `Bearer ${password}` },
+            });
+            const data = await res.json();
+            setTables(data.tables || []);
+        } catch (e) {
+            console.error('Failed to load tables:', e);
+        } finally {
+            setLoading(false);
+        }
+    }, [password]);
+
+    useEffect(() => { loadTables(); }, [loadTables]);
+
+    if (loading) return (
+        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-dim)' }}>
+            <div className="ad-spinner" style={{ margin: '0 auto 12px' }} />
+            Fetching table definitions…
+        </div>
+    );
+
+    return (
+        <table className="ad-table">
+            <thead>
+                <tr>
+                    <th>Table Name</th>
+                    <th>Description</th>
+                    <th>Columns</th>
+                    <th>Rows</th>
+                </tr>
+            </thead>
+            <tbody>
+                {tables.map(t => (
+                    <tr key={t.name}>
+                        <td className="primary">{t.name}</td>
+                        <td className="dim" style={{ whiteSpace: 'normal', maxWidth: '300px' }}>{t.description}</td>
+                        <td className="dim">{t.columns}</td>
+                        <td className="amber">{typeof t.rowCount === 'number' ? t.rowCount.toLocaleString() : t.rowCount}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+}
+
+// ── Dashboard Component ───────────────────────────────────────────
+function DashboardContent({ password }: { password: string }) {
+    const [m, setM] = useState<Metrics | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [lastRefresh, setLastRefresh] = useState(new Date());
-    const [activeTab, setActiveTab] = useState<'sales' | 'leads' | 'tables'>('sales');
-    const [tables, setTables] = useState<DatabaseTable[]>([]);
-    const [loadingTables, setLoadingTables] = useState(false);
+    const [activeTab, setActiveTab] = useState<'sales' | 'leads' | 'databases' | 'abandoned'>('sales');
     const [range, setRange] = useState('last30d');
     const [limit, setLimit] = useState(50);
+    const [customStart, setCustomStart] = useState('');
+    const [customEnd, setCustomEnd] = useState('');
 
     const load = useCallback(async () => {
-        setLoading(true); setError(null);
         try {
-            const res = await fetch(`/api/admidash/metrics?range=${range}&limit=${limit}`, {
-                headers: { Authorization: `Bearer ${password}` },
+            setLoading(true); setError(null);
+            let url = `/api/admidash/metrics?range=${range}&limit=${limit}`;
+            if (range === 'custom' && customStart && customEnd) {
+                url = `/api/admidash/metrics?startDate=${customStart}&endDate=${customEnd}&limit=${limit}`;
+            }
+            const res = await fetch(url, {
+                headers: { 'Authorization': `Bearer ${password}` },
             });
             if (!res.ok) throw new Error(`Error ${res.status}`);
             const data = await res.json();
-            setMetrics(data);
+            setM(data);
             setLastRefresh(new Date());
         } catch (e: any) {
             setError(e.message);
         } finally {
             setLoading(false);
         }
-    }, [password, range, limit]);
+    }, [password, range, limit, customStart, customEnd]);
 
-    const loadTables = useCallback(async () => {
-        setLoadingTables(true);
-        try {
-            const res = await fetch('/api/admidash/tables', {
-                headers: { Authorization: `Bearer ${password}` },
-            });
-            if (!res.ok) throw new Error(`Error ${res.status}`);
-            const data = await res.json();
-            setTables(data.tables || []);
-        } catch (e: any) {
-            console.error('Failed to load tables:', e);
-        } finally {
-            setLoadingTables(false);
-        }
-    }, [password]);
+    useEffect(() => { load(); }, [range, limit, password]); // Auto-load on preset change
 
-    useEffect(() => {
-        load();
-        loadTables();
-    }, [load, loadTables]);
+    const exportLeadsCSV = () => {
+        if (!m?.recentLeads.length) return;
+        const headers = ["Date", "Name", "Email", "Product", "Source", "ID"];
+        const rows = m.recentLeads.map(l => [
+            fmtDate(l.date),
+            (l.name || '').replace(/,/g, ''),
+            l.email,
+            (l.product || '').replace(/,/g, ''),
+            l.source,
+            l.id
+        ]);
+        const csvContent = "data:text/csv;charset=utf-8,"
+            + headers.join(",") + "\n"
+            + rows.map(e => e.join(",")).join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `leads_export_${new Date().toISOString().split('T')[0]}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
-    if (loading && !metrics) {
+    if (loading && !m) {
         return (
             <div className="ad-loading">
                 <div className="ad-spinner" />
-                Loading metrics…
+                Loading Command Centre…
             </div>
         );
     }
 
-    if (error && !metrics) {
+    if (error && !m) {
         return <div className="ad-error">⚠ {error}</div>;
     }
 
-    const m = metrics!;
+    const metrics = m!;
 
     return (
-        <>
-            {/* Top bar */}
+        <div className="ad-wrap">
+            {/* Top Bar */}
             <div className="ad-topbar">
                 <div className="ad-brand">
                     <div className="ad-brand-dot" />
@@ -171,62 +240,64 @@ function Dashboard({ password }: { password: string }) {
                     <span className="ad-ts">
                         Refreshed {lastRefresh.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
                     </span>
-                    <button className="ad-refresh-btn" onClick={() => { load(); loadTables(); }} disabled={loading}>
+                    <button className="ad-refresh-btn" onClick={load} disabled={loading}>
                         {loading ? '↻ Loading' : '↻ Refresh'}
                     </button>
                 </div>
             </div>
 
-            {/* Hero metrics */}
+            {/* Hero Metrics */}
             <div className="ad-hero">
                 <div className="ad-hero-cell">
                     <div className="ad-metric-label">Revenue ({range})</div>
-                    <div className="ad-metric-value">{fmt(m.totalRevenue)}</div>
-                    <div className="ad-metric-sub">{m.recentSales.length} transactions</div>
+                    <div className="ad-metric-value">{fmt(metrics.totalRevenue)}</div>
+                    <div className="ad-metric-sub">{metrics.recentSales.length} transactions</div>
                 </div>
                 <div className="ad-hero-cell">
                     <div className="ad-metric-label">Leads ({range})</div>
-                    <div className="ad-metric-value">{m.totalLeads.toLocaleString()}</div>
+                    <div className="ad-metric-value">{metrics.totalLeads.toLocaleString()}</div>
                     <div className="ad-metric-sub">Across all database tables</div>
                 </div>
                 <div className="ad-hero-cell">
                     <div className="ad-metric-label">Filters</div>
-                    <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
-                        <select
-                            className="ad-select"
-                            value={range}
-                            onChange={e => setRange(e.target.value)}
-                        >
+                    <div className="ad-filters">
+                        <select className="ad-select" value={range} onChange={e => setRange(e.target.value)}>
                             <option value="today">Today</option>
                             <option value="yesterday">Yesterday</option>
                             <option value="last7d">Last 7 Days</option>
                             <option value="last30d">Last 30 Days</option>
+                            <option value="custom">Custom Range</option>
                             <option value="all">All Time</option>
                         </select>
-                        <select
-                            className="ad-select"
-                            value={limit}
-                            onChange={e => setLimit(parseInt(e.target.value))}
-                        >
-                            <option value="20">Last 20</option>
-                            <option value="50">Last 50</option>
-                            <option value="100">Last 100</option>
-                            <option value="500">Last 500</option>
+
+                        {range === 'custom' && (
+                            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                <input type="date" className="ad-select" style={{ width: '130px' }} value={customStart} onChange={e => setCustomStart(e.target.value)} />
+                                <span style={{ color: 'var(--text-dim)' }}>to</span>
+                                <input type="date" className="ad-select" style={{ width: '130px' }} value={customEnd} onChange={e => setCustomEnd(e.target.value)} />
+                                <button onClick={load} className="ad-btn" style={{ padding: '6px 12px', fontSize: '11px' }}>Apply</button>
+                            </div>
+                        )}
+
+                        <select className="ad-select" value={limit} onChange={e => setLimit(parseInt(e.target.value))}>
+                            <option value="20">Show 20</option>
+                            <option value="50">Show 50</option>
+                            <option value="100">Show 100</option>
+                            <option value="500">Show 500</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-
             {/* Product breakdown */}
-            {m.productBreakdown && m.productBreakdown.length > 0 && (
+            {metrics.productBreakdown && metrics.productBreakdown.length > 0 && (
                 <>
                     <div className="ad-section-head">
                         <span className="ad-section-title">Product Distribution ({range})</span>
                         <div className="ad-section-line" />
                     </div>
                     <div className="ad-product-grid">
-                        {m.productBreakdown.map(p => (
+                        {metrics.productBreakdown.map(p => (
                             <div key={p.name} className="ad-product-card">
                                 <div className="ad-product-name">{p.name}</div>
                                 <div className="ad-product-rev">{fmt(p.revenue)}</div>
@@ -237,177 +308,125 @@ function Dashboard({ password }: { password: string }) {
                 </>
             )}
 
-            {/* Tabs */}
+            {/* Tabs Navigation */}
             <div className="ad-section-head" style={{ marginTop: 40 }}>
-                <span
-                    className="ad-section-title"
-                    style={{ cursor: 'pointer', color: activeTab === 'sales' ? 'var(--amber)' : undefined }}
-                    onClick={() => setActiveTab('sales')}
-                >
-                    Recent Sales ({m.recentSales.length})
-                </span>
-                <div className="ad-section-line" />
-                <span
-                    className="ad-section-title"
-                    style={{ cursor: 'pointer', color: activeTab === 'leads' ? 'var(--amber)' : undefined }}
-                    onClick={() => setActiveTab('leads')}
-                >
-                    Recent Leads ({m.recentLeads.length})
-                </span>
-                <div className="ad-section-line" />
-                <span
-                    className="ad-section-title"
-                    style={{ cursor: 'pointer', color: activeTab === 'tables' ? 'var(--amber)' : undefined }}
-                    onClick={() => setActiveTab('tables')}
-                >
-                    Databases ({tables.length})
-                </span>
+                <div className="ad-tabs">
+                    <button className={`ad-tab ${activeTab === 'sales' ? 'active' : ''}`} onClick={() => setActiveTab('sales')}>Recent Sales ({metrics.recentSales.length})</button>
+                    <button className={`ad-tab ${activeTab === 'leads' ? 'active' : ''}`} onClick={() => setActiveTab('leads')}>All Leads ({metrics.recentLeads.length})</button>
+                    <button className={`ad-tab ${activeTab === 'abandoned' ? 'active' : ''}`} onClick={() => setActiveTab('abandoned')}>Abandoned Carts ({metrics.abandonedCarts.length})</button>
+                    <button className={`ad-tab ${activeTab === 'databases' ? 'active' : ''}`} onClick={() => setActiveTab('databases')}>Databases</button>
+                </div>
             </div>
 
-            {/* Sales table */}
-            {activeTab === 'sales' && (
-                <div className="ad-table-wrap">
-                    <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
-                        📝 <b>Sales Logic</b>: Showing rows from all 5 product tables where payment is marked,
-                        merged with raw Stripe charges that haven't been linked by email.
-                    </div>
-                    <table className="ad-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Product</th>
-                                <th>Email</th>
-                                <th>Source / Audit Trail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {m.recentSales.length === 0 ? (
-                                <tr>
-                                    <td colSpan={5} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
-                                        No sales found for this range
-                                    </td>
-                                </tr>
-                            ) : m.recentSales.map(s => (
-                                <tr key={s.id}>
-                                    <td className="dim">{fmtDate(s.date)}</td>
-                                    <td className="amber">{fmt(s.amount, s.currency)}</td>
-                                    <td className="primary">{s.product}</td>
-                                    <td className="dim">{s.email}</td>
-                                    <td>
-                                        <div style={{ fontSize: '10px', color: s.type === 'verified' ? 'var(--green)' : 'var(--text-mid)' }}>
-                                            {s.source}
-                                        </div>
-                                        <div style={{ fontSize: '9px', color: 'var(--text-dim)', marginTop: '2px' }}>
-                                            ID: {s.debugId}
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
-
-            {/* Leads table */}
-            {activeTab === 'leads' && (
-                <div className="ad-table-wrap">
-                    <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
-                        👥 <b>Leads Logic</b>: Showing all records across tables (Hit 10k, Launch Lab, etc.)
-                        that have no recorded payment in the database or via Stripe.
-                    </div>
-                    <table className="ad-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Product</th>
-                                <th>Source / Audit Trail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {m.recentLeads.length === 0 ? (
-                                <tr>
-                                    <td colSpan={5} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
-                                        No leads found
-                                    </td>
-                                </tr>
-                            ) : m.recentLeads.map(l => (
-                                <tr key={l.id + l.source}>
-                                    <td className="dim">{fmtDate(l.date)}</td>
-                                    <td className="primary">{l.name || '—'}</td>
-                                    <td className="dim">{l.email}</td>
-                                    <td className="dim">{l.product}</td>
-                                    <td>
-                                        <div style={{ fontSize: '10px', color: 'var(--text-mid)' }}>
-                                            {l.source}
-                                        </div>
-                                        <div style={{ fontSize: '9px', color: 'var(--text-dim)', marginTop: '2px' }}>
-                                            ID: {l.debugId}
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
-            {/* Tables Explorer */}
-            {activeTab === 'tables' && (
-                <div className="ad-table-wrap">
-                    {loadingTables ? (
-                        <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-dim)' }}>
-                            <div className="ad-spinner" style={{ margin: '0 auto 12px' }} />
-                            Fetching table definitions…
+            {/* Tab Content */}
+            <div className="ad-table-wrap">
+                {activeTab === 'sales' && (
+                    <>
+                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
+                            📝 <b>Sales Logic</b>: Showing all Stripe charges &gt; $0. Cross-referenced with DB for name/product context.
                         </div>
-                    ) : (
                         <table className="ad-table">
                             <thead>
-                                <tr>
-                                    <th>Table Name</th>
-                                    <th>Description</th>
-                                    <th>Columns</th>
-                                    <th>Rows</th>
-                                </tr>
+                                <tr><th>Date</th><th>Amount</th><th>Product</th><th>Customer / Email</th><th>Source / Audit</th></tr>
                             </thead>
                             <tbody>
-                                {tables.length === 0 ? (
-                                    <tr>
-                                        <td colSpan={4} className="dim" style={{ textAlign: 'center', padding: '24px' }}>
-                                            No public tables found
+                                {metrics.recentSales.map(s => (
+                                    <tr key={s.id}>
+                                        <td className="dim">{fmtDate(s.date)}</td>
+                                        <td className="amber">{fmt(s.amount, s.currency)}</td>
+                                        <td className="primary">{s.product}</td>
+                                        <td>
+                                            <div className="primary">{s.customerName}</div>
+                                            <div className="dim" style={{ fontSize: '10px' }}>{s.email}</div>
                                         </td>
-                                    </tr>
-                                ) : tables.map(t => (
-                                    <tr key={t.name}>
-                                        <td className="primary">{t.name}</td>
-                                        <td className="dim" style={{ whiteSpace: 'normal', maxWidth: '300px' }}>
-                                            {t.description}
+                                        <td>
+                                            <div style={{ fontSize: '10px', color: s.type === 'verified' ? 'var(--green)' : 'var(--text-mid)' }}>{s.source}</div>
+                                            <div style={{ fontSize: '9px', color: 'var(--text-dim)' }}>ID: {s.debugId}</div>
                                         </td>
-                                        <td className="dim">{t.columns}</td>
-                                        <td className="amber">{t.rowCount.toLocaleString()}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                    )}
-                </div>
-            )}
-        </>
+                    </>
+                )}
+
+                {activeTab === 'leads' && (
+                    <>
+                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>👥 <b>Leads Logic</b>: Showing all database records with <b>NO</b> Stripe payment.</div>
+                            <button onClick={exportLeadsCSV} className="ad-btn" style={{ padding: '4px 8px', fontSize: '10px', background: 'var(--bg4)' }}>Export CSV</button>
+                        </div>
+                        <table className="ad-table">
+                            <thead>
+                                <tr><th>Date</th><th>Name</th><th>Email</th><th>Product</th><th>Source / Audit</th></tr>
+                            </thead>
+                            <tbody>
+                                {metrics.recentLeads.map(l => (
+                                    <tr key={l.id + l.source}>
+                                        <td className="dim">{fmtDate(l.date)}</td>
+                                        <td className="primary">{l.name || '—'}</td>
+                                        <td className="dim">{l.email}</td>
+                                        <td className="dim">{l.product}</td>
+                                        <td>
+                                            <div style={{ fontSize: '10px', color: 'var(--text-mid)' }}>{l.source}</div>
+                                            <div style={{ fontSize: '9px', color: 'var(--text-dim)' }}>ID: {l.debugId}</div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </>
+                )}
+
+                {activeTab === 'abandoned' && (
+                    <>
+                        <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-mid)' }}>
+                            🛒 <b>Abandoned Carts Logic</b>: Tracking $0 sessions and started checkouts with no sale.
+                        </div>
+                        <table className="ad-table">
+                            <thead>
+                                <tr><th>Date</th><th>Name / Email</th><th>Product</th><th>Reason</th><th>Source</th></tr>
+                            </thead>
+                            <tbody>
+                                {metrics.abandonedCarts.map(a => (
+                                    <tr key={a.id}>
+                                        <td className="dim">{fmtDate(a.date)}</td>
+                                        <td>
+                                            <div className="primary">{a.name}</div>
+                                            <div className="dim" style={{ fontSize: '10px' }}>{a.email}</div>
+                                        </td>
+                                        <td className="amber">{a.product}</td>
+                                        <td>
+                                            <span style={{ fontSize: '10px', padding: '2px 6px', borderRadius: '4px', background: 'rgba(245, 166, 35, 0.1)', color: 'var(--amber)' }}>
+                                                {a.reason}
+                                            </span>
+                                        </td>
+                                        <td className="dim" style={{ fontSize: '10px' }}>{a.source}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </>
+                )}
+
+                {activeTab === 'databases' && (
+                    <DatabaseExplorer password={password} />
+                )}
+            </div>
+        </div>
     );
 }
 
-// ── Main Export ───────────────────────────────────────────────────
-export default function AdminDashboard() {
+// ── Main Page Component ───────────────────────────────────────────
+export default function AdminDashboardPage() {
     const [password, setPassword] = useState<string | null>(null);
 
     return (
         <div className="ad-root">
-            {!password && <LockScreen onUnlock={setPassword} />}
-            {password && (
-                <div className="ad-wrap">
-                    <Dashboard password={password} />
-                </div>
+            {!password ? (
+                <LockScreen onUnlock={setPassword} />
+            ) : (
+                <DashboardContent password={password} />
             )}
         </div>
     );
