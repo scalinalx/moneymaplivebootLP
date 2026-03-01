@@ -6,6 +6,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 interface Sale {
     id: string; amount: number; currency: string;
     product: string; email: string; date: string;
+    source: string; debugId: string;
+    type: 'verified' | 'linked' | 'unlinked';
 }
 interface ProductBreakdown {
     name: string; revenue: number; count: number;
@@ -239,6 +241,10 @@ function Dashboard({ password }: { password: string }) {
             {/* Sales table */}
             {activeTab === 'sales' && (
                 <div className="ad-table-wrap">
+                    <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
+                        📝 <b>Sales Logic</b>: Showing "Verified" sales from Supabase (updated via webhook) and
+                        "Raw" Stripe charges that haven't been linked to a database record yet.
+                    </div>
                     <table className="ad-table">
                         <thead>
                             <tr>
@@ -246,7 +252,7 @@ function Dashboard({ password }: { password: string }) {
                                 <th>Amount</th>
                                 <th>Product</th>
                                 <th>Email</th>
-                                <th>ID</th>
+                                <th>Source / Audit Trail</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -262,7 +268,14 @@ function Dashboard({ password }: { password: string }) {
                                     <td className="amber">{fmt(s.amount, s.currency)}</td>
                                     <td className="primary">{s.product}</td>
                                     <td className="dim">{s.email}</td>
-                                    <td className="dim" style={{ fontSize: 10 }}>{s.id.slice(-8)}</td>
+                                    <td>
+                                        <div style={{ fontSize: '10px', color: s.type === 'verified' ? 'var(--green)' : 'var(--text-mid)' }}>
+                                            {s.source}
+                                        </div>
+                                        <div style={{ fontSize: '9px', color: 'var(--text-dim)', marginTop: '2px' }}>
+                                            ID: {s.debugId}
+                                        </div>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -273,6 +286,10 @@ function Dashboard({ password }: { password: string }) {
             {/* Leads table */}
             {activeTab === 'leads' && (
                 <div className="ad-table-wrap">
+                    <div style={{ padding: '12px 16px', background: 'var(--bg3)', borderBottom: '1px solid var(--border)', fontSize: '11px', color: 'var(--text-dim)' }}>
+                        👥 <b>Leads Logic</b>: Showing all records in <code>leads_bootcamp_brands</code>.
+                        "Paid" status is updated automatically when a Stripe checkout session completes for that lead's email.
+                    </div>
                     <table className="ad-table">
                         <thead>
                             <tr>
