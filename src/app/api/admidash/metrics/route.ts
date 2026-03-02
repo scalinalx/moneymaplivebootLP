@@ -123,10 +123,46 @@ export async function GET(req: NextRequest) {
         }));
 
         const allSupabaseRecords = tableResults.flat();
+
+        // --- REFINED: Store all records per email to allow smarter matching ---
         const supabaseRecordsByEmail = allSupabaseRecords.reduce((acc, r) => {
-            if (r._email && !acc[r._email]) acc[r._email] = r;
+            if (!r._email) return acc;
+            if (!acc[r._email]) acc[r._email] = [];
+            acc[r._email].push(r);
             return acc;
-        }, {} as Record<string, any>);
+        }, {} as Record<string, any[]>);
+
+        // helper to find the BEST match in Supabase for a given Stripe email + product
+        const findBestSupabaseMatch = (email: string, stripeProduct: string, stripeDate: string, amount?: number) => {
+            const matches = supabaseRecordsByEmail[email] || [];
+            if (matches.length === 0) return null;
+            if (matches.length === 1) return matches[0];
+
+            const normStripe = stripeProduct.toLowerCase();
+            const stripeTime = new Date(stripeDate).getTime();
+
+            // Priority 1: Exact product match AND similar date (within 7 days)
+            const exactProductRecent = matches.find((m: any) => {
+                const productMatch = m._product.toLowerCase().includes(normStripe) || normStripe.includes(m._product.toLowerCase());
+                const dateMatch = Math.abs(new Date(m._date).getTime() - stripeTime) < 7 * 24 * 60 * 60 * 1000;
+                return productMatch && dateMatch;
+            });
+            if (exactProductRecent) return exactProductRecent;
+
+            // Priority 2: Matches payment intent ID (Strongest link if available)
+            // Priority 3: Exact product match
+            const productOnlyMatch = matches.find((m: any) =>
+                m._product.toLowerCase().includes(normStripe) ||
+                normStripe.includes(m._product.toLowerCase())
+            );
+            if (productOnlyMatch) return productOnlyMatch;
+
+            // Fallback: Pick the one with the closest date
+            return matches.sort((a: any, b: any) =>
+                Math.abs(new Date(a._date).getTime() - stripeTime) -
+                Math.abs(new Date(b._date).getTime() - stripeTime)
+            )[0];
+        };
 
         // 3. Process Sales (Revenue > 0)
         const stripeSales = stripeCharges.data
@@ -134,7 +170,13 @@ export async function GET(req: NextRequest) {
             .map(c => {
                 const rawEmail = c.billing_details?.email || (c.customer as any)?.email || c.metadata?.email;
                 const email = rawEmail?.toLowerCase();
-                const supabaseMatch = email ? supabaseRecordsByEmail[email] : null;
+
+                // Determine product from Stripe first as it's the "source of truth" for the actual charge
+                const stripeProductRaw = c.metadata?.product_name || c.metadata?.program || c.description || 'Unknown Product';
+                const stripeProduct = normalizeProduct(stripeProductRaw);
+
+                // Find matching Supabase record, prioritized by product similarity and date proximity
+                const supabaseMatch = email ? findBestSupabaseMatch(email, stripeProduct, new Date(c.created * 1000).toISOString(), c.amount) : null;
 
                 return {
                     id: c.id,
@@ -143,7 +185,7 @@ export async function GET(req: NextRequest) {
                     date: new Date(c.created * 1000).toISOString(),
                     email: email || '—',
                     customerName: supabaseMatch?._name || c.billing_details?.name || c.metadata?.name || '—',
-                    product: normalizeProduct(supabaseMatch?._product || c.metadata?.product_name || c.metadata?.program || c.description || 'Unknown Product'),
+                    product: stripeProduct,
                     source: supabaseMatch ? `Supabase: ${supabaseMatch._sourceTable}` : 'Stripe: Charge',
                     debugId: supabaseMatch?.[t_id_key(supabaseMatch._sourceTable)] || supabaseMatch?.id || c.id,
                     type: supabaseMatch ? 'verified' : 'unlinked'
@@ -151,22 +193,23 @@ export async function GET(req: NextRequest) {
             });
 
         // 4. Process Abandoned Carts
-        // Rule: $0 Stripe sessions OR Supabase records with checkout activity but no payment
-        const successfulEmails = new Set(stripeSales.map(s => s.email).filter(e => e !== '—'));
+        const successfulEmails = new Set(stripeSales.map(s => `${s.email}|${s.product}`));
 
         const stripeAbandonments = stripeCharges.data
             .filter(c => (c.amount === 0 || !c.paid))
             .map(c => {
                 const rawEmail = c.billing_details?.email || (c.customer as any)?.email || c.metadata?.email;
-                const email = rawEmail?.toLowerCase();
-                const supabaseMatch = email ? supabaseRecordsByEmail[email] : null;
+                const email = rawEmail?.trim().toLowerCase();
+                const stripeProduct = normalizeProduct(c.description || 'Abandoned Checkout');
+                const stripeDate = new Date(c.created * 1000).toISOString();
+                const supabaseMatch = email ? findBestSupabaseMatch(email, stripeProduct, stripeDate) : null;
 
                 return {
                     id: c.id,
                     email: email || '—',
                     name: supabaseMatch?._name || c.billing_details?.name || '—',
-                    product: normalizeProduct(supabaseMatch?._product || c.description || 'Abandoned Checkout'),
-                    date: new Date(c.created * 1000).toISOString(),
+                    product: stripeProduct,
+                    date: stripeDate,
                     reason: (c.amount === 0 && c.paid) ? '$0 Session' : 'Unpaid Charge',
                     source: 'Stripe',
                     potentialRevenue: c.amount || 0
@@ -176,7 +219,7 @@ export async function GET(req: NextRequest) {
         const supabaseAbandonments = allSupabaseRecords
             .filter(r => {
                 if (r._isPaid) return false;
-                if (successfulEmails.has(r._email)) return false;
+                if (successfulEmails.has(`${r._email}|${r._product}`)) return false;
 
                 // ── Rule A: Explicit Checkout Indicators ────────────────
                 const hasStartedCheckout = r.checkout_started_at || r.checkout_status === 'lead_captured';
@@ -204,8 +247,26 @@ export async function GET(req: NextRequest) {
                 potentialRevenue: r.total_paid || r.amount_paid || r.amount || 0
             }));
 
-        const abandonedCarts = [...stripeAbandonments, ...supabaseAbandonments]
-            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        // --- DEDUPLICATION LOGIC ---
+        const dedupedMap = new Map();
+        [...stripeAbandonments, ...supabaseAbandonments].forEach(item => {
+            const day = new Date(item.date).toISOString().split('T')[0];
+            // Key: email + product + day (STRICT DEDUPE)
+            const key = `${item.email.toLowerCase()}|${item.product}|${day}`;
+
+            if (!dedupedMap.has(key)) {
+                dedupedMap.set(key, item);
+            } else {
+                const existing = dedupedMap.get(key);
+                // Prefer Stripe source or higher potential revenue
+                if (item.source === 'Stripe' || (item.potentialRevenue || 0) > (existing.potentialRevenue || 0)) {
+                    dedupedMap.set(key, item);
+                }
+            }
+        });
+
+        const abandonedCarts = Array.from(dedupedMap.values())
+            .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
         // 5. Abandonment Report (By Product)
         const abandonmentMap: Record<string, { count: number; potentialRevenue: number }> = {};
@@ -249,27 +310,62 @@ export async function GET(req: NextRequest) {
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
             .slice(0, limit);
 
-        const totalRevenue = allSales.reduce((sum, s) => sum + s.amount, 0);
+        // 5. Product Breakdown & Totals
+        const productMap: Record<string, { revenue: number; count: number; leadCount: number }> = {};
 
-        // 5. Product Breakdown
-        const productMap: Record<string, { revenue: number; count: number }> = {};
-        for (const s of allSales) {
-            if (!productMap[s.product]) productMap[s.product] = { revenue: 0, count: 0 };
+        stripeSales.forEach(s => {
+            if (!productMap[s.product]) productMap[s.product] = { revenue: 0, count: 0, leadCount: 0 };
             productMap[s.product].revenue += s.amount;
             productMap[s.product].count += 1;
-        }
+        });
+
+        leads.forEach(l => {
+            if (!productMap[l.product]) productMap[l.product] = { revenue: 0, count: 0, leadCount: 0 };
+            productMap[l.product].leadCount += 1;
+        });
+
         const productBreakdown = Object.entries(productMap)
             .map(([name, data]) => ({ name, ...data }))
             .sort((a, b) => b.revenue - a.revenue);
 
+        // 6. Best Customers (Aggregated by Email)
+        const customerMap: Record<string, { email: string; name: string; totalSpent: number; products: Set<string>; lastPurchase: string }> = {};
+
+        stripeSales.forEach(s => {
+            if (!customerMap[s.email]) {
+                customerMap[s.email] = {
+                    email: s.email,
+                    name: s.customerName,
+                    totalSpent: 0,
+                    products: new Set(),
+                    lastPurchase: s.date
+                };
+            }
+            customerMap[s.email].totalSpent += s.amount;
+            customerMap[s.email].products.add(s.product);
+            if (new Date(s.date) > new Date(customerMap[s.email].lastPurchase)) {
+                customerMap[s.email].lastPurchase = s.date;
+            }
+        });
+
+        const bestCustomers = Object.values(customerMap)
+            .map(c => ({
+                ...c,
+                productCount: c.products.size,
+                products: Array.from(c.products)
+            }))
+            .sort((a, b) => b.totalSpent - a.totalSpent || b.productCount - a.productCount)
+            .slice(0, 100);
+
         return NextResponse.json({
-            totalRevenue,
-            totalLeads: allLeads.length,
+            totalRevenue: stripeSales.reduce((sum, s) => sum + s.amount, 0),
+            totalLeads: leads.length,
             productBreakdown,
             recentSales: allSales,
             recentLeads: allLeads,
             abandonedCarts: abandonedCarts.slice(0, limit),
             abandonmentReport,
+            bestCustomers,
             range,
             limit,
             startDate: startISO,

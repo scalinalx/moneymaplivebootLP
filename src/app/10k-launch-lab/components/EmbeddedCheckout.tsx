@@ -233,6 +233,31 @@ export const EmbeddedCheckout: React.FC = () => {
                                 </div>
                             </div>
 
+                            {/* Price Breakdown */}
+                            <div className="bg-gray-50 rounded-xl p-5 space-y-3 mb-6 border border-gray-100">
+                                <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-1">Itemized Breakdown:</p>
+                                <div className="flex justify-between items-center text-sm">
+                                    <span className="text-gray-600">10k Launch Lab (Base)</span>
+                                    <span className="font-bold text-black">${LAUNCHLAB_PRICE / 100}</span>
+                                </div>
+                                {hasOrderBump && (
+                                    <div className="flex justify-between items-center text-sm">
+                                        <span className="text-gray-600">Hooks That Stop the Scroll</span>
+                                        <span className="font-bold text-black">${LAUNCHLAB_BUMP_PRICE / 100}</span>
+                                    </div>
+                                )}
+                                {hasOrderBump2 && (
+                                    <div className="flex justify-between items-center text-sm">
+                                        <span className="text-gray-600">The 60-Minute Launch Calendar</span>
+                                        <span className="font-bold text-black">${LAUNCHLAB_BUMP2_PRICE / 100}</span>
+                                    </div>
+                                )}
+                                <div className="pt-3 border-t border-gray-200 flex justify-between items-center">
+                                    <span className="font-bold text-black">Final Total</span>
+                                    <span className="font-display text-xl text-[#d81159] text-black font-bold">${calculateTotal()}</span>
+                                </div>
+                            </div>
+
                             {clientSecret && leadId && (
                                 <Elements stripe={stripePromise} options={{
                                     clientSecret, appearance: {

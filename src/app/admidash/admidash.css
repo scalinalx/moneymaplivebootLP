@@ -654,3 +654,66 @@ table.ad-table {
         padding: 36px 24px;
     }
 }
+/* ── SELECTION & ACTION BAR ──────────────────────────────────── */
+.ad-table tbody tr.selected {
+    background: rgba(245, 166, 35, 0.05) !important;
+}
+
+.ad-action-bar {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg2);
+    border: 1px solid var(--amber);
+    border-radius: 12px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 2000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 166, 35, 0.1);
+    animation: adSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes adSlideUp {
+    from { transform: translate(-50%, 40px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.ad-action-info {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--text-mid);
+}
+
+.ad-action-info b {
+    color: var(--amber);
+    font-size: 14px;
+}
+
+.ad-action-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.ad-btn.amber {
+    background: var(--amber);
+    color: var(--bg);
+    border: none;
+    font-weight: 600;
+}
+
+.ad-btn.amber:hover {
+    background: var(--text);
+}
+
+/* ── RESPONSIVE SYNC BAR ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .ad-action-bar {
+        width: calc(100% - 48px);
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
