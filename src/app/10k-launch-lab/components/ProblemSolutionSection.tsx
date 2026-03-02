@@ -17,14 +17,19 @@ const DMCard = ({
 }) => {
     // Generate deterministic generic avatar based on index
     // Generate deterministic generic avatar based on index - NEW IMAGES
-    const avatar = `https://images.unsplash.com/photo-${[
-        '1554151228-14d9def656ec', // Person 1
-        '1527980965255-d3b416303d12', // Person 2
-        '1544005313-94ddf0286df2', // Person 3
-        '1506794778202-cad84cf45f1d', // Person 4
-        '1544725176-7c40e5a71c5e', // Person 5
-        '1535713875002-d1d0cf377fde'  // Person 6
-    ][profileIndex % 6]}?auto=format&fit=crop&w=64&q=80`;
+    let avatar = '';
+    if (profileIndex % 6 === 0) {
+        avatar = '/imgs/avatars/avatar-1.png';
+    } else if (profileIndex % 6 === 1) {
+        avatar = '/imgs/avatars/avatar-2.png';
+    } else {
+        avatar = `https://images.unsplash.com/photo-${[
+            '1544005313-94ddf0286df2', // Person 3
+            '1506794778202-cad84cf45f1d', // Person 4
+            '1544725176-7c40e5a71c5e', // Person 5
+            '1535713875002-d1d0cf377fde'  // Person 6
+        ][(profileIndex % 6) - 2]}?auto=format&fit=crop&w=64&q=80`;
+    }
 
     return (
         <div

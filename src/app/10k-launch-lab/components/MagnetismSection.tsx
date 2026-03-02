@@ -61,7 +61,8 @@ export const MagnetismSection: React.FC = () => {
                             <img
                                 src="/imgs/10k-launch-lab/offer-ICPs.jpeg"
                                 alt="10k Launch Lab Offer ICPs"
-                                className="w-full rounded-2xl border-2 border-white/20 grayscale hover:grayscale-0 transition-all duration-300"
+                                className="w-full rounded-2xl border-2 border-white/20 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+                                onClick={scrollToCheckout}
                             />
                         </div>
                     </div>

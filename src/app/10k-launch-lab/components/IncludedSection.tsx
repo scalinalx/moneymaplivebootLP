@@ -11,7 +11,7 @@ export const IncludedSection: React.FC = () => {
     };
 
     return (
-        <section className="w-full bg-white py-20 px-4 md:px-8 flex flex-col items-center">
+        <section className="w-full bg-white pt-20 pb-2 px-4 md:px-8 flex flex-col items-center">
 
             {/* Header */}
             <div className="max-w-4xl w-full mx-auto text-center mb-16">
@@ -100,7 +100,7 @@ export const IncludedSection: React.FC = () => {
             </div>
 
             {/* CTA */}
-            <div className="w-full flex justify-center pb-8">
+            <div className="w-full flex justify-center pb-0">
                 <Button
                     onClick={scrollToCheckout}
                     className="mx-auto px-10 py-3.5 bg-[#d81159] hover:bg-[#b30e4a] text-white border border-gray-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"

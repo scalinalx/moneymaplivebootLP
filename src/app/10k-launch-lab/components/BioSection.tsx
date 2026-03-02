@@ -25,7 +25,8 @@ export const BioSection: React.FC = () => {
                             <img
                                 src="/imgs/ana-calin.jpg"
                                 alt="Ana - How We Grow"
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 border border-gray-200"
+                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 border border-gray-200 cursor-pointer"
+                                onClick={scrollToCheckout}
                             />
                         </div>
                     </div>

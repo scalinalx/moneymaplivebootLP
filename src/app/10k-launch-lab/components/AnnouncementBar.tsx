@@ -24,11 +24,7 @@ export const AnnouncementBar: React.FC = () => {
         >
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
                 <p className="font-display font-black text-[13px] sm:text-[15px] md:text-[18px] lg:text-[20px] tracking-[0.02em] leading-tight uppercase">
-                    🚀 Doors are OPEN — <span className="text-brand-neon">10K LAUNCH LAB</span> enrollment is LIVE!
-                    <span className="hidden sm:inline mx-2 opacity-50">|</span>
-                    <span className="block sm:inline mt-1 sm:mt-0 text-white/90">
-                        Join now at the <span className="text-brand-neon font-black">TODAY ONLY</span> price before it goes back up
-                    </span>
+                    🚀 <span className="text-brand-neon">Today ONLY: 70% OFF.</span> Grab this promo before it ends.
                 </p>
                 <button
                     onClick={scrollToCheckout}

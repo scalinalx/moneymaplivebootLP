@@ -28,22 +28,27 @@ export const Hero: React.FC = () => {
                 </p>
 
                 {/* 2. Main Headline */}
-                <h1 className="font-anton text-[#06b6d4] text-5xl md:text-6xl lg:text-7xl uppercase leading-[1.1] md:leading-[1.05] tracking-wide text-center mb-6 w-full flex flex-col items-center">
+                <h1 className="font-anton text-[#06b6d4] text-4xl md:text-5xl lg:text-6xl uppercase leading-[1.1] md:leading-[1.05] tracking-tight text-center mb-2 w-full flex flex-col items-center">
                     <span className="block mb-2 md:mb-4 w-full">LAUNCH YOUR OFFER IN 30 DAYS</span>
                     <span className="text-[#ffc300] block mt-2">AND HIT YOUR FIRST $10K MONTH</span>
                 </h1>
 
+                {/* 2.5 Limited Time Offer Tag */}
+                <p className="font-montserrat font-bold text-[10px] md:text-xs text-red-500 uppercase tracking-[0.3em] mb-8 animate-pulse">
+                    * limited time offer *
+                </p>
+
                 {/* 3. Subtitle */}
-                <h2 className="font-display text-[#333333] font-bold italic text-xl md:text-3xl max-w-4xl tracking-tight leading-tight mb-8">
+                <h2 className="font-display text-[#333333] font-bold italic text-sm md:text-xl max-w-4xl tracking-tight leading-tight mb-8">
                     Doors are OPEN — but not for long. Grab your spot at today's price before this cohort closes and the price goes back to $1,997.
                 </h2>
 
-                {/* 4. Hero Image Replace Mockup */}
-                <div className="mb-8 md:mb-12 w-full max-w-5xl flex justify-center px-4">
+                <div className="mb-0 md:mb-4 w-full max-w-6xl flex justify-center px-4">
                     <img
-                        src="/imgs/10k-launch-lab/hero-1.jpeg"
+                        src="/imgs/10k-launch-lab/hero3.png"
                         alt="10k Launch Lab Program"
-                        className="w-full h-auto rounded-2xl shadow-2xl border border-gray-100"
+                        className="w-full h-auto drop-shadow-xl cursor-pointer hover:scale-[1.01] transition-transform duration-300"
+                        onClick={scrollToCheckout}
                     />
                 </div>
 
