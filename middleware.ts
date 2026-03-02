@@ -34,6 +34,10 @@ export function middleware(req: NextRequest) {
     '/ecosystem',
     '/vdpb',
     '/admidash',
+    '/checkout-step1',
+    '/lead-collection',
+    '/landing',
+    '/offer-expired',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {

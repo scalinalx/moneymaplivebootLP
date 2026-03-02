@@ -158,6 +158,12 @@
                     "url": "/ana-offer-genius"
                 },
                 {
+                    "name": "Viral Digital Product Builder (VDPB)",
+                    "description": "An interactive builder for creating high-converting viral digital product ideas, names, and copy briefs.",
+                    "access": "Password Protected (Requires `VDPB_PASSWORD`).",
+                    "url": "/vdpb"
+                },
+                {
                     "name": "The Launch Stack",
                     "description": "A comprehensive launch project management tool or dashboard.",
                     "access": "Password Protected (Requires the master password `mellon_hwg`, defined in `.env.local`). Also sold as an Order Bump (usually **$67 - $69** value).",
@@ -166,11 +172,25 @@
             ]
         },
         {
+            "id": "internal-ops",
+            "title": "Internal Operations & Command Centre",
+            "icon": "ShieldCheck",
+            "color": "rose",
+            "items": [
+                {
+                    "name": "HWG Command Centre (Admin Dashboard)",
+                    "description": "Central command center for real-time revenue tracking, multi-table lead management, abandoned cart recovery, and Kit synchronization.",
+                    "access": "Password Protected (Requires `ADMIDASH_PASSWORD`).",
+                    "url": "/admidash"
+                }
+            ]
+        },
+        {
             "id": "bumps-upsells",
             "title": "Bumps & Upsells",
             "subtitle": "Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)",
             "icon": "DollarSign",
-            "color": "rose",
+            "color": "emerald",
             "table": [
                 {
                     "name": "Hooks That Stop the Scroll",
@@ -339,9 +359,29 @@
                 {
                     "path": "/api/[product]/create-payment-intent",
                     "description": "Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions."
+                },
+                {
+                    "path": "/api/admidash/metrics",
+                    "description": "Aggregates complex sales, lead, and abandonment data across all funnels for real-time reporting."
+                },
+                {
+                    "path": "/api/admidash/tables",
+                    "description": "A dynamic explorer providing live row counts and definitions for the Supabase schema."
+                },
+                {
+                    "path": "/api/admidash/kit/sync",
+                    "description": "Synchronizes filtered user segments directly into the Kit (ConvertKit) mailing infrastructure with tagging."
+                },
+                {
+                    "path": "/api/admidash/kit/tags",
+                    "description": "Manages and creates Kit tags directly from the Command Centre."
                 }
             ],
             "tables": [
+                {
+                    "name": "leads",
+                    "description": "Primary lead capture table for general site traffic."
+                },
                 {
                     "name": "leads_bootcamp_brands",
                     "description": "Stores data for the Build to profit workshop."
@@ -442,15 +482,41 @@
                     ]
                 },
                 {
+                    "name": "Kit Integration",
+                    "vars": [
+                        {
+                            "key": "KIT_API_KEY",
+                            "description": "Secret key for authenticating with the Kit (ConvertKit) V4 API."
+                        },
+                        {
+                            "key": "KIT_BASE_URL",
+                            "description": "Base endpoint for Kit API services (Defaults to `api.kit.com/v4/`)."
+                        }
+                    ]
+                },
+                {
+                    "name": "Application Passwords",
+                    "vars": [
+                        {
+                            "key": "ADMIDASH_PASSWORD",
+                            "description": "Protects the central Command Centre dashboard."
+                        },
+                        {
+                            "key": "VDPB_PASSWORD",
+                            "description": "Protects the Viral Digital Product Builder tool."
+                        },
+                        {
+                            "key": "LAUNCH_STACK_PASSWORD",
+                            "description": "Protects the legacy Launch Stack dashboard."
+                        }
+                    ]
+                },
+                {
                     "name": "Global Configurations",
                     "vars": [
                         {
                             "key": "NEXT_PUBLIC_APP_URL",
                             "description": "Used for redirect URLs, webhooks, and SEO metadata."
-                        },
-                        {
-                            "key": "NEXT_PUBLIC_LAUNCH_STACK_PASSWORD / LAUNCH_STACK_PASSWORD",
-                            "description": "The master password protecting the `/launch-stack` dashboard (Defaults to `mellon_hwg`)."
                         }
                     ]
                 }

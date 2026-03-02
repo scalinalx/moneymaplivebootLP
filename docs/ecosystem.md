@@ -55,6 +55,12 @@ An AI-powered builder that helps users craft high-converting offers.
 *   **Access/Type:** Initially internal/gated; sold as an Order Bump on various funnels (usually **$27 - $37** value).
 *   **App URL:** `/ana-offer-genius`
 
+### Viral Digital Product Builder (VDPB)
+
+An interactive builder for creating high-converting viral digital product ideas, names, and copy briefs.
+*   **Access/Type:** Password Protected (Requires `VDPB_PASSWORD`).
+*   **App URL:** `/vdpb`
+
 ### The Launch Stack
 
 A comprehensive launch project management tool or dashboard.
@@ -63,7 +69,14 @@ A comprehensive launch project management tool or dashboard.
 
 ---
 
-## 4. Bumps & Upsells
+## 4. Internal Operations & Command Centre
+
+*   **HWG Command Centre (Admin Dashboard)**
+    *   Central command center for real-time revenue tracking, multi-table lead management, abandoned cart recovery, and Kit synchronization.
+
+---
+
+## 5. Bumps & Upsells
 
 _Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)_
 
@@ -84,7 +97,7 @@ _Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)_
 
 ---
 
-## 5. Success & Thank You Pages (Fulfillment)
+## 6. Success & Thank You Pages (Fulfillment)
 
 These pages handle the post-purchase experience, dynamic rendering of purchased bumps, and direct access links.
 
@@ -112,7 +125,7 @@ These pages handle the post-purchase experience, dynamic rendering of purchased 
 
 ---
 
-## 6. Additional Legal & Utility Pages
+## 7. Additional Legal & Utility Pages
 
 *   **Lead Magnet / General Email Capture:** `/lead-collection`
 *   **Scarcity Redirect (When time-limited offers expire):** `/offer-expired`
@@ -122,7 +135,7 @@ These pages handle the post-purchase experience, dynamic rendering of purchased 
 
 ---
 
-## 7. Backend Infrastructure Overview (API Ecosystem)
+## 8. Backend Infrastructure Overview (API Ecosystem)
 
 These APIs run silently in the background routing traffic and managing state:
 
@@ -135,9 +148,14 @@ These APIs run silently in the background routing traffic and managing state:
 *   **`/api/show-dont-tell/auth`**: Validates Token IDs and returns credit usage.
 *   **`/api/show-dont-tell/generate`**: Manages credit deduction and invokes Google's Gemini SDK for thumbnail building.
 *   **`/api/[product]/create-payment-intent`**: Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions.
+*   **`/api/admidash/metrics`**: Aggregates complex sales, lead, and abandonment data across all funnels for real-time reporting.
+*   **`/api/admidash/tables`**: A dynamic explorer providing live row counts and definitions for the Supabase schema.
+*   **`/api/admidash/kit/sync`**: Synchronizes filtered user segments directly into the Kit (ConvertKit) mailing infrastructure with tagging.
+*   **`/api/admidash/kit/tags`**: Manages and creates Kit tags directly from the Command Centre.
 
 ### Supabase Tables
 
+*   **leads:** Primary lead capture table for general site traffic.
 *   **leads_bootcamp_brands:** Stores data for the Build to profit workshop.
 *   **launch_lab_leads:** Stores data and order bumps for the 10k Launch Lab.
 *   **hit10k_leads:** Stores data for the How to Hit 10k Challenge.
@@ -147,7 +165,7 @@ These APIs run silently in the background routing traffic and managing state:
 
 ---
 
-## 8. Third-Party Integrations & Tracking
+## 9. Third-Party Integrations & Tracking
 
 *   **Facebook (Meta) Pixel**
     *   Tracks page views and triggers 'Lead' or 'Purchase' events across all active funnels.
@@ -163,7 +181,7 @@ These APIs run silently in the background routing traffic and managing state:
 
 ---
 
-## 9. Environment Variables & Core Services
+## 10. Environment Variables & Core Services
 
 Every production deployment relies on the following backend services and environment variables (defined in `.env.local`):
 
@@ -183,9 +201,19 @@ Every production deployment relies on the following backend services and environ
 
 *   **`NEXT_PUBLIC_GEMINI_API_KEY`**: Invokes the `gemini-2.5-flash` environment for the "Show Don't Tell" thumbnail generator.
 
+### Kit Integration
+
+*   **`KIT_API_KEY`**: Secret key for authenticating with the Kit (ConvertKit) V4 API.
+*   **`KIT_BASE_URL`**: Base endpoint for Kit API services (Defaults to `api.kit.com/v4/`).
+
+### Application Passwords
+
+*   **`ADMIDASH_PASSWORD`**: Protects the central Command Centre dashboard.
+*   **`VDPB_PASSWORD`**: Protects the Viral Digital Product Builder tool.
+*   **`LAUNCH_STACK_PASSWORD`**: Protects the legacy Launch Stack dashboard.
+
 ### Global Configurations
 
 *   **`NEXT_PUBLIC_APP_URL`**: Used for redirect URLs, webhooks, and SEO metadata.
-*   **`NEXT_PUBLIC_LAUNCH_STACK_PASSWORD / LAUNCH_STACK_PASSWORD`**: The master password protecting the `/launch-stack` dashboard (Defaults to `mellon_hwg`).
 
 ---
