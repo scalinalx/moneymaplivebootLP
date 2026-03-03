@@ -21,7 +21,7 @@ export const WinsSection: React.FC = () => {
         },
         {
             question: "What if I can't attend the live calls?",
-            answer: "No problem. Recordings are posted within 2 hours. Plus, the Skool community gives you 24-hour async support. You can do this entirely self-paced if needed."
+            answer: "No problem. Recordings are posted within 2 hours. Plus, the Teachable community gives you 24-hour async support. You can do this entirely self-paced if needed."
         },
         {
             question: "I have a newborn/full-time job. Do I have time for this?",

@@ -29,72 +29,75 @@ export const IncludedSection: React.FC = () => {
 
                 {/* WEEK 1 */}
                 <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
-                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 1: Validate & Position Your Offer <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 1-7)</span></h4>
-                    <ul className="space-y-2 mb-6 font-poppins text-black">
-                        <li><span className="font-bold">Day 1:</span> Offer Validation Worksheet (which offer to launch?)</li>
-                        <li><span className="font-bold">Day 2:</span> Positioning Formula (craft your unique angle)</li>
-                        <li><span className="font-bold">Day 3:</span> Pricing Calculator (determine your $10K price point)</li>
-                        <li><span className="font-bold">Day 4:</span> Audience Mapping (find your 100 buyers)</li>
-                        <li><span className="font-bold">Day 5:</span> Competitive Research Template (what makes you different?)</li>
-                        <li><span className="font-bold">Day 6:</span> Guarantee Builder (craft your risk reversal)</li>
-                        <li><span className="font-bold">Day 7:</span> Sales Page Outline (structure your pitch)</li>
+                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 1: Offer Clarity & Foundation <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 1-7)</span></h4>
+                    <p className="font-poppins text-gray-700 mb-4 font-bold italic">Build an offer people actually want—and are ready to buy.</p>
+                    <ul className="space-y-3 mb-6 font-poppins text-black list-disc pl-5">
+                        <li>Set clear launch goals and the mindset required to execute in 30 days</li>
+                        <li>Decide exactly which offer you should launch (based on demand, not ego)</li>
+                        <li>Choose the right format (workshop, webinar, course, or stack)</li>
+                        <li>Define your unique angle and positioning in the market</li>
+                        <li>Price your offer for profit—and learn how to test it safely</li>
+                        <li>Identify your first 100 buyers inside your existing audience</li>
+                        <li>Fix your About page, bio, and credibility signals so buyers trust you faster</li>
                     </ul>
                     <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
-                        <span className="font-bold">📞 Live Call #1:</span> Hot Seat Offer Audits
+                        <span className="font-bold">📞 Live Call #1:</span> Hot Seat Offer Audits & Real-time Feedback
                     </div>
+                    <p className="mt-4 font-bold text-[#d81159]">Outcome: You know what you’re selling, who it’s for, and why it will sell.</p>
                 </div>
 
                 {/* WEEK 2 */}
                 <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
-                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 2: Build Your Sales Assets <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 8-14)</span></h4>
-                    <ul className="space-y-2 mb-6 font-poppins text-black">
-                        <li><span className="font-bold">Day 8:</span> Headline Formula (write 10 options, pick the winner)</li>
-                        <li><span className="font-bold">Day 9:</span> Opening Hook (the problem/agitation section)</li>
-                        <li><span className="font-bold">Day 10:</span> Solution Section (introduce your offer)</li>
-                        <li><span className="font-bold">Day 11:</span> Features → Benefits Translator (what they actually get)</li>
-                        <li><span className="font-bold">Day 12:</span> Objection Crusher (handle the top 5 "no's")</li>
-                        <li><span className="font-bold">Day 13:</span> Stack & Bonus Builder (make it irresistible)</li>
-                        <li><span className="font-bold">Day 14:</span> CTA & Urgency (scarcity mechanics)</li>
+                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 2: Turn Your Newsletter Into a Sales Machine <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 8-14)</span></h4>
+                    <p className="font-poppins text-gray-700 mb-4 font-bold italic">Transform your Substack from “nice content” into a conversion asset.</p>
+                    <ul className="space-y-3 mb-6 font-poppins text-black list-disc pl-5">
+                        <li>Turn your Substack homepage into a high-converting sales page</li>
+                        <li>Define the clear transformation your newsletter promises</li>
+                        <li>Implement the most underrated Substack update for conversions</li>
+                        <li>Sell without selling using optimized email headers & footers</li>
+                        <li>Learn how visuals and “show, don’t tell” content attract buyers</li>
+                        <li>Set up automated welcome emails for every subscriber level</li>
+                        <li>Learn how to sell high-ticket offers privately, without public pitching</li>
                     </ul>
-                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
-                        <span className="font-bold">📞 Live Call #2:</span> Sales Page Roast Sessions
-                    </div>
+                    <p className="mt-4 font-bold text-[#d81159]">Outcome: Your Substack starts pre-selling your offer before you ever announce it.</p>
                 </div>
 
                 {/* WEEK 3 */}
                 <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
-                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 3: Tech Setup & Pre-Launch <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 15-21)</span></h4>
-                    <ul className="space-y-2 mb-6 font-poppins text-black">
-                        <li><span className="font-bold">Day 15:</span> Email #1 Template (teaser/announcement)</li>
-                        <li><span className="font-bold">Day 16:</span> Email #2 Template (problem deep-dive)</li>
-                        <li><span className="font-bold">Day 17:</span> Email #3 Template (solution reveal)</li>
-                        <li><span className="font-bold">Day 18:</span> Email #4 Template (objection handling)</li>
-                        <li><span className="font-bold">Day 19:</span> Email #5 Template (urgency/final push)</li>
-                        <li><span className="font-bold">Day 20:</span> Payment Setup Walkthrough (Stripe/Gumroad - 5 min Loom)</li>
-                        <li><span className="font-bold">Day 21:</span> Email Tool Setup (schedule your sequence)</li>
+                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 3: Content That Builds Desire & Demand <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 15-21)</span></h4>
+                    <p className="font-poppins text-gray-700 mb-4 font-bold italic">Create demand before the launch—so you’re not convincing anyone.</p>
+                    <ul className="space-y-3 mb-6 font-poppins text-black list-disc pl-5">
+                        <li>Follow a 21-day posting strategy designed specifically for launches</li>
+                        <li>Understand what actually makes people buy (psychology &gt; tactics)</li>
+                        <li>Learn how to write content that drives both engagement and revenue</li>
+                        <li>Use proven revenue-post formulas (Warm Up, Pivot & Final Push)</li>
+                        <li>Get 50 revenue-focused article ideas across multiple creator niches</li>
+                        <li>Study real engagement vs. revenue post examples</li>
+                        <li>Know exactly what to post 3 weeks, 2 weeks, and days before launch</li>
                     </ul>
                     <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
-                        <span className="font-bold">📞 Live Call #3:</span> Tech Troubleshooting + Email Sequence Feedback
+                        <span className="font-bold">📞 Live Call #3:</span> Content & Email Sequence Feedback Hot Seat
                     </div>
+                    <p className="mt-4 font-bold text-[#d81159]">Outcome: Your audience is warmed up, aligned, and expecting your offer.</p>
                 </div>
 
                 {/* WEEK 4 */}
                 <div className="bg-gray-50 border border-gray-100 p-6 md:p-8 rounded-lg shadow-xl">
-                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 4: Launch & Optimize <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 22-30)</span></h4>
-                    <ul className="space-y-2 mb-6 font-poppins text-black">
-                        <li><span className="font-bold">Day 22:</span> Pre-Launch Hype Plan (warm up your list)</li>
-                        <li><span className="font-bold">Day 23:</span> Launch Day Checklist (hour-by-hour plan)</li>
-                        <li><span className="font-bold">Day 24:</span> Engagement Boosters (get replies)</li>
-                        <li><span className="font-bold">Day 25:</span> Objection Response Scripts (handle DMs)</li>
-                        <li><span className="font-bold">Day 26:</span> Mid-Launch Pivot Plan (what if nobody's buying?)</li>
-                        <li><span className="font-bold">Day 27:</span> Urgency Escalation (ethical scarcity)</li>
-                        <li><span className="font-bold">Day 28:</span> Post-Launch Follow-Up (nurture "not yet" people)</li>
-                        <li><span className="font-bold">Day 29:</span> Data Analysis Template (what worked/didn't)</li>
-                        <li><span className="font-bold">Day 30:</span> Next Launch Planning (do it again, faster)</li>
+                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">WEEK 4: Conversion, Launch & Scale <span className="text-base font-medium normal-case block md:inline text-gray-500 ml-0 md:ml-4">(Days 22-30)</span></h4>
+                    <p className="font-poppins text-gray-700 mb-4 font-bold italic">Turn attention into sales—cleanly, confidently, and repeatably.</p>
+                    <ul className="space-y-3 mb-6 font-poppins text-black list-disc pl-5">
+                        <li>Build a landing page that answers the 3 questions buyers actually care about</li>
+                        <li>Set up referrals and conversion boosts</li>
+                        <li>Create your personal Brand Book to stay consistent (using AI)</li>
+                        <li>Get access to LaunchStack and your full sales launch email system</li>
+                        <li>Learn how to structure launch emails for maximum impact</li>
+                        <li>Use tools, templates, and landing-page resources</li>
+                        <li>Learn Ana’s high-converting workshop/webinar structure you can reuse forever</li>
                     </ul>
                     <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
                         <span className="font-bold">📞 Live Call #4:</span> Launch War Room
                     </div>
+                    <p className="mt-4 font-bold text-[#d81159]">Outcome: You complete your launch with a system you can reuse again and again—not a one-off win.</p>
                 </div>
 
             </div>

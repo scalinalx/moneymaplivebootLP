@@ -82,7 +82,7 @@ export const LearningOutcomesSection: React.FC = () => {
                     <div className="w-12 h-12 bg-white border border-gray-100 rounded-lg flex items-center justify-center mb-6 shadow-lg">
                         <MessageCircle className="w-6 h-6 text-black" />
                     </div>
-                    <h3 className="font-display font-black text-2xl uppercase mb-4">💬 Skool Community</h3>
+                    <h3 className="font-display font-black text-2xl uppercase mb-4">💬 Teachable Community</h3>
                     <p className="font-poppins text-gray-600 mb-4 font-bold">24-Hour Support. You're not doing this alone.</p>
                     <ul className="space-y-2 font-poppins text-sm md:text-base text-black mb-4">
                         <li>• Post daily progress</li>
