@@ -22,6 +22,8 @@ export function middleware(req: NextRequest) {
     '/privacy',
     '/how-to-hit-10k',
     '/hit-10k-success',
+    '/first-100-paid-subscribers',
+    '/first-100-paid-subscribers-success',
     '/launch-stack',
     '/10k-template',
     '/10k-launch-lab',

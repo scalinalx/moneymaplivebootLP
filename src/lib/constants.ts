@@ -12,6 +12,9 @@ export const HIT10K_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_PRICE
 export const HIT10K_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP_PRICE || '2700', 10);
 export const HIT10K_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP2_PRICE || '6900', 10);
 
+// First 100 Paid Subscribers Pricing
+export const FIRST100_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_FIRST100_PRICE || '9700', 10);
+
 // Launch Lab Pricing
 export const LAUNCHLAB_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_PRICE || '59700', 10);
 export const LAUNCHLAB_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE || '4700', 10);
