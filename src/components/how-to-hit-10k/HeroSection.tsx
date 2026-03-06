@@ -43,13 +43,13 @@ export const HeroSection: React.FC = () => {
                 {/* CTA Button */}
                 <div className="mt-8 flex flex-col items-center">
                     <button
-                        onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-xl md:text-2xl py-5 px-10 md:px-16 rounded shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        GET LIFETIME ACCESS NOW — ${HIT10K_PRICE / 100}
+                        GET INSTANT ACCESS TO THE WORKSHOP — ${HIT10K_PRICE / 100}
                     </button>
                     <p className="font-lora italic text-gray-500 mt-4 text-sm">
-                        *Instant access to course & bonuses granted upon registration
+                        *Get the full recording, frameworks & templates immediately after registration
                     </p>
                 </div>
 

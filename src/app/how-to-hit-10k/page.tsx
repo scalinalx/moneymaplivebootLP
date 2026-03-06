@@ -16,7 +16,7 @@ import { ObjectionHandlingSection } from '@/components/how-to-hit-10k/ObjectionH
 import { HayleyeSpotlight } from '@/components/how-to-hit-10k/HayleyeSpotlight';
 import { GabrielleSpotlight } from '@/components/how-to-hit-10k/GabrielleSpotlight';
 import { FAQSection } from '@/components/how-to-hit-10k/FAQSection';
-import { WaitlistForm } from '@/components/how-to-hit-10k/WaitlistForm';
+import { EmbeddedCheckout } from '@/components/how-to-hit-10k/EmbeddedCheckout';
 import { SectionDivider } from '@/components/how-to-hit-10k/SectionDivider';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
 
@@ -42,8 +42,8 @@ const HowToHit10kPage: React.FC = () => {
                 <SectionDivider />
                 <GabrielleSpotlight />
                 <FAQSection />
-                <div className="py-20 bg-gray-50 flex justify-center px-6">
-                    <WaitlistForm />
+                <div id="checkout-section">
+                    <EmbeddedCheckout />
                 </div>
             </main>
 

@@ -9,7 +9,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 import { OrderBump } from './OrderBump';
-import { HIT10K_PRICE, HIT10K_BUMP_PRICE } from '@/lib/stripe';
+import { HIT10K_PRICE, HIT10K_BUMP_PRICE, HIT10K_BUMP2_PRICE } from '@/lib/stripe';
 import { Shield, Lock, AlertCircle } from 'lucide-react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
@@ -18,9 +18,10 @@ interface CheckoutFormProps {
     clientSecret: string;
     leadId: string;
     hasOrderBump: boolean;
+    hasOrderBump2: boolean;
 }
 
-const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId, hasOrderBump }) => {
+const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId, hasOrderBump, hasOrderBump2 }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [isProcessing, setIsProcessing] = useState(false);
@@ -79,7 +80,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
                 className={`w-full mt-8 bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-xl py-5 rounded shadow-lg transition-all transform hover:-translate-y-1 uppercase tracking-wider ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
             >
-                {isProcessing ? 'Processing...' : `GET LIFETIME ACCESS NOW — $${(hasOrderBump ? (HIT10K_PRICE + HIT10K_BUMP_PRICE) : HIT10K_PRICE) / 100}`}
+                {isProcessing ? 'Processing...' : `GET LIFETIME ACCESS NOW — $${(HIT10K_PRICE + (hasOrderBump ? HIT10K_BUMP_PRICE : 0) + (hasOrderBump2 ? HIT10K_BUMP2_PRICE : 0)) / 100}`}
             </button>
 
             <div className="mt-6 flex flex-col items-center gap-3">
@@ -100,6 +101,7 @@ export const EmbeddedCheckout: React.FC = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [hasOrderBump, setHasOrderBump] = useState(false);
+    const [hasOrderBump2, setHasOrderBump2] = useState(false);
     const [clientSecret, setClientSecret] = useState<string | null>(null);
     const [leadId, setLeadId] = useState<string | null>(null);
     const [isInitializing, setIsInitializing] = useState(false);
@@ -113,7 +115,7 @@ export const EmbeddedCheckout: React.FC = () => {
             const response = await fetch('/api/hit10k/create-payment-intent', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, name, hasOrderBump }),
+                body: JSON.stringify({ email, name, hasOrderBump, hasOrderBump2 }),
             });
 
             const data = await response.json();
@@ -175,7 +177,23 @@ export const EmbeddedCheckout: React.FC = () => {
                             />
                         </div>
 
-                        <OrderBump isSelected={hasOrderBump} onToggle={() => setHasOrderBump(!hasOrderBump)} />
+                        <OrderBump
+                            isSelected={hasOrderBump}
+                            onToggle={() => setHasOrderBump(!hasOrderBump)}
+                            title="Want 'Hooks That Stop the Scroll'?"
+                            description="Stop being ignored. Get my vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click your content instantly."
+                            price={HIT10K_BUMP_PRICE}
+                            originalPrice={19700}
+                        />
+
+                        <OrderBump
+                            isSelected={hasOrderBump2}
+                            onToggle={() => setHasOrderBump2(!hasOrderBump2)}
+                            title="Want the 60-Minute Launch Calendar?"
+                            description="The exact day-by-day Notion templates used to manage 6-figure launches without burnout."
+                            price={HIT10K_BUMP2_PRICE}
+                            originalPrice={19700}
+                        />
 
                         <button
                             disabled={isInitializing}
@@ -193,7 +211,7 @@ export const EmbeddedCheckout: React.FC = () => {
                             </div>
                             <div className="text-right">
                                 <p className="text-gray-500 text-xs font-bold uppercase">Total</p>
-                                <p className="font-anton text-2xl text-[#ffc300]">${(hasOrderBump ? (HIT10K_PRICE + HIT10K_BUMP_PRICE) : HIT10K_PRICE) / 100}</p>
+                                <p className="font-anton text-2xl text-[#ffc300]">${(HIT10K_PRICE + (hasOrderBump ? HIT10K_BUMP_PRICE : 0) + (hasOrderBump2 ? HIT10K_BUMP2_PRICE : 0)) / 100}</p>
                             </div>
                         </div>
 
@@ -209,7 +227,7 @@ export const EmbeddedCheckout: React.FC = () => {
                                     }
                                 }
                             }}>
-                                <CheckoutFormContent clientSecret={clientSecret} leadId={leadId} hasOrderBump={hasOrderBump} />
+                                <CheckoutFormContent clientSecret={clientSecret} leadId={leadId} hasOrderBump={hasOrderBump} hasOrderBump2={hasOrderBump2} />
                             </Elements>
                         )}
 

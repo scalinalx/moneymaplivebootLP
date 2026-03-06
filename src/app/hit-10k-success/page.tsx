@@ -3,12 +3,13 @@
 import { useEffect, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Calendar, Mail, Users, ArrowRight, ExternalLink, Zap } from 'lucide-react';
-import { HIT10K_PRICE, HIT10K_BUMP_PRICE } from '@/lib/stripe';
+import { HIT10K_PRICE, HIT10K_BUMP_PRICE, HIT10K_BUMP2_PRICE } from '@/lib/stripe';
 
 function SuccessContent() {
     const searchParams = useSearchParams();
     const leadId = searchParams.get('leadId');
     const [hasOrderBump, setHasOrderBump] = useState(false);
+    const [hasOrderBump2, setHasOrderBump2] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [isPaid, setIsPaid] = useState(false);
 
@@ -24,14 +25,13 @@ function SuccessContent() {
                 .then(data => {
                     const paidStatus = data.success && data.lead.is_paid;
                     const hasBump = data.success && data.lead.has_order_bump;
+                    const hasBump2 = data.success && data.lead.has_order_bump2;
 
                     if (paidStatus) {
                         setIsPaid(true);
                         // Track conversion with Facebook Pixel AFTER status is confirmed
                         if (typeof window !== 'undefined' && (window as any).fbq) {
-                            const totalValue = hasBump
-                                ? (HIT10K_PRICE + HIT10K_BUMP_PRICE) / 100
-                                : HIT10K_PRICE / 100;
+                            const totalValue = (HIT10K_PRICE + (hasBump ? HIT10K_BUMP_PRICE : 0) + (hasBump2 ? HIT10K_BUMP2_PRICE : 0)) / 100;
 
                             (window as any).fbq('track', 'Purchase', {
                                 value: totalValue,
@@ -42,6 +42,9 @@ function SuccessContent() {
 
                         if (hasBump) {
                             setHasOrderBump(true);
+                        }
+                        if (hasBump2) {
+                            setHasOrderBump2(true);
                         }
                     } else {
                         // Redirect if not paid
@@ -136,32 +139,38 @@ function SuccessContent() {
                 </div>
 
                 {hasOrderBump && (
-                    <div className="w-full mb-16 bg-[#FFFBEB] border-2 border-[#ffc300] rounded-2xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+                    <div className="w-full mb-8 bg-[#FFFBEB] border-2 border-[#ffc300] rounded-2xl p-8 shadow-sm relative overflow-hidden">
                         <div className="relative z-10 flex flex-col items-center text-center">
-                            <div className="w-16 h-16 bg-[#ffc300] rounded-full flex items-center justify-center mb-6 shadow-md">
-                                <Zap className="w-8 h-8 text-white" fill="white" />
-                            </div>
-
-                            <h2 className="font-anton text-2xl md:text-3xl text-[#333333] mb-4 uppercase text-center">
-                                Thank you for purchasing <span className="text-[#d81159]">Hooks That Stop the Scroll!</span>
+                            <h2 className="font-anton text-xl text-[#333333] mb-4 uppercase">
+                                Your <span className="text-[#d81159]">Hooks That Stop the Scroll</span> access:
                             </h2>
-
-                            <p className="font-lora text-lg text-gray-700 max-w-2xl mb-8">
-                                The link should have automatically opened in a new tab. If your browser blocked it, click the button below to access your tool immediately.
-                            </p>
-
                             <a
                                 href="https://anabubolea.notion.site/Hooks-That-Stop-the-Scroll-17c9b91e546e80b7a0f2c8908465faf2?source=copy_link"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-3 bg-[#333333] hover:bg-black text-white font-montserrat font-bold py-5 px-12 rounded-lg shadow-xl transition-all transform hover:-translate-y-1 uppercase tracking-wider"
+                                className="inline-flex items-center gap-3 bg-[#333333] hover:bg-black text-white font-montserrat font-bold py-4 px-10 rounded shadow-lg transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm"
                             >
-                                ACCESS THE HOOKS NOW <ExternalLink size={20} />
+                                ACCESS THE HOOKS NOW <ExternalLink size={18} />
                             </a>
                         </div>
+                    </div>
+                )}
 
-                        {/* Decorative background element */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#ffc300]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                {hasOrderBump2 && (
+                    <div className="w-full mb-16 bg-[#F0FDF4] border-2 border-[#22C55E] rounded-2xl p-8 shadow-sm relative overflow-hidden">
+                        <div className="relative z-10 flex flex-col items-center text-center">
+                            <h2 className="font-anton text-xl text-[#333333] mb-4 uppercase">
+                                Your <span className="text-[#22C55E]">60-Minute Launch Calendar</span> access:
+                            </h2>
+                            <a
+                                href="https://anabubolea.notion.site/The-60-Minute-Launch-Calendar-17c9b91e546e80b7a0f2c8908465faf2?source=copy_link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 bg-[#1A1A1A] hover:bg-black text-white font-montserrat font-bold py-4 px-10 rounded shadow-lg transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm"
+                            >
+                                ACCESS THE CALENDAR NOW <ExternalLink size={18} />
+                            </a>
+                        </div>
                     </div>
                 )}
 

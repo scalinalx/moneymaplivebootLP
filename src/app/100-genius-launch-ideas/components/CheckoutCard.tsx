@@ -350,6 +350,9 @@ export function CheckoutForm() {
             <div className="text-center text-sm text-slate-400">
                 Total due today: <span className="font-bold text-slate-900">${(totalAmount / 100).toFixed(2)}</span>
             </div>
+            <p className="text-[10px] text-slate-400 text-center mt-2 leading-tight">
+                Due To The Digital Nature Of The Product We Can Offer No Guarantee or Money Back or Refunds
+            </p>
 
         </form>
     );
@@ -397,11 +400,10 @@ export function CheckoutCard() {
                     {/* Checkout Form */}
                     <CheckoutForm />
 
-                    {/* Money Back Guarantee */}
+                    {/* Money Back Guarantee -> Policy Update */}
                     <div className="mt-6 pt-6 border-t border-slate-100 text-center">
-                        <p className="text-xs text-slate-500 flex items-center justify-center gap-1.5">
-                            <Shield size={12} />
-                            30-day money-back guarantee
+                        <p className="text-[10px] text-slate-400 flex items-center justify-center gap-1.5 leading-tight">
+                            Due To The Digital Nature Of The Product We Can Offer No Guarantee or Money Back or Refunds
                         </p>
                     </div>
                 </div>

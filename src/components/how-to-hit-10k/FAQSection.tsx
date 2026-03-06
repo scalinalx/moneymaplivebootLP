@@ -86,10 +86,10 @@ export const FAQSection: React.FC = () => {
                         Still have questions? Email us at anaxcalin@gmail.com
                     </p>
                     <button
-                        onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg py-4 px-12 rounded-[5px] shadow-lg transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        YES! RESERVE MY SPOT IN THE LAB
+                        YES! I WANT THE WORKSHOP RECORDING
                     </button>
                 </div>
 

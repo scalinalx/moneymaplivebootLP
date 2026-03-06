@@ -71,13 +71,13 @@ export const BridgeSection: React.FC = () => {
 
                     {/* Repeated CTA */}
                     <button
-                        onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-base md:text-xl py-4 px-8 md:px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-6 uppercase flex items-center justify-center gap-2"
                     >
                         <span>TEACH ME HOW TO HIT 10K</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
-                    <p className="font-lato text-gray-500 text-sm">90-Minute Business Course | Instant Lifetime Access</p>
+                    <p className="font-lato text-gray-500 text-sm">90-Minute Workshop Recording | Instant Access</p>
                 </div>
             </div>
 
@@ -150,7 +150,7 @@ export const BridgeSection: React.FC = () => {
                     {/* Closing CTA */}
                     <div className="mt-24">
                         <button
-                            onClick={() => document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })}
+                            onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                             className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-base md:text-xl py-4 px-8 md:px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex items-center justify-center gap-3"
                         >
                             <span>INSTALL THE 10K REVENUE ENGINE</span>

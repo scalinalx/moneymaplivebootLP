@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe, HIT10K_PRICE, HIT10K_BUMP_PRICE } from '@/lib/stripe';
+import { stripe, HIT10K_PRICE, HIT10K_BUMP_PRICE, HIT10K_BUMP2_PRICE } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, name, hasOrderBump } = await request.json();
+        const { email, name, hasOrderBump, hasOrderBump2 } = await request.json();
 
         if (!email || !name) {
             return NextResponse.json({ success: false, error: 'Email and Name are required' }, { status: 400 });
@@ -12,9 +12,8 @@ export async function POST(request: NextRequest) {
 
         // Calculate total price
         let totalAmount = HIT10K_PRICE;
-        if (hasOrderBump) {
-            totalAmount += HIT10K_BUMP_PRICE;
-        }
+        if (hasOrderBump) totalAmount += HIT10K_BUMP_PRICE;
+        if (hasOrderBump2) totalAmount += HIT10K_BUMP2_PRICE;
 
         // 1. Create the lead in Supabase first (Pending state)
         const { data: lead, error: supabaseError } = await supabaseAdmin
@@ -23,6 +22,7 @@ export async function POST(request: NextRequest) {
                 name,
                 email,
                 has_order_bump: hasOrderBump,
+                has_order_bump2: hasOrderBump2,
                 total_paid: totalAmount,
                 is_paid: false
             })
@@ -44,6 +44,7 @@ export async function POST(request: NextRequest) {
                 email: email,
                 name: name,
                 hasOrderBump: hasOrderBump ? 'true' : 'false',
+                hasOrderBump2: hasOrderBump2 ? 'true' : 'false',
                 product: 'hit10k_workshop'
             }
         });

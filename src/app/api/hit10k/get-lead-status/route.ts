@@ -11,13 +11,13 @@ export async function GET(request: NextRequest) {
 
     // Development/Preview Bypass
     if (leadId === 'TEST') {
-        return NextResponse.json({ success: true, lead: { is_paid: true, has_order_bump: true } });
+        return NextResponse.json({ success: true, lead: { is_paid: true, has_order_bump: true, has_order_bump2: true } });
     }
 
     try {
         const { data, error } = await supabaseAdmin
             .from('hit10k_leads')
-            .select('is_paid, has_order_bump')
+            .select('is_paid, has_order_bump, has_order_bump2')
             .eq('id', leadId)
             .single();
 
