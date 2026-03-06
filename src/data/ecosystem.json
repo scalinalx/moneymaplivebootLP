@@ -19,6 +19,10 @@
                             "url": "/landing"
                         },
                         {
+                            "label": "Alternate Sales",
+                            "url": "/join"
+                        },
+                        {
                             "label": "Checkout",
                             "url": "/checkout-step1"
                         },
@@ -102,6 +106,22 @@
                         {
                             "label": "Success",
                             "url": "/100-genius-launch-ideas/success"
+                        }
+                    ]
+                },
+                {
+                    "name": "First 100 Paid Subscribers",
+                    "description": "A comprehensive framework to convert free readers into paying customers and achieve bestseller status.",
+                    "price": "$97",
+                    "priceNote": "(`NEXT_PUBLIC_FIRST100_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/first-100-paid-subscribers"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/first-100-paid-subscribers-success"
                         }
                     ]
                 }
@@ -298,6 +318,11 @@
                     "name": "Show Don't Tell Success",
                     "content": "A secure page that extracts the newly created programmatic `token_id` from the Stripe redirect URL (e.g. `SDT-XXXXXXXXXXXX`) and displays it in large text.",
                     "features": "Provides a one-click \"Copy to Clipboard\" button and directs the user to immediately go to `/show-dont-tell` to login with their token."
+                },
+                {
+                    "path": "/first-100-paid-subscribers-success",
+                    "name": "First 100 Subscribers Success",
+                    "content": "Confirms the order, verifies the purchase, and instructs the user to check their email for immediate access to the workshop and bonuses."
                 }
             ]
         },
@@ -375,6 +400,14 @@
                 {
                     "path": "/api/admidash/kit/tags",
                     "description": "Manages and creates Kit tags directly from the Command Centre."
+                },
+                {
+                    "path": "/api/first100/create-payment-intent",
+                    "description": "Creates Stripe PaymentIntents and pending leads for the First 100 Subscribers native checkout."
+                },
+                {
+                    "path": "/api/first100/ confirm-payment",
+                    "description": "Confirms Stripe payments and fulfills the First 100 Subscribers checkout process."
                 }
             ],
             "tables": [
@@ -405,6 +438,10 @@
                 {
                     "name": "ana_ai_leads",
                     "description": "Stores leads and usage data for the free Ana AI Offer Flow tool."
+                },
+                {
+                    "name": "first100_leads",
+                    "description": "Stores data and payment status for the First 100 Paid Subscribers funnel."
                 }
             ]
         },

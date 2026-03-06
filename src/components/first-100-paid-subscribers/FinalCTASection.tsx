@@ -31,6 +31,15 @@ export const FinalCTASection: React.FC = () => {
                     One payment. Everything included. Yours to keep.
                 </p>
 
+                {/* Second Hero/Mockup Image */}
+                <div className="w-full max-w-[1100px] mb-12 rounded-2xl overflow-hidden">
+                    <img
+                        src="/imgs/first-100-paid-subscribers/hero2_cropped.webp"
+                        alt="Everything You Get Today"
+                        className="w-full h-auto"
+                    />
+                </div>
+
                 {/* Value Stack */}
                 <div className="w-full bg-white/5 rounded-3xl border border-white/10 overflow-hidden mb-8">
                     {included.map((row, i) => (
@@ -70,7 +79,7 @@ export const FinalCTASection: React.FC = () => {
 
                 {/* Force-reject */}
                 <button
-                    onClick={() => {}}
+                    onClick={() => { }}
                     className="mt-4 text-white/20 text-xs font-lato hover:text-white/40 transition-colors"
                 >
                     No thanks — I'll figure out paid subscribers on my own.

@@ -14,6 +14,10 @@ export const HIT10K_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K
 
 // First 100 Paid Subscribers Pricing
 export const FIRST100_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_FIRST100_PRICE || '9700', 10);
+export const FIRST100_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_FIRST100_BUMP_PRICE || '2700', 10); // Genius Offers
+export const FIRST100_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_FIRST100_BUMP2_PRICE || '2700', 10); // Hooks
+export const FIRST100_BUMP3_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_FIRST100_BUMP3_PRICE || '6700', 10); // Launch Stack
+export const FIRST100_BUNDLE_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_FIRST100_BUNDLE_PRICE || '9700', 10); // Bundle
 
 // Launch Lab Pricing
 export const LAUNCHLAB_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_PRICE || '59700', 10);

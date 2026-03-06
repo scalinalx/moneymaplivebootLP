@@ -7,29 +7,31 @@ export const HeroSection: React.FC = () => {
         <div className="w-full flex justify-center pt-2 pb-2 px-6">
             <div className="max-w-[1100px] w-full flex flex-col items-center text-center">
 
-                {/* Main Headline */}
-                <h1 className="font-anton text-[#06b6d4] leading-[1.1] md:leading-[1.05] uppercase mb-6 tracking-wide w-full max-w-[1400px] flex flex-col items-center">
-                    <span className="text-[#ffc300] text-xl md:text-2xl lg:text-4xl mb-1">Get Your</span>
-                    <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl py-1 px-2">First 100 Paid Subscribers</span>
-                    <span className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl py-1 px-2">And Hit Bestseller Status</span>
-                    <span className="text-base md:text-xl lg:text-2xl mt-1 opacity-80 px-4">Without going viral. Without a huge audience. Without guessing.</span>
-                </h1>
+                {/* Main Headline Container */}
+                <div className="relative w-full max-w-[1100px] flex flex-col items-center">
+                    {/* Live Workshop Pill — floating top right */}
+                    <div className="absolute top-0 right-0 xl:-right-4 mt-2 hidden md:inline-flex items-center gap-1.5 bg-[#333333] text-white px-3 py-1 rounded-full text-[10px] md:text-xs font-montserrat font-bold uppercase tracking-widest z-10">
+                        <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc300] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#ffc300]"></span>
+                        </span>
+                        Live — March 12th
+                    </div>
+
+                    <h1 className="font-anton text-[#06b6d4] leading-[1.1] md:leading-[1.05] uppercase mb-6 tracking-wide w-full max-w-[1400px] flex flex-col items-center">
+                        <span className="text-[#ffc300] text-xl md:text-2xl lg:text-4xl mb-1">Get Your</span>
+                        <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl py-1 px-2">First 100 Paid Subscribers</span>
+                        <span className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl py-1 px-2">And Hit Bestseller Status</span>
+                        <span className="text-base md:text-xl lg:text-2xl mt-1 opacity-80 px-4">Without going viral. Without a huge audience. Without guessing.</span>
+                    </h1>
+                </div>
 
                 <p className="text-gray-400 italic text-sm font-lora mb-6">*limited time offer*</p>
 
-                {/* Live Workshop Pill — small */}
-                <div className="inline-flex items-center gap-1.5 bg-[#333333] text-white px-3 py-1 rounded-full text-[10px] md:text-xs font-montserrat font-bold uppercase tracking-widest mb-6">
-                    <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc300] opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#ffc300]"></span>
-                    </span>
-                    Live — March 12th
-                </div>
-
                 {/* Hero Mockup Image */}
-                <div className="w-full max-w-[850px] mb-6">
+                <div className="w-full max-w-[1100px] mb-6 rounded-2xl overflow-hidden">
                     <img
-                        src="/imgs/first-100-paid-subscribers/mok1.jpeg"
+                        src="/imgs/first-100-paid-subscribers/hero1_cropped.webp"
                         alt="First 100 Paid Subscribers — Live Workshop"
                         className="w-full h-auto"
                     />
