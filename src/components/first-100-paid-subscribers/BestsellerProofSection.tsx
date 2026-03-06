@@ -26,8 +26,6 @@ export const BestsellerProofSection: React.FC = () => {
                     {[
                         { src: '/imgs/first-100-paid-subscribers/1.webp', alt: 'Substack Bestseller Status — Proof 1' },
                         { src: '/imgs/first-100-paid-subscribers/2.webp', alt: 'Substack Bestseller Status — Proof 2' },
-                        { src: '/imgs/first-100-paid-subscribers/3.webp', alt: 'Substack Bestseller Status — Proof 3' },
-                        { src: '/imgs/first-100-paid-subscribers/4.webp', alt: 'Substack Bestseller Status — Proof 4' },
                     ].map((img, i) => (
                         <div
                             key={i}
