@@ -41,6 +41,11 @@ export const GuaranteeSection: React.FC = () => {
                     </ul>
                 </div>
 
+                {/* Social Proof Insert */}
+                <div className="w-full max-w-[600px] flex justify-center mb-10">
+                    <img src="/imgs/first-100-paid-subscribers/testim/17.webp" alt="Testimonial 17" className="w-full rounded-2xl shadow-lg border border-[#27AE60]/30 object-contain" />
+                </div>
+
                 <p className="font-lora italic text-gray-500 text-lg mb-10">
                     The only way this doesn't work for you is if you don't implement it. And if you implement even one module, you'll earn back your $97 with your first handful of new paid subscribers.
                 </p>

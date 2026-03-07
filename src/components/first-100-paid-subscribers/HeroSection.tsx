@@ -51,34 +51,28 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Sub-Headline — moved below image + CTA */}
-                <h2 className="font-display text-[#333333] text-lg md:text-3xl leading-tight max-w-4xl mb-10 font-bold uppercase italic tracking-tight">
-                    A 90-minute live workshop for Substack writers who are done watching others hit Bestseller status while their paid tier sits at zero
+                <h2 className="font-display text-[#333333] text-[15px] md:text-[25px] leading-tight max-w-[1100px] mb-10 font-bold uppercase italic tracking-tight">
+                    A 60-minute live workshop for Substack writers who are done watching others hit Bestseller status while their paid tier sits at zero
                 </h2>
 
                 {/* Ana's Credibility Bar */}
-                <div className="w-full max-w-[850px] grid grid-cols-3 gap-4 mb-10">
+                <div className="w-full max-w-[1000px] grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                     {[
-                        { stat: "$119K+", label: "Monthly Revenue" },
-                        { stat: "6,200+", label: "Paid Subscribers Converted" },
-                        { stat: "600+", label: "Writers Coached" },
+                        { title: "From Zero to Bestseller Fast", desc: "Started with no audience and hit 100K in subscription revenue in 15 months on Substack — all from paid subscribers who love my content." },
+                        { title: "Trusted by 80,000+ Readers", desc: "My newsletter now has over 80,000 subscribers and a passionate community that keeps coming back for more." },
+                        { title: "Real Strategies, Real Results", desc: "Everything I'll share in this webinar are actionable methods you can start right away — no fluff, no hacks, just honest steps to real growth." },
                     ].map((item, i) => (
-                        <div key={i} className="flex flex-col items-center bg-gray-50 rounded-2xl py-5 px-3 border border-gray-100">
-                            <span className="font-anton text-[#d81159] text-2xl md:text-4xl leading-none mb-1">{item.stat}</span>
-                            <span className="font-lato text-gray-500 text-xs md:text-sm text-center uppercase tracking-wide font-bold">{item.label}</span>
+                        <div key={i} className="flex flex-col bg-gray-50 rounded-2xl py-6 px-6 border border-gray-100 text-left h-full">
+                            <span className="font-montserrat font-bold text-[#d81159] text-lg md:text-xl leading-snug mb-3 uppercase">{item.title}</span>
+                            <span className="font-lato text-[#333333] text-sm md:text-base leading-relaxed">{item.desc}</span>
                         </div>
                     ))}
                 </div>
 
-                {/* Social Proof Stars */}
-                <div className="flex flex-col items-center mb-8">
-                    <div className="flex gap-1 mb-2 text-[#F59E0B]">
-                        {[1, 2, 3, 4, 5].map((i) => (
-                            <Star key={i} fill="currentColor" size={20} />
-                        ))}
-                    </div>
-                    <p className="font-lato text-[#333333] text-lg md:text-[19px] italic max-w-2xl leading-relaxed">
-                        "I went from 4 paid subscribers to 118 in 27 days. I didn't change my writing — I changed my conversion system. Ana's framework is the only thing that actually moved the needle."
-                    </p>
+                {/* Social Proof Images */}
+                <div className="flex flex-col md:flex-row gap-6 w-full max-w-4xl mb-8 justify-center">
+                    <img src="/imgs/first-100-paid-subscribers/testim/9.webp" alt="Testimonial 9" className="w-full md:w-1/2 rounded-2xl shadow-md border border-gray-100 object-contain" />
+                    <img src="/imgs/first-100-paid-subscribers/testim/10.webp" alt="Testimonial 10" className="w-full md:w-1/2 rounded-2xl shadow-md border border-gray-100 object-contain" />
                 </div>
 
             </div>

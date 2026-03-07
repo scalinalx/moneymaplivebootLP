@@ -69,6 +69,14 @@ export const BridgeSection: React.FC = () => {
                 </div>
             </div>
 
+            {/* Social Proof Insert */}
+            <div className="w-full flex justify-center pb-20 px-6 bg-white">
+                <div className="max-w-[800px] w-full flex flex-col sm:flex-row gap-6 justify-center">
+                    <img src="/imgs/first-100-paid-subscribers/testim/11.webp" alt="Testimonial 11" className="w-full sm:w-1/2 rounded-2xl shadow-lg border border-gray-100 object-contain" />
+                    <img src="/imgs/first-100-paid-subscribers/testim/12.webp" alt="Testimonial 12" className="w-full sm:w-1/2 rounded-2xl shadow-lg border border-gray-100 object-contain" />
+                </div>
+            </div>
+
             {/* SECTION 2: Authority & Stats */}
             <div className="w-full flex justify-center py-24 px-6 bg-[#E0F7FA]">
                 <div className="max-w-[1000px] w-full flex flex-col md:flex-row items-center justify-between gap-12">
@@ -98,7 +106,7 @@ export const BridgeSection: React.FC = () => {
                         They just have a conversion system. A way of asking for the upgrade that feels natural, inevitable, and irresistible — not desperate.
                     </p>
                     <p className="font-lora text-[#333333] text-xl md:text-2xl max-w-3xl">
-                        That's exactly what I'm going to give you inside this 90-minute workshop.
+                        That's exactly what I'm going to give you inside this 60-minute workshop.
                     </p>
                 </div>
             </div>

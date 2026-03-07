@@ -54,6 +54,12 @@ export const WhoIsItForSection: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Social Proof Insert */}
+                <div className="w-full max-w-[800px] flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                    <img src="/imgs/first-100-paid-subscribers/testim/15.webp" alt="Testimonial 15" className="w-full sm:w-1/2 rounded-2xl shadow-lg border border-[#4DB6AC]/30 object-contain" />
+                    <img src="/imgs/first-100-paid-subscribers/testim/16.webp" alt="Testimonial 16" className="w-full sm:w-1/2 rounded-2xl shadow-lg border border-rose-100 object-contain" />
+                </div>
+
                 <button
                     onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                     className="group bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-base md:text-xl py-4 px-8 md:px-12 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex items-center justify-center gap-2"

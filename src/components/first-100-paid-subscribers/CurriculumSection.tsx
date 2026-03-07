@@ -15,7 +15,7 @@ export const CurriculumSection: React.FC = () => {
                 </div>
 
                 <p className="font-montserrat text-black text-center text-xl md:text-[22px] leading-relaxed max-w-4xl mb-8">
-                    A <span className="font-bold text-[#d81159]">90-minute live workshop on March 12th</span> built for one purpose: getting you to 100 paid subscribers and Substack Bestseller status — as fast as humanly possible, without burning out or begging for attention.
+                    A <span className="font-bold text-[#d81159]">60-minute live workshop on March 12th</span> built for one purpose: getting you to 100 paid subscribers and Substack Bestseller status — as fast as humanly possible, without burning out or begging for attention.
                 </p>
 
                 <h2 className="font-anton text-[rgb(56,170,185)] text-5xl md:text-7xl text-center mb-12 tracking-[0.05em] uppercase">
@@ -24,6 +24,10 @@ export const CurriculumSection: React.FC = () => {
 
                 <div className="flex flex-col gap-6 w-full">
                     {[
+                        { bold: "Make it All About Your Readers", italic: "Learn why the key to getting paid subscribers is making your content about your audience, so they're eager to come back for more." },
+                        { bold: "5 Battle-Tested Methods", italic: "Discover five proven strategies that you can use to go from zero to bestseller status, even if you have no audience now." },
+                        { bold: "Build Lasting Engagement", italic: "Create the kind of reader relationships that build loyalty and drive repeat subscriptions—no ads or viral tricks needed." },
+                        { bold: "Turn New Readers Into Fans", italic: "Simple psychological shifts to help your content stand out and make readers eager to support your work." },
                         { bold: "The Bestseller Blueprint", italic: "the exact subscriber thresholds Substack uses to award Bestseller status — and the systematic path to hit them without luck." },
                         { bold: "The Paid Conversion System", italic: "the 5-lever framework that turns free readers into paid subscribers without ever feeling pushy, salesy, or desperate." },
                         { bold: "The Perfect Paid Tier", italic: "how to structure what's behind your paywall so readers feel they'd be crazy not to upgrade right now." },
@@ -56,8 +60,14 @@ export const CurriculumSection: React.FC = () => {
                     ))}
                 </div>
 
+                {/* Social Proof Insert */}
+                <div className="mt-16 mb-8 w-full max-w-[800px] flex flex-col sm:flex-row gap-6 justify-center">
+                    <img src="/imgs/first-100-paid-subscribers/testim/13.webp" alt="Testimonial 13" className="w-full sm:w-1/2 rounded-2xl shadow-lg border border-gray-100 object-contain" />
+                    <img src="/imgs/first-100-paid-subscribers/testim/14.webp" alt="Testimonial 14" className="w-full sm:w-1/2 rounded-2xl shadow-lg border border-gray-100 object-contain" />
+                </div>
+
                 {/* Price and CTA */}
-                <div className="mt-16 w-full flex flex-col items-center">
+                <div className="mt-8 w-full flex flex-col items-center">
                     <div className="relative mb-2">
                         <span className="font-anton text-gray-500 text-3xl md:text-5xl">
                             Regular Price $300

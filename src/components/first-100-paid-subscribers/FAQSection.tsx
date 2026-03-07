@@ -8,7 +8,7 @@ export const FAQSection: React.FC = () => {
     const faqs = [
         {
             question: "Is this a live workshop or a recording?",
-            answer: "It's a live 90-minute workshop on March 12th. You'll join Ana in real time, ask questions, and get the full experience live. Can't make it? You'll receive the full replay plus all templates and bonuses automatically — so you never miss a thing."
+            answer: "It's a live 60-minute workshop on March 12th. You'll join Ana in real time, ask questions, and get the full experience live. Can't make it? You'll receive the full replay plus all templates and bonuses automatically — so you never miss a thing."
         },
         {
             question: "I only have a small free list. Will this actually work for me?",
@@ -32,7 +32,7 @@ export const FAQSection: React.FC = () => {
         },
         {
             question: "What's everything I get for $97?",
-            answer: "The live 90-minute workshop on March 12th, The Bestseller Blueprint, The Paid Conversion System, The 7-Day Upgrade Sequence, The 30-Day Bestseller Roadmap, The Paid Subscriber Welcome Sequence, The Objection-Crushing Copy Vault, Tiny List Big Revenue, and the Viral Substack Notes Generator ($197 value). One price. Lifetime access to the replay and everything included."
+            answer: "The live 60-minute workshop on March 12th, The Bestseller Blueprint, The Paid Conversion System, The 7-Day Upgrade Sequence, The 30-Day Bestseller Roadmap, The Paid Subscriber Welcome Sequence, The Objection-Crushing Copy Vault, Tiny List Big Revenue, and the Viral Substack Notes Generator ($197 value). One price. Lifetime access to the replay and everything included."
         },
         {
             question: "Is there a refund policy?",

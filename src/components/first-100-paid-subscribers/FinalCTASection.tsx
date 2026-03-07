@@ -3,7 +3,7 @@ import { ArrowRight, Clock } from 'lucide-react';
 import { FIRST100_PRICE } from '@/lib/stripe';
 
 const included = [
-    { item: "90-Minute Live Workshop (March 12th)", value: "$297" },
+    { item: "60-Minute Live Workshop (March 12th)", value: "$297" },
     { item: "Full Replay — Watch Forever", value: "$97" },
     { item: "The Bestseller Blueprint", value: "$97" },
     { item: "The 7-Day Upgrade Email Sequence", value: "$197" },
@@ -54,6 +54,11 @@ export const FinalCTASection: React.FC = () => {
                             <span className="font-anton text-white/40 text-xl line-through">$1,373</span>
                         </div>
                     </div>
+                </div>
+
+                {/* Social Proof Insert */}
+                <div className="w-full max-w-[600px] flex justify-center mb-10">
+                    <img src="/imgs/first-100-paid-subscribers/testim/18.webp" alt="Testimonial 18" className="w-full rounded-2xl shadow-lg border border-white/10 object-contain mx-auto" />
                 </div>
 
                 {/* Price reveal */}
