@@ -19,6 +19,15 @@ export async function POST(request: NextRequest) {
             if (hasBump3) totalAmount += FIRST100_BUMP3_PRICE;
         }
 
+        // 0. Create or Retrieve Stripe Customer
+        let customer;
+        const customers = await stripe.customers.list({ email, limit: 1 });
+        if (customers.data.length > 0) {
+            customer = customers.data[0];
+        } else {
+            customer = await stripe.customers.create({ email, name });
+        }
+
         // 1. Create the lead in Supabase (Pending state)
         const { data: lead, error: supabaseError } = await supabaseAdmin
             .from('first100_leads')
@@ -26,7 +35,9 @@ export async function POST(request: NextRequest) {
                 name,
                 email,
                 total_paid: totalAmount,
-                is_paid: false
+                is_paid: false,
+                stripe_customer_id: customer.id, // Ensure this exists or fallback to metadata
+                created_at: new Date().toISOString()
             })
             .select()
             .single();
@@ -40,6 +51,8 @@ export async function POST(request: NextRequest) {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: totalAmount,
             currency: 'usd',
+            customer: customer.id,
+            setup_future_usage: 'off_session',
             receipt_email: email,
             metadata: {
                 leadId: lead.id,

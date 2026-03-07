@@ -10,14 +10,35 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ success: false, error: 'Lead ID is required' }, { status: 400 });
         }
 
-        // 1. Fetch the lead to get stripe_customer_id
-        const { data: lead, error: fetchError } = await supabaseAdmin
+        // 1. Fetch the lead - check both tables
+        let lead;
+        let table = 'launch_lab_leads';
+
+        // Try launch_lab_leads first
+        const { data: labLead } = await supabaseAdmin
             .from('launch_lab_leads')
-            .select('email, stripe_customer_id, is_paid')
+            .select('email, stripe_customer_id, is_paid, total_paid')
             .eq('id', leadId)
             .single();
 
-        if (fetchError || !lead) {
+        if (labLead) {
+            lead = labLead;
+            table = 'launch_lab_leads';
+        } else {
+            // Try first100_leads
+            const { data: f100Lead } = await supabaseAdmin
+                .from('first100_leads')
+                .select('email, stripe_customer_id, is_paid, total_paid')
+                .eq('id', leadId)
+                .single();
+
+            if (f100Lead) {
+                lead = f100Lead;
+                table = 'first100_leads';
+            }
+        }
+
+        if (!lead) {
             return NextResponse.json({ success: false, error: 'Lead not found' }, { status: 404 });
         }
 
@@ -25,15 +46,28 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ success: false, error: 'Main product not paid' }, { status: 400 });
         }
 
+        // Determine Stripe Customer ID
+        let stripeCustomerId = lead.stripe_customer_id;
+        if (!stripeCustomerId) {
+            const customers = await stripe.customers.list({ email: lead.email, limit: 1 });
+            if (customers.data.length > 0) {
+                stripeCustomerId = customers.data[0].id;
+            }
+        }
+
+        if (!stripeCustomerId) {
+            return NextResponse.json({ success: false, error: 'Stripe customer not found' }, { status: 400 });
+        }
+
         // Test mode bypass
         if (leadId === 'TEST') {
-            await supabaseAdmin.from('launch_lab_leads').update({ has_upsell: true }).eq('id', leadId);
+            await supabaseAdmin.from(table).update({ has_upsell: true }).eq('id', leadId);
             return NextResponse.json({ success: true });
         }
 
         // 2. Find the latest successful PaymentMethod for this customer
         const paymentMethods = await stripe.paymentMethods.list({
-            customer: lead.stripe_customer_id,
+            customer: stripeCustomerId,
             type: 'card',
         });
 
@@ -47,7 +81,7 @@ export async function POST(request: NextRequest) {
         const paymentIntent = await stripe.paymentIntents.create({
             amount: LAUNCHLAB_COACHING_PRICE,
             currency: 'usd',
-            customer: lead.stripe_customer_id,
+            customer: stripeCustomerId,
             payment_method: paymentMethodId,
             off_session: true,
             confirm: true,
@@ -55,19 +89,28 @@ export async function POST(request: NextRequest) {
                 leadId: leadId,
                 email: lead.email,
                 product: '10k_launch_lab_upsell',
-                upsell_name: '1:1 Sales Coaching Session with Ana'
+                upsell_name: '1:1 Sales Coaching Session with Ana',
+                source_table: table
             }
         });
 
         if (paymentIntent.status === 'succeeded') {
-            // 4. Update Supabase
+            // 4. Update the primary table
             await supabaseAdmin
-                .from('launch_lab_leads')
+                .from(table)
                 .update({
                     has_upsell: true,
-                    total_paid: (await supabaseAdmin.from('launch_lab_leads').select('total_paid').eq('id', leadId).single()).data?.total_paid + LAUNCHLAB_COACHING_PRICE
+                    total_paid: (lead.total_paid || 0) + LAUNCHLAB_COACHING_PRICE
                 })
                 .eq('id', leadId);
+
+            // 5. Also update First 100 leads table if user exists there (for consolidated success page)
+            if (lead.email) {
+                await supabaseAdmin
+                    .from('first100_leads')
+                    .update({ has_upsell: true })
+                    .eq('email', lead.email);
+            }
 
             return NextResponse.json({ success: true });
         } else {

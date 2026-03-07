@@ -10,7 +10,7 @@ function UpsellContent() {
     const leadId = searchParams.get('leadId') || 'test-lead-id';
 
     const handleDecline = () => {
-        window.location.href = `/first-100-paid-subscribers-success?leadId=${leadId}&upsell=declined`;
+        window.location.href = `/10k-coaching-upsell?leadId=${leadId}&bought=false`;
     };
 
     return (
@@ -172,7 +172,7 @@ function UpsellContent() {
                     onClick={handleDecline}
                     className="text-gray-400 hover:text-gray-600 transition-colors font-medium text-sm md:text-base cursor-pointer"
                 >
-                    No thanks, I don't want to get rich today. I'll just stick to a small paid tier.
+                    No thanks, I'll stick to the $5/month tier. Just take me to my workshop.
                 </button>
 
                 {/* Trust Elements */}
