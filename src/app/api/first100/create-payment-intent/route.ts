@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
         }
 
         // 1. Create the lead in Supabase (Pending state)
-        const { data: lead, error: supabaseError } = await supabaseAdmin
+        let { data: lead, error: supabaseError } = await supabaseAdmin
             .from('first100_leads')
             .insert({
                 name,
@@ -38,7 +38,6 @@ export async function POST(request: NextRequest) {
                 is_paid: false,
                 stripe_customer_id: customer.id,
                 created_at: new Date().toISOString(),
-                // Record order bumps at creation so we know intent even if payment fails
                 has_bump1: hasBundle ? false : (hasBump1 ?? false),
                 has_bump2: hasBundle ? false : (hasBump2 ?? false),
                 has_bump3: hasBundle ? false : (hasBump3 ?? false),
@@ -47,9 +46,30 @@ export async function POST(request: NextRequest) {
             .select()
             .single();
 
+        // If the insert failed (e.g. column doesn't exist yet), retry without bump columns
         if (supabaseError) {
-            console.error('Supabase Error:', supabaseError);
-            return NextResponse.json({ success: false, error: 'Failed to create lead record' }, { status: 500 });
+            console.error('Supabase Insert Error (with bumps):', JSON.stringify(supabaseError, null, 2));
+            const fallback = await supabaseAdmin
+                .from('first100_leads')
+                .insert({
+                    name,
+                    email,
+                    total_paid: totalAmount,
+                    is_paid: false,
+                    stripe_customer_id: customer.id,
+                    created_at: new Date().toISOString(),
+                })
+                .select()
+                .single();
+
+            if (fallback.error) {
+                console.error('Supabase Fallback Insert Error:', JSON.stringify(fallback.error, null, 2));
+                return NextResponse.json({ success: false, error: 'Failed to create lead record' }, { status: 500 });
+            }
+
+            lead = fallback.data;
+            supabaseError = null;
+            console.warn('Lead created via fallback insert (bump columns skipped). Run the SQL migration if not done yet.');
         }
 
         // 2. Create the Stripe Payment Intent
