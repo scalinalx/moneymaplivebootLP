@@ -2,7 +2,7 @@
 
 import { useEffect, Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { CheckCircle, Mail, Zap, ArrowRight, Star } from 'lucide-react';
+import { CheckCircle, Mail, Zap, ArrowRight, Star, BookOpen } from 'lucide-react';
 
 function SuccessContent() {
     const searchParams = useSearchParams();
@@ -11,8 +11,25 @@ function SuccessContent() {
     const [isPaid, setIsPaid] = useState(false);
     const [hasUpsell, setHasUpsell] = useState(false);
     const [hasLaunchLab, setHasLaunchLab] = useState(false);
+    const [hasBump1, setHasBump1] = useState(false);
+    const [hasBump2, setHasBump2] = useState(false);
+    const [hasBump3, setHasBump3] = useState(false);
+    const [hasBundle, setHasBundle] = useState(false);
 
     useEffect(() => {
+        // Short-circuit for local testing - no API call needed
+        if (leadId === 'TEST') {
+            setIsPaid(true);
+            setHasLaunchLab(searchParams.get('lab') !== 'false');
+            setHasUpsell(searchParams.get('upsell') === 'true');
+            setHasBump1(searchParams.get('bump1') === 'true');
+            setHasBump2(searchParams.get('bump2') === 'true');
+            setHasBump3(searchParams.get('bump3') === 'true');
+            setHasBundle(searchParams.get('bundle') === 'true');
+            setIsLoaded(true);
+            return;
+        }
+
         if (leadId) {
             fetch(`/api/first100/get-lead-status?leadId=${leadId}`)
                 .then(res => res.json())
@@ -21,8 +38,11 @@ function SuccessContent() {
                         setIsPaid(data.lead.is_paid);
                         setHasUpsell(!!data.lead.has_upsell);
                         setHasLaunchLab(!!data.lead.has_10k_lab);
+                        setHasBump1(!!data.lead.has_bump1);
+                        setHasBump2(!!data.lead.has_bump2);
+                        setHasBump3(!!data.lead.has_bump3);
+                        setHasBundle(!!data.lead.has_bundle);
 
-                        // Only track purchase if haven't tracked before (or track total)
                         if (typeof window !== 'undefined' && (window as any).fbq) {
                             (window as any).fbq('track', 'Purchase', {
                                 value: data.lead.is_paid ? 97.00 : 597.00,
@@ -30,18 +50,13 @@ function SuccessContent() {
                                 contents: [{ id: data.lead.is_paid ? 'first100_workshop' : '10k_launch_lab', quantity: 1 }],
                             });
                         }
-                    } else if (leadId !== 'TEST') {
+                    } else {
                         window.location.href = '/first-100-paid-subscribers';
-                    } else if (leadId === 'TEST') {
-                        setIsPaid(true);
-                        setHasLaunchLab(true);
-                        setHasUpsell(true);
                     }
                     setIsLoaded(true);
                 })
                 .catch(() => {
-                    if (leadId !== 'TEST') window.location.href = '/first-100-paid-subscribers';
-                    setIsLoaded(true);
+                    window.location.href = '/first-100-paid-subscribers';
                 });
         } else {
             window.location.href = '/first-100-paid-subscribers';
@@ -101,9 +116,15 @@ function SuccessContent() {
                                 <h2 className="font-display text-3xl md:text-4xl italic font-black uppercase mb-4 leading-tight">
                                     THE $10K <br />LAUNCH LAB
                                 </h2>
-                                <p className="text-gray-400 mb-6 font-medium">
-                                    Your personal dashboard and curriculum have been unlocked. Check your email for a separate login to the Launch Lab portal.
-                                </p>
+
+                                <div className="bg-white/10 border border-white/20 p-5 rounded-xl mb-6 text-left">
+                                    <p className="text-white font-bold text-base leading-relaxed mb-2">
+                                        You'll receive an automated email with login instructions to join the <span className="text-[#fffb00]">10k Launch Lab program & community</span> on Teachable.
+                                    </p>
+                                    <p className="text-gray-400 text-xs italic">
+                                        Please allow up to 60 minutes for access to arrive.
+                                    </p>
+                                </div>
                                 <div className="flex flex-wrap justify-center md:justify-start gap-3">
                                     <span className="bg-white/10 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-tight border border-white/10">Full Curriculum</span>
                                     <span className="bg-white/10 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-tight border border-white/10">The $100k Roadmap</span>
@@ -137,6 +158,96 @@ function SuccessContent() {
                     </div>
                 )}
 
+                {/* Order Bump Fulfillment Blocks */}
+                {(hasBump1 || hasBundle) && (
+                    <div className="w-full mb-6 bg-gray-50 border-2 border-[#27AE60] p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6">
+                        <div className="bg-[#27AE60] p-3 rounded-full flex-shrink-0">
+                            <BookOpen className="text-white" size={28} />
+                        </div>
+                        <div className="flex-grow text-center md:text-left">
+                            <p className="text-[#27AE60] font-bold uppercase text-xs tracking-widest mb-1">Access Unlocked</p>
+                            <h3 className="font-anton text-xl text-[#333333] uppercase mb-1">100 Genius Offers</h3>
+                            <p className="text-gray-600 text-sm font-lora">Your PDF is ready to download immediately.</p>
+                        </div>
+                        <a
+                            href="/downloads/100-Genius-Offers-Sell-2026.pdf"
+                            download
+                            className="bg-[#27AE60] text-white px-7 py-3 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-green-700 transition-colors whitespace-nowrap flex-shrink-0"
+                        >
+                            Download PDF →
+                        </a>
+                    </div>
+                )}
+
+                {(hasBump2 || hasBundle) && (
+                    <div className="w-full mb-6 bg-gray-50 border-2 border-[#27AE60] p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6">
+                        <div className="bg-[#27AE60] p-3 rounded-full flex-shrink-0">
+                            <Zap className="text-white" size={28} fill="white" />
+                        </div>
+                        <div className="flex-grow text-center md:text-left">
+                            <p className="text-[#27AE60] font-bold uppercase text-xs tracking-widest mb-1">Access Unlocked</p>
+                            <h3 className="font-anton text-xl text-[#333333] uppercase mb-1">Hooks That Stop the Scroll</h3>
+                            <p className="text-gray-600 text-sm font-lora">Access your swipe-file vault of high-converting headline frameworks on Notion.</p>
+                        </div>
+                        <a
+                            href="https://anabubolea.notion.site/Hooks-That-Stop-the-Scroll-17c9b91e546e80b7a0f2c8908465faf2?source=copy_link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-[#27AE60] text-white px-7 py-3 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-green-700 transition-colors whitespace-nowrap flex-shrink-0"
+                        >
+                            Open Vault →
+                        </a>
+                    </div>
+                )}
+
+                {(hasBump3 || hasBundle) && (
+                    <div className="w-full mb-12 bg-gray-50 border-2 border-[#d81159] p-6 rounded-2xl">
+                        <div className="flex flex-col md:flex-row items-start gap-6">
+                            <div className="bg-[#d81159] p-3 rounded-full flex-shrink-0">
+                                <Mail className="text-white" size={28} />
+                            </div>
+                            <div className="flex-grow">
+                                <p className="text-[#d81159] font-bold uppercase text-xs tracking-widest mb-1">Access Unlocked</p>
+                                <h3 className="font-anton text-xl text-[#333333] uppercase mb-3">Launch Stack — Email Sequence Copywriter</h3>
+
+                                {/* Step-by-step idiot-proof instructions */}
+                                <div className="bg-white border-2 border-[#d81159]/30 rounded-xl p-5 mb-4 space-y-3">
+                                    <p className="font-bold text-[#333333] text-sm">👇 Here's exactly what you do — follow these steps:</p>
+                                    <div className="flex items-start gap-3">
+                                        <span className="bg-[#d81159] text-white text-xs font-black w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                                        <p className="text-gray-700 text-sm font-medium">Click the <strong>"Open Tool"</strong> button below. A new page will open.</p>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="bg-[#d81159] text-white text-xs font-black w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                                        <p className="text-gray-700 text-sm font-medium">You'll see a <strong>password field</strong>. Type in the password exactly as shown below.</p>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="bg-[#d81159] text-white text-xs font-black w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                                        <p className="text-gray-700 text-sm font-medium">Hit <strong>Enter</strong> and you're in. That's it.</p>
+                                    </div>
+                                </div>
+
+                                {/* Password display */}
+                                <div className="bg-[#333333] rounded-xl p-4 mb-4 flex flex-col sm:flex-row items-center gap-4 justify-between">
+                                    <div>
+                                        <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mb-1">Your Password:</p>
+                                        <p className="font-mono text-[#fffb00] text-2xl font-black tracking-widest select-all">mellon_hwg</p>
+                                    </div>
+                                    <p className="text-gray-400 text-xs italic text-center sm:text-right max-w-[160px]">Copy this exactly — underscores and all</p>
+                                </div>
+
+                                <a
+                                    href="/launch-stack"
+                                    target="_blank"
+                                    className="inline-flex items-center gap-2 bg-[#d81159] text-white px-7 py-3 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-[#b30e4a] transition-colors"
+                                >
+                                    Open Tool → Enter Password Above
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 <div className="grid md:grid-cols-2 gap-8 w-full mb-16">
                     <div className="bg-gray-50 p-8 rounded-xl border border-gray-100">
                         <h3 className="font-anton text-xl text-[#333333] mb-6 uppercase">Next Steps</h3>
@@ -162,7 +273,7 @@ function SuccessContent() {
                         <h3 className="font-anton text-xl text-[#333333] mb-6 uppercase">What You Got</h3>
                         <ul className="space-y-4">
                             {isPaid && [
-                                '90-Minute Workshop Recording',
+                                '60-Minute Live Workshop (+ Replay)',
                                 'The Upgrade Email Sequence',
                                 'Paid Subscriber Welcome Templates',
                                 'Objection-Crushing Copy Vault',

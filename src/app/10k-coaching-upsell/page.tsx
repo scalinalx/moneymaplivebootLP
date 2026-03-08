@@ -6,13 +6,13 @@ import { Check, ShieldCheck, Lock, Star, Zap, ArrowRight, Loader2 } from 'lucide
 
 function CoachingUpsellContent() {
     const searchParams = useSearchParams();
-    const leadId = searchParams.get('leadId') || 'test-lead-id';
+    const leadId = searchParams.get('leadId');
     const wasBought = searchParams.get('bought') === 'true';
 
     const [isProcessing, setIsProcessing] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const finalSuccessUrl = `/first-100-paid-subscribers-success?leadId=${leadId}`;
+    const finalSuccessUrl = leadId ? `/10k-launch-lab-success?leadId=${leadId}` : '/10k-launch-lab';
 
     const handleAccept = async () => {
         setIsProcessing(true);

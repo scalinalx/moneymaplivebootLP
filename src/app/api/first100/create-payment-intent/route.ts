@@ -36,8 +36,13 @@ export async function POST(request: NextRequest) {
                 email,
                 total_paid: totalAmount,
                 is_paid: false,
-                stripe_customer_id: customer.id, // Ensure this exists or fallback to metadata
-                created_at: new Date().toISOString()
+                stripe_customer_id: customer.id,
+                created_at: new Date().toISOString(),
+                // Record order bumps at creation so we know intent even if payment fails
+                has_bump1: hasBundle ? false : (hasBump1 ?? false),
+                has_bump2: hasBundle ? false : (hasBump2 ?? false),
+                has_bump3: hasBundle ? false : (hasBump3 ?? false),
+                has_bundle: hasBundle ?? false,
             })
             .select()
             .single();

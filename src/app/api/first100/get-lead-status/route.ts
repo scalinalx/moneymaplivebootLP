@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
         const { data: lead, error } = await supabaseAdmin
             .from('first100_leads')
-            .select('id, is_paid, name, email, stripe_customer_id, total_paid, has_upsell, has_10k_lab')
+            .select('id, is_paid, name, email, stripe_customer_id, total_paid, has_upsell, has_10k_lab, has_bump1, has_bump2, has_bump3, has_bundle')
             .eq('id', leadId)
             .single();
 
