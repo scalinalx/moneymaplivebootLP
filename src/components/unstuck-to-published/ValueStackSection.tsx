@@ -64,8 +64,8 @@ export const ValueStackSection: React.FC = () => {
                             </div>
                         ))}
                         <div className="flex items-center justify-between px-6 py-3 bg-[#27AE60]/10 border-t border-[#27AE60]/20">
-                            <span className="font-montserrat font-bold text-[#27AE60] text-sm uppercase tracking-wide">Or bundle all 3 and save $34</span>
-                            <span className="font-anton text-[#27AE60] text-lg">$67 <span className="text-white/30 line-through text-sm">$101</span></span>
+                            <span className="font-montserrat font-bold text-[#27AE60] text-sm uppercase tracking-wide">Or bundle all 3 and save $32</span>
+                            <span className="font-anton text-[#27AE60] text-lg">$69 <span className="text-white/30 line-through text-sm">$101</span></span>
                         </div>
                     </div>
                 </div>
