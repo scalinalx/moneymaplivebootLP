@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
         // Update lead as paid
         const { error: supabaseError } = await supabaseAdmin
-            .from('first100_leads')
+            .from('creator_bundle_leads')
             .update({
                 is_paid: true,
                 payment_completed_at: new Date().toISOString(),

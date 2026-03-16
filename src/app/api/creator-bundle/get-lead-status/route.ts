@@ -11,10 +11,9 @@ export async function GET(request: NextRequest) {
         }
 
         const { data: lead, error } = await supabaseAdmin
-            .from('first100_leads')
-            .select('id, is_paid, name, email, total_paid, source')
+            .from('creator_bundle_leads')
+            .select('id, is_paid, name, email, total_paid, has_launch_stack')
             .eq('id', leadId)
-            .eq('source', 'creator_bundle')
             .single();
 
         if (error || !lead) {

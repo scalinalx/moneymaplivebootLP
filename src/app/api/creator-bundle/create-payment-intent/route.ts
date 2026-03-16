@@ -24,16 +24,12 @@ export async function POST(request: NextRequest) {
 
         // Insert lead into Supabase
         const { data: lead, error: leadError } = await supabaseAdmin
-            .from('first100_leads')
+            .from('creator_bundle_leads')
             .insert({
                 name,
                 email,
                 total_paid: totalAmount,
-                source: 'creator_bundle',
-                has_bump1: true,  // Genius Ideas (always in bundle)
-                has_bump2: true,  // Hooks (always in bundle)
-                has_bump3: true,  // Show Don't Tell (always in bundle)
-                has_bundle: true,
+                has_launch_stack: hasLaunchStack ?? false,
                 stripe_customer_id: customer.id,
             })
             .select('id')
@@ -54,17 +50,13 @@ export async function POST(request: NextRequest) {
                 email,
                 name,
                 product: 'creator_bundle',
-                hasSdtBump: 'true',
-                hasGeniusBump: 'true',
-                hasHooksBump: 'true',
-                hasBundle: 'true',
                 hasLaunchStack: hasLaunchStack ? 'true' : 'false',
             },
         });
 
         // Update lead with payment intent ID
         await supabaseAdmin
-            .from('first100_leads')
+            .from('creator_bundle_leads')
             .update({ stripe_payment_intent_id: paymentIntent.id })
             .eq('id', lead.id);
 

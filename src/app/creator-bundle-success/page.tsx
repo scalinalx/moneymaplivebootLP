@@ -8,6 +8,7 @@ function SuccessContent() {
     const searchParams = useSearchParams();
     const leadId = searchParams.get('leadId');
     const sdtTokenFromUrl = searchParams.get('sdtToken');
+    const hasLaunchStack = searchParams.get('ls') === '1';
     const [isLoaded, setIsLoaded] = useState(false);
     const [isPaid, setIsPaid] = useState(false);
     const [sdtToken, setSdtToken] = useState<string | null>(sdtTokenFromUrl);
@@ -30,9 +31,9 @@ function SuccessContent() {
 
                         if (typeof window !== 'undefined' && (window as any).fbq) {
                             (window as any).fbq('track', 'Purchase', {
-                                value: 107,
+                                value: hasLaunchStack ? 136 : 69,
                                 currency: 'USD',
-                                contents: [{ id: 'creator_bundle', quantity: 1 }],
+                                contents: [{ id: hasLaunchStack ? 'creator_bundle_plus_launchstack' : 'creator_bundle', quantity: 1 }],
                             });
                         }
                     } else {
@@ -86,7 +87,7 @@ function SuccessContent() {
                 </h1>
 
                 <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-12">
-                    The <strong>Creator Launch Kit</strong> is yours. All 4 tools — instant access. Here's everything you need to get started right now.
+                    The <strong>Creator Launch Kit</strong> is yours. {hasLaunchStack ? 'All 4 tools' : 'All 3 tools'} — instant access. Here&apos;s everything you need to get started right now.
                 </p>
 
                 {/* Tool 1: Show Don't Tell */}
@@ -164,7 +165,8 @@ function SuccessContent() {
                     </a>
                 </div>
 
-                {/* Tool 4: Launch Stack */}
+                {/* Tool 4: Launch Stack (only if purchased as bump) */}
+                {hasLaunchStack && (
                 <div className="w-full mb-12 bg-gray-50 border-2 border-[#7209b7] p-6 rounded-2xl">
                     <div className="flex flex-col md:flex-row items-start gap-6">
                         <div className="bg-[#7209b7] p-3 rounded-full flex-shrink-0">
@@ -204,6 +206,7 @@ function SuccessContent() {
                         </div>
                     </div>
                 </div>
+                )}
 
                 {/* What You Got summary */}
                 <div className="w-full bg-[#27AE60]/5 p-8 rounded-xl border border-[#27AE60]/20 mb-12">
@@ -213,7 +216,7 @@ function SuccessContent() {
                             { item: "Show Don't Tell — 400 AI Thumbnail Credits (1 year)", icon: Image, color: "#f72585" },
                             { item: "100 Genius Launch Ideas — 184-Page PDF (Lifetime)", icon: BookOpen, color: "#27AE60" },
                             { item: "Hooks That Stop the Scroll — Headline Vault (Lifetime)", icon: MousePointerClick, color: "#27AE60" },
-                            { item: "LaunchStack — AI Email Sequence Writer (Lifetime)", icon: Mail, color: "#7209b7" },
+                            ...(hasLaunchStack ? [{ item: "LaunchStack — AI Email Sequence Writer (Lifetime)", icon: Mail, color: "#7209b7" }] : []),
                         ].map((row, i) => (
                             <li key={i} className="flex items-center gap-3">
                                 <CheckCircle size={18} style={{ color: row.color }} className="flex-shrink-0" />

@@ -34,49 +34,25 @@ export async function POST(request: NextRequest) {
         }
 
         // Create lead in Supabase
-        let { data: lead, error: supabaseError } = await supabaseAdmin
-            .from('first100_leads')
+        const { data: lead, error: supabaseError } = await supabaseAdmin
+            .from('unstuck_leads')
             .insert({
                 name,
                 email,
                 total_paid: totalAmount,
                 is_paid: false,
                 stripe_customer_id: customer.id,
-                created_at: new Date().toISOString(),
                 has_bump1: effectiveGenius,
                 has_bump2: effectiveHooks,
                 has_bump3: effectiveSdt,
                 has_bundle: hasBundle ?? false,
-                source: 'unstuck_to_published',
             })
             .select()
             .single();
 
-        if (supabaseError) {
-            // Fallback without source column
-            const fallback = await supabaseAdmin
-                .from('first100_leads')
-                .insert({
-                    name,
-                    email,
-                    total_paid: totalAmount,
-                    is_paid: false,
-                    stripe_customer_id: customer.id,
-                    created_at: new Date().toISOString(),
-                    has_bump1: effectiveGenius,
-                    has_bump2: effectiveHooks,
-                    has_bump3: effectiveSdt,
-                    has_bundle: hasBundle ?? false,
-                })
-                .select()
-                .single();
-
-            if (fallback.error) {
-                console.error('Supabase Insert Error:', JSON.stringify(fallback.error, null, 2));
-                return NextResponse.json({ success: false, error: 'Failed to create lead record' }, { status: 500 });
-            }
-
-            lead = fallback.data;
+        if (supabaseError || !lead) {
+            console.error('Supabase Insert Error:', JSON.stringify(supabaseError, null, 2));
+            return NextResponse.json({ success: false, error: 'Failed to create lead record' }, { status: 500 });
         }
 
         // Create Payment Intent
@@ -100,7 +76,7 @@ export async function POST(request: NextRequest) {
 
         // Update lead with Payment Intent ID
         await supabaseAdmin
-            .from('first100_leads')
+            .from('unstuck_leads')
             .update({ stripe_payment_intent_id: paymentIntent.id })
             .eq('id', lead.id);
 
