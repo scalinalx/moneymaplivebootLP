@@ -1,17 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe, UNSTUCK_PRICE, UNSTUCK_SDT_BUMP_PRICE } from '@/lib/stripe';
+import { stripe, UNSTUCK_PRICE, UNSTUCK_SDT_BUMP_PRICE, UNSTUCK_GENIUS_BUMP_PRICE, UNSTUCK_HOOKS_BUMP_PRICE, UNSTUCK_BUNDLE_PRICE } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, name, hasSdtBump } = await request.json();
+        const { email, name, hasSdtBump, hasGeniusBump, hasHooksBump, hasBundle } = await request.json();
 
         if (!email || !name) {
             return NextResponse.json({ success: false, error: 'Email and Name are required' }, { status: 400 });
         }
 
         let totalAmount = UNSTUCK_PRICE;
-        if (hasSdtBump) totalAmount += UNSTUCK_SDT_BUMP_PRICE;
+        if (hasBundle) {
+            totalAmount += UNSTUCK_BUNDLE_PRICE;
+        } else {
+            if (hasSdtBump) totalAmount += UNSTUCK_SDT_BUMP_PRICE;
+            if (hasGeniusBump) totalAmount += UNSTUCK_GENIUS_BUMP_PRICE;
+            if (hasHooksBump) totalAmount += UNSTUCK_HOOKS_BUMP_PRICE;
+        }
+
+        // Effective bump states (bundle includes all 3)
+        const effectiveSdt = hasBundle || hasSdtBump;
+        const effectiveGenius = hasBundle || hasGeniusBump;
+        const effectiveHooks = hasBundle || hasHooksBump;
 
         // Create or retrieve Stripe Customer
         let customer;
@@ -32,10 +43,10 @@ export async function POST(request: NextRequest) {
                 is_paid: false,
                 stripe_customer_id: customer.id,
                 created_at: new Date().toISOString(),
-                has_bump1: false,
-                has_bump2: false,
-                has_bump3: hasSdtBump ?? false,
-                has_bundle: false,
+                has_bump1: effectiveGenius,
+                has_bump2: effectiveHooks,
+                has_bump3: effectiveSdt,
+                has_bundle: hasBundle ?? false,
                 source: 'unstuck_to_published',
             })
             .select()
@@ -52,10 +63,10 @@ export async function POST(request: NextRequest) {
                     is_paid: false,
                     stripe_customer_id: customer.id,
                     created_at: new Date().toISOString(),
-                    has_bump1: false,
-                    has_bump2: false,
-                    has_bump3: hasSdtBump ?? false,
-                    has_bundle: false,
+                    has_bump1: effectiveGenius,
+                    has_bump2: effectiveHooks,
+                    has_bump3: effectiveSdt,
+                    has_bundle: hasBundle ?? false,
                 })
                 .select()
                 .single();
@@ -80,7 +91,10 @@ export async function POST(request: NextRequest) {
                 email,
                 name,
                 product: 'unstuck_to_published',
-                hasSdtBump: hasSdtBump ? 'true' : 'false',
+                hasSdtBump: effectiveSdt ? 'true' : 'false',
+                hasGeniusBump: effectiveGenius ? 'true' : 'false',
+                hasHooksBump: effectiveHooks ? 'true' : 'false',
+                hasBundle: hasBundle ? 'true' : 'false',
             }
         });
 

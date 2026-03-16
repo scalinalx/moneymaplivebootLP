@@ -4,12 +4,14 @@ import React from 'react';
 import { AnnouncementBar } from '@/components/unstuck-to-published/AnnouncementBar';
 import { HeroSection } from '@/components/unstuck-to-published/HeroSection';
 import { OutcomesSection } from '@/components/unstuck-to-published/OutcomesSection';
+import { StudentProofSection } from '@/components/unstuck-to-published/StudentProofSection';
 import { BestsellerProofSection } from '@/components/unstuck-to-published/BestsellerProofSection';
 import { BridgeSection } from '@/components/unstuck-to-published/BridgeSection';
 import { CurriculumSection } from '@/components/unstuck-to-published/CurriculumSection';
 import { TestimonialsSection } from '@/components/unstuck-to-published/TestimonialsSection';
 import { WhoIsItForSection } from '@/components/unstuck-to-published/WhoIsItForSection';
 import { GuaranteeSection } from '@/components/unstuck-to-published/GuaranteeSection';
+import { ValueStackSection } from '@/components/unstuck-to-published/ValueStackSection';
 import { FinalCTASection } from '@/components/unstuck-to-published/FinalCTASection';
 import { NicheProofSection } from '@/components/unstuck-to-published/NicheProofSection';
 import { FAQSection } from '@/components/unstuck-to-published/FAQSection';
@@ -25,7 +27,9 @@ const UnstuckToPublishedPage: React.FC = () => {
                 <HeroSection />
                 {/* 2. Outcomes — "By the end of this workshop you'll know exactly how to..." */}
                 <OutcomesSection />
-                {/* 3. Hosts — Ana + Jessica proof */}
+                {/* 3. Student proof — animated counter */}
+                <StudentProofSection />
+                {/* 4. Hosts — Ana + Jessica proof */}
                 <BestsellerProofSection />
                 {/* 4. Bridge — problem section, stuck list */}
                 <BridgeSection />
@@ -37,7 +41,9 @@ const UnstuckToPublishedPage: React.FC = () => {
                 <WhoIsItForSection />
                 {/* 8. Guarantee */}
                 <GuaranteeSection />
-                {/* 9. Final urgency CTA stack + value reveal */}
+                {/* 9. Value Stack — everything you get */}
+                <ValueStackSection />
+                {/* 10. Final urgency CTA stack */}
                 <FinalCTASection />
                 {/* 10. Niche self-selection — "Will this work in my niche?" */}
                 <NicheProofSection />

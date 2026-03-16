@@ -30,8 +30,15 @@ export const BestsellerProofSection: React.FC = () => {
                             alt="Ana Calin"
                             className="w-24 h-24 rounded-full border-[3px] border-[#ffc300] object-cover mb-4"
                         />
-                        <h4 className="font-montserrat font-bold text-[#1a1a1a] text-xl mb-1">Ana Calin</h4>
-                        <p className="text-[#f72585] text-sm font-semibold mb-3">How We Grow — 70,000+ subscribers</p>
+                        <h4 className="font-montserrat font-bold text-[#1a1a1a] text-xl mb-1 flex items-center gap-1.5">
+                            Ana Calin
+                            <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#FF6719"/><path d="M9.5 14.5L6 11l1.4-1.4 2.1 2.1 4.1-4.1L15 9l-5.5 5.5z" fill="#fff"/></svg>
+                        </h4>
+                        <p className="text-[#f72585] text-sm font-semibold mb-3 flex items-center gap-1.5">
+                            How We Grow — 79,000+ subscribers
+                            <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#FF6719"/><path d="M9.5 14.5L6 11l1.4-1.4 2.1 2.1 4.1-4.1L15 9l-5.5 5.5z" fill="#fff"/></svg>
+                            <span className="text-[#FF6719] text-[10px] uppercase tracking-wider font-black">Bestseller</span>
+                        </p>
                         <p className="font-lato text-gray-600 text-sm leading-relaxed text-center">
                             Forbes-recognized marketing leader. Grew How We Grow from 0 to Bestseller in under 3 months. $119K+ months. Teaches newsletter creators how to position, price, and monetize — without a massive audience, sales calls, or burnout.
                         </p>
@@ -44,8 +51,15 @@ export const BestsellerProofSection: React.FC = () => {
                             alt="Jessica"
                             className="w-24 h-24 rounded-full border-[3px] border-[#ffc300] object-cover mb-4"
                         />
-                        <h4 className="font-montserrat font-bold text-[#1a1a1a] text-xl mb-1">Jessica</h4>
-                        <p className="text-[#f72585] text-sm font-semibold mb-3">Unstuck to Published</p>
+                        <h4 className="font-montserrat font-bold text-[#1a1a1a] text-xl mb-1 flex items-center gap-1.5">
+                            Jessica Best
+                            <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#FF6719"/><path d="M9.5 14.5L6 11l1.4-1.4 2.1 2.1 4.1-4.1L15 9l-5.5 5.5z" fill="#fff"/></svg>
+                        </h4>
+                        <p className="text-[#f72585] text-sm font-semibold mb-3 flex items-center gap-1.5">
+                            Unstuck to Published — 8,000+ subscribers
+                            <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#FF6719"/><path d="M9.5 14.5L6 11l1.4-1.4 2.1 2.1 4.1-4.1L15 9l-5.5 5.5z" fill="#fff"/></svg>
+                            <span className="text-[#FF6719] text-[10px] uppercase tracking-wider font-black">Bestseller</span>
+                        </p>
                         <p className="font-lato text-gray-600 text-sm leading-relaxed text-center">
                             Specializes in helping first-time Substack creators go from "I have an idea" to "I have a live publication" — fast. Her Get Unstuck Framework has helped hundreds of creators stop overthinking and start publishing.
                         </p>

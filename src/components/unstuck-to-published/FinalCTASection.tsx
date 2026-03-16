@@ -6,7 +6,7 @@ const included = [
     "Full replay — yours to keep forever",
     "The Get Unstuck Framework (Jessica's signature system)",
     "Publication Positioning Worksheet (from Ana's $119K/month system)",
-    "First Article Template — Story \u2192 Lesson \u2192 Framework",
+    "First Article Template — Story → Lesson → Framework",
     "Paywall Placement Guide — where to put it, what goes behind it",
     "Live Q&A — bring your Substack, get direct feedback",
 ];
@@ -54,7 +54,7 @@ export const FinalCTASection: React.FC = () => {
                     </button>
 
                     <p className="font-lato text-gray-500 text-sm mt-5 leading-relaxed">
-                        Replay included for all attendees. If you attend and don't feel it was worth every penny, email us within 24 hours for a full refund. No questions asked.
+                        Replay included for all attendees. All sales final due to the live, interactive nature of this workshop and instant delivery of digital materials.
                     </p>
                 </div>
 

@@ -12,13 +12,13 @@ export const HeroSection: React.FC = () => {
                 <div className="absolute -top-16 -right-16 w-64 h-64 bg-[#ffc300] opacity-[0.07] rounded-full" />
                 <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-[#f72585] opacity-[0.05] rounded-full" />
 
-                <div className="w-full flex justify-center px-6 pt-8 md:pt-12 relative z-10">
+                <div className="w-full flex justify-center px-6 pt-3 md:pt-4 relative z-10">
                     <div className="max-w-[1100px] w-full flex flex-col items-center text-center">
 
                         {/* Urgency pill */}
                         <div className="mb-5">
                             <span className="inline-block bg-[#f72585] text-white text-[11px] font-bold tracking-[2px] uppercase px-4 py-1.5 rounded-full animate-pulse">
-                                Only 50 Seats Available
+                                Only 100 Seats Available
                             </span>
                         </div>
 
@@ -27,6 +27,17 @@ export const HeroSection: React.FC = () => {
                             <span className="block text-[#ffc300] text-3xl sm:text-4xl md:text-5xl lg:text-[64px]">From Unstuck to Published:</span>
                             <span className="block text-white text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[44px] mt-1 whitespace-nowrap">Build Your Substack the Right Way From Day One</span>
                         </h1>
+
+                        <p className="text-gray-400 italic text-sm font-lora mb-6">*limited time offer*</p>
+
+                        {/* Hero Image */}
+                        <div className="w-full max-w-[1100px] mb-6 rounded-2xl overflow-hidden shadow-2xl">
+                            <img
+                                src="/imgs/unstuck-to-published/hero1.webp"
+                                alt="Unstuck to Published — Live Workshop with Ana & Jessica"
+                                className="w-full h-auto"
+                            />
+                        </div>
 
                         {/* Sub-copy */}
                         <p className="font-montserrat font-bold text-white/90 text-sm md:text-lg max-w-3xl mb-5 leading-snug">
@@ -50,17 +61,6 @@ export const HeroSection: React.FC = () => {
                             ))}
                         </div>
 
-                        <p className="text-gray-400 italic text-sm font-lora mb-6">*limited time offer*</p>
-
-                        {/* Hero Image */}
-                        <div className="w-full max-w-[1100px] mb-6 rounded-2xl overflow-hidden shadow-2xl">
-                            <img
-                                src="/imgs/unstuck-to-published/hero1.webp"
-                                alt="Unstuck to Published — Live Workshop with Ana & Jessica"
-                                className="w-full h-auto"
-                            />
-                        </div>
-
                         {/* CTA — below image */}
                         <div className="flex flex-col items-center mb-8">
                             <button
@@ -71,7 +71,7 @@ export const HeroSection: React.FC = () => {
                                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                             </button>
                             <p className="text-[#f72585] font-semibold mt-3 text-sm tracking-wide">
-                                24-hour money-back guarantee. Replay included.
+                                Only 50 seats. Replay included for all attendees.
                             </p>
                         </div>
 
@@ -97,7 +97,7 @@ export const HeroSection: React.FC = () => {
                     <div className="w-full max-w-[1000px] grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                         {[
                             { title: "From Zero to Bestseller Fast", desc: "Ana started with no audience and hit 100K in subscription revenue in just 15 months on Substack — all from paid subscribers who love her content." },
-                            { title: "Trusted by 80,000+ Readers", desc: "Her newsletter now has over 80,000 subscribers and a passionate community that keeps coming back for more." },
+                            { title: "Trusted by 79,000+ Readers", desc: "How We Grow now has over 79,000 subscribers and a passionate community that keeps coming back for more." },
                             { title: "Real Strategies, Real Results", desc: "Everything we'll share in this workshop are actionable methods you can start right away — no fluff, no hacks, just honest steps to real growth." },
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col bg-gray-50 rounded-2xl py-6 px-6 border border-gray-100 text-left h-full">

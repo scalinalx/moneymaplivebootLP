@@ -13,11 +13,17 @@ export async function POST(request: NextRequest) {
 
         // Retrieve metadata from Stripe Payment Intent
         let hasSdtBump = false;
+        let hasGeniusBump = false;
+        let hasHooksBump = false;
+        let hasBundle = false;
         let customerEmail = '';
         let customerName = '';
         try {
             const pi = await stripe.paymentIntents.retrieve(paymentIntentId);
             hasSdtBump = pi.metadata?.hasSdtBump === 'true';
+            hasGeniusBump = pi.metadata?.hasGeniusBump === 'true';
+            hasHooksBump = pi.metadata?.hasHooksBump === 'true';
+            hasBundle = pi.metadata?.hasBundle === 'true';
             customerEmail = pi.metadata?.email || '';
             customerName = pi.metadata?.name || '';
         } catch (e) {
@@ -30,7 +36,10 @@ export async function POST(request: NextRequest) {
             .update({
                 is_paid: true,
                 payment_completed_at: new Date().toISOString(),
+                has_bump1: hasGeniusBump,
+                has_bump2: hasHooksBump,
                 has_bump3: hasSdtBump,
+                has_bundle: hasBundle,
             })
             .eq('id', leadId)
             .eq('stripe_payment_intent_id', paymentIntentId);
@@ -40,7 +49,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ success: false, error: 'Failed to update payment status' }, { status: 500 });
         }
 
-        // If SDT bump was purchased, create/update show_dont_tell_users entry with credits
+        // If SDT bump was purchased (individually or via bundle), create/update show_dont_tell_users entry with credits
         let sdtTokenId = null;
         if (hasSdtBump && customerEmail) {
             try {
@@ -62,7 +71,7 @@ export async function POST(request: NextRequest) {
                     }).eq('id', existingUser.id);
 
                     sdtTokenId = existingUser.token_id;
-                    console.log(`✅ Topped up SDT credits for existing user: ${sdtTokenId} (+${UNSTUCK_SDT_BUMP_CREDITS})`);
+                    console.log(`Topped up SDT credits for existing user: ${sdtTokenId} (+${UNSTUCK_SDT_BUMP_CREDITS})`);
                 } else {
                     // Generate new token
                     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -81,10 +90,10 @@ export async function POST(request: NextRequest) {
                     });
 
                     sdtTokenId = token;
-                    console.log(`✅ Created new SDT user: ${token} with ${UNSTUCK_SDT_BUMP_CREDITS} credits`);
+                    console.log(`Created new SDT user: ${token} with ${UNSTUCK_SDT_BUMP_CREDITS} credits`);
                 }
             } catch (sdtError) {
-                console.error('❌ Failed to create/update SDT credits:', sdtError);
+                console.error('Failed to create/update SDT credits:', sdtError);
                 // Non-blocking — payment still succeeded
             }
         }

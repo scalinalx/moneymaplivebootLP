@@ -8,7 +8,7 @@ This document serves as a comprehensive map of all URLs, products, price points,
 
 *   **Build to Profit Live Workshop**: **$497** (`WORKSHOP_PRICE` in `.env.local`)
     *   The flagship live workshop offering, teaching foundational monetization strategies.
-    *   *Links:* [Sales](/landing) | [Checkout](/checkout-step1) | [Upsell](/upsell) | [Success](/success)
+    *   *Links:* [Sales](/landing) | [Alternate Sales](/join) | [Checkout](/checkout-step1) | [Upsell](/upsell) | [Success](/success)
 *   **The $10k Launch Lab**: **$597** (`NEXT_PUBLIC_LAUNCHLAB_PRICE`)
     *   A higher-tier workshop focused on consistent 10k launches.
     *   *Links:* [Sales](/10k-launch-lab) | [Upsell](/10k-launch-lab-upsell) | [Success](/10k-launch-lab-success)
@@ -27,6 +27,12 @@ This document serves as a comprehensive map of all URLs, products, price points,
 *   **100 Genius Launch Ideas**: **$27** (`NEXT_PUBLIC_GENIUS_IDEAS_PRICE`)
     *   A digital product detailing successful launch ideas and frameworks.
     *   *Links:* [Checkout](/100-genius-launch-ideas) | [Success](/100-genius-launch-ideas/success)
+*   **First 100 Paid Subscribers**: **$97** (`NEXT_PUBLIC_FIRST100_PRICE`)
+    *   A comprehensive framework to convert free readers into paying customers and achieve bestseller status.
+    *   *Links:* [Sales & Checkout](/first-100-paid-subscribers) | [Success](/first-100-paid-subscribers-success)
+*   **Unstuck to Published**: **$97** (`UNSTUCK_PRICE`)
+    *   A 60-minute live workshop (with Jessica Best) for Substack creators who are stuck overthinking — walk out with a positioned publication, a structured first article, and a paywall strategy that converts.
+    *   *Links:* [Sales & Checkout](/unstuck-to-published)
 
 ---
 
@@ -94,6 +100,14 @@ _Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)_
 | ↳ _Details_ | <td colspan="4">_Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497._</td> |
 | **1:1 Sales Coaching Session** | $747 | Upsell (Dedicated) | /10k-launch-lab-upsell | `NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE` |
 | ↳ _Details_ | <td colspan="4">_A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates._</td> |
+| **Show Don't Tell Thumbnail Generator (400 Credits)** | $47 | Order Bump | Unstuck to Published | `UNSTUCK_SDT_BUMP_PRICE` |
+| ↳ _Details_ | <td colspan="4">_Adds 400 image credits (~200 generations) to the Show Don't Tell AI Thumbnail Generator. 19 style presets, 1 year access. Credits are provisioned into the `show_dont_tell_users` table on payment confirmation._</td> |
+| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Unstuck to Published | `UNSTUCK_GENIUS_BUMP_PRICE` |
+| ↳ _Details_ | <td colspan="4">_100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Instant PDF download with lifetime access._</td> |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | Unstuck to Published | `UNSTUCK_HOOKS_BUMP_PRICE` |
+| ↳ _Details_ | <td colspan="4">_Vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click._</td> |
+| **The Creator Launch Kit (Bundle)** | $69 | Order Bump (Bundle) | Unstuck to Published | `UNSTUCK_BUNDLE_PRICE` |
+| ↳ _Details_ | <td colspan="4">_All 3 add-ons bundled: Show Don't Tell (400 credits) + 100 Genius Launch Ideas PDF + Hooks That Stop the Scroll. Individual total $101, bundle price $69 (save $32)._</td> |
 
 ---
 
@@ -122,6 +136,8 @@ These pages handle the post-purchase experience, dynamic rendering of purchased 
 *   **Show Don't Tell Success**
     *   **Content:** A secure page that extracts the newly created programmatic `token_id` from the Stripe redirect URL (e.g. `SDT-XXXXXXXXXXXX`) and displays it in large text.
     *   **Features:** Provides a one-click "Copy to Clipboard" button and directs the user to immediately go to `/show-dont-tell` to login with their token.
+*   **First 100 Subscribers Success**
+    *   **Content:** Confirms the order, verifies the purchase, and instructs the user to check their email for immediate access to the workshop and bonuses.
 
 ---
 
@@ -152,6 +168,10 @@ These APIs run silently in the background routing traffic and managing state:
 *   **`/api/admidash/tables`**: A dynamic explorer providing live row counts and definitions for the Supabase schema.
 *   **`/api/admidash/kit/sync`**: Synchronizes filtered user segments directly into the Kit (ConvertKit) mailing infrastructure with tagging.
 *   **`/api/admidash/kit/tags`**: Manages and creates Kit tags directly from the Command Centre.
+*   **`/api/first100/create-payment-intent`**: Creates Stripe PaymentIntents and pending leads for the First 100 Subscribers native checkout.
+*   **`/api/first100/ confirm-payment`**: Confirms Stripe payments and fulfills the First 100 Subscribers checkout process.
+*   **`/api/unstuck/create-payment-intent`**: Creates Stripe PaymentIntents and pending leads for the Unstuck to Published checkout. Supports optional SDT order bump (+$47).
+*   **`/api/unstuck/confirm-payment`**: Confirms Stripe payments for Unstuck to Published. If SDT bump purchased, provisions 400 credits into `show_dont_tell_users` (tops up existing accounts or creates new token).
 
 ### Supabase Tables
 
@@ -162,6 +182,7 @@ These APIs run silently in the background routing traffic and managing state:
 *   **genius_ideas_leads:** Stores data for the 100 Genius Ideas funnel.
 *   **show_dont_tell_users:** Manages tokens, expiration dates, and credits for the Thumbnail Generator.
 *   **ana_ai_leads:** Stores leads and usage data for the free Ana AI Offer Flow tool.
+*   **first100_leads:** Stores data and payment status for the First 100 Paid Subscribers funnel.
 
 ---
 

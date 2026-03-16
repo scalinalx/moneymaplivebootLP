@@ -8,26 +8,35 @@ import {
     useStripe,
     useElements,
 } from '@stripe/react-stripe-js';
-import { Shield, Lock, AlertCircle, CheckCircle, Sparkles } from 'lucide-react';
+import { Shield, Lock, AlertCircle, CheckCircle, Sparkles, FileText, Zap, Package } from 'lucide-react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const UNSTUCK_PRICE = 9700; // $97 in cents
 const SDT_BUMP_PRICE = 4700; // $47 in cents
+const GENIUS_BUMP_PRICE = 2700; // $27 in cents
+const HOOKS_BUMP_PRICE = 2700; // $27 in cents
+const BUNDLE_PRICE = 6900; // $69 in cents (all 3 bumps — save $32)
 
 interface CheckoutFormProps {
     clientSecret: string;
     leadId: string;
     hasSdtBump: boolean;
+    hasGeniusBump: boolean;
+    hasHooksBump: boolean;
+    hasBundle: boolean;
 }
 
-const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId, hasSdtBump }) => {
+const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId, hasSdtBump, hasGeniusBump, hasHooksBump, hasBundle }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [isProcessing, setIsProcessing] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-    const totalDisplay = hasSdtBump ? (UNSTUCK_PRICE + SDT_BUMP_PRICE) / 100 : UNSTUCK_PRICE / 100;
+    const bumpTotal = hasBundle
+        ? BUNDLE_PRICE
+        : (hasSdtBump ? SDT_BUMP_PRICE : 0) + (hasGeniusBump ? GENIUS_BUMP_PRICE : 0) + (hasHooksBump ? HOOKS_BUMP_PRICE : 0);
+    const totalDisplay = (UNSTUCK_PRICE + bumpTotal) / 100;
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -57,7 +66,6 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
 
             const confirmData = await confirmRes.json();
 
-            // If SDT bump was purchased and we got a token, include it in the redirect
             const sdtParam = confirmData.sdtTokenId ? `&sdtToken=${confirmData.sdtTokenId}` : '';
             window.location.href = `/unstuck-to-published?success=true&leadId=${leadId}${sdtParam}`;
         }
@@ -103,18 +111,55 @@ export const EmbeddedCheckout: React.FC = () => {
     const [isInitializing, setIsInitializing] = useState(false);
     const [step, setStep] = useState(1);
     const [hasSdtBump, setHasSdtBump] = useState(false);
+    const [hasGeniusBump, setHasGeniusBump] = useState(false);
+    const [hasHooksBump, setHasHooksBump] = useState(false);
+    const [hasBundle, setHasBundle] = useState(false);
 
-    const totalCents = UNSTUCK_PRICE + (hasSdtBump ? SDT_BUMP_PRICE : 0);
+    // When bundle is selected, individual bumps are ignored (bundle includes all 3)
+    const bumpTotal = hasBundle
+        ? BUNDLE_PRICE
+        : (hasSdtBump ? SDT_BUMP_PRICE : 0) + (hasGeniusBump ? GENIUS_BUMP_PRICE : 0) + (hasHooksBump ? HOOKS_BUMP_PRICE : 0);
+    const totalCents = UNSTUCK_PRICE + bumpTotal;
+
+    const handleBundleToggle = () => {
+        if (!hasBundle) {
+            // Selecting bundle — deselect all individual bumps
+            setHasSdtBump(false);
+            setHasGeniusBump(false);
+            setHasHooksBump(false);
+            setHasBundle(true);
+        } else {
+            setHasBundle(false);
+        }
+    };
+
+    const handleIndividualBump = (setter: React.Dispatch<React.SetStateAction<boolean>>, current: boolean) => {
+        // Selecting an individual bump deselects the bundle
+        if (hasBundle) setHasBundle(false);
+        setter(!current);
+    };
 
     const startCheckout = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsInitializing(true);
 
+        // If bundle is selected, send all bumps as true
+        const effectiveSdt = hasBundle || hasSdtBump;
+        const effectiveGenius = hasBundle || hasGeniusBump;
+        const effectiveHooks = hasBundle || hasHooksBump;
+
         try {
             const response = await fetch('/api/unstuck/create-payment-intent', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, name, hasSdtBump }),
+                body: JSON.stringify({
+                    email,
+                    name,
+                    hasSdtBump: effectiveSdt,
+                    hasGeniusBump: effectiveGenius,
+                    hasHooksBump: effectiveHooks,
+                    hasBundle,
+                }),
             });
 
             const data = await response.json();
@@ -135,6 +180,10 @@ export const EmbeddedCheckout: React.FC = () => {
             setIsInitializing(false);
         }
     };
+
+    const effectiveSdt = hasBundle || hasSdtBump;
+    const effectiveGenius = hasBundle || hasGeniusBump;
+    const effectiveHooks = hasBundle || hasHooksBump;
 
     return (
         <div id="waitlist-section" className="w-full max-w-[600px] mx-auto bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
@@ -172,34 +221,172 @@ export const EmbeddedCheckout: React.FC = () => {
                             />
                         </div>
 
-                        {/* Show Don't Tell Order Bump */}
-                        <div className="my-6">
+                        {/* ═══════════ BUMP 1: Show Don't Tell ═══════════ */}
+                        <div className={`my-4 transition-opacity ${hasBundle ? 'opacity-40' : ''}`}>
                             <div
-                                onClick={() => setHasSdtBump(!hasSdtBump)}
-                                className={`p-5 rounded-xl border-2 transition-all cursor-pointer relative ${hasSdtBump ? 'border-[#f72585] bg-[#f72585]/5 shadow-md' : 'border-gray-200 hover:border-gray-300'}`}
+                                onClick={() => handleIndividualBump(setHasSdtBump, hasSdtBump)}
+                                className={`p-5 rounded-xl border-2 transition-all cursor-pointer relative ${hasSdtBump && !hasBundle ? 'border-[#f72585] bg-[#f72585]/5 shadow-md' : 'border-gray-200 hover:border-gray-300'}`}
                             >
                                 <div className="absolute -top-3 right-4 bg-[#f72585] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm flex items-center gap-1">
                                     <Sparkles size={10} />
-                                    One-Time Offer
+                                    Highly Recommended!
                                 </div>
                                 <div className="flex gap-4">
                                     <div className="mt-1 flex-shrink-0">
-                                        <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${hasSdtBump ? 'border-[#f72585] bg-[#f72585]' : 'border-gray-300'}`}>
-                                            {hasSdtBump && <CheckCircle size={16} className="text-white" />}
+                                        <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${hasSdtBump && !hasBundle ? 'border-[#f72585] bg-[#f72585]' : 'border-gray-300'}`}>
+                                            {hasSdtBump && !hasBundle && <CheckCircle size={16} className="text-white" />}
                                         </div>
                                     </div>
-                                    <div>
+                                    <div className="flex-1">
                                         <p className="font-bold text-[#1a1a1a] text-lg mb-1 leading-tight">
                                             Yes! Add Show Don't Tell — Viral Thumbnail Generator <span className="text-[#f72585]">(+$47)</span>
                                         </p>
-                                        <p className="text-sm text-gray-600 font-lato mb-2">
-                                            Get 400 AI image credits to generate scroll-stopping thumbnails for every Substack post you publish. Powered by Gemini 2.5 Flash — create professional visuals in seconds, not hours.
-                                        </p>
+                                        <div className="flex gap-3 my-2">
+                                            <img
+                                                src="/imgs/unstuck-to-published/showdonttell-hero.jpeg"
+                                                alt="Show Don't Tell Thumbnail Generator"
+                                                className="w-[100px] h-[70px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                            />
+                                            <p className="text-base text-gray-600 font-lato">
+                                                Get 400 AI image credits to generate scroll-stopping thumbnails for every Substack post. Powered by Gemini 2.5 Flash — professional visuals in seconds, not hours.
+                                            </p>
+                                        </div>
                                         <div className="flex flex-wrap gap-2 mt-2">
                                             <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">400 Image Credits</span>
                                             <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">~200 Generations</span>
                                             <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">19 Style Presets</span>
                                             <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">1 Year Access</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ═══════════ BUMP 2: 100 Genius Launch Ideas ═══════════ */}
+                        <div className={`my-4 transition-opacity ${hasBundle ? 'opacity-40' : ''}`}>
+                            <div
+                                onClick={() => handleIndividualBump(setHasGeniusBump, hasGeniusBump)}
+                                className={`p-5 rounded-xl border-2 transition-all cursor-pointer relative ${hasGeniusBump && !hasBundle ? 'border-[#ffc300] bg-[#ffc300]/5 shadow-md' : 'border-gray-200 hover:border-gray-300'}`}
+                            >
+                                <div className="absolute -top-3 right-4 bg-[#ffc300] text-[#1a1a1a] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm flex items-center gap-1">
+                                    <FileText size={10} />
+                                    Highly Recommended!
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="mt-1 flex-shrink-0">
+                                        <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${hasGeniusBump && !hasBundle ? 'border-[#ffc300] bg-[#ffc300]' : 'border-gray-300'}`}>
+                                            {hasGeniusBump && !hasBundle && <CheckCircle size={16} className="text-[#1a1a1a]" />}
+                                        </div>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="font-bold text-[#1a1a1a] text-lg mb-1 leading-tight">
+                                            Yes! Add 100 Genius Launch Ideas PDF <span className="text-[#f72585]">(+$27)</span>
+                                        </p>
+                                        <div className="flex gap-3 my-2">
+                                            <img
+                                                src="/imgs/100-genius-offers/bundle_image.webp"
+                                                alt="100 Genius Launch Ideas"
+                                                className="w-[100px] h-[70px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                            />
+                                            <p className="text-base text-gray-600 font-lato">
+                                                100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Know exactly what to sell and how to price it.
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 mt-2">
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">100 Proven Ideas</span>
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Sorted by Revenue</span>
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Instant PDF Download</span>
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Lifetime Access</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ═══════════ BUMP 3: Hooks That Stop the Scroll ═══════════ */}
+                        <div className={`my-4 transition-opacity ${hasBundle ? 'opacity-40' : ''}`}>
+                            <div
+                                onClick={() => handleIndividualBump(setHasHooksBump, hasHooksBump)}
+                                className={`p-5 rounded-xl border-2 transition-all cursor-pointer relative ${hasHooksBump && !hasBundle ? 'border-[#f72585] bg-[#f72585]/5 shadow-md' : 'border-gray-200 hover:border-gray-300'}`}
+                            >
+                                <div className="absolute -top-3 right-4 bg-[#f72585] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm flex items-center gap-1">
+                                    <Zap size={10} />
+                                    Highly Recommended!
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="mt-1 flex-shrink-0">
+                                        <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${hasHooksBump && !hasBundle ? 'border-[#f72585] bg-[#f72585]' : 'border-gray-300'}`}>
+                                            {hasHooksBump && !hasBundle && <CheckCircle size={16} className="text-white" />}
+                                        </div>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="font-bold text-[#1a1a1a] text-lg mb-1 leading-tight">
+                                            Yes! Add Hooks That Stop the Scroll <span className="text-[#f72585]">(+$27)</span>
+                                        </p>
+                                        <div className="flex gap-3 my-2">
+                                            <img
+                                                src="/imgs/unstuck-to-published/hooks-hero.jpeg"
+                                                alt="Hooks That Stop the Scroll"
+                                                className="w-[100px] h-[70px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                            />
+                                            <p className="text-base text-gray-600 font-lato">
+                                                Stop being ignored. Get our vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click your content instantly.
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 mt-2">
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Headline Swipe File</span>
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Opening Loop Templates</span>
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Instant Access</span>
+                                            <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Lifetime Updates</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ═══════════ BUNDLE — BEST DEAL (last) ═══════════ */}
+                        <div className="my-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="flex-1 h-px bg-gray-200" />
+                                <span className="text-[#27AE60] text-xs font-black uppercase tracking-wider">Or get all 3 and save</span>
+                                <div className="flex-1 h-px bg-gray-200" />
+                            </div>
+                            <div
+                                onClick={handleBundleToggle}
+                                className={`p-5 rounded-xl border-2 transition-all cursor-pointer relative ${hasBundle ? 'border-[#27AE60] bg-[#27AE60]/5 shadow-lg ring-2 ring-[#27AE60]/20' : 'border-gray-200 hover:border-gray-300'}`}
+                            >
+                                <div className="absolute -top-3 left-4 bg-[#27AE60] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm flex items-center gap-1">
+                                    <Package size={10} />
+                                    Save $32!
+                                </div>
+                                <div className="absolute -top-3 right-4 bg-[#f72585] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm animate-pulse">
+                                    HIGHLY RECOMMENDED!
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="mt-1 flex-shrink-0">
+                                        <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${hasBundle ? 'border-[#27AE60] bg-[#27AE60]' : 'border-gray-300'}`}>
+                                            {hasBundle && <CheckCircle size={16} className="text-white" />}
+                                        </div>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="font-bold text-[#1a1a1a] text-lg mb-1 leading-tight">
+                                            The Creator Launch Kit — All 3 Add-Ons <span className="text-[#27AE60] font-black">(+$69)</span>
+                                            <span className="text-gray-400 text-sm line-through ml-2">$101</span>
+                                        </p>
+                                        <div className="flex gap-3 my-2">
+                                            <img
+                                                src="/imgs/unstuck-to-published/creatorbundle-hero.jpeg"
+                                                alt="Creator Launch Kit Bundle"
+                                                className="w-[120px] h-[84px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                            />
+                                            <p className="text-base text-gray-600 font-lato">
+                                                Get everything you need to launch like a pro: AI-powered thumbnails, 100 proven launch ideas, and headline frameworks that stop the scroll — all in one bundle.
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-col gap-1.5 text-sm text-gray-700 font-lato mt-2">
+                                            <span className="flex items-center gap-2"><CheckCircle size={12} className="text-[#27AE60]" /> Show Don't Tell — 400 AI image credits (worth $47)</span>
+                                            <span className="flex items-center gap-2"><CheckCircle size={12} className="text-[#27AE60]" /> 100 Genius Launch Ideas PDF (worth $27)</span>
+                                            <span className="flex items-center gap-2"><CheckCircle size={12} className="text-[#27AE60]" /> Hooks That Stop the Scroll (worth $27)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -214,7 +401,7 @@ export const EmbeddedCheckout: React.FC = () => {
                         </button>
 
                         <p className="font-lato text-gray-400 text-xs text-center">
-                            24-hour money-back guarantee. Replay included.
+                            Replay included for all attendees. Secure checkout via Stripe.
                         </p>
                     </form>
                 ) : (
@@ -236,11 +423,32 @@ export const EmbeddedCheckout: React.FC = () => {
                                 <span className="text-gray-600">Unstuck to Published Workshop</span>
                                 <span className="font-bold text-[#1a1a1a]">$97</span>
                             </div>
-                            {hasSdtBump && (
+                            {hasBundle ? (
                                 <div className="flex justify-between mb-1">
-                                    <span className="text-gray-600">Show Don't Tell (400 credits)</span>
-                                    <span className="font-bold text-[#1a1a1a]">$47</span>
+                                    <span className="text-gray-600">Creator Launch Kit (all 3 add-ons)</span>
+                                    <span className="font-bold text-[#27AE60]">$69 <span className="text-gray-400 line-through text-xs">$101</span></span>
                                 </div>
+                            ) : (
+                                <>
+                                    {effectiveSdt && (
+                                        <div className="flex justify-between mb-1">
+                                            <span className="text-gray-600">Show Don't Tell (400 credits)</span>
+                                            <span className="font-bold text-[#1a1a1a]">$47</span>
+                                        </div>
+                                    )}
+                                    {effectiveGenius && (
+                                        <div className="flex justify-between mb-1">
+                                            <span className="text-gray-600">100 Genius Launch Ideas PDF</span>
+                                            <span className="font-bold text-[#1a1a1a]">$27</span>
+                                        </div>
+                                    )}
+                                    {effectiveHooks && (
+                                        <div className="flex justify-between mb-1">
+                                            <span className="text-gray-600">Hooks That Stop the Scroll</span>
+                                            <span className="font-bold text-[#1a1a1a]">$27</span>
+                                        </div>
+                                    )}
+                                </>
                             )}
                             <div className="flex justify-between pt-2 mt-2 border-t border-gray-200">
                                 <span className="font-bold text-[#1a1a1a]">Total</span>
@@ -261,7 +469,14 @@ export const EmbeddedCheckout: React.FC = () => {
                                     }
                                 }
                             }}>
-                                <CheckoutFormContent clientSecret={clientSecret} leadId={leadId} hasSdtBump={hasSdtBump} />
+                                <CheckoutFormContent
+                                    clientSecret={clientSecret}
+                                    leadId={leadId}
+                                    hasSdtBump={effectiveSdt}
+                                    hasGeniusBump={effectiveGenius}
+                                    hasHooksBump={effectiveHooks}
+                                    hasBundle={hasBundle}
+                                />
                             </Elements>
                         )}
 

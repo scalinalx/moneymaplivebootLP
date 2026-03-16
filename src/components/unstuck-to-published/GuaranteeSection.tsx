@@ -30,14 +30,14 @@ export const GuaranteeSection: React.FC = () => {
 
                 <button
                     onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group bg-[#ffc300] hover:bg-[#e6b000] text-[#1a1a1a] font-montserrat font-bold text-lg md:text-xl py-5 px-10 md:px-12 rounded-lg shadow-[0_4px_20px_rgba(255,195,0,0.25)] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 mb-4"
+                    className="group bg-[#ffc300] hover:bg-[#e6b000] text-[#1a1a1a] font-montserrat font-bold text-lg md:text-xl py-5 px-10 md:px-12 rounded-lg shadow-[0_4px_20px_rgba(255,195,0,0.25)] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 mb-6"
                 >
                     <span>Book Your Seat — $97</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                 </button>
 
-                <p className="text-[#f72585] text-sm font-semibold mb-6">
-                    24-hour money-back guarantee. Replay included.
+                <p className="font-lato text-gray-500 text-sm max-w-md leading-relaxed mb-6">
+                    Due to the live, interactive nature of this workshop and the instant delivery of all digital resources, templates, and replay access, we are unable to offer refunds. When you purchase your seat, you receive immediate access to all workshop materials — making every sale final. We're confident you'll love every minute.
                 </p>
 
                 <p className="font-lato text-gray-500 text-sm">

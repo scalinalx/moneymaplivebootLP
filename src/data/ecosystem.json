@@ -124,6 +124,18 @@
                             "url": "/first-100-paid-subscribers-success"
                         }
                     ]
+                },
+                {
+                    "name": "Unstuck to Published",
+                    "description": "A 60-minute live workshop (with Jessica Best) for Substack creators who are stuck overthinking — walk out with a positioned publication, a structured first article, and a paywall strategy that converts.",
+                    "price": "$97",
+                    "priceNote": "(`UNSTUCK_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/unstuck-to-published"
+                        }
+                    ]
                 }
             ]
         },
@@ -272,6 +284,46 @@
                     "varies": [
                         "`NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE`"
                     ]
+                },
+                {
+                    "name": "Show Don't Tell Thumbnail Generator (400 Credits)",
+                    "price": "$47",
+                    "type": "Order Bump",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "Adds 400 image credits (~200 generations) to the Show Don't Tell AI Thumbnail Generator. 19 style presets, 1 year access. Credits are provisioned into the `show_dont_tell_users` table on payment confirmation.",
+                    "varies": [
+                        "`UNSTUCK_SDT_BUMP_PRICE`"
+                    ]
+                },
+                {
+                    "name": "100 Genius Launch Ideas PDF",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Instant PDF download with lifetime access.",
+                    "varies": [
+                        "`UNSTUCK_GENIUS_BUMP_PRICE`"
+                    ]
+                },
+                {
+                    "name": "Hooks That Stop the Scroll",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "Vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click.",
+                    "varies": [
+                        "`UNSTUCK_HOOKS_BUMP_PRICE`"
+                    ]
+                },
+                {
+                    "name": "The Creator Launch Kit (Bundle)",
+                    "price": "$69",
+                    "type": "Order Bump (Bundle)",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "All 3 add-ons bundled: Show Don't Tell (400 credits) + 100 Genius Launch Ideas PDF + Hooks That Stop the Scroll. Individual total $101, bundle price $69 (save $32).",
+                    "varies": [
+                        "`UNSTUCK_BUNDLE_PRICE`"
+                    ]
                 }
             ]
         },
@@ -408,6 +460,14 @@
                 {
                     "path": "/api/first100/ confirm-payment",
                     "description": "Confirms Stripe payments and fulfills the First 100 Subscribers checkout process."
+                },
+                {
+                    "path": "/api/unstuck/create-payment-intent",
+                    "description": "Creates Stripe PaymentIntents and pending leads for the Unstuck to Published checkout. Supports optional SDT order bump (+$47)."
+                },
+                {
+                    "path": "/api/unstuck/confirm-payment",
+                    "description": "Confirms Stripe payments for Unstuck to Published. If SDT bump purchased, provisions 400 credits into `show_dont_tell_users` (tops up existing accounts or creates new token)."
                 }
             ],
             "tables": [
