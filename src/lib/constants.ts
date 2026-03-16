@@ -27,6 +27,9 @@ export const UNSTUCK_GENIUS_BUMP_PRICE = Number.parseInt(process.env.UNSTUCK_GEN
 export const UNSTUCK_HOOKS_BUMP_PRICE = Number.parseInt(process.env.UNSTUCK_HOOKS_BUMP_PRICE || '2700', 10); // $27 Hooks That Stop the Scroll
 export const UNSTUCK_BUNDLE_PRICE = Number.parseInt(process.env.UNSTUCK_BUNDLE_PRICE || '6900', 10); // $69 All 3 bumps bundle (save $32)
 
+// Creator Bundle Pricing (standalone bundle page — server-only)
+export const CREATOR_BUNDLE_PRICE = Number.parseInt(process.env.CREATOR_BUNDLE_PRICE || '10700', 10); // $107
+
 // Launch Lab Pricing
 export const LAUNCHLAB_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_PRICE || '59700', 10);
 export const LAUNCHLAB_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE || '4700', 10);

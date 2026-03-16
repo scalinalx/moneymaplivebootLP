@@ -8,7 +8,7 @@ export const AnnouncementBar: React.FC = () => {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6">
                 <p className="font-lato font-bold text-[13px] md:text-[17px] tracking-wide flex items-center justify-center gap-2 leading-tight">
                     <span className="inline-block w-1.5 h-1.5 bg-[#ffc300] rounded-full animate-pulse"></span>
-                    LIVE WORKSHOP — SAT, MARCH 21 @ 10:00 AM EST: <span className="text-[#ffc300] ml-1">From Unstuck to Published</span>
+                    LIVE WORKSHOP — SAT, MARCH 21 @ 10:00 AM EST: <span className="text-[#ffc300] ml-1">Build Your Substack</span>
                 </p>
 
                 <a
