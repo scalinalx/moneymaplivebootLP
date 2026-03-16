@@ -40,6 +40,7 @@ export function middleware(req: NextRequest) {
     '/lead-collection',
     '/landing',
     '/offer-expired',
+    '/unstuck-to-published',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
