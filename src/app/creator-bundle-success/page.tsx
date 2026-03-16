@@ -30,7 +30,7 @@ function SuccessContent() {
 
                         if (typeof window !== 'undefined' && (window as any).fbq) {
                             (window as any).fbq('track', 'Purchase', {
-                                value: 97,
+                                value: 107,
                                 currency: 'USD',
                                 contents: [{ id: 'creator_bundle', quantity: 1 }],
                             });

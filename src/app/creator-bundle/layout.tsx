@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "The Creator Launch Kit — 4 Tools That Replace $1,000+ in Courses | How We Grow",
-    description: "AI thumbnails, 100 proven launch ideas, scroll-stopping headlines, and an email sequence writer — everything you need to launch and sell on Substack. Used by 10,000+ creators. Just $97.",
+    description: "AI thumbnails, 100 proven launch ideas, scroll-stopping headlines, and an email sequence writer — everything you need to launch and sell on Substack. Used by 10,000+ creators. Just $107.",
     icons: {
         icon: '/imgs/hwg-icon.webp',
         shortcut: '/imgs/hwg-icon.webp',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: "The Creator Launch Kit — 4 Tools That Replace $1,000+ in Courses",
-        description: "AI thumbnails + 100 launch ideas + headline swipe file + email sequence writer. Everything to launch on Substack. $97 (90% off).",
+        description: "AI thumbnails + 100 launch ideas + headline swipe file + email sequence writer. Everything to launch on Substack. $107 (89% off).",
         images: ['/imgs/unstuck-to-published/creatorbundle-hero2.jpeg'],
         site: '@howwegrow',
         creator: '@howwegrow',

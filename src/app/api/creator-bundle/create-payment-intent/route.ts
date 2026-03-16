@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
-import { stripe, CREATOR_BUNDLE_PRICE } from '@/lib/stripe';
+import { stripe, CREATOR_BUNDLE_PRICE, CREATOR_BUNDLE_BUMP_PRICE } from '@/lib/stripe';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, name } = await request.json();
+        const { email, name, hasLaunchStack } = await request.json();
 
         if (!email || !name) {
             return NextResponse.json({ success: false, error: 'Email and name are required' }, { status: 400 });
         }
 
-        const totalAmount = CREATOR_BUNDLE_PRICE;
+        let totalAmount = CREATOR_BUNDLE_PRICE;
+        if (hasLaunchStack) {
+            totalAmount += CREATOR_BUNDLE_BUMP_PRICE;
+        }
 
         // Create or retrieve Stripe customer
         const customers = await stripe.customers.list({ email, limit: 1 });
@@ -27,10 +30,10 @@ export async function POST(request: NextRequest) {
                 email,
                 total_paid: totalAmount,
                 source: 'creator_bundle',
-                has_bump1: true,  // Genius Ideas
-                has_bump2: true,  // Hooks
-                has_bump3: true,  // Show Don't Tell
-                has_bundle: true, // Full bundle
+                has_bump1: true,  // Genius Ideas (always in bundle)
+                has_bump2: true,  // Hooks (always in bundle)
+                has_bump3: true,  // Show Don't Tell (always in bundle)
+                has_bundle: true,
                 stripe_customer_id: customer.id,
             })
             .select('id')
@@ -55,7 +58,7 @@ export async function POST(request: NextRequest) {
                 hasGeniusBump: 'true',
                 hasHooksBump: 'true',
                 hasBundle: 'true',
-                hasLaunchStack: 'true',
+                hasLaunchStack: hasLaunchStack ? 'true' : 'false',
             },
         });
 

@@ -15,10 +15,12 @@ export async function POST(request: NextRequest) {
         // Retrieve metadata from Stripe
         let customerEmail = '';
         let customerName = '';
+        let hasLaunchStack = false;
         try {
             const pi = await stripe.paymentIntents.retrieve(paymentIntentId);
             customerEmail = pi.metadata?.email || '';
             customerName = pi.metadata?.name || '';
+            hasLaunchStack = pi.metadata?.hasLaunchStack === 'true';
         } catch (e) {
             console.warn('Could not retrieve PI metadata:', e);
         }
@@ -85,6 +87,7 @@ export async function POST(request: NextRequest) {
             success: true,
             message: 'Payment confirmed',
             sdtTokenId,
+            hasLaunchStack,
         });
 
     } catch (error) {

@@ -28,7 +28,8 @@ export const UNSTUCK_HOOKS_BUMP_PRICE = Number.parseInt(process.env.UNSTUCK_HOOK
 export const UNSTUCK_BUNDLE_PRICE = Number.parseInt(process.env.UNSTUCK_BUNDLE_PRICE || '6900', 10); // $69 All 3 bumps bundle (save $32)
 
 // Creator Bundle Pricing (standalone bundle page — server-only)
-export const CREATOR_BUNDLE_PRICE = Number.parseInt(process.env.CREATOR_BUNDLE_PRICE || '10700', 10); // $107
+export const CREATOR_BUNDLE_PRICE = Number.parseInt(process.env.CREATOR_BUNDLE_PRICE || '6900', 10); // $69
+export const CREATOR_BUNDLE_BUMP_PRICE = Number.parseInt(process.env.CREATOR_BUNDLE_BUMP_PRICE || '6700', 10); // $67 Launch Stack bump
 
 // Launch Lab Pricing
 export const LAUNCHLAB_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_PRICE || '59700', 10);
