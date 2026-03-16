@@ -49,7 +49,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         const { error, paymentIntent } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${window.location.origin}/unstuck-to-published?success=true&leadId=${leadId}`,
+                return_url: `${window.location.origin}/unstuck-to-published-success?leadId=${leadId}`,
             },
             redirect: 'if_required',
         });
@@ -67,7 +67,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
             const confirmData = await confirmRes.json();
 
             const sdtParam = confirmData.sdtTokenId ? `&sdtToken=${confirmData.sdtTokenId}` : '';
-            window.location.href = `/unstuck-to-published?success=true&leadId=${leadId}${sdtParam}`;
+            window.location.href = `/unstuck-to-published-success?leadId=${leadId}${sdtParam}`;
         }
     };
 
@@ -186,7 +186,7 @@ export const EmbeddedCheckout: React.FC = () => {
     const effectiveHooks = hasBundle || hasHooksBump;
 
     return (
-        <div id="waitlist-section" className="w-full max-w-[600px] mx-auto bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
+        <div id="checkout-section" className="w-full max-w-[660px] mx-auto bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
             <div className="bg-[#1a1a1a] py-4 px-6 text-center relative">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ffc300] to-[#f72585]" />
                 <p className="text-white font-montserrat font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2">
@@ -245,9 +245,9 @@ export const EmbeddedCheckout: React.FC = () => {
                                             <img
                                                 src="/imgs/unstuck-to-published/showdonttell-hero.jpeg"
                                                 alt="Show Don't Tell Thumbnail Generator"
-                                                className="w-[100px] h-[70px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                                className="w-[121px] h-[85px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
                                             />
-                                            <p className="text-base text-gray-600 font-lato">
+                                            <p className="text-[17px] text-gray-600 font-lato">
                                                 Get 400 AI image credits to generate scroll-stopping thumbnails for every Substack post. Powered by Gemini 2.5 Flash — professional visuals in seconds, not hours.
                                             </p>
                                         </div>
@@ -286,9 +286,9 @@ export const EmbeddedCheckout: React.FC = () => {
                                             <img
                                                 src="/imgs/100-genius-offers/bundle_image.webp"
                                                 alt="100 Genius Launch Ideas"
-                                                className="w-[100px] h-[70px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                                className="w-[121px] h-[85px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
                                             />
-                                            <p className="text-base text-gray-600 font-lato">
+                                            <p className="text-[17px] text-gray-600 font-lato">
                                                 100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Know exactly what to sell and how to price it.
                                             </p>
                                         </div>
@@ -327,9 +327,9 @@ export const EmbeddedCheckout: React.FC = () => {
                                             <img
                                                 src="/imgs/unstuck-to-published/hooks-hero.jpeg"
                                                 alt="Hooks That Stop the Scroll"
-                                                className="w-[100px] h-[70px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                                className="w-[121px] h-[85px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
                                             />
-                                            <p className="text-base text-gray-600 font-lato">
+                                            <p className="text-[17px] text-gray-600 font-lato">
                                                 Stop being ignored. Get our vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click your content instantly.
                                             </p>
                                         </div>
@@ -375,15 +375,15 @@ export const EmbeddedCheckout: React.FC = () => {
                                         </p>
                                         <div className="flex gap-3 my-2">
                                             <img
-                                                src="/imgs/unstuck-to-published/creatorbundle-hero.jpeg"
+                                                src="/imgs/unstuck-to-published/creatorbundle-hero2.jpeg"
                                                 alt="Creator Launch Kit Bundle"
-                                                className="w-[120px] h-[84px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
+                                                className="w-[145px] h-[101px] rounded-lg object-cover border border-gray-200 flex-shrink-0"
                                             />
-                                            <p className="text-base text-gray-600 font-lato">
+                                            <p className="text-[17px] text-gray-600 font-lato">
                                                 Get everything you need to launch like a pro: AI-powered thumbnails, 100 proven launch ideas, and headline frameworks that stop the scroll — all in one bundle.
                                             </p>
                                         </div>
-                                        <div className="flex flex-col gap-1.5 text-sm text-gray-700 font-lato mt-2">
+                                        <div className="flex flex-col gap-1.5 text-[15px] text-gray-700 font-lato mt-2">
                                             <span className="flex items-center gap-2"><CheckCircle size={12} className="text-[#27AE60]" /> Show Don't Tell — 400 AI image credits (worth $47)</span>
                                             <span className="flex items-center gap-2"><CheckCircle size={12} className="text-[#27AE60]" /> 100 Genius Launch Ideas PDF (worth $27)</span>
                                             <span className="flex items-center gap-2"><CheckCircle size={12} className="text-[#27AE60]" /> Hooks That Stop the Scroll (worth $27)</span>

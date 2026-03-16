@@ -22,10 +22,11 @@ export const HeroSection: React.FC = () => {
                             </span>
                         </div>
 
-                        {/* Headline — exactly 2 rows */}
+                        {/* Headline */}
+                        <p className="font-lora text-gray-400 text-sm md:text-base tracking-widest uppercase mb-2">How To</p>
                         <h1 className="font-anton leading-[1.08] uppercase mb-4 tracking-wide w-full">
-                            <span className="block text-[#ffc300] text-3xl sm:text-4xl md:text-5xl lg:text-[64px]">From Unstuck to Published:</span>
-                            <span className="block text-white text-xl sm:text-2xl md:text-3xl lg:text-[40px] xl:text-[44px] mt-1 whitespace-nowrap">Build Your Substack the Right Way From Day One</span>
+                            <span className="block text-white text-2xl sm:text-3xl md:text-4xl lg:text-[56px]">Build Your Substack</span>
+                            <span className="block text-[#ffc300] text-2xl sm:text-3xl md:text-4xl lg:text-[56px] mt-1">The Right Way From Day One</span>
                         </h1>
 
                         <p className="text-gray-400 italic text-sm font-lora mb-6">*limited time offer*</p>
@@ -71,7 +72,7 @@ export const HeroSection: React.FC = () => {
                                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                             </button>
                             <p className="text-[#f72585] font-semibold mt-3 text-sm tracking-wide">
-                                Only 50 seats. Replay included for all attendees.
+                                Only 100 seats. Replay included for all attendees.
                             </p>
                         </div>
 

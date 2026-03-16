@@ -51,7 +51,7 @@ const UnstuckToPublishedPage: React.FC = () => {
                 <FAQSection />
                 {/* 12. Checkout */}
                 <div id="checkout-section" className="w-full flex justify-center py-20 px-6 bg-white">
-                    <div className="w-full max-w-[700px] flex flex-col items-center">
+                    <div className="w-full max-w-[770px] flex flex-col items-center">
                         <h2 className="font-anton text-4xl md:text-5xl text-[#333333] mb-4 text-center uppercase tracking-wide">
                             BOOK YOUR <span className="text-[#f72585]">SEAT NOW</span>
                         </h2>
