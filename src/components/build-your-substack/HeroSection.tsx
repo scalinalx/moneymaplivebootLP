@@ -118,7 +118,7 @@ export const HeroSection = () => {
               className="w-[54px] h-[54px] rounded-full object-cover"
             />
             <div className="text-left">
-              <p className="font-anton text-2xl text-[#ffc300]">87,000+</p>
+              <p className="font-anton text-2xl text-[#ffc300]">88,000+</p>
               <p className="text-gray-400 text-xs">Combined Subscribers</p>
             </div>
           </div>

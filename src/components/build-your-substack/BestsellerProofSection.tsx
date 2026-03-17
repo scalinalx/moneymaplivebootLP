@@ -5,13 +5,13 @@ const hosts = [
     name: 'Ana Calin',
     image: 'https://substackcdn.com/image/fetch/w_224,h_224,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F571a8b69-320b-4df6-ba84-dd1394fb5af1_864x864.png',
     credentials:
-      "47,000+ subscribers on How We Grow. Built multiple digital products generating 6-figures. Knows exactly what works because she's tested it all.",
+      "80,000+ subscribers on How We Grow. Built multiple digital products generating 6-figures. Knows exactly what works because she's tested it all.",
   },
   {
     name: 'Jessica Best',
     image: 'https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73cbd9d5-897c-4efd-8e01-ad688304de32_1170x1170.jpeg',
     credentials:
-      '40,000+ subscribers on The Behave Way. Bestselling Substack author. Helps creators stop overthinking and start publishing.',
+      '8,600+ subscribers on Unstuck to Published and NP Fellow. Bestselling Substack author. Helps creators stop overthinking and start publishing.',
   },
 ];
 

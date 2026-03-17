@@ -71,7 +71,7 @@ export const HowItWorksSection = () => {
 
       <div className="text-center max-w-2xl mx-auto mb-10">
         <p className="font-lora text-gray-600 text-lg italic">
-          So simple, right? We did all the heavy lifting to figure this out over 87,000+
+          So simple, right? We did all the heavy lifting to figure this out over 88,000+
           subscribers — all you have to do is follow our framework.
         </p>
       </div>

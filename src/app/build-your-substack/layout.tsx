@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Build Your Substack The Right Way From Day One | Live Workshop",
-    description: "Stop overthinking, start publishing. In 60 minutes, walk away with a positioned Substack, a structured first article, and a paywall strategy that converts — built live with two Bestseller creators who've grown 87,000+ subscribers.",
+    description: "Stop overthinking, start publishing. In 60 minutes, walk away with a positioned Substack, a structured first article, and a paywall strategy that converts — built live with two Bestseller creators who've grown 88,000+ subscribers.",
     icons: {
         icon: '/imgs/hwg-icon.webp',
         shortcut: '/imgs/hwg-icon.webp',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: "Build Your Substack The Right Way From Day One",
-        description: "60-minute live workshop: walk in with an idea, walk out with a positioned publication, a structured first article, and a monetization strategy. Led by two Bestseller Substack creators (87,000+ subscribers combined).",
+        description: "60-minute live workshop: walk in with an idea, walk out with a positioned publication, a structured first article, and a monetization strategy. Led by two Bestseller Substack creators (88,000+ subscribers combined).",
         siteName: 'How We Grow',
         type: 'website',
         url: '/build-your-substack',

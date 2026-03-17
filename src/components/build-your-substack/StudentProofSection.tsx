@@ -68,7 +68,7 @@ export const StudentProofSection = () => {
                 </div>
                 <div className="grid grid-cols-1 gap-4">
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-                        <p className="font-anton text-2xl text-[#ffc300]">87,000+</p>
+                        <p className="font-anton text-2xl text-[#ffc300]">88,000+</p>
                         <p className="text-xs text-gray-500 mt-1">Combined Subscribers</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">

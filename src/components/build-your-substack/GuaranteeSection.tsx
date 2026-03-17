@@ -24,7 +24,7 @@ export const GuaranteeSection = () => {
           <p className="font-lora text-gray-400 text-lg leading-relaxed">
             Here&apos;s the thing: you can keep Googling &ldquo;how to start a Substack&rdquo; and
             piecing together free advice for the next six months. Or you can spend 60 minutes with
-            two creators who&apos;ve built 87,000+ subscribers and walk out with everything done.
+            two creators who&apos;ve built 88,000+ subscribers and walk out with everything done.
           </p>
           <p className="font-lora text-gray-400 text-lg leading-relaxed">
             The replay is yours forever. The frameworks are yours to keep. And if you show up and do
