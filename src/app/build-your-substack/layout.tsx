@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         locale: 'en_US',
         images: [
             {
-                url: '/imgs/unstuck-to-published/hero1.webp',
+                url: '/imgs/unstuck-to-published/hero44.jpeg',
                 width: 1200,
                 height: 630,
                 alt: 'Build Your Substack — Live Workshop with Ana & Jessica',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: "Build Your Substack The Right Way From Day One",
         description: "Stop overthinking. In 60 min, get a positioned publication, first article structure, and paywall strategy — built live with 2 Bestseller creators (87K+ subs). Only 100 seats.",
-        images: ['/imgs/unstuck-to-published/hero1.webp'],
+        images: ['/imgs/unstuck-to-published/hero44.jpeg'],
         site: '@howwegrow',
         creator: '@howwegrow',
     },
