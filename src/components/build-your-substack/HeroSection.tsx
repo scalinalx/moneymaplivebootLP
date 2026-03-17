@@ -36,7 +36,7 @@ export const HeroSection = () => {
           <span className="text-white text-5xl md:text-7xl block">
             Build Your Substack
           </span>
-          <span className="text-[#ffc300] text-5xl md:text-7xl block">
+          <span className="text-[#ffc300] text-5xl md:text-6xl lg:text-7xl block whitespace-nowrap">
             The Right Way From Day One
           </span>
         </h1>
@@ -49,7 +49,7 @@ export const HeroSection = () => {
         {/* 5. Hero image */}
         <div className="w-full max-w-[1100px] mb-10">
           <Image
-            src="/imgs/unstuck-to-published/hero1.webp"
+            src="/imgs/unstuck-to-published/hero44.jpeg"
             alt="Build Your Substack Workshop"
             width={1100}
             height={620}
