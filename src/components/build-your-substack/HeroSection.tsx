@@ -100,11 +100,9 @@ export const HeroSection = () => {
         {/* 10. Credibility bar */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl w-full">
           <div className="flex items-center gap-3 bg-white/5 backdrop-blur rounded-xl border border-white/10 p-4">
-            <Image
-              src="/imgs/unstuck-to-published/1.jpeg"
+            <img
+              src="https://substackcdn.com/image/fetch/w_224,h_224,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F571a8b69-320b-4df6-ba84-dd1394fb5af1_864x864.png"
               alt="Subscribers Converted"
-              width={54}
-              height={54}
               className="w-[54px] h-[54px] rounded-full object-cover"
             />
             <div className="text-left">
@@ -114,11 +112,9 @@ export const HeroSection = () => {
           </div>
 
           <div className="flex items-center gap-3 bg-white/5 backdrop-blur rounded-xl border border-white/10 p-4">
-            <Image
-              src="/imgs/unstuck-to-published/2.jpeg"
+            <img
+              src="https://substackcdn.com/image/fetch/w_224,h_224,c_fill,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F571a8b69-320b-4df6-ba84-dd1394fb5af1_864x864.png"
               alt="Combined Subscribers"
-              width={54}
-              height={54}
               className="w-[54px] h-[54px] rounded-full object-cover"
             />
             <div className="text-left">
@@ -128,11 +124,9 @@ export const HeroSection = () => {
           </div>
 
           <div className="flex items-center gap-3 bg-white/5 backdrop-blur rounded-xl border border-white/10 p-4">
-            <Image
-              src="/imgs/unstuck-to-published/3.jpeg"
+            <img
+              src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73cbd9d5-897c-4efd-8e01-ad688304de32_1170x1170.jpeg"
               alt="On Substack"
-              width={54}
-              height={54}
               className="w-[54px] h-[54px] rounded-full object-cover"
             />
             <div className="text-left">
