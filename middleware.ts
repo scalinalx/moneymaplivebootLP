@@ -44,6 +44,8 @@ export function middleware(req: NextRequest) {
     '/unstuck-to-published-success',
     '/creator-bundle',
     '/creator-bundle-success',
+    '/build-your-substack',
+    '/build-your-substack-success',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
