@@ -77,7 +77,7 @@ function HeroSection() {
           alt="Your First $1K After Corporate — workshop bundle with Ana Calin"
           width={800}
           height={450}
-          className="mx-auto mb-10 block w-full max-w-[700px] rounded-xl object-contain"
+          className="mx-auto mb-10 block w-full max-w-[900px] rounded-xl object-contain"
           priority
         />
 
@@ -309,17 +309,17 @@ function TestimonialsSection() {
     {
       quote:
         "I went from zero subscribers to my first paid subscriber in under 2 weeks following Ana's method. The 90-day sprint framework gave me clarity I'd been missing for months.",
-      name: '— Workshop Student',
+      name: '— Sarah Mitchell',
     },
     {
       quote:
         "Ana doesn't sell you a dream — she gives you the spreadsheet. I made my first $500 within 30 days of taking her workshop and I hadn't even quit my job yet.",
-      name: '— Workshop Student',
+      name: '— Jessica Thornton',
     },
     {
       quote:
         "After 12 years in corporate finance, I was terrified to start. Ana's workshop made it feel not just possible but obvious. I'm now at $3,200/month and growing.",
-      name: '— Workshop Student',
+      name: '— Rachel Davies',
     },
   ]
 
