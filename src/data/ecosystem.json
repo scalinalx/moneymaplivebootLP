@@ -134,8 +134,57 @@
                         {
                             "label": "Sales & Checkout",
                             "url": "/unstuck-to-published"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/unstuck-to-published-success"
                         }
                     ]
+                },
+                {
+                    "name": "Build Your Substack",
+                    "description": "A workshop helping creators build and launch their Substack publication from scratch. Reuses the same checkout architecture and order bump structure as Unstuck to Published.",
+                    "price": "$97",
+                    "priceNote": "(`UNSTUCK_PRICE` — shared constant)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/build-your-substack"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/build-your-substack-success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Creator Bundle",
+                    "description": "A bundled product offering with a Launch Stack order bump. Standalone checkout with its own lead table.",
+                    "price": "$69",
+                    "priceNote": "(`CREATOR_BUNDLE_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/creator-bundle"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/creator-bundle-success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Your First $1K After Corporate",
+                    "description": "A 60-minute live workshop teaching corporate professionals the exact 90-day system to make their first $1,000 online. Uses a direct Stripe Payment Link (no embedded checkout). Scheduled for March 31st.",
+                    "price": "$250",
+                    "priceNote": "(Hardcoded — direct Stripe Payment Link)",
+                    "links": [
+                        {
+                            "label": "Sales Page",
+                            "url": "/your-first-1k-after-corporate"
+                        }
+                    ],
+                    "callout": "Checkout via Stripe Payment Link — no backend API routes or database table"
                 }
             ]
         },
@@ -289,7 +338,7 @@
                     "name": "Show Don't Tell Thumbnail Generator (400 Credits)",
                     "price": "$47",
                     "type": "Order Bump",
-                    "offeredOn": "Unstuck to Published",
+                    "offeredOn": "Unstuck to Published, Build Your Substack",
                     "details": "Adds 400 image credits (~200 generations) to the Show Don't Tell AI Thumbnail Generator. 19 style presets, 1 year access. Credits are provisioned into the `show_dont_tell_users` table on payment confirmation.",
                     "varies": [
                         "`UNSTUCK_SDT_BUMP_PRICE`"
@@ -299,7 +348,7 @@
                     "name": "100 Genius Launch Ideas PDF",
                     "price": "$27",
                     "type": "Order Bump",
-                    "offeredOn": "Unstuck to Published",
+                    "offeredOn": "Unstuck to Published, Build Your Substack",
                     "details": "100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Instant PDF download with lifetime access.",
                     "varies": [
                         "`UNSTUCK_GENIUS_BUMP_PRICE`"
@@ -309,7 +358,7 @@
                     "name": "Hooks That Stop the Scroll",
                     "price": "$27",
                     "type": "Order Bump",
-                    "offeredOn": "Unstuck to Published",
+                    "offeredOn": "Unstuck to Published, Build Your Substack",
                     "details": "Vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click.",
                     "varies": [
                         "`UNSTUCK_HOOKS_BUMP_PRICE`"
@@ -319,10 +368,20 @@
                     "name": "The Creator Launch Kit (Bundle)",
                     "price": "$69",
                     "type": "Order Bump (Bundle)",
-                    "offeredOn": "Unstuck to Published",
+                    "offeredOn": "Unstuck to Published, Build Your Substack",
                     "details": "All 3 add-ons bundled: Show Don't Tell (400 credits) + 100 Genius Launch Ideas PDF + Hooks That Stop the Scroll. Individual total $101, bundle price $69 (save $32).",
                     "varies": [
                         "`UNSTUCK_BUNDLE_PRICE`"
+                    ]
+                },
+                {
+                    "name": "The Launch Stack",
+                    "price": "$67",
+                    "type": "Order Bump",
+                    "offeredOn": "Creator Bundle",
+                    "details": "The comprehensive launch project management tool added as an order bump on the Creator Bundle checkout.",
+                    "varies": [
+                        "`CREATOR_BUNDLE_BUMP_PRICE`"
                     ]
                 }
             ]
@@ -375,6 +434,36 @@
                     "path": "/first-100-paid-subscribers-success",
                     "name": "First 100 Subscribers Success",
                     "content": "Confirms the order, verifies the purchase, and instructs the user to check their email for immediate access to the workshop and bonuses."
+                },
+                {
+                    "path": "/unstuck-to-published-success",
+                    "name": "Unstuck to Published Success",
+                    "content": "Confirms the Unstuck to Published purchase and provides next steps including email confirmation and workshop access.",
+                    "dynamicRendering": [
+                        "If SDT Bump bought: Provisions 400 credits into Show Don't Tell and displays token/access info.",
+                        "If Genius Ideas Bump bought: Provides download link for 100 Genius Launch Ideas PDF.",
+                        "If Hooks Bump bought: Provides access to Hooks That Stop the Scroll vault.",
+                        "If Bundle bought: Shows all three bonus access blocks."
+                    ]
+                },
+                {
+                    "path": "/build-your-substack-success",
+                    "name": "Build Your Substack Success",
+                    "content": "Confirms the Build Your Substack purchase and provides next steps. Uses same bump rendering logic as Unstuck to Published.",
+                    "dynamicRendering": [
+                        "If SDT Bump bought: Provisions 400 credits into Show Don't Tell and displays token/access info.",
+                        "If Genius Ideas Bump bought: Provides download link for 100 Genius Launch Ideas PDF.",
+                        "If Hooks Bump bought: Provides access to Hooks That Stop the Scroll vault.",
+                        "If Bundle bought: Shows all three bonus access blocks."
+                    ]
+                },
+                {
+                    "path": "/creator-bundle-success",
+                    "name": "Creator Bundle Success",
+                    "content": "Confirms the Creator Bundle purchase and provides access to all bundled resources.",
+                    "dynamicRendering": [
+                        "If Launch Stack Bump bought: Reveals the Launch Stack password and direct link to `/launch-stack`."
+                    ]
                 }
             ]
         },
@@ -435,7 +524,43 @@
                 },
                 {
                     "path": "/api/[product]/create-payment-intent",
-                    "description": "Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions."
+                    "description": "Routes `launch-lab`, `hit10k`, `genius-ideas`, `first100`, `unstuck`, `build-your-substack`, and `creator-bundle` native Stripe Elements form transactions."
+                },
+                {
+                    "path": "/api/[product]/confirm-payment",
+                    "description": "Confirms Stripe payments and fulfills orders for all embedded checkout products. Updates lead status and provisions bump purchases."
+                },
+                {
+                    "path": "/api/[product]/get-lead-status",
+                    "description": "Checks payment and lead status for `launch-lab`, `hit10k`, `genius-ideas`, `unstuck`, `build-your-substack`, and `creator-bundle`."
+                },
+                {
+                    "path": "/api/launch-lab/waitlist",
+                    "description": "Manages waitlist signups for the 10k Launch Lab."
+                },
+                {
+                    "path": "/api/launch-lab/accept-upsell",
+                    "description": "Handles acceptance of 1:1 coaching upsell after Launch Lab purchase."
+                },
+                {
+                    "path": "/api/launch-lab/confirm-upsell",
+                    "description": "Confirms the upsell payment for 1:1 coaching."
+                },
+                {
+                    "path": "/api/hit10k/waitlist",
+                    "description": "Manages waitlist signups for How to Hit 10k."
+                },
+                {
+                    "path": "/api/admidash/auth",
+                    "description": "Password verification for the Admin Command Centre dashboard."
+                },
+                {
+                    "path": "/api/vdpb/auth",
+                    "description": "Password verification for the Viral Digital Product Builder."
+                },
+                {
+                    "path": "/api/ana-offer-genius/match",
+                    "description": "AI-powered offer matching endpoint for the Ana Offer Genius tool."
                 },
                 {
                     "path": "/api/admidash/metrics",
@@ -502,6 +627,18 @@
                 {
                     "name": "first100_leads",
                     "description": "Stores data and payment status for the First 100 Paid Subscribers funnel."
+                },
+                {
+                    "name": "unstuck_leads",
+                    "description": "Stores leads, payment data, and order bump selections for Unstuck to Published."
+                },
+                {
+                    "name": "build_your_substack_leads",
+                    "description": "Stores leads, payment data, and order bump selections for Build Your Substack. Mirrors the unstuck_leads structure."
+                },
+                {
+                    "name": "creator_bundle_leads",
+                    "description": "Stores leads, payment data, and Launch Stack bump selection for the Creator Bundle."
                 }
             ]
         },
