@@ -249,6 +249,12 @@
                     "description": "A comprehensive launch project management tool or dashboard.",
                     "access": "Password Protected (Requires the master password `mellon_hwg`, defined in `.env.local`). Also sold as an Order Bump (usually **$67 - $69** value).",
                     "url": "/launch-stack"
+                },
+                {
+                    "name": "Ana's Viral Digital Product Finder",
+                    "description": "A free AI-powered tool (Gemini 3 Flash with thinking) that generates hyper-specific viral digital product ideas based on the user's accomplishments, passions, and profession. Includes tabbed route selection, concept cards with pricing and title ideas, and an upsell flow to the 10K Launch Lab.",
+                    "access": "Open / Freebie tool (lead generation funnel for 10K Launch Lab).",
+                    "url": "/viral-digital-product-finder"
                 }
             ]
         },
@@ -593,6 +599,10 @@
                 {
                     "path": "/api/unstuck/confirm-payment",
                     "description": "Confirms Stripe payments for Unstuck to Published. If SDT bump purchased, provisions 400 credits into `show_dont_tell_users` (tops up existing accounts or creates new token)."
+                },
+                {
+                    "path": "/api/viral-digital-product-finder",
+                    "description": "Accepts accomplishments, passions, and profession via POST. Uses Gemini 3 Flash (with thinking, budget 8192) to generate viral digital product ideas organized into route buckets with concepts, pricing, titles, and market research."
                 }
             ],
             "tables": [
