@@ -9,6 +9,7 @@ interface Concept {
   suggestedPrice?: string
   description: string
   transformation: string
+  targetAudience?: string
   titleOptions: string[]
 }
 
@@ -34,10 +35,10 @@ function SpectrumBar() {
   return (
     <div className="mx-auto mt-6 max-w-[875px]">
       <div className="mr-[8%] flex items-center justify-end gap-0">
-        <span className="text-sm font-bold italic text-[#1a1a1a]">
+        <span className="text-sm font-bold italic text-slate-500">
           Viral Zone
         </span>
-        <span className="text-[10px] leading-none text-[#1a1a1a]">▼</span>
+        <span className="text-[10px] leading-none text-slate-500">▼</span>
       </div>
       <div className="h-12 w-full rounded-full bg-gradient-to-r from-[#e74c3c] via-[#e67e22] via-35% via-[#f1c40f] via-60% to-[#2ecc71] shadow-md" />
     </div>
@@ -66,51 +67,45 @@ function FormCard({
   loading: boolean
 }) {
   return (
-    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl border border-gray-200 bg-white p-8 shadow-sm sm:p-10">
+    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl border border-rose-100 bg-white/80 p-8 shadow-lg shadow-pink-900/5 backdrop-blur-xl sm:p-10">
       {/* Section 1 */}
       <div className="mb-2 flex items-center gap-3">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e91e90] text-sm font-bold text-white">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600 text-sm font-bold text-white">
           1
         </span>
-        <h2 className="font-lora text-2xl italic text-[#2ec4a0]">
+        <h2 className="text-2xl font-semibold text-slate-900">
           Let&apos;s start here:
         </h2>
       </div>
 
-      <label className="mb-2 mt-4 block font-lora text-[15px] font-bold text-[#1a1a1a]">
+      <label className="mb-2 mt-4 block text-[15px] font-medium text-slate-700">
         What are some things you&apos;ve accomplished, problems you&apos;ve
         personally solved, or things you&apos;ve overcome?{' '}
-        <span className="text-[#e91e90]">*</span>{' '}
-        <span
-          className="inline-flex h-5 w-5 cursor-help items-center justify-center rounded-full bg-[#3bbfed] text-[11px] font-bold text-white"
-          title="Think about skills, wins, or transformations from your life — personal or professional."
-        >
-          i
-        </span>
+        <span className="text-rose-500">*</span>
       </label>
       <textarea
         value={accomplishments}
         onChange={(e) => setAccomplishments(e.target.value)}
         rows={4}
         placeholder="e.g. paid off $12k in debt on a teacher's salary, got my kid sleeping through the night, healed my skin without a dermatologist"
-        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-[15px] text-gray-700 placeholder:text-gray-400 focus:border-[#2ec4a0] focus:outline-none focus:ring-2 focus:ring-[#2ec4a0]/30"
+        className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-100"
       />
 
-      <div className="my-8 border-t-2 border-dashed border-gray-300" />
+      <div className="my-8 border-t border-rose-100" />
 
       {/* Section 2 */}
       <div className="mb-4 flex items-center gap-3">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e91e90] text-sm font-bold text-white">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600 text-sm font-bold text-white">
           2
         </span>
-        <h2 className="font-lora text-2xl italic text-[#2ec4a0]">
+        <h2 className="text-2xl font-semibold text-slate-900">
           A little more about you:
         </h2>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block font-lora text-[15px] font-bold text-[#1a1a1a]">
+          <label className="mb-1.5 block text-[15px] font-medium text-slate-700">
             What could you talk about for hours?
           </label>
           <input
@@ -118,11 +113,11 @@ function FormCard({
             value={passions}
             onChange={(e) => setPassions(e.target.value)}
             placeholder="e.g. gut health, budgeting, dog training"
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 text-[15px] text-gray-700 placeholder:text-gray-400 focus:border-[#2ec4a0] focus:outline-none focus:ring-2 focus:ring-[#2ec4a0]/30"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-100"
           />
         </div>
         <div>
-          <label className="mb-1.5 block font-lora text-[15px] font-bold text-[#1a1a1a]">
+          <label className="mb-1.5 block text-[15px] font-medium text-slate-700">
             Your Profession or Expertise
           </label>
           <input
@@ -130,7 +125,7 @@ function FormCard({
             value={profession}
             onChange={(e) => setProfession(e.target.value)}
             placeholder="e.g. pediatric nurse, high school teacher"
-            className="w-full rounded-lg border border-gray-300 px-4 py-3 text-[15px] text-gray-700 placeholder:text-gray-400 focus:border-[#2ec4a0] focus:outline-none focus:ring-2 focus:ring-[#2ec4a0]/30"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-rose-300 focus:outline-none focus:ring-2 focus:ring-rose-100"
           />
         </div>
       </div>
@@ -138,7 +133,7 @@ function FormCard({
       <button
         onClick={onSubmit}
         disabled={loading}
-        className="mt-6 w-full rounded-lg bg-gradient-to-r from-[#f472b6] to-[#ec4899] py-4 text-[22px] font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-6 w-full rounded-xl bg-slate-900 py-4 text-[22px] font-medium text-white shadow-md transition-all hover:bg-slate-800 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {loading ? (
           <span className="inline-flex items-center gap-2">
@@ -156,7 +151,7 @@ function FormCard({
   )
 }
 
-/* ── results display (matching reference screenshots) ───────────── */
+/* ── results display ────────────────────────────────────────────── */
 
 function ResultsSection({
   results,
@@ -176,25 +171,23 @@ function ResultsSection({
     <div className="mx-auto mt-10 max-w-[960px]">
       {/* Celebratory header */}
       <div className="text-center">
-        <h2
-          className="font-anton text-[clamp(24px,4vw,48px)] font-normal uppercase leading-[1.15] tracking-[1px] text-[#e91e90]"
-        >
+        <h2 className="font-anton text-[clamp(24px,4vw,48px)] font-normal uppercase leading-[1.15] tracking-[1px] text-rose-600">
           You&apos;ve accomplished some great things!
         </h2>
         <div className="mt-1 text-4xl">🤩</div>
-        <p className="mt-3 text-[15px] italic text-gray-500">
+        <p className="mt-3 text-[15px] italic text-slate-500">
           You can definitely create a viral digital product out of everything you&apos;ve done.
         </p>
       </div>
 
       {/* Choose route header */}
       <div className="mt-10 flex items-center justify-between">
-        <h3 className="text-lg font-bold text-[#1a1a1a]">
+        <h3 className="text-lg font-bold text-slate-900">
           Choose your route below:
         </h3>
         <button
           onClick={onStartOver}
-          className="rounded-full border border-gray-300 px-5 py-2 text-sm font-bold text-gray-500 transition-colors hover:border-[#e91e90] hover:text-[#e91e90]"
+          className="rounded-full bg-rose-600 px-5 py-2 text-sm font-bold text-white shadow-lg shadow-rose-200 transition-all hover:bg-rose-700 hover:scale-105"
         >
           &larr; Start Over
         </button>
@@ -208,8 +201,8 @@ function ResultsSection({
             onClick={() => { setActiveTab(bi); setOpenResearch(false) }}
             className={`rounded-full px-6 py-3 text-[15px] font-bold transition-all ${
               bi === activeTab
-                ? 'bg-[#7BC74D] text-white shadow-sm'
-                : 'border-2 border-[#e91e90] bg-white text-[#e91e90]'
+                ? 'bg-slate-900 text-white shadow-md'
+                : 'border border-rose-200 bg-white/80 text-rose-600 backdrop-blur-sm'
             }`}
           >
             {b.routeName}
@@ -222,7 +215,7 @@ function ResultsSection({
         <div className="mt-6">
           {/* Route summary */}
           {bucket.marketResearch?.summary && (
-            <p className="text-sm italic text-gray-400">
+            <p className="text-sm italic text-slate-400">
               {bucket.marketResearch.summary}
             </p>
           )}
@@ -231,41 +224,49 @@ function ResultsSection({
           {bucket.concepts.map((concept, ci) => (
             <div
               key={ci}
-              className="mt-4 rounded-xl border-l-4 border-[#4DB8BA] bg-white px-8 py-6 shadow-sm"
+              className="mt-4 rounded-2xl border border-rose-100 bg-white/80 px-8 py-6 shadow-lg shadow-pink-900/5 backdrop-blur-xl"
             >
               {/* Description */}
-              <p className="text-[15px] font-bold text-[#1a1a1a]">
+              <p className="text-[15px] font-bold text-slate-900">
                 {concept.description}
               </p>
 
               {/* Badges */}
               <div className="mt-3 flex flex-wrap gap-2">
                 {concept.suggestedPrice && (
-                  <span className="rounded-full border border-gray-300 bg-white px-4 py-1 text-xs font-bold text-[#1a1a1a]">
+                  <span className="rounded-full border border-rose-200 bg-rose-50 px-4 py-1 text-xs font-bold text-rose-700">
                     Suggested Price: {concept.suggestedPrice}
                   </span>
                 )}
-                <span className="rounded-full border border-gray-300 bg-white px-4 py-1 text-xs font-bold text-[#1a1a1a]">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1 text-xs font-bold text-slate-700">
                   Suggested Format: {concept.type}
                 </span>
               </div>
 
+              {/* Target audience */}
+              {concept.targetAudience && (
+                <div className="mt-3">
+                  <span className="text-xs font-bold uppercase tracking-[1px] text-rose-500">Target Audience: </span>
+                  <span className="text-sm text-slate-700">{concept.targetAudience}</span>
+                </div>
+              )}
+
               {/* Title ideas */}
-              <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-[2px] text-[#e91e90]">
+              <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-[2px] text-rose-500">
                 Possible Title Ideas
               </p>
               <div className="space-y-0">
                 {concept.titleOptions.map((title, ti) => (
                   <div
                     key={ti}
-                    className={`flex items-center gap-3 rounded px-4 py-3 ${
-                      ti % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                    className={`flex items-center gap-3 rounded-lg px-4 py-3 ${
+                      ti % 2 === 0 ? 'bg-rose-50/50' : 'bg-white'
                     }`}
                   >
-                    <span className="text-sm font-bold text-[#2ec4a0]">
+                    <span className="text-sm font-bold text-rose-500">
                       {ti + 1}.
                     </span>
-                    <span className="text-sm text-[#1a1a1a]">{title}</span>
+                    <span className="text-sm text-slate-800">{title}</span>
                   </div>
                 ))}
               </div>
@@ -274,7 +275,7 @@ function ResultsSection({
               <div className="mt-5 text-center">
                 <button
                   onClick={() => onSelectConcept(bucket.routeName, concept)}
-                  className="inline-block rounded-lg bg-[#e91e90] px-8 py-3 text-[18px] font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                  className="inline-block rounded-xl bg-slate-900 px-8 py-3 text-[18px] font-medium text-white shadow-md transition-all hover:bg-slate-800 hover:scale-[1.02]"
                 >
                   ✅ I choose this as my product idea [Take me to the next step &rarr;]
                 </button>
@@ -287,14 +288,14 @@ function ResultsSection({
             <div className="mt-4">
               <button
                 onClick={() => setOpenResearch(!openResearch)}
-                className="w-full rounded-lg bg-[#4DB8BA] px-6 py-3 text-center text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#3ea8aa]"
+                className="w-full rounded-xl bg-slate-900 px-6 py-3 text-center text-sm font-bold text-white shadow-sm transition-colors hover:bg-slate-800"
               >
                 🔍 What&apos;s Already Selling in This Niche:{' '}
                 {openResearch ? '▲' : '▼'}
               </button>
               {openResearch && (
-                <div className="mt-2 rounded-lg bg-[#4DB8BA]/10 px-6 py-4">
-                  <p className="mb-3 text-sm text-[#1a1a1a]">
+                <div className="mt-2 rounded-xl border border-rose-100 bg-rose-50/50 px-6 py-4">
+                  <p className="mb-3 text-sm text-slate-700">
                     {bucket.marketResearch.summary}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -302,7 +303,7 @@ function ResultsSection({
                       (product, pi) => (
                         <span
                           key={pi}
-                          className="rounded-full bg-white px-3 py-1 text-xs font-medium text-[#1a1a1a] shadow-sm"
+                          className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm"
                         >
                           🔥 {product}
                         </span>
@@ -339,80 +340,86 @@ function UpsellSection({
     <div className="mx-auto mt-10 max-w-[960px]">
       {/* Header */}
       <div className="text-center">
-        <p className="text-xs font-bold uppercase tracking-[3px] text-[#1a1a1a]">
+        <p className="text-xs font-bold uppercase tracking-[3px] text-slate-800">
           🎉 You&apos;ve got your idea!
         </p>
-        <h2 className="mt-3 font-anton text-[clamp(24px,4vw,44px)] font-bold uppercase leading-[1.15] tracking-[1px] text-[#4DB8BA]" style={{ fontWeight: 700 }}>
+        <h2 className="mt-3 font-anton text-[clamp(24px,4vw,44px)] font-bold uppercase leading-[1.15] tracking-[1px] text-slate-900" style={{ fontWeight: 700 }}>
           Now let&apos;s make it{' '}
-          <span className="text-[#e91e90]">actually happen.</span>
+          <span className="text-rose-600">actually happen.</span>
         </h2>
       </div>
 
       {/* Step 1 */}
       <div className="mt-10 flex items-center justify-center gap-3">
-        <span className="rounded-lg bg-[#e91e90] px-4 py-1.5 text-sm font-bold text-white">
+        <span className="rounded-lg bg-rose-600 px-4 py-1.5 text-sm font-bold text-white">
           Step 1:
         </span>
-        <span className="text-lg font-bold text-[#1a1a1a]">
+        <span className="text-lg font-bold text-slate-900">
           You now have your idea!
         </span>
         <span className="text-2xl">✅</span>
       </div>
 
       {/* Selected concept card */}
-      <div className="mx-auto mt-6 max-w-[700px] rounded-xl border-l-4 border-[#4DB8BA] bg-white px-8 py-6 shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-[2px] text-[#4DB8BA]">
+      <div className="mx-auto mt-6 max-w-[700px] rounded-2xl border border-rose-100 bg-white/80 px-8 py-6 shadow-lg shadow-pink-900/5 backdrop-blur-xl">
+        <p className="text-xs font-bold uppercase tracking-[2px] text-rose-500">
           {routeName}
         </p>
-        <p className="mt-2 text-[15px] font-bold text-[#1a1a1a]">
+        <p className="mt-2 text-[15px] font-bold text-slate-900">
           {concept.description}
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           {concept.suggestedPrice && (
-            <span className="rounded-full border border-gray-300 bg-white px-4 py-1 text-xs font-bold text-[#1a1a1a]">
+            <span className="rounded-full border border-rose-200 bg-rose-50 px-4 py-1 text-xs font-bold text-rose-700">
               Suggested Price: {concept.suggestedPrice}
             </span>
           )}
-          <span className="rounded-full border border-gray-300 bg-white px-4 py-1 text-xs font-bold text-[#1a1a1a]">
+          <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1 text-xs font-bold text-slate-700">
             Suggested Format: {concept.type}
           </span>
         </div>
-        <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-[2px] text-[#e91e90]">
+        {concept.targetAudience && (
+          <div className="mt-3">
+            <span className="text-xs font-bold uppercase tracking-[1px] text-rose-500">Target Audience: </span>
+            <span className="text-sm text-slate-700">{concept.targetAudience}</span>
+          </div>
+        )}
+        <p className="mb-3 mt-5 text-xs font-bold uppercase tracking-[2px] text-rose-500">
           Your Title Options
         </p>
         <div className="space-y-0">
           {concept.titleOptions.map((title, ti) => (
             <div
               key={ti}
-              className={`flex items-center gap-3 rounded px-4 py-3 ${
-                ti % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+              className={`flex items-center gap-3 rounded-lg px-4 py-3 ${
+                ti % 2 === 0 ? 'bg-rose-50/50' : 'bg-white'
               }`}
             >
-              <span className="text-sm font-bold text-[#2ec4a0]">
+              <span className="text-sm font-bold text-rose-500">
                 {ti + 1}.
               </span>
-              <span className="text-sm text-[#1a1a1a]">{title}</span>
+              <span className="text-sm text-slate-800">{title}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Arrow */}
-      <div className="my-6 text-center text-3xl text-[#4DB8BA]">&darr;</div>
+      <div className="my-6 text-center text-3xl text-slate-300">&darr;</div>
 
       {/* Step 2 */}
       <div className="flex items-center justify-center gap-3">
-        <span className="rounded-lg bg-[#e91e90] px-4 py-1.5 text-sm font-bold text-white">
+        <span className="rounded-lg bg-rose-600 px-4 py-1.5 text-sm font-bold text-white">
           Step 2:
         </span>
-        <span className="text-lg font-bold text-[#1a1a1a]">
+        <span className="text-lg font-bold text-slate-900">
           Now it&apos;s time to create it and start selling it:
         </span>
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded border-2 border-gray-300" />
+        <span className="inline-flex h-6 w-6 items-center justify-center rounded border-2 border-slate-300" />
       </div>
 
       {/* Course promo card */}
-      <div className="mx-auto mt-8 max-w-[1075px] overflow-hidden rounded-3xl border-2 border-[#4DB8BA] bg-white shadow-sm">
+      <div className="mx-auto mt-8 max-w-[1075px] overflow-hidden rounded-3xl border border-rose-100 bg-white/80 shadow-lg shadow-pink-900/5 backdrop-blur-xl">
         <div className="flex flex-col sm:flex-row">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -421,17 +428,17 @@ function UpsellSection({
             className="w-full object-contain sm:w-[475px]"
           />
           <div className="flex flex-col justify-center p-8">
-            <h3 className="font-anton text-[clamp(24px,3.5vw,35px)] font-normal uppercase leading-[1.2] tracking-[0.5px] text-[#4DB8BA]">
+            <h3 className="font-anton text-[clamp(24px,3.5vw,35px)] font-normal uppercase leading-[1.2] tracking-[0.5px] text-slate-900">
               How to Create a Viral Digital Product
             </h3>
-            <p className="mt-4 text-[16px] leading-relaxed text-gray-500">
+            <p className="mt-4 text-[16px] leading-relaxed text-slate-500">
               Learn how to create and sell a popular, in-demand digital product even if
               you&apos;re just getting started and have no idea what to sell or
               how to do it.
             </p>
             <a
               href="/10k-launch-lab"
-              className="mt-6 inline-block rounded-lg bg-[#e91e90] px-8 py-4 text-center text-[17px] font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+              className="mt-6 inline-block rounded-xl bg-slate-900 px-8 py-4 text-center text-[17px] font-medium text-white shadow-md transition-all hover:bg-slate-800 hover:scale-[1.02]"
             >
               Show Me How to Create It &rarr;
             </a>
@@ -443,7 +450,7 @@ function UpsellSection({
       <div className="mt-6 text-center">
         <button
           onClick={onBack}
-          className="text-sm text-gray-400 transition-colors hover:text-[#e91e90]"
+          className="text-sm text-slate-400 transition-colors hover:text-rose-600"
         >
           &larr; Back to my ideas
         </button>
@@ -474,23 +481,23 @@ function FormulaCard() {
   ]
 
   return (
-    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl bg-[#F5B731] p-8 shadow-sm sm:p-10">
-      <h3 className="text-2xl font-bold text-[#1a1a1a]">
+    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-pink-50 p-8 shadow-sm sm:p-10">
+      <h3 className="text-2xl font-bold text-slate-900">
         Ana&apos;s Viral Product Formula
       </h3>
-      <p className="mb-6 mt-1 text-[15px] text-[#4a4a4a]">
+      <p className="mb-6 mt-1 text-[15px] text-slate-600">
         Every viral digital product has these 3 things:
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {pillars.map((p) => (
-          <div key={p.num} className="rounded-xl bg-white/90 p-5">
-            <span className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#F5B731] text-sm font-bold text-white">
+          <div key={p.num} className="rounded-2xl bg-white p-5 shadow-sm">
+            <span className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-md bg-rose-600 text-sm font-bold text-white">
               {p.num}
             </span>
-            <h4 className="mb-1 text-[15px] font-bold text-[#1a1a1a]">
+            <h4 className="mb-1 text-[15px] font-bold text-slate-900">
               {p.title}
             </h4>
-            <p className="text-sm text-gray-600">{p.desc}</p>
+            <p className="text-sm text-slate-500">{p.desc}</p>
           </div>
         ))}
       </div>
@@ -502,14 +509,14 @@ function FormulaCard() {
 
 function CtaBanner() {
   return (
-    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl bg-[#fce4ec] px-8 py-5 text-center font-lora text-[15px] italic text-[#1a1a1a]">
-      <span className="font-bold not-italic text-[#e91e90]">P.S.</span> The idea is the easy
+    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl border border-rose-100 bg-rose-50 px-8 py-5 text-center text-[15px] italic text-slate-700">
+      <span className="font-bold not-italic text-rose-600">P.S.</span> The idea is the easy
       part. Knowing exactly how to turn it into a product that sells on autopilot
       &mdash; that&apos;s where most people get stuck. We&apos;ll show you the
       entire system, step by step.{' '}
       <a
         href="/10k-launch-lab"
-        className="font-bold text-[#e91e90] underline hover:text-[#c2185b]"
+        className="font-bold text-rose-600 underline hover:text-rose-800"
       >
         Click here!
       </a>
@@ -519,14 +526,14 @@ function CtaBanner() {
 
 function Disclaimer() {
   return (
-    <div className="mx-auto mt-10 max-w-[960px] border-t border-gray-200 pt-6 text-center">
-      <p className="text-xs italic text-gray-400">
+    <div className="mx-auto mt-10 max-w-[960px] border-t border-rose-100 pt-6 text-center">
+      <p className="text-xs italic text-slate-400">
         <strong className="not-italic">Disclaimer:</strong> Results generated by
         this tool are AI-powered suggestions for educational purposes only.
         Individual results will vary. Ana Calin is not responsible for business
         outcomes based on these ideas.
       </p>
-      <p className="mt-2 text-xs text-gray-400">
+      <p className="mt-2 text-xs text-slate-400">
         &copy; Ana Calin {new Date().getFullYear()}, All Rights Reserved.
       </p>
     </div>
@@ -599,22 +606,22 @@ export default function ViralDigitalProductFinderPage() {
   }
 
   return (
-    <main className="font-lora min-h-screen bg-[#fdfcf9] px-4 pb-16">
+    <main className="min-h-screen px-4 pb-16" style={{ marginTop: 0 }}>
+      <style>{`body { background: linear-gradient(to bottom right, #fff1f2, #ffffff, #fdf2f8) !important; }`}</style>
       <SpectrumBar />
 
       {!results && !selectedConcept && (
         <>
           <h1
-            className="mx-auto mt-8 max-w-[800px] text-center font-anton text-[clamp(29px,4.4vw,58px)] font-normal uppercase leading-[1.15] tracking-[1px] text-[#4DB8BA]"
-            style={{ WebkitTextStroke: '1px #4DB8BA' }}
+            className="mx-auto mt-8 max-w-[800px] text-center font-anton text-[clamp(29px,4.4vw,58px)] font-normal uppercase leading-[1.15] tracking-[1px] text-slate-900"
           >
             Ana&apos;s Viral Digital Product Finder
           </h1>
 
-          <p className="mx-auto mt-4 max-w-[620px] text-center text-[15px] italic text-gray-700">
+          <p className="mx-auto mt-4 max-w-[620px] text-center text-[15px] italic text-slate-600">
             Tell me a little bit about yourself, and I&apos;ll give you
             hyper-specific{' '}
-            <strong className="not-italic">
+            <strong className="not-italic text-slate-900">
               product ideas that will go viral and actually get sales.
             </strong>
           </p>

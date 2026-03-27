@@ -253,13 +253,13 @@
                 {
                     "name": "Ana's Viral Digital Product Finder",
                     "description": "A free AI-powered tool (Gemini 3 Flash with thinking) that generates hyper-specific viral digital product ideas based on the user's accomplishments, passions, and profession. Includes tabbed route selection, concept cards with pricing and title ideas, and an upsell flow to the 10K Launch Lab.",
-                    "access": "Open / Freebie tool (lead generation funnel for 10K Launch Lab).",
+                    "access": "Open / Free AI tool.",
                     "url": "/viral-digital-product-finder"
                 },
                 {
                     "name": "Will It Sell? - AI Product Scoring Tool",
                     "description": "A free AI-powered tool (Gemini 3 Flash with thinking) that scores digital product ideas against Ana Calin's Viral Product Formula. Returns a weighted scorecard with 9 per-criterion scores, overall score, verdict, and actionable improvements. Funnels into the 10K Launch Lab.",
-                    "access": "Open / Freebie tool (lead generation funnel for 10K Launch Lab).",
+                    "access": "Open / Free AI tool.",
                     "url": "/will-it-sell"
                 }
             ]
@@ -686,6 +686,333 @@
                     "description": "Provides social proof popups across the site (dynamically injected via `cdn.useproof.com`)."
                 }
             ]
+        },
+        {
+            "id": "funnel-architecture",
+            "title": "Funnel Architecture & Pricing Map",
+            "description": "Complete mapping of every sales funnel with core products, order bumps, bundle options, and upsells. Use this to design new funnels that follow proven patterns.",
+            "funnels": [
+                {
+                    "name": "10K Launch Lab Funnel",
+                    "entryPoint": "/10k-launch-lab",
+                    "coreProduct": {
+                        "name": "The $10K Launch Lab",
+                        "price": "$597",
+                        "type": "30-day implementation program",
+                        "envVar": "NEXT_PUBLIC_LAUNCHLAB_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$47",
+                            "envVar": "NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE",
+                            "description": "Vault of high-converting headline frameworks and opening loops"
+                        },
+                        {
+                            "name": "The 60-Minute Launch Calendar",
+                            "price": "$97",
+                            "envVar": "NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE",
+                            "description": "Day-by-day Notion templates for managing launches"
+                        }
+                    ],
+                    "bundleOption": null,
+                    "upsells": [
+                        {
+                            "name": "1:1 Sales Coaching Session",
+                            "price": "$747",
+                            "page": "/10k-launch-lab-upsell",
+                            "envVar": "NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE",
+                            "description": "High-touch 1:1 strategy and group coaching"
+                        }
+                    ],
+                    "maxCartValue": "$1,488",
+                    "successPage": "/10k-launch-lab-success",
+                    "leadTable": "launch_lab_leads"
+                },
+                {
+                    "name": "100 Genius Launch Ideas Funnel",
+                    "entryPoint": "/100-genius-launch-ideas",
+                    "coreProduct": {
+                        "name": "100 Genius Launch Ideas",
+                        "price": "$27",
+                        "strikethroughPrice": "$97",
+                        "type": "PDF resource vault (100 pre-validated offer templates)",
+                        "envVar": "NEXT_PUBLIC_GENIUS_IDEAS_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "OfferGenius AI Builder",
+                            "price": "$17",
+                            "envVar": "NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE",
+                            "description": "AI tool that customizes offers for specific audiences",
+                            "fulfilledAt": "/ana-offer-genius"
+                        },
+                        {
+                            "name": "Lazy Launch AI Email Writer (Launch Stack)",
+                            "price": "$87",
+                            "envVar": "NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE",
+                            "description": "Custom-trained AI email sequence system",
+                            "fulfilledAt": "/launch-stack"
+                        }
+                    ],
+                    "bundleOption": null,
+                    "upsells": [],
+                    "maxCartValue": "$131",
+                    "successPage": "/100-genius-launch-ideas/success",
+                    "leadTable": "genius_ideas_leads"
+                },
+                {
+                    "name": "How to Hit 10K Funnel",
+                    "entryPoint": "/how-to-hit-10k",
+                    "coreProduct": {
+                        "name": "How to Hit 10K Workshop",
+                        "price": "$97",
+                        "type": "Live workshop",
+                        "envVar": "NEXT_PUBLIC_HIT10K_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$27",
+                            "envVar": "NEXT_PUBLIC_HIT10K_BUMP_PRICE"
+                        },
+                        {
+                            "name": "Unknown Bump 2",
+                            "price": "$69",
+                            "envVar": "NEXT_PUBLIC_HIT10K_BUMP2_PRICE"
+                        }
+                    ],
+                    "bundleOption": null,
+                    "upsells": [],
+                    "maxCartValue": "$193",
+                    "successPage": "/hit-10k-success",
+                    "leadTable": "hit10k_leads"
+                },
+                {
+                    "name": "First 100 Paid Subscribers Funnel",
+                    "entryPoint": "/first-100-paid-subscribers",
+                    "coreProduct": {
+                        "name": "First 100 Paid Subscribers Workshop",
+                        "price": "$97",
+                        "type": "Live workshop + replay",
+                        "envVar": "NEXT_PUBLIC_FIRST100_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "100 Genius Launch Ideas PDF",
+                            "price": "$27",
+                            "description": "100 vetted, high-converting launch ideas sorted by difficulty and revenue potential"
+                        },
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$27",
+                            "description": "Headline frameworks and opening loops"
+                        },
+                        {
+                            "name": "Launch Stack",
+                            "price": "$67",
+                            "description": "Launch project management tool",
+                            "fulfilledAt": "/launch-stack"
+                        }
+                    ],
+                    "bundleOption": {
+                        "name": "All 3 Add-ons Bundle",
+                        "price": "$97",
+                        "individualTotal": "$121",
+                        "savings": "$24"
+                    },
+                    "upsells": [
+                        {
+                            "name": "10K Launch Lab (Post-Checkout Redirect)",
+                            "page": "/10k-launch-lab-upsell",
+                            "description": "Redirects to 10K Launch Lab upsell after checkout"
+                        }
+                    ],
+                    "maxCartValue": "$218 (or $194 with bundle)",
+                    "successPage": "/first-100-paid-subscribers-success",
+                    "leadTable": "first100_leads"
+                },
+                {
+                    "name": "Unstuck to Published Funnel",
+                    "entryPoint": "/unstuck-to-published",
+                    "coreProduct": {
+                        "name": "Unstuck to Published Workshop",
+                        "price": "$97",
+                        "type": "60-minute live workshop (with Jessica Best)",
+                        "envVar": "UNSTUCK_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "100 Genius Launch Ideas PDF",
+                            "price": "$27",
+                            "envVar": "UNSTUCK_GENIUS_BUMP_PRICE"
+                        },
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$27",
+                            "envVar": "UNSTUCK_HOOKS_BUMP_PRICE"
+                        },
+                        {
+                            "name": "Show Don't Tell (400 Credits)",
+                            "price": "$47",
+                            "envVar": "UNSTUCK_SDT_BUMP_PRICE",
+                            "description": "400 image credits (~200 generations) for thumbnail generator",
+                            "fulfilledAt": "/show-dont-tell"
+                        }
+                    ],
+                    "bundleOption": {
+                        "name": "The Creator Launch Kit (All 3)",
+                        "price": "$69",
+                        "individualTotal": "$101",
+                        "savings": "$32",
+                        "envVar": "UNSTUCK_BUNDLE_PRICE"
+                    },
+                    "upsells": [],
+                    "maxCartValue": "$198 (or $166 with bundle)",
+                    "successPage": "/unstuck-to-published-success",
+                    "leadTable": "unstuck_leads"
+                },
+                {
+                    "name": "Build Your Substack Funnel",
+                    "entryPoint": "/build-your-substack",
+                    "coreProduct": {
+                        "name": "Build Your Substack Workshop",
+                        "price": "$97",
+                        "type": "Live workshop",
+                        "envVar": "UNSTUCK_PRICE (shared constant)"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "100 Genius Launch Ideas PDF",
+                            "price": "$27"
+                        },
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$27"
+                        },
+                        {
+                            "name": "Show Don't Tell (400 Credits)",
+                            "price": "$47"
+                        }
+                    ],
+                    "bundleOption": {
+                        "name": "The Creator Launch Kit (All 3)",
+                        "price": "$69",
+                        "individualTotal": "$101",
+                        "savings": "$32"
+                    },
+                    "upsells": [],
+                    "maxCartValue": "$198 (or $166 with bundle)",
+                    "successPage": "/build-your-substack-success",
+                    "leadTable": "build_your_substack_leads"
+                },
+                {
+                    "name": "Creator Bundle Funnel",
+                    "entryPoint": "/creator-bundle",
+                    "coreProduct": {
+                        "name": "Creator Bundle",
+                        "price": "$69",
+                        "type": "Bundled digital product pack",
+                        "envVar": "CREATOR_BUNDLE_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "Launch Stack",
+                            "price": "$67",
+                            "envVar": "CREATOR_BUNDLE_BUMP_PRICE",
+                            "fulfilledAt": "/launch-stack"
+                        }
+                    ],
+                    "bundleOption": null,
+                    "upsells": [],
+                    "maxCartValue": "$136",
+                    "successPage": "/creator-bundle-success",
+                    "leadTable": "creator_bundle_leads"
+                },
+                {
+                    "name": "Your First $1K After Corporate Funnel",
+                    "entryPoint": "/your-first-1k-after-corporate",
+                    "coreProduct": {
+                        "name": "Your First $1K After Corporate",
+                        "price": "$250",
+                        "strikethroughPrice": "$497",
+                        "type": "60-minute live workshop"
+                    },
+                    "orderBumps": [],
+                    "bundleOption": null,
+                    "upsells": [],
+                    "maxCartValue": "$250",
+                    "note": "Simple funnel — direct Stripe Payment Link, no embedded checkout, no bumps/upsells"
+                },
+                {
+                    "name": "Build to Profit Workshop Funnel",
+                    "entryPoint": "/join",
+                    "coreProduct": {
+                        "name": "Build to Profit Live Workshop",
+                        "price": "$497",
+                        "type": "Flagship live workshop",
+                        "envVar": "WORKSHOP_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "The Money Map Bundle",
+                            "price": "+$300",
+                            "description": "Adds the comprehensive Money Map strategy course (normally $497) to the workshop"
+                        }
+                    ],
+                    "bundleOption": null,
+                    "upsells": [],
+                    "maxCartValue": "$797",
+                    "successPage": "/success",
+                    "leadTable": "leads_bootcamp_brands"
+                }
+            ],
+            "reusableProducts": {
+                "description": "Products that appear as order bumps across multiple funnels. These are the building blocks for designing new funnels.",
+                "products": [
+                    {
+                        "name": "Hooks That Stop the Scroll",
+                        "priceRange": "$27-$47",
+                        "type": "PDF/Vault",
+                        "appearsIn": ["10K Launch Lab ($47)", "How to Hit 10K ($27)", "First 100 Paid Subs ($27)", "Unstuck to Published ($27)", "Build Your Substack ($27)"]
+                    },
+                    {
+                        "name": "100 Genius Launch Ideas PDF",
+                        "priceRange": "$27",
+                        "type": "PDF",
+                        "appearsIn": ["Standalone ($27)", "First 100 Paid Subs (bump $27)", "Unstuck to Published (bump $27)", "Build Your Substack (bump $27)"]
+                    },
+                    {
+                        "name": "Launch Stack (AI Email Writer)",
+                        "priceRange": "$67-$87",
+                        "type": "AI Tool (password-gated)",
+                        "appearsIn": ["100 Genius Ideas ($87)", "First 100 Paid Subs ($67)", "Creator Bundle ($67)"]
+                    },
+                    {
+                        "name": "Show Don't Tell (400 Credits)",
+                        "priceRange": "$47",
+                        "type": "AI Tool (token-gated)",
+                        "appearsIn": ["Unstuck to Published ($47)", "Build Your Substack ($47)", "Standalone ($24-$247)"]
+                    },
+                    {
+                        "name": "OfferGenius AI Builder",
+                        "priceRange": "$17-$37",
+                        "type": "AI Tool",
+                        "appearsIn": ["100 Genius Ideas ($17)"]
+                    }
+                ]
+            },
+            "funnelTemplate": {
+                "description": "Standard funnel structure to follow when building new funnels.",
+                "structure": [
+                    "1. Core Product ($27-$597) → the main offer",
+                    "2. Order Bump 1 ($17-$47) → low-friction add-on at checkout",
+                    "3. Order Bump 2 ($27-$67) → complementary tool/resource",
+                    "4. Order Bump 3 ($27-$87) → premium add-on",
+                    "5. Bundle Option ($69-$97) → all bumps at a discount (save 30-50%)",
+                    "6. Upsell 1 (post-checkout, $250-$747) → high-ticket coaching or program"
+                ]
+            }
         },
         {
             "id": "env-vars",
