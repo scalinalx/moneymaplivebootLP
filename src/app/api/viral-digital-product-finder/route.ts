@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
 const SYSTEM_PROMPT = `You are the engine behind "Ana's Viral Digital Product Brainstormer," built on Ana's viral product framework. Your job is to organize product ideas into BUCKETS based ONLY on the problems the student has personally solved. Each bucket should represent one distinct problem they solved. Profession and niche are CONTEXT ONLY.
 
@@ -72,8 +72,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const ai = new GoogleGenerativeAI(apiKey);
-    const model = ai.getGenerativeModel({ model: "gemini-3-flash-preview" });
+    const ai = new GoogleGenAI({ apiKey });
 
     const userPrompt = `Here is the student's information:
 
@@ -86,16 +85,20 @@ ${profession?.trim() ? `PROFESSION / EXPERTISE:\n${profession.trim()}` : ""}
 
 Now generate the viral digital product ideas based on Ana's framework. Remember: one bucket per distinct accomplishment/problem. Respond in valid JSON only.`;
 
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-      systemInstruction: { role: "model", parts: [{ text: SYSTEM_PROMPT }] },
-      generationConfig: {
+    const result = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: userPrompt,
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
         temperature: 0.9,
         maxOutputTokens: 4096,
+        thinkingConfig: {
+          thinkingBudget: 8192,
+        },
       },
     });
 
-    const responseText = result.response.text();
+    const responseText = result.text ?? "";
 
     // Strip any markdown fences if Gemini adds them
     const cleaned = responseText

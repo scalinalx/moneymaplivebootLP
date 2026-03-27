@@ -194,7 +194,7 @@ function ResultsSection({
         </h3>
         <button
           onClick={onStartOver}
-          className="rounded-full border border-gray-300 px-5 py-2 text-sm text-gray-500 transition-colors hover:border-[#e91e90] hover:text-[#e91e90]"
+          className="rounded-full border border-gray-300 px-5 py-2 text-sm font-bold text-gray-500 transition-colors hover:border-[#e91e90] hover:text-[#e91e90]"
         >
           &larr; Start Over
         </button>
@@ -342,7 +342,7 @@ function UpsellSection({
         <p className="text-xs font-bold uppercase tracking-[3px] text-[#1a1a1a]">
           🎉 You&apos;ve got your idea!
         </p>
-        <h2 className="mt-3 font-anton text-[clamp(24px,4vw,44px)] font-medium uppercase leading-[1.15] tracking-[1px] text-[#4DB8BA]" style={{ fontWeight: 500 }}>
+        <h2 className="mt-3 font-anton text-[clamp(24px,4vw,44px)] font-bold uppercase leading-[1.15] tracking-[1px] text-[#4DB8BA]" style={{ fontWeight: 700 }}>
           Now let&apos;s make it{' '}
           <span className="text-[#e91e90]">actually happen.</span>
         </h2>
@@ -412,26 +412,26 @@ function UpsellSection({
       </div>
 
       {/* Course promo card */}
-      <div className="mx-auto mt-6 max-w-[700px] overflow-hidden rounded-2xl border-2 border-[#4DB8BA] bg-white shadow-sm">
+      <div className="mx-auto mt-8 max-w-[1075px] overflow-hidden rounded-3xl border-2 border-[#4DB8BA] bg-white shadow-sm">
         <div className="flex flex-col sm:flex-row">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/imgs/10k-launch-lab/hero3.png"
             alt="10K Launch Lab"
-            className="aspect-[4/3] w-full object-cover sm:w-[280px]"
+            className="w-full object-contain sm:w-[475px]"
           />
-          <div className="flex flex-col justify-center p-6">
-            <h3 className="font-anton text-[clamp(20px,3vw,28px)] font-normal uppercase leading-[1.2] tracking-[0.5px] text-[#4DB8BA]">
+          <div className="flex flex-col justify-center p-8">
+            <h3 className="font-anton text-[clamp(24px,3.5vw,35px)] font-normal uppercase leading-[1.2] tracking-[0.5px] text-[#4DB8BA]">
               How to Create a Viral Digital Product
             </h3>
-            <p className="mt-3 text-sm text-gray-500">
+            <p className="mt-4 text-[16px] leading-relaxed text-gray-500">
               Learn how to create and sell a popular, in-demand digital product even if
               you&apos;re just getting started and have no idea what to sell or
               how to do it.
             </p>
             <a
               href="/10k-launch-lab"
-              className="mt-5 inline-block rounded-lg bg-[#e91e90] px-6 py-3 text-center text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+              className="mt-6 inline-block rounded-lg bg-[#e91e90] px-8 py-4 text-center text-[17px] font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               Show Me How to Create It &rarr;
             </a>
@@ -502,9 +502,11 @@ function FormulaCard() {
 
 function CtaBanner() {
   return (
-    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl bg-[#fce4ec] px-8 py-5 text-center text-[15px]">
-      <span className="font-bold text-[#e91e90]">P.S.</span> Want to learn how
-      we make and sell tools &amp; digital products just like this?{' '}
+    <div className="mx-auto mt-10 max-w-[960px] rounded-2xl bg-[#fce4ec] px-8 py-5 text-center font-lora text-[15px] italic text-[#1a1a1a]">
+      <span className="font-bold not-italic text-[#e91e90]">P.S.</span> The idea is the easy
+      part. Knowing exactly how to turn it into a product that sells on autopilot
+      &mdash; that&apos;s where most people get stuck. We&apos;ll show you the
+      entire system, step by step.{' '}
       <a
         href="/10k-launch-lab"
         className="font-bold text-[#e91e90] underline hover:text-[#c2185b]"
