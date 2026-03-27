@@ -255,6 +255,12 @@
                     "description": "A free AI-powered tool (Gemini 3 Flash with thinking) that generates hyper-specific viral digital product ideas based on the user's accomplishments, passions, and profession. Includes tabbed route selection, concept cards with pricing and title ideas, and an upsell flow to the 10K Launch Lab.",
                     "access": "Open / Freebie tool (lead generation funnel for 10K Launch Lab).",
                     "url": "/viral-digital-product-finder"
+                },
+                {
+                    "name": "Will It Sell? - AI Product Scoring Tool",
+                    "description": "A free AI-powered tool (Gemini 3 Flash with thinking) that scores digital product ideas against Ana Calin's Viral Product Formula. Returns a weighted scorecard with 9 per-criterion scores, overall score, verdict, and actionable improvements. Funnels into the 10K Launch Lab.",
+                    "access": "Open / Freebie tool (lead generation funnel for 10K Launch Lab).",
+                    "url": "/will-it-sell"
                 }
             ]
         },
@@ -603,6 +609,10 @@
                 {
                     "path": "/api/viral-digital-product-finder",
                     "description": "Accepts accomplishments, passions, and profession via POST. Uses Gemini 3 Flash (with thinking, budget 8192) to generate viral digital product ideas organized into route buckets with concepts, pricing, titles, and market research."
+                },
+                {
+                    "path": "/api/will-it-sell",
+                    "description": "Accepts a product idea, optional price, and optional niche via POST. Uses Gemini 3 Flash (with thinking, budget 8192) to score the idea against Ana's Viral Product Formula across 9 weighted criteria. Returns overall score, verdict, per-criterion breakdown, and actionable improvements."
                 }
             ],
             "tables": [

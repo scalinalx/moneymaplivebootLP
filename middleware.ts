@@ -49,6 +49,7 @@ export function middleware(req: NextRequest) {
     '/your-first-1k-after-corporate',
     '/viral-digital-product-ai',
     '/viral-digital-product-finder',
+    '/will-it-sell',
   ];
 
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
