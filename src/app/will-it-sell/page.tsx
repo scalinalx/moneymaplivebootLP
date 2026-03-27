@@ -57,7 +57,7 @@ function SpectrumBar() {
           x="35"
           y="76"
           fontFamily="Lora, serif"
-          fontSize="14"
+          fontSize="17"
           fontWeight="bold"
           fontStyle="italic"
           fill="#1a1a1a"
@@ -649,7 +649,9 @@ export default function WillItSellPage() {
   }
 
   return (
-    <main className="font-lora min-h-screen bg-[#fdfcf9] px-4 pb-16">
+    <main className="font-lora min-h-screen bg-[#fdfcf9] px-4 pb-16" style={{ marginTop: 0 }}>
+      {/* Override dark body background */}
+      <style>{`body { background: #fdfcf9 !important; }`}</style>
       <SpectrumBar />
 
       {!results && !showUpsell && (
