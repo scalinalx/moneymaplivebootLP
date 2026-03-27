@@ -33,36 +33,38 @@ function getScoreColor(score: number) {
 
 function SpectrumBar() {
   return (
-    <div className="relative mx-auto mt-6 max-w-[875px] pb-12">
+    <div className="relative mx-auto mt-6 max-w-[875px] pb-14">
       <div className="h-12 w-full rounded-full bg-gradient-to-r from-[#e74c3c] via-[#e67e22] via-35% via-[#f1c40f] via-60% to-[#2ecc71] shadow-md" />
-      {/* Curved arrow from "Viral Zone" text up to the green area */}
+      {/* Arrow + label: one SVG that contains both the text and arrow */}
       <svg
-        className="absolute right-[5%] top-[40px]"
-        width="160"
-        height="55"
-        viewBox="0 0 160 55"
+        className="absolute right-[2%] top-[10px]"
+        width="140"
+        height="80"
+        viewBox="0 0 140 80"
         fill="none"
       >
-        {/* Arrow tip pointing up-left into the bar */}
+        {/* Curved line from text (bottom-left) up to bar (top-left) */}
         <path
-          d="M62 6L55 2L58 10"
+          d="M30 72C20 55 10 35 18 12"
           stroke="#1a1a1a"
           strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        {/* Curved line from bottom-right (near text) up to the bar */}
-        <path
-          d="M10 50C30 48 55 35 60 6"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
           fill="none"
         />
+        {/* Solid triangular arrowhead at top of curve */}
+        <polygon points="13,14 18,4 23,14" fill="#1a1a1a" />
+        {/* "Viral Zone" text anchored at bottom-left of the SVG */}
+        <text
+          x="35"
+          y="76"
+          fontFamily="Lora, serif"
+          fontSize="14"
+          fontWeight="bold"
+          fontStyle="italic"
+          fill="#1a1a1a"
+        >
+          Viral Zone
+        </text>
       </svg>
-      <span className="absolute right-[5%] top-[82px] text-sm font-bold italic text-[#1a1a1a]">
-        Viral Zone
-      </span>
     </div>
   )
 }
