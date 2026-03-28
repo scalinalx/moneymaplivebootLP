@@ -56,20 +56,23 @@ function HeroSection() {
       <div className="pointer-events-none absolute -right-[100px] -top-[100px] h-[400px] w-[400px] rounded-full bg-[#ffc300] opacity-10" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-[300px] w-[300px] rounded-full bg-[#f72585] opacity-[0.08]" />
 
-      <div className="relative z-10 mx-auto max-w-[800px]">
+      <div className="relative z-10 mx-auto max-w-[1000px]">
         <span className="mb-8 inline-block rounded-full bg-[#ffc300] px-6 py-2 text-[13px] font-bold uppercase tracking-[2px] text-[#1a1a1a]">
-          Live Workshop
+          Live Workshop · Tuesday
         </span>
 
         <h1 className="mb-6 font-playfair text-[clamp(36px,6vw,64px)] font-black leading-[1.1] text-[#1a1a1a]">
-          Your First $1K
+          You don&apos;t need another plan.
           <br />
-          <em className="italic text-[#f72585]">After Corporate</em>
+          You don&apos;t need permission.
+          <br />
+          <em className="italic text-[#f72585]">You need one decision.</em>
         </h1>
 
         <p className="mx-auto mb-10 max-w-[600px] text-xl leading-relaxed text-[#6b7280]">
-          The exact playbook I used to replace my corporate salary — and how you
-          can make your first $1,000 online in 90 days or less.
+          Corporate taught you to analyse, prepare, and wait for approval before
+          you act. That&apos;s why you&apos;re still stuck. This workshop is the
+          decision that starts everything.
         </p>
 
         <Image
@@ -81,78 +84,120 @@ function HeroSection() {
           priority
         />
 
-        <CtaButton sub="Instant access · Live workshop + replay included">
-          YES! I&apos;M READY TO DO THIS!
+        <CtaButton sub="60 minutes. Live + replay. This Tuesday.">
+          I&apos;M MAKING THE DECISION
         </CtaButton>
       </div>
     </section>
   )
 }
 
-function StatsSection() {
-  const stats = [
-    { num: '70K+', label: 'Newsletter subscribers' },
-    { num: '$119K', label: 'Monthly revenue' },
-    { num: '3 mo', label: 'From zero to bestseller' },
-  ]
+function PermissionMirrorSection() {
   return (
-    <section className="bg-[#1a1a1a] px-5 py-20 text-white">
-      <div className="mx-auto max-w-[780px]">
-        <div className="mx-auto grid grid-cols-1 gap-6 text-center sm:grid-cols-3 sm:gap-8">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <div className="font-playfair text-5xl font-black leading-none text-[#ffc300]">
-                {s.num}
-              </div>
-              <div className="mt-2 text-sm text-[#aaa]">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+    <section className="px-5 pb-3 pt-20">
+      <div className="mx-auto max-w-[700px] text-[19px] leading-[2]">
+        <p className="mb-8">Someone messaged me this week about this workshop.</p>
 
-function ProblemSection() {
-  return (
-    <section className="px-5 py-20">
-      <div className="mx-auto max-w-[780px]">
-        <Divider />
-        <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
-          Let me guess...
-        </h2>
-        <div className="text-xl leading-[1.8]">
-          <p className="mb-4">
-            You&apos;ve spent{' '}
-            <strong className="text-[#f72585]">15+ years</strong> building
-            someone else&apos;s dream. You&apos;re good at what you do — maybe too
-            good. You&apos;ve managed teams, launched products, hit every KPI they
-            threw at you.
-          </p>
-          <p className="mb-4">
-            And yet every Sunday night, you feel that knot in your stomach.
-          </p>
-          <p className="mb-4">
-            You <em>know</em> you want out. You&apos;ve Googled &quot;how to start a
-            side hustle&quot; at 11pm more times than you&apos;ll admit. You&apos;ve
-            watched other women quit and build something online and thought:{' '}
-            <strong className="text-[#f72585]">
-              &quot;If she can do it, why can&apos;t I?&quot;
-            </strong>
-          </p>
-          <p className="mb-4">Here&apos;s why you haven&apos;t done it yet:</p>
-          <p className="mb-4">
-            Because nobody showed you the{' '}
-            <strong className="text-[#f72585]">actual steps</strong>. Not vague
-            inspiration. Not &quot;follow your passion.&quot; Not a $6,000 coaching
-            program that tells you to &quot;just post on Instagram.&quot;
+        <p className="mb-8">
+          She was interested. She said my emails hit home. She said the Sunday
+          scaries were eating her alive. She said she was afraid of AI taking her
+          job every single day.
+        </p>
+
+        <p className="mb-8">
+          Then she asked me 4 follow-up questions. Then she asked if she could
+          ask more questions after. Then she raised a concern. Then she went
+          quiet.
+        </p>
+
+        <p className="mb-8">
+          I&apos;ve seen this pattern a hundred times.{' '}
+          <strong>Because I lived it.</strong>
+        </p>
+
+        <p className="mb-8 font-playfair text-[24px] font-black leading-[1.4]">
+          This is what corporate does to you.
+        </p>
+
+        <p className="mb-8">
+          It trains you to investigate every angle before you move. To get
+          approval before you act. To build a deck about the decision before you
+          make the decision. To run it by your manager, your manager&apos;s
+          manager, and legal.
+        </p>
+
+        <p className="mb-4">
+          And then you bring that exact same behaviour into your own life:
+        </p>
+
+        <div className="mb-8 space-y-3 pl-2 text-[18px]">
+          <p>
+            <span className="mr-2 text-[#ffc300]">→</span> You want to leave.
+            But first you need to research every possible path.
           </p>
           <p>
-            You need a{' '}
-            <strong className="text-[#f72585]">real plan that gets you to $1K</strong>.
-            That&apos;s what this workshop is.
+            <span className="mr-2 text-[#ffc300]">→</span> You want to start
+            something. But first you need to know if it&apos;ll work.
+          </p>
+          <p>
+            <span className="mr-2 text-[#ffc300]">→</span> You want to join a
+            workshop. But first you need 6 questions answered and someone to tell
+            you it&apos;s okay.
           </p>
         </div>
+
+        <p className="mb-8">
+          <strong className="text-[#f72585]">
+            You don&apos;t have a motivation problem. You have a permission
+            problem.
+          </strong>
+        </p>
+
+        <p className="mb-8">
+          Corporate taught you that action without approval is dangerous. That
+          moving without certainty is reckless. That the smart thing to do is
+          wait, analyse, prepare.
+        </p>
+
+        <p className="mb-8">
+          So that&apos;s what you do. You prepare. You research. You think about
+          it.
+        </p>
+
+        <p className="mb-12 font-playfair text-[24px] font-black leading-[1.4]">
+          And nothing changes.
+        </p>
+
+        {/* quote block */}
+        <div className="mb-12 space-y-6 rounded-2xl bg-[#1a1a1a] px-8 py-10 text-white sm:px-12">
+          <div>
+            <p className="mb-3 text-[17px] italic leading-[1.8] text-[#ccc]">
+              &ldquo;You&apos;re still thinking in corporate terms.
+              Overthinking. If you want to succeed at this, you have to get out
+              of the decision fatigue circle. Stop trying to analyse every angle.
+              That&apos;s what they taught you in corporate. To scrutinise. To
+              post-mortem. To war-room. And eventually make 10 presentations
+              about it. Don&apos;t.&rdquo;
+            </p>
+            <p className="text-sm font-bold text-[#ffc300]">— What I told her</p>
+          </div>
+          <div className="border-t border-white/10 pt-6">
+            <p className="mb-3 text-[17px] italic leading-[1.8] text-[#ccc]">
+              &ldquo;You&apos;re absolutely right. I&apos;m incredibly prone to
+              overthinking and I&apos;m overthinking the hell out of
+              this.&rdquo;
+            </p>
+            <p className="text-sm font-bold text-[#ffc300]">
+              — What she replied
+            </p>
+          </div>
+        </div>
+
+        <p className="text-[19px] leading-[2]">
+          She is. And if you clicked the link to get here, you probably are too.
+          This workshop exists for exactly that moment. The moment where you stop
+          researching and start moving.
+        </p>
       </div>
     </section>
   )
@@ -160,32 +205,85 @@ function ProblemSection() {
 
 function BridgeSection() {
   return (
-    <section className="bg-[#fffdf5] px-5 py-20 text-center">
+    <section className="bg-[#fffdf5] px-5 py-20">
       <div className="mx-auto max-w-[780px]">
         <Divider />
-        <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
-          I was{' '}
-          <em className="font-playfair italic text-[#f72585]">exactly</em> where
-          you are.
-        </h2>
-        <p className="mx-auto mb-6 max-w-[640px] text-lg">
-          15 years in corporate marketing. Amsterdam, San Francisco, London. I
-          had the title, the salary, the business-class flights. I also had a
-          moment where I fainted in a hotel bathroom and realized:{' '}
-          <strong>my body was literally telling me to stop.</strong>
+
+        {/* photo + heading */}
+        <div className="mb-10 flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-10">
+          <div className="shrink-0">
+            <Image
+              src="/imgs/ana-calin.jpg"
+              alt="Ana Calin"
+              width={140}
+              height={140}
+              className="rounded-full border-[3px] border-[#ffc300] object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="mb-4 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
+              I was{' '}
+              <em className="font-playfair italic text-[#f72585]">exactly</em>{' '}
+              where you are.
+            </h2>
+            <p className="text-lg leading-[1.8]">
+              15 years in corporate marketing. Amsterdam, San Francisco, London.
+            </p>
+          </div>
+        </div>
+
+        {/* story */}
+        <div className="text-lg leading-[1.9]">
+          <p className="mb-6">
+            I could build a 47-slide strategy deck in my sleep. I could present
+            risk assessments to a boardroom without breaking a sweat. But when it
+            came to starting something for myself? I froze.
+          </p>
+          <p className="mb-6">
+            Because nobody was going to approve it. Nobody was going to
+            greenlight it. Nobody was going to schedule a kickoff meeting and
+            assign me a project manager.
+          </p>
+          <p className="mb-6">
+            It was just me. And a blank page. And a voice in my head saying
+            &ldquo;but what if it doesn&apos;t work?&rdquo;
+          </p>
+          <p className="mb-8">
+            You know what finally moved me? Not more research. Not a better plan.{' '}
+            <strong className="text-[#f72585]">A decision.</strong> One imperfect
+            decision.
+          </p>
+        </div>
+
+        {/* stats */}
+        <div className="mb-10 space-y-4 rounded-2xl bg-[#1a1a1a] px-8 py-8 text-white sm:px-12">
+          <div className="flex items-baseline gap-3">
+            <span className="shrink-0 font-playfair text-2xl font-black text-[#ffc300]">
+              3 months later:
+            </span>
+            <span className="text-lg text-[#ccc]">Substack Bestseller</span>
+          </div>
+          <div className="flex items-baseline gap-3">
+            <span className="shrink-0 font-playfair text-2xl font-black text-[#ffc300]">
+              12 months later:
+            </span>
+            <span className="text-lg text-[#ccc]">$119K/month</span>
+          </div>
+          <div className="flex items-baseline gap-3">
+            <span className="shrink-0 font-playfair text-2xl font-black text-[#ffc300]">
+              Today:
+            </span>
+            <span className="text-lg text-[#ccc]">
+              $3,000/day average, writing from my couch while Eva plays next to
+              me
+            </span>
+          </div>
+        </div>
+
+        <p className="text-center font-playfair text-[24px] font-black leading-[1.4]">
+          Same corporate skills. Different beneficiary.{' '}
+          <em className="italic text-[#f72585]">Me.</em>
         </p>
-        <p className="mx-auto mb-6 max-w-[640px] text-lg">
-          I quit at 35. Started a newsletter. Had my daughter Eva in my 40s.
-          Within 3 months I was a Substack bestseller. Within a year I was making
-          $119K/month.
-        </p>
-        <p className="mx-auto mb-8 max-w-[640px] text-lg">
-          <strong>
-            I didn&apos;t get lucky. I followed a system.
-          </strong>{' '}
-          And in this workshop, I&apos;m giving you that system.
-        </p>
-        <CtaButton gold>I NEED THIS — I&apos;M IN, ANA!</CtaButton>
       </div>
     </section>
   )
@@ -194,29 +292,27 @@ function BridgeSection() {
 function ModulesSection() {
   const modules = [
     {
-      num: '01',
-      title: 'The Asset You Already Have (10 min)',
-      desc: 'How to identify the $1K skill hiding inside your corporate career — the one people will pay for before you even have a website.',
+      title:
+        "You'll find the skill you're sitting on that's worth $1K",
+      desc: "Every corporate career has a monetisable skill hidden inside it. Marketing. Strategy. Operations. Writing. Finance. Project management. You'll identify yours in the first 10 minutes. Most people say this moment alone changes everything, because they stop asking 'what would I even sell?'",
     },
     {
-      num: '02',
-      title: 'The Vehicle (10 min)',
-      desc: 'Why newsletters beat courses, coaching, and social media for career changers — and how to pick the exact format that gets you paid fastest.',
+      title:
+        "You'll see why a newsletter is the fastest vehicle for career changers",
+      desc: "Not a course. Not coaching. Not an app. Not social media. I'll show you why newsletters beat every other option for someone leaving corporate, and exactly which format gets you paid fastest with the smallest audience.",
     },
     {
-      num: '03',
-      title: 'The 90-Day Sprint to $1K (30 min)',
-      desc: "My week-by-week breakdown: what to write, what to sell, how to price it, and exactly when to flip the switch from free to paid. This is the core of the workshop.",
+      title: "You'll get the 90-day sprint to your first $1K",
+      desc: "Week by week. What to write. What to sell. How to price it. When to flip from free to paid. This is the core of the workshop. Not theory. Not 'here are some principles.' A calendar with tasks. The same system I used. The same one my students use.",
     },
     {
-      num: '04',
-      title: 'The 5 Lies That Kill the Transition (5 min)',
-      desc: 'The stories every corporate woman tells herself that keep her stuck — and the reframes that actually work. This part alone is worth the price of admission.',
+      title: "You'll hear the 5 lies that are keeping you stuck",
+      desc: "The stories every corporate person tells themselves that prevent them from ever starting. I believed all 5. They almost cost me everything. The reframes in this section will feel like someone turned a light on in a room you've been sitting in for years.",
     },
     {
-      num: '05',
-      title: 'Live Q&A (open)',
-      desc: "Bring your specific situation. I'll tell you what I'd do if I were you. No gatekeeping.",
+      title:
+        "You'll get live Q&A where I tell you exactly what I'd build if I were you",
+      desc: "Bring your background. Bring your questions. I'll look at your specific situation and tell you what I'd do. No gatekeeping. This part only happens live. It doesn't exist on the replay.",
     },
   ]
 
@@ -225,33 +321,31 @@ function ModulesSection() {
       <div className="mx-auto max-w-[780px]">
         <Divider />
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
-          Here&apos;s exactly what you&apos;ll learn:
+          What happens on Tuesday
         </h2>
         <p className="mb-2 text-[#aaa]">
-          60 minutes of pure strategy + live Q&amp;A. No fluff. No filler.
+          60 minutes. No slides with 47 bullet points. No corporate agenda. Just
+          the system.
         </p>
 
         <ul className="my-8 list-none p-0">
           {modules.map((m) => (
             <li
-              key={m.num}
-              className="flex flex-col gap-2 border-b border-white/10 py-5 sm:flex-row sm:items-start sm:gap-4"
+              key={m.title.slice(0, 20)}
+              className="border-b border-white/10 py-6"
             >
-              <div className="w-auto shrink-0 text-left font-playfair text-[32px] font-black leading-none text-[#ffc300] sm:w-[50px] sm:text-center">
-                {m.num}
-              </div>
-              <div>
-                <h4 className="mb-1 font-dm-sans text-lg font-bold text-white">
-                  {m.title}
-                </h4>
-                <p className="m-0 text-[15px] text-[#aaa]">{m.desc}</p>
-              </div>
+              <h4 className="mb-2 font-dm-sans text-lg font-bold text-white">
+                {m.title}
+              </h4>
+              <p className="m-0 text-[15px] leading-[1.7] text-[#aaa]">
+                {m.desc}
+              </p>
             </li>
           ))}
         </ul>
 
         <div className="mt-10 text-center">
-          <CtaButton>I&apos;M READY — LET&apos;S GO!</CtaButton>
+          <CtaButton>I&apos;M IN THE ROOM ON TUESDAY</CtaButton>
         </div>
       </div>
     </section>
@@ -261,16 +355,22 @@ function ModulesSection() {
 function WhoSection() {
   const items = [
     {
-      title: "You're still in corporate but planning your exit",
-      desc: 'You want to build something on the side before you hand in your resignation. Smart. This gives you the roadmap.',
+      title:
+        "You're still in corporate and the Sunday night knot won't go away",
+      desc: "You've been told it's normal. It's not.",
     },
     {
-      title: 'You just left and need to make money NOW',
-      desc: "The clock is ticking. You need a plan that generates revenue in weeks, not months. This is that plan.",
+      title: 'You just left and the clock is ticking',
+      desc: "You need a system that generates revenue in weeks, not months. Not another course to 'think about.' An action plan you execute starting Wednesday morning.",
     },
     {
       title: "You started something but it's not making money yet",
       desc: "You've been posting, writing, showing up — but your bank account doesn't reflect your effort. I'll show you what's missing.",
+    },
+    {
+      title:
+        "You've been overthinking this for months and you know it",
+      desc: "You have 14 browser tabs open about side hustles. You've read more about this than 95% of people who are actually doing it. What you need isn't more information. It's a decision. This is the decision.",
     },
   ]
 
@@ -278,13 +378,17 @@ function WhoSection() {
     <section className="px-5 py-20">
       <div className="mx-auto max-w-[780px]">
         <Divider />
-        <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
-          This workshop is for you if...
+        <h2 className="mb-4 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
+          This is for the person who&apos;s done thinking about it.
         </h2>
+        <p className="mb-6 text-lg text-[#6b7280]">
+          Not &ldquo;interested.&rdquo; Not &ldquo;considering it.&rdquo; Done
+          thinking. Ready to move.
+        </p>
         <ul className="my-8 list-none p-0">
           {items.map((item) => (
             <li
-              key={item.title}
+              key={item.title.slice(0, 20)}
               className="flex flex-col gap-2 border-b border-black/[0.08] py-5 sm:flex-row sm:items-start sm:gap-4"
             >
               <div className="w-auto shrink-0 text-left font-playfair text-2xl font-black text-[#ffc300] sm:w-[50px] sm:text-center">
@@ -304,71 +408,28 @@ function WhoSection() {
   )
 }
 
-function TestimonialsSection() {
-  const testimonials = [
-    {
-      quote:
-        "I went from zero subscribers to my first paid subscriber in under 2 weeks following Ana's method. The 90-day sprint framework gave me clarity I'd been missing for months.",
-      name: '— Sarah Mitchell',
-    },
-    {
-      quote:
-        "Ana doesn't sell you a dream — she gives you the spreadsheet. I made my first $500 within 30 days of taking her workshop and I hadn't even quit my job yet.",
-      name: '— Jessica Thornton',
-    },
-    {
-      quote:
-        "After 12 years in corporate finance, I was terrified to start. Ana's workshop made it feel not just possible but obvious. I'm now at $3,200/month and growing.",
-      name: '— Rachel Davies',
-    },
-  ]
-
-  return (
-    <section className="bg-[#fffdf5] px-5 py-20">
-      <div className="mx-auto max-w-[780px]">
-        <Divider />
-        <h2 className="mb-6 text-center font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
-          What students are saying
-        </h2>
-        {testimonials.map((t) => (
-          <div
-            key={t.name + t.quote.slice(0, 20)}
-            className="my-8 rounded-2xl border-l-4 border-[#ffc300] bg-[#fffdf5] p-10 shadow-sm"
-          >
-            <p className="mb-3 text-lg italic leading-[1.7]">
-              &ldquo;{t.quote}&rdquo;
-            </p>
-            <div className="text-sm font-bold not-italic text-[#f72585]">
-              {t.name}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
-}
 
 function BonusesSection() {
   const bonuses = [
     {
       tag: 'Bonus #1',
-      title: 'The Bestseller Blueprint',
-      desc: 'The exact growth strategy I used to hit Substack Bestseller in 3 months. Step-by-step, week-by-week.',
+      title: 'The Corporate Skill Audit',
+      desc: "The exact exercise I use to help people find their monetisable skill in 15 minutes. You'll know what you're building before the workshop is half over.",
     },
     {
       tag: 'Bonus #2',
-      title: 'Full Workshop Replay',
-      desc: "Can't make it live? No problem. You get lifetime access to the recording so you can watch (and re-watch) on your schedule.",
+      title: 'The First Week Action Plan',
+      desc: "What to do on Wednesday, Thursday, Friday, Saturday, and Sunday after the workshop. Five days. Five tasks. No ambiguity. No 'figure it out yourself.'",
     },
     {
       tag: 'Bonus #3',
-      title: 'The $3,000 Email Template',
-      desc: 'The exact email structure that generates $3,000+ every time I send it. Copy it. Customize it. Send it.',
+      title: 'The 90-Day Sprint Calendar',
+      desc: 'The week-by-week breakdown from Day 1 to $1K. What to write, when to sell, how to price it. The same system behind my first $10K month.',
     },
   ]
 
   return (
-    <section className="px-5 py-20">
+    <section className="px-5 pb-20 pt-4">
       <div className="mx-auto max-w-[780px]">
         <Divider />
         <h2 className="mb-6 text-center font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
@@ -397,40 +458,36 @@ function BonusesSection() {
         ))}
 
         <div className="mt-10 text-center">
-          <CtaButton gold>YES! GIVE ME EVERYTHING!</CtaButton>
+          <CtaButton>I&apos;M IN THE ROOM ON TUESDAY</CtaButton>
         </div>
       </div>
     </section>
   )
 }
 
-function PricingSection() {
+function DecisionBlockSection() {
   return (
-    <section className="bg-[#fffdf5] px-5 py-20 text-center">
-      <div className="mx-auto max-w-[780px]">
-        <Divider />
-        <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
-          Let&apos;s talk investment.
-        </h2>
-        <p className="mx-auto mb-8 max-w-[600px] text-lg text-[#6b7280]">
-          This workshop contains the same strategies I teach in programs that
-          cost 6x more. I priced it so that the only thing standing between you
-          and your first $1K is a decision.
+    <section className="px-5 py-16">
+      <div className="mx-auto max-w-[700px] rounded-2xl border-2 border-[#ffc300] bg-[#fffdf5] px-8 py-12 text-[18px] leading-[1.9] sm:px-14">
+        <p className="mb-6">
+          I&apos;m not going to tell you this workshop will change your life.
+          I&apos;m not going to tell you you&apos;ll be a millionaire. I&apos;m
+          not going to tell you it&apos;s easy.
         </p>
-
-        <div className="mx-auto max-w-[560px] rounded-[20px] border-2 border-[#ffc300] bg-white px-6 py-12 text-center shadow-[0_8px_40px_rgba(0,0,0,.08)] sm:px-12">
-          <div className="mb-1 text-2xl text-[#6b7280] line-through">$497</div>
-          <div className="font-playfair text-7xl font-black leading-none text-[#1a1a1a]">
-            $250
-          </div>
-          <div className="mb-8 mt-2 text-sm text-[#6b7280]">
-            One-time payment · No subscription · No upsell
-          </div>
-          <CtaButton>I&apos;M IN — BOOK MY SEAT!</CtaButton>
-          <span className="mt-4 block text-xs text-[#6b7280]">
-            Secure checkout via Stripe
-          </span>
-        </div>
+        <p className="mb-6">
+          I&apos;m going to tell you it starts with{' '}
+          <strong>one decision</strong>. Not the right decision. Not the perfect
+          decision. Just a decision.
+        </p>
+        <p className="mb-6">
+          That decision led to a newsletter. The newsletter led to Bestseller in
+          3 months. The Bestseller led to $119K months. The $119K months led to
+          me writing this from my couch while my daughter plays next to me.
+        </p>
+        <p className="font-playfair text-[22px] font-black leading-[1.4]">
+          All of it started with one imperfect decision.{' '}
+          <em className="italic text-[#f72585]">This workshop is yours.</em>
+        </p>
       </div>
     </section>
   )
@@ -440,7 +497,11 @@ function FAQSection() {
   const faqs = [
     {
       q: 'When is the workshop?',
-      a: "The live session is March 31st. When you purchase, you'll receive the exact time and Zoom link immediately. If you can't make it live, the full replay is included.",
+      a: "This Tuesday. When you buy, you get the time and Zoom link immediately. If you can't make it live, the full replay is included. But the live Q&A where I review your specific situation only happens once.",
+    },
+    {
+      q: "I don't know what I'd sell. Is this still for me?",
+      a: "That's literally what the first 10 minutes solve. You don't need to arrive with a product idea. You arrive with your career. I'll show you what's hiding inside it.",
     },
     {
       q: "I'm not a writer. Is this still for me?",
@@ -448,15 +509,15 @@ function FAQSection() {
     },
     {
       q: 'Do I need to have quit my job already?',
-      a: "No. In fact, many of my students start building while still employed. The 90-day sprint is designed to work alongside a full-time job.",
+      a: "No. In fact, many of my students start building while still employed. The 90-day sprint is designed to work alongside a full-time job. I built mine while pregnant.",
     },
     {
-      q: '$250 feels like a lot right now...',
-      a: "I understand. Here's how I think about it: you're learning a system designed to make you $1,000. That's a 4x return on a single workshop. And you'll use this system over and over.",
+      q: 'I need to think about it...',
+      a: "I know. That's the pattern. You've been thinking about leaving corporate for months, maybe years. You've been thinking about starting something for just as long. At some point, thinking stops being preparation and starts being avoidance. Only you know which one this is.",
     },
     {
-      q: "What if I already have a newsletter but it's not making money?",
-      a: "Perfect — you're actually ahead. Module 3 (The 90-Day Sprint) will show you exactly where the money is hiding in your existing audience. Most people are closer than they think.",
+      q: "What if it doesn't apply to my specific situation?",
+      a: "That's the corporate brain talking. The system works for any professional skill. Marketing, finance, operations, writing, strategy, design, HR, project management, analytics, sales. If people get paid to do what you do at a company, people will pay to learn it from you independently.",
     },
   ]
 
@@ -464,9 +525,12 @@ function FAQSection() {
     <section className="px-5 py-20">
       <div className="mx-auto max-w-[780px]">
         <Divider />
-        <h2 className="mb-6 text-center font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
-          Common questions
+        <h2 className="mb-2 text-center font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
+          Questions you&apos;re about to overthink
         </h2>
+        <p className="mb-8 text-center text-lg italic text-[#6b7280]">
+          (I say that with love. I was you.)
+        </p>
         {faqs.map((f) => (
           <div
             key={f.q}
@@ -488,16 +552,28 @@ function FinalCtaSection() {
     <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d1b3d] px-5 py-[100px] text-center text-white">
       <div className="mx-auto max-w-[780px]">
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
-          You didn&apos;t spend 15 years in corporate
+          This Tuesday. One decision.
           <br />
-          to <em className="italic text-[#ffc300]">wonder</em> what&apos;s next.
+          <em className="italic text-[#ffc300]">No committee required.</em>
         </h2>
-        <p className="mx-auto mb-10 max-w-[560px] text-lg text-[#ccc]">
-          You spent 15 years building skills that are worth real money. Let me
-          show you how to turn them into your first $1K — and then keep going.
+        <p className="mx-auto mb-10 max-w-[600px] text-lg leading-[1.8] text-[#ccc]">
+          You didn&apos;t spend 15 years in corporate to wonder what&apos;s
+          next. You spent 15 years building skills that are worth real money. Let
+          me show you how to capture that value for yourself. 60 minutes. Live.
+          The system I used. The plan you&apos;ll leave with.
         </p>
-        <CtaButton large sub="Join the workshop · Instant access · Replay included">
-          YES! I&apos;M DOING THIS!
+
+        <div className="mb-10">
+          <div className="font-playfair text-7xl font-black leading-none text-white">
+            $250
+          </div>
+          <div className="mt-2 text-sm text-[#aaa]">
+            One workshop. One decision. No subscription. No upsell.
+          </div>
+        </div>
+
+        <CtaButton large sub="Secure checkout via Stripe · Replay included">
+          I&apos;M DONE THINKING. I&apos;M IN.
         </CtaButton>
       </div>
     </section>
@@ -526,14 +602,12 @@ export default function YourFirst1KAfterCorporatePage() {
   return (
     <main className="min-h-screen bg-white font-dm-sans text-[#1a1a1a] antialiased [line-height:1.7]">
       <HeroSection />
-      <StatsSection />
-      <ProblemSection />
+      <PermissionMirrorSection />
       <BridgeSection />
       <ModulesSection />
       <WhoSection />
-      <TestimonialsSection />
       <BonusesSection />
-      <PricingSection />
+      <DecisionBlockSection />
       <FAQSection />
       <FinalCtaSection />
       <FooterSection />
