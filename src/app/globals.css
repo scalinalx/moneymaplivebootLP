@@ -184,3 +184,78 @@ body {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Word Into Money — Infinite Feed Animations */
+@keyframes feed-slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes feed-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes feed-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes feed-slide-left {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes feed-sticky-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.feed-animate-slide-up {
+  animation: feed-slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.feed-animate-fade-in {
+  animation: feed-fade-in 0.5s ease-out forwards;
+}
+
+.feed-animate-scale-in {
+  animation: feed-scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.feed-animate-slide-left {
+  animation: feed-slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.feed-animate-sticky-up {
+  animation: feed-sticky-up 0.3s ease-out forwards;
+}
+
+/* Bottomless Bowl — hide scrollbar on feed pages */
+.feed-no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.feed-no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Skeleton loading pulse for infinite pool cards */
+@keyframes feed-skeleton-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+}
+.feed-skeleton {
+  animation: feed-skeleton-pulse 1.2s ease-in-out infinite;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+  background-size: 200% 100%;
+}
+
+/* Teaser card glow effect */
+@keyframes feed-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 210, 0, 0); }
+  50% { box-shadow: 0 0 20px 2px rgba(255, 210, 0, 0.08); }
+}
+.feed-glow {
+  animation: feed-glow-pulse 3s ease-in-out infinite;
+}

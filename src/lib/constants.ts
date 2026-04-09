@@ -31,6 +31,16 @@ export const UNSTUCK_BUNDLE_PRICE = Number.parseInt(process.env.UNSTUCK_BUNDLE_P
 export const CREATOR_BUNDLE_PRICE = Number.parseInt(process.env.CREATOR_BUNDLE_PRICE || '6900', 10); // $69
 export const CREATOR_BUNDLE_BUMP_PRICE = Number.parseInt(process.env.CREATOR_BUNDLE_BUMP_PRICE || '6700', 10); // $67 Launch Stack bump
 
+// Word Into Money Pricing
+export const WIM_PRICE = Number.parseInt(process.env.WIM_PRICE || '9700', 10);
+export const WIM_BUMP1_PRICE = Number.parseInt(process.env.WIM_BUMP1_PRICE || '2700', 10); // Hooks That Stop the Scroll
+export const WIM_BUMP2_PRICE = Number.parseInt(process.env.WIM_BUMP2_PRICE || '2700', 10); // 100 Genius Launch Ideas
+export const WIM_BUMP3_PRICE = Number.parseInt(process.env.WIM_BUMP3_PRICE || '6700', 10); // Launch Stack
+export const WIM_BUNDLE_PRICE = Number.parseInt(process.env.WIM_BUNDLE_PRICE || '6900', 10); // All 3 bundled
+export const WIM_UPSELL1_PRICE = Number.parseInt(process.env.WIM_UPSELL1_PRICE || '9700', 10); // First 100 Paid Subscribers
+export const WIM_UPSELL2_PRICE = Number.parseInt(process.env.WIM_UPSELL2_PRICE || '59700', 10); // 10K Launch Lab
+export const WIM_UPSELL3_PRICE = Number.parseInt(process.env.WIM_UPSELL3_PRICE || '99700', 10); // 1:1 Coaching
+
 // Launch Lab Pricing
 export const LAUNCHLAB_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_PRICE || '59700', 10);
 export const LAUNCHLAB_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE || '4700', 10);
