@@ -15,7 +15,7 @@ export const CurriculumSection: React.FC = () => {
                 </div>
 
                 <p className="font-montserrat text-black text-center text-xl md:text-[22px] leading-relaxed max-w-4xl mb-8">
-                    A <span className="font-bold text-[#d81159]">60-minute live workshop on March 12th</span> built for one purpose: getting you to 100 paid subscribers and Substack Bestseller status — as fast as humanly possible, without burning out or begging for attention.
+                    A <span className="font-bold text-[#d81159]">60-minute workshop with instant access</span> built for one purpose: getting you to 100 paid subscribers and Substack Bestseller status — as fast as humanly possible, without burning out or begging for attention.
                 </p>
 
                 <h2 className="font-anton text-[rgb(56,170,185)] text-5xl md:text-7xl text-center mb-12 tracking-[0.05em] uppercase">
@@ -84,7 +84,7 @@ export const CurriculumSection: React.FC = () => {
                         <span>WHEN DO WE START?</span>
                         <ArrowRight className="w-6 h-6 hidden md:block group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
-                    <p className="font-lato text-gray-500 mt-4 text-sm">One-time payment. Live on March 12th + replay + all templates & bonuses.</p>
+                    <p className="font-lato text-gray-500 mt-4 text-sm">One-time payment. Immediate access to the full webinar recording + all templates & bonuses.</p>
                 </div>
 
             </div>

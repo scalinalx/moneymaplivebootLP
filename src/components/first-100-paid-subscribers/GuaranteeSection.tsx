@@ -15,7 +15,7 @@ export const GuaranteeSection: React.FC = () => {
                 </h2>
 
                 <p className="font-lora text-[#333333] text-xl md:text-2xl leading-relaxed mb-8 max-w-2xl">
-                    Because this is a live workshop with real-time access and instant digital delivery of all materials, all sales are final.
+                    Because you get immediate access to the full webinar recording and instant digital delivery of all materials, all sales are final.
                 </p>
 
                 <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#27AE60]/30 shadow-sm mb-8 text-left">
@@ -27,7 +27,7 @@ export const GuaranteeSection: React.FC = () => {
                             "Apply the 7-Day Upgrade Sequence and you will see paid subscribers move — often within the first 48 hours of sending.",
                             "Implement the Paid Tier Structure and your paywall will stop feeling like a wall and start feeling like a VIP invitation.",
                             "Use the 30-Day Bestseller Roadmap and you will have a clearer path to Bestseller status than 95% of Substack writers who are winging it.",
-                            "Show up to the live workshop with your questions and I will answer them in real time — so you leave with zero ambiguity about your next step."
+                            "Follow the workshop step by step and you'll leave with zero ambiguity about your next move — every framework is spelled out in plain English with real examples."
                         ].map((item, i) => (
                             <li key={i} className="flex items-start gap-4">
                                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#27AE60] flex items-center justify-center mt-0.5">

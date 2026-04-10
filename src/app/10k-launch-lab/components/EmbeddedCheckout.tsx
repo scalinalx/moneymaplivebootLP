@@ -35,10 +35,17 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         setIsProcessing(true);
         setErrorMessage(null);
 
+        const incomingParams = new URLSearchParams(window.location.search);
+        const incomingSource = incomingParams.get('source');
+        const incomingLeadId = incomingParams.get('leadId');
+        const sourceSuffix = incomingSource
+            ? `&source=${incomingSource}&f100LeadId=${incomingLeadId}`
+            : '';
+
         const { error, paymentIntent } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${window.location.origin}/10k-coaching-upsell?leadId=${leadId}&bought=true&success=true`,
+                return_url: `${window.location.origin}/10k-coaching-upsell?leadId=${leadId}&bought=true&success=true${sourceSuffix}`,
             },
             redirect: 'if_required',
         });
@@ -58,7 +65,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
             });
 
             // Redirect to success page or show success message
-            window.location.href = `/10k-coaching-upsell?leadId=${leadId}&bought=true`;
+            window.location.href = `/10k-coaching-upsell?leadId=${leadId}&bought=true${sourceSuffix}`;
         }
     };
 

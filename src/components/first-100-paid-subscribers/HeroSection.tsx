@@ -9,13 +9,13 @@ export const HeroSection: React.FC = () => {
 
                 {/* Main Headline Container */}
                 <div className="relative w-full max-w-[1100px] flex flex-col items-center">
-                    {/* Live Workshop Pill — floating top right */}
+                    {/* Instant Access Pill — floating top right */}
                     <div className="absolute top-0 right-0 xl:-right-4 mt-2 hidden md:inline-flex items-center gap-1.5 bg-[#333333] text-white px-3 py-1 rounded-full text-[10px] md:text-xs font-montserrat font-bold uppercase tracking-widest z-10">
                         <span className="relative flex h-1.5 w-1.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffc300] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#ffc300]"></span>
                         </span>
-                        Live — March 12th
+                        Instant Access
                     </div>
 
                     <h1 className="font-anton text-[#06b6d4] leading-[1.1] md:leading-[1.05] uppercase mb-6 tracking-wide w-full max-w-[1400px] flex flex-col items-center">
@@ -32,7 +32,7 @@ export const HeroSection: React.FC = () => {
                 <div className="w-full max-w-[1100px] mb-6 rounded-2xl overflow-hidden">
                     <img
                         src="/imgs/first-100-paid-subscribers/hero1_cropped.webp"
-                        alt="First 100 Paid Subscribers — Live Workshop"
+                        alt="First 100 Paid Subscribers — Workshop Recording + Bonuses"
                         className="w-full h-auto"
                     />
                 </div>
@@ -46,13 +46,13 @@ export const HeroSection: React.FC = () => {
                         THAT'S FOR ME! — ${FIRST100_PRICE / 100}
                     </button>
                     <p className="font-lora italic text-gray-500 mt-4 text-sm">
-                        *Live on March 12th + replay + templates & bonuses sent immediately after
+                        *Immediate access to the full webinar recording + all templates & bonuses
                     </p>
                 </div>
 
                 {/* Sub-Headline — moved below image + CTA */}
                 <h2 className="font-display text-[#333333] text-[15px] md:text-[25px] leading-tight max-w-[1100px] mb-10 font-bold uppercase italic tracking-tight">
-                    A 60-minute live workshop for Substack writers who are done watching others hit Bestseller status while their paid tier sits at zero
+                    A 60-minute workshop for Substack writers who are done watching others hit Bestseller status while their paid tier sits at zero
                 </h2>
 
                 {/* Ana's Credibility Bar */}

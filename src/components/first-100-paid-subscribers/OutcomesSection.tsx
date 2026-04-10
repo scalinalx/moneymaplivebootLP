@@ -40,7 +40,7 @@ export const OutcomesSection: React.FC = () => {
                 </div>
 
                 <p className="font-montserrat font-bold text-[#ffc300] text-center text-base md:text-lg mb-8 uppercase tracking-wide">
-                    ...and so much more. Live. March 12th.
+                    ...and so much more. Instant access.
                 </p>
 
                 <button
@@ -50,7 +50,7 @@ export const OutcomesSection: React.FC = () => {
                     <span>THAT'S FOR ME!</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                 </button>
-                <p className="font-lato text-white/50 text-sm mt-4 text-center">Live on March 12th · Replay included · All templates sent immediately</p>
+                <p className="font-lato text-white/50 text-sm mt-4 text-center">Full webinar recording · All templates & bonuses · Delivered immediately</p>
 
             </div>
         </div>

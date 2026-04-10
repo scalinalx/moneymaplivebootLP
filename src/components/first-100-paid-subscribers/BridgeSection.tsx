@@ -65,7 +65,7 @@ export const BridgeSection: React.FC = () => {
                         <span>I WANT IN, ANA!</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
-                    <p className="font-lato text-gray-500 text-sm">Live Workshop — March 12th | Replay Included | Lifetime Access</p>
+                    <p className="font-lato text-gray-500 text-sm">Instant Access | Full Webinar Recording + Bonuses | Lifetime Access</p>
                 </div>
             </div>
 

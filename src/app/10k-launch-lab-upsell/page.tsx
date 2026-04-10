@@ -8,9 +8,11 @@ import { Check, ShieldCheck, Lock, ArrowRight } from 'lucide-react';
 function UpsellContent() {
     const searchParams = useSearchParams();
     const leadId = searchParams.get('leadId') || 'test-lead-id';
+    const source = searchParams.get('source');
 
     const handleDecline = () => {
-        window.location.href = `/10k-coaching-upsell?leadId=${leadId}&bought=false`;
+        const sourceParam = source ? `&source=${source}&f100LeadId=${leadId}` : '';
+        window.location.href = `/10k-coaching-upsell?leadId=${leadId}&bought=false${sourceParam}`;
     };
 
     return (

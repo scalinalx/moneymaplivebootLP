@@ -91,13 +91,22 @@ function SuccessContent() {
                 </p>
 
                 {isPaid && (
-                    <div className="mb-12">
+                    <div className="mb-12 flex flex-col items-center gap-4">
                         <a
-                            href="mailto:anaxcalin@gmail.com"
+                            href="https://www.youtube.com/watch?v=D8Crv5qzXc4"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 bg-[#333333] hover:bg-black text-white font-montserrat font-bold py-6 px-12 rounded-xl shadow-lg transition-all transform hover:scale-105 uppercase tracking-wider text-lg md:text-xl"
                         >
                             <Zap size={24} fill="white" />
                             GET MY WORKSHOP ACCESS
+                        </a>
+                        <a
+                            href="mailto:ana@anacalin.com"
+                            className="inline-flex items-center gap-2 text-gray-500 hover:text-[#d81159] font-montserrat font-medium text-sm underline underline-offset-4 transition-colors"
+                        >
+                            <Mail size={14} />
+                            Contact Ana with questions
                         </a>
                     </div>
                 )}

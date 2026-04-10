@@ -3,8 +3,8 @@ import { ArrowRight, Clock } from 'lucide-react';
 import { FIRST100_PRICE } from '@/lib/stripe';
 
 const included = [
-    { item: "60-Minute Live Workshop (March 12th)", value: "$297" },
-    { item: "Full Replay — Watch Forever", value: "$97" },
+    { item: "60-Minute Workshop — Full Recording", value: "$297" },
+    { item: "Lifetime Access — Watch Forever", value: "$97" },
     { item: "The Bestseller Blueprint", value: "$97" },
     { item: "The 7-Day Upgrade Email Sequence", value: "$197" },
     { item: "The 30-Day Bestseller Roadmap", value: "$197" },
@@ -21,7 +21,7 @@ export const FinalCTASection: React.FC = () => {
 
                 <div className="flex items-center gap-2 text-[#ffc300] font-montserrat font-bold text-sm uppercase tracking-widest mb-6">
                     <Clock size={16} />
-                    <span>Workshop is on March 12th — Seats Are Limited</span>
+                    <span>Instant Access — Start Watching in Minutes</span>
                 </div>
 
                 <h2 className="font-anton text-4xl md:text-6xl text-white mb-4 uppercase tracking-wide leading-tight">
@@ -79,7 +79,7 @@ export const FinalCTASection: React.FC = () => {
                 </button>
 
                 <p className="font-lato text-white/40 text-sm mt-6">
-                    Live on March 12th · Replay + all bonuses sent immediately · Secure checkout via Stripe
+                    Full webinar recording + all bonuses delivered immediately · Secure checkout via Stripe
                 </p>
 
                 {/* Force-reject */}

@@ -12,7 +12,15 @@ function CoachingUpsellContent() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const finalSuccessUrl = leadId ? `/10k-launch-lab-success?leadId=${leadId}` : '/10k-launch-lab';
+    const source = searchParams.get('source');
+    const f100LeadId = searchParams.get('f100LeadId');
+    const finalSuccessUrl = (() => {
+        if (source === 'first100') {
+            const id = f100LeadId || leadId;
+            return id ? `/first-100-paid-subscribers-success?leadId=${id}` : '/first-100-paid-subscribers';
+        }
+        return leadId ? `/10k-launch-lab-success?leadId=${leadId}` : '/10k-launch-lab';
+    })();
 
     const handleAccept = async () => {
         setIsProcessing(true);

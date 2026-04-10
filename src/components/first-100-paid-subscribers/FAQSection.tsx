@@ -7,8 +7,8 @@ import { FIRST100_PRICE } from '@/lib/stripe';
 export const FAQSection: React.FC = () => {
     const faqs = [
         {
-            question: "Is this a live workshop or a recording?",
-            answer: "It's a live 60-minute workshop on March 12th. You'll join Ana in real time, ask questions, and get the full experience live. Can't make it? You'll receive the full replay plus all templates and bonuses automatically — so you never miss a thing."
+            question: "Is this live or a recording?",
+            answer: "You get immediate access to the full 60-minute webinar recording the moment you check out, plus every template and bonus. No waiting, no scheduling — just log in and start watching on your own time."
         },
         {
             question: "I only have a small free list. Will this actually work for me?",
@@ -27,12 +27,12 @@ export const FAQSection: React.FC = () => {
             answer: "Substack awards Bestseller status based on paid subscriber count thresholds relative to your total list. It's more achievable than most people think — especially with a high conversion rate. The Bestseller Blueprint module covers exactly what the thresholds are and the fastest path to hit them."
         },
         {
-            question: "How do I get the workshop details after I register?",
-            answer: "The moment your payment is confirmed, you'll receive a welcome email with the live workshop link for March 12th, plus access to all templates and bonuses. If you can't attend live, the replay will be sent to you automatically after the session."
+            question: "How do I get access after I register?",
+            answer: "The moment your payment is confirmed, you'll get immediate access to the full webinar recording along with every template and bonus. Everything is yours to keep — watch at your own pace, revisit anytime."
         },
         {
             question: "What's everything I get for $97?",
-            answer: "The live 60-minute workshop on March 12th, The Bestseller Blueprint, The Paid Conversion System, The 7-Day Upgrade Sequence, The 30-Day Bestseller Roadmap, The Paid Subscriber Welcome Sequence, The Objection-Crushing Copy Vault, Tiny List Big Revenue, and the Viral Substack Notes Generator ($197 value). One price. Lifetime access to the replay and everything included."
+            answer: "The full 60-minute webinar recording, The Bestseller Blueprint, The Paid Conversion System, The 7-Day Upgrade Sequence, The 30-Day Bestseller Roadmap, The Paid Subscriber Welcome Sequence, The Objection-Crushing Copy Vault, Tiny List Big Revenue, and the Viral Substack Notes Generator ($197 value). One price. Lifetime access to everything included."
         },
         {
             question: "Is there a refund policy?",
