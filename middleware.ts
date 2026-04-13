@@ -52,6 +52,16 @@ export function middleware(req: NextRequest) {
     '/will-it-sell',
   ];
 
+  if (pathname.startsWith('/downloads/')) {
+    const filename = pathname.replace('/downloads/', '');
+    if (filename) {
+      const url = req.nextUrl.clone();
+      url.pathname = '/api/download';
+      url.searchParams.set('file', filename);
+      return NextResponse.rewrite(url);
+    }
+  }
+
   if (pathname === '/' || allowedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
     return NextResponse.next();
   }
