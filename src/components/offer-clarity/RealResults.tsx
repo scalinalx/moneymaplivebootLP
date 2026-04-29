@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { CTA } from './CTA';
 
 const results = [
@@ -41,11 +42,21 @@ export function RealResults() {
           Real results from my students:
         </h2>
         <p
-          className="text-lg md:text-xl italic text-gray-600 text-center mb-14"
+          className="text-lg md:text-xl italic text-gray-600 text-center mb-10"
           style={{ fontFamily: 'Lora, Georgia, serif' }}
         >
           Hundreds of subscribers. One clear offer. Real revenue.
         </p>
+
+        <div className="flex justify-center mb-12">
+          <Image
+            src="/imgs/offer-clarity/3.webp"
+            alt="Real student results from the Offer Clarity Sprint"
+            width={900}
+            height={700}
+            className="w-full max-w-3xl h-auto rounded-xl shadow-md"
+          />
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
           {results.map((r) => (

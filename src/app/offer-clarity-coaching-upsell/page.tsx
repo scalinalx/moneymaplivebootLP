@@ -203,7 +203,7 @@ function CoachingUpsellInner() {
           </span>
         </div>
         <h1
-          className="text-3xl md:text-5xl font-extrabold text-center leading-tight mb-4"
+          className="text-3xl md:text-5xl font-extrabold text-center leading-tight mb-4 text-emerald-600"
           style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
         >
           Want to make sure your offer{' '}

@@ -10,11 +10,11 @@ export function PricingTier() {
       <div className="max-w-5xl mx-auto px-6 text-center">
         <div className="flex justify-center mb-8">
           <Image
-            src="/imgs/offer-clarity/wordm2.jpeg"
-            alt="Ana Calin"
-            width={200}
-            height={86}
-            className="h-auto w-[160px] md:w-[200px] object-contain"
+            src="/imgs/offer-clarity/2.webp"
+            alt="The Offer Clarity Sprint"
+            width={1200}
+            height={700}
+            className="w-full max-w-3xl h-auto object-contain rounded-xl"
           />
         </div>
 

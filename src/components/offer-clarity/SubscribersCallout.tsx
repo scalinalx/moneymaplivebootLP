@@ -18,7 +18,7 @@ export function SubscribersCallout() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div className="rounded-xl overflow-hidden">
             <Image
-              src="/imgs/offer-clarity/5.webp"
+              src="/imgs/offer-clarity/4.webp"
               alt="Pain points without a clear offer"
               width={800}
               height={500}
@@ -27,7 +27,7 @@ export function SubscribersCallout() {
           </div>
           <div className="rounded-xl overflow-hidden">
             <Image
-              src="/imgs/offer-clarity/hero4.jpeg"
+              src="/imgs/offer-clarity/1.webp"
               alt="Offer Clarity course in action"
               width={800}
               height={500}

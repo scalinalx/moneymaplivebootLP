@@ -10,8 +10,8 @@ export function CourseGrowsWithYou() {
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
         <div className="rounded-xl overflow-hidden shadow-xl border-2 border-dashed border-gray-300 bg-[#1a1a1a]">
           <Image
-            src="/imgs/offer-clarity/2.webp"
-            alt="Stripe payment notifications"
+            src="/imgs/offer-clarity/6.webp"
+            alt="This course grows with you"
             width={900}
             height={700}
             className="w-full h-auto object-contain"

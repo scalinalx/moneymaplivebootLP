@@ -6,7 +6,7 @@ import { CTA } from './CTA';
 
 export function Hero() {
   return (
-    <section className="bg-black text-white pt-10 pb-14 md:pt-14 md:pb-20">
+    <section className="bg-black text-white pt-0 pb-14 md:pb-20">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <div className="flex justify-center mb-8">
           <Image
@@ -15,7 +15,7 @@ export function Hero() {
             width={220}
             height={95}
             priority
-            className="h-auto w-[180px] md:w-[220px] object-contain"
+            className="h-auto w-[180px] md:w-[220px] object-contain block"
           />
         </div>
 

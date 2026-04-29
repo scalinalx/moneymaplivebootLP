@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { CTA } from './CTA';
+import Image from 'next/image';
 
 const steps = [
   {
@@ -51,11 +51,21 @@ export function FiveStepInfographic() {
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
         <h2
-          className="text-3xl md:text-5xl font-extrabold text-center mb-12 leading-tight"
+          className="text-3xl md:text-5xl font-extrabold text-center mb-10 leading-tight"
           style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
         >
           What happens when you have a clear offer:
         </h2>
+
+        <div className="flex justify-center mb-12">
+          <Image
+            src="/imgs/offer-clarity/4.webp"
+            alt="What happens when you have a clear offer — visual"
+            width={1100}
+            height={550}
+            className="w-full max-w-4xl h-auto rounded-xl shadow-md"
+          />
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-5 max-w-5xl mx-auto">
           {steps.map((s) => (
