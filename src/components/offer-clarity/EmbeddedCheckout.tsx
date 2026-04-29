@@ -8,20 +8,16 @@ import {
   OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE,
   OFFER_CLARITY_BUMP_HOOKS_PRICE,
   OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE,
+  OFFER_CLARITY_BUMP_LAUNCH_STACK_RETAIL_PRICE,
+  OFFER_CLARITY_BUMP_HOOKS_RETAIL_PRICE,
+  OFFER_CLARITY_BUMP_OFFER_GENIUS_RETAIL_PRICE,
   OFFER_CLARITY_BUMP_BUNDLE_PRICE,
+  OFFER_CLARITY_BUMP_BUNDLE_RETAIL_PRICE,
 } from '@/lib/stripe';
 import { Shield, Lock, AlertCircle } from 'lucide-react';
 import { OrderBump } from './OrderBump';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-
-const BUMP_LAUNCH_STACK_RETAIL = 9700; // $97 retail
-const BUMP_HOOKS_RETAIL = 4700; // $47 retail
-const BUMP_OFFER_GENIUS_RETAIL = 4700; // $47 retail
-const BUMP_BUNDLE_INDIVIDUAL_TOTAL =
-  OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE +
-  OFFER_CLARITY_BUMP_HOOKS_PRICE +
-  OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE; // before bundle discount
 
 interface CheckoutFormProps {
   customerName: string;
@@ -276,7 +272,8 @@ export const EmbeddedCheckout: React.FC = () => {
                   </p>
 
                   <div className="space-y-4">
-                    {/* Bundle (highlighted) */}
+                    {/* Bundle (highlighted). Retail = sum of individual sale prices,
+                        sale = computed bundle (sum × discount) or env override. */}
                     <OrderBump
                       isSelected={bumpBundle}
                       onToggle={toggleBundle}
@@ -285,7 +282,7 @@ export const EmbeddedCheckout: React.FC = () => {
                       title="All 3 Add-ons Bundle"
                       description="Launch Stack + Hooks That Stop The Scroll + Offer Genius — every add-on, lowest price."
                       price={OFFER_CLARITY_BUMP_BUNDLE_PRICE}
-                      originalPrice={BUMP_BUNDLE_INDIVIDUAL_TOTAL}
+                      originalPrice={OFFER_CLARITY_BUMP_BUNDLE_RETAIL_PRICE}
                     />
 
                     <OrderBump
@@ -295,7 +292,7 @@ export const EmbeddedCheckout: React.FC = () => {
                       title="Launch Stack"
                       description="The plug-and-play launch system — email scripts, Notion templates, and a 7-day rollout calendar."
                       price={OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE}
-                      originalPrice={BUMP_LAUNCH_STACK_RETAIL}
+                      originalPrice={OFFER_CLARITY_BUMP_LAUNCH_STACK_RETAIL_PRICE}
                     />
 
                     <OrderBump
@@ -305,7 +302,7 @@ export const EmbeddedCheckout: React.FC = () => {
                       title="Hooks That Stop The Scroll"
                       description="My vault of high-converting headlines and opening lines that force readers to stop, click, and read."
                       price={OFFER_CLARITY_BUMP_HOOKS_PRICE}
-                      originalPrice={BUMP_HOOKS_RETAIL}
+                      originalPrice={OFFER_CLARITY_BUMP_HOOKS_RETAIL_PRICE}
                     />
 
                     <OrderBump
@@ -315,7 +312,7 @@ export const EmbeddedCheckout: React.FC = () => {
                       title="Offer Genius"
                       description="The AI-powered idea engine that generates 50 niche-specific offer angles in 60 seconds."
                       price={OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE}
-                      originalPrice={BUMP_OFFER_GENIUS_RETAIL}
+                      originalPrice={OFFER_CLARITY_BUMP_OFFER_GENIUS_RETAIL_PRICE}
                     />
                   </div>
                 </div>

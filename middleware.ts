@@ -50,6 +50,9 @@ export function middleware(req: NextRequest) {
     '/viral-digital-product-ai',
     '/viral-digital-product-finder',
     '/will-it-sell',
+    '/offer-clarity',
+    '/offer-clarity-coaching-upsell',
+    '/offer-clarity-success',
   ];
 
   if (pathname.startsWith('/downloads/')) {

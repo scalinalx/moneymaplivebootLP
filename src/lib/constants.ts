@@ -9,11 +9,34 @@ export const GENIUS_IDEAS_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_
 
 // Offer Clarity Sprint Pricing
 export const OFFER_CLARITY_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_PRICE || '9700', 10);
-// Order bumps (single-pick OR bundle)
+
+// Order bumps — sale prices
 export const OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE || '6700', 10);  // Launch Stack — $67
-export const OFFER_CLARITY_BUMP_HOOKS_PRICE         = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE || '2700', 10);         // Hooks That Stop The Scroll — $27
-export const OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE  = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE || '2700', 10);  // Offer Genius — $27
-export const OFFER_CLARITY_BUMP_BUNDLE_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE || '9700', 10);        // All 3 bundle — $97 (saves $24)
+export const OFFER_CLARITY_BUMP_HOOKS_PRICE         = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE || '4700', 10);         // Hooks That Stop The Scroll — $47
+export const OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE  = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE || '3700', 10);  // Offer Genius — $37
+
+// Order bumps — retail prices (used for strikethrough "save $X" UI)
+export const OFFER_CLARITY_BUMP_LAUNCH_STACK_RETAIL_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_RETAIL_PRICE || '9700', 10);  // $97
+export const OFFER_CLARITY_BUMP_HOOKS_RETAIL_PRICE         = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_RETAIL_PRICE || '6700', 10);         // $67
+export const OFFER_CLARITY_BUMP_OFFER_GENIUS_RETAIL_PRICE  = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_RETAIL_PRICE || '5700', 10);  // $57
+
+// Bundle = explicit env override if set, otherwise sum of individual bump prices × (1 − discount %).
+// This way, when you change individual bump prices via env vars,
+// the bundle auto-recomputes — no need to also update the bundle price.
+const _BUMP_BUNDLE_DISCOUNT_PCT = Number.parseFloat(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT || '0.20'); // 20% off by default
+const _BUMP_SUM =
+  OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE +
+  OFFER_CLARITY_BUMP_HOOKS_PRICE +
+  OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE;
+const _BUMP_BUNDLE_COMPUTED = Math.max(
+  0,
+  Math.round(_BUMP_SUM * (1 - _BUMP_BUNDLE_DISCOUNT_PCT)),
+);
+export const OFFER_CLARITY_BUMP_BUNDLE_PRICE = process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE
+  ? Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE, 10)
+  : _BUMP_BUNDLE_COMPUTED;
+// Bundle retail (the "was" / strikethrough) = sum of individual sale prices.
+export const OFFER_CLARITY_BUMP_BUNDLE_RETAIL_PRICE = _BUMP_SUM;
 // Post-purchase upsell — 1:1 Coaching with Ana ($797 reduced from $997)
 export const OFFER_CLARITY_COACHING_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE || '79700', 10);         // $797
 export const OFFER_CLARITY_COACHING_RETAIL_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE || '99700', 10);  // $997 retail
