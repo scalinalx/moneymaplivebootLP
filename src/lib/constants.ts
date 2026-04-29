@@ -7,6 +7,17 @@ export const GENIUS_IDEAS_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS
 export const GENIUS_IDEAS_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE || '1700', 10);
 export const GENIUS_IDEAS_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE || '8700', 10);
 
+// Offer Clarity Sprint Pricing
+export const OFFER_CLARITY_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_PRICE || '9700', 10);
+// Order bumps (single-pick OR bundle)
+export const OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE || '6700', 10);  // Launch Stack — $67
+export const OFFER_CLARITY_BUMP_HOOKS_PRICE         = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE || '2700', 10);         // Hooks That Stop The Scroll — $27
+export const OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE  = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE || '2700', 10);  // Offer Genius — $27
+export const OFFER_CLARITY_BUMP_BUNDLE_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE || '9700', 10);        // All 3 bundle — $97 (saves $24)
+// Post-purchase upsell — 1:1 Coaching with Ana ($797 reduced from $997)
+export const OFFER_CLARITY_COACHING_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE || '79700', 10);         // $797
+export const OFFER_CLARITY_COACHING_RETAIL_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE || '99700', 10);  // $997 retail
+
 // Hit 10k Workshop Prices
 export const HIT10K_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_PRICE || '9700', 10);
 export const HIT10K_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP_PRICE || '2700', 10);

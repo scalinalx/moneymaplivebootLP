@@ -153,10 +153,79 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+  } else if (event.type === 'payment_intent.succeeded') {
+    // Funnel checkouts (offer-clarity, hit10k, launch-lab, first100, genius-ideas)
+    // use Stripe Elements + Payment Intents. The client-side `/confirm-payment`
+    // route flips `is_paid` first; this webhook is the safety net that does the
+    // same flip if the browser closed before that POST went out.
+    //
+    // All updates here are IDEMPOTENT — re-running them when the row is already
+    // paid is a no-op. Each branch is keyed by `metadata.product` (or `metadata.funnel`
+    // for the legacy genius-ideas route).
+    const intent = event.data.object as {
+      id: string;
+      metadata?: Record<string, string>;
+    };
+    const productKey = intent.metadata?.product || intent.metadata?.funnel || '';
+    const leadId = intent.metadata?.leadId;
+    console.log('💳 payment_intent.succeeded — product:', productKey, '| leadId:', leadId);
+
+    if (!leadId) {
+      console.log('⚠️ No leadId in payment_intent metadata — nothing to update');
+      return NextResponse.json({ received: true, skipped: 'no leadId' });
+    }
+
+    // Map productKey → { table, paidAtColumn }.
+    // `is_paid` column name is consistent across all five tables;
+    // only the timestamp column differs (genius_ideas uses `paid_at`).
+    const routes: Record<string, { table: string; paidAtColumn: string }> = {
+      offer_clarity_sprint:        { table: 'offer_clarity_leads', paidAtColumn: 'payment_completed_at' },
+      offer_clarity_coaching_upsell: { table: 'offer_clarity_leads', paidAtColumn: 'coaching_paid_at' },
+      hit10k_workshop:             { table: 'hit10k_leads',        paidAtColumn: 'payment_completed_at' },
+      '10k_launch_lab':            { table: 'launch_lab_leads',    paidAtColumn: 'payment_completed_at' },
+      first100_workshop:           { table: 'first100_leads',      paidAtColumn: 'payment_completed_at' },
+      first100_from_wim_upsell:    { table: 'first100_leads',      paidAtColumn: 'payment_completed_at' },
+      '100_genius_ideas':          { table: 'genius_ideas_leads',  paidAtColumn: 'paid_at' },
+    };
+
+    const route = routes[productKey];
+    if (!route) {
+      console.log(`⚠️ No webhook route registered for product '${productKey}' — skipping`);
+      return NextResponse.json({ received: true, skipped: `unrouted product: ${productKey}` });
+    }
+
+    try {
+      const updatePayload: Record<string, unknown> = {
+        is_paid: true,
+        [route.paidAtColumn]: new Date().toISOString(),
+      };
+
+      // Special case: coaching upsell flips a different boolean
+      if (productKey === 'offer_clarity_coaching_upsell') {
+        updatePayload.has_coaching_upsell = true;
+        updatePayload.coaching_payment_intent_id = intent.id;
+        delete updatePayload.is_paid;  // base purchase is already paid by the time the upsell fires
+      }
+
+      const { error } = await supabaseAdmin
+        .from(route.table)
+        .update(updatePayload)
+        .eq('id', leadId);
+
+      if (error) {
+        console.error(`❌ Failed to mark ${route.table} lead ${leadId} as paid:`, error);
+        return NextResponse.json({ error: 'DB update failed' }, { status: 500 });
+      }
+      console.log(`✅ Marked ${route.table} lead ${leadId} as paid via webhook`);
+    } catch (err) {
+      console.error('❌ payment_intent.succeeded handler exception:', err);
+      return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 });
+    }
   } else {
     console.log('📝 Ignoring event type:', event.type);
   }
 
   console.log('✅ Webhook processed successfully');
   return NextResponse.json({ received: true });
-} 
+}
+
