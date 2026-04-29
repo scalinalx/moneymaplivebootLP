@@ -174,6 +174,26 @@
                     ]
                 },
                 {
+                    "name": "The Offer Clarity Sprint",
+                    "description": "A self-paced course that teaches creators how to package expertise into a clear, one-sentence offer that subscribers buy from a single email. Embedded Stripe Elements checkout with 3 individual order bumps + a discounted bundle, followed by a 1:1 coaching upsell.",
+                    "price": "$97",
+                    "priceNote": "(`NEXT_PUBLIC_OFFER_CLARITY_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/offer-clarity"
+                        },
+                        {
+                            "label": "Coaching Upsell",
+                            "url": "/offer-clarity-coaching-upsell"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/offer-clarity-success"
+                        }
+                    ]
+                },
+                {
                     "name": "Your First $1K After Corporate",
                     "description": "A 60-minute live workshop teaching corporate professionals the exact 90-day system to make their first $1,000 online. Uses a direct Stripe Payment Link (no embedded checkout). Scheduled for March 31st.",
                     "price": "$250",
@@ -395,6 +415,58 @@
                     "varies": [
                         "`CREATOR_BUNDLE_BUMP_PRICE`"
                     ]
+                },
+                {
+                    "name": "The Launch Stack",
+                    "price": "$67",
+                    "type": "Order Bump",
+                    "offeredOn": "Offer Clarity Sprint",
+                    "details": "Password-gated launch project management tool. Password (`mellon_hwg`) revealed on success page after purchase.",
+                    "varies": [
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE`"
+                    ]
+                },
+                {
+                    "name": "Hooks That Stop the Scroll",
+                    "price": "$47",
+                    "type": "Order Bump",
+                    "offeredOn": "Offer Clarity Sprint",
+                    "details": "Vault of high-converting headline frameworks and opening loops.",
+                    "varies": [
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE`"
+                    ]
+                },
+                {
+                    "name": "Offer Genius",
+                    "price": "$37",
+                    "type": "Order Bump",
+                    "offeredOn": "Offer Clarity Sprint",
+                    "details": "AI-powered offer builder. Password-gated tool unlocked on success page (uses same `mellon_hwg` master password as Launch Stack).",
+                    "varies": [
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE`"
+                    ]
+                },
+                {
+                    "name": "Offer Clarity Bump Bundle (All 3)",
+                    "price": "Auto-computed (~20% off)",
+                    "type": "Order Bump (Bundle)",
+                    "offeredOn": "Offer Clarity Sprint",
+                    "details": "Auto-calculated bundle: sum of Launch Stack + Hooks + Offer Genius minus a configurable discount percentage. When selected, individual bumps are disabled. Optional explicit override available.",
+                    "varies": [
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT` (default 0.20)",
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE` (optional override)"
+                    ]
+                },
+                {
+                    "name": "1:1 Coaching with Ana",
+                    "price": "$797",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/offer-clarity-coaching-upsell",
+                    "details": "Post-purchase one-click upsell using saved card (off-session charge via `setup_future_usage: off_session`). Reduced from $997 retail. Falls back to Stripe Elements form if no saved payment method.",
+                    "varies": [
+                        "`NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE` ($797)",
+                        "`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE` ($997)"
+                    ]
                 }
             ]
         },
@@ -476,6 +548,25 @@
                     "dynamicRendering": [
                         "If Launch Stack Bump bought: Reveals the Launch Stack password and direct link to `/launch-stack`."
                     ]
+                },
+                {
+                    "path": "/offer-clarity-success",
+                    "name": "Offer Clarity Sprint Success",
+                    "content": "Welcomes the buyer with a green-accented heading. Renders one DeliveryCard per product purchased and fires Facebook Pixel `Purchase` + GA `purchase` events.",
+                    "dynamicRendering": [
+                        "Always: Course access card for the Offer Clarity Sprint.",
+                        "If Launch Stack Bump bought: PasswordReveal card showing `mellon_hwg` (from `NEXT_PUBLIC_LAUNCH_STACK_PASSWORD`) with copy-to-clipboard, plus link to `/launch-stack`.",
+                        "If Hooks Bump bought: Access link to the Hooks That Stop the Scroll vault.",
+                        "If Offer Genius Bump bought: PasswordReveal card with `mellon_hwg` and link to `/ana-offer-genius`.",
+                        "If Bundle bought: All three bump cards above are rendered.",
+                        "If 1:1 Coaching upsell accepted: Calendly booking card."
+                    ]
+                },
+                {
+                    "path": "/offer-clarity-coaching-upsell",
+                    "name": "Offer Clarity Coaching Upsell",
+                    "content": "Post-checkout one-click upsell page for 1:1 coaching with Ana at $797 (struck-through retail $997, with emerald 'Save $200' badge). Heading uses the same emerald green as the announcement bar. Uses saved card off-session charge; falls back to embedded Stripe Elements if no payment method on file.",
+                    "redirect": "On success or skip, forwards to `/offer-clarity-success?leadId=...`."
                 }
             ]
         },
@@ -516,7 +607,7 @@
                 },
                 {
                     "path": "/api/webhooks/stripe",
-                    "description": "Listens for successful Stripe `checkout.session.completed` events to fulfill leads, unlock Token IDs, setup credits, and log amounts paid across all tables."
+                    "description": "Listens for successful Stripe `checkout.session.completed` AND `payment_intent.succeeded` events. The `payment_intent.succeeded` branch routes by `metadata.product` / `metadata.funnel` across 7 product keys (`offer_clarity_sprint`, `offer_clarity_coaching_upsell`, `hit10k_workshop`, `10k_launch_lab`, `first100_workshop`, `first100_from_wim_upsell`, `100_genius_ideas`) as a safety net in case the client-side confirm-payment call drops. Idempotent."
                 },
                 {
                     "path": "/api/create-checkout-session",
@@ -613,6 +704,22 @@
                 {
                     "path": "/api/will-it-sell",
                     "description": "Accepts a product idea, optional price, and optional niche via POST. Uses Gemini 3 Flash (with thinking, budget 8192) to score the idea against Ana's Viral Product Formula across 9 weighted criteria. Returns overall score, verdict, per-criterion breakdown, and actionable improvements."
+                },
+                {
+                    "path": "/api/offer-clarity/create-payment-intent",
+                    "description": "Creates a Stripe PaymentIntent (with `setup_future_usage: 'off_session'` so the card is reusable for the coaching upsell), get-or-creates the Stripe customer, computes total with bundle short-circuit (bundle covers all 3 individual bumps), and inserts a pending lead row into `offer_clarity_leads`."
+                },
+                {
+                    "path": "/api/offer-clarity/confirm-payment",
+                    "description": "Confirms the Offer Clarity payment, marks the lead `is_paid: true`, and persists which bumps were purchased (Launch Stack, Hooks, Offer Genius, or Bundle)."
+                },
+                {
+                    "path": "/api/offer-clarity/get-lead-status",
+                    "description": "Returns lead and payment status for the Offer Clarity Sprint (used by the success page to render the right delivery cards)."
+                },
+                {
+                    "path": "/api/offer-clarity/coaching-upsell/create-payment-intent",
+                    "description": "One-click off-session charge against the saved card for the $797 coaching upsell. Falls back to a fresh Elements collection if no card is on file. Updates the existing `offer_clarity_leads` row with the upsell amount."
                 }
             ],
             "tables": [
@@ -659,6 +766,10 @@
                 {
                     "name": "creator_bundle_leads",
                     "description": "Stores leads, payment data, and Launch Stack bump selection for the Creator Bundle."
+                },
+                {
+                    "name": "offer_clarity_leads",
+                    "description": "Stores leads, all 3 bump flags (Launch Stack, Hooks, Offer Genius) + bundle flag, coaching upsell flag, payment lifecycle, pricing snapshot in cents (`base_price_cents`, `bumps_price_cents`, `coaching_price_cents`, `total_paid_cents`), and marketing attribution (utm_*, referrer_url, user_agent, ip_address) for the Offer Clarity Sprint funnel."
                 }
             ]
         },
@@ -930,6 +1041,58 @@
                     "leadTable": "creator_bundle_leads"
                 },
                 {
+                    "name": "Offer Clarity Sprint Funnel",
+                    "entryPoint": "/offer-clarity",
+                    "coreProduct": {
+                        "name": "The Offer Clarity Sprint",
+                        "price": "$97",
+                        "type": "Self-paced course (one-sentence offer framework)",
+                        "envVar": "NEXT_PUBLIC_OFFER_CLARITY_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "The Launch Stack",
+                            "price": "$67",
+                            "envVar": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE",
+                            "description": "Password-gated launch project management tool (`mellon_hwg`)",
+                            "fulfilledAt": "/launch-stack"
+                        },
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$47",
+                            "envVar": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE",
+                            "description": "Vault of high-converting headline frameworks and opening loops"
+                        },
+                        {
+                            "name": "Offer Genius",
+                            "price": "$37",
+                            "envVar": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE",
+                            "description": "AI-powered offer builder (password-gated, same `mellon_hwg`)",
+                            "fulfilledAt": "/ana-offer-genius"
+                        }
+                    ],
+                    "bundleOption": {
+                        "name": "All 3 Bumps Bundle",
+                        "price": "Auto-computed (~$121 at 20% off sum)",
+                        "individualTotal": "$151",
+                        "envVar": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT (default 0.20)",
+                        "note": "Bundle price = sum of 3 individual bumps × (1 − discount_pct). Optional explicit override via `NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE`. Selecting bundle disables individuals."
+                    },
+                    "upsells": [
+                        {
+                            "name": "1:1 Coaching with Ana",
+                            "price": "$797",
+                            "strikethroughPrice": "$997",
+                            "page": "/offer-clarity-coaching-upsell",
+                            "envVar": "NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE",
+                            "description": "Post-checkout one-click upsell using saved card (off-session)"
+                        }
+                    ],
+                    "maxCartValue": "$1,015 (course $97 + bundle ~$121 + coaching $797)",
+                    "successPage": "/offer-clarity-success",
+                    "leadTable": "offer_clarity_leads"
+                },
+                {
                     "name": "Your First $1K After Corporate Funnel",
                     "entryPoint": "/your-first-1k-after-corporate",
                     "coreProduct": {
@@ -974,7 +1137,7 @@
                         "name": "Hooks That Stop the Scroll",
                         "priceRange": "$27-$47",
                         "type": "PDF/Vault",
-                        "appearsIn": ["10K Launch Lab ($47)", "How to Hit 10K ($27)", "First 100 Paid Subs ($27)", "Unstuck to Published ($27)", "Build Your Substack ($27)"]
+                        "appearsIn": ["10K Launch Lab ($47)", "How to Hit 10K ($27)", "First 100 Paid Subs ($27)", "Unstuck to Published ($27)", "Build Your Substack ($27)", "Offer Clarity Sprint ($47)"]
                     },
                     {
                         "name": "100 Genius Launch Ideas PDF",
@@ -986,7 +1149,7 @@
                         "name": "Launch Stack (AI Email Writer)",
                         "priceRange": "$67-$87",
                         "type": "AI Tool (password-gated)",
-                        "appearsIn": ["100 Genius Ideas ($87)", "First 100 Paid Subs ($67)", "Creator Bundle ($67)"]
+                        "appearsIn": ["100 Genius Ideas ($87)", "First 100 Paid Subs ($67)", "Creator Bundle ($67)", "Offer Clarity Sprint ($67)"]
                     },
                     {
                         "name": "Show Don't Tell (400 Credits)",
@@ -998,7 +1161,7 @@
                         "name": "OfferGenius AI Builder",
                         "priceRange": "$17-$37",
                         "type": "AI Tool",
-                        "appearsIn": ["100 Genius Ideas ($17)"]
+                        "appearsIn": ["100 Genius Ideas ($17)", "Offer Clarity Sprint ($37)"]
                     }
                 ]
             },
@@ -1089,6 +1252,55 @@
                         {
                             "key": "LAUNCH_STACK_PASSWORD",
                             "description": "Protects the legacy Launch Stack dashboard."
+                        }
+                    ]
+                },
+                {
+                    "name": "Offer Clarity Sprint Pricing",
+                    "vars": [
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_PRICE",
+                            "description": "Base price for the Offer Clarity Sprint course (cents). Default 9700 = $97."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE",
+                            "description": "Launch Stack order bump price (cents). Default 6700 = $67."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE",
+                            "description": "Hooks That Stop the Scroll order bump price (cents). Default 4700 = $47."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE",
+                            "description": "Offer Genius order bump price (cents). Default 3700 = $37."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT",
+                            "description": "Discount percentage for the all-3 bundle (0–1). Default 0.20 (20% off)."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE",
+                            "description": "Optional explicit override for the bundle price (cents). When unset, computed as sum × (1 − discount_pct)."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE",
+                            "description": "1:1 coaching upsell price (cents). Default 79700 = $797."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE",
+                            "description": "Strikethrough retail price for the coaching upsell (cents). Default 99700 = $997."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_LAUNCH_STACK_PASSWORD",
+                            "description": "Master password (`mellon_hwg`) revealed on the Offer Clarity success page for Launch Stack and Offer Genius access."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_COURSE_URL",
+                            "description": "Teachable (or equivalent) course access URL surfaced on the success page."
+                        },
+                        {
+                            "key": "NEXT_PUBLIC_OFFER_CLARITY_COACHING_BOOKING_URL",
+                            "description": "Calendly URL for booking the 1:1 coaching session after the upsell is accepted."
                         }
                     ]
                 },

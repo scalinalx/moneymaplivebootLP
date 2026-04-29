@@ -32,7 +32,20 @@ This document serves as a comprehensive map of all URLs, products, price points,
     *   *Links:* [Sales & Checkout](/first-100-paid-subscribers) | [Success](/first-100-paid-subscribers-success)
 *   **Unstuck to Published**: **$97** (`UNSTUCK_PRICE`)
     *   A 60-minute live workshop (with Jessica Best) for Substack creators who are stuck overthinking — walk out with a positioned publication, a structured first article, and a paywall strategy that converts.
-    *   *Links:* [Sales & Checkout](/unstuck-to-published)
+    *   *Links:* [Sales & Checkout](/unstuck-to-published) | [Success](/unstuck-to-published-success)
+*   **Build Your Substack**: **$97** (`UNSTUCK_PRICE` — shared constant)
+    *   A workshop helping creators build and launch their Substack publication from scratch. Reuses the same checkout architecture and order bump structure as Unstuck to Published.
+    *   *Links:* [Sales & Checkout](/build-your-substack) | [Success](/build-your-substack-success)
+*   **Creator Bundle**: **$69** (`CREATOR_BUNDLE_PRICE`)
+    *   A bundled product offering with a Launch Stack order bump. Standalone checkout with its own lead table.
+    *   *Links:* [Sales & Checkout](/creator-bundle) | [Success](/creator-bundle-success)
+*   **The Offer Clarity Sprint**: **$97** (`NEXT_PUBLIC_OFFER_CLARITY_PRICE`)
+    *   A self-paced course that teaches creators how to package expertise into a clear, one-sentence offer that subscribers buy from a single email. Embedded Stripe Elements checkout with 3 individual order bumps + a discounted bundle, followed by a 1:1 coaching upsell.
+    *   *Links:* [Sales & Checkout](/offer-clarity) | [Coaching Upsell](/offer-clarity-coaching-upsell) | [Success](/offer-clarity-success)
+*   **Your First $1K After Corporate**: **$250** (Hardcoded — direct Stripe Payment Link)
+    *   A 60-minute live workshop teaching corporate professionals the exact 90-day system to make their first $1,000 online. Uses a direct Stripe Payment Link (no embedded checkout). Scheduled for March 31st.
+    *   *Links:* [Sales Page](/your-first-1k-after-corporate)
+    *   **Note:** Checkout via Stripe Payment Link — no backend API routes or database table
 
 ---
 
@@ -73,6 +86,18 @@ A comprehensive launch project management tool or dashboard.
 *   **Access/Type:** Password Protected (Requires the master password `mellon_hwg`, defined in `.env.local`). Also sold as an Order Bump (usually **$67 - $69** value).
 *   **App URL:** `/launch-stack`
 
+### Ana's Viral Digital Product Finder
+
+A free AI-powered tool (Gemini 3 Flash with thinking) that generates hyper-specific viral digital product ideas based on the user's accomplishments, passions, and profession. Includes tabbed route selection, concept cards with pricing and title ideas, and an upsell flow to the 10K Launch Lab.
+*   **Access/Type:** Open / Free AI tool.
+*   **App URL:** `/viral-digital-product-finder`
+
+### Will It Sell? - AI Product Scoring Tool
+
+A free AI-powered tool (Gemini 3 Flash with thinking) that scores digital product ideas against Ana Calin's Viral Product Formula. Returns a weighted scorecard with 9 per-criterion scores, overall score, verdict, and actionable improvements. Funnels into the 10K Launch Lab.
+*   **Access/Type:** Open / Free AI tool.
+*   **App URL:** `/will-it-sell`
+
 ---
 
 ## 4. Internal Operations & Command Centre
@@ -100,14 +125,26 @@ _Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)_
 | ↳ _Details_ | <td colspan="4">_Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497._</td> |
 | **1:1 Sales Coaching Session** | $747 | Upsell (Dedicated) | /10k-launch-lab-upsell | `NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE` |
 | ↳ _Details_ | <td colspan="4">_A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates._</td> |
-| **Show Don't Tell Thumbnail Generator (400 Credits)** | $47 | Order Bump | Unstuck to Published | `UNSTUCK_SDT_BUMP_PRICE` |
+| **Show Don't Tell Thumbnail Generator (400 Credits)** | $47 | Order Bump | Unstuck to Published, Build Your Substack | `UNSTUCK_SDT_BUMP_PRICE` |
 | ↳ _Details_ | <td colspan="4">_Adds 400 image credits (~200 generations) to the Show Don't Tell AI Thumbnail Generator. 19 style presets, 1 year access. Credits are provisioned into the `show_dont_tell_users` table on payment confirmation._</td> |
-| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Unstuck to Published | `UNSTUCK_GENIUS_BUMP_PRICE` |
+| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Unstuck to Published, Build Your Substack | `UNSTUCK_GENIUS_BUMP_PRICE` |
 | ↳ _Details_ | <td colspan="4">_100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Instant PDF download with lifetime access._</td> |
-| **Hooks That Stop the Scroll** | $27 | Order Bump | Unstuck to Published | `UNSTUCK_HOOKS_BUMP_PRICE` |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | Unstuck to Published, Build Your Substack | `UNSTUCK_HOOKS_BUMP_PRICE` |
 | ↳ _Details_ | <td colspan="4">_Vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click._</td> |
-| **The Creator Launch Kit (Bundle)** | $69 | Order Bump (Bundle) | Unstuck to Published | `UNSTUCK_BUNDLE_PRICE` |
+| **The Creator Launch Kit (Bundle)** | $69 | Order Bump (Bundle) | Unstuck to Published, Build Your Substack | `UNSTUCK_BUNDLE_PRICE` |
 | ↳ _Details_ | <td colspan="4">_All 3 add-ons bundled: Show Don't Tell (400 credits) + 100 Genius Launch Ideas PDF + Hooks That Stop the Scroll. Individual total $101, bundle price $69 (save $32)._</td> |
+| **The Launch Stack** | $67 | Order Bump | Creator Bundle | `CREATOR_BUNDLE_BUMP_PRICE` |
+| ↳ _Details_ | <td colspan="4">_The comprehensive launch project management tool added as an order bump on the Creator Bundle checkout._</td> |
+| **The Launch Stack** | $67 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE` |
+| ↳ _Details_ | <td colspan="4">_Password-gated launch project management tool. Password (`mellon_hwg`) revealed on success page after purchase._</td> |
+| **Hooks That Stop the Scroll** | $47 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE` |
+| ↳ _Details_ | <td colspan="4">_Vault of high-converting headline frameworks and opening loops._</td> |
+| **Offer Genius** | $37 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE` |
+| ↳ _Details_ | <td colspan="4">_AI-powered offer builder. Password-gated tool unlocked on success page (uses same `mellon_hwg` master password as Launch Stack)._</td> |
+| **Offer Clarity Bump Bundle (All 3)** | Auto-computed (~20% off) | Order Bump (Bundle) | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT` (default 0.20)<br>`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE` (optional override) |
+| ↳ _Details_ | <td colspan="4">_Auto-calculated bundle: sum of Launch Stack + Hooks + Offer Genius minus a configurable discount percentage. When selected, individual bumps are disabled. Optional explicit override available._</td> |
+| **1:1 Coaching with Ana** | $797 | Upsell (Dedicated) | /offer-clarity-coaching-upsell | `NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE` ($797)<br>`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE` ($997) |
+| ↳ _Details_ | <td colspan="4">_Post-purchase one-click upsell using saved card (off-session charge via `setup_future_usage: off_session`). Reduced from $997 retail. Falls back to Stripe Elements form if no saved payment method._</td> |
 
 ---
 
@@ -138,6 +175,36 @@ These pages handle the post-purchase experience, dynamic rendering of purchased 
     *   **Features:** Provides a one-click "Copy to Clipboard" button and directs the user to immediately go to `/show-dont-tell` to login with their token.
 *   **First 100 Subscribers Success**
     *   **Content:** Confirms the order, verifies the purchase, and instructs the user to check their email for immediate access to the workshop and bonuses.
+*   **Unstuck to Published Success**
+    *   **Content:** Confirms the Unstuck to Published purchase and provides next steps including email confirmation and workshop access.
+    *   **Dynamic Bump/Upsell Rendering:**
+        *   If SDT Bump bought: Provisions 400 credits into Show Don't Tell and displays token/access info.
+        *   If Genius Ideas Bump bought: Provides download link for 100 Genius Launch Ideas PDF.
+        *   If Hooks Bump bought: Provides access to Hooks That Stop the Scroll vault.
+        *   If Bundle bought: Shows all three bonus access blocks.
+*   **Build Your Substack Success**
+    *   **Content:** Confirms the Build Your Substack purchase and provides next steps. Uses same bump rendering logic as Unstuck to Published.
+    *   **Dynamic Bump/Upsell Rendering:**
+        *   If SDT Bump bought: Provisions 400 credits into Show Don't Tell and displays token/access info.
+        *   If Genius Ideas Bump bought: Provides download link for 100 Genius Launch Ideas PDF.
+        *   If Hooks Bump bought: Provides access to Hooks That Stop the Scroll vault.
+        *   If Bundle bought: Shows all three bonus access blocks.
+*   **Creator Bundle Success**
+    *   **Content:** Confirms the Creator Bundle purchase and provides access to all bundled resources.
+    *   **Dynamic Bump/Upsell Rendering:**
+        *   If Launch Stack Bump bought: Reveals the Launch Stack password and direct link to `/launch-stack`.
+*   **Offer Clarity Sprint Success**
+    *   **Content:** Welcomes the buyer with a green-accented heading. Renders one DeliveryCard per product purchased and fires Facebook Pixel `Purchase` + GA `purchase` events.
+    *   **Dynamic Bump/Upsell Rendering:**
+        *   Always: Course access card for the Offer Clarity Sprint.
+        *   If Launch Stack Bump bought: PasswordReveal card showing `mellon_hwg` (from `NEXT_PUBLIC_LAUNCH_STACK_PASSWORD`) with copy-to-clipboard, plus link to `/launch-stack`.
+        *   If Hooks Bump bought: Access link to the Hooks That Stop the Scroll vault.
+        *   If Offer Genius Bump bought: PasswordReveal card with `mellon_hwg` and link to `/ana-offer-genius`.
+        *   If Bundle bought: All three bump cards above are rendered.
+        *   If 1:1 Coaching upsell accepted: Calendly booking card.
+*   **Offer Clarity Coaching Upsell**
+    *   **Redirect:** On success or skip, forwards to `/offer-clarity-success?leadId=...`.
+    *   **Content:** Post-checkout one-click upsell page for 1:1 coaching with Ana at $797 (struck-through retail $997, with emerald 'Save $200' badge). Heading uses the same emerald green as the announcement bar. Uses saved card off-session charge; falls back to embedded Stripe Elements if no payment method on file.
 
 ---
 
@@ -158,12 +225,21 @@ These APIs run silently in the background routing traffic and managing state:
 ### Active Server Routes
 
 *   **`/api/leads`**: Manages lead collection for `/join` funnel.
-*   **`/api/webhooks/stripe`**: Listens for successful Stripe `checkout.session.completed` events to fulfill leads, unlock Token IDs, setup credits, and log amounts paid across all tables.
+*   **`/api/webhooks/stripe`**: Listens for successful Stripe `checkout.session.completed` AND `payment_intent.succeeded` events. The `payment_intent.succeeded` branch routes by `metadata.product` / `metadata.funnel` across 7 product keys (`offer_clarity_sprint`, `offer_clarity_coaching_upsell`, `hit10k_workshop`, `10k_launch_lab`, `first100_workshop`, `first100_from_wim_upsell`, `100_genius_ideas`) as a safety net in case the client-side confirm-payment call drops. Idempotent.
 *   **`/api/create-checkout-session`**: Creates Stripe checkout sessions for the Build to Profit funnel.
 *   **`/api/show-dont-tell/create-checkout`**: Creates Stripe checkout sessions for the Thumbnail Generator credit packages.
 *   **`/api/show-dont-tell/auth`**: Validates Token IDs and returns credit usage.
 *   **`/api/show-dont-tell/generate`**: Manages credit deduction and invokes Google's Gemini SDK for thumbnail building.
-*   **`/api/[product]/create-payment-intent`**: Routes `launch-lab`, `hit10k`, and `genius-ideas` native Stripe Elements form transactions.
+*   **`/api/[product]/create-payment-intent`**: Routes `launch-lab`, `hit10k`, `genius-ideas`, `first100`, `unstuck`, `build-your-substack`, and `creator-bundle` native Stripe Elements form transactions.
+*   **`/api/[product]/confirm-payment`**: Confirms Stripe payments and fulfills orders for all embedded checkout products. Updates lead status and provisions bump purchases.
+*   **`/api/[product]/get-lead-status`**: Checks payment and lead status for `launch-lab`, `hit10k`, `genius-ideas`, `unstuck`, `build-your-substack`, and `creator-bundle`.
+*   **`/api/launch-lab/waitlist`**: Manages waitlist signups for the 10k Launch Lab.
+*   **`/api/launch-lab/accept-upsell`**: Handles acceptance of 1:1 coaching upsell after Launch Lab purchase.
+*   **`/api/launch-lab/confirm-upsell`**: Confirms the upsell payment for 1:1 coaching.
+*   **`/api/hit10k/waitlist`**: Manages waitlist signups for How to Hit 10k.
+*   **`/api/admidash/auth`**: Password verification for the Admin Command Centre dashboard.
+*   **`/api/vdpb/auth`**: Password verification for the Viral Digital Product Builder.
+*   **`/api/ana-offer-genius/match`**: AI-powered offer matching endpoint for the Ana Offer Genius tool.
 *   **`/api/admidash/metrics`**: Aggregates complex sales, lead, and abandonment data across all funnels for real-time reporting.
 *   **`/api/admidash/tables`**: A dynamic explorer providing live row counts and definitions for the Supabase schema.
 *   **`/api/admidash/kit/sync`**: Synchronizes filtered user segments directly into the Kit (ConvertKit) mailing infrastructure with tagging.
@@ -172,6 +248,12 @@ These APIs run silently in the background routing traffic and managing state:
 *   **`/api/first100/ confirm-payment`**: Confirms Stripe payments and fulfills the First 100 Subscribers checkout process.
 *   **`/api/unstuck/create-payment-intent`**: Creates Stripe PaymentIntents and pending leads for the Unstuck to Published checkout. Supports optional SDT order bump (+$47).
 *   **`/api/unstuck/confirm-payment`**: Confirms Stripe payments for Unstuck to Published. If SDT bump purchased, provisions 400 credits into `show_dont_tell_users` (tops up existing accounts or creates new token).
+*   **`/api/viral-digital-product-finder`**: Accepts accomplishments, passions, and profession via POST. Uses Gemini 3 Flash (with thinking, budget 8192) to generate viral digital product ideas organized into route buckets with concepts, pricing, titles, and market research.
+*   **`/api/will-it-sell`**: Accepts a product idea, optional price, and optional niche via POST. Uses Gemini 3 Flash (with thinking, budget 8192) to score the idea against Ana's Viral Product Formula across 9 weighted criteria. Returns overall score, verdict, per-criterion breakdown, and actionable improvements.
+*   **`/api/offer-clarity/create-payment-intent`**: Creates a Stripe PaymentIntent (with `setup_future_usage: 'off_session'` so the card is reusable for the coaching upsell), get-or-creates the Stripe customer, computes total with bundle short-circuit (bundle covers all 3 individual bumps), and inserts a pending lead row into `offer_clarity_leads`.
+*   **`/api/offer-clarity/confirm-payment`**: Confirms the Offer Clarity payment, marks the lead `is_paid: true`, and persists which bumps were purchased (Launch Stack, Hooks, Offer Genius, or Bundle).
+*   **`/api/offer-clarity/get-lead-status`**: Returns lead and payment status for the Offer Clarity Sprint (used by the success page to render the right delivery cards).
+*   **`/api/offer-clarity/coaching-upsell/create-payment-intent`**: One-click off-session charge against the saved card for the $797 coaching upsell. Falls back to a fresh Elements collection if no card is on file. Updates the existing `offer_clarity_leads` row with the upsell amount.
 
 ### Supabase Tables
 
@@ -183,6 +265,10 @@ These APIs run silently in the background routing traffic and managing state:
 *   **show_dont_tell_users:** Manages tokens, expiration dates, and credits for the Thumbnail Generator.
 *   **ana_ai_leads:** Stores leads and usage data for the free Ana AI Offer Flow tool.
 *   **first100_leads:** Stores data and payment status for the First 100 Paid Subscribers funnel.
+*   **unstuck_leads:** Stores leads, payment data, and order bump selections for Unstuck to Published.
+*   **build_your_substack_leads:** Stores leads, payment data, and order bump selections for Build Your Substack. Mirrors the unstuck_leads structure.
+*   **creator_bundle_leads:** Stores leads, payment data, and Launch Stack bump selection for the Creator Bundle.
+*   **offer_clarity_leads:** Stores leads, all 3 bump flags (Launch Stack, Hooks, Offer Genius) + bundle flag, coaching upsell flag, payment lifecycle, pricing snapshot in cents (`base_price_cents`, `bumps_price_cents`, `coaching_price_cents`, `total_paid_cents`), and marketing attribution (utm_*, referrer_url, user_agent, ip_address) for the Offer Clarity Sprint funnel.
 
 ---
 
@@ -202,7 +288,13 @@ These APIs run silently in the background routing traffic and managing state:
 
 ---
 
-## 10. Environment Variables & Core Services
+## 10. Funnel Architecture & Pricing Map
+
+Complete mapping of every sales funnel with core products, order bumps, bundle options, and upsells. Use this to design new funnels that follow proven patterns.
+
+---
+
+## 11. Environment Variables & Core Services
 
 Every production deployment relies on the following backend services and environment variables (defined in `.env.local`):
 
@@ -232,6 +324,20 @@ Every production deployment relies on the following backend services and environ
 *   **`ADMIDASH_PASSWORD`**: Protects the central Command Centre dashboard.
 *   **`VDPB_PASSWORD`**: Protects the Viral Digital Product Builder tool.
 *   **`LAUNCH_STACK_PASSWORD`**: Protects the legacy Launch Stack dashboard.
+
+### Offer Clarity Sprint Pricing
+
+*   **`NEXT_PUBLIC_OFFER_CLARITY_PRICE`**: Base price for the Offer Clarity Sprint course (cents). Default 9700 = $97.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE`**: Launch Stack order bump price (cents). Default 6700 = $67.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE`**: Hooks That Stop the Scroll order bump price (cents). Default 4700 = $47.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE`**: Offer Genius order bump price (cents). Default 3700 = $37.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT`**: Discount percentage for the all-3 bundle (0–1). Default 0.20 (20% off).
+*   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE`**: Optional explicit override for the bundle price (cents). When unset, computed as sum × (1 − discount_pct).
+*   **`NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE`**: 1:1 coaching upsell price (cents). Default 79700 = $797.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE`**: Strikethrough retail price for the coaching upsell (cents). Default 99700 = $997.
+*   **`NEXT_PUBLIC_LAUNCH_STACK_PASSWORD`**: Master password (`mellon_hwg`) revealed on the Offer Clarity success page for Launch Stack and Offer Genius access.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_COURSE_URL`**: Teachable (or equivalent) course access URL surfaced on the success page.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_COACHING_BOOKING_URL`**: Calendly URL for booking the 1:1 coaching session after the upsell is accepted.
 
 ### Global Configurations
 
