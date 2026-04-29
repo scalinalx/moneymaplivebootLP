@@ -21,13 +21,16 @@ export function Hero() {
 
         <h1
           className="font-extrabold leading-[1.05] mb-6"
-          style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
+          style={{
+            fontFamily: 'Montserrat, system-ui, sans-serif',
+            fontSize: 'clamp(0.85rem, 4.05vw, 3.75rem)',
+          }}
         >
-          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+          <span className="block whitespace-nowrap">
             <span className="text-[#c9b67e]">THE OFFER CLARITY SPRINT:</span>{' '}
             <span className="text-white">How We Get</span>
           </span>
-          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
+          <span className="block whitespace-nowrap text-white">
             Way More Money Working Less
           </span>
         </h1>
