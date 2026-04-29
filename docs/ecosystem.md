@@ -280,11 +280,8 @@ These APIs run silently in the background routing traffic and managing state:
 *   **Google Analytics**
     *   Global traffic and behavior tracking.
     *   (`ID: G-CC592MQH07`)
-*   **Rewardful Affiliate Tracking**
-    *   Tracks affiliate referrals and confirms conversions on the `/success` page.
-    *   (`ID: 68083c`)
-*   **UseProof**
-    *   Provides social proof popups across the site (dynamically injected via `cdn.useproof.com`).
+*   **PurchaseNotification (in-house Proof clone)**
+    *   In-house React component (`src/components/PurchaseNotification.tsx`) that simulates social-proof popups in the bottom-left corner with a cosmetic 'verified by Proof' link. Mounted per-page on funnels that want it (Offer Clarity, Build Your Substack, etc.). Replaces the previous `cdn.useproof.com` integration.
 
 ---
 

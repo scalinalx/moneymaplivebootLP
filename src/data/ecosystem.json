@@ -788,13 +788,8 @@
                     "description": "Global traffic and behavior tracking."
                 },
                 {
-                    "name": "Rewardful Affiliate Tracking",
-                    "id": "68083c",
-                    "description": "Tracks affiliate referrals and confirms conversions on the `/success` page."
-                },
-                {
-                    "name": "UseProof",
-                    "description": "Provides social proof popups across the site (dynamically injected via `cdn.useproof.com`)."
+                    "name": "PurchaseNotification (in-house Proof clone)",
+                    "description": "In-house React component (`src/components/PurchaseNotification.tsx`) that simulates social-proof popups in the bottom-left corner with a cosmetic 'verified by Proof' link. Mounted per-page on funnels that want it (Offer Clarity, Build Your Substack, etc.). Replaces the previous `cdn.useproof.com` integration."
                 }
             ]
         },

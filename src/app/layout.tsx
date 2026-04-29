@@ -75,11 +75,6 @@ export default function RootLayout({
         </noscript>
         {/* End Meta Pixel Code */}
 
-        {/* Proof Pixel */}
-        <Script
-          src="https://cdn.useproof.com/proof.js?acc=NkPzIKspvWbApl6A6cwWSfOQ2U03"
-          strategy="afterInteractive"
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -97,10 +92,6 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-CC592MQH07', { page_path: window.location.pathname });
           `}
-        </Script>
-        <Script src="https://r.wdfl.co/rw.js" data-rewardful="68083c" />
-        <Script id="rewardful-queue" strategy="beforeInteractive">
-          {`(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');`}
         </Script>
       </body>
     </html>

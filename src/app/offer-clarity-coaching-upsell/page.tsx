@@ -6,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { CheckCircle2, Lock, Shield, AlertCircle, Calendar, Video, Star } from 'lucide-react';
 import { OFFER_CLARITY_COACHING_PRICE, OFFER_CLARITY_COACHING_RETAIL_PRICE } from '@/lib/stripe';
+import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -391,6 +392,7 @@ export default function OfferClarityCoachingUpsellPage() {
       }
     >
       <CoachingUpsellInner />
+      <PurchaseNotification />
     </Suspense>
   );
 }

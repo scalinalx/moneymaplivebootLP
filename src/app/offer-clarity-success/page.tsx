@@ -15,6 +15,7 @@ import {
   Wand2,
   Video,
 } from 'lucide-react';
+import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 // Product delivery URLs. Course URL is a placeholder until the Teachable
 // course finishes uploading.
@@ -528,6 +529,7 @@ export default function OfferClaritySuccessPage() {
       }
     >
       <SuccessInner />
+      <PurchaseNotification />
     </Suspense>
   );
 }

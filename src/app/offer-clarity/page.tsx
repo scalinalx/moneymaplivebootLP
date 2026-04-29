@@ -16,6 +16,7 @@ import { BonusStack } from '@/components/offer-clarity/BonusStack';
 import { EmbeddedCheckout } from '@/components/offer-clarity/EmbeddedCheckout';
 import { FinalCTA } from '@/components/offer-clarity/FinalCTA';
 import { Footer } from '@/components/offer-clarity/Footer';
+import { PurchaseNotification } from '@/components/PurchaseNotification';
 
 export default function OfferClarityPage() {
   return (
@@ -37,6 +38,7 @@ export default function OfferClarityPage() {
       <EmbeddedCheckout />
       <FinalCTA />
       <Footer />
+      <PurchaseNotification />
     </main>
   );
 }
