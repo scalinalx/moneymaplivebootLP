@@ -1,6 +1,13 @@
 'use client';
 
-import React, { Suspense, useEffect, useState } from 'react';
+import React, {
+  Suspense,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   CheckCircle2,
@@ -16,6 +23,10 @@ import {
   Video,
 } from 'lucide-react';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
+import {
+  getOrCreateSessionId,
+  trackSuccessEvent,
+} from '@/lib/offer-clarity-success-tracker';
 
 // Product delivery URLs. Course URL is a placeholder until the Teachable
 // course finishes uploading.
@@ -44,17 +55,35 @@ interface DeliveryCardProps {
   badge?: string;
   compact?: boolean;
   password?: string | null;
+  trackingKey?: string;
 }
 
-function PasswordReveal({ password }: { password: string }) {
+// Tracking context — set up once at the SuccessInner root so any nested
+// DeliveryCard / PasswordReveal can fire events without prop drilling.
+interface TrackCtxValue {
+  track: (
+    type: 'password_copied' | 'link_clicked' | 'error_caught',
+    data?: Record<string, unknown>,
+  ) => void;
+}
+const TrackContext = createContext<TrackCtxValue>({ track: () => {} });
+const useTrack = () => useContext(TrackContext);
+
+function PasswordReveal({ password, trackingKey }: { password: string; trackingKey: string }) {
   const [copied, setCopied] = useState(false);
+  const { track } = useTrack();
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(password);
       setCopied(true);
+      track('password_copied', { which: trackingKey });
       setTimeout(() => setCopied(false), 1800);
-    } catch {
-      /* noop */
+    } catch (e) {
+      track('error_caught', {
+        where: 'password_copy',
+        which: trackingKey,
+        error: e instanceof Error ? e.message : String(e),
+      });
     }
   };
   return (
@@ -95,7 +124,9 @@ function DeliveryCard({
   badge,
   compact,
   password,
+  trackingKey,
 }: DeliveryCardProps) {
+  const { track } = useTrack();
   return (
     <div
       className={`relative rounded-2xl border-2 ${border} ${bg} ${
@@ -125,13 +156,14 @@ function DeliveryCard({
         <a
           href={href}
           {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          onClick={() => track('link_clicked', { which: trackingKey, href, external: Boolean(external) })}
           className={`inline-flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-black text-white font-bold text-xs md:text-sm uppercase tracking-wider px-5 py-3 rounded-md transition-all hover:-translate-y-0.5 whitespace-nowrap`}
           style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
         >
           {cta} {external && <ExternalLink size={14} />}
         </a>
       </div>
-      {password && <PasswordReveal password={password} />}
+      {password && <PasswordReveal password={password} trackingKey={trackingKey || 'unknown'} />}
     </div>
   );
 }
@@ -150,30 +182,243 @@ interface Lead {
   payment_completed_at: string | null;
 }
 
+// --- Dev-only mock lead presets so we can preview every bump combo locally ---
+// Active only when NODE_ENV !== 'production' AND the URL has `?test=...`.
+// In production builds this whole branch is a no-op.
+const IS_DEV = process.env.NODE_ENV !== 'production';
+
+const TEST_PRESETS: Record<string, Partial<Lead>> = {
+  course_only: {},
+  launch_stack: { has_bump_launch_stack: true },
+  hooks: { has_bump_hooks: true },
+  offer_genius: { has_bump_offer_genius: true },
+  ls_hooks: { has_bump_launch_stack: true, has_bump_hooks: true },
+  ls_genius: { has_bump_launch_stack: true, has_bump_offer_genius: true },
+  hooks_genius: { has_bump_hooks: true, has_bump_offer_genius: true },
+  all_three: {
+    has_bump_launch_stack: true,
+    has_bump_hooks: true,
+    has_bump_offer_genius: true,
+  },
+  bundle: { has_bump_bundle: true },
+  bundle_coaching: { has_bump_bundle: true, has_coaching_upsell: true },
+  coaching_only: { has_coaching_upsell: true },
+  all: {
+    has_bump_launch_stack: true,
+    has_bump_hooks: true,
+    has_bump_offer_genius: true,
+    has_bump_bundle: true,
+    has_coaching_upsell: true,
+  },
+};
+
+function buildMockLead(searchParams: URLSearchParams): Lead {
+  const preset = searchParams.get('test') || '';
+  const presetOverrides = TEST_PRESETS[preset] ?? {};
+
+  // Fallback: free-form `?bumps=launch_stack,hooks,offer_genius,bundle,coaching`
+  const bumpsParam = searchParams.get('bumps') || '';
+  const bumpSet = new Set(
+    bumpsParam
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
+
+  return {
+    id: 'TEST-LEAD-' + (preset || 'custom'),
+    name: searchParams.get('name') || 'Test User',
+    email: searchParams.get('email') || 'test@example.com',
+    is_paid: true,
+    has_bump_launch_stack:
+      presetOverrides.has_bump_launch_stack ?? bumpSet.has('launch_stack'),
+    has_bump_hooks: presetOverrides.has_bump_hooks ?? bumpSet.has('hooks'),
+    has_bump_offer_genius:
+      presetOverrides.has_bump_offer_genius ?? bumpSet.has('offer_genius'),
+    has_bump_bundle: presetOverrides.has_bump_bundle ?? bumpSet.has('bundle'),
+    has_coaching_upsell:
+      presetOverrides.has_coaching_upsell ??
+      (searchParams.get('coaching') === '1' || bumpSet.has('coaching')),
+    total_paid_cents: 9700,
+    payment_completed_at: new Date().toISOString(),
+  };
+}
+
+function DevTestPanel({ active }: { active: string }) {
+  const presets: Array<{ key: string; label: string }> = [
+    { key: 'course_only', label: 'Course only' },
+    { key: 'launch_stack', label: '+ Launch Stack' },
+    { key: 'hooks', label: '+ Hooks' },
+    { key: 'offer_genius', label: '+ Offer Genius' },
+    { key: 'ls_hooks', label: '+ LS + Hooks' },
+    { key: 'ls_genius', label: '+ LS + Genius' },
+    { key: 'hooks_genius', label: '+ Hooks + Genius' },
+    { key: 'all_three', label: '+ All 3 (no bundle)' },
+    { key: 'bundle', label: '+ Bundle' },
+    { key: 'bundle_coaching', label: '+ Bundle + Coaching' },
+    { key: 'coaching_only', label: '+ Coaching only' },
+    { key: 'all', label: 'EVERYTHING' },
+  ];
+  return (
+    <div className="fixed bottom-4 right-4 z-[9999] bg-black/90 text-white rounded-xl shadow-2xl border border-white/10 p-3 max-w-[300px] backdrop-blur-sm font-mono text-xs">
+      <p className="font-bold mb-2 text-emerald-400">
+        🧪 DEV TEST MODE — current: <span className="text-amber-400">{active || 'custom'}</span>
+      </p>
+      <p className="text-white/60 mb-2">
+        Click a combo to preview what the buyer sees on the success page.
+      </p>
+      <div className="grid grid-cols-2 gap-1.5">
+        {presets.map((p) => (
+          <a
+            key={p.key}
+            href={`?test=${p.key}`}
+            className={`block text-center px-2 py-1.5 rounded text-[11px] leading-tight transition-colors ${
+              active === p.key
+                ? 'bg-emerald-600 text-white'
+                : 'bg-white/10 hover:bg-white/20 text-white/90'
+            }`}
+          >
+            {p.label}
+          </a>
+        ))}
+      </div>
+      <p className="text-white/40 text-[10px] mt-2">
+        Production-safe: this panel only mounts when NODE_ENV ≠ production.
+      </p>
+    </div>
+  );
+}
+
 function SuccessInner() {
   const searchParams = useSearchParams();
   const leadId = searchParams.get('leadId') || '';
   const fromCoaching = searchParams.get('coaching') === '1';
 
+  const testParam = searchParams.get('test');
+  const testMode = IS_DEV && testParam !== null;
+
   const [lead, setLead] = useState<Lead | null>(null);
   const [loading, setLoading] = useState(true);
+  const [sessionId, setSessionId] = useState<string>('');
+
+  // Initialize session id once on mount and fire the page_loaded event.
+  // We never track in dev test mode so the table stays clean.
+  useEffect(() => {
+    const sid = getOrCreateSessionId();
+    setSessionId(sid);
+    if (testMode) return;
+    trackSuccessEvent('page_loaded', {
+      leadId: leadId || null,
+      sessionId: sid,
+      data: {
+        href: typeof window !== 'undefined' ? window.location.href : null,
+        fromCoaching,
+        hasLeadIdParam: Boolean(leadId),
+      },
+    });
+    if (!leadId) {
+      trackSuccessEvent('lead_missing', { sessionId: sid });
+    }
+
+    // Track total time-on-page on unload via sendBeacon.
+    const startedAt = Date.now();
+    const onUnload = () => {
+      trackSuccessEvent(
+        'time_on_page',
+        {
+          leadId: leadId || null,
+          sessionId: sid,
+          data: { seconds: Math.round((Date.now() - startedAt) / 1000) },
+        },
+        { beacon: true },
+      );
+    };
+    window.addEventListener('pagehide', onUnload);
+    return () => window.removeEventListener('pagehide', onUnload);
+    // We intentionally only run this once per mount; leadId/testMode are
+    // captured in the closure and don't change on this page.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
+    if (testMode) {
+      setLead(buildMockLead(searchParams));
+      setLoading(false);
+      return;
+    }
     if (!leadId) {
       setLoading(false);
       return;
     }
+    if (!sessionId) return; // wait until session id is ready
+    trackSuccessEvent('lead_fetch_started', { leadId, sessionId });
     fetch(`/api/offer-clarity/get-lead-status?leadId=${leadId}`)
       .then((r) => r.json())
       .then((d) => {
-        if (d.success) setLead(d.lead);
+        if (d.success) {
+          setLead(d.lead);
+          trackSuccessEvent('lead_fetch_success', {
+            leadId,
+            sessionId,
+            data: {
+              email: d.lead?.email,
+              is_paid: d.lead?.is_paid,
+              has_bump_launch_stack: d.lead?.has_bump_launch_stack,
+              has_bump_hooks: d.lead?.has_bump_hooks,
+              has_bump_offer_genius: d.lead?.has_bump_offer_genius,
+              has_bump_bundle: d.lead?.has_bump_bundle,
+              has_coaching_upsell: d.lead?.has_coaching_upsell,
+              total_paid_cents: d.lead?.total_paid_cents,
+            },
+          });
+        } else {
+          trackSuccessEvent('lead_fetch_failed', {
+            leadId,
+            sessionId,
+            data: { error: d.error || 'unknown', responseShape: Object.keys(d) },
+          });
+        }
+      })
+      .catch((err) => {
+        trackSuccessEvent('lead_fetch_failed', {
+          leadId,
+          sessionId,
+          data: { error: err instanceof Error ? err.message : String(err) },
+        });
       })
       .finally(() => setLoading(false));
-  }, [leadId]);
+  }, [leadId, testMode, searchParams, sessionId]);
 
-  // Fire purchase pixel + GA event once on mount
+  // Once the lead resolves, snapshot exactly which delivery cards rendered.
   useEffect(() => {
-    if (typeof window === 'undefined' || !lead) return;
+    if (!lead || !sessionId || testMode) return;
+    const bumpsShown = {
+      course: true,
+      launch_stack: lead.has_bump_launch_stack || lead.has_bump_bundle,
+      hooks: lead.has_bump_hooks || lead.has_bump_bundle,
+      offer_genius: lead.has_bump_offer_genius || lead.has_bump_bundle,
+      coaching: lead.has_coaching_upsell,
+    };
+    trackSuccessEvent('render_snapshot', {
+      leadId: lead.id,
+      sessionId,
+      data: {
+        bumpsShown,
+        bumpCount: Object.values(bumpsShown).filter(Boolean).length,
+        password_visible_for: ['launch_stack', 'offer_genius'].filter(
+          (k) => bumpsShown[k as keyof typeof bumpsShown],
+        ),
+      },
+    });
+    if (lead.has_coaching_upsell) {
+      trackSuccessEvent('coaching_card_shown', { leadId: lead.id, sessionId });
+    }
+  }, [lead, sessionId, testMode]);
+
+  // Fire purchase pixel + GA event once on mount.
+  // Skipped entirely in dev test mode so we don't log fake conversions.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !lead || testMode) return;
     const w = window as {
       fbq?: (...args: unknown[]) => void;
       gtag?: (...args: unknown[]) => void;
@@ -212,7 +457,24 @@ function SuccessInner() {
       ]
     : [];
 
+  // Stable track function bound to current lead/session — passed via context
+  // so DeliveryCard / PasswordReveal can fire events without prop drilling.
+  const trackCtxValue = useMemo<TrackCtxValue>(
+    () => ({
+      track: (type, data) => {
+        if (testMode) return;
+        trackSuccessEvent(type, {
+          leadId: lead?.id ?? leadId ?? null,
+          sessionId,
+          data,
+        });
+      },
+    }),
+    [lead, leadId, sessionId, testMode],
+  );
+
   return (
+    <TrackContext.Provider value={trackCtxValue}>
     <main
       className="min-h-screen bg-[#faf7f0]"
       style={{ fontFamily: 'Lora, Georgia, serif' }}
@@ -278,6 +540,7 @@ function SuccessInner() {
                 border="border-[#9E8B52]"
                 bg="bg-[#FFFBEB]"
                 badge="Main course"
+                trackingKey="course"
               />
 
               {/* Order bumps — conditional */}
@@ -294,6 +557,7 @@ function SuccessInner() {
                   bg="bg-indigo-50"
                   badge="Add-on"
                   password={TOOL_PASSWORD}
+                  trackingKey="launch_stack"
                 />
               )}
 
@@ -309,6 +573,7 @@ function SuccessInner() {
                   border="border-rose-300"
                   bg="bg-rose-50"
                   badge="Add-on"
+                  trackingKey="hooks"
                 />
               )}
 
@@ -325,6 +590,7 @@ function SuccessInner() {
                   bg="bg-amber-50"
                   badge="Add-on"
                   password={TOOL_PASSWORD}
+                  trackingKey="offer_genius"
                 />
               )}
 
@@ -341,6 +607,7 @@ function SuccessInner() {
                   border="border-emerald-400"
                   bg="bg-emerald-50"
                   badge="Premium upsell"
+                  trackingKey="coaching"
                 />
               )}
             </div>
@@ -364,6 +631,7 @@ function SuccessInner() {
                 bg="bg-white"
                 badge="FREE bonus"
                 compact
+                trackingKey="bonus_workbook"
               />
               <DeliveryCard
                 title="3-Email Launch Template"
@@ -376,6 +644,7 @@ function SuccessInner() {
                 bg="bg-white"
                 badge="FREE bonus"
                 compact
+                trackingKey="bonus_launch_template"
               />
               <DeliveryCard
                 title="AI Offer Flow Access (Forever)"
@@ -389,6 +658,7 @@ function SuccessInner() {
                 bg="bg-white"
                 badge="FREE bonus"
                 compact
+                trackingKey="bonus_ai_offer_flow"
               />
             </div>
           </div>
@@ -515,7 +785,10 @@ function SuccessInner() {
       <footer className="py-8 text-center text-gray-400 text-xs border-t border-gray-200 bg-white">
         <p>© Ana Calin — How We Grow {new Date().getFullYear()}, All Rights Reserved.</p>
       </footer>
+
+      {testMode && <DevTestPanel active={testParam || ''} />}
     </main>
+    </TrackContext.Provider>
   );
 }
 
