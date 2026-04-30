@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { OfferFlowCard } from './OfferFlowCard';
 
 export function ToolsAndSignature() {
   return (
@@ -24,14 +25,8 @@ export function ToolsAndSignature() {
               className="w-full h-auto object-contain bg-white"
             />
           </div>
-          <div className="rounded-xl overflow-hidden shadow-2xl bg-[#faf7f0] p-6 flex items-center justify-center">
-            <Image
-              src="/imgs/offer-clarity/wordm2.jpeg"
-              alt="Ana Calin"
-              width={700}
-              height={300}
-              className="w-full h-auto object-contain"
-            />
+          <div className="rounded-xl overflow-hidden shadow-2xl flex items-center justify-center">
+            <OfferFlowCard />
           </div>
         </div>
 
