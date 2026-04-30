@@ -1,75 +1,148 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface NumberBadgeProps {
   n: number;
   withConfetti?: boolean;
 }
 
-// 18 particles radiating around the badge — mixed dots and streamers, brand-friendly palette,
-// each with its own travel distance, end-rotation, animation delay and duration so the burst
-// feels organic and continuous rather than a single synchronized pulse.
-const PARTICLES = [
-  { angle: 0,   dist: 78, w: 6, h: 6, round: true,  color: '#ff6b6b', rot: 540, delay: 0.00, dur: 1.9 },
-  { angle: 20,  dist: 88, w: 4, h: 10, round: false, color: '#4ecdc4', rot: 420, delay: 0.18, dur: 2.2 },
-  { angle: 40,  dist: 72, w: 5, h: 5, round: true,  color: '#ffd93d', rot: 360, delay: 0.35, dur: 2.0 },
-  { angle: 60,  dist: 92, w: 3, h: 9, round: false, color: '#9E8B52', rot: 600, delay: 0.05, dur: 2.3 },
-  { angle: 80,  dist: 70, w: 6, h: 6, round: true,  color: '#c9b67e', rot: 480, delay: 0.42, dur: 1.8 },
-  { angle: 100, dist: 86, w: 4, h: 10, round: false, color: '#aa96da', rot: 540, delay: 0.22, dur: 2.1 },
-  { angle: 120, dist: 76, w: 5, h: 5, round: true,  color: '#2ed573', rot: 360, delay: 0.55, dur: 2.0 },
-  { angle: 140, dist: 90, w: 3, h: 9, round: false, color: '#ffa502', rot: 720, delay: 0.10, dur: 2.4 },
-  { angle: 160, dist: 72, w: 6, h: 6, round: true,  color: '#1e90ff', rot: 420, delay: 0.32, dur: 1.9 },
-  { angle: 180, dist: 84, w: 4, h: 10, round: false, color: '#fcbad3', rot: 540, delay: 0.48, dur: 2.2 },
-  { angle: 200, dist: 74, w: 5, h: 5, round: true,  color: '#f38181', rot: 360, delay: 0.08, dur: 2.0 },
-  { angle: 220, dist: 90, w: 3, h: 9, round: false, color: '#9E8B52', rot: 480, delay: 0.28, dur: 2.3 },
-  { angle: 240, dist: 70, w: 6, h: 6, round: true,  color: '#95e1d3', rot: 540, delay: 0.50, dur: 1.9 },
-  { angle: 260, dist: 86, w: 4, h: 10, round: false, color: '#c9b67e', rot: 420, delay: 0.14, dur: 2.1 },
-  { angle: 280, dist: 76, w: 5, h: 5, round: true,  color: '#6c5ce7', rot: 360, delay: 0.38, dur: 2.0 },
-  { angle: 300, dist: 92, w: 3, h: 9, round: false, color: '#ff4757', rot: 600, delay: 0.20, dur: 2.4 },
-  { angle: 320, dist: 72, w: 6, h: 6, round: true,  color: '#ffd93d', rot: 480, delay: 0.45, dur: 1.8 },
-  { angle: 340, dist: 84, w: 4, h: 10, round: false, color: '#4ecdc4', rot: 540, delay: 0.02, dur: 2.2 },
+const CONFETTI_COUNT = 62;
+// Cool / cold-shifted palette for high contrast against the warm cream
+// section background (#faf7f0). Blues, teals, pinks, magentas, purples
+// dominate; a couple of gold/yellow accents stay for brand continuity.
+const COLORS = [
+  '#1e90ff', // dodger blue
+  '#0ea5e9', // sky
+  '#3b82f6', // royal blue
+  '#06b6d4', // cyan
+  '#14b8a6', // teal
+  '#22d3ee', // bright cyan
+  '#ec4899', // pink
+  '#f43f5e', // rose
+  '#ff4081', // hot pink
+  '#a855f7', // purple
+  '#8b5cf6', // violet
+  '#6366f1', // indigo
+  '#FFD700', // gold accent
+  '#FFEB3B', // yellow accent
 ];
+const PAUSE_MS = 2000;
+const BURST_DURATION = 1200;
+
+function randomBetween(a: number, b: number) {
+  return Math.random() * (b - a) + a;
+}
+
+function Particle({ active }: { active: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // When the burst flag goes false (pause phase) we leave the particle
+    // exactly where it landed at the end of the burst — no fade, no reset.
+    // The hard reset happens when the parent re-keys this component on the
+    // next loop tick, which unmounts these and mounts fresh ones at center.
+    if (!active) return;
+
+    // Upward hemisphere emission so particles burst over the card.
+    const angle = randomBetween(-Math.PI * 0.92, -Math.PI * 0.08);
+    const dist = randomBetween(53, 158);
+    const dx = Math.cos(angle) * dist;
+    const dy = Math.sin(angle) * dist;
+    const rot = randomBetween(-180, 180);
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const size = randomBetween(4, 9);
+    const dur = randomBetween(600, BURST_DURATION);
+    const delay = randomBetween(0, 100);
+    const isRect = Math.random() > 0.4;
+
+    el.style.transition = 'none';
+    el.style.transform = 'translate(-50%, -50%) translate(0px, 0px) rotate(0deg) scale(1)';
+    el.style.opacity = '1';
+    el.style.background = color;
+    el.style.width = `${size}px`;
+    el.style.height = isRect ? `${size * 0.6}px` : `${size}px`;
+    el.style.borderRadius = isRect ? '1px' : '50%';
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.transition = `transform ${dur}ms cubic-bezier(0.2, 0.8, 0.3, 1) ${delay}ms`;
+        el.style.transform = `translate(-50%, -50%) translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.7)`;
+      });
+    });
+  }, [active]);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        opacity: 0,
+        pointerEvents: 'none',
+        willChange: 'transform, opacity',
+      }}
+    />
+  );
+}
 
 export function NumberBadge({ n, withConfetti = false }: NumberBadgeProps) {
+  const [burstKey, setBurstKey] = useState(0);
+  const [burstActive, setBurstActive] = useState(false);
+
+  useEffect(() => {
+    if (!withConfetti) return;
+    let stopped = false;
+    let t1: ReturnType<typeof setTimeout> | undefined;
+    let t2: ReturnType<typeof setTimeout> | undefined;
+
+    const loop = () => {
+      if (stopped) return;
+      setBurstKey((k) => k + 1);
+      setBurstActive(true);
+      t1 = setTimeout(() => setBurstActive(false), BURST_DURATION + 200);
+      t2 = setTimeout(loop, BURST_DURATION + PAUSE_MS);
+    };
+
+    const initial = setTimeout(loop, 600);
+    return () => {
+      stopped = true;
+      clearTimeout(initial);
+      if (t1) clearTimeout(t1);
+      if (t2) clearTimeout(t2);
+    };
+  }, [withConfetti]);
+
   return (
     <div className="relative flex items-center justify-center">
       {withConfetti && (
         <>
-          {/* Soft radial glow behind the badge */}
+          {/* Soft gold radial glow behind the badge */}
           <span
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 oc-confetti-glow"
-            style={{ width: 180, height: 180 }}
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{
+              width: 220,
+              height: 220,
+              background:
+                'radial-gradient(circle, rgba(255,215,0,0.30) 0%, rgba(255,215,0,0.10) 35%, transparent 70%)',
+              animation: 'oc-confetti-glow 2.4s ease-in-out infinite',
+            }}
           />
-          {/* Particle field */}
+
+          {/* Confetti burst layer — re-keyed each burst so all 62 particles re-randomize */}
           <div
+            key={burstKey}
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2"
-            style={{ width: 0, height: 0 }}
+            className="pointer-events-none absolute"
+            style={{ inset: 0 }}
           >
-            {PARTICLES.map((p, i) => {
-              const rad = (p.angle * Math.PI) / 180;
-              const tx = Math.cos(rad) * p.dist;
-              const ty = Math.sin(rad) * p.dist;
-              return (
-                <span
-                  key={i}
-                  className="oc-confetti-piece"
-                  style={{
-                    width: `${p.w}px`,
-                    height: `${p.h}px`,
-                    backgroundColor: p.color,
-                    borderRadius: p.round ? '999px' : '1.5px',
-                    ['--tx' as never]: `${tx.toFixed(1)}px`,
-                    ['--ty' as never]: `${ty.toFixed(1)}px`,
-                    ['--rot' as never]: `${p.rot}deg`,
-                    animationDelay: `${p.delay}s`,
-                    animationDuration: `${p.dur}s`,
-                  }}
-                />
-              );
-            })}
+            {Array.from({ length: CONFETTI_COUNT }).map((_, i) => (
+              <Particle key={i} active={burstActive} />
+            ))}
           </div>
         </>
       )}
@@ -78,7 +151,8 @@ export function NumberBadge({ n, withConfetti = false }: NumberBadgeProps) {
         className="relative z-10 flex items-center justify-center w-[72px] h-[72px] rounded-2xl text-white font-extrabold leading-none shadow-xl"
         style={{
           background: 'linear-gradient(135deg, #c9b67e, #9e8b52)',
-          boxShadow: '0 8px 22px rgba(158, 139, 82, 0.45), 0 2px 6px rgba(0,0,0,0.1)',
+          boxShadow:
+            '0 8px 22px rgba(158, 139, 82, 0.45), 0 2px 6px rgba(0,0,0,0.1)',
           fontFamily: 'Montserrat, system-ui, sans-serif',
           fontSize: '42px',
         }}
@@ -87,47 +161,11 @@ export function NumberBadge({ n, withConfetti = false }: NumberBadgeProps) {
       </div>
 
       <style jsx>{`
-        .oc-confetti-piece {
-          position: absolute;
-          left: 0;
-          top: 0;
-          transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(0.4);
-          opacity: 0;
-          animation-name: oc-confetti-burst;
-          animation-iteration-count: infinite;
-          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-          will-change: transform, opacity;
-        }
-        @keyframes oc-confetti-burst {
-          0% {
-            transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(0.3);
-            opacity: 0;
-          }
-          12% {
-            opacity: 1;
-          }
-          70% {
-            opacity: 1;
-          }
+        @keyframes oc-confetti-glow {
+          0%,
           100% {
-            transform: translate(-50%, -50%)
-              translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(1);
-            opacity: 0;
-          }
-        }
-        .oc-confetti-glow {
-          background: radial-gradient(
-            circle,
-            rgba(201, 182, 126, 0.35) 0%,
-            rgba(201, 182, 126, 0.18) 30%,
-            rgba(201, 182, 126, 0) 70%
-          );
-          animation: oc-confetti-glow-pulse 2.4s ease-in-out infinite;
-        }
-        @keyframes oc-confetti-glow-pulse {
-          0%, 100% {
-            transform: translate(-50%, -50%) scale(0.85);
-            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0.7;
           }
           50% {
             transform: translate(-50%, -50%) scale(1.1);
