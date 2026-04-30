@@ -45,7 +45,7 @@ export function Hero() {
 
         <div className="flex justify-center mb-10">
           <Image
-            src="/imgs/offer-clarity/hero1.jpeg"
+            src="/imgs/offer-clarity/hero1.webp"
             alt="The Offer Clarity Sprint — product mockups"
             width={1080}
             height={540}

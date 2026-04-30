@@ -30,7 +30,7 @@ export function HowIsThisDifferent() {
 
         <div className="flex justify-center mb-8">
           <Image
-            src="/imgs/offer-clarity/hero3.jpeg"
+            src="/imgs/offer-clarity/hero3.webp"
             alt="Offer Clarity course preview"
             width={900}
             height={500}

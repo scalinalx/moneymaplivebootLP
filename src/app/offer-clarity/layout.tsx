@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         locale: 'en_US',
         images: [
             {
-                url: '/imgs/offer-clarity/hero1.jpeg',
+                url: '/imgs/offer-clarity/hero1.webp',
                 width: 1376,
                 height: 768,
                 alt: 'The Offer Clarity Sprint — Ana Calin',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: "The Offer Clarity Sprint — Get Way More Money Working Less",
         description: "How to package your expertise into one clear offer subscribers buy from a single email. 198 subs → $2,400. 547 subs → $3,200. Frameworks, price architect, 3-email launch template, AI Offer Flow tool. $97.",
-        images: ['/imgs/offer-clarity/hero1.jpeg'],
+        images: ['/imgs/offer-clarity/hero1.webp'],
         site: '@howwegrow',
         creator: '@howwegrow',
     },
