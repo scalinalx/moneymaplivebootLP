@@ -25,7 +25,7 @@ export function AuthorPreamble() {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           <div className="rounded-xl overflow-hidden shadow-xl bg-white">
             <Image
-              src="/imgs/offer-clarity/hero2.jpeg"
+              src="/imgs/offer-clarity/4.webp"
               alt="Real revenue from clear offers"
               width={900}
               height={520}

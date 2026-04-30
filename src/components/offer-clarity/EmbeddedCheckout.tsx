@@ -279,7 +279,7 @@ export const EmbeddedCheckout: React.FC = () => {
                       onToggle={toggleBundle}
                       highlight
                       badge="Best value"
-                      title="All 3 Add-ons Bundle"
+                      title="YES! Add all 3 Add-ons (Bundle)"
                       description="Launch Stack + Hooks That Stop The Scroll + Offer Genius — every add-on, lowest price."
                       price={OFFER_CLARITY_BUMP_BUNDLE_PRICE}
                       originalPrice={OFFER_CLARITY_BUMP_BUNDLE_RETAIL_PRICE}
@@ -289,8 +289,8 @@ export const EmbeddedCheckout: React.FC = () => {
                       isSelected={bumpBundle || bumpLaunchStack}
                       disabled={bumpBundle}
                       onToggle={() => setBumpLaunchStack((v) => !v)}
-                      title="Launch Stack"
-                      description="The plug-and-play launch system — email scripts, Notion templates, and a 7-day rollout calendar."
+                      title="YES! Add Launch Stack — the AI tool that writes my perfect email launch sequence"
+                      description="Plug-and-play launch system: AI-written email scripts, Notion templates, and a 7-day rollout calendar."
                       price={OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE}
                       originalPrice={OFFER_CLARITY_BUMP_LAUNCH_STACK_RETAIL_PRICE}
                     />
@@ -299,7 +299,7 @@ export const EmbeddedCheckout: React.FC = () => {
                       isSelected={bumpBundle || bumpHooks}
                       disabled={bumpBundle}
                       onToggle={() => setBumpHooks((v) => !v)}
-                      title="Hooks That Stop The Scroll"
+                      title="YES! Add Hooks That Stop The Scroll — the vault of headlines that force the click"
                       description="My vault of high-converting headlines and opening lines that force readers to stop, click, and read."
                       price={OFFER_CLARITY_BUMP_HOOKS_PRICE}
                       originalPrice={OFFER_CLARITY_BUMP_HOOKS_RETAIL_PRICE}
@@ -309,8 +309,8 @@ export const EmbeddedCheckout: React.FC = () => {
                       isSelected={bumpBundle || bumpOfferGenius}
                       disabled={bumpBundle}
                       onToggle={() => setBumpOfferGenius((v) => !v)}
-                      title="Offer Genius"
-                      description="The AI-powered idea engine that generates 50 niche-specific offer angles in 60 seconds."
+                      title="YES! Add Offer Genius — the AI engine that spits out 50 niche offer angles in 60 seconds"
+                      description="AI-powered idea engine that generates 50 niche-specific offer angles on demand — never stare at a blank page again."
                       price={OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE}
                       originalPrice={OFFER_CLARITY_BUMP_OFFER_GENIUS_RETAIL_PRICE}
                     />

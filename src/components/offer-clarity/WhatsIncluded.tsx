@@ -75,7 +75,7 @@ export function WhatsIncluded() {
         <div className="bg-white rounded-2xl border-2 border-[#9E8B52] shadow-2xl px-8 py-12 md:px-14 md:py-16">
           <div className="flex justify-center mb-8">
             <Image
-              src="/imgs/offer-clarity/4.webp"
+              src="/imgs/offer-clarity/6.webp"
               alt="Course product mockups"
               width={900}
               height={450}

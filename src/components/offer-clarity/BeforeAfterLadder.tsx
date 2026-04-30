@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { CTA } from './CTA';
 
 const without = [
@@ -81,6 +82,27 @@ export function BeforeAfterLadder() {
 
         <CTA size="lg" className="mt-12">
           I&apos;M READY TO MAKE WAY MORE MONEY!
+        </CTA>
+
+        <h3
+          className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mt-16 mb-6 text-[#1a1a1a]"
+          style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
+        >
+          Do any of these sound familiar?
+        </h3>
+
+        <div className="flex justify-center">
+          <Image
+            src="/imgs/offer-clarity/5.webp"
+            alt="With vs without a clear offer"
+            width={1600}
+            height={900}
+            className="w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl h-auto object-contain rounded-xl"
+          />
+        </div>
+
+        <CTA size="lg" className="mt-12">
+          YES — FIX MY OFFER NOW!
         </CTA>
       </div>
     </section>
