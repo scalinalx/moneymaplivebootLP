@@ -51,6 +51,7 @@ export function middleware(req: NextRequest) {
     '/viral-digital-product-finder',
     '/will-it-sell',
     '/offer-clarity',
+    '/offer-clarity-what-to-sell-upsell',
     '/offer-clarity-coaching-upsell',
     '/offer-clarity-success',
   ];

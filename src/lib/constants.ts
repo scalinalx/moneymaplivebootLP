@@ -37,7 +37,10 @@ export const OFFER_CLARITY_BUMP_BUNDLE_PRICE = process.env.NEXT_PUBLIC_OFFER_CLA
   : _BUMP_BUNDLE_COMPUTED;
 // Bundle retail (the "was" / strikethrough) = sum of individual sale prices.
 export const OFFER_CLARITY_BUMP_BUNDLE_RETAIL_PRICE = _BUMP_SUM;
-// Post-purchase upsell — 1:1 Coaching with Ana ($797 reduced from $997)
+// Post-purchase upsell #1 — "What Do I Even Sell?" workshop recording ($147)
+export const OFFER_CLARITY_WHAT_TO_SELL_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_PRICE || '14700', 10);          // $147
+export const OFFER_CLARITY_WHAT_TO_SELL_RETAIL_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_RETAIL_PRICE || '24700', 10);   // $247 strikethrough (optional)
+// Post-purchase upsell #2 — 1:1 Coaching with Ana ($797 reduced from $997)
 export const OFFER_CLARITY_COACHING_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE || '79700', 10);         // $797
 export const OFFER_CLARITY_COACHING_RETAIL_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE || '99700', 10);  // $997 retail
 

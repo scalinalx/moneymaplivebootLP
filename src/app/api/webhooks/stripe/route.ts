@@ -180,6 +180,7 @@ export async function POST(request: NextRequest) {
     // only the timestamp column differs (genius_ideas uses `paid_at`).
     const routes: Record<string, { table: string; paidAtColumn: string }> = {
       offer_clarity_sprint:        { table: 'offer_clarity_leads', paidAtColumn: 'payment_completed_at' },
+      offer_clarity_what_to_sell_upsell: { table: 'offer_clarity_leads', paidAtColumn: 'what_to_sell_paid_at' },
       offer_clarity_coaching_upsell: { table: 'offer_clarity_leads', paidAtColumn: 'coaching_paid_at' },
       hit10k_workshop:             { table: 'hit10k_leads',        paidAtColumn: 'payment_completed_at' },
       '10k_launch_lab':            { table: 'launch_lab_leads',    paidAtColumn: 'payment_completed_at' },
@@ -205,6 +206,12 @@ export async function POST(request: NextRequest) {
         updatePayload.has_coaching_upsell = true;
         updatePayload.coaching_payment_intent_id = intent.id;
         delete updatePayload.is_paid;  // base purchase is already paid by the time the upsell fires
+      }
+      // Special case: "What Do I Even Sell?" upsell flips its own boolean too
+      if (productKey === 'offer_clarity_what_to_sell_upsell') {
+        updatePayload.has_what_to_sell_upsell = true;
+        updatePayload.what_to_sell_payment_intent_id = intent.id;
+        delete updatePayload.is_paid;
       }
 
       const { error } = await supabaseAdmin

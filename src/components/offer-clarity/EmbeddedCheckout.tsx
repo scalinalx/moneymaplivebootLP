@@ -41,7 +41,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ customerName, total,
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/offer-clarity-coaching-upsell?leadId=${leadId}`,
+        return_url: `${window.location.origin}/offer-clarity-what-to-sell-upsell?leadId=${leadId}`,
       },
       redirect: 'if_required',
     });
@@ -55,7 +55,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ customerName, total,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ leadId, paymentIntentId: paymentIntent.id }),
       });
-      window.location.href = `/offer-clarity-coaching-upsell?leadId=${leadId}`;
+      window.location.href = `/offer-clarity-what-to-sell-upsell?leadId=${leadId}`;
     }
   };
 

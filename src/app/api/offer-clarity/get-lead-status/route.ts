@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabaseAdmin
       .from('offer_clarity_leads')
       .select(
-        'id, name, email, is_paid, has_bump_launch_stack, has_bump_hooks, has_bump_offer_genius, has_bump_bundle, has_coaching_upsell, total_paid_cents, payment_completed_at, stripe_customer_id',
+        'id, name, email, is_paid, has_bump_launch_stack, has_bump_hooks, has_bump_offer_genius, has_bump_bundle, has_what_to_sell_upsell, has_coaching_upsell, total_paid_cents, payment_completed_at, stripe_customer_id',
       )
       .eq('id', leadId)
       .single();

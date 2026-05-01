@@ -38,6 +38,7 @@ const URL_AI_OFFER_FLOW = '/ana-ai-offer-flow';
 const URL_WORKBOOK = '/downloads/one-sentence-offer-workbook.pdf';
 const URL_LAUNCH_TEMPLATE = '/downloads/3-email-launch-template.pdf';
 const URL_COACHING_BOOKING = process.env.NEXT_PUBLIC_OFFER_CLARITY_COACHING_BOOKING_URL || 'mailto:anaxcalin@gmail.com?subject=Book%20My%201:1%20Coaching%20Call';
+const URL_WHAT_TO_SELL_RECORDING = process.env.NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_RECORDING_URL || '#what-to-sell-recording-coming-soon';
 
 // Shared password for the password-protected AI tools (Launch Stack + Offer Genius).
 const TOOL_PASSWORD = process.env.NEXT_PUBLIC_LAUNCH_STACK_PASSWORD || 'mellon_hwg';
@@ -177,6 +178,7 @@ interface Lead {
   has_bump_hooks: boolean;
   has_bump_offer_genius: boolean;
   has_bump_bundle: boolean;
+  has_what_to_sell_upsell: boolean;
   has_coaching_upsell: boolean;
   total_paid_cents: number;
   payment_completed_at: string | null;
@@ -203,11 +205,17 @@ const TEST_PRESETS: Record<string, Partial<Lead>> = {
   bundle: { has_bump_bundle: true },
   bundle_coaching: { has_bump_bundle: true, has_coaching_upsell: true },
   coaching_only: { has_coaching_upsell: true },
+  what_to_sell_only: { has_what_to_sell_upsell: true },
+  what_to_sell_and_coaching: {
+    has_what_to_sell_upsell: true,
+    has_coaching_upsell: true,
+  },
   all: {
     has_bump_launch_stack: true,
     has_bump_hooks: true,
     has_bump_offer_genius: true,
     has_bump_bundle: true,
+    has_what_to_sell_upsell: true,
     has_coaching_upsell: true,
   },
 };
@@ -236,6 +244,8 @@ function buildMockLead(searchParams: URLSearchParams): Lead {
     has_bump_offer_genius:
       presetOverrides.has_bump_offer_genius ?? bumpSet.has('offer_genius'),
     has_bump_bundle: presetOverrides.has_bump_bundle ?? bumpSet.has('bundle'),
+    has_what_to_sell_upsell:
+      presetOverrides.has_what_to_sell_upsell ?? bumpSet.has('what_to_sell'),
     has_coaching_upsell:
       presetOverrides.has_coaching_upsell ??
       (searchParams.get('coaching') === '1' || bumpSet.has('coaching')),
@@ -257,6 +267,8 @@ function DevTestPanel({ active }: { active: string }) {
     { key: 'bundle', label: '+ Bundle' },
     { key: 'bundle_coaching', label: '+ Bundle + Coaching' },
     { key: 'coaching_only', label: '+ Coaching only' },
+    { key: 'what_to_sell_only', label: '+ What-to-sell only' },
+    { key: 'what_to_sell_and_coaching', label: '+ W-to-S + Coaching' },
     { key: 'all', label: 'EVERYTHING' },
   ];
   return (
@@ -397,6 +409,7 @@ function SuccessInner() {
       launch_stack: lead.has_bump_launch_stack || lead.has_bump_bundle,
       hooks: lead.has_bump_hooks || lead.has_bump_bundle,
       offer_genius: lead.has_bump_offer_genius || lead.has_bump_bundle,
+      what_to_sell: lead.has_what_to_sell_upsell,
       coaching: lead.has_coaching_upsell,
     };
     trackSuccessEvent('render_snapshot', {
@@ -452,6 +465,10 @@ function SuccessInner() {
         {
           name: 'Offer Genius',
           included: lead.has_bump_offer_genius || lead.has_bump_bundle,
+        },
+        {
+          name: '"What Do I Even Sell?" workshop recording',
+          included: lead.has_what_to_sell_upsell,
         },
         { name: '1:1 Coaching Call with Ana', included: lead.has_coaching_upsell },
       ]
@@ -591,6 +608,23 @@ function SuccessInner() {
                   badge="Add-on"
                   password={TOOL_PASSWORD}
                   trackingKey="offer_genius"
+                />
+              )}
+
+              {/* "What Do I Even Sell?" workshop-recording upsell — conditional */}
+              {lead.has_what_to_sell_upsell && (
+                <DeliveryCard
+                  title="What Do I Even Sell?"
+                  description="The 60-minute workshop recording: how to find the one skill hiding in your brain that people will pay for. Plus the Skill Audit, First-Week Action Plan, and 90-Day Sprint Calendar."
+                  cta="WATCH THE RECORDING"
+                  href={URL_WHAT_TO_SELL_RECORDING}
+                  external={URL_WHAT_TO_SELL_RECORDING !== '#what-to-sell-recording-coming-soon'}
+                  icon={Video}
+                  accent="text-pink-700"
+                  border="border-pink-300"
+                  bg="bg-pink-50"
+                  badge="Workshop recording"
+                  trackingKey="what_to_sell"
                 />
               )}
 
