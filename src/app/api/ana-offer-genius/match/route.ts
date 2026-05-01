@@ -4,6 +4,50 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || "");
 
+/**
+ * Last-ditch repair for a truncated JSON array. Walks the text counting brace
+ * depth, finds the latest position where we're back at depth 0 inside the
+ * array, slices to that point and seals the array with `]`. If that parses,
+ * we keep the (possibly fewer) complete offers and drop the half-written one.
+ */
+function repairTruncatedArray(raw: string): unknown[] | null {
+    const start = raw.indexOf('[');
+    if (start === -1) return null;
+    let depth = 0;
+    let inStr = false;
+    let escape = false;
+    let lastSafe = -1;
+    for (let i = start; i < raw.length; i++) {
+        const c = raw[i];
+        if (escape) {
+            escape = false;
+            continue;
+        }
+        if (c === '\\') {
+            escape = true;
+            continue;
+        }
+        if (c === '"') {
+            inStr = !inStr;
+            continue;
+        }
+        if (inStr) continue;
+        if (c === '{' || c === '[') depth++;
+        else if (c === '}' || c === ']') {
+            depth--;
+            // We just closed a top-level offer object inside the outer array.
+            if (depth === 1 && c === '}') lastSafe = i;
+        }
+    }
+    if (lastSafe === -1) return null;
+    const repaired = raw.slice(start, lastSafe + 1) + ']';
+    try {
+        return JSON.parse(repaired) as unknown[];
+    } catch {
+        return null;
+    }
+}
+
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
@@ -24,10 +68,14 @@ export async function POST(request: NextRequest) {
 
         // 2. Use Gemini to "Customize" the Top 3 matches
         const model = genAI.getGenerativeModel({
-            model: "gemini-3-flash-preview", // Upgraded to Gemini 3 Flash Preview
+            model: "gemini-3-flash-preview",
             generationConfig: {
                 responseMimeType: "application/json",
-                maxOutputTokens: 2000, // Ensure enough capacity for the detailed response
+                // Real-world successful runs land around 3-4K tokens of JSON +
+                // ~1-2K of MEDIUM thinking tokens. 8000 gives ~30% headroom and
+                // caps the worst-case API cost. The repair helper below salvages
+                // partial output if Gemini ever does hit the cap on a complex run.
+                maxOutputTokens: 8000,
                 // @ts-ignore
                 thinking_config: {
                     thinking_level: "MEDIUM"
@@ -111,30 +159,54 @@ export async function POST(request: NextRequest) {
 
         const result = await model.generateContent(prompt);
         const customizedMatchesText = result.response.text();
+        // Gemini exposes finishReason/usage on the candidate — log them so any
+        // future truncation is obvious from the server logs.
+        const finishReason =
+            result.response.candidates?.[0]?.finishReason ?? 'UNKNOWN';
+        const usage = result.response.usageMetadata;
+        console.log(
+            `📊 OfferGenius: finishReason=${finishReason}, length=${customizedMatchesText.length}, tokens=`,
+            usage,
+        );
 
         let customizedMatches;
         try {
-            // Clean up text if needed (Gemini sometimes adds ```json blocks even with mimeType set)
             const cleanedJson = customizedMatchesText
                 .replace(/^```json/gm, '')
                 .replace(/```$/gm, '')
                 .trim();
-
             customizedMatches = JSON.parse(cleanedJson);
         } catch (parseError) {
             console.error('❌ OfferGenius JSON Parse Error:', parseError);
-            console.error('📄 Raw Content that failed to parse:', customizedMatchesText);
+            console.error('📄 Raw response length:', customizedMatchesText.length);
+            console.error('📄 First 500 chars:', customizedMatchesText.slice(0, 500));
+            console.error('📄 Last 500 chars:', customizedMatchesText.slice(-500));
 
-            // Fallback: try to find anything that looks like a JSON array/object if cleanup failed
-            const jsonMatch = customizedMatchesText.match(/\[\s*\{[\s\S]*\}\s*\]/) || customizedMatchesText.match(/\{[\s\S]*\}/);
+            // Repair attempt #1: full-shape regex
+            const jsonMatch =
+                customizedMatchesText.match(/\[\s*\{[\s\S]*\}\s*\]/) ||
+                customizedMatchesText.match(/\{[\s\S]*\}/);
             if (jsonMatch) {
                 try {
                     customizedMatches = JSON.parse(jsonMatch[0]);
-                } catch (innerError) {
-                    throw new Error(`Failed to parse AI response: ${customizedMatchesText.substring(0, 100)}...`);
+                } catch {
+                    // Repair attempt #2: truncated array — find the last complete
+                    // top-level `}` and reseal the array. Common when Gemini hits
+                    // maxOutputTokens partway through the 3rd offer.
+                    customizedMatches = repairTruncatedArray(customizedMatchesText);
                 }
             } else {
-                throw new Error(`AI response was not valid JSON: ${customizedMatchesText.substring(0, 100)}...`);
+                customizedMatches = repairTruncatedArray(customizedMatchesText);
+            }
+
+            if (!customizedMatches) {
+                const hint =
+                    finishReason === 'MAX_TOKENS'
+                        ? ' (Gemini hit MAX_TOKENS — bump maxOutputTokens further)'
+                        : '';
+                throw new Error(
+                    `Failed to parse AI response${hint}. Length=${customizedMatchesText.length}, finishReason=${finishReason}.`,
+                );
             }
         }
 
