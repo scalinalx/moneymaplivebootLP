@@ -66,8 +66,8 @@ export const LearningOutcomesSection: React.FC = () => {
                     <div className="w-12 h-12 bg-white border border-gray-100 rounded-lg flex items-center justify-center mb-6 shadow-lg">
                         <Users className="w-6 h-6 text-black" />
                     </div>
-                    <h3 className="font-display font-black text-2xl uppercase mb-4">📞 4 Live Weekly Calls</h3>
-                    <p className="font-poppins text-gray-600 mb-4 font-bold">Mondays, 12 PM EST, 60 min each.</p>
+                    <h3 className="font-display font-black text-2xl uppercase mb-4">📞 1 Monthly Live Call</h3>
+                    <p className="font-poppins text-gray-600 mb-4 font-bold">2nd Tuesday of the month, 12 PM EST, 60 minutes.</p>
                     <ul className="space-y-2 font-poppins text-sm md:text-base text-black mb-4">
                         <li>• I review 3-5 people's work LIVE</li>
                         <li>• Everyone learns from each other's mistakes</li>

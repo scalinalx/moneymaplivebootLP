@@ -17,15 +17,15 @@ export const WinsSection: React.FC = () => {
         },
         {
             question: "I'm not technical. Will I get stuck on the tech setup?",
-            answer: "NO. Every tech step has a Loom video showing exactly where to click. Plus, Week 3's live call is entirely devoted to tech troubleshooting. You won't get stuck."
+            answer: "NO. Every tech step has a Loom video showing exactly where to click. You can also bring any tech questions to the monthly live call or post them in the Teachable community. You won't get stuck."
         },
         {
-            question: "What if I can't attend the live calls?",
-            answer: "No problem. Recordings are posted within 2 hours. Plus, the Teachable community gives you 24-hour async support. You can do this entirely self-paced if needed."
+            question: "What if I can't attend the live call?",
+            answer: "No problem. The monthly live call (2nd Tuesday of the month, 12 PM EST, 60 minutes) is recorded and posted to the community shortly after it ends — everyone gets access to the recording. Combined with 24-hour async support inside Teachable, you can run this program entirely self-paced if needed."
         },
         {
             question: "I have a newborn/full-time job. Do I have time for this?",
-            answer: "YES. Each daily task is 30-60 minutes MAX. Do it during naptime or at 10 PM. The program is async-first with one optional live call per week."
+            answer: "YES. Each daily task is 30-60 minutes MAX. Do it during naptime or at 10 PM. The program is async-first with one optional live call per month — and that call is recorded if you can't make it."
         },
         {
             question: "What if I've already launched and it flopped?",
@@ -33,7 +33,7 @@ export const WinsSection: React.FC = () => {
         },
         {
             question: "Is this a course or coaching?",
-            answer: "BOTH. You get the course materials (tasks, templates, videos) AND weekly group coaching (hot seats + feedback)."
+            answer: "BOTH. You get the course materials (tasks, templates, videos) AND a monthly group coaching call with Ana (hot seats, offer audits, content & email feedback, open Q&A) — plus the recording afterwards."
         },
         {
             question: "What happens after 30 days?",

@@ -5,7 +5,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 const valueItems = [
     { label: "Video Training Library", desc: "Step-by-step modules you watch at your own pace", value: 297 },
-    { label: "Live Group Coaching Calls", desc: "Weekly hot-seats and Q&A with Ana — get unstuck fast", value: 397 },
+    { label: "Live Group Coaching Calls", desc: "Monthly hot-seats and Q&A with Ana — get unstuck fast", value: 397 },
     { label: "Direct Feedback on Your Offer", desc: "Submit your offer and get a personal critique", value: 297 },
     { label: "Private Community Access", desc: "A high-accountability space of ambitious peers pushing to $10k", value: 197 },
     { label: "PDF Playbooks & Guides", desc: "Printable step-by-step launch maps and strategy docs", value: 197 },

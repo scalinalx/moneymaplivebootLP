@@ -40,9 +40,6 @@ export const IncludedSection: React.FC = () => {
                         <li>Identify your first 100 buyers inside your existing audience</li>
                         <li>Fix your About page, bio, and credibility signals so buyers trust you faster</li>
                     </ul>
-                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
-                        <span className="font-bold">📞 Live Call #1:</span> Hot Seat Offer Audits & Real-time Feedback
-                    </div>
                     <p className="mt-4 font-bold text-[#d81159]">Outcome: You know what you’re selling, who it’s for, and why it will sell.</p>
                 </div>
 
@@ -75,9 +72,6 @@ export const IncludedSection: React.FC = () => {
                         <li>Study real engagement vs. revenue post examples</li>
                         <li>Know exactly what to post 3 weeks, 2 weeks, and days before launch</li>
                     </ul>
-                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
-                        <span className="font-bold">📞 Live Call #3:</span> Content & Email Sequence Feedback Hot Seat
-                    </div>
                     <p className="mt-4 font-bold text-[#d81159]">Outcome: Your audience is warmed up, aligned, and expecting your offer.</p>
                 </div>
 
@@ -94,12 +88,25 @@ export const IncludedSection: React.FC = () => {
                         <li>Use tools, templates, and landing-page resources</li>
                         <li>Learn Ana’s high-converting workshop/webinar structure you can reuse forever</li>
                     </ul>
-                    <div className="bg-white border border-gray-100 p-4 inline-block rounded-md shadow-sm">
-                        <span className="font-bold">📞 Live Call #4:</span> Launch War Room
-                    </div>
                     <p className="mt-4 font-bold text-[#d81159]">Outcome: You complete your launch with a system you can reuse again and again—not a one-off win.</p>
                 </div>
 
+            </div>
+
+            {/* Monthly Live Call */}
+            <div className="max-w-5xl w-full mx-auto mb-16">
+                <div className="bg-black text-white p-6 md:p-8 rounded-lg shadow-xl border border-gray-100">
+                    <h4 className="font-display font-black text-2xl md:text-3xl uppercase mb-4">📞 Monthly Live Call With Ana</h4>
+                    <p className="font-poppins text-white/80 mb-4 font-bold italic">One live group session each month — bring your offer, your draft emails, your stuck point, and walk out with answers.</p>
+                    <ul className="space-y-3 font-poppins text-white list-disc pl-5">
+                        <li>Hot-seat offer audits — Ana reviews your offer live and shows you exactly what to tighten</li>
+                        <li>Real-time feedback on whatever you’re working on right now</li>
+                        <li>Open Q&amp;A for your specific situation — no question too small</li>
+                        <li>Email sequence & content feedback — paste your draft, get it critiqued live</li>
+                        <li>Launch troubleshooting, positioning gut-checks, pricing pressure-tests, and more</li>
+                    </ul>
+                    <p className="mt-4 font-poppins text-white/60 text-sm italic">Can’t make it live? Every call is recorded and posted to the community shortly after — you keep access for life.</p>
+                </div>
             </div>
 
             {/* CTA */}

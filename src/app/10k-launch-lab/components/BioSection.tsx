@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from './Button';
-import { ShieldCheck, Check } from 'lucide-react';
 
 export const BioSection: React.FC = () => {
     const scrollToCheckout = () => {
@@ -31,41 +30,19 @@ export const BioSection: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Text Column - Guarantee */}
+                    {/* Text Column - All Sales Final */}
                     <div className="w-full md:w-2/3 space-y-6 font-poppins text-base md:text-lg text-black leading-relaxed">
                         <h2 className="font-display font-black text-3xl md:text-5xl uppercase leading-none mb-4">
-                            ⚡ THE GUARANTEE:<br />
-                            "Launch-or-We-Fix-It"
+                            All Sales Final
                         </h2>
 
-                        <p className="font-bold">Here's my promise to you:</p>
+                        <p>
+                            Because of the digital and live nature of this program — instant access to the full curriculum, templates, AI tools, community, and live coaching call the moment you join — <span className="font-bold">no refunds or guarantees can be offered.</span>
+                        </p>
 
-                        <div className="bg-gray-50 p-6 border-l-4 border-black space-y-4">
-                            <p className="font-bold">IF YOU:</p>
-                            <ul className="space-y-2 pl-4">
-                                <li className="flex items-center gap-2"><Check className="w-5 h-5 text-green-600" /> Complete all 30 daily tasks</li>
-                                <li className="flex items-center gap-2"><Check className="w-5 h-5 text-green-600" /> Attend ALL 4 weekly calls</li>
-                                <li className="flex items-center gap-2"><Check className="w-5 h-5 text-green-600" /> Launch your offer within 45 days</li>
-                            </ul>
-
-                            <p className="font-bold pt-2">AND YOU DON'T MAKE AT LEAST $3,000...</p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <p className="font-bold">I'LL PERSONALLY:</p>
-                            <ol className="list-decimal pl-5 space-y-1 font-medium">
-                                <li>Audit your entire sales funnel</li>
-                                <li>Rewrite your sales page headline + CTA</li>
-                                <li>Give you a custom recovery plan</li>
-                            </ol>
-                        </div>
-
-                        <p className="font-bold text-xl">OR refund your $597. No questions asked.</p>
-
-                        <div className="flex items-center gap-2 text-sm text-gray-500 italic">
-                            <ShieldCheck className="w-5 h-5" />
-                            You literally can't lose if you do the work.
-                        </div>
+                        <p>
+                            Please make sure you’re ready to do the work before enrolling. If you have questions about whether the Lab is the right fit for you, reach out before purchasing and we’ll help you decide.
+                        </p>
                     </div>
 
                 </div>
