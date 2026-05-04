@@ -11,7 +11,6 @@ import { RealResults } from '@/components/offer-clarity/RealResults';
 import { ToolsAndSignature } from '@/components/offer-clarity/ToolsAndSignature';
 import { CourseGrowsWithYou } from '@/components/offer-clarity/CourseGrowsWithYou';
 import { SubscribersCallout } from '@/components/offer-clarity/SubscribersCallout';
-import { PricingTier } from '@/components/offer-clarity/PricingTier';
 import { BonusStack } from '@/components/offer-clarity/BonusStack';
 import { EmbeddedCheckout } from '@/components/offer-clarity/EmbeddedCheckout';
 import { FinalCTA } from '@/components/offer-clarity/FinalCTA';
@@ -33,7 +32,6 @@ export default function OfferClarityPage() {
       <ToolsAndSignature />
       <CourseGrowsWithYou />
       <SubscribersCallout />
-      <PricingTier />
       <BonusStack />
       <EmbeddedCheckout />
       <FinalCTA />

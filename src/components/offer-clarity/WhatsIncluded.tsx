@@ -163,11 +163,8 @@ export function WhatsIncluded() {
               className="text-4xl md:text-5xl font-extrabold mb-3 text-[#1a1a1a]"
               style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
             >
-              Launch Price: $97*
+              Price: $197
             </h3>
-            <p className="italic text-gray-600 text-base md:text-lg">
-              *Tomorrow it will be $147. Then $197 (forever).
-            </p>
           </div>
 
           <CTA size="lg" className="mt-10">

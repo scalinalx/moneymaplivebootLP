@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "The Offer Clarity Sprint — Get Way More Money Working Less | Ana Calin",
-    description: "How I package expertise into clear offers that subscribers buy from a single email — no calls, no funnels, no ads. Just one clear offer. 198 subscribers became $2,400 in 48 hours. 547 became $3,200 on a first launch. Get the framework, the price architect, the 3-email launch template, and the AI Offer Flow tool — for $97.",
+    description: "How I package expertise into clear offers that subscribers buy from a single email — no calls, no funnels, no ads. Just one clear offer. 198 subscribers became $2,400 in 48 hours. 547 became $3,200 on a first launch. Get the framework, the price architect, the 3-email launch template, and the AI Offer Flow tool — for $197.",
     icons: {
         icon: '/imgs/hwg-icon.webp',
         shortcut: '/imgs/hwg-icon.webp',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: "The Offer Clarity Sprint — Get Way More Money Working Less",
-        description: "Package your expertise into a clear offer subscribers buy from a single email. 5 years of figuring out offers that sell — distilled into one self-paced sprint. Includes the One-Sentence Offer formula, Will-It-Sell stress test, Price Architect, 3-email launch template, and AI Offer Flow tool. $97.",
+        description: "Package your expertise into a clear offer subscribers buy from a single email. 5 years of figuring out offers that sell — distilled into one self-paced sprint. Includes the One-Sentence Offer formula, Will-It-Sell stress test, Price Architect, 3-email launch template, and AI Offer Flow tool. $197.",
         siteName: 'How We Grow',
         type: 'website',
         url: '/offer-clarity',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: "The Offer Clarity Sprint — Get Way More Money Working Less",
-        description: "How to package your expertise into one clear offer subscribers buy from a single email. 198 subs → $2,400. 547 subs → $3,200. Frameworks, price architect, 3-email launch template, AI Offer Flow tool. $97.",
+        description: "How to package your expertise into one clear offer subscribers buy from a single email. 198 subs → $2,400. 547 subs → $3,200. Frameworks, price architect, 3-email launch template, AI Offer Flow tool. $197.",
         images: ['/imgs/offer-clarity/hero1.webp'],
         site: '@howwegrow',
         creator: '@howwegrow',

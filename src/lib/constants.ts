@@ -8,7 +8,7 @@ export const GENIUS_IDEAS_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_G
 export const GENIUS_IDEAS_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE || '8700', 10);
 
 // Offer Clarity Sprint Pricing
-export const OFFER_CLARITY_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_PRICE || '9700', 10);
+export const OFFER_CLARITY_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_PRICE || '19700', 10);
 
 // Order bumps — sale prices
 export const OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE || '6700', 10);  // Launch Stack — $67

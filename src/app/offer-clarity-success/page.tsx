@@ -249,7 +249,7 @@ function buildMockLead(searchParams: URLSearchParams): Lead {
     has_coaching_upsell:
       presetOverrides.has_coaching_upsell ??
       (searchParams.get('coaching') === '1' || bumpSet.has('coaching')),
-    total_paid_cents: 9700,
+    total_paid_cents: 19700,
     payment_completed_at: new Date().toISOString(),
   };
 }
