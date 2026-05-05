@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from './Button';
 import { Clock, DollarSign, XCircle, CheckCircle } from 'lucide-react';
+import { LAUNCHLAB_PRICE } from '@/lib/constants';
 
 export const DeepDiveSection: React.FC = () => {
     const scrollToCheckout = () => {
@@ -37,7 +38,7 @@ export const DeepDiveSection: React.FC = () => {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-50 px-4 py-1 border border-gray-100 font-bold uppercase text-xs tracking-wider shadow-sm">Best Value</div>
                     <h3 className="font-display font-black text-2xl uppercase mb-4 text-black">Option C: Join the 10K Launch Lab</h3>
                     <ul className="space-y-4 font-poppins text-sm md:text-base mb-6 text-black font-medium">
-                        <li className="flex items-start gap-2"><DollarSign className="w-5 h-5 flex-shrink-0 text-green-600" /> Investment: $597</li>
+                        <li className="flex items-start gap-2"><DollarSign className="w-5 h-5 flex-shrink-0 text-green-600" /> Investment: ${LAUNCHLAB_PRICE / 100}</li>
                         <li className="flex items-start gap-2"><Clock className="w-5 h-5 flex-shrink-0 text-green-600" /> Time: 30 days (30-60 min/day)</li>
                         <li className="flex items-start gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 text-green-600" /> Control: 100%</li>
                     </ul>

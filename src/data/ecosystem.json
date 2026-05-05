@@ -175,21 +175,57 @@
                 },
                 {
                     "name": "The Offer Clarity Sprint",
-                    "description": "A self-paced course that teaches creators how to package expertise into a clear, one-sentence offer that subscribers buy from a single email. Embedded Stripe Elements checkout with 3 individual order bumps + a discounted bundle, followed by a 1:1 coaching upsell.",
-                    "price": "$97",
-                    "priceNote": "(`NEXT_PUBLIC_OFFER_CLARITY_PRICE`)",
+                    "description": "A self-paced course that teaches creators how to package expertise into a clear, one-sentence offer that subscribers buy from a single email. Embedded Stripe Elements checkout with 3 individual order bumps + a discounted bundle, followed by a $147 workshop-recording upsell, and a $797 1:1 coaching upsell.",
+                    "price": "$197",
+                    "priceNote": "(`NEXT_PUBLIC_OFFER_CLARITY_PRICE` — default 19700 cents)",
                     "links": [
                         {
                             "label": "Sales & Checkout",
                             "url": "/offer-clarity"
                         },
                         {
-                            "label": "Coaching Upsell",
+                            "label": "Upsell #1 — What To Sell",
+                            "url": "/offer-clarity-what-to-sell-upsell"
+                        },
+                        {
+                            "label": "Upsell #2 — Coaching",
                             "url": "/offer-clarity-coaching-upsell"
                         },
                         {
                             "label": "Success",
                             "url": "/offer-clarity-success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Word Into Money",
+                    "description": "A copywriting workshop teaching creators how to turn their writing into recurring revenue. Embedded Stripe checkout with 3 order bumps (Hooks, 100 Genius Launch Ideas PDF, Launch Stack) + a bundle, followed by a 3-step ascending upsell sequence: First 100 Paid Subscribers ($97) → 10K Launch Lab ($597) → 1:1 Coaching ($997).",
+                    "price": "$97",
+                    "priceNote": "(`WIM_PRICE`)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/word-into-money"
+                        },
+                        {
+                            "label": "Upsell #1",
+                            "url": "/word-into-money-upsell-1"
+                        },
+                        {
+                            "label": "Upsell #2",
+                            "url": "/word-into-money-upsell-2"
+                        },
+                        {
+                            "label": "Upsell #3",
+                            "url": "/word-into-money-upsell-3"
+                        },
+                        {
+                            "label": "Final",
+                            "url": "/word-into-money-final"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/word-into-money-success"
                         }
                     ]
                 },
@@ -300,110 +336,189 @@
         },
         {
             "id": "bumps-upsells",
-            "title": "Bumps & Upsells",
-            "subtitle": "Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)",
+            "title": "Bumps, Upsells & Downsells",
+            "subtitle": "Order Bumps (in-checkout add-ons) + Post-Checkout Upsell Pages. Same product can appear in multiple funnels at different prices — each row is intentionally distinct.",
             "icon": "DollarSign",
             "color": "emerald",
             "table": [
                 {
                     "name": "Hooks That Stop the Scroll",
+                    "price": "$47",
+                    "type": "Order Bump",
+                    "offeredOn": "10K Launch Lab",
+                    "details": "Vault of high-converting headline frameworks and opening loops.",
+                    "varies": [
+                        "`NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE` (4700 cents)"
+                    ]
+                },
+                {
+                    "name": "The 60-Minute Launch Calendar",
+                    "price": "$97",
+                    "type": "Order Bump",
+                    "offeredOn": "10K Launch Lab",
+                    "details": "Day-by-day Notion templates used to manage 6-figure launches.",
+                    "varies": [
+                        "`NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE` (9700 cents)"
+                    ]
+                },
+                {
+                    "name": "Hooks That Stop the Scroll",
                     "price": "$27",
                     "type": "Order Bump",
-                    "offeredOn": "10k Lab, How to Hit 10k",
-                    "details": "A vault of high-converting headline frameworks and opening loops designed to capture attention instantly.",
+                    "offeredOn": "How to Hit 10K",
+                    "details": "Same vault, lower tier price for the $97 mini-workshop funnel.",
                     "varies": [
-                        "`NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE`",
-                        "`NEXT_PUBLIC_HIT10K_BUMP_PRICE`"
+                        "`NEXT_PUBLIC_HIT10K_BUMP_PRICE` (2700 cents)"
                     ]
                 },
                 {
                     "name": "The 60-Minute Launch Calendar",
                     "price": "$69",
                     "type": "Order Bump",
-                    "offeredOn": "10k Launch Lab",
-                    "details": "The exact day-by-day Notion templates used to manage 6-figure launches without burnout.",
+                    "offeredOn": "How to Hit 10K",
+                    "details": "Notion launch calendar templates at the discounted mini-workshop tier.",
                     "varies": [
-                        "`NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE`"
+                        "`NEXT_PUBLIC_HIT10K_BUMP2_PRICE` (6900 cents)"
                     ]
                 },
                 {
-                    "name": "CUSTOM CODED: OfferGenius™ AI Builder",
-                    "price": "$37",
+                    "name": "OfferGenius AI Builder",
+                    "price": "$17",
                     "type": "Order Bump",
-                    "offeredOn": "100 Genius Ideas",
-                    "details": "A custom AI tool that automatically perfectly customizes an offer for a specific audience to eliminate checkout hesitation.",
+                    "offeredOn": "100 Genius Launch Ideas",
+                    "details": "Custom AI offer-builder tool (Bump 1).",
                     "varies": [
-                        "`NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE`"
+                        "`NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE` (1700 cents)"
                     ]
                 },
                 {
-                    "name": "CUSTOM TRAINED: 'Lazy Launch' AI EMAIL WRITER",
-                    "price": "$67",
+                    "name": "Lazy Launch AI Email Writer (Launch Stack)",
+                    "price": "$87",
                     "type": "Order Bump",
-                    "offeredOn": "100 Genius Ideas",
-                    "details": "A custom-trained AI system pre-loaded with psychological email sequences designed to sell without sounding \"salesy\".",
+                    "offeredOn": "100 Genius Launch Ideas",
+                    "details": "Custom-trained AI email-sequence system (Bump 2).",
                     "varies": [
-                        "`NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE`"
-                    ]
-                },
-                {
-                    "name": "The Money Map Bundle",
-                    "price": "+$300",
-                    "type": "Upsell",
-                    "offeredOn": "Workshop Checkout",
-                    "details": "Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497.",
-                    "varies": [
-                        "`BUNDLE_PRICE` = $797 total"
-                    ]
-                },
-                {
-                    "name": "1:1 Sales Coaching Session",
-                    "price": "$747",
-                    "type": "Upsell (Dedicated)",
-                    "offeredOn": "/10k-launch-lab-upsell",
-                    "details": "A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates.",
-                    "varies": [
-                        "`NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE`"
-                    ]
-                },
-                {
-                    "name": "Show Don't Tell Thumbnail Generator (400 Credits)",
-                    "price": "$47",
-                    "type": "Order Bump",
-                    "offeredOn": "Unstuck to Published, Build Your Substack",
-                    "details": "Adds 400 image credits (~200 generations) to the Show Don't Tell AI Thumbnail Generator. 19 style presets, 1 year access. Credits are provisioned into the `show_dont_tell_users` table on payment confirmation.",
-                    "varies": [
-                        "`UNSTUCK_SDT_BUMP_PRICE`"
+                        "`NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE` (8700 cents)"
                     ]
                 },
                 {
                     "name": "100 Genius Launch Ideas PDF",
                     "price": "$27",
                     "type": "Order Bump",
-                    "offeredOn": "Unstuck to Published, Build Your Substack",
-                    "details": "100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Instant PDF download with lifetime access.",
+                    "offeredOn": "First 100 Paid Subscribers",
+                    "details": "184-page vault of pre-validated offer templates.",
                     "varies": [
-                        "`UNSTUCK_GENIUS_BUMP_PRICE`"
+                        "`FIRST100_BUMP_PRICE` (2700 cents)"
                     ]
                 },
                 {
                     "name": "Hooks That Stop the Scroll",
                     "price": "$27",
                     "type": "Order Bump",
-                    "offeredOn": "Unstuck to Published, Build Your Substack",
-                    "details": "Vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click.",
+                    "offeredOn": "First 100 Paid Subscribers",
+                    "details": "Headline frameworks and opening loops vault.",
                     "varies": [
-                        "`UNSTUCK_HOOKS_BUMP_PRICE`"
+                        "`FIRST100_BUMP2_PRICE` (2700 cents)"
+                    ]
+                },
+                {
+                    "name": "Launch Stack (AI Email Sequence Copywriter)",
+                    "price": "$67",
+                    "type": "Order Bump",
+                    "offeredOn": "First 100 Paid Subscribers",
+                    "details": "Password-gated AI email sequence generator.",
+                    "varies": [
+                        "`FIRST100_BUMP3_PRICE` (6700 cents)"
+                    ]
+                },
+                {
+                    "name": "First 100 Bump Bundle (All 3)",
+                    "price": "$97",
+                    "type": "Order Bump (Bundle)",
+                    "offeredOn": "First 100 Paid Subscribers",
+                    "details": "Bundles 100 Genius Ideas + Hooks + Launch Stack. Selecting bundle disables individual bumps.",
+                    "varies": [
+                        "`FIRST100_BUNDLE_PRICE` (9700 cents)"
+                    ]
+                },
+                {
+                    "name": "Show Don't Tell Thumbnail Generator (400 Credits)",
+                    "price": "$47",
+                    "type": "Order Bump",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "Provisions 400 image credits (~200 generations) into the SDT thumbnail generator on payment confirmation.",
+                    "varies": [
+                        "`UNSTUCK_SDT_BUMP_PRICE` (4700 cents)"
+                    ]
+                },
+                {
+                    "name": "100 Genius Launch Ideas PDF",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "Instant PDF download, lifetime access.",
+                    "varies": [
+                        "`UNSTUCK_GENIUS_BUMP_PRICE` (2700 cents)"
+                    ]
+                },
+                {
+                    "name": "Hooks That Stop the Scroll",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "Headline frameworks vault.",
+                    "varies": [
+                        "`UNSTUCK_HOOKS_BUMP_PRICE` (2700 cents)"
                     ]
                 },
                 {
                     "name": "The Creator Launch Kit (Bundle)",
                     "price": "$69",
                     "type": "Order Bump (Bundle)",
-                    "offeredOn": "Unstuck to Published, Build Your Substack",
-                    "details": "All 3 add-ons bundled: Show Don't Tell (400 credits) + 100 Genius Launch Ideas PDF + Hooks That Stop the Scroll. Individual total $101, bundle price $69 (save $32).",
+                    "offeredOn": "Unstuck to Published",
+                    "details": "All 3 add-ons bundled (SDT 400 credits + 100 Genius PDF + Hooks). Individual total $101, save $32.",
                     "varies": [
-                        "`UNSTUCK_BUNDLE_PRICE`"
+                        "`UNSTUCK_BUNDLE_PRICE` (6900 cents)"
+                    ]
+                },
+                {
+                    "name": "Show Don't Tell Thumbnail Generator (400 Credits)",
+                    "price": "$47",
+                    "type": "Order Bump",
+                    "offeredOn": "Build Your Substack",
+                    "details": "Same SDT 400-credit add-on. Reuses Unstuck constants — distinct funnel instance.",
+                    "varies": [
+                        "`UNSTUCK_SDT_BUMP_PRICE` (shared, 4700 cents)"
+                    ]
+                },
+                {
+                    "name": "100 Genius Launch Ideas PDF",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Build Your Substack",
+                    "details": "PDF vault — distinct funnel instance, shared constant with Unstuck.",
+                    "varies": [
+                        "`UNSTUCK_GENIUS_BUMP_PRICE` (shared, 2700 cents)"
+                    ]
+                },
+                {
+                    "name": "Hooks That Stop the Scroll",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Build Your Substack",
+                    "details": "Headline frameworks vault — distinct funnel instance.",
+                    "varies": [
+                        "`UNSTUCK_HOOKS_BUMP_PRICE` (shared, 2700 cents)"
+                    ]
+                },
+                {
+                    "name": "The Creator Launch Kit (Bundle)",
+                    "price": "$69",
+                    "type": "Order Bump (Bundle)",
+                    "offeredOn": "Build Your Substack",
+                    "details": "All 3 add-ons bundled — distinct funnel instance, shared constant with Unstuck.",
+                    "varies": [
+                        "`UNSTUCK_BUNDLE_PRICE` (shared, 6900 cents)"
                     ]
                 },
                 {
@@ -411,9 +526,9 @@
                     "price": "$67",
                     "type": "Order Bump",
                     "offeredOn": "Creator Bundle",
-                    "details": "The comprehensive launch project management tool added as an order bump on the Creator Bundle checkout.",
+                    "details": "Password-gated AI email sequence generator added at Creator Bundle checkout.",
                     "varies": [
-                        "`CREATOR_BUNDLE_BUMP_PRICE`"
+                        "`CREATOR_BUNDLE_BUMP_PRICE` (6700 cents)"
                     ]
                 },
                 {
@@ -421,9 +536,9 @@
                     "price": "$67",
                     "type": "Order Bump",
                     "offeredOn": "Offer Clarity Sprint",
-                    "details": "Password-gated launch project management tool. Password (`mellon_hwg`) revealed on success page after purchase.",
+                    "details": "Password (`mellon_hwg`) revealed on success page after purchase.",
                     "varies": [
-                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE`"
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE` (6700 cents)"
                     ]
                 },
                 {
@@ -431,9 +546,9 @@
                     "price": "$47",
                     "type": "Order Bump",
                     "offeredOn": "Offer Clarity Sprint",
-                    "details": "Vault of high-converting headline frameworks and opening loops.",
+                    "details": "Headline frameworks vault, mid-tier price for the $197 funnel.",
                     "varies": [
-                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE`"
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE` (4700 cents)"
                     ]
                 },
                 {
@@ -441,34 +556,150 @@
                     "price": "$37",
                     "type": "Order Bump",
                     "offeredOn": "Offer Clarity Sprint",
-                    "details": "AI-powered offer builder. Password-gated tool unlocked on success page (uses same `mellon_hwg` master password as Launch Stack).",
+                    "details": "AI offer builder, password-gated with `mellon_hwg`.",
                     "varies": [
-                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE`"
+                        "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE` (3700 cents)"
                     ]
                 },
                 {
                     "name": "Offer Clarity Bump Bundle (All 3)",
-                    "price": "Auto-computed (~20% off)",
+                    "price": "~$121 (auto-computed)",
                     "type": "Order Bump (Bundle)",
                     "offeredOn": "Offer Clarity Sprint",
-                    "details": "Auto-calculated bundle: sum of Launch Stack + Hooks + Offer Genius minus a configurable discount percentage. When selected, individual bumps are disabled. Optional explicit override available.",
+                    "details": "Auto-calc: ($67 + $47 + $37) × (1 − 0.20) ≈ $120.80. Selecting bundle disables individuals. Optional explicit override.",
                     "varies": [
                         "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT` (default 0.20)",
                         "`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE` (optional override)"
                     ]
                 },
                 {
+                    "name": "Hooks That Stop the Scroll",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Word Into Money",
+                    "details": "Headline frameworks vault — Bump 1 of WIM checkout.",
+                    "varies": [
+                        "`WIM_BUMP1_PRICE` (2700 cents)"
+                    ]
+                },
+                {
+                    "name": "100 Genius Launch Ideas PDF",
+                    "price": "$27",
+                    "type": "Order Bump",
+                    "offeredOn": "Word Into Money",
+                    "details": "PDF vault — Bump 2 of WIM checkout.",
+                    "varies": [
+                        "`WIM_BUMP2_PRICE` (2700 cents)"
+                    ]
+                },
+                {
+                    "name": "Launch Stack Email Copywriter",
+                    "price": "$67",
+                    "type": "Order Bump",
+                    "offeredOn": "Word Into Money",
+                    "details": "Password-gated AI email sequence generator — Bump 3 of WIM checkout.",
+                    "varies": [
+                        "`WIM_BUMP3_PRICE` (6700 cents)"
+                    ]
+                },
+                {
+                    "name": "Word Into Money Bump Bundle (All 3)",
+                    "price": "$69",
+                    "type": "Order Bump (Bundle)",
+                    "offeredOn": "Word Into Money",
+                    "details": "All 3 add-ons bundled. Selecting bundle disables individuals.",
+                    "varies": [
+                        "`WIM_BUNDLE_PRICE` (6900 cents)"
+                    ]
+                },
+                {
+                    "name": "The Money Map Bundle Upgrade",
+                    "price": "$497 (bundle) / $497 (standalone) / `BUNDLE_PRICE` env",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/upsell — post-Build-to-Profit checkout",
+                    "details": "Page offers an upgrade to Build to Profit + Money Map bundle. Hardcoded display price $497 for both 'bundle' and 'standard' variants on the page; backend uses `BUNDLE_PRICE` (default $797) and `WORKSHOP_PRICE` (default $597) env vars when creating the Stripe session.",
+                    "varies": [
+                        "`BUNDLE_PRICE` (default 79700 cents)",
+                        "`WORKSHOP_PRICE` (default 59700 cents)",
+                        "Page text hardcoded to $497 — production env vars likely override defaults"
+                    ]
+                },
+                {
+                    "name": "10K Launch Lab Upgrade",
+                    "price": "$597",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/10k-launch-lab-upsell — post-First-100 / post-Hit-10K",
+                    "details": "Value stack page offering the full 10K Launch Lab program. 'ONLY $597 FOR YOU' vs $4,997 stacked-value strikethrough. Same product as the standalone $597 sale on `/10k-launch-lab` — distinct sales context.",
+                    "varies": [
+                        "Hardcoded display $597 (matches `LAUNCHLAB_PRICE` 59700 cents)"
+                    ]
+                },
+                {
+                    "name": "Private 1:1 Sales Audit / Coaching",
+                    "price": "$747",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/10k-coaching-upsell — post-Launch-Lab-upsell",
+                    "details": "One-click off-session charge for a high-touch 1:1 coaching session. $747 with $1,497 strikethrough. Routes the user to success after acceptance or skip.",
+                    "varies": [
+                        "`NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE` (74700 cents)"
+                    ]
+                },
+                {
+                    "name": "\"What Do I Even Sell?\" Workshop Recording",
+                    "price": "$147",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/offer-clarity-what-to-sell-upsell — post-Offer-Clarity",
+                    "details": "Post-purchase one-click upsell. $147 with $247 strikethrough. Falls back to Stripe Elements if no saved card.",
+                    "varies": [
+                        "`NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_PRICE` (14700 cents)",
+                        "`NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_RETAIL_PRICE` (24700 cents strikethrough)"
+                    ]
+                },
+                {
                     "name": "1:1 Coaching with Ana",
                     "price": "$797",
                     "type": "Upsell (Dedicated)",
-                    "offeredOn": "/offer-clarity-coaching-upsell",
-                    "details": "Post-purchase one-click upsell using saved card (off-session charge via `setup_future_usage: off_session`). Reduced from $997 retail. Falls back to Stripe Elements form if no saved payment method.",
+                    "offeredOn": "/offer-clarity-coaching-upsell — post-Offer-Clarity (sequenced after What-To-Sell)",
+                    "details": "One-click off-session charge using saved card (`setup_future_usage: off_session` set on the original PI). $797 with $997 strikethrough. Falls back to embedded Stripe Elements if no saved payment method.",
                     "varies": [
-                        "`NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE` ($797)",
-                        "`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE` ($997)"
+                        "`NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE` (79700 cents)",
+                        "`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE` (99700 cents strikethrough)"
+                    ]
+                },
+                {
+                    "name": "First 100 Paid Subscribers (WIM Upsell #1)",
+                    "price": "$97",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/word-into-money-upsell-1 — post-Word-Into-Money",
+                    "details": "First step of the WIM 3-step ascending upsell ladder. Offers the First 100 Paid Subscribers workshop. Hardcoded button text $97. Distinct sales instance — different funnel context from the standalone `/first-100-paid-subscribers` page.",
+                    "varies": [
+                        "`WIM_UPSELL1_PRICE` (9700 cents)"
+                    ]
+                },
+                {
+                    "name": "10K Launch Lab (WIM Upsell #2)",
+                    "price": "$597",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/word-into-money-upsell-2 — post-WIM-Upsell-1",
+                    "details": "Second step of the WIM ladder. Offers the 10K Launch Lab program. Distinct sales instance — different funnel context from `/10k-launch-lab` and `/10k-launch-lab-upsell`.",
+                    "varies": [
+                        "`WIM_UPSELL2_PRICE` (59700 cents)"
+                    ]
+                },
+                {
+                    "name": "1:1 Coaching with Ana (WIM Upsell #3)",
+                    "price": "$997",
+                    "type": "Upsell (Dedicated)",
+                    "offeredOn": "/word-into-money-upsell-3 — post-WIM-Upsell-2",
+                    "details": "Final step of the WIM ladder. 1:1 coaching at full retail $997 (no strikethrough on this version). Distinct from the Offer Clarity coaching upsell ($797 reduced from $997).",
+                    "varies": [
+                        "`WIM_UPSELL3_PRICE` (99700 cents)"
                     ]
                 }
-            ]
+            ],
+            "downsells": {
+                "note": "No explicit downsell pages found in the codebase. Each upsell page presents a single offer with an 'No thanks' / skip path that routes to the success page or next funnel step (no cheaper alternative is shown). The WIM 3-step ladder is sometimes informally described as a 'downsell sequence' since later steps are higher-priced — but architecturally each step is a fresh upsell, not a downsell."
+            }
         },
         {
             "id": "success-pages",
@@ -563,10 +794,56 @@
                     ]
                 },
                 {
+                    "path": "/offer-clarity-what-to-sell-upsell",
+                    "name": "Offer Clarity — What To Sell Upsell",
+                    "content": "Post-checkout one-click upsell offering the \"What Do I Even Sell?\" workshop recording at $147 (was $247). Comes before the coaching upsell in the Offer Clarity sequence. Uses saved card off-session charge; falls back to embedded Stripe Elements if no payment method.",
+                    "redirect": "On success or skip, forwards into the coaching-upsell or success page."
+                },
+                {
                     "path": "/offer-clarity-coaching-upsell",
                     "name": "Offer Clarity Coaching Upsell",
                     "content": "Post-checkout one-click upsell page for 1:1 coaching with Ana at $797 (struck-through retail $997, with emerald 'Save $200' badge). Heading uses the same emerald green as the announcement bar. Uses saved card off-session charge; falls back to embedded Stripe Elements if no payment method on file.",
                     "redirect": "On success or skip, forwards to `/offer-clarity-success?leadId=...`."
+                },
+                {
+                    "path": "/10k-launch-lab-upsell",
+                    "name": "10K Launch Lab Upsell",
+                    "content": "Value-stack upsell page presenting the full $4,997 stack for $597. Offered post-checkout to First 100 Paid Subscribers and How to Hit 10K buyers — same core product as `/10k-launch-lab`, distinct sales instance."
+                },
+                {
+                    "path": "/10k-coaching-upsell",
+                    "name": "Private 1:1 Sales Audit Upsell",
+                    "content": "Post-Launch-Lab-upsell page offering a private 1:1 sales audit / coaching session at $747 (was $1,497). One-click charge against the saved card on file."
+                },
+                {
+                    "path": "/word-into-money-success",
+                    "name": "Word Into Money Success",
+                    "content": "Confirms the Word Into Money purchase and provides workshop access details."
+                },
+                {
+                    "path": "/word-into-money-upsell-1",
+                    "name": "WIM Upsell #1 — First 100 Paid Subscribers",
+                    "content": "Step 1 of the WIM 3-step ascending upsell ladder. Offers the First 100 Paid Subscribers workshop at $97. Continues to Upsell #2 on accept or skip."
+                },
+                {
+                    "path": "/word-into-money-upsell-2",
+                    "name": "WIM Upsell #2 — 10K Launch Lab",
+                    "content": "Step 2 of the WIM ladder. Offers the 10K Launch Lab at $597. Continues to Upsell #3 on accept or skip."
+                },
+                {
+                    "path": "/word-into-money-upsell-3",
+                    "name": "WIM Upsell #3 — 1:1 Coaching",
+                    "content": "Final step of the WIM ladder. Offers 1:1 coaching with Ana at $997. Routes to `/word-into-money-final` on accept or skip."
+                },
+                {
+                    "path": "/word-into-money-final",
+                    "name": "Word Into Money Final",
+                    "content": "Terminal confirmation / fulfillment page after the 3-step WIM upsell ladder completes."
+                },
+                {
+                    "path": "/upsell",
+                    "name": "Build to Profit Upsell",
+                    "content": "Post-Build-to-Profit upsell offering the Money Map bundle upgrade. Hardcoded display price $497 with $3,202 retail strikethrough. Two CTAs: 'Upgrade now — Bundle ($497)' and 'No Thanks — just Build to Profit ($497)'. Backend creates the Stripe session via `WORKSHOP_PRICE` / `BUNDLE_PRICE` env vars."
                 }
             ]
         },
@@ -1040,9 +1317,9 @@
                     "entryPoint": "/offer-clarity",
                     "coreProduct": {
                         "name": "The Offer Clarity Sprint",
-                        "price": "$97",
+                        "price": "$197",
                         "type": "Self-paced course (one-sentence offer framework)",
-                        "envVar": "NEXT_PUBLIC_OFFER_CLARITY_PRICE"
+                        "envVar": "NEXT_PUBLIC_OFFER_CLARITY_PRICE (default 19700 cents)"
                     },
                     "orderBumps": [
                         {
@@ -1075,17 +1352,88 @@
                     },
                     "upsells": [
                         {
+                            "name": "\"What Do I Even Sell?\" Workshop Recording",
+                            "price": "$147",
+                            "strikethroughPrice": "$247",
+                            "page": "/offer-clarity-what-to-sell-upsell",
+                            "envVar": "NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_PRICE",
+                            "description": "First post-checkout upsell, sequenced before the coaching upsell"
+                        },
+                        {
                             "name": "1:1 Coaching with Ana",
                             "price": "$797",
                             "strikethroughPrice": "$997",
                             "page": "/offer-clarity-coaching-upsell",
                             "envVar": "NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE",
-                            "description": "Post-checkout one-click upsell using saved card (off-session)"
+                            "description": "Second post-checkout upsell, one-click off-session charge"
                         }
                     ],
-                    "maxCartValue": "$1,015 (course $97 + bundle ~$121 + coaching $797)",
+                    "maxCartValue": "$1,262 (course $197 + bundle ~$121 + what-to-sell $147 + coaching $797)",
                     "successPage": "/offer-clarity-success",
                     "leadTable": "offer_clarity_leads"
+                },
+                {
+                    "name": "Word Into Money Funnel",
+                    "entryPoint": "/word-into-money",
+                    "coreProduct": {
+                        "name": "Word Into Money",
+                        "price": "$97",
+                        "type": "Copywriting workshop (turn writing into recurring revenue)",
+                        "envVar": "WIM_PRICE"
+                    },
+                    "orderBumps": [
+                        {
+                            "name": "Hooks That Stop the Scroll",
+                            "price": "$27",
+                            "envVar": "WIM_BUMP1_PRICE",
+                            "description": "Headline frameworks vault"
+                        },
+                        {
+                            "name": "100 Genius Launch Ideas PDF",
+                            "price": "$27",
+                            "envVar": "WIM_BUMP2_PRICE",
+                            "description": "184-page launch ideas vault"
+                        },
+                        {
+                            "name": "Launch Stack Email Copywriter",
+                            "price": "$67",
+                            "envVar": "WIM_BUMP3_PRICE",
+                            "description": "Password-gated AI email sequence generator"
+                        }
+                    ],
+                    "bundleOption": {
+                        "name": "All 3 Bumps Bundle",
+                        "price": "$69",
+                        "individualTotal": "$121",
+                        "savings": "$52",
+                        "envVar": "WIM_BUNDLE_PRICE"
+                    },
+                    "upsells": [
+                        {
+                            "name": "First 100 Paid Subscribers",
+                            "price": "$97",
+                            "page": "/word-into-money-upsell-1",
+                            "envVar": "WIM_UPSELL1_PRICE",
+                            "description": "Step 1 of 3-step ascending upsell ladder"
+                        },
+                        {
+                            "name": "10K Launch Lab",
+                            "price": "$597",
+                            "page": "/word-into-money-upsell-2",
+                            "envVar": "WIM_UPSELL2_PRICE",
+                            "description": "Step 2 of 3-step ascending upsell ladder"
+                        },
+                        {
+                            "name": "1:1 Coaching with Ana",
+                            "price": "$997",
+                            "page": "/word-into-money-upsell-3",
+                            "envVar": "WIM_UPSELL3_PRICE",
+                            "description": "Step 3 of 3-step ascending upsell ladder; routes to `/word-into-money-final` on completion"
+                        }
+                    ],
+                    "maxCartValue": "$1,857 (workshop $97 + bundle $69 + upsell #1 $97 + upsell #2 $597 + upsell #3 $997)",
+                    "successPage": "/word-into-money-success",
+                    "leadTable": "(uses Stripe metadata routing — confirm the actual table)"
                 },
                 {
                     "name": "Your First $1K After Corporate Funnel",
@@ -1104,59 +1452,86 @@
                 },
                 {
                     "name": "Build to Profit Workshop Funnel",
-                    "entryPoint": "/join",
+                    "entryPoint": "/join (alt: /landing)",
                     "coreProduct": {
                         "name": "Build to Profit Live Workshop",
-                        "price": "$497",
+                        "price": "$497 (displayed) / $597 default constant",
                         "type": "Flagship live workshop",
-                        "envVar": "WORKSHOP_PRICE"
+                        "envVar": "WORKSHOP_PRICE (default 59700 cents = $597; production likely overridden to $497 to match displayed price)"
                     },
-                    "orderBumps": [
+                    "orderBumps": [],
+                    "bundleOption": null,
+                    "upsells": [
                         {
-                            "name": "The Money Map Bundle",
-                            "price": "+$300",
-                            "description": "Adds the comprehensive Money Map strategy course (normally $497) to the workshop"
+                            "name": "Money Map Bundle Upgrade",
+                            "price": "$497 (displayed)",
+                            "page": "/upsell",
+                            "envVar": "BUNDLE_PRICE (default 79700 cents = $797)",
+                            "description": "Bundle CTA on `/upsell` — same displayed price ($497) for both 'bundle' and 'standard' variants. Backend uses BUNDLE_PRICE / WORKSHOP_PRICE env vars when creating Stripe sessions."
                         }
                     ],
-                    "bundleOption": null,
-                    "upsells": [],
-                    "maxCartValue": "$797",
+                    "maxCartValue": "$497 standalone, or up to $797 if BUNDLE_PRICE env is at default",
                     "successPage": "/success",
-                    "leadTable": "leads_bootcamp_brands"
+                    "leadTable": "leads_bootcamp_brands",
+                    "note": "Pricing on the public pages (`/join`, `/upsell`) is hardcoded to $497. The constants/env vars (`WORKSHOP_PRICE`, `BUNDLE_PRICE`) default to $597 and $797 — production likely overrides via env to match the displayed pricing."
                 }
             ],
             "reusableProducts": {
-                "description": "Products that appear as order bumps across multiple funnels. These are the building blocks for designing new funnels.",
+                "description": "Products that appear as order bumps OR upsells across multiple funnels. Same product at different prices in different funnels is intentional.",
                 "products": [
                     {
                         "name": "Hooks That Stop the Scroll",
-                        "priceRange": "$27-$47",
+                        "priceRange": "$27–$47",
                         "type": "PDF/Vault",
-                        "appearsIn": ["10K Launch Lab ($47)", "How to Hit 10K ($27)", "First 100 Paid Subs ($27)", "Unstuck to Published ($27)", "Build Your Substack ($27)", "Offer Clarity Sprint ($47)"]
+                        "appearsIn": ["10K Launch Lab ($47)", "How to Hit 10K ($27)", "First 100 Paid Subs ($27)", "Unstuck to Published ($27)", "Build Your Substack ($27)", "Offer Clarity Sprint ($47)", "Word Into Money ($27)"]
                     },
                     {
                         "name": "100 Genius Launch Ideas PDF",
                         "priceRange": "$27",
                         "type": "PDF",
-                        "appearsIn": ["Standalone ($27)", "First 100 Paid Subs (bump $27)", "Unstuck to Published (bump $27)", "Build Your Substack (bump $27)"]
+                        "appearsIn": ["Standalone sale ($27)", "First 100 Paid Subs bump ($27)", "Unstuck to Published bump ($27)", "Build Your Substack bump ($27)", "Word Into Money bump ($27)"]
                     },
                     {
                         "name": "Launch Stack (AI Email Writer)",
-                        "priceRange": "$67-$87",
+                        "priceRange": "$67–$87",
                         "type": "AI Tool (password-gated)",
-                        "appearsIn": ["100 Genius Ideas ($87)", "First 100 Paid Subs ($67)", "Creator Bundle ($67)", "Offer Clarity Sprint ($67)"]
+                        "appearsIn": ["100 Genius Ideas bump ($87)", "First 100 Paid Subs bump ($67)", "Creator Bundle bump ($67)", "Offer Clarity Sprint bump ($67)", "Word Into Money bump ($67)"]
+                    },
+                    {
+                        "name": "60-Minute Launch Calendar",
+                        "priceRange": "$69–$97",
+                        "type": "Notion Templates",
+                        "appearsIn": ["10K Launch Lab bump ($97)", "How to Hit 10K bump ($69)"]
                     },
                     {
                         "name": "Show Don't Tell (400 Credits)",
-                        "priceRange": "$47",
+                        "priceRange": "$47 (bump) / $24–$247 (standalone)",
                         "type": "AI Tool (token-gated)",
-                        "appearsIn": ["Unstuck to Published ($47)", "Build Your Substack ($47)", "Standalone ($24-$247)"]
+                        "appearsIn": ["Unstuck to Published bump ($47)", "Build Your Substack bump ($47)", "Standalone purchase ($24 Starter / $247 Pro)"]
                     },
                     {
                         "name": "OfferGenius AI Builder",
-                        "priceRange": "$17-$37",
+                        "priceRange": "$17–$37",
                         "type": "AI Tool",
-                        "appearsIn": ["100 Genius Ideas ($17)", "Offer Clarity Sprint ($37)"]
+                        "appearsIn": ["100 Genius Ideas bump ($17)", "Offer Clarity Sprint bump ($37)"]
+                    },
+                    {
+                        "name": "First 100 Paid Subscribers",
+                        "priceRange": "$97",
+                        "type": "Workshop",
+                        "appearsIn": ["Standalone funnel `/first-100-paid-subscribers` ($97)", "Word Into Money Upsell #1 ($97)"]
+                    },
+                    {
+                        "name": "10K Launch Lab",
+                        "priceRange": "$597",
+                        "type": "30-day implementation program",
+                        "appearsIn": ["Standalone funnel `/10k-launch-lab` ($597)", "Post-checkout upsell `/10k-launch-lab-upsell` ($597)", "Word Into Money Upsell #2 ($597)"]
+                    },
+                    {
+                        "name": "1:1 Coaching with Ana",
+                        "priceRange": "$747–$997",
+                        "type": "Coaching",
+                        "appearsIn": ["Offer Clarity Coaching Upsell ($797 from $997)", "Launch Lab Coaching Upsell `/10k-coaching-upsell` ($747 from $1,497)", "Word Into Money Upsell #3 ($997)"]
                     }
                 ]
             },

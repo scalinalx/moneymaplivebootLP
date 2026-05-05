@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from './Button';
 import { ChevronDown, ChevronUp, Calendar, ArrowRight } from 'lucide-react';
+import { LAUNCHLAB_PRICE } from '@/lib/constants';
 
 export const WinsSection: React.FC = () => {
     const scrollToCheckout = () => {
@@ -73,7 +74,7 @@ export const WinsSection: React.FC = () => {
             {/* Final Thought / Real Question */}
             <div className="max-w-4xl w-full mx-auto text-center font-poppins text-lg md:text-xl leading-relaxed mb-16">
                 <h2 className="font-display font-black text-3xl md:text-4xl uppercase mb-6">💡 The Real Question:</h2>
-                <p className="mb-4">This isn't about the $597.</p>
+                <p className="mb-4">This isn't about the ${LAUNCHLAB_PRICE / 100}.</p>
                 <p className="mb-8 font-bold text-2xl">This is about the next 30 days of your life.</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">

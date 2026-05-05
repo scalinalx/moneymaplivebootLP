@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import { LAUNCHLAB_PRICE } from '@/lib/constants';
 
 const valueItems = [
     { label: "Video Training Library", desc: "Step-by-step modules you watch at your own pace", value: 297 },
@@ -15,7 +16,7 @@ const valueItems = [
 ];
 
 const totalValue = valueItems.reduce((sum, i) => sum + i.value, 0);
-const currentPrice = 597;
+const currentPrice = LAUNCHLAB_PRICE / 100;
 
 const scrollToCheckout = () => {
     const el = document.getElementById('checkout');

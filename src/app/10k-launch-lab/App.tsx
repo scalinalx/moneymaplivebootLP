@@ -39,7 +39,7 @@ const App: React.FC = () => {
             <DontTakeOurWordSection />
             <DeepDiveSection />
             <WinsSection />
-            {/* Value Stack — $1,997 → $597 */}
+            {/* Value Stack — $1,997 → current LAUNCHLAB_PRICE */}
             <LaunchLabValueStack />
             {/* Checkout Form */}
             <EmbeddedCheckout />
