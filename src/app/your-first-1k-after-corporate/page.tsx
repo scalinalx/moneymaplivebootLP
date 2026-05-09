@@ -58,21 +58,27 @@ function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-[1000px]">
         <span className="mb-8 inline-block rounded-full bg-[#ffc300] px-6 py-2 text-[13px] font-bold uppercase tracking-[2px] text-[#1a1a1a]">
-          Live Workshop · Tuesday
+          In-depth Workshop - Instant Access
         </span>
 
-        <h1 className="mb-6 font-playfair text-[clamp(36px,6vw,64px)] font-black leading-[1.1] text-[#1a1a1a]">
-          You don&apos;t need another plan.
-          <br />
-          You don&apos;t need permission.
-          <br />
-          <em className="italic text-[#f72585]">You need one decision.</em>
+        <h1 className="mb-5 font-playfair text-[clamp(36px,6vw,64px)] font-black leading-[1.1] text-[#1a1a1a]">
+          What Do I Even Sell?
         </h1>
 
-        <p className="mx-auto mb-10 max-w-[600px] text-xl leading-relaxed text-[#6b7280]">
-          Corporate taught you to analyse, prepare, and wait for approval before
-          you act. That&apos;s why you&apos;re still stuck. This workshop is the
-          decision that starts everything.
+        <p className="mx-auto mb-3 max-w-[680px] font-playfair text-[clamp(20px,2.6vw,28px)] font-semibold leading-[1.3] text-[#1a1a1a]">
+          How you&apos;ll find the one skill hiding in your brain that{' '}
+          <span className="font-black text-[#f72585]">
+            people will pay for.
+          </span>
+        </p>
+
+        <p className="mx-auto mb-10 max-w-[680px] font-playfair text-[clamp(15px,1.6vw,18px)] italic leading-[1.4] text-[#f72585]">
+          (Your first $K after corporate starts here.)
+        </p>
+
+        <p className="mx-auto mb-10 max-w-[600px] text-base leading-relaxed text-[#6b7280] lowercase">
+          you don&apos;t need another plan. you don&apos;t need permission.{' '}
+          <em className="italic text-[#f72585]">you need one decision.</em>
         </p>
 
         <Image
@@ -84,7 +90,13 @@ function HeroSection() {
           priority
         />
 
-        <CtaButton sub="60 minutes. Live + replay. This Tuesday.">
+        <p className="mx-auto mb-6 max-w-[600px] text-sm leading-relaxed text-[#6b7280]">
+          Corporate taught you to analyse, prepare, and wait for approval before
+          you act. That&apos;s why you&apos;re still stuck. This workshop is the
+          decision that starts everything.
+        </p>
+
+        <CtaButton sub="60 Minutes Workshop. Instant Access">
           I&apos;M MAKING THE DECISION
         </CtaButton>
       </div>
@@ -311,8 +323,8 @@ function ModulesSection() {
     },
     {
       title:
-        "You'll get live Q&A where I tell you exactly what I'd build if I were you",
-      desc: "Bring your background. Bring your questions. I'll look at your specific situation and tell you what I'd do. No gatekeeping. This part only happens live. It doesn't exist on the replay.",
+        "You'll get the exact playbook for what to build if you're starting from corporate",
+      desc: "Whatever your background — finance, ops, marketing, engineering — the workshop walks through what to package, how to position it, and what to charge. No gatekeeping. No vague principles. The same plays I'd run if I were starting over from your seat. Watch it the moment you buy, rewatch as many times as you need.",
     },
   ]
 
@@ -321,11 +333,11 @@ function ModulesSection() {
       <div className="mx-auto max-w-[780px]">
         <Divider />
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
-          What happens on Tuesday
+          What&apos;s inside the workshop
         </h2>
         <p className="mb-2 text-[#aaa]">
-          60 minutes. No slides with 47 bullet points. No corporate agenda. Just
-          the system.
+          60 minutes. On demand. No slides with 47 bullet points. No corporate
+          agenda. Just the system.
         </p>
 
         <ul className="my-8 list-none p-0">
@@ -496,8 +508,8 @@ function DecisionBlockSection() {
 function FAQSection() {
   const faqs = [
     {
-      q: 'When is the workshop?',
-      a: "This Tuesday. When you buy, you get the time and Zoom link immediately. If you can't make it live, the full replay is included. But the live Q&A where I review your specific situation only happens once.",
+      q: 'When can I watch it?',
+      a: "Instantly. The moment you buy, you get access to the full 60-minute workshop and every resource that comes with it. Watch it tonight. Watch it on a lunch break. Rewatch it as many times as you need. No waiting, no calendar to clear, no Zoom link to lose.",
     },
     {
       q: "I don't know what I'd sell. Is this still for me?",
@@ -552,15 +564,15 @@ function FinalCtaSection() {
     <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d1b3d] px-5 py-[100px] text-center text-white">
       <div className="mx-auto max-w-[780px]">
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
-          This Tuesday. One decision.
+          One decision. Instant access.
           <br />
           <em className="italic text-[#ffc300]">No committee required.</em>
         </h2>
         <p className="mx-auto mb-10 max-w-[600px] text-lg leading-[1.8] text-[#ccc]">
           You didn&apos;t spend 15 years in corporate to wonder what&apos;s
           next. You spent 15 years building skills that are worth real money. Let
-          me show you how to capture that value for yourself. 60 minutes. Live.
-          The system I used. The plan you&apos;ll leave with.
+          me show you how to capture that value for yourself. 60 minutes.
+          On demand. The system I used. The plan you&apos;ll leave with.
         </p>
 
         <div className="mb-10">
