@@ -5,6 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Lock, Shield } from 'lucide-react';
+import { DavidSpotlight } from './DavidSpotlight';
+import { TonyResults } from './TonyResults';
+import { JudySpotlight } from './JudySpotlight';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -402,7 +405,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                     </div>
 
                     {/* Hero image (+20% bigger, no drop shadow) */}
-                    <img src="/imgs/cvdp/hero2.jpeg" alt="How To Create The One Digital Product That Sells — 90-minute live workshop with Ana Calin" className="w-full max-w-[1080px] h-auto rounded-2xl border border-gray-100" />
+                    <img src="/imgs/cvdp/hero2.webp" alt="How To Create The One Digital Product That Sells — 90-minute live workshop with Ana Calin" className="w-full max-w-[1080px] h-auto rounded-2xl border border-gray-100" />
 
                     {/* Proof chip — right below the image, above the CTA */}
                     <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mt-9">
@@ -498,6 +501,10 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </div>
             </section>
 
+            {/* David + Tony spotlight — cloned exactly from how-to-hit-10k (CTA text + scroll target adapted for CVDP) */}
+            <DavidSpotlight />
+            <TonyResults />
+
             {/* NO grid */}
             <section className="py-16 px-6 bg-[#FDF2F8]">
                 <div className="max-w-[1000px] mx-auto text-center">
@@ -565,6 +572,18 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </div>
             </section>
 
+            {/* Clear visual separator between Ana's founder section and the Judy testimonial (both share the cyan bg) */}
+            <div className="bg-[#E0F7FA] flex justify-center items-center px-6 py-2">
+                <div className="flex items-center gap-4 w-full max-w-[680px]">
+                    <div className="flex-1 h-[2px] bg-[#4DB6AC]/40 rounded-full" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#d81159] flex-shrink-0" />
+                    <div className="flex-1 h-[2px] bg-[#4DB6AC]/40 rounded-full" />
+                </div>
+            </div>
+
+            {/* Judy spotlight — cloned exactly from how-to-hit-10k (CTA text + scroll target adapted for CVDP) */}
+            <JudySpotlight />
+
             {/* Spotlight — featured wins, 3-up */}
             <section className="py-16 px-6 bg-[#FFFCF4]">
                 <div className="max-w-[1140px] mx-auto">
@@ -581,7 +600,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
             <section className="py-16 px-6">
                 <div className="max-w-[780px] mx-auto">
                     <h2 className="font-anton uppercase text-3xl md:text-5xl text-[#333333] text-center mb-8">What's included</h2>
-                    <img src="/imgs/cvdp/hero1.jpeg" alt="Your viral digital product — what you'll plan and build in the workshop" className="w-full max-w-[760px] h-auto rounded-2xl shadow-xl border border-gray-100 mx-auto mb-10" />
+                    <img src="/imgs/cvdp/hero1.webp" alt="Your viral digital product — what you'll plan and build in the workshop" className="w-full max-w-[760px] h-auto rounded-2xl shadow-xl border border-gray-100 mx-auto mb-10" />
                     <ul className="grid gap-3">
                         {curriculum.map(([b, t]) => (
                             <li key={b} className="flex gap-4 bg-white border border-[#EEE3CE] rounded-xl px-5 py-4 shadow-sm">
