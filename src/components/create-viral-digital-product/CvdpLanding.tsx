@@ -549,9 +549,69 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                                 </div>
                             </div>
                         ))}
-                        <div className="border-2 border-dashed border-[#d81159] bg-[#FDE7EF] rounded-2xl flex flex-col items-center justify-center text-center min-h-[130px] p-6">
-                            <p className="font-montserrat font-extrabold text-[#d81159] text-lg">👀 Your win goes here</p>
-                            <p className="font-lato font-semibold text-[#6E665B] text-sm mt-1.5">Join Tuesday, build your one product, and the next first-sale screenshot we feature in this gallery could have your name on it.</p>
+                        <div className="winslot">
+                            <div className="winslot__eyes">👀</div>
+                            <h3 className="winslot__h">Your <span className="winslot__hl">win</span> goes here</h3>
+                            <p className="winslot__p">Join Tuesday, build your one product, and the next first-sale screenshot we feature in this gallery could have your name on it.</p>
+                            <button type="button" onClick={goEnroll} className="winslot__btn">Build yours Tuesday →</button>
+                            <div className="winslot__seats">
+                                <div className="winslot__dots">
+                                    <img src="/testimavatar/45.webp" alt="" />
+                                    <img src="/testimavatar/32.webp" alt="" />
+                                    <img src="/testimavatar/47.webp" alt="" />
+                                    <img src="/testimavatar/46.webp" alt="" />
+                                </div>
+                                <span>be the next screenshot up</span>
+                            </div>
+                            <style jsx>{`
+                                .winslot {
+                                    --accent: #D81159;
+                                    --accent-deep: #B30E4A;
+                                    --highlight: #FFC300;
+                                    --ink: #262020;
+                                    font-family: "Instrument Sans", system-ui, sans-serif;
+                                    width: 100%;
+                                    background:
+                                        radial-gradient(130% 90% at 85% 0%, #E8327A 0%, transparent 60%),
+                                        var(--accent);
+                                    border-radius: 18px;
+                                    padding: 26px 24px;
+                                    color: #FFFFFF;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 18px;
+                                    position: relative;
+                                    overflow: hidden;
+                                    box-shadow: 0 20px 40px -24px var(--accent-deep);
+                                }
+                                .winslot__eyes { font-size: 34px; line-height: 1; }
+                                .winslot__h { font-size: 27px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin: 0; }
+                                .winslot__hl {
+                                    background: var(--highlight); color: var(--ink);
+                                    padding: 0 7px; border-radius: 4px;
+                                    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+                                }
+                                .winslot__p { margin: 0; font-size: 15px; line-height: 1.55; color: #FFE3EE; }
+                                .winslot__btn {
+                                    align-self: flex-start; margin-top: 4px;
+                                    background: var(--highlight); color: var(--ink);
+                                    text-decoration: none;
+                                    font-weight: 700; font-size: 14.5px;
+                                    border: none; border-radius: 11px; padding: 13px 20px; cursor: pointer;
+                                    display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+                                    box-shadow: 0 8px 18px -8px rgba(38, 32, 32, 0.45);
+                                    transition: transform .15s ease, box-shadow .15s ease;
+                                }
+                                .winslot__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 22px -8px rgba(38, 32, 32, 0.55); }
+                                .winslot__seats { display: flex; align-items: center; gap: 9px; font-size: 12.5px; color: #FFE3EE; }
+                                .winslot__dots { display: flex; }
+                                .winslot__dots img {
+                                    width: 22px; height: 22px; border-radius: 50%;
+                                    border: 2px solid var(--accent); margin-left: -7px;
+                                    object-fit: cover;
+                                }
+                                .winslot__dots img:first-child { margin-left: 0; }
+                            `}</style>
                         </div>
                     </div>
                 </div>

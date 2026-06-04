@@ -26,7 +26,14 @@ export default function CreateViralDigitalProductLayout({
 }: {
     children: React.ReactNode;
 }) {
-    // Fonts (Anton / Montserrat / Lato / Lora) are loaded globally in globals.css,
-    // matching the how-to-hit-10k design system this page mirrors.
-    return <>{children}</>;
+    // Anton / Montserrat / Lato / Lora load globally in globals.css. Instrument Sans
+    // is loaded here just for this route (used by the "Your win goes here" card).
+    return (
+        <>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+            {children}
+        </>
+    );
 }
