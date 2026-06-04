@@ -205,6 +205,19 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
     const btn = 'inline-block bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold rounded shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider text-center cursor-pointer';
     const goEnroll = () => document.getElementById('enroll')?.scrollIntoView({ behavior: 'smooth' });
 
+    // Value stack — perceived values are fixed marketing figures; today's price is env-driven.
+    const stackItems: [string, string, number][] = [
+        ['The Live 90-Minute "One Offer" Workshop', 'Walk out with your ONE product — chosen, validated, and priced.', 300],
+        ['The "Will It Sell?" AI Scorer', 'Score any idea in seconds before you waste a week building it.', 97],
+        ['Viral Digital Product Finder', 'Surface exactly what your audience is already dying to buy.', 97],
+        ['Ana AI Offer Flow Walkthrough', 'Generate your whole product ecosystem live on the call.', 67],
+        ['The One-Page Offer Blueprint', 'You leave with the plan filled in — not a pile of homework.', 47],
+        ['Lifetime Replay + All Recordings', 'Rewatch the entire workshop any time, forever.', 97],
+    ];
+    const stackTotal = stackItems.reduce((s, [, , v]) => s + v, 0);
+    const stackSavings = stackTotal - usd(prices.core);
+    const stackPct = Math.round((stackSavings / stackTotal) * 100);
+
     const results = [
         { name: 'Tony R.', avatar: '/testimavatar/32.webp', badge: '💎 Top contributor', time: '5 days ago', quote: '"$13,988 in 5 days with my first real launch. I followed the steps exactly. Less than 500 subscribers."', label: 'Gross revenue', amount: '$13,988.00', amtPrefix: '' },
         { name: 'David K.', avatar: '/testimavatar/jeff.webp', badge: '💎 Top contributor', time: '1 day ago', quote: '"$7,486 this week with a list of only 489. I didn\'t change my offer. I finally committed to it."', label: "You've made a sale!", amount: '$7,486.00', amtPrefix: '+ ' },
@@ -573,6 +586,63 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </div>
             </section>
 
+            {/* Value stack — maxed-out conversion, right above the checkout */}
+            <section className="bg-[#262020] text-white pt-0 pb-16 md:pb-24 px-6">
+                {/* Header — wide so the title sits on 2 rows */}
+                <div className="max-w-[1100px] mx-auto text-center">
+                    <p className="font-montserrat font-extrabold tracking-widest uppercase text-xs text-[#ffc300] mb-4">Everything you walk away with today</p>
+                    <h2 className="font-anton uppercase text-3xl md:text-5xl leading-[1.05] mb-4">One offer. One afternoon. <br className="hidden md:block" />A business that finally sells.</h2>
+                    <p className="font-lato text-white/70 font-semibold max-w-[56ch] mx-auto">
+                        Stop hoarding half-finished ideas. In 90 minutes you walk out with the ONE product worth building — plus every tool to name it, validate it, price it, and launch it. It is all yours the second you join:
+                    </p>
+                </div>
+
+                {/* Stack card */}
+                <div className="max-w-[760px] mx-auto mt-10">
+                    <div className="bg-white text-[#332C24] rounded-2xl p-6 md:p-8 text-left shadow-2xl">
+                        {stackItems.map(([name, desc, val]) => (
+                            <div key={name} className="flex items-start gap-4 py-4 border-b border-[#EEE3CE] last:border-0">
+                                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#1FB39E] text-white flex items-center justify-center font-bold text-sm mt-0.5">✓</span>
+                                <div className="flex-1">
+                                    <p className="font-montserrat font-bold text-[#262020] leading-snug">{name}</p>
+                                    <p className="font-lato text-[#6E665B] text-sm mt-0.5">{desc}</p>
+                                </div>
+                                <span className="font-anton text-[#E11D2A] text-lg whitespace-nowrap line-through">${val}</span>
+                            </div>
+                        ))}
+                        <div className="flex justify-between items-center pt-5">
+                            <span className="font-montserrat font-extrabold text-[#262020] uppercase text-sm md:text-base">Total real value</span>
+                            <span className="font-anton text-2xl md:text-3xl text-[#E11D2A] line-through">${stackTotal}</span>
+                        </div>
+                    </div>
+
+                    {/* Price + discount */}
+                    <div className="mt-9 text-center">
+                        <div className="inline-flex items-center gap-2 bg-[#E11D2A] text-white font-montserrat font-extrabold uppercase tracking-wide text-xs md:text-sm px-5 py-2 rounded-md shadow-lg">
+                            🔥 Live launch price — ends Tuesday, June 9
+                        </div>
+                        <p className="font-lato font-bold text-white/80 mt-5">Today, all of it for just:</p>
+                        <div className="flex items-baseline justify-center gap-4 mt-1">
+                            <span className="font-anton text-[#ffc300] text-6xl md:text-7xl leading-none">${usd(prices.core)}</span>
+                            <span className="font-anton text-[#FF6B6B] text-3xl md:text-4xl line-through">${stackTotal}</span>
+                        </div>
+                        <div className="inline-block bg-[#1E9E5A] text-white font-montserrat font-extrabold uppercase tracking-wide text-sm md:text-base px-6 py-2.5 rounded-full mt-5 shadow-lg">
+                            You save ${stackSavings} — {stackPct}% off
+                        </div>
+                    </div>
+                </div>
+
+                {/* Urgency — 70% of vw so it fits on 2 rows */}
+                <p className="font-lato text-white/70 text-sm md:text-[15px] w-[70vw] max-w-[1400px] mx-auto mt-9 leading-relaxed text-center">
+                    ⏳ This is the <b className="text-white">live launch price</b>, and it disappears the moment the countdown hits zero on <b className="text-white">Tuesday, June 9</b>. After that the workshop returns to its full <b className="text-[#FF6B6B]">$300</b> and these bonuses come off the table for good. Every week you wait, your audience buys someone else&apos;s offer instead of yours — <b className="text-white">don&apos;t let this be the sixth thing you almost did.</b>
+                </p>
+
+                <div className="text-center">
+                    <button onClick={goEnroll} className={`${btn} text-lg md:text-2xl py-5 px-10 md:px-16 mt-9`}>Yes — Lock In My Seat For ${usd(prices.core)}</button>
+                    <p className="font-lato text-white/45 text-xs mt-4">Live + lifetime replay · instant access to every tool · 256-bit secure checkout</p>
+                </div>
+            </section>
+
             {/* Enroll / checkout */}
             <section id="enroll" className="py-16 px-6 bg-[#FFF8E6]">
                 <div className="max-w-[600px] mx-auto bg-white rounded-3xl border border-[#EEE3CE] shadow-[0_18px_44px_rgba(40,32,20,.16)] overflow-hidden">
@@ -679,7 +749,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
 
             {/* Sticky bar */}
             <div className={`fixed left-0 right-0 bottom-0 z-[60] bg-[#262020] text-white py-3 px-5 flex justify-center items-center gap-5 flex-wrap shadow-[0_-8px_24px_rgba(0,0,0,.22)] transition-transform ${showSticky ? 'translate-y-0' : 'translate-y-[120%]'}`}>
-                <span className="hidden md:inline font-lato font-bold text-sm">The One Offer Workshop · <b className="text-[#ffc300]">Live June 9</b> · ${usd(prices.core)}</span>
+                <span className="hidden md:inline font-lato font-bold text-sm"><b className="text-[#ffc300]">Live Tuesday, June 9</b> · Replay included · just ${usd(prices.core)}</span>
                 <button onClick={goEnroll} className={`${btn} text-sm py-3 px-8`}>Save My Seat</button>
             </div>
         </div>
