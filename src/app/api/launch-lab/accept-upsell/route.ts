@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
 
         // Update the lead record to reflect the upsell purchase
         const { error } = await supabaseAdmin
-            .from('hit10k_leads')
+            .from('launch_lab_leads')
             .update({ has_upsell: true })
             .eq('id', leadId);
 
