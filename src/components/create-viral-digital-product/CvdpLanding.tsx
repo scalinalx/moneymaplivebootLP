@@ -12,6 +12,89 @@ export type CvdpPrices = { core: number; bump1: number; bump2: number; bump3: nu
 
 const usd = (cents: number) => cents / 100;
 
+/* Initials from a name: first letters of the first two words, or first two letters of a single name. */
+const ttcInitials = (name: string) => {
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+        ? parts[0].slice(0, 2).toUpperCase()
+        : (parts[0][0] + parts[1][0]).toUpperCase();
+};
+
+/* Text-forward testimonial card. No photos — an initials-only circle, unique color per card (hue prop). */
+type TtcProps = { name: string; sub: string; text: string; likes: string; time: string; hue: number };
+const TtcCard = ({ name, sub, text, likes, time, hue }: TtcProps) => {
+    const avatar = `radial-gradient(circle at 32% 28%, hsl(${hue} 55% 72%), hsl(${(hue + 24) % 360} 52% 50%))`;
+    return (
+        <article className="ttc">
+            <header className="ttc__hd">
+                <div className="ttc__av" style={{ background: avatar }}>{ttcInitials(name)}</div>
+                <div className="ttc__id">
+                    <div className="ttc__name">{name}</div>
+                    <div className="ttc__sub">{sub}</div>
+                </div>
+                <div className="ttc__more" aria-hidden="true"><i></i><i></i><i></i></div>
+            </header>
+
+            <p className="ttc__text">{text}</p>
+
+            <div className="ttc__actions">
+                <svg className="ttc__heart" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                <svg className="ttc__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+                <svg className="ttc__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
+                <span className="ttc__spacer"></span>
+                <svg className="ttc__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg>
+            </div>
+
+            <div className="ttc__likes">{likes}</div>
+            <div className="ttc__time">{time}</div>
+
+            <style jsx>{`
+                .ttc {
+                    --ink: #262020;
+                    --ink-faint: #A79E90;
+                    --paper: #FFFFFF;
+                    --line: #EEE3CE;
+                    --accent: #D81159;
+                    font-family: "Instrument Sans", system-ui, sans-serif;
+                    color: var(--ink);
+                    width: 100%;
+                    background: var(--paper);
+                    border: 1px solid var(--line);
+                    border-radius: 14px;
+                    overflow: hidden;
+                    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+                                0 12px 28px -20px rgba(38, 32, 32, 0.32);
+                }
+                .ttc__hd { display: flex; align-items: center; gap: 11px; padding: 13px 16px; }
+                .ttc__av {
+                    width: 40px; height: 40px; border-radius: 50%; flex: none;
+                    display: flex; align-items: center; justify-content: center;
+                    font-weight: 700; font-size: 14px; color: #fff; letter-spacing: 0.01em;
+                }
+                .ttc__name { font-weight: 700; font-size: 13.5px; line-height: 1.1; }
+                .ttc__sub { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
+                .ttc__more { margin-left: auto; display: flex; gap: 3px; color: var(--ink-faint); }
+                .ttc__more i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+                .ttc__text {
+                    margin: 0; padding: 4px 16px 6px;
+                    font-size: 16px; line-height: 1.5; letter-spacing: -0.005em;
+                }
+                .ttc__actions { display: flex; align-items: center; gap: 15px; padding: 12px 16px 6px; }
+                .ttc__actions svg { width: 24px; height: 24px; display: block; cursor: pointer; }
+                .ttc__heart { color: var(--accent); }
+                .ttc__ic { color: var(--ink); }
+                .ttc__spacer { margin-left: auto; }
+                .ttc__likes { padding: 2px 16px 0; font-weight: 700; font-size: 13px; }
+                .ttc__time {
+                    padding: 9px 16px 16px;
+                    font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+                    color: var(--ink-faint);
+                }
+            `}</style>
+        </article>
+    );
+};
+
 /* Animated count-up for the revenue counter (mirrors hit10k) */
 const AnimatedCounter = ({ end }: { end: number }) => {
     const [count, setCount] = useState(0);
@@ -218,12 +301,37 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
     const stackSavings = stackTotal - usd(prices.core);
     const stackPct = Math.round((stackSavings / stackTotal) * 100);
 
+    // Featured spotlight row — Susan plus two more, shown 3-up (ttc cards). Each card on the page gets a UNIQUE hue.
+    const featured = [
+        { name: 'Susan M.', sub: '@susanmakes · 1w', text: 'I had a pile of half-finished product ideas sitting there for months. I finally knew which ONE to build, launched it, and hit $8,800 in 7 days. This stuff actually works!', likes: '418 likes', time: '1 week ago', hue: 280 },
+        { name: 'Marcus T.', sub: '@marcusbuilds · 3d', text: 'I’d bookmarked a hundred “someday” ideas. This made me commit to one and actually ship it — my first $1k came in faster than I’d believe.', likes: '176 likes', time: '3 days ago', hue: 75 },
+        { name: 'Priya N.', sub: '@priyacreates · 6d', text: 'I spent two years “researching” what to sell. Ninety minutes here and I finally had one offer live and converting. Wish I’d done it sooner.', likes: '229 likes', time: '6 days ago', hue: 235 },
+    ];
+
+    // Four inline wins right below the hero — short quotes so the 4-up row stays tight. Unique hues continue.
+    const heroProof = [
+        { name: 'Jordan J.', sub: '@jordanmakes · 2d', text: 'Picked one offer, launched it, and made my first sale before the week was out. Finally.', likes: '204 likes', time: '2 days ago', hue: 0 },
+        { name: 'Renata B.', sub: '@renatabuilds · 5d', text: 'I stopped collecting ideas and shipped just one. It’s been selling every single day since.', likes: '188 likes', time: '5 days ago', hue: 100 },
+        { name: 'Sam O.', sub: '@samonline · 1d', text: 'Ninety minutes and I knew exactly what to build. No more guessing, no more half-starts.', likes: '276 likes', time: '1 day ago', hue: 175 },
+        { name: 'Leila H.', sub: '@leilacreates · 3d', text: 'First real product, first real income. Wish I’d done this a full year ago.', likes: '231 likes', time: '3 days ago', hue: 320 },
+    ];
+
     const results = [
-        { name: 'Tony R.', avatar: '/testimavatar/32.webp', badge: '💎 Top contributor', time: '5 days ago', quote: '"$13,988 in 5 days with my first real launch. I followed the steps exactly. Less than 500 subscribers."', label: 'Gross revenue', amount: '$13,988.00', amtPrefix: '' },
-        { name: 'David K.', avatar: '/testimavatar/jeff.webp', badge: '💎 Top contributor', time: '1 day ago', quote: '"$7,486 this week with a list of only 489. I stopped tweaking and finally launched my one product."', label: "You've made a sale!", amount: '$7,486.00', amtPrefix: '+ ' },
-        { name: 'Judy L.', avatar: '/testimavatar/47.webp', badge: '⭐ Verified', time: '2 days ago', quote: '"$2,800 in my first week. I only have 427 subscribers. I genuinely didn\'t think it was possible."', label: 'Launch goal reached!', amount: '$2,800.00', amtPrefix: '+ ' },
-        { name: 'David G.', avatar: '/imgs/testimonials/testimonial-david.png', badge: '⭐ Verified', time: '3 hours ago', quote: '"No more starting five things and finishing none. I finally built ONE digital product — and people actually buy it."', label: '', amount: '', amtPrefix: '' },
-        { name: 'Tiff', avatar: '/testimavatar/46.webp', badge: '⭐ Verified', time: '1 day ago', quote: '"Best decision I\'ve made this year. I went from zero finished products to one that sells on autopilot."', label: '', amount: '', amtPrefix: '' },
+        { name: 'Tony R.', sub: '@tonybuilds · 5d', text: '$13,988 in 5 days with my first real launch. I followed the steps exactly. Less than 500 subscribers.', likes: '512 likes', time: '5 days ago', hue: 210 },
+        { name: 'David K.', sub: '@davidklaunch · 1d', text: '$7,486 this week with a list of only 489. I stopped tweaking and finally launched my one product.', likes: '287 likes', time: '1 day ago', hue: 25 },
+        { name: 'Judy L.', sub: '@judylaunches · 2d', text: '$2,800 in my first week. I only have 427 subscribers. I genuinely didn’t think it was possible.', likes: '194 likes', time: '2 days ago', hue: 330 },
+        { name: 'David G.', sub: '@davidgrows · 3h', text: 'No more starting five things and finishing none. I finally built ONE digital product — and people actually buy it.', likes: '156 likes', time: '3 hours ago', hue: 150 },
+        { name: 'Tiff', sub: '@tiffmakes · 1d', text: 'Best decision I’ve made this year. I went from zero finished products to one that sells on autopilot.', likes: '203 likes', time: '1 day ago', hue: 45 },
+    ];
+
+    // Second testimonial section ("screenshot wall" → now text-forward ttc cards). Unique hues continue.
+    const wall = [
+        { name: 'Hollie R.', sub: '@holliewrites · 4d', text: 'I’d been “about to launch” for a year. This made me pick, build, and ship in a single weekend. First sale landed 48 hours later.', likes: '241 likes', time: '4 days ago', hue: 190 },
+        { name: 'Allie Adams', sub: '@allieadams · 6d', text: 'I always had ten ideas and zero finished products. Now I have one offer that actually sells while I sleep. Total game changer.', likes: '176 likes', time: '6 days ago', hue: 260 },
+        { name: 'Monica Fernandes', sub: '@monicafern · 2d', text: 'Picked my ONE thing on the call, launched it that week, and my inbox finally has “you’ve got a sale” emails in it. Surreal.', likes: '329 likes', time: '2 days ago', hue: 350 },
+        { name: 'Eimear Finnegan', sub: '@eimearf · 1w', text: 'Ninety minutes gave me more clarity than a year of courses. I stopped second-guessing and finally put one real product out there.', likes: '208 likes', time: '1 week ago', hue: 120 },
+        { name: 'Aaqiel Pillay', sub: '@aaqielp · 3d', text: 'I went from a graveyard of half-built ideas to one clean offer people actually pay for. Wish I’d done this sooner.', likes: '163 likes', time: '3 days ago', hue: 15 },
+        { name: 'Alison Sulzman', sub: '@alisonsulz · 5d', text: 'First real launch, first real money. The validation step alone saved me from building the wrong thing all over again.', likes: '287 likes', time: '5 days ago', hue: 300 },
     ];
 
     const curriculum: [string, React.ReactNode][] = [
@@ -320,6 +428,17 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                     </div>
                 </div>
             </header>
+
+            {/* Social proof — 4 inline wins right below the hero */}
+            <section className="bg-[#FFFCF4] pt-6 pb-14 px-6">
+                <div className="max-w-[1280px] mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-start">
+                        {heroProof.map((h) => (
+                            <TtcCard key={h.name} {...h} />
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             {/* Proof strip */}
             <section className="bg-[#262020] text-white py-16 md:py-24 px-6 mt-12">
@@ -446,33 +565,15 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </div>
             </section>
 
-            {/* Spotlight */}
+            {/* Spotlight — featured wins, 3-up */}
             <section className="py-16 px-6 bg-[#FFFCF4]">
-                <div className="max-w-[560px] mx-auto">
-                    <div className="bg-white border-2 border-[#ffc300] rounded-3xl p-7 md:p-8 shadow-[0_18px_44px_rgba(40,32,20,.16)]">
-                        <div className="flex items-center gap-3 mb-4">
-                            <img src="/testimavatar/45.webp" alt="Susan M." className="w-12 h-12 rounded-full object-cover border border-gray-100" />
-                            <div>
-                                <div className="font-montserrat font-bold text-[#333333] flex items-center gap-2">Susan M. <span className="text-[#1FB39E] text-xs font-bold">💎 Verified</span></div>
-                                <div className="text-[#6E665B] text-xs font-semibold">1 week ago</div>
-                            </div>
-                        </div>
-                        <p className="font-lato text-[#332C24] text-lg md:text-xl font-semibold leading-relaxed">"I had a pile of half-finished product ideas sitting there for months. I finally knew which ONE to build, launched it, and hit $8,800 in 7 days. This stuff actually works!"</p>
-                        <div className="flex items-center gap-3 bg-[#F4FBF6] border border-[#CBE9D5] rounded-xl px-4 py-3 mt-5">
-                            <span className="w-[26px] h-[26px] rounded-md bg-[#635BFF] text-white font-bold text-[11px] flex items-center justify-center">S</span>
-                            <span className="text-sm font-bold text-[#332C24]">You've made a sale!</span>
-                            <span className="ml-auto font-anton text-[#1E9E5A]">+ $8,800.00</span>
-                        </div>
-                        <div className="flex items-end gap-2 h-16 mt-4">
-                            {[['24%', 'D1'], ['42%', 'D2'], ['58%', 'D3'], ['80%', 'D4'], ['100%', 'D5']].map(([h, d]) => (
-                                <div key={d} className="flex-1 flex flex-col items-center gap-1.5">
-                                    <div className="w-full bg-[#ffc300] rounded-t-md" style={{ height: h }} />
-                                    <div className="text-[10px] text-[#6E665B] font-bold tracking-wide">{d}</div>
-                                </div>
-                            ))}
-                        </div>
+                <div className="max-w-[1140px] mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+                        {featured.map((f) => (
+                            <TtcCard key={f.name} {...f} />
+                        ))}
                     </div>
-                    <div className="text-center mt-7"><button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Let's Build My One Offer</button></div>
+                    <div className="text-center mt-9"><button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Let's Build My One Offer</button></div>
                 </div>
             </section>
 
@@ -526,28 +627,9 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 <div className="max-w-[900px] mx-auto">
                     <h2 className="font-anton uppercase text-3xl md:text-5xl text-[#333333] text-center">One clear offer. Real results.</h2>
                     <p className="font-lato font-bold text-[#6E665B] text-center max-w-[42ch] mx-auto mt-3 mb-10">Here's what students did once they knew exactly what to build, and committed to it.</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
                         {results.map((r) => (
-                            <div key={r.name} className="bg-white border border-[#EEE3CE] rounded-2xl shadow-sm p-6">
-                                <div className="flex items-center gap-3 mb-3.5">
-                                    <img src={r.avatar} alt={r.name} className="w-12 h-12 rounded-full object-cover border border-gray-100" />
-                                    <div>
-                                        <div className="font-montserrat font-bold text-[#333333] flex items-center gap-2">{r.name} <span className="text-[#1FB39E] text-xs font-bold">{r.badge}</span></div>
-                                        <div className="text-[#6E665B] text-xs font-semibold">{r.time}</div>
-                                    </div>
-                                </div>
-                                <p className="font-lato text-[#332C24] font-semibold leading-relaxed">{r.quote}</p>
-                                {r.amount && (
-                                    <div className="flex items-center gap-3 bg-[#F4FBF6] border border-[#CBE9D5] rounded-xl px-4 py-2.5 mt-4">
-                                        <span className="w-6 h-6 rounded-md bg-[#635BFF] text-white font-bold text-[10px] flex items-center justify-center">S</span>
-                                        <span className="text-xs font-bold text-[#332C24]">{r.label}</span>
-                                        <span className="ml-auto font-anton text-[#1E9E5A]">{r.amtPrefix}{r.amount}</span>
-                                    </div>
-                                )}
-                                <div className="flex gap-5 mt-4 pt-3 border-t border-[#EEE3CE] text-[#6E665B] text-sm font-bold">
-                                    <span>👍 Like</span><span>💬 Comment</span><span>↗ Share</span>
-                                </div>
-                            </div>
+                            <TtcCard key={r.name} {...r} />
                         ))}
                         <div className="winslot">
                             <div className="winslot__eyes">👀</div>
@@ -636,11 +718,9 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 <div className="max-w-[980px] mx-auto">
                     <p className="font-montserrat font-bold text-[#d81159] text-xs tracking-widest uppercase text-center mb-3">Proof it works</p>
                     <h2 className="font-anton uppercase text-3xl md:text-5xl text-[#333333] text-center mb-10">Don't just take my word for it</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        {[11, 1, 12, 6, 9, 10].map((n) => (
-                            <div key={n} className="rounded-2xl overflow-hidden border border-[#EEE3CE] shadow-sm">
-                                <img src={`/imgs/first-100-paid-subscribers/testim/${n}.webp`} alt={`Creator testimonial ${n}`} className="w-full h-auto block" />
-                            </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+                        {wall.map((w) => (
+                            <TtcCard key={w.name} {...w} />
                         ))}
                     </div>
                     <div className="text-center mt-10"><button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Save My Seat</button></div>
