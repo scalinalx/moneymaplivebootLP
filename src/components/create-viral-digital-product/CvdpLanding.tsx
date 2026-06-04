@@ -612,7 +612,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                         ))}
                         <div className="flex justify-between items-center pt-5">
                             <span className="font-montserrat font-extrabold text-[#262020] uppercase text-sm md:text-base">Total real value</span>
-                            <span className="font-anton text-2xl md:text-3xl text-[#E11D2A] line-through">${stackTotal}</span>
+                            <span className="font-anton text-3xl md:text-4xl text-[#262020] bg-[#ffc300] px-2.5 py-0.5 rounded-md leading-none">${stackTotal}</span>
                         </div>
                     </div>
 
