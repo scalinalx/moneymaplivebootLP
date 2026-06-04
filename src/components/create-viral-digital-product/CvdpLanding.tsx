@@ -220,10 +220,10 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
 
     const results = [
         { name: 'Tony R.', avatar: '/testimavatar/32.webp', badge: '💎 Top contributor', time: '5 days ago', quote: '"$13,988 in 5 days with my first real launch. I followed the steps exactly. Less than 500 subscribers."', label: 'Gross revenue', amount: '$13,988.00', amtPrefix: '' },
-        { name: 'David K.', avatar: '/testimavatar/jeff.webp', badge: '💎 Top contributor', time: '1 day ago', quote: '"$7,486 this week with a list of only 489. I didn\'t change my offer. I finally committed to it."', label: "You've made a sale!", amount: '$7,486.00', amtPrefix: '+ ' },
+        { name: 'David K.', avatar: '/testimavatar/jeff.webp', badge: '💎 Top contributor', time: '1 day ago', quote: '"$7,486 this week with a list of only 489. I stopped tweaking and finally launched my one product."', label: "You've made a sale!", amount: '$7,486.00', amtPrefix: '+ ' },
         { name: 'Judy L.', avatar: '/testimavatar/47.webp', badge: '⭐ Verified', time: '2 days ago', quote: '"$2,800 in my first week. I only have 427 subscribers. I genuinely didn\'t think it was possible."', label: 'Launch goal reached!', amount: '$2,800.00', amtPrefix: '+ ' },
-        { name: 'David G.', avatar: '/imgs/testimonials/testimonial-david.png', badge: '⭐ Verified', time: '3 hours ago', quote: '"No more guessing what to sell. I finally packaged my expertise into one clear offer."', label: '', amount: '', amtPrefix: '' },
-        { name: 'Tiff', avatar: '/testimavatar/46.webp', badge: '⭐ Verified', time: '1 day ago', quote: '"Best decision I\'ve made this year. My offer clarity skyrocketed."', label: '', amount: '', amtPrefix: '' },
+        { name: 'David G.', avatar: '/imgs/testimonials/testimonial-david.png', badge: '⭐ Verified', time: '3 hours ago', quote: '"No more starting five things and finishing none. I finally built ONE digital product — and people actually buy it."', label: '', amount: '', amtPrefix: '' },
+        { name: 'Tiff', avatar: '/testimavatar/46.webp', badge: '⭐ Verified', time: '1 day ago', quote: '"Best decision I\'ve made this year. I went from zero finished products to one that sells on autopilot."', label: '', amount: '', amtPrefix: '' },
     ];
 
     const curriculum: [string, React.ReactNode][] = [
@@ -457,7 +457,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                                 <div className="text-[#6E665B] text-xs font-semibold">1 week ago</div>
                             </div>
                         </div>
-                        <p className="font-lato text-[#332C24] text-lg md:text-xl font-semibold leading-relaxed">"I had these offers just sitting there for months. I finally knew which one to commit to, launched it, and hit $8,800 in 7 days. This stuff actually works!"</p>
+                        <p className="font-lato text-[#332C24] text-lg md:text-xl font-semibold leading-relaxed">"I had a pile of half-finished product ideas sitting there for months. I finally knew which ONE to build, launched it, and hit $8,800 in 7 days. This stuff actually works!"</p>
                         <div className="flex items-center gap-3 bg-[#F4FBF6] border border-[#CBE9D5] rounded-xl px-4 py-3 mt-5">
                             <span className="w-[26px] h-[26px] rounded-md bg-[#635BFF] text-white font-bold text-[11px] flex items-center justify-center">S</span>
                             <span className="text-sm font-bold text-[#332C24]">You've made a sale!</span>
@@ -549,8 +549,9 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                                 </div>
                             </div>
                         ))}
-                        <div className="border-2 border-dashed border-[#ffc300] bg-[#FFFCF4] rounded-2xl flex items-center justify-center text-center text-[#6E665B] italic font-bold min-h-[130px] p-5">
-                            [ Add another real student win here ]
+                        <div className="border-2 border-dashed border-[#d81159] bg-[#FDE7EF] rounded-2xl flex flex-col items-center justify-center text-center min-h-[130px] p-6">
+                            <p className="font-montserrat font-extrabold text-[#d81159] text-lg">👀 Your win goes here</p>
+                            <p className="font-lato font-semibold text-[#6E665B] text-sm mt-1.5">Join Tuesday, build your one product, and the next first-sale screenshot we feature in this gallery could have your name on it.</p>
                         </div>
                     </div>
                 </div>
