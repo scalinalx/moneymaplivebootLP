@@ -83,3 +83,14 @@ export const LAUNCHLAB_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB
 export const LAUNCHLAB_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE || '4700', 10);
 export const LAUNCHLAB_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE || '9700', 10);
 export const LAUNCHLAB_COACHING_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE || '74700', 10);
+
+// Create Viral Digital Product — "The One Offer" 90-Minute Workshop Pricing
+// Server-only (NO NEXT_PUBLIC) — prices are never exposed as client env vars. The page
+// reads these on the server and passes the values into the client component as props,
+// and the PaymentIntent is computed server-side (the real source of truth for the charge).
+export const CVDP_PRICE = Number.parseInt(process.env.CVDP_PRICE || '9700', 10); // $97 core workshop
+export const CVDP_BUMP1_PRICE = Number.parseInt(process.env.CVDP_BUMP1_PRICE || '2700', 10); // $27 — 100 Genius Launch Ideas
+export const CVDP_BUMP2_PRICE = Number.parseInt(process.env.CVDP_BUMP2_PRICE || '3700', 10); // $37 — Offer Genius AI Builder
+export const CVDP_BUMP3_PRICE = Number.parseInt(process.env.CVDP_BUMP3_PRICE || '6700', 10); // $67 — The Launch Stack
+// Bundle = all 3 add-ons. Individual total $131 ($27+$37+$67); bundle saves $50 -> $81.
+export const CVDP_BUNDLE_PRICE = Number.parseInt(process.env.CVDP_BUNDLE_PRICE || '8100', 10); // $81

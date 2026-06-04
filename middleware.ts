@@ -54,6 +54,10 @@ export function middleware(req: NextRequest) {
     '/offer-clarity-what-to-sell-upsell',
     '/offer-clarity-coaching-upsell',
     '/offer-clarity-success',
+    // Create Viral Digital Product funnel. This single prefix also covers
+    // /create-viral-digital-product-success and any future
+    // /create-viral-digital-product-upsell-* pages (all match startsWith).
+    '/create-viral-digital-product',
   ];
 
   if (pathname.startsWith('/downloads/')) {
