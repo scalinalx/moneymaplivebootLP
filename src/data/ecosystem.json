@@ -317,6 +317,18 @@
                     "description": "A free AI-powered tool (Gemini 3 Flash with thinking) that scores digital product ideas against Ana Calin's Viral Product Formula. Returns a weighted scorecard with 9 per-criterion scores, overall score, verdict, and actionable improvements. Funnels into the 10K Launch Lab.",
                     "access": "Open / Free AI tool.",
                     "url": "/will-it-sell"
+                },
+                {
+                    "name": "Viral Digital Product AI",
+                    "description": "In development. Currently a 'Coming Soon' placeholder page — intended as a future AI tool in the viral-digital-product family (alongside the Finder and Will It Sell? tools).",
+                    "access": "Not yet live — placeholder page (Coming Soon).",
+                    "url": "/viral-digital-product-ai"
+                },
+                {
+                    "name": "Create Viral Digital Product",
+                    "description": "In development. Blank scaffold page created as the starting canvas for a new viral-digital-product creation tool/funnel. No content, product, or checkout wired up yet.",
+                    "access": "Not yet live — blank placeholder page (work in progress).",
+                    "url": "/create-viral-digital-product"
                 }
             ]
         },
@@ -331,6 +343,18 @@
                     "description": "Central command center for real-time revenue tracking, multi-table lead management, abandoned cart recovery, and Kit synchronization.",
                     "access": "Password Protected (Requires `ADMIDASH_PASSWORD`).",
                     "url": "/admidash"
+                },
+                {
+                    "name": "Offer Clarity Events Explorer",
+                    "description": "Admin sub-view that visualizes the Offer Clarity success-page journey by session (from `offer_clarity_success_events`).",
+                    "access": "Part of the Command Centre (ADMIDASH_PASSWORD).",
+                    "url": "/admidash/offer-clarity-events"
+                },
+                {
+                    "name": "Ecosystem Map",
+                    "description": "This document, rendered as an internal reference page. Source of truth is `src/data/ecosystem.json` (also generates `docs/ecosystem.md` via `npm run generate:docs`).",
+                    "access": "Internal reference page.",
+                    "url": "/ecosystem"
                 }
             ]
         },
@@ -997,6 +1021,22 @@
                 {
                     "path": "/api/offer-clarity/coaching-upsell/create-payment-intent",
                     "description": "One-click off-session charge against the saved card for the $797 coaching upsell. Falls back to a fresh Elements collection if no card is on file. Updates the existing `offer_clarity_leads` row with the upsell amount."
+                },
+                {
+                    "path": "/api/offer-clarity/what-to-sell-upsell/create-payment-intent + confirm-payment",
+                    "description": "Drives the first Offer Clarity post-checkout upsell — the \"What Do I Even Sell?\" workshop recording ($147). One-click off-session charge with Stripe Elements fallback."
+                },
+                {
+                    "path": "/api/offer-clarity/success-event + success-events-list",
+                    "description": "Records and lists Offer Clarity success-page journey events (writes/reads `offer_clarity_success_events`). The list endpoint is auth-gated (ADMIDASH_PASSWORD) and powers `/admidash/offer-clarity-events`."
+                },
+                {
+                    "path": "/api/word-into-money/* (create-payment-intent, confirm-payment, get-lead-status, upsell-1|2|3/*)",
+                    "description": "Full Word Into Money funnel API surface (main checkout + 3-step upsell ladder). Targets `wim_leads` / `wim_coaching_leads` — currently failing because those tables are not provisioned (see Funnel Architecture)."
+                },
+                {
+                    "path": "/api/download",
+                    "description": "Serves protected/static digital product file downloads (e.g. the 100 Genius Launch Ideas PDF) for fulfillment."
                 }
             ],
             "tables": [
@@ -1047,6 +1087,18 @@
                 {
                     "name": "offer_clarity_leads",
                     "description": "Stores leads, all 3 bump flags (Launch Stack, Hooks, Offer Genius) + bundle flag, coaching upsell flag, payment lifecycle, pricing snapshot in cents (`base_price_cents`, `bumps_price_cents`, `coaching_price_cents`, `total_paid_cents`), and marketing attribution (utm_*, referrer_url, user_agent, ip_address) for the Offer Clarity Sprint funnel."
+                },
+                {
+                    "name": "offer_clarity_success_events",
+                    "description": "Event log for the Offer Clarity success-page journey (page views, CTA clicks). Columns: id, created_at, lead_id, session_id, event_type, event_data, user_agent, ip_address, referrer, viewport_w, viewport_h. Written by `/api/offer-clarity/success-event`; read by `/admidash/offer-clarity-events`."
+                },
+                {
+                    "name": "wim_leads",
+                    "description": "Intended lead/order table for the Word Into Money funnel (main checkout, bumps, upsells 1 & 2). NOT YET PROVISIONED — referenced by the WIM API routes but does not currently exist in Supabase, so the funnel 500s. Expected columns: name, email, is_paid, stripe_customer_id, stripe_payment_intent_id, total_paid, has_bump1/2/3, has_bundle, has_upsell1/2/3, payment_completed_at, created_at."
+                },
+                {
+                    "name": "wim_coaching_leads",
+                    "description": "Intended table for the Word Into Money upsell #3 (1:1 coaching off-session charge). NOT YET PROVISIONED — referenced by the WIM upsell-3 routes but does not currently exist in Supabase."
                 }
             ]
         },
@@ -1160,9 +1212,10 @@
                             "envVar": "NEXT_PUBLIC_HIT10K_BUMP_PRICE"
                         },
                         {
-                            "name": "Unknown Bump 2",
+                            "name": "The 60-Minute Launch Calendar",
                             "price": "$69",
-                            "envVar": "NEXT_PUBLIC_HIT10K_BUMP2_PRICE"
+                            "envVar": "NEXT_PUBLIC_HIT10K_BUMP2_PRICE",
+                            "description": "Day-by-day Notion launch calendar templates at the discounted mini-workshop tier"
                         }
                     ],
                     "bundleOption": null,
@@ -1433,7 +1486,8 @@
                     ],
                     "maxCartValue": "$1,857 (workshop $97 + bundle $69 + upsell #1 $97 + upsell #2 $597 + upsell #3 $997)",
                     "successPage": "/word-into-money-success",
-                    "leadTable": "(uses Stripe metadata routing — confirm the actual table)"
+                    "leadTable": "wim_leads (main checkout + upsells 1 & 2) + wim_coaching_leads (upsell #3 coaching)",
+                    "status": "BUILT BUT NOT LIVE — full funnel exists (page, success, 3 upsells, final + all API routes) but is NOT linked from anywhere and the wim_leads / wim_coaching_leads Supabase tables do NOT exist yet, so checkout currently 500s. Create both tables and add an entry link to launch."
                 },
                 {
                     "name": "Your First $1K After Corporate Funnel",
@@ -1630,7 +1684,7 @@
                     "vars": [
                         {
                             "key": "NEXT_PUBLIC_OFFER_CLARITY_PRICE",
-                            "description": "Base price for the Offer Clarity Sprint course (cents). Default 9700 = $97."
+                            "description": "Base price for the Offer Clarity Sprint course (cents). Default 19700 = $197."
                         },
                         {
                             "key": "NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE",

@@ -39,9 +39,12 @@ This document serves as a comprehensive map of all URLs, products, price points,
 *   **Creator Bundle**: **$69** (`CREATOR_BUNDLE_PRICE`)
     *   A bundled product offering with a Launch Stack order bump. Standalone checkout with its own lead table.
     *   *Links:* [Sales & Checkout](/creator-bundle) | [Success](/creator-bundle-success)
-*   **The Offer Clarity Sprint**: **$97** (`NEXT_PUBLIC_OFFER_CLARITY_PRICE`)
-    *   A self-paced course that teaches creators how to package expertise into a clear, one-sentence offer that subscribers buy from a single email. Embedded Stripe Elements checkout with 3 individual order bumps + a discounted bundle, followed by a 1:1 coaching upsell.
-    *   *Links:* [Sales & Checkout](/offer-clarity) | [Coaching Upsell](/offer-clarity-coaching-upsell) | [Success](/offer-clarity-success)
+*   **The Offer Clarity Sprint**: **$197** (`NEXT_PUBLIC_OFFER_CLARITY_PRICE` — default 19700 cents)
+    *   A self-paced course that teaches creators how to package expertise into a clear, one-sentence offer that subscribers buy from a single email. Embedded Stripe Elements checkout with 3 individual order bumps + a discounted bundle, followed by a $147 workshop-recording upsell, and a $797 1:1 coaching upsell.
+    *   *Links:* [Sales & Checkout](/offer-clarity) | [Upsell #1 — What To Sell](/offer-clarity-what-to-sell-upsell) | [Upsell #2 — Coaching](/offer-clarity-coaching-upsell) | [Success](/offer-clarity-success)
+*   **Word Into Money**: **$97** (`WIM_PRICE`)
+    *   A copywriting workshop teaching creators how to turn their writing into recurring revenue. Embedded Stripe checkout with 3 order bumps (Hooks, 100 Genius Launch Ideas PDF, Launch Stack) + a bundle, followed by a 3-step ascending upsell sequence: First 100 Paid Subscribers ($97) → 10K Launch Lab ($597) → 1:1 Coaching ($997).
+    *   *Links:* [Sales & Checkout](/word-into-money) | [Upsell #1](/word-into-money-upsell-1) | [Upsell #2](/word-into-money-upsell-2) | [Upsell #3](/word-into-money-upsell-3) | [Final](/word-into-money-final) | [Success](/word-into-money-success)
 *   **Your First $1K After Corporate**: **$250** (Hardcoded — direct Stripe Payment Link)
     *   A 60-minute live workshop teaching corporate professionals the exact 90-day system to make their first $1,000 online. Uses a direct Stripe Payment Link (no embedded checkout). Scheduled for March 31st.
     *   *Links:* [Sales Page](/your-first-1k-after-corporate)
@@ -98,53 +101,107 @@ A free AI-powered tool (Gemini 3 Flash with thinking) that scores digital produc
 *   **Access/Type:** Open / Free AI tool.
 *   **App URL:** `/will-it-sell`
 
+### Viral Digital Product AI
+
+In development. Currently a 'Coming Soon' placeholder page — intended as a future AI tool in the viral-digital-product family (alongside the Finder and Will It Sell? tools).
+*   **Access/Type:** Not yet live — placeholder page (Coming Soon).
+*   **App URL:** `/viral-digital-product-ai`
+
+### Create Viral Digital Product
+
+In development. Blank scaffold page created as the starting canvas for a new viral-digital-product creation tool/funnel. No content, product, or checkout wired up yet.
+*   **Access/Type:** Not yet live — blank placeholder page (work in progress).
+*   **App URL:** `/create-viral-digital-product`
+
 ---
 
 ## 4. Internal Operations & Command Centre
 
 *   **HWG Command Centre (Admin Dashboard)**
     *   Central command center for real-time revenue tracking, multi-table lead management, abandoned cart recovery, and Kit synchronization.
+*   **Offer Clarity Events Explorer**
+    *   Admin sub-view that visualizes the Offer Clarity success-page journey by session (from `offer_clarity_success_events`).
+*   **Ecosystem Map**
+    *   This document, rendered as an internal reference page. Source of truth is `src/data/ecosystem.json` (also generates `docs/ecosystem.md` via `npm run generate:docs`).
 
 ---
 
-## 5. Bumps & Upsells
+## 5. Bumps, Upsells & Downsells
 
-_Order Bumps (In-Checkout Add-ons) & Upsells (Post-Checkout Cross-Sells)_
+_Order Bumps (in-checkout add-ons) + Post-Checkout Upsell Pages. Same product can appear in multiple funnels at different prices — each row is intentionally distinct._
 
 | Name | Price | Type | Offered On | Variables |
 | :--- | :--- | :--- | :--- | :--- |
-| **Hooks That Stop the Scroll** | $27 | Order Bump | 10k Lab, How to Hit 10k | `NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE`<br>`NEXT_PUBLIC_HIT10K_BUMP_PRICE` |
-| ↳ _Details_ | <td colspan="4">_A vault of high-converting headline frameworks and opening loops designed to capture attention instantly._</td> |
-| **The 60-Minute Launch Calendar** | $69 | Order Bump | 10k Launch Lab | `NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE` |
-| ↳ _Details_ | <td colspan="4">_The exact day-by-day Notion templates used to manage 6-figure launches without burnout._</td> |
-| **CUSTOM CODED: OfferGenius™ AI Builder** | $37 | Order Bump | 100 Genius Ideas | `NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE` |
-| ↳ _Details_ | <td colspan="4">_A custom AI tool that automatically perfectly customizes an offer for a specific audience to eliminate checkout hesitation._</td> |
-| **CUSTOM TRAINED: 'Lazy Launch' AI EMAIL WRITER** | $67 | Order Bump | 100 Genius Ideas | `NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE` |
-| ↳ _Details_ | <td colspan="4">_A custom-trained AI system pre-loaded with psychological email sequences designed to sell without sounding "salesy"._</td> |
-| **The Money Map Bundle** | +$300 | Upsell | Workshop Checkout | `BUNDLE_PRICE` = $797 total |
-| ↳ _Details_ | <td colspan="4">_Bundles the entry-level live workshop with the comprehensive 'Money Map' strategy course normally valued at $497._</td> |
-| **1:1 Sales Coaching Session** | $747 | Upsell (Dedicated) | /10k-launch-lab-upsell | `NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE` |
-| ↳ _Details_ | <td colspan="4">_A direct, high-touch 1:1 strategy and group coaching add-on to maximize the impact of the launch templates._</td> |
-| **Show Don't Tell Thumbnail Generator (400 Credits)** | $47 | Order Bump | Unstuck to Published, Build Your Substack | `UNSTUCK_SDT_BUMP_PRICE` |
-| ↳ _Details_ | <td colspan="4">_Adds 400 image credits (~200 generations) to the Show Don't Tell AI Thumbnail Generator. 19 style presets, 1 year access. Credits are provisioned into the `show_dont_tell_users` table on payment confirmation._</td> |
-| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Unstuck to Published, Build Your Substack | `UNSTUCK_GENIUS_BUMP_PRICE` |
-| ↳ _Details_ | <td colspan="4">_100 vetted, high-converting launch ideas sorted by difficulty and revenue potential. Instant PDF download with lifetime access._</td> |
-| **Hooks That Stop the Scroll** | $27 | Order Bump | Unstuck to Published, Build Your Substack | `UNSTUCK_HOOKS_BUMP_PRICE` |
-| ↳ _Details_ | <td colspan="4">_Vault of high-converting headline frameworks and opening loops that force readers to stop scrolling and click._</td> |
-| **The Creator Launch Kit (Bundle)** | $69 | Order Bump (Bundle) | Unstuck to Published, Build Your Substack | `UNSTUCK_BUNDLE_PRICE` |
-| ↳ _Details_ | <td colspan="4">_All 3 add-ons bundled: Show Don't Tell (400 credits) + 100 Genius Launch Ideas PDF + Hooks That Stop the Scroll. Individual total $101, bundle price $69 (save $32)._</td> |
-| **The Launch Stack** | $67 | Order Bump | Creator Bundle | `CREATOR_BUNDLE_BUMP_PRICE` |
-| ↳ _Details_ | <td colspan="4">_The comprehensive launch project management tool added as an order bump on the Creator Bundle checkout._</td> |
-| **The Launch Stack** | $67 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE` |
-| ↳ _Details_ | <td colspan="4">_Password-gated launch project management tool. Password (`mellon_hwg`) revealed on success page after purchase._</td> |
-| **Hooks That Stop the Scroll** | $47 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE` |
+| **Hooks That Stop the Scroll** | $47 | Order Bump | 10K Launch Lab | `NEXT_PUBLIC_LAUNCHLAB_BUMP_PRICE` (4700 cents) |
 | ↳ _Details_ | <td colspan="4">_Vault of high-converting headline frameworks and opening loops._</td> |
-| **Offer Genius** | $37 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE` |
-| ↳ _Details_ | <td colspan="4">_AI-powered offer builder. Password-gated tool unlocked on success page (uses same `mellon_hwg` master password as Launch Stack)._</td> |
-| **Offer Clarity Bump Bundle (All 3)** | Auto-computed (~20% off) | Order Bump (Bundle) | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT` (default 0.20)<br>`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE` (optional override) |
-| ↳ _Details_ | <td colspan="4">_Auto-calculated bundle: sum of Launch Stack + Hooks + Offer Genius minus a configurable discount percentage. When selected, individual bumps are disabled. Optional explicit override available._</td> |
-| **1:1 Coaching with Ana** | $797 | Upsell (Dedicated) | /offer-clarity-coaching-upsell | `NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE` ($797)<br>`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE` ($997) |
-| ↳ _Details_ | <td colspan="4">_Post-purchase one-click upsell using saved card (off-session charge via `setup_future_usage: off_session`). Reduced from $997 retail. Falls back to Stripe Elements form if no saved payment method._</td> |
+| **The 60-Minute Launch Calendar** | $97 | Order Bump | 10K Launch Lab | `NEXT_PUBLIC_LAUNCHLAB_BUMP2_PRICE` (9700 cents) |
+| ↳ _Details_ | <td colspan="4">_Day-by-day Notion templates used to manage 6-figure launches._</td> |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | How to Hit 10K | `NEXT_PUBLIC_HIT10K_BUMP_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_Same vault, lower tier price for the $97 mini-workshop funnel._</td> |
+| **The 60-Minute Launch Calendar** | $69 | Order Bump | How to Hit 10K | `NEXT_PUBLIC_HIT10K_BUMP2_PRICE` (6900 cents) |
+| ↳ _Details_ | <td colspan="4">_Notion launch calendar templates at the discounted mini-workshop tier._</td> |
+| **OfferGenius AI Builder** | $17 | Order Bump | 100 Genius Launch Ideas | `NEXT_PUBLIC_GENIUS_IDEAS_BUMP_PRICE` (1700 cents) |
+| ↳ _Details_ | <td colspan="4">_Custom AI offer-builder tool (Bump 1)._</td> |
+| **Lazy Launch AI Email Writer (Launch Stack)** | $87 | Order Bump | 100 Genius Launch Ideas | `NEXT_PUBLIC_GENIUS_IDEAS_BUMP2_PRICE` (8700 cents) |
+| ↳ _Details_ | <td colspan="4">_Custom-trained AI email-sequence system (Bump 2)._</td> |
+| **100 Genius Launch Ideas PDF** | $27 | Order Bump | First 100 Paid Subscribers | `FIRST100_BUMP_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_184-page vault of pre-validated offer templates._</td> |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | First 100 Paid Subscribers | `FIRST100_BUMP2_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_Headline frameworks and opening loops vault._</td> |
+| **Launch Stack (AI Email Sequence Copywriter)** | $67 | Order Bump | First 100 Paid Subscribers | `FIRST100_BUMP3_PRICE` (6700 cents) |
+| ↳ _Details_ | <td colspan="4">_Password-gated AI email sequence generator._</td> |
+| **First 100 Bump Bundle (All 3)** | $97 | Order Bump (Bundle) | First 100 Paid Subscribers | `FIRST100_BUNDLE_PRICE` (9700 cents) |
+| ↳ _Details_ | <td colspan="4">_Bundles 100 Genius Ideas + Hooks + Launch Stack. Selecting bundle disables individual bumps._</td> |
+| **Show Don't Tell Thumbnail Generator (400 Credits)** | $47 | Order Bump | Unstuck to Published | `UNSTUCK_SDT_BUMP_PRICE` (4700 cents) |
+| ↳ _Details_ | <td colspan="4">_Provisions 400 image credits (~200 generations) into the SDT thumbnail generator on payment confirmation._</td> |
+| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Unstuck to Published | `UNSTUCK_GENIUS_BUMP_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_Instant PDF download, lifetime access._</td> |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | Unstuck to Published | `UNSTUCK_HOOKS_BUMP_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_Headline frameworks vault._</td> |
+| **The Creator Launch Kit (Bundle)** | $69 | Order Bump (Bundle) | Unstuck to Published | `UNSTUCK_BUNDLE_PRICE` (6900 cents) |
+| ↳ _Details_ | <td colspan="4">_All 3 add-ons bundled (SDT 400 credits + 100 Genius PDF + Hooks). Individual total $101, save $32._</td> |
+| **Show Don't Tell Thumbnail Generator (400 Credits)** | $47 | Order Bump | Build Your Substack | `UNSTUCK_SDT_BUMP_PRICE` (shared, 4700 cents) |
+| ↳ _Details_ | <td colspan="4">_Same SDT 400-credit add-on. Reuses Unstuck constants — distinct funnel instance._</td> |
+| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Build Your Substack | `UNSTUCK_GENIUS_BUMP_PRICE` (shared, 2700 cents) |
+| ↳ _Details_ | <td colspan="4">_PDF vault — distinct funnel instance, shared constant with Unstuck._</td> |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | Build Your Substack | `UNSTUCK_HOOKS_BUMP_PRICE` (shared, 2700 cents) |
+| ↳ _Details_ | <td colspan="4">_Headline frameworks vault — distinct funnel instance._</td> |
+| **The Creator Launch Kit (Bundle)** | $69 | Order Bump (Bundle) | Build Your Substack | `UNSTUCK_BUNDLE_PRICE` (shared, 6900 cents) |
+| ↳ _Details_ | <td colspan="4">_All 3 add-ons bundled — distinct funnel instance, shared constant with Unstuck._</td> |
+| **The Launch Stack** | $67 | Order Bump | Creator Bundle | `CREATOR_BUNDLE_BUMP_PRICE` (6700 cents) |
+| ↳ _Details_ | <td colspan="4">_Password-gated AI email sequence generator added at Creator Bundle checkout._</td> |
+| **The Launch Stack** | $67 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE` (6700 cents) |
+| ↳ _Details_ | <td colspan="4">_Password (`mellon_hwg`) revealed on success page after purchase._</td> |
+| **Hooks That Stop the Scroll** | $47 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE` (4700 cents) |
+| ↳ _Details_ | <td colspan="4">_Headline frameworks vault, mid-tier price for the $197 funnel._</td> |
+| **Offer Genius** | $37 | Order Bump | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE` (3700 cents) |
+| ↳ _Details_ | <td colspan="4">_AI offer builder, password-gated with `mellon_hwg`._</td> |
+| **Offer Clarity Bump Bundle (All 3)** | ~$121 (auto-computed) | Order Bump (Bundle) | Offer Clarity Sprint | `NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_DISCOUNT_PCT` (default 0.20)<br>`NEXT_PUBLIC_OFFER_CLARITY_BUMP_BUNDLE_PRICE` (optional override) |
+| ↳ _Details_ | <td colspan="4">_Auto-calc: ($67 + $47 + $37) × (1 − 0.20) ≈ $120.80. Selecting bundle disables individuals. Optional explicit override._</td> |
+| **Hooks That Stop the Scroll** | $27 | Order Bump | Word Into Money | `WIM_BUMP1_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_Headline frameworks vault — Bump 1 of WIM checkout._</td> |
+| **100 Genius Launch Ideas PDF** | $27 | Order Bump | Word Into Money | `WIM_BUMP2_PRICE` (2700 cents) |
+| ↳ _Details_ | <td colspan="4">_PDF vault — Bump 2 of WIM checkout._</td> |
+| **Launch Stack Email Copywriter** | $67 | Order Bump | Word Into Money | `WIM_BUMP3_PRICE` (6700 cents) |
+| ↳ _Details_ | <td colspan="4">_Password-gated AI email sequence generator — Bump 3 of WIM checkout._</td> |
+| **Word Into Money Bump Bundle (All 3)** | $69 | Order Bump (Bundle) | Word Into Money | `WIM_BUNDLE_PRICE` (6900 cents) |
+| ↳ _Details_ | <td colspan="4">_All 3 add-ons bundled. Selecting bundle disables individuals._</td> |
+| **The Money Map Bundle Upgrade** | $497 (bundle) / $497 (standalone) / `BUNDLE_PRICE` env | Upsell (Dedicated) | /upsell — post-Build-to-Profit checkout | `BUNDLE_PRICE` (default 79700 cents)<br>`WORKSHOP_PRICE` (default 59700 cents)<br>Page text hardcoded to $497 — production env vars likely override defaults |
+| ↳ _Details_ | <td colspan="4">_Page offers an upgrade to Build to Profit + Money Map bundle. Hardcoded display price $497 for both 'bundle' and 'standard' variants on the page; backend uses `BUNDLE_PRICE` (default $797) and `WORKSHOP_PRICE` (default $597) env vars when creating the Stripe session._</td> |
+| **10K Launch Lab Upgrade** | $597 | Upsell (Dedicated) | /10k-launch-lab-upsell — post-First-100 / post-Hit-10K | Hardcoded display $597 (matches `LAUNCHLAB_PRICE` 59700 cents) |
+| ↳ _Details_ | <td colspan="4">_Value stack page offering the full 10K Launch Lab program. 'ONLY $597 FOR YOU' vs $4,997 stacked-value strikethrough. Same product as the standalone $597 sale on `/10k-launch-lab` — distinct sales context._</td> |
+| **Private 1:1 Sales Audit / Coaching** | $747 | Upsell (Dedicated) | /10k-coaching-upsell — post-Launch-Lab-upsell | `NEXT_PUBLIC_LAUNCHLAB_COACHING_PRICE` (74700 cents) |
+| ↳ _Details_ | <td colspan="4">_One-click off-session charge for a high-touch 1:1 coaching session. $747 with $1,497 strikethrough. Routes the user to success after acceptance or skip._</td> |
+| **"What Do I Even Sell?" Workshop Recording** | $147 | Upsell (Dedicated) | /offer-clarity-what-to-sell-upsell — post-Offer-Clarity | `NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_PRICE` (14700 cents)<br>`NEXT_PUBLIC_OFFER_CLARITY_WHAT_TO_SELL_RETAIL_PRICE` (24700 cents strikethrough) |
+| ↳ _Details_ | <td colspan="4">_Post-purchase one-click upsell. $147 with $247 strikethrough. Falls back to Stripe Elements if no saved card._</td> |
+| **1:1 Coaching with Ana** | $797 | Upsell (Dedicated) | /offer-clarity-coaching-upsell — post-Offer-Clarity (sequenced after What-To-Sell) | `NEXT_PUBLIC_OFFER_CLARITY_COACHING_PRICE` (79700 cents)<br>`NEXT_PUBLIC_OFFER_CLARITY_COACHING_RETAIL_PRICE` (99700 cents strikethrough) |
+| ↳ _Details_ | <td colspan="4">_One-click off-session charge using saved card (`setup_future_usage: off_session` set on the original PI). $797 with $997 strikethrough. Falls back to embedded Stripe Elements if no saved payment method._</td> |
+| **First 100 Paid Subscribers (WIM Upsell #1)** | $97 | Upsell (Dedicated) | /word-into-money-upsell-1 — post-Word-Into-Money | `WIM_UPSELL1_PRICE` (9700 cents) |
+| ↳ _Details_ | <td colspan="4">_First step of the WIM 3-step ascending upsell ladder. Offers the First 100 Paid Subscribers workshop. Hardcoded button text $97. Distinct sales instance — different funnel context from the standalone `/first-100-paid-subscribers` page._</td> |
+| **10K Launch Lab (WIM Upsell #2)** | $597 | Upsell (Dedicated) | /word-into-money-upsell-2 — post-WIM-Upsell-1 | `WIM_UPSELL2_PRICE` (59700 cents) |
+| ↳ _Details_ | <td colspan="4">_Second step of the WIM ladder. Offers the 10K Launch Lab program. Distinct sales instance — different funnel context from `/10k-launch-lab` and `/10k-launch-lab-upsell`._</td> |
+| **1:1 Coaching with Ana (WIM Upsell #3)** | $997 | Upsell (Dedicated) | /word-into-money-upsell-3 — post-WIM-Upsell-2 | `WIM_UPSELL3_PRICE` (99700 cents) |
+| ↳ _Details_ | <td colspan="4">_Final step of the WIM ladder. 1:1 coaching at full retail $997 (no strikethrough on this version). Distinct from the Offer Clarity coaching upsell ($797 reduced from $997)._</td> |
 
 ---
 
@@ -202,9 +259,28 @@ These pages handle the post-purchase experience, dynamic rendering of purchased 
         *   If Offer Genius Bump bought: PasswordReveal card with `mellon_hwg` and link to `/ana-offer-genius`.
         *   If Bundle bought: All three bump cards above are rendered.
         *   If 1:1 Coaching upsell accepted: Calendly booking card.
+*   **Offer Clarity — What To Sell Upsell**
+    *   **Redirect:** On success or skip, forwards into the coaching-upsell or success page.
+    *   **Content:** Post-checkout one-click upsell offering the "What Do I Even Sell?" workshop recording at $147 (was $247). Comes before the coaching upsell in the Offer Clarity sequence. Uses saved card off-session charge; falls back to embedded Stripe Elements if no payment method.
 *   **Offer Clarity Coaching Upsell**
     *   **Redirect:** On success or skip, forwards to `/offer-clarity-success?leadId=...`.
     *   **Content:** Post-checkout one-click upsell page for 1:1 coaching with Ana at $797 (struck-through retail $997, with emerald 'Save $200' badge). Heading uses the same emerald green as the announcement bar. Uses saved card off-session charge; falls back to embedded Stripe Elements if no payment method on file.
+*   **10K Launch Lab Upsell**
+    *   **Content:** Value-stack upsell page presenting the full $4,997 stack for $597. Offered post-checkout to First 100 Paid Subscribers and How to Hit 10K buyers — same core product as `/10k-launch-lab`, distinct sales instance.
+*   **Private 1:1 Sales Audit Upsell**
+    *   **Content:** Post-Launch-Lab-upsell page offering a private 1:1 sales audit / coaching session at $747 (was $1,497). One-click charge against the saved card on file.
+*   **Word Into Money Success**
+    *   **Content:** Confirms the Word Into Money purchase and provides workshop access details.
+*   **WIM Upsell #1 — First 100 Paid Subscribers**
+    *   **Content:** Step 1 of the WIM 3-step ascending upsell ladder. Offers the First 100 Paid Subscribers workshop at $97. Continues to Upsell #2 on accept or skip.
+*   **WIM Upsell #2 — 10K Launch Lab**
+    *   **Content:** Step 2 of the WIM ladder. Offers the 10K Launch Lab at $597. Continues to Upsell #3 on accept or skip.
+*   **WIM Upsell #3 — 1:1 Coaching**
+    *   **Content:** Final step of the WIM ladder. Offers 1:1 coaching with Ana at $997. Routes to `/word-into-money-final` on accept or skip.
+*   **Word Into Money Final**
+    *   **Content:** Terminal confirmation / fulfillment page after the 3-step WIM upsell ladder completes.
+*   **Build to Profit Upsell**
+    *   **Content:** Post-Build-to-Profit upsell offering the Money Map bundle upgrade. Hardcoded display price $497 with $3,202 retail strikethrough. Two CTAs: 'Upgrade now — Bundle ($497)' and 'No Thanks — just Build to Profit ($497)'. Backend creates the Stripe session via `WORKSHOP_PRICE` / `BUNDLE_PRICE` env vars.
 
 ---
 
@@ -254,6 +330,10 @@ These APIs run silently in the background routing traffic and managing state:
 *   **`/api/offer-clarity/confirm-payment`**: Confirms the Offer Clarity payment, marks the lead `is_paid: true`, and persists which bumps were purchased (Launch Stack, Hooks, Offer Genius, or Bundle).
 *   **`/api/offer-clarity/get-lead-status`**: Returns lead and payment status for the Offer Clarity Sprint (used by the success page to render the right delivery cards).
 *   **`/api/offer-clarity/coaching-upsell/create-payment-intent`**: One-click off-session charge against the saved card for the $797 coaching upsell. Falls back to a fresh Elements collection if no card is on file. Updates the existing `offer_clarity_leads` row with the upsell amount.
+*   **`/api/offer-clarity/what-to-sell-upsell/create-payment-intent + confirm-payment`**: Drives the first Offer Clarity post-checkout upsell — the "What Do I Even Sell?" workshop recording ($147). One-click off-session charge with Stripe Elements fallback.
+*   **`/api/offer-clarity/success-event + success-events-list`**: Records and lists Offer Clarity success-page journey events (writes/reads `offer_clarity_success_events`). The list endpoint is auth-gated (ADMIDASH_PASSWORD) and powers `/admidash/offer-clarity-events`.
+*   **`/api/word-into-money/* (create-payment-intent, confirm-payment, get-lead-status, upsell-1|2|3/*)`**: Full Word Into Money funnel API surface (main checkout + 3-step upsell ladder). Targets `wim_leads` / `wim_coaching_leads` — currently failing because those tables are not provisioned (see Funnel Architecture).
+*   **`/api/download`**: Serves protected/static digital product file downloads (e.g. the 100 Genius Launch Ideas PDF) for fulfillment.
 
 ### Supabase Tables
 
@@ -269,6 +349,9 @@ These APIs run silently in the background routing traffic and managing state:
 *   **build_your_substack_leads:** Stores leads, payment data, and order bump selections for Build Your Substack. Mirrors the unstuck_leads structure.
 *   **creator_bundle_leads:** Stores leads, payment data, and Launch Stack bump selection for the Creator Bundle.
 *   **offer_clarity_leads:** Stores leads, all 3 bump flags (Launch Stack, Hooks, Offer Genius) + bundle flag, coaching upsell flag, payment lifecycle, pricing snapshot in cents (`base_price_cents`, `bumps_price_cents`, `coaching_price_cents`, `total_paid_cents`), and marketing attribution (utm_*, referrer_url, user_agent, ip_address) for the Offer Clarity Sprint funnel.
+*   **offer_clarity_success_events:** Event log for the Offer Clarity success-page journey (page views, CTA clicks). Columns: id, created_at, lead_id, session_id, event_type, event_data, user_agent, ip_address, referrer, viewport_w, viewport_h. Written by `/api/offer-clarity/success-event`; read by `/admidash/offer-clarity-events`.
+*   **wim_leads:** Intended lead/order table for the Word Into Money funnel (main checkout, bumps, upsells 1 & 2). NOT YET PROVISIONED — referenced by the WIM API routes but does not currently exist in Supabase, so the funnel 500s. Expected columns: name, email, is_paid, stripe_customer_id, stripe_payment_intent_id, total_paid, has_bump1/2/3, has_bundle, has_upsell1/2/3, payment_completed_at, created_at.
+*   **wim_coaching_leads:** Intended table for the Word Into Money upsell #3 (1:1 coaching off-session charge). NOT YET PROVISIONED — referenced by the WIM upsell-3 routes but does not currently exist in Supabase.
 
 ---
 
@@ -324,7 +407,7 @@ Every production deployment relies on the following backend services and environ
 
 ### Offer Clarity Sprint Pricing
 
-*   **`NEXT_PUBLIC_OFFER_CLARITY_PRICE`**: Base price for the Offer Clarity Sprint course (cents). Default 9700 = $97.
+*   **`NEXT_PUBLIC_OFFER_CLARITY_PRICE`**: Base price for the Offer Clarity Sprint course (cents). Default 19700 = $197.
 *   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_LAUNCH_STACK_PRICE`**: Launch Stack order bump price (cents). Default 6700 = $67.
 *   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_HOOKS_PRICE`**: Hooks That Stop the Scroll order bump price (cents). Default 4700 = $47.
 *   **`NEXT_PUBLIC_OFFER_CLARITY_BUMP_OFFER_GENIUS_PRICE`**: Offer Genius order bump price (cents). Default 3700 = $37.
