@@ -405,7 +405,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                     </div>
 
                     {/* Hero image (+20% bigger, no drop shadow) */}
-                    <img src="/imgs/cvdp/hero2.webp" alt="How To Create The One Digital Product That Sells — 90-minute live workshop with Ana Calin" className="w-full max-w-[1080px] h-auto rounded-2xl border border-gray-100" />
+                    <img src="/imgs/cvdp/hero3.webp" alt="Build Your One Signature Offer That Sells While You Sleep — 90-minute live workshop with Ana Calin" className="w-full max-w-[1080px] h-auto rounded-2xl border border-gray-100" />
 
                     {/* Proof chip — right below the image, above the CTA */}
                     <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mt-9">
@@ -486,9 +486,9 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
 
             {/* Reframe */}
             <section className="py-12 px-6 text-center">
-                <div className="max-w-[780px] mx-auto">
+                <div className="max-w-[1560px] mx-auto">
                     <h2 className="font-anton uppercase text-3xl md:text-5xl text-[#333333] mb-4">The problem was never your effort</h2>
-                    <p className="font-lato text-[#332C24] text-lg md:text-2xl font-semibold max-w-[42ch] mx-auto">
+                    <p className="font-lato text-[#332C24] text-lg md:text-2xl font-semibold max-w-[84ch] mx-auto">
                         You don't have a discipline problem. You have a <span className="text-[#d81159] font-bold">clarity problem.</span> You keep starting products because you're secretly not sure any of them is THE one. So you tweak. You stall. You start a sixth thing. <i>Fix the clarity, and the finishing takes care of itself.</i>
                     </p>
                 </div>
