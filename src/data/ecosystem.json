@@ -241,6 +241,22 @@
                         }
                     ],
                     "callout": "Checkout via Stripe Payment Link — no backend API routes or database table"
+                },
+                {
+                    "name": "Create Viral Digital Product",
+                    "description": "A 90-minute LIVE workshop (then recorded — every registrant gets the full replay) that walks creators through finding, validating, and shaping their one signature digital product. Embedded Stripe Elements checkout with 3 order bumps (100 Genius Launch Ideas $27, Offer Genius AI Builder $37, The Launch Stack $67) + an all-three bundle ($81, save $50), plus a success page that delivers the add-ons.",
+                    "price": "$97",
+                    "priceNote": "(`CVDP_PRICE` — server-only env var, default 9700 cents)",
+                    "links": [
+                        {
+                            "label": "Sales & Checkout",
+                            "url": "/create-viral-digital-product"
+                        },
+                        {
+                            "label": "Success",
+                            "url": "/create-viral-digital-product-success"
+                        }
+                    ]
                 }
             ]
         },
@@ -323,12 +339,6 @@
                     "description": "In development. Currently a 'Coming Soon' placeholder page — intended as a future AI tool in the viral-digital-product family (alongside the Finder and Will It Sell? tools).",
                     "access": "Not yet live — placeholder page (Coming Soon).",
                     "url": "/viral-digital-product-ai"
-                },
-                {
-                    "name": "Create Viral Digital Product",
-                    "description": "In development. Blank scaffold page created as the starting canvas for a new viral-digital-product creation tool/funnel. No content, product, or checkout wired up yet.",
-                    "access": "Not yet live — blank placeholder page (work in progress).",
-                    "url": "/create-viral-digital-product"
                 }
             ]
         },

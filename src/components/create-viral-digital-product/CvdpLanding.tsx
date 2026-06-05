@@ -386,12 +386,12 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 <div className="max-w-[1500px] w-full flex flex-col items-center text-center">
                     <span className="inline-block font-montserrat font-extrabold tracking-widest uppercase text-[11px] text-[#d81159] bg-[#FDE7EF] px-4 py-2 rounded-full mb-4">90-Minute Live Workshop</span>
                     <h1 className="w-full font-anton uppercase leading-[1.04] tracking-wide text-4xl sm:text-5xl lg:text-6xl text-[#333333] mb-5" style={{ WebkitTextStroke: '0.6px currentColor' }}>
-                        How To Create The <span className="text-[#d81159]" style={{ WebkitTextStroke: '0.6px currentColor' }}>One<br className="hidden md:block" /> Digital Product</span> <span className="whitespace-nowrap bg-gradient-to-b from-transparent from-55% to-[#ffc300] to-55% px-1" style={{ WebkitTextStroke: '0.6px currentColor' }}>That Sells</span>
+                        Build Your <span className="text-[#d81159]" style={{ WebkitTextStroke: '0.6px currentColor' }}>One Signature Offer</span><br className="hidden md:block" /> That Sells <span className="whitespace-nowrap bg-gradient-to-b from-transparent from-55% to-[#ffc300] to-55% px-1" style={{ WebkitTextStroke: '0.6px currentColor' }}>While You Sleep</span>
                     </h1>
 
                     {/* Subtitle — benefit, directly under the headline */}
                     <p className="font-display font-bold text-[#333333] text-lg md:text-2xl italic max-w-[46ch] mb-5">
-                        Turn what you already know, plus what your audience actually wants, into one signature offer worth building.
+                        Turn What You Already Know &amp; Your Existing Audience (no matter how small it is) into a <span className="text-[#d81159]">Cash Machine</span>
                     </p>
 
                     {/* Countdown */}
@@ -415,11 +415,12 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
 
                     {/* CTA — below the proof */}
                     <button onClick={goEnroll} className={`${btn} text-xl md:text-2xl py-5 px-10 md:px-16 mt-6`}>Show Me What To Build</button>
-                    <span className="block font-lato font-bold text-[#6E665B] text-sm mt-3">Just ${usd(prices.core)} · Live + replay · Walk away with your one offer planned</span>
+                    <span className="block font-lato font-bold text-[#d81159] text-sm md:text-[15px] mt-3">🔴 Live seats are limited — when the room is full, doors close. Replay only after that.</span>
+                    <span className="block font-lato font-bold text-[#6E665B] text-sm mt-2">Just ${usd(prices.core)} · Live + replay · Walk away with your one offer planned</span>
 
-                    {/* Founder credibility */}
+                    {/* Lead-in */}
                     <p className="font-lato text-[#6E665B] font-semibold text-[15px] md:text-base max-w-[54ch] mt-8">
-                        Even if you've started five things and finished none. Hosted by the founder of How We Grow (80,000+ subscribers, a top Business newsletter on Substack, Forbes-featured) who has built her business past 7 figures and personally critiqued 300+ creator offers.
+                        Even if you've started five things and finished none.
                     </p>
                     <div className="inline-flex mt-7 bg-white border border-[#EEE3CE] rounded-2xl overflow-hidden shadow-sm">
                         {[['6:00 PM', 'Athens'], ['11:00 AM', 'New York'], ['8:00 AM', 'Los Angeles']].map(([t, z], i) => (
@@ -478,18 +479,10 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </div>
             </section>
 
-            {/* Stats */}
-            <section className="py-12 px-6">
-                <div className="max-w-[1000px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
-                    {[['80K', '+', 'Subscribers'], ['7', '-fig', 'Business built'], ['Forbes', '', 'Featured'], ['Top', '', 'Business Substack']].map(([n, u, l]) => (
-                        <div key={l}>
-                            <div className="font-anton text-[#333333] text-3xl md:text-5xl leading-none">{n}<span className="text-[#d81159]">{u}</span></div>
-                            <div className="h-1 w-9 bg-[#ffc300] rounded-full mx-auto mt-3" />
-                            <div className="font-lato font-bold text-[#6E665B] text-sm mt-2">{l}</div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+            {/* Motif: "stop sitting on your ideas / start getting paid" (gerunds rephrased per instance) */}
+            <div className="bg-[#262020] py-4 md:py-5 px-6 text-center">
+                <p className="font-anton uppercase tracking-wide text-xl md:text-3xl text-white">Stop Doubting Your Best Ideas — <span className="text-[#ffc300]">Start Cashing In On Them</span></p>
+            </div>
 
             {/* Reframe */}
             <section className="py-12 px-6 text-center">
@@ -550,6 +543,11 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </div>
             </section>
 
+            {/* Motif (gerunds rephrased) */}
+            <div className="bg-[#262020] py-4 md:py-5 px-6 text-center">
+                <p className="font-anton uppercase tracking-wide text-xl md:text-3xl text-white">Stop Letting Your Best Ideas Collect Dust — <span className="text-[#ffc300]">Start Earning From Them</span></p>
+            </div>
+
             {/* Meet Ana — founder */}
             <section className="py-16 md:py-20 px-6 bg-[#E0F7FA]">
                 <div className="max-w-[1000px] mx-auto grid md:grid-cols-[minmax(0,340px)_1fr] gap-10 md:gap-14 items-center">
@@ -592,7 +590,11 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                             <TtcCard key={f.name} {...f} />
                         ))}
                     </div>
-                    <div className="text-center mt-9"><button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Let's Build My One Offer</button></div>
+                    <div className="text-center mt-9">
+                        <button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Let's Build My One Offer</button>
+                        <p className="font-montserrat font-bold text-[#d81159] text-sm text-center mt-3 max-w-[460px] mx-auto">Only <b>100</b> live seats. <b>27 already taken.</b> Your spot isn't held until checkout is complete.</p>
+                        <p className="font-lato font-bold text-[#147a6a] text-[13px] text-center mt-2 max-w-[460px] mx-auto">Can't make it live? You keep the full replay + every AI tool forever — nothing is lost.</p>
+                    </div>
                 </div>
             </section>
 
@@ -631,6 +633,11 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                     </div>
                 </div>
             </section>
+
+            {/* Motif (gerunds rephrased) */}
+            <div className="bg-[#262020] py-4 md:py-5 px-6 text-center">
+                <p className="font-anton uppercase tracking-wide text-xl md:text-3xl text-white">Quit Burying Your Best Ideas — <span className="text-[#ffc300]">Start Profiting From Them</span></p>
+            </div>
 
             {/* Q&A box */}
             <section className="py-16 px-6">
@@ -742,9 +749,18 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                             <TtcCard key={w.name} {...w} />
                         ))}
                     </div>
-                    <div className="text-center mt-10"><button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Save My Seat</button></div>
+                    <div className="text-center mt-10">
+                        <button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Save My Seat</button>
+                        <p className="font-montserrat font-bold text-[#d81159] text-sm text-center mt-3 max-w-[460px] mx-auto">Only <b>100</b> live seats. <b>27 already taken.</b> Your spot isn't held until checkout is complete.</p>
+                        <p className="font-lato font-bold text-[#147a6a] text-[13px] text-center mt-2 max-w-[460px] mx-auto">Can't make it live? You keep the full replay + every AI tool forever — nothing is lost.</p>
+                    </div>
                 </div>
             </section>
+
+            {/* Motif (gerunds rephrased) */}
+            <div className="bg-[#262020] py-4 md:py-5 px-6 text-center">
+                <p className="font-anton uppercase tracking-wide text-xl md:text-3xl text-white">Stop Stockpiling Your Best Ideas — <span className="text-[#ffc300]">Start Getting Paid For Them</span></p>
+            </div>
 
             {/* Value stack — maxed-out conversion, right above the checkout */}
             <section className="bg-[#262020] text-white pt-0 pb-16 md:pb-24 px-6">
@@ -856,6 +872,8 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
 
                                 {checkoutError && <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm font-medium">{checkoutError}</div>}
                                 <button type="submit" disabled={isInitializing} className={`${btn} w-full text-lg md:text-xl py-5 mt-5`}>{isInitializing ? 'Preparing…' : `Yes, I Want My One Offer — $${usd(total)}`}</button>
+                                <p className="font-montserrat font-bold text-[#d81159] text-sm text-center mt-3">Only <b>100</b> live seats. <b>27 already taken.</b> Your spot isn't held until checkout is complete.</p>
+                                <p className="font-lato font-bold text-[#147a6a] text-[13px] text-center mt-2">Can't make it live? You keep the full replay + every AI tool forever — nothing is lost.</p>
                                 <p className="font-lora italic text-gray-400 text-xs text-center mt-3">6:00 PM Athens · 11:00 AM New York · 8:00 AM Los Angeles</p>
                             </form>
                         ) : (
