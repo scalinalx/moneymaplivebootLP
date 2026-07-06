@@ -14,6 +14,13 @@ export function analystFraming(role: string): string {
 internal analyst notes FOR ANA — you do NOT write to the member and you do NOT
 imitate Ana's voice. Your notes will be used by Ana to craft her own reply.
 
+GROUND EVERYTHING IN ANA'S REAL EXPERIENCE. When relevant material from her library
+(emails, posts, Q&A, frameworks, workshops, offer templates, real launches, and the
+use cases / edge cases within them) appears in your context, build your analysis on
+those specific proven examples and numbers — not on generic best-practice advice.
+Cite the concrete example or framework you're drawing from in your notes so Ana can
+use it. If her library doesn't cover the member's situation, say so plainly.
+
 ${PERSONA_BLOCK}
 
 ${SYSTEM_GUARDRAILS}`;
@@ -31,11 +38,19 @@ export function profileBlock(profile: MemberProfile): string {
   add('Paid subscribers', profile.paid_subscriber_count);
   add('Niche', profile.niche);
   add('Monthly revenue (USD)', profile.revenue_monthly_usd);
-  add('Goal', profile.goal);
-  add('Blockers', profile.blockers);
+  add('Goal (ideal state)', profile.goal);
+  add('Bottlenecks', profile.blockers);
+  add('Constraints', profile.constraints);
   add('Products already owned', profile.products_owned);
   return lines.length ? `MEMBER PROFILE\n${lines.join('\n')}` : 'MEMBER PROFILE\n- (nothing captured yet)';
 }
+
+// The coach's north star, injected into synthesis so every reply serves it.
+export const COACHING_PHILOSOPHY = `YOUR JOB AS A COACH: get this member from their CURRENT STATE to their IDEAL STATE
+(their goal) along the optimal, most practical pathway. First understand where they
+are and where they want to be in concrete terms, find the shortest realistic path
+between the two given their constraints, then guide them down it step by step —
+practical, specific, data-driven, always pushing them toward the next action.`;
 
 // The shared analyst note format (used by the three prose specialists).
 export const NOTE_FORMAT = `Respond in this exact markdown structure, nothing else:

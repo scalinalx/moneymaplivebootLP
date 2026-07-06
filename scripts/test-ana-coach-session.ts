@@ -27,7 +27,7 @@ const FULL: MemberProfile = {
 
 // --- missingIntakeFields --------------------------------------------------
 assert('full profile → no missing intake fields', missingIntakeFields(FULL).length === 0);
-assert('empty profile → 5 missing', missingIntakeFields({}).length === 5);
+assert('empty profile → 3 required missing (niche, goal, subscriber_count)', missingIntakeFields({}).length === 3);
 assert('revenue 0 counts as present (not missing)',
   !missingIntakeFields(FULL).includes('revenue_monthly_usd'));
 

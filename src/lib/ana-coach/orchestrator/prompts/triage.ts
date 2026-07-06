@@ -27,8 +27,10 @@ ROUTING GUIDANCE:
   and you want Ana to consider recommending one. Be sparing.
 - Prefer 1–2 specialists. Never more than 3. Each specialist you select MUST get a
   specific question tailored to this turn.
-- profile_updates: include only fields the member actually revealed; use null for
-  everything else. Never guess.
+- profile_updates: capture every concrete fact the member reveals — current-state
+  numbers (free/paid subscriber counts, monthly revenue), niche, their specific
+  goal, bottlenecks, and constraints (time/week, budget, skills). Include only what
+  they actually stated; use null for what's unknown. Never guess or invent numbers.
 - Set phase.propose_advance true when the current phase's goal is clearly met.
 - Set phase.propose_wrap true when the member seems ready for an action plan.`;
 }
@@ -47,6 +49,7 @@ export const TRIAGE_SCHEMA = {
         revenue_monthly_usd: { type: Type.INTEGER, nullable: true },
         goal: { type: Type.STRING, nullable: true },
         blockers: { type: Type.ARRAY, items: { type: Type.STRING } },
+        constraints: { type: Type.ARRAY, items: { type: Type.STRING } },
         products_owned: { type: Type.ARRAY, items: { type: Type.STRING } },
       },
     },

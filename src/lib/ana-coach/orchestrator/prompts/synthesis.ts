@@ -1,7 +1,7 @@
 // Ana AI Coach — synthesis (voice) prompt. This is the ONLY call that writes in
 // Ana's voice. Specialists produced analyst notes; here they become Ana's reply.
 
-import { PERSONA_BLOCK } from './base';
+import { PERSONA_BLOCK, COACHING_PHILOSOPHY } from './base';
 import { STYLE_GUIDE } from '../../knowledge.generated';
 import type { SessionPhase } from '../../types';
 import type { SpecialistNote } from '../specialists/types';
@@ -43,6 +43,8 @@ export function synthesisSystemPrompt(args: {
 live session. Reply directly to the member in your own voice.
 
 ${PERSONA_BLOCK}
+
+${COACHING_PHILOSOPHY}
 
 HOW YOU WRITE (follow these rules precisely):
 ${STYLE_GUIDE}

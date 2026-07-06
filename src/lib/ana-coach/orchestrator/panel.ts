@@ -7,7 +7,7 @@
 
 import { runSpecialist } from './specialists';
 import { wrapUntrusted } from '../untrusted';
-import { retrieveWithVector, formatRetrieved, SPECIALIST_SOURCES } from '../retrieval';
+import { embedQuery, retrieveWithVector, formatRetrieved, SPECIALIST_SOURCES } from '../retrieval';
 import { MAX_SPECIALISTS_PER_TURN } from '../config';
 import type { SpecialistPlan } from './triage';
 import type { Attachment, SessionPhase, SpecialistId } from '../types';
@@ -68,12 +68,18 @@ export async function runPanel(
 ): Promise<SpecialistNote[]> {
   const tasks = panel.map(async (p) => {
     const start = Date.now();
-    // Each specialist retrieves from its OWN domain sources (reusing the turn's
-    // query vector — no extra embed call), so its core material surfaces.
+    // Each specialist retrieves from its OWN domain sources, using ITS diagnostic
+    // question as the query (tailored to its angle by triage) so the most relevant
+    // use cases from Ana's experience surface. Falls back to the turn's shared
+    // vector if the question is empty or embedding fails.
     const sources = SPECIALIST_SOURCES[p.id];
+    let queryVec = base.queryVector;
+    if (p.question?.trim()) {
+      queryVec = (await embedQuery(`${p.question}\n${base.memberMessage}`)) ?? base.queryVector;
+    }
     const library =
-      base.queryVector && Array.isArray(sources)
-        ? formatRetrieved(retrieveWithVector(base.queryVector, 6, 0.5, sources))
+      queryVec && Array.isArray(sources)
+        ? formatRetrieved(retrieveWithVector(queryVec, 6, 0.5, sources))
         : '';
     const ctx: SpecialistContext = {
       question: p.question,

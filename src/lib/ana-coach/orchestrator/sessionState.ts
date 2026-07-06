@@ -13,12 +13,12 @@ import {
 import type { MemberProfile, SessionPhase } from '../types';
 
 const ORDER: SessionPhase[] = ['INTAKE', 'DIAGNOSIS', 'COACHING', 'WRAP_UP', 'CLOSED'];
-// The MINIMUM needed to start coaching meaningfully. Deliberately small: the coach
-// should engage with the member's actual concern, not run a fixed intake form.
-// Everything else (Substack URL, subscriber count, revenue) is captured
-// opportunistically by triage when the member mentions it, and asked for ONLY when
-// it's relevant to what they raised — never as a default checklist.
-const REQUIRED_INTAKE_FIELDS: (keyof MemberProfile)[] = ['niche', 'goal'];
+// The diagnostic foundation every coaching session needs before prescribing:
+// niche + a specific goal (ideal state) + at least one hard current-state number.
+// The coach gathers these with SPECIFIC, data-seeking questions (see the INTAKE
+// directive) — not a vague form. Revenue, paid subs, bottlenecks, and constraints
+// are gathered alongside but don't hard-gate the phase (so it can't stall).
+const REQUIRED_INTAKE_FIELDS: (keyof MemberProfile)[] = ['niche', 'goal', 'subscriber_count'];
 
 function rank(p: SessionPhase): number {
   return ORDER.indexOf(p);
@@ -39,13 +39,13 @@ export function mergeProfile(current: MemberProfile, updates: Partial<MemberProf
   if (!updates) return next;
   for (const [key, value] of Object.entries(updates)) {
     if (value === null || value === undefined) continue;
-    if (key === 'blockers' || key === 'products_owned') {
+    if (key === 'blockers' || key === 'products_owned' || key === 'constraints') {
       if (Array.isArray(value)) {
         const existing = (next[key as 'blockers'] as string[]) ?? [];
         // Union + dedup, then keep only the most RECENT entries so the list can't
         // bloat over a long session (newest last; triage re-surfaces what matters).
         const merged = Array.from(new Set([...existing, ...value.map(String)])).filter(Boolean);
-        const cap = key === 'blockers' ? 6 : 12;
+        const cap = key === 'products_owned' ? 12 : 6;
         next[key as 'blockers'] = merged.slice(-cap);
       }
       continue;
@@ -111,31 +111,40 @@ export function nextPhase(inp: PhaseInputs): SessionPhase {
   return rank(best) >= rank(current) ? best : current;
 }
 
-// The per-phase directive injected into the synthesis (voice) prompt.
+// What the coach still needs to establish the diagnostic foundation, in plain
+// terms it can weave into questions.
+function stillNeeded(profile: MemberProfile): string[] {
+  const need: string[] = [];
+  if (!(profile.niche && String(profile.niche).trim())) need.push('their niche / who they serve');
+  if (profile.subscriber_count == null) need.push('exact subscriber count (free)');
+  if (profile.paid_subscriber_count == null) need.push('paid subscriber count');
+  if (profile.revenue_monthly_usd == null) need.push('current monthly revenue ($)');
+  if (!(profile.goal && String(profile.goal).trim())) need.push('their specific, measurable goal + timeframe');
+  if (!(profile.blockers?.length)) need.push("what they think is blocking them right now");
+  if (!(profile.constraints?.length)) need.push('their constraints (hours/week, budget, skills)');
+  return need;
+}
+
+// The per-phase directive injected into the synthesis (voice) prompt. The coach's
+// job across the whole session: move the member from their CURRENT STATE to their
+// IDEAL STATE (goal) along the optimal, practical pathway — so it must first
+// establish where they are, where they want to be, and what's in the way.
 export function synthesisDirective(phase: SessionPhase, profile: MemberProfile, messageCount: number): string {
   const blockers = profile.blockers?.join(', ') || 'not yet identified';
-  const knowNiche = !!(profile.niche && String(profile.niche).trim());
-  const knowGoal = !!(profile.goal && String(profile.goal).trim());
   switch (phase) {
     case 'INTAKE': {
-      // Member-centric intake: engage with what they actually said, then ask ONE
-      // relevant follow-up — never a fixed checklist, never the Substack URL by
-      // default. Only nudge toward niche/goal if genuinely unknown.
-      const nudge = !knowNiche && !knowGoal
-        ? ' If (and only if) it helps you respond to what they raised, you may work in one natural question about their niche or what they want to achieve.'
-        : !knowGoal
-          ? ' If it fits naturally, you may ask what outcome they want.'
-          : '';
-      return `You are opening a coaching session. React directly and specifically to what the member just told you — meet them where they are and show you understand their actual situation. Do NOT run through a list of intake questions. Ask at most ONE follow-up, and only if you genuinely need it to help with what THEY raised.${nudge} Never ask for their Substack URL unless answering their specific question requires seeing their publication. Never make it feel like a form. Do not recommend any product yet.`;
+      const need = stillNeeded(profile);
+      const needList = need.length ? need.join('; ') : 'nothing — you have the full picture';
+      return `You are OPENING a coaching session, and you always start by understanding the member's situation in concrete terms before giving any prescriptive advice. First, react briefly and specifically to what they just told you so they feel understood. Then ask 1–2 SPECIFIC, data-seeking questions to fill in what you still need: ${needList}. Ask for real numbers and specifics, never vague ("what are you hoping for?" is banned — ask "how many free vs paid subscribers do you have, and what did you make last month?"). Do NOT dump every question at once — pick the 1–2 that matter most next and make them concrete. Do NOT give a plan or prescribe steps yet — you are mapping their current state and their goal. Do NOT recommend any product yet.`;
     }
     case 'DIAGNOSIS':
-      return `Diagnose where the member is stuck. Probe with pointed questions, reflect what you see, and name their #1 blocker explicitly to get agreement. Do not recommend any product yet.`;
+      return `You now know roughly where the member is and where they want to be. Pinpoint the ONE bottleneck most in the way of their goal, and begin mapping the optimal pathway from their current state to their ideal state. Probe with sharp, specific questions to confirm it, name the bottleneck explicitly, and get their agreement. If you're still missing a key number or constraint, ask for it specifically. Do not recommend any product yet.`;
     case 'COACHING':
-      return `Coach hard on their blockers (${blockers}). Apply your frameworks concretely. Every reply must end with something specific to do or decide.`;
+      return `Walk the member down the optimal pathway toward their goal. Their bottlenecks: ${blockers}. Apply your frameworks concretely to THEIR actual numbers and situation — practical, step-by-step. Push them. Every reply must end with one specific thing to do or decide next.`;
     case 'WRAP_UP':
       return messageCount >= PHASE_CLOSE_AT
-        ? `This is your FINAL substantive reply. Deliver a complete, self-contained numbered 3–5 step action plan tied to their blockers (${blockers}), with a 7-day horizon. Make it stand alone.`
-        : `Begin closing the session. Deliver a numbered 3–5 step action plan tied to their blockers (${blockers}), with a 7-day horizon.`;
+        ? `This is your FINAL substantive reply. Deliver a complete, self-contained numbered 3–5 step action plan that moves them along the pathway from where they are now to their goal, addressing their bottlenecks (${blockers}), with a 7-day horizon. Make it stand alone.`
+        : `Begin closing the session. Deliver a numbered 3–5 step action plan that advances them from their current state toward their goal, addressing their bottlenecks (${blockers}), with a 7-day horizon.`;
     case 'CLOSED':
       return `The session is complete. Warmly tell the member to start a new session when they're ready.`;
   }

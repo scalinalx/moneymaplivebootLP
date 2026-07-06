@@ -12,8 +12,9 @@ export interface MemberProfile {
   paid_subscriber_count?: number | null;
   niche?: string | null;
   revenue_monthly_usd?: number | null;
-  goal?: string | null;
-  blockers?: string[];
+  goal?: string | null;          // ideal state — should be specific + measurable + time-bound
+  blockers?: string[];           // current bottlenecks in the way
+  constraints?: string[];        // limitations: time/week, budget, skills, etc.
   products_owned?: string[];
 }
 
