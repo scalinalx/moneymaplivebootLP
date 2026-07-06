@@ -41,7 +41,7 @@ const agendaItems = [
 
 export const CurriculumSection: React.FC = () => {
     return (
-        <div className="w-full flex justify-center py-20 px-6 bg-white">
+        <div data-track-section="offer" className="w-full flex justify-center py-20 px-6 bg-white">
             <div className="max-w-[900px] w-full flex flex-col items-center">
 
                 <div className="bg-[#FDF2F8] border border-rose-100 rounded-3xl p-6 md:p-8 mb-10 max-w-3xl text-left">
@@ -101,7 +101,7 @@ export const CurriculumSection: React.FC = () => {
                 </div>
 
                 {/* Price and CTA */}
-                <div className="w-full flex flex-col items-center">
+                <div data-track-section="price" className="w-full flex flex-col items-center">
                     <div className="relative mb-2">
                         <span className="font-anton text-gray-500 text-3xl md:text-5xl">
                             Regular Price $300
@@ -112,6 +112,8 @@ export const CurriculumSection: React.FC = () => {
                         $97
                     </div>
                     <button
+                        data-track="cta"
+                        data-track-id="unstuck-offer"
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group bg-[#ffc300] hover:bg-[#e6b000] text-[#1a1a1a] font-montserrat font-bold text-lg md:text-2xl py-6 px-10 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex flex-col md:flex-row items-center justify-center gap-3 text-center w-full md:w-auto"
                     >

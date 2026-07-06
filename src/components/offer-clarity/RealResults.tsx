@@ -83,7 +83,7 @@ export function RealResults() {
           ))}
         </div>
 
-        <CTA size="lg" variant="dark" className="mt-14">
+        <CTA size="lg" variant="dark" className="mt-14" trackId="offer-clarity-results">
           I NEED THIS! I&apos;M IN, ANA!
         </CTA>
 

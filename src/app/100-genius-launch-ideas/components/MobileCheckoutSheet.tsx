@@ -23,6 +23,7 @@ export function MobileCheckoutSheet({ isOpen, onClose }: MobileCheckoutSheetProp
 
             {/* Bottom Sheet */}
             <div
+                data-track-section="checkout"
                 className={`fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 shadow-2xl z-[2000] max-h-[90vh] overflow-y-auto transition-transform duration-300 ease-out ${isOpen ? 'translate-y-0' : 'translate-y-full'
                     }`}
             >

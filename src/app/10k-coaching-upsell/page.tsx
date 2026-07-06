@@ -36,6 +36,9 @@ function CoachingUpsellContent() {
             const data = await response.json();
 
             if (data.success) {
+                // Conversion — 1-click upsell charged to card on file.
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.formSuccess?.('10k-coaching-upsell-checkout');
                 window.location.href = finalSuccessUrl + '&upsell_bought=true';
             } else {
                 setError(data.error || 'Something went wrong. Please try again.');
@@ -78,7 +81,7 @@ function CoachingUpsellContent() {
                 </p>
 
                 {/* Offer Box */}
-                <div className="w-full bg-gray-50 border-4 border-black shadow-hard p-8 md:p-12 mb-12 relative overflow-hidden">
+                <div data-track-section="offer" className="w-full bg-gray-50 border-4 border-black shadow-hard p-8 md:p-12 mb-12 relative overflow-hidden">
                     {/* Rare Ribbon */}
                     <div className="absolute top-8 -right-12 bg-[#d81159] text-white px-12 py-1 rotate-45 font-bold text-xs uppercase tracking-widest shadow-sm">
                         VERY RARE
@@ -116,7 +119,7 @@ function CoachingUpsellContent() {
                             </ul>
                         </div>
 
-                        <div className="bg-white border-2 border-black p-8 rounded-2xl shadow-hard-sm flex flex-col items-center">
+                        <div data-track-section="price" className="bg-white border-2 border-black p-8 rounded-2xl shadow-hard-sm flex flex-col items-center">
                             <p className="text-gray-400 uppercase tracking-widest text-xs font-bold mb-2">Exclusive One-Time Price</p>
                             <div className="flex items-baseline gap-2 mb-6">
                                 <span className="text-gray-300 line-through text-2xl font-bold">$1,497</span>
@@ -132,6 +135,8 @@ function CoachingUpsellContent() {
                             <button
                                 onClick={handleAccept}
                                 disabled={isProcessing}
+                                data-track="cta"
+                                data-track-id="10k-coaching-upsell-accept"
                                 className="w-full bg-[#d81159] hover:bg-black text-white font-display font-bold text-2xl py-6 rounded-xl border-b-4 border-black transition-all transform hover:-translate-y-1 active:translate-y-0.5 shadow-xl flex items-center justify-center gap-3 uppercase italic"
                             >
                                 {isProcessing ? (

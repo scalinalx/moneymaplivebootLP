@@ -70,7 +70,7 @@ const advancedItems = [
 
 export function WhatsIncluded() {
   return (
-    <section className="bg-black py-16 md:py-24">
+    <section data-track-section="offer" className="bg-black py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="bg-white rounded-2xl border-2 border-[#9E8B52] shadow-2xl px-8 py-12 md:px-14 md:py-16">
           <div className="flex justify-center mb-8">
@@ -167,7 +167,7 @@ export function WhatsIncluded() {
             </h3>
           </div>
 
-          <CTA size="lg" className="mt-10">
+          <CTA size="lg" className="mt-10" trackId="offer-clarity-offer">
             SHOW ME HOW TO MAKE WAY MORE MONEY
           </CTA>
         </div>

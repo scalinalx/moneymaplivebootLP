@@ -118,6 +118,8 @@ export const GeniusValueStack = ({ onScrollToCheckout }: { onScrollToCheckout: (
                     </p>
 
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-value"
                         onClick={onScrollToCheckout}
                         className="w-full bg-rose-600 hover:bg-rose-700 text-white font-black text-xl py-6 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 uppercase tracking-tight"
                     >

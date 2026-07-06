@@ -55,6 +55,8 @@ export const Hero: React.FC = () => {
                 {/* 5. CTA Button Section */}
                 <div className="flex flex-col items-center gap-8 relative z-40 mt-4">
                     <button
+                        data-track="cta"
+                        data-track-id="launch-lab-hero"
                         onClick={scrollToCheckout}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-4 md:py-5 px-10 md:px-14 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >

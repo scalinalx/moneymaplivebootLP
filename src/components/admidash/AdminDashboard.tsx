@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useCallback, useEffect } from 'react';
+import CoachMembersPanel from './CoachMembersPanel';
 
 // ── Types ─────────────────────────────────────────────────────────
 interface Sale {
@@ -185,7 +186,7 @@ function DashboardContent({ password }: { password: string }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [lastRefresh, setLastRefresh] = useState(new Date());
-    const [activeTab, setActiveTab] = useState<'sales' | 'leads' | 'databases' | 'abandoned' | 'best'>('sales');
+    const [activeTab, setActiveTab] = useState<'sales' | 'leads' | 'databases' | 'abandoned' | 'best' | 'coach'>('sales');
     const [range, setRange] = useState('last30d');
     const [limit, setLimit] = useState(50);
     const [customStart, setCustomStart] = useState('');
@@ -533,6 +534,9 @@ function DashboardContent({ password }: { password: string }) {
                 <button className={`ad-tab ${activeTab === 'databases' ? 'active' : ''}`} onClick={() => setActiveTab('databases')}>
                     Databases
                 </button>
+                <button className={`ad-tab ${activeTab === 'coach' ? 'active' : ''}`} onClick={() => setActiveTab('coach')}>
+                    Ana Coach
+                </button>
             </div>
 
             {selectedEmails.size > 0 && (
@@ -777,6 +781,10 @@ function DashboardContent({ password }: { password: string }) {
 
                 {activeTab === 'databases' && (
                     <DatabaseExplorer password={password} />
+                )}
+
+                {activeTab === 'coach' && (
+                    <CoachMembersPanel password={password} />
                 )}
             </div>
         </div>

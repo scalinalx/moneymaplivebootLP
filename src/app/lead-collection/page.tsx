@@ -19,6 +19,8 @@ function LeadCollectionContent() {
 
   const handleLeadSuccess = async (leadData: Lead) => {
     setError(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).__track?.formSuccess?.('lead-collection-lead');
     setIsProcessingPayment(true);
     try {
       const response = await fetch('/api/create-checkout-session', {
@@ -64,7 +66,7 @@ function LeadCollectionContent() {
           </p>
 
           {/* Price Display */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg border max-w-sm mx-auto mb-8">
+          <div data-track-section="price" className="bg-white rounded-2xl p-6 shadow-lg border max-w-sm mx-auto mb-8">
             <div className="text-3xl font-bold text-gray-900 mb-2">
               {formatPrice(WORKSHOP_PRICE)}
             </div>
@@ -122,7 +124,7 @@ function LeadCollectionContent() {
               </p>
             </div>
           ) : (
-            <LeadForm onSuccess={handleLeadSuccess} onError={handleLeadError} />
+            <LeadForm onSuccess={handleLeadSuccess} onError={handleLeadError} trackForm="lead-collection-lead" />
           )}
         </div>
 

@@ -71,6 +71,8 @@ export const FinalCTASection: React.FC = () => {
                 </p>
 
                 <button
+                    data-track="cta"
+                    data-track-id="first-100-final"
                     onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                     className="group w-full md:w-auto bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-xl md:text-2xl py-6 px-12 rounded-[5px] shadow-2xl shadow-[#d81159]/40 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex items-center justify-center gap-3"
                 >

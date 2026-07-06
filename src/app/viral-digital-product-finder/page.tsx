@@ -131,6 +131,8 @@ function FormCard({
       </div>
 
       <button
+        data-track="cta"
+        data-track-id="vdp-finder-generate"
         onClick={onSubmit}
         disabled={loading}
         className="mt-6 w-full rounded-xl bg-slate-900 py-4 text-[22px] font-medium text-white shadow-md transition-all hover:bg-slate-800 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70"
@@ -274,6 +276,8 @@ function ResultsSection({
               {/* CTA button */}
               <div className="mt-5 text-center">
                 <button
+                  data-track="cta"
+                  data-track-id="vdp-finder-select"
                   onClick={() => onSelectConcept(bucket.routeName, concept)}
                   className="inline-block rounded-xl bg-slate-900 px-8 py-3 text-[18px] font-medium text-white shadow-md transition-all hover:bg-slate-800 hover:scale-[1.02]"
                 >
@@ -419,7 +423,7 @@ function UpsellSection({
       </div>
 
       {/* Course promo card */}
-      <div className="mx-auto mt-8 max-w-[1075px] overflow-hidden rounded-3xl border border-rose-100 bg-white/80 shadow-lg shadow-pink-900/5 backdrop-blur-xl">
+      <div data-track-section="offer" className="mx-auto mt-8 max-w-[1075px] overflow-hidden rounded-3xl border border-rose-100 bg-white/80 shadow-lg shadow-pink-900/5 backdrop-blur-xl">
         <div className="flex flex-col sm:flex-row">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -438,6 +442,8 @@ function UpsellSection({
             </p>
             <a
               href="/10k-launch-lab"
+              data-track="cta"
+              data-track-id="vdp-finder-offer"
               className="mt-6 inline-block rounded-xl bg-slate-900 px-8 py-4 text-center text-[17px] font-medium text-white shadow-md transition-all hover:bg-slate-800 hover:scale-[1.02]"
             >
               Show Me How to Create It &rarr;
@@ -516,6 +522,8 @@ function CtaBanner() {
       entire system, step by step.{' '}
       <a
         href="/10k-launch-lab"
+        data-track="cta"
+        data-track-id="vdp-finder-final"
         className="font-bold text-rose-600 underline hover:text-rose-800"
       >
         Click here!
@@ -575,6 +583,9 @@ export default function ViralDigitalProductFinderPage() {
         setError(data.error || 'Something went wrong. Please try again.')
         return
       }
+      // Ideas successfully generated — the tool's lead/conversion event.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(window as any).__track?.formSuccess?.('vdp-finder-lead')
       setResults(data)
       setTimeout(() => {
         resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })

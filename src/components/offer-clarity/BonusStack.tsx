@@ -110,7 +110,7 @@ export function BonusStack() {
           *when you purchase during the launch period.
         </p>
 
-        <CTA size="lg" className="mt-10">
+        <CTA size="lg" className="mt-10" trackId="offer-clarity-bonus">
           GIVE ME EVERYTHING!
         </CTA>
       </div>

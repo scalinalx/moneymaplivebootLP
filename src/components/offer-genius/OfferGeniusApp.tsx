@@ -267,6 +267,8 @@ const OfferGeniusApp = ({ onReset }: { onReset: () => void }) => {
                             <div className="pt-4">
                                 <button
                                     type="submit"
+                                    data-track="cta"
+                                    data-track-id="ana-offer-genius-generate"
                                     disabled={loading || !formData.expertise.trim()}
                                     className="w-full bg-slate-900 hover:bg-slate-800 text-white py-6 rounded-[2rem] font-black uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center justify-center gap-4 disabled:opacity-70 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-[0.99]"
                                 >

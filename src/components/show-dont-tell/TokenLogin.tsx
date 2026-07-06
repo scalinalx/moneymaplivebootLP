@@ -35,6 +35,8 @@ export const TokenLogin: React.FC<TokenLoginProps> = ({ onLoginSuccess }) => {
             if (data.success) {
                 // Store token in session storage for persistence across reloads
                 sessionStorage.setItem('sdt_token', tokenId.trim());
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.formSuccess?.('show-dont-tell-lead');
                 onLoginSuccess(data.user, tokenId.trim());
             } else {
                 setError(data.error || "Invalid or expired Token ID.");
@@ -64,12 +66,13 @@ export const TokenLogin: React.FC<TokenLoginProps> = ({ onLoginSuccess }) => {
                     <h1 className="text-3xl font-black text-slate-900 mb-2 font-display uppercase tracking-tight">Access Required</h1>
                     <p className="text-slate-500 mb-8 font-light">Enter your Access Token ID to enter the Viral Image Generator.</p>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6" data-track-form="show-dont-tell-lead">
                         <div className="space-y-2 text-left">
                             <label className="block text-xs font-bold text-slate-800 uppercase tracking-widest pl-2">Your Token ID</label>
                             <div className="relative">
                                 <input
                                     type="password"
+                                    name="token"
                                     value={tokenId}
                                     onChange={(e) => setTokenId(e.target.value)}
                                     placeholder="e.g. sdt_tok_123456789"
@@ -88,6 +91,8 @@ export const TokenLogin: React.FC<TokenLoginProps> = ({ onLoginSuccess }) => {
 
                         <button
                             type="submit"
+                            data-track="cta"
+                            data-track-id="show-dont-tell-login"
                             disabled={loading || !tokenId.trim()}
                             className="w-full bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-2xl font-black uppercase tracking-[0.2em] shadow-xl transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
                         >
@@ -106,7 +111,7 @@ export const TokenLogin: React.FC<TokenLoginProps> = ({ onLoginSuccess }) => {
                 {/* Footer Link */}
                 <div className="text-center mt-8">
                     <p className="text-xs text-slate-400 font-medium">
-                        Don't have a token? <a href="/show-dont-tell/purchase" className="text-rose-500 hover:text-rose-600 underline underline-offset-4 decoration-rose-200 uppercase tracking-wider font-bold">Purchase Access</a>
+                        Don't have a token? <a href="/show-dont-tell/purchase" data-track="cta" data-track-id="show-dont-tell-purchase" className="text-rose-500 hover:text-rose-600 underline underline-offset-4 decoration-rose-200 uppercase tracking-wider font-bold">Purchase Access</a>
                     </p>
                 </div>
             </div>

@@ -41,7 +41,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
                 </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} data-track-form="launch-stack-lead" className="space-y-8">
                 {/* Section 1: The Audience & Timing */}
                 <div className="space-y-4">
                     <div className="flex items-center space-x-2 text-rose-500 border-b border-rose-100 pb-2">
@@ -171,6 +171,8 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit, isLoading }) => {
                     <button
                         type="submit"
                         disabled={isLoading}
+                        data-track="cta"
+                        data-track-id="launch-stack-generate"
                         className={`
               w-full py-4 px-6 rounded-xl font-bold text-lg text-white shadow-lg shadow-rose-200
               flex items-center justify-center gap-3 transition-all transform hover:-translate-y-1

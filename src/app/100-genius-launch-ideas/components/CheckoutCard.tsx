@@ -36,9 +36,15 @@ const CheckoutFormContent = ({ clientSecret, leadId, totalAmount }: CheckoutForm
         });
 
         if (error) {
+            // Payment confirmation failed (card declined, validation, etc.).
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'genius-ideas-checkout');
             setErrorMessage(error.message || 'An unexpected error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // Conversion — payment succeeded.
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('genius-ideas-checkout');
             try {
                 // Confirm payment on backend to update lead status
                 await fetch('/api/genius-ideas/confirm-payment', {
@@ -60,7 +66,7 @@ const CheckoutFormContent = ({ clientSecret, leadId, totalAmount }: CheckoutForm
     };
 
     return (
-        <form onSubmit={handleSubmit} className="w-full space-y-4">
+        <form onSubmit={handleSubmit} data-track-form="genius-ideas-checkout" className="w-full space-y-4">
             <PaymentElement options={{ layout: 'tabs' }} />
 
             {errorMessage && (
@@ -144,6 +150,9 @@ export function CheckoutForm() {
             const data = await response.json();
 
             if (data.success) {
+                // Reached the payment step (Stripe card form shown).
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'genius-ideas-checkout');
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);
@@ -196,12 +205,13 @@ export function CheckoutForm() {
 
     // Step 1: Lead Capture & Bumps
     return (
-        <form onSubmit={handleInitialSubmit} className="space-y-5">
+        <form onSubmit={handleInitialSubmit} data-track-form="genius-ideas-checkout" className="space-y-5">
             {/* Lead Fields */}
             <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
                 <input
                     type="text"
+                    name="name"
                     ref={nameInputRef}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -214,6 +224,7 @@ export function CheckoutForm() {
                 <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
                 <input
                     type="email"
+                    name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

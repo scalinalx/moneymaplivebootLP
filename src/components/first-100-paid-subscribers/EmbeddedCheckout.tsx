@@ -47,9 +47,15 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         });
 
         if (error) {
+            // Payment confirmation failed (card declined, validation, etc.).
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'first-100-checkout');
             setErrorMessage(error.message || 'An unexpected error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // Conversion — payment succeeded.
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('first-100-checkout');
             await fetch('/api/first100/confirm-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -144,6 +150,11 @@ export const EmbeddedCheckout: React.FC = () => {
                 if (typeof window !== 'undefined' && (window as any).fbq) {
                     (window as any).fbq('track', 'Lead', { value: 2.00, currency: 'USD' });
                 }
+
+                // Reached the payment step (Stripe card form shown).
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'first-100-checkout');
+
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);
@@ -169,12 +180,13 @@ export const EmbeddedCheckout: React.FC = () => {
 
             <div className="p-8 md:p-12">
                 {step === 1 ? (
-                    <form onSubmit={startCheckout} className="space-y-6">
+                    <form onSubmit={startCheckout} data-track-form="first-100-checkout" className="space-y-6">
                         <div>
                             <label className="block font-montserrat font-bold text-[#333333] mb-2 uppercase text-xs tracking-wider">Full Name</label>
                             <input
                                 required
                                 type="text"
+                                name="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#ffc300] focus:ring-2 focus:ring-[#ffc300]/10 outline-none transition-all font-lato text-black"
@@ -186,6 +198,7 @@ export const EmbeddedCheckout: React.FC = () => {
                             <input
                                 required
                                 type="email"
+                                name="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#ffc300] focus:ring-2 focus:ring-[#ffc300]/10 outline-none transition-all font-lato text-black"

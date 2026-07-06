@@ -89,6 +89,8 @@ export const GeniusWhatIncluded = ({ onScrollToCheckout }: { onScrollToCheckout:
                     </h3>
 
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-included"
                         onClick={onScrollToCheckout}
                         className="bg-rose-600 hover:bg-rose-700 text-white font-black px-12 py-6 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 text-xl uppercase tracking-tight"
                     >

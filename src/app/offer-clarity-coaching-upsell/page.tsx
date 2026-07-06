@@ -47,11 +47,15 @@ function FallbackCheckoutForm({
     });
 
     if (confirmError) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.checkoutStep?.('payment_error', 'oc-coaching-upsell-checkout');
       setError(confirmError.message || 'An error occurred.');
       setIsProcessing(false);
       return;
     }
     if (paymentIntent?.status === 'succeeded') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.formSuccess?.('oc-coaching-upsell-checkout');
       await fetch('/api/offer-clarity/coaching-upsell/confirm-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -62,7 +66,7 @@ function FallbackCheckoutForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} data-track-form="oc-coaching-upsell-checkout" className="space-y-6">
       <PaymentElement options={{ layout: 'tabs' }} />
       {error && (
         <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600 text-sm">
@@ -134,6 +138,8 @@ function CoachingUpsellInner() {
         return;
       }
       if (data.oneClick) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.formSuccess?.('oc-coaching-upsell-checkout');
         setPurchased(true);
         setPurchasing(false);
         // Auto-redirect to success after a short delay
@@ -141,6 +147,8 @@ function CoachingUpsellInner() {
           window.location.href = `/offer-clarity-success?leadId=${leadId}&coaching=1`;
         }, 1200);
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.checkoutStep?.('payment_step', 'oc-coaching-upsell-checkout');
         setFallbackClientSecret(data.clientSecret);
         setFallbackPaymentIntentId(data.paymentIntentId);
         setPurchasing(false);
@@ -216,7 +224,7 @@ function CoachingUpsellInner() {
         </p>
 
         <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden">
-          <div className="bg-[#1a1a1a] py-4 px-6 flex items-center justify-between">
+          <div data-track-section="price" className="bg-[#1a1a1a] py-4 px-6 flex items-center justify-between">
             <p
               className="text-white font-bold text-xs md:text-sm uppercase tracking-widest"
               style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
@@ -273,7 +281,7 @@ function CoachingUpsellInner() {
               </div>
             </div>
 
-            <ul className="space-y-3">
+            <ul data-track-section="offer" className="space-y-3">
               {[
                 'Line-by-line review of your offer copy and positioning',
                 'A pricing pressure-test using my "Perceived Value Stack"',
@@ -302,7 +310,7 @@ function CoachingUpsellInner() {
                 </p>
               </div>
             ) : fallbackClientSecret && fallbackPaymentIntentId ? (
-              <div className="space-y-4 pt-4 border-t border-gray-100">
+              <div data-track-section="checkout" className="space-y-4 pt-4 border-t border-gray-100">
                 <p className="text-sm text-gray-600 italic text-center">
                   Just confirm your card to add the coaching call.
                 </p>
@@ -329,7 +337,7 @@ function CoachingUpsellInner() {
                 </Elements>
               </div>
             ) : (
-              <div className="space-y-3 pt-2">
+              <div data-track-section="checkout" className="space-y-3 pt-2">
                 {error && (
                   <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600 text-sm">
                     <AlertCircle size={16} /> {error}
@@ -339,6 +347,8 @@ function CoachingUpsellInner() {
                   type="button"
                   onClick={oneClickAdd}
                   disabled={purchasing}
+                  data-track="cta"
+                  data-track-id="oc-coaching-upsell-accept"
                   className="w-full bg-[#9E8B52] hover:bg-[#8a7a47] text-white font-bold text-lg md:text-xl py-5 rounded-md uppercase tracking-wider transition-all hover:-translate-y-1 disabled:opacity-70"
                   style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
                 >

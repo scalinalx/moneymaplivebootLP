@@ -59,7 +59,7 @@ function UpsellContent() {
                 </p>
 
                 {/* Value Proposition Box */}
-                <div className="w-full bg-gray-50 border-4 border-black shadow-hard p-8 md:p-12 mb-16 relative">
+                <div data-track-section="offer" className="w-full bg-gray-50 border-4 border-black shadow-hard p-8 md:p-12 mb-16 relative">
                     <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-[#fffb00] px-6 py-2 font-display text-xl uppercase italic whitespace-nowrap">
                         Everything You Get Inside the Lab
                     </div>
@@ -116,7 +116,7 @@ function UpsellContent() {
                             <span className="font-bold text-gray-400">$1,009</span>
                         </div>
 
-                        <div className="p-4 border-2 border-black bg-white rounded-xl text-center mt-2 shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
+                        <div data-track-section="price" className="p-4 border-2 border-black bg-white rounded-xl text-center mt-2 shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
                             <p className="text-gray-500 uppercase tracking-widest text-xs font-bold mb-1">Total Value: <span className="line-through">$4,997</span></p>
                             <p className="font-display font-black text-4xl text-[#d81159]">ONLY $597 FOR YOU</p>
                         </div>
@@ -124,7 +124,7 @@ function UpsellContent() {
                 </div>
 
                 {/* Testimonials */}
-                <div className="w-full mb-16 space-y-6">
+                <div data-track-section="testimonials" className="w-full mb-16 space-y-6">
                     <h2 className="font-display text-4xl text-center mb-8 uppercase italic">💬 What People Are Saying</h2>
 
                     <div className="bg-gray-50 border border-gray-100 p-8 rounded-lg shadow-sm flex flex-col justify-between hover:scale-[1.01] transition-transform">

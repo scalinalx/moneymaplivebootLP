@@ -279,6 +279,8 @@ const App = () => {
                             <div className="pt-8">
                                 <button
                                     type="submit"
+                                    data-track="cta"
+                                    data-track-id="show-dont-tell-generate"
                                     disabled={loading || !formData.title.trim()}
                                     className="w-full bg-slate-900 hover:bg-slate-800 text-white py-6 rounded-[2rem] font-black uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center justify-center gap-4 disabled:opacity-70 disabled:cursor-not-allowed hover:scale-[1.01] active:scale-[0.99]"
                                 >

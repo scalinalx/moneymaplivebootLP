@@ -6,7 +6,7 @@ import { CTA } from './CTA';
 
 export function PricingTier() {
   return (
-    <section className="bg-black text-white py-16 md:py-24">
+    <section data-track-section="price" className="bg-black text-white py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <div className="flex justify-center mb-8">
           <Image
@@ -45,7 +45,7 @@ export function PricingTier() {
           </div>
         </div>
 
-        <CTA size="lg">I NEED THIS! I&apos;M IN, ANA! — $97</CTA>
+        <CTA size="lg" trackId="offer-clarity-price">I NEED THIS! I&apos;M IN, ANA! — $97</CTA>
       </div>
     </section>
   );

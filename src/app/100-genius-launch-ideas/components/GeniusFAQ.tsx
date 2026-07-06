@@ -75,6 +75,8 @@ export const GeniusFAQ = ({ onScrollToCheckout }: { onScrollToCheckout: () => vo
 
                 <div className="text-center">
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-final"
                         onClick={onScrollToCheckout}
                         className="group relative bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-lg py-4 px-12 rounded-full shadow-lg shadow-pink-500/20 transition-all duration-300 transform hover:-translate-y-1 mx-auto"
                     >

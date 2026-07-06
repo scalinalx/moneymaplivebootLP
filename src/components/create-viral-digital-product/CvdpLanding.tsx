@@ -143,9 +143,13 @@ function CvdpPaymentForm({ leadId, total }: { leadId: string; total: number }) {
             redirect: 'if_required',
         });
         if (error) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'cvdp-checkout');
             setErrorMessage(error.message || 'An unexpected error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('cvdp-checkout');
             await fetch('/api/create-viral-digital-product/confirm-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -156,7 +160,7 @@ function CvdpPaymentForm({ leadId, total }: { leadId: string; total: number }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit} data-track-form="cvdp-checkout" className="w-full">
             <PaymentElement options={{ layout: 'tabs' }} />
             {errorMessage && (
                 <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm font-medium">{errorMessage}</div>
@@ -275,6 +279,8 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 if (typeof window !== 'undefined' && (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq) {
                     (window as unknown as { fbq: (...a: unknown[]) => void }).fbq('track', 'Lead', { value: 2.0, currency: 'USD' });
                 }
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'cvdp-checkout');
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);
@@ -371,7 +377,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
             <div className="sticky top-0 z-50 w-full bg-[#d81159] text-white text-center py-2 md:py-3 px-4 shadow-md">
                 <p className="font-lato font-bold text-[13px] md:text-[17px] tracking-wide flex items-center justify-center gap-3 flex-wrap leading-tight">
                     <span className="flex items-center gap-2"><span className="inline-block w-1.5 h-1.5 bg-white rounded-full animate-pulse" /> LIVE Tuesday, June 9 · Replay included</span>
-                    <a href="#enroll" className="text-[#FCD34D] underline underline-offset-2">Save my seat →</a>
+                    <a href="#enroll" data-track="cta" data-track-id="cvdp-announce" className="text-[#FCD34D] underline underline-offset-2">Save my seat →</a>
                 </p>
             </div>
 
@@ -414,7 +420,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                     </div>
 
                     {/* CTA — below the proof */}
-                    <button onClick={goEnroll} className={`${btn} text-xl md:text-2xl py-5 px-10 md:px-16 mt-6`}>Show Me What To Build</button>
+                    <button data-track="cta" data-track-id="cvdp-hero" onClick={goEnroll} className={`${btn} text-xl md:text-2xl py-5 px-10 md:px-16 mt-6`}>Show Me What To Build</button>
                     <span className="block font-lato font-bold text-[#d81159] text-sm md:text-[15px] mt-3">🔴 Live seats are limited — when the room is full, doors close. Replay only after that.</span>
                     <span className="block font-lato font-bold text-[#6E665B] text-sm mt-2">Just ${usd(prices.core)} · Live + replay · Walk away with your one offer planned</span>
 
@@ -515,7 +521,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                             </div>
                         ))}
                     </div>
-                    <div className="mt-10"><button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>I'm Ready To Find My One Offer</button></div>
+                    <div className="mt-10"><button data-track="cta" data-track-id="cvdp-mid1" onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>I'm Ready To Find My One Offer</button></div>
                 </div>
             </section>
 
@@ -565,7 +571,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                                 <span key={c} className="bg-white border border-[#BEE3EA] text-[#333333] font-montserrat font-bold text-xs px-3 py-1.5 rounded-full">{c}</span>
                             ))}
                         </div>
-                        <button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Learn With Me Live</button>
+                        <button data-track="cta" data-track-id="cvdp-mid2" onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Learn With Me Live</button>
                     </div>
                 </div>
             </section>
@@ -591,7 +597,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                         ))}
                     </div>
                     <div className="text-center mt-9">
-                        <button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Let's Build My One Offer</button>
+                        <button data-track="cta" data-track-id="cvdp-mid3" onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Let's Build My One Offer</button>
                         <p className="font-montserrat font-bold text-[#d81159] text-sm text-center mt-3 max-w-[460px] mx-auto">Only <b>100</b> live seats. <b>27 already taken.</b> Your spot isn't held until checkout is complete.</p>
                         <p className="font-lato font-bold text-[#147a6a] text-[13px] text-center mt-2 max-w-[460px] mx-auto">Can't make it live? You keep the full replay + every AI tool forever — nothing is lost.</p>
                     </div>
@@ -644,7 +650,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 <div className="max-w-[50ch] mx-auto bg-[#262020] text-white rounded-3xl px-8 py-10 text-center">
                     <h2 className="font-anton uppercase text-2xl md:text-4xl mb-4">Ana, what do I need to create my one offer?</h2>
                     <p className="font-lato text-white/90 text-lg font-semibold">If you have an audience and the device you're reading this on, you already have everything you need. You don't need a bigger list or a more impressive resume. You need to stop guessing and pick the one thing worth building. I'll get you there in 90 minutes.</p>
-                    <button onClick={goEnroll} className="inline-block mt-7 bg-[#ffc300] hover:bg-[#F2AE17] text-[#333333] font-montserrat font-bold uppercase tracking-wider rounded shadow-lg py-4 px-10 transition-all transform hover:-translate-y-1">OK Ana, Let's Do This</button>
+                    <button data-track="cta" data-track-id="cvdp-mid4" onClick={goEnroll} className="inline-block mt-7 bg-[#ffc300] hover:bg-[#F2AE17] text-[#333333] font-montserrat font-bold uppercase tracking-wider rounded shadow-lg py-4 px-10 transition-all transform hover:-translate-y-1">OK Ana, Let's Do This</button>
                 </div>
             </section>
 
@@ -661,7 +667,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                             <div className="winslot__eyes">👀</div>
                             <h3 className="winslot__h">Your <span className="winslot__hl">win</span> goes here</h3>
                             <p className="winslot__p">Join Tuesday, build your one product, and the next first-sale screenshot we feature in this gallery could have your name on it.</p>
-                            <button type="button" onClick={goEnroll} className="winslot__btn">Build yours Tuesday →</button>
+                            <button type="button" data-track="cta" data-track-id="cvdp-mid5" onClick={goEnroll} className="winslot__btn">Build yours Tuesday →</button>
                             <div className="winslot__seats">
                                 <div className="winslot__dots">
                                     <img src="/testimavatar/45.webp" alt="" />
@@ -750,7 +756,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                         ))}
                     </div>
                     <div className="text-center mt-10">
-                        <button onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Save My Seat</button>
+                        <button data-track="cta" data-track-id="cvdp-mid6" onClick={goEnroll} className={`${btn} text-base md:text-lg py-4 px-8 md:px-12`}>Save My Seat</button>
                         <p className="font-montserrat font-bold text-[#d81159] text-sm text-center mt-3 max-w-[460px] mx-auto">Only <b>100</b> live seats. <b>27 already taken.</b> Your spot isn't held until checkout is complete.</p>
                         <p className="font-lato font-bold text-[#147a6a] text-[13px] text-center mt-2 max-w-[460px] mx-auto">Can't make it live? You keep the full replay + every AI tool forever — nothing is lost.</p>
                     </div>
@@ -763,7 +769,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
             </div>
 
             {/* Value stack — maxed-out conversion, right above the checkout */}
-            <section className="bg-[#262020] text-white pt-0 pb-16 md:pb-24 px-6">
+            <section data-track-section="offer" className="bg-[#262020] text-white pt-0 pb-16 md:pb-24 px-6">
                 {/* Header — wide so the title sits on 2 rows */}
                 <div className="max-w-[1100px] mx-auto text-center">
                     <p className="font-montserrat font-extrabold tracking-widest uppercase text-xs text-[#ffc300] mb-4">Everything you walk away with today</p>
@@ -793,7 +799,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                     </div>
 
                     {/* Price + discount */}
-                    <div className="mt-9 text-center">
+                    <div data-track-section="price" className="mt-9 text-center">
                         <div className="inline-flex items-center gap-2 bg-[#E11D2A] text-white font-montserrat font-extrabold uppercase tracking-wide text-xs md:text-sm px-5 py-2 rounded-md shadow-lg">
                             🔥 Live launch price — ends Tuesday, June 9
                         </div>
@@ -814,13 +820,13 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                 </p>
 
                 <div className="text-center">
-                    <button onClick={goEnroll} className={`${btn} text-lg md:text-2xl py-5 px-10 md:px-16 mt-9`}>Yes — Lock In My Seat For ${usd(prices.core)}</button>
+                    <button data-track="cta" data-track-id="cvdp-offer" onClick={goEnroll} className={`${btn} text-lg md:text-2xl py-5 px-10 md:px-16 mt-9`}>Yes — Lock In My Seat For ${usd(prices.core)}</button>
                     <p className="font-lato text-white/45 text-xs mt-4">Live + lifetime replay · instant access to every tool · 256-bit secure checkout</p>
                 </div>
             </section>
 
             {/* Enroll / checkout */}
-            <section id="enroll" className="py-16 px-6 bg-[#FFF8E6]">
+            <section id="enroll" data-track-section="checkout" className="py-16 px-6 bg-[#FFF8E6]">
                 <div className="max-w-[600px] mx-auto bg-white rounded-3xl border border-[#EEE3CE] shadow-[0_18px_44px_rgba(40,32,20,.16)] overflow-hidden">
                     <div className="bg-[#262020] py-4 px-6 text-center relative">
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ffc300] to-[#d81159]" />
@@ -836,7 +842,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                         <p className="font-lato font-bold text-[#6E665B] mb-6">Live 90-minute workshop + replay + over $240 in tools, free</p>
 
                         {step === 1 ? (
-                            <form onSubmit={startCheckout} className="text-left">
+                            <form onSubmit={startCheckout} data-track-form="cvdp-checkout" className="text-left">
                                 <ul className="grid gap-2 mb-6">
                                     {['The full "One Offer" method, live', 'The "Will It Sell?" Scorer ($97)', 'Viral Digital Product Finder ($97)', 'Offer Flow walkthrough + One-Page Blueprint ($47)', "Replay, so you're covered if you can't make it live"].map((r) => (
                                         <li key={r} className="flex items-start gap-3 font-lato font-bold text-[#332C24] text-[15px]"><span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1FB39E] text-white flex items-center justify-center text-[11px] mt-0.5">✓</span>{r}</li>
@@ -844,11 +850,11 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
                                 </ul>
                                 <div className="mb-3">
                                     <label className="block font-montserrat font-bold text-[#333333] mb-2 uppercase text-xs tracking-wider">Full Name</label>
-                                    <input required type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your full name" className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#ffc300] focus:ring-2 focus:ring-[#ffc300]/10 outline-none transition-all font-lato text-black" />
+                                    <input required type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your full name" className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#ffc300] focus:ring-2 focus:ring-[#ffc300]/10 outline-none transition-all font-lato text-black" />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block font-montserrat font-bold text-[#333333] mb-2 uppercase text-xs tracking-wider">Email Address</label>
-                                    <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#ffc300] focus:ring-2 focus:ring-[#ffc300]/10 outline-none transition-all font-lato text-black" />
+                                    <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#ffc300] focus:ring-2 focus:ring-[#ffc300]/10 outline-none transition-all font-lato text-black" />
                                 </div>
 
                                 <p className="font-montserrat font-bold text-[#333333] text-sm uppercase tracking-wider mb-3">Add to your order (one time only):</p>
@@ -904,7 +910,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
             </section>
 
             {/* FAQ */}
-            <section className="py-16 px-6">
+            <section data-track-section="faq" className="py-16 px-6">
                 <div className="max-w-[780px] mx-auto">
                     <h2 className="font-anton uppercase text-3xl md:text-5xl text-[#333333] text-center mb-10">Questions?</h2>
                     <div className="space-y-3">
@@ -928,7 +934,7 @@ export function CvdpLanding({ prices }: { prices: CvdpPrices }) {
             {/* Sticky bar */}
             <div className={`fixed left-0 right-0 bottom-0 z-[60] bg-[#262020] text-white py-3 px-5 flex justify-center items-center gap-5 flex-wrap shadow-[0_-8px_24px_rgba(0,0,0,.22)] transition-transform ${showSticky ? 'translate-y-0' : 'translate-y-[120%]'}`}>
                 <span className="hidden md:inline font-lato font-bold text-sm"><b className="text-[#ffc300]">Live Tuesday, June 9</b> · Replay included · just ${usd(prices.core)}</span>
-                <button onClick={goEnroll} className={`${btn} text-sm py-3 px-8`}>Save My Seat</button>
+                <button data-track="cta" data-track-id="cvdp-sticky" onClick={goEnroll} className={`${btn} text-sm py-3 px-8`}>Save My Seat</button>
             </div>
         </div>
     );

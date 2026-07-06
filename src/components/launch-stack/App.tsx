@@ -18,6 +18,8 @@ const App: React.FC = () => {
         try {
             const response = await generateEmailSequence(data);
             setSequenceData(response);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('launch-stack-lead');
         } catch (err: any) {
             setError(err.message || 'Something went wrong. Please try again.');
         } finally {

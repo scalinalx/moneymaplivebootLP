@@ -80,6 +80,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {/* First-party conversion analytics (self-hosted, /api/collect) */}
+        <Script id="first-party-analytics" src="/track.js" strategy="afterInteractive" />
         {/* Google Analytics (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CC592MQH07"

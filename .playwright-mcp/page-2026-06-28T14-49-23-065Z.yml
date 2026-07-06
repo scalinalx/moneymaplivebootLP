@@ -1,0 +1,658 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]: BUILD2PROFIT
+          - generic [ref=e7]:
+            - link "Program" [ref=e8] [cursor=pointer]:
+              - /url: "#program"
+            - link "Ana Calin" [ref=e9] [cursor=pointer]:
+              - /url: "#instructor"
+            - link "Get In →" [ref=e10] [cursor=pointer]:
+              - /url: "#join-secondary"
+            - generic [ref=e12]: Instant Access Available
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - paragraph [ref=e16]: Trusted by 380+ creators (students report $2k–$6k in their first launches)
+          - generic [ref=e19]: Premium Offer Build & Launch Workshop
+          - heading "TURN YOUR NEWSLETTER INTO A $5K/MONTH REVENUE ENGINE" [level=1] [ref=e20]
+          - paragraph [ref=e21]: (Even if you have less than 1,000 subscribers)
+          - paragraph [ref=e22]: Two live recordings to design, price, and launch your irresistible offer. Templates, scripts, and a live launch plan included.
+          - generic [ref=e23]:
+            - generic [ref=e27]:
+              - textbox "Enter your full name" [ref=e30]
+              - textbox "Enter your email address" [ref=e33]
+              - button "Get Instant Access" [ref=e34]
+            - generic [ref=e35]:
+              - generic [ref=e36]: $497
+              - generic [ref=e37]: $1,997
+              - generic [ref=e38]: SAVE 75%
+            - generic [ref=e39]:
+              - generic [ref=e40]:
+                - img [ref=e41]
+                - text: Secure checkout
+              - generic [ref=e44]:
+                - img [ref=e45]
+                - text: Money-back guarantee
+            - generic [ref=e47]:
+              - generic [ref=e48]:
+                - img "Sarah K." [ref=e50]
+                - img "Marcus T." [ref=e52]
+                - img "Priya M." [ref=e54]
+                - img "Sue" [ref=e56]
+                - img "Jeff" [ref=e58]
+                - img "Mary B." [ref=e60]
+                - img "Alexandra L." [ref=e62]
+                - img "Emma Wilson" [ref=e64]
+                - img "Tom Wilson" [ref=e66]
+                - img "Rachel Torres" [ref=e68]
+              - generic [ref=e69]: Including 12 Substack Bestsellers
+        - generic [ref=e70]:
+          - generic [ref=e71] [cursor=pointer]:
+            - img "Build to Profit VSL Thumbnail" [ref=e73]
+            - generic [ref=e75]:
+              - img [ref=e79]
+              - heading "Watch The Trailer" [level=3] [ref=e81]
+              - paragraph [ref=e82]: ANA CALIN • 03:42
+          - generic [ref=e83]:
+            - generic [ref=e84]: $5k+
+            - paragraph [ref=e85]: Target Monthly Recurring Revenue for graduates.
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - img [ref=e92]
+              - img [ref=e94]
+              - img [ref=e96]
+              - img [ref=e98]
+              - img [ref=e100]
+            - generic [ref=e102]: Jul 19, 2025
+          - paragraph [ref=e103]: "\"The templates and strategies provided in this program are worth their weight in gold. I've been able to scale my newsletter to 10,000 subscribers and generate consistent revenue.\""
+          - generic [ref=e104]:
+            - img "David Chen" [ref=e105]
+            - generic [ref=e106]:
+              - generic [ref=e107]: David Chen
+              - generic [ref=e108]: Startup Insights
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - img [ref=e112]
+              - img [ref=e114]
+              - img [ref=e116]
+              - img [ref=e118]
+              - img [ref=e120]
+            - generic [ref=e122]: Jul 23, 2025
+          - paragraph [ref=e123]: "\"This program exceeded all my expectations. Within 2 months, I grew from 500 to 8,000 subscribers and launched my first paid newsletter tier successfully.\""
+          - generic [ref=e124]:
+            - img "Sarah Johnson" [ref=e125]
+            - generic [ref=e126]:
+              - generic [ref=e127]: Sarah Johnson
+              - generic [ref=e128]: Marketing Insights
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - img [ref=e132]
+              - img [ref=e134]
+              - img [ref=e136]
+              - img [ref=e138]
+              - img [ref=e140]
+            - generic [ref=e142]: Jul 27, 2025
+          - paragraph [ref=e143]: "\"Amazing results! I went from $0 to $4,200/month in newsletter revenue in just 4 months. The community support and Ana's guidance made all the difference.\""
+          - generic [ref=e144]:
+            - img "Michael Rodriguez" [ref=e145]
+            - generic [ref=e146]:
+              - generic [ref=e147]: Michael Rodriguez
+              - generic [ref=e148]: Creator Economy
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - generic [ref=e152]: "PRODUCT HUNT #1"
+          - generic [ref=e153]: HOW WE GROW TODAY
+          - generic [ref=e154]: SUBSTACK TOP BESTSELLER
+          - generic [ref=e155]: INDIE HACKERS
+          - generic [ref=e156]: FORBES COUNCIL
+          - generic [ref=e157]: ENTREPRENEUR
+          - generic [ref=e158]: CMO TODAY
+          - generic [ref=e159]: MARIE CLAIRE
+          - generic [ref=e160]: LINKEDIN TOP VOICE
+        - generic [ref=e161]:
+          - generic [ref=e162]: "PRODUCT HUNT #1"
+          - generic [ref=e163]: HOW WE GROW TODAY
+          - generic [ref=e164]: SUBSTACK TOP BESTSELLER
+          - generic [ref=e165]: INDIE HACKERS
+          - generic [ref=e166]: FORBES COUNCIL
+          - generic [ref=e167]: ENTREPRENEUR
+          - generic [ref=e168]: CMO TODAY
+          - generic [ref=e169]: MARIE CLAIRE
+          - generic [ref=e170]: LINKEDIN TOP VOICE
+        - generic [ref=e171]:
+          - generic [ref=e172]: "PRODUCT HUNT #1"
+          - generic [ref=e173]: HOW WE GROW TODAY
+          - generic [ref=e174]: SUBSTACK TOP BESTSELLER
+          - generic [ref=e175]: INDIE HACKERS
+          - generic [ref=e176]: FORBES COUNCIL
+          - generic [ref=e177]: ENTREPRENEUR
+          - generic [ref=e178]: CMO TODAY
+          - generic [ref=e179]: MARIE CLAIRE
+          - generic [ref=e180]: LINKEDIN TOP VOICE
+      - generic [ref=e182]:
+        - generic [ref=e183]:
+          - paragraph [ref=e184]: "Screenshot from David's revenue dashboard:"
+          - img "David L's revenue dashboard showing $7,486.03" [ref=e185]
+          - paragraph [ref=e186]: $7,486.03 in one week
+        - generic [ref=e187]:
+          - paragraph [ref=e188]: "Screenshot from Sarah's revenue dashboard:"
+          - img "Sarah's revenue dashboard showing $4,865.82 (+443%)" [ref=e189]
+          - paragraph [ref=e190]: $4,865.82 (+443%)
+        - paragraph [ref=e191]: Real dashboards. Real results.
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - heading "HERE'S WHY YOU'RE STILL BROKE." [level=2] [ref=e195]:
+            - text: HERE'S WHY YOU'RE STILL
+            - text: BROKE.
+          - paragraph [ref=e196]: They have "audiences" but no business. They write endless threads, hope for viral hits, and pray a sponsor throws them $500.
+          - paragraph [ref=e197]: That is not a business. That is a job you can't quit.
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - heading "The Trap" [level=3] [ref=e200]: The Trap
+            - paragraph [ref=e202]: Optimizing for Likes and Open Rates instead of Stripe Notifications.
+          - generic [ref=e203]:
+            - heading "The Burnout" [level=3] [ref=e204]: The Burnout
+            - paragraph [ref=e206]: Publishing 5x a week just to feed the algorithm, with no asset to show for it.
+          - generic [ref=e207]:
+            - heading "The Fix" [level=3] [ref=e208]: The Fix
+            - paragraph [ref=e210]: Building an automated product & offer ecosystem. (We do this in 2 days).
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - heading "WHY THIS SPECIFIC OFFER?" [level=2] [ref=e216]
+          - paragraph [ref=e217]:
+            - text: Most newsletter courses teach you how to write.
+            - text: Build to Profit is a system for selling.
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - img [ref=e221]
+            - heading "Focus" [level=3] [ref=e225]
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - img [ref=e228]
+                - paragraph [ref=e232]:
+                  - generic [ref=e233]: Generic Courses
+                  - text: Writing better 'threads' or hooks to game an algorithm that doesn't care about you.
+              - generic [ref=e234]:
+                - img [ref=e235]
+                - paragraph [ref=e238]:
+                  - generic [ref=e239]: Build to Profit
+                  - text: Building a high-ticket offer that converts your existing readers into $1k+ clients.
+          - generic [ref=e240]:
+            - img [ref=e242]
+            - heading "Metric" [level=3] [ref=e245]
+            - generic [ref=e246]:
+              - generic [ref=e247]:
+                - img [ref=e248]
+                - paragraph [ref=e252]:
+                  - generic [ref=e253]: Generic Courses
+                  - text: Vanity metrics like open rates, likes, and followers that don't pay the rent.
+              - generic [ref=e254]:
+                - img [ref=e255]
+                - paragraph [ref=e258]:
+                  - generic [ref=e259]: Build to Profit
+                  - text: Stripe notifications and high-intent sales calls. We optimize for profit, not popularity.
+          - generic [ref=e260]:
+            - img [ref=e262]
+            - heading "Speed" [level=3] [ref=e264]
+            - generic [ref=e265]:
+              - generic [ref=e266]:
+                - img [ref=e267]
+                - paragraph [ref=e271]:
+                  - generic [ref=e272]: Generic Courses
+                  - text: 12-week marathons of 'homework' and theory that usually ends in zero implementation.
+              - generic [ref=e273]:
+                - img [ref=e274]
+                - paragraph [ref=e277]:
+                  - generic [ref=e278]: Build to Profit
+                  - text: A 2-day implementation sprint. We don't just teach the system; we build it with you.
+        - generic [ref=e280]:
+          - paragraph [ref=e281]: "VERDICT:"
+          - paragraph [ref=e282]: If you want "growth hacks," buy a course. If you want a revenue engine, join Build To Profit.
+      - generic [ref=e284]:
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - heading "✓ THIS IS FOR YOU IF..." [level=3] [ref=e287]:
+              - generic [ref=e288]: ✓
+              - text: THIS IS FOR YOU IF...
+            - list [ref=e289]:
+              - listitem [ref=e290]:
+                - img [ref=e291]
+                - generic [ref=e293]: You have a newsletter (or idea) but no clear path to $5k/mo.
+              - listitem [ref=e294]:
+                - img [ref=e295]
+                - generic [ref=e297]: You're tired of the 'content treadmill'—writing endlessly for likes.
+              - listitem [ref=e298]:
+                - img [ref=e299]
+                - generic [ref=e301]: You want a proven SYSTEM, not just random 'growth hacks'.
+              - listitem [ref=e302]:
+                - img [ref=e303]
+                - generic [ref=e305]: You are willing to do the work and implement the workshop.
+              - listitem [ref=e306]:
+                - img [ref=e307]
+                - generic [ref=e309]: You're a creator, consultant, coach or newsletter writter ready to monetize your expertise
+              - listitem [ref=e310]:
+                - img [ref=e311]
+                - generic [ref=e313]: You've tried launching before and got crickets
+              - listitem [ref=e314]:
+                - img [ref=e315]
+                - generic [ref=e317]: You're TIRED of guessing what you'll audience would buy
+          - generic [ref=e318]:
+            - heading "✕ WALK AWAY IF..." [level=3] [ref=e319]:
+              - generic [ref=e320]: ✕
+              - text: WALK AWAY IF...
+            - list [ref=e321]:
+              - listitem [ref=e322]:
+                - img [ref=e323]
+                - generic [ref=e326]: You want a 'get rich quick' scheme that requires zero effort.
+              - listitem [ref=e327]:
+                - img [ref=e328]
+                - generic [ref=e331]: You think 'passive income' means doing nothing upfront.
+              - listitem [ref=e332]:
+                - img [ref=e333]
+                - generic [ref=e336]: You aren't willing to invest in paid growth or premium tools.
+              - listitem [ref=e337]:
+                - img [ref=e338]
+                - generic [ref=e341]: You just want to 'build a community' without selling anything.
+              - listitem [ref=e342]:
+                - img [ref=e343]
+                - generic [ref=e346]: You don't have an audience yet (build that first)
+        - link "This is for me!" [ref=e348] [cursor=pointer]:
+          - /url: "#join-secondary"
+          - text: This is for me!
+          - img [ref=e349]
+      - generic [ref=e352]:
+        - heading "Results our creators report" [level=3] [ref=e353]:
+          - generic [ref=e354]: Results our creators report
+        - generic [ref=e355]:
+          - generic [ref=e356]:
+            - generic [ref=e357]:
+              - img "Jake Martinez" [ref=e358]
+              - generic [ref=e359]:
+                - generic [ref=e360]: Jake Martinez
+                - generic [ref=e361]: Finance Weekly • Aug 2, 2025
+            - paragraph [ref=e362]: “I was stuck at 200 subscribers for months. After implementing these strategies, I hit 5,000 subscribers and $2,800/month in just 90 days!”
+          - generic [ref=e363]:
+            - generic [ref=e364]:
+              - img "Lisa Miller" [ref=e365]
+              - generic [ref=e366]:
+                - generic [ref=e367]: Lisa Miller
+                - generic [ref=e368]: Health & Wellness Hub • Aug 6, 2025
+            - paragraph [ref=e369]: “The monetization frameworks are pure gold. I launched my premium tier and made $6,500 in the first month. This program pays for itself!”
+          - generic [ref=e370]:
+            - generic [ref=e371]:
+              - img "Tom Wilson" [ref=e372]
+              - generic [ref=e373]:
+                - generic [ref=e374]: Tom Wilson
+                - generic [ref=e375]: Creator Chronicles • Aug 10, 2025
+            - paragraph [ref=e376]: “From zero to 15K subscribers in 8 months. The growth strategies actually work. My newsletter is now my main income source at $8,200/month.”
+        - generic [ref=e378]:
+          - paragraph [ref=e380]: MRR Growth (Apr ’25 → Now)
+          - img [ref=e382]:
+            - generic [ref=e384]: $0
+            - generic [ref=e386]: $1,750
+            - generic [ref=e388]: $3,500
+            - generic [ref=e390]: $5,250
+            - generic [ref=e392]: $7,000
+            - generic [ref=e396]:
+              - generic [ref=e398]: implemented Build2Profit strategies
+              - generic [ref=e399]: crafted offer & launched
+            - generic [ref=e403]: Apr '25
+            - generic [ref=e406]: May
+            - generic [ref=e413]: Late Jun
+            - generic [ref=e416]: Aug
+            - generic [ref=e421]: Sep
+            - generic [ref=e426]: Oct
+            - generic [ref=e429]: Now
+      - generic [ref=e432]:
+        - generic [ref=e433]:
+          - generic [ref=e434]: The System
+          - heading "WHAT HAPPENS IN 2 DAYS" [level=2] [ref=e435]
+          - paragraph [ref=e436]: Two days. One live recording. Zero fluff.
+        - generic [ref=e437]:
+          - generic [ref=e438]:
+            - generic [ref=e439]: DAY 01
+            - heading "BUILD YOUR IRRESISTIBLE OFFER" [level=3] [ref=e440]
+            - paragraph [ref=e441]: We design the offer that your audience actually wants to buy. We handpick WHO from your audience is ready to buy.
+            - generic [ref=e444]:
+              - heading "The Irresistible Offer System" [level=4] [ref=e445]
+              - paragraph [ref=e446]: We stop the guesswork and use systems to create the perfect offer for your most profitable audience segment.
+          - generic [ref=e447]:
+            - generic [ref=e448]: DAY 02
+            - heading "LAUNCH, SELL, PROFIT" [level=3] [ref=e449]
+            - paragraph [ref=e450]: We launch your perfectly priced offer.
+            - generic [ref=e453]:
+              - heading "Pricing Model & Launch Plan" [level=4] [ref=e454]
+              - paragraph [ref=e455]: We create the 14-day Launch Plan along with the right Pricing Model that's GUARANTEEED to bring in sales.
+      - generic [ref=e460]:
+        - generic [ref=e462]:
+          - img "Ana Calin" [ref=e464]
+          - generic [ref=e465]:
+            - generic [ref=e466]: TOP 1%
+            - paragraph [ref=e467]: Substack Business Category
+        - generic [ref=e469]:
+          - generic [ref=e472]: Your Host
+          - heading "ANA CALIN. STRATEGIST. SOLOPRENEUR. MOM." [level=2] [ref=e473]:
+            - text: ANA CALIN.
+            - text: STRATEGIST. SOLOPRENEUR. MOM.
+          - generic [ref=e474]:
+            - paragraph [ref=e475]: Founder of How We Grow Today.
+            - paragraph [ref=e476]:
+              - text: I don't teach you how to "write viral threads". That's a commodity. I teach you how to build
+              - strong [ref=e477]: media assets
+              - text: that compound in value.
+            - paragraph [ref=e478]:
+              - text: The
+              - emphasis [ref=e479]: Build to Profit
+              - text: system is the exact framework I used to scale from 0 to 70k+ subscribers without paid ads, and how I consistently hit $25,000+ revenue months while working for only 2 hours/day.
+          - generic [ref=e480]:
+            - generic [ref=e481]:
+              - img [ref=e482]
+              - generic [ref=e487]:
+                - paragraph [ref=e488]: 70k+
+                - paragraph [ref=e489]: Active Readers
+            - generic [ref=e490]:
+              - img [ref=e491]
+              - generic [ref=e493]:
+                - paragraph [ref=e494]: 380+
+                - paragraph [ref=e495]: Successful Students
+          - link "Read 'How We Grow Today'" [ref=e497] [cursor=pointer]:
+            - /url: https://howwegrowtoday.substack.com/
+            - text: Read 'How We Grow Today'
+            - img [ref=e498]
+      - generic [ref=e502]:
+        - generic [ref=e503]:
+          - heading "DON'T TAKE MY WORD FOR IT. RESULTS ONLY." [level=2] [ref=e504]:
+            - text: DON'T TAKE MY WORD FOR IT.
+            - text: RESULTS ONLY.
+          - generic [ref=e505]:
+            - generic [ref=e506]:
+              - img [ref=e507]
+              - img [ref=e509]
+              - img [ref=e511]
+              - img [ref=e513]
+              - img [ref=e515]
+            - generic [ref=e517]: 5.0/5 RATING
+        - generic [ref=e518]:
+          - generic [ref=e519]:
+            - img [ref=e520]
+            - paragraph [ref=e523]: "\"I made $3,200 in my first 14 days after joining. Build to Profit ended 8 months of overthinking.\""
+            - generic [ref=e524]:
+              - img "Sarah K." [ref=e525]
+              - generic [ref=e526]:
+                - generic [ref=e527]: Sarah K.
+                - generic [ref=e528]: Newsletter Creator; $3,200 in 14 days • May 1, 2025
+          - generic [ref=e529]:
+            - img [ref=e530]
+            - paragraph [ref=e533]: "\"Finally launched after endless 'planning.' Hit $4,500 Week 1. The workshop sessions are everything.\""
+            - generic [ref=e534]:
+              - img "Marcus T." [ref=e535]
+              - generic [ref=e536]:
+                - generic [ref=e537]: Marcus T.
+                - generic [ref=e538]: Content Strategist; $4,500 in Week 1 • May 4, 2025
+          - generic [ref=e539]:
+            - img [ref=e540]
+            - paragraph [ref=e543]: "\"I've taken 4 newsletter courses. This is the only one that made me money, not just smarter.\""
+            - generic [ref=e544]:
+              - img "Priya M." [ref=e545]
+              - generic [ref=e546]:
+                - generic [ref=e547]: Priya M.
+                - generic [ref=e548]: Digital Entrepreneur; ROI-positive vs 4 other courses • May 8, 2025
+          - generic [ref=e549]:
+            - img [ref=e550]
+            - paragraph [ref=e553]: "\"Your programs completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!\""
+            - generic [ref=e554]:
+              - img "Gustavo" [ref=e555]
+              - generic [ref=e556]:
+                - generic [ref=e557]: Gustavo
+                - generic [ref=e558]: "Growth: 200 → 4,500 subscribers; first $1,500 revenue • May 12, 2025"
+          - generic [ref=e559]:
+            - img [ref=e560]
+            - paragraph [ref=e563]: "\"Ana's framework is pure gold. I re-launched my newsletter 6 weeks ago and already have 2,755 engaged subscribers. The templates saved me months of work.\""
+            - generic [ref=e564]:
+              - img "Maria" [ref=e565]
+              - generic [ref=e566]:
+                - generic [ref=e567]: Maria
+                - generic [ref=e568]: Re-launch; 2,755 engaged subscribers; templates saved months • May 16, 2025
+          - generic [ref=e569]:
+            - img [ref=e570]
+            - paragraph [ref=e573]: "\"Best investment I made this year. The community alone is worth the price. I'm now making $2,500/month from my newsletter thanks to this program.\""
+            - generic [ref=e574]:
+              - img "Kyle" [ref=e575]
+              - generic [ref=e576]:
+                - generic [ref=e577]: Kyle
+                - generic [ref=e578]: $2,500/month newsletter revenue • May 20, 2025
+          - generic [ref=e579]:
+            - img [ref=e580]
+            - paragraph [ref=e583]: "\"Ana's framework is pure gold. I re-launched my newsletter 6 weeks ago and already have 2,755 engaged subscribers. The templates saved me months of work.\""
+            - generic [ref=e584]:
+              - img "Hilde" [ref=e585]
+              - generic [ref=e586]:
+                - generic [ref=e587]: Hilde
+                - generic [ref=e588]: Substack Bestseller • May 24, 2025
+          - generic [ref=e589]:
+            - img [ref=e590]
+            - paragraph [ref=e593]: "\"Your programs completely transformed my approach. I went from 200 subscribers to 4.5K in just 3 months and made my first $1,500 from my newsletter!\""
+            - generic [ref=e594]:
+              - img "Sue" [ref=e595]
+              - generic [ref=e596]:
+                - generic [ref=e597]: Sue
+                - generic [ref=e598]: Newsletter Creator • May 28, 2025
+          - generic [ref=e599]:
+            - img [ref=e600]
+            - paragraph [ref=e603]: "\"Best investment I made this year. The community alone is worth the price. I'm now making $2,500/month from my newsletter thanks to this program.\""
+            - generic [ref=e604]:
+              - img "Mary B." [ref=e605]
+              - generic [ref=e606]:
+                - generic [ref=e607]: Mary B.
+                - generic [ref=e608]: Content Creator • Jun 1, 2025
+      - generic [ref=e611]:
+        - generic [ref=e612]:
+          - heading "HERE'S EVERYTHING YOU GET" [level=3] [ref=e613]:
+            - img [ref=e614]
+            - text: HERE'S EVERYTHING YOU GET
+          - generic [ref=e616]:
+            - generic [ref=e617]:
+              - generic [ref=e618]:
+                - img [ref=e620]
+                - generic [ref=e622]: Lifetime access to 2x Recorded Live Workshop Sessions (Build Your Offer; Launch System)
+              - generic [ref=e623]: $1,500
+            - generic [ref=e624]:
+              - generic [ref=e625]:
+                - img [ref=e627]
+                - generic [ref=e629]: 9 Complete Toolkits (Frameworks, templates, calculators)
+              - generic [ref=e630]: $997
+            - generic [ref=e631]:
+              - generic [ref=e632]:
+                - img [ref=e634]
+                - generic [ref=e636]: Lifetime Private Community (Real creators, launches & support)
+              - generic [ref=e637]: $500
+            - generic [ref=e638]:
+              - generic [ref=e639]:
+                - img [ref=e641]
+                - generic [ref=e643]: Launch Templates Library (Emails, landing pages, scripts)
+              - generic [ref=e644]: $497
+          - generic [ref=e645]:
+            - generic [ref=e646]: Total Value
+            - generic [ref=e647]: $3,494
+        - generic [ref=e649]:
+          - generic [ref=e650]: Instant Access
+          - generic [ref=e651]:
+            - paragraph [ref=e652]: "Regular Price: $1,997"
+            - paragraph [ref=e653]: "→ Your Price Today:"
+            - heading "$497" [level=4] [ref=e655]
+            - generic [ref=e656]:
+              - img [ref=e657]
+              - text: LIMITED TIME OFFER
+          - generic [ref=e660]:
+            - heading "Why Join Build2Profit?" [level=5] [ref=e661]
+            - list [ref=e662]:
+              - listitem [ref=e663]:
+                - img [ref=e664]
+                - generic [ref=e666]: Walk away with a launch-ready offer in 2 days.
+              - listitem [ref=e667]:
+                - img [ref=e668]
+                - generic [ref=e670]: Learn from recorded coaching audits where Ana refines student offers.
+              - listitem [ref=e671]:
+                - img [ref=e672]
+                - generic [ref=e674]: Join 380+ creators already monetizing their newsletters.
+          - generic [ref=e675]:
+            - img [ref=e676]
+            - text: 75% Discount - Today Only
+      - generic [ref=e681]:
+        - heading "Ready? Let's Go." [level=3] [ref=e682]
+        - paragraph [ref=e683]: Early Bird pricing available for a limited time. Save $1,500 today.
+        - generic [ref=e686]:
+          - generic [ref=e688]:
+            - generic [ref=e689]: Full Name*
+            - textbox "Enter your full name" [ref=e690]
+          - generic [ref=e692]:
+            - generic [ref=e693]: Email*
+            - textbox "Enter your email address" [ref=e694]
+          - button "Get Instant Access" [ref=e695]
+        - generic [ref=e696]:
+          - generic [ref=e697]:
+            - img [ref=e698]
+            - text: Secure checkout
+          - generic [ref=e701]: "|"
+          - img "Stripe" [ref=e702]
+          - generic [ref=e703]: "|"
+          - generic [ref=e704]: Money-back guarantee
+      - generic [ref=e706]:
+        - heading "QUESTIONS? ANSWERS." [level=2] [ref=e707]
+        - generic [ref=e708]:
+          - generic [ref=e709]:
+            - button "Is this live or pre-recorded?" [ref=e710]:
+              - generic [ref=e711]: Is this live or pre-recorded?
+              - img [ref=e712]
+            - paragraph [ref=e715]: You get access to the COMPLETE HD Recordings of the 100% LIVE Sessions. Ana is showing you the behind-the-scenes of how she operates and answering questions all throughout.
+          - generic [ref=e716]:
+            - button "I have a small list (under 1k). Is this for me?" [ref=e717]:
+              - generic [ref=e718]: I have a small list (under 1k). Is this for me?
+              - img [ref=e719]
+            - paragraph [ref=e720]: Yes. In fact, it's better to implement these systems NOW before you scale. You will grow faster and monetize sooner than if you wait.
+          - generic [ref=e721]:
+            - button "How long do I have access for?" [ref=e722]:
+              - generic [ref=e723]: How long do I have access for?
+              - img [ref=e724]
+            - paragraph [ref=e725]: Lifetime. You get immediate access to the complete recordings, templates, and community forever. You can implement at your own pace whenever you're ready.
+          - generic [ref=e726]:
+            - button "How much does it cost?" [ref=e727]:
+              - generic [ref=e728]: How much does it cost?
+              - img [ref=e729]
+            - paragraph [ref=e730]: Build to Profit is $497 (normally $1,997). This includes both recorded workshop sessions, all templates, the community, and lifetime access to the curriculum.
+          - generic [ref=e731]:
+            - button "What happens after I purchase?" [ref=e732]:
+              - generic [ref=e733]: What happens after I purchase?
+              - img [ref=e734]
+            - paragraph [ref=e735]: You'll receive immediate access to the community, pre-workshop materials, and the complete workshop recordings. Plus value-packed emails from Ana to guide your implementation.
+      - generic [ref=e738]:
+        - generic [ref=e739]:
+          - generic [ref=e741]: Even More Success Stories
+          - heading "Just take a look at what our 380+ members are saying." [level=2] [ref=e743]
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - generic [ref=e746]:
+              - img "David Chen" [ref=e747]
+              - generic [ref=e748]:
+                - heading "David Chen" [level=3] [ref=e749]
+                - generic [ref=e750]: Startup Insights • Jul 19, 2025
+            - paragraph [ref=e751]: "\"The templates and strategies provided in this program are worth their weight in gold. I've been able to scale my newsletter to 10,000 subscribers and generate consistent revenue.\""
+          - generic [ref=e752]:
+            - generic [ref=e753]:
+              - img "Sarah Johnson" [ref=e754]
+              - generic [ref=e755]:
+                - heading "Sarah Johnson" [level=3] [ref=e756]
+                - generic [ref=e757]: Marketing Insights • Jul 23, 2025
+            - paragraph [ref=e758]: "\"This program exceeded all my expectations. Within 2 months, I grew from 500 to 8,000 subscribers and launched my first paid newsletter tier successfully.\""
+          - generic [ref=e759]:
+            - generic [ref=e760]:
+              - img "Michael Rodriguez" [ref=e761]
+              - generic [ref=e762]:
+                - heading "Michael Rodriguez" [level=3] [ref=e763]
+                - generic [ref=e764]: Creator Economy • Jul 27, 2025
+            - paragraph [ref=e765]: "\"Amazing results! I went from $0 to $4,200/month in newsletter revenue in just 4 months. The community support and Ana's guidance made all the difference.\""
+          - generic [ref=e766]:
+            - generic [ref=e767]:
+              - img "Jake Martinez" [ref=e768]
+              - generic [ref=e769]:
+                - heading "Jake Martinez" [level=3] [ref=e770]
+                - generic [ref=e771]: Finance Weekly • Aug 2, 2025
+            - paragraph [ref=e772]: "\"I was stuck at 200 subscribers for months. After implementing these strategies, I hit 5,000 subscribers and $2,800/month in just 90 days!\""
+          - generic [ref=e773]:
+            - generic [ref=e774]:
+              - img "Lisa Miller" [ref=e775]
+              - generic [ref=e776]:
+                - heading "Lisa Miller" [level=3] [ref=e777]
+                - generic [ref=e778]: Health & Wellness Hub • Aug 6, 2025
+            - paragraph [ref=e779]: "\"The monetization frameworks are pure gold. I launched my premium tier and made $6,500 in the first month. This program pays for itself!\""
+          - generic [ref=e780]:
+            - generic [ref=e781]:
+              - img "Tom Wilson" [ref=e782]
+              - generic [ref=e783]:
+                - heading "Tom Wilson" [level=3] [ref=e784]
+                - generic [ref=e785]: Creator Chronicles • Aug 10, 2025
+            - paragraph [ref=e786]: "\"From zero to 15K subscribers in 8 months. The growth strategies actually work. My newsletter is now my main income source at $8,200/month.\""
+          - generic [ref=e787]:
+            - generic [ref=e788]:
+              - img "Rachel Torres" [ref=e789]
+              - generic [ref=e790]:
+                - heading "Rachel Torres" [level=3] [ref=e791]
+                - generic [ref=e792]: Business Breakthroughs • Aug 14, 2025
+            - paragraph [ref=e793]: "\"Incredible results! I went from struggling to get 50 opens to 12,000 engaged subscribers and $5,400 monthly revenue. Life-changing program!\""
+          - generic [ref=e794]:
+            - generic [ref=e795]:
+              - img "David L." [ref=e796]
+              - generic [ref=e797]:
+                - heading "David L." [level=3] [ref=e798]
+                - generic [ref=e799]: $7,486 in one week • Nov 11, 2025
+            - paragraph [ref=e800]: "\"$7,486.03 in one week! That's how much my program made after following your advice. Jeez... why didn't I do all this earlier? Thank you, thank you, Ana.\""
+          - generic [ref=e801]:
+            - generic [ref=e802]:
+              - img "Noemi" [ref=e803]
+              - generic [ref=e804]:
+                - heading "Noemi" [level=3] [ref=e805]
+                - generic [ref=e806]: $3,988 from 450 subscribers • Oct 7, 2025
+            - paragraph [ref=e807]: "\"I launched my $997 offer to 450 subscribers. Got 4 sales in 5 days. $3,988. I almost didn't launch because I thought my audience was 'too small.' Glad I ignored that.\""
+          - generic [ref=e808]:
+            - generic [ref=e809]:
+              - img "Jill Hart" [ref=e810]
+              - generic [ref=e811]:
+                - heading "Jill Hart" [level=3] [ref=e812]
+                - generic [ref=e813]: $1,500/mo with <400 subs • Jun 26, 2025
+            - paragraph [ref=e814]: "\"I've implemented Ana's money map and made $1,500 over the last month with a less than 400 subscriber base!\""
+        - generic [ref=e815]:
+          - generic [ref=e816]:
+            - generic [ref=e817]: 380+
+            - generic [ref=e818]: Active Members
+          - generic [ref=e819]:
+            - generic [ref=e820]: $500k+
+            - generic [ref=e821]: Revenue Generated
+          - generic [ref=e822]:
+            - generic [ref=e823]: 93%
+            - generic [ref=e824]: Success Rate
+        - generic [ref=e825]:
+          - button "I WANT $5K/MONTH" [ref=e826]
+          - paragraph [ref=e827]: Start building your newsletter revenue machine today
+        - generic [ref=e828]:
+          - heading "Turn Your Newsletter Into a $120K+/Year Revenue Machine" [level=1] [ref=e829]
+          - paragraph [ref=e830]: The exact system 380+ creators used to build 6-figure newsletter businesses
+      - generic [ref=e832]:
+        - generic [ref=e833]:
+          - generic [ref=e834]: BUILD2PROFIT
+          - paragraph [ref=e835]: © 2026 Ana Calin Media. All rights reserved.
+        - generic [ref=e836]:
+          - link "Terms" [ref=e837] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=e838] [cursor=pointer]:
+            - /url: "#"
+          - link "Substack" [ref=e839] [cursor=pointer]:
+            - /url: https://howwegrowtoday.substack.com/
+  - button "Open Next.js Dev Tools" [ref=e845] [cursor=pointer]:
+    - img [ref=e846]
+  - alert [ref=e849]

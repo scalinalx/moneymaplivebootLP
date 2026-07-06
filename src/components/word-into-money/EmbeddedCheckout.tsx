@@ -46,9 +46,15 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         });
 
         if (error) {
+            // Payment confirmation failed (card declined, validation, etc.).
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'word-into-money-checkout');
             setErrorMessage(error.message || 'An unexpected error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // Conversion — payment succeeded.
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('word-into-money-checkout');
             await fetch('/api/word-into-money/confirm-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -137,6 +143,9 @@ export const EmbeddedCheckout: React.FC = () => {
                 if (typeof window !== 'undefined' && (window as any).fbq) {
                     (window as any).fbq('track', 'Lead', { value: 2.00, currency: 'USD' });
                 }
+                // Reached the payment step (Stripe card form shown).
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'word-into-money-checkout');
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);
@@ -152,7 +161,7 @@ export const EmbeddedCheckout: React.FC = () => {
     };
 
     return (
-        <div id="checkout-section" className="w-full bg-brand-900 border border-brand-800 rounded-2xl overflow-hidden">
+        <div id="checkout-section" data-track-section="checkout" className="w-full bg-brand-900 border border-brand-800 rounded-2xl overflow-hidden">
             <div className="bg-brand-800 py-4 px-6 text-center">
                 <p className="text-brand-white font-montserrat font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2">
                     <Lock size={14} className="text-brand-lime" />
@@ -162,12 +171,13 @@ export const EmbeddedCheckout: React.FC = () => {
 
             <div className="p-6 md:p-10">
                 {step === 1 ? (
-                    <form onSubmit={startCheckout} className="space-y-5">
+                    <form onSubmit={startCheckout} data-track-form="word-into-money-checkout" className="space-y-5">
                         <div>
                             <label className="block font-montserrat font-bold text-brand-white mb-2 uppercase text-xs tracking-wider">Full Name</label>
                             <input
                                 required
                                 type="text"
+                                name="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full px-4 py-4 rounded-lg bg-brand-950 border border-brand-800 focus:border-brand-lime focus:ring-2 focus:ring-brand-lime/10 outline-none transition-all font-lato text-brand-white placeholder-brand-grey"
@@ -179,6 +189,7 @@ export const EmbeddedCheckout: React.FC = () => {
                             <input
                                 required
                                 type="email"
+                                name="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full px-4 py-4 rounded-lg bg-brand-950 border border-brand-800 focus:border-brand-lime focus:ring-2 focus:ring-brand-lime/10 outline-none transition-all font-lato text-brand-white placeholder-brand-grey"

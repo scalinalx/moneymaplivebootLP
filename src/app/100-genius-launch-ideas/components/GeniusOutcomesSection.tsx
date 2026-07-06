@@ -55,6 +55,8 @@ export const GeniusOutcomesSection = ({ onScrollToCheckout }: GeniusOutcomesSect
 
                 <div className="flex flex-col items-center gap-8">
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-outcomes"
                         onClick={onScrollToCheckout}
                         className="bg-rose-600 hover:bg-rose-700 text-white font-black px-12 py-6 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 text-xl uppercase tracking-tight"
                     >

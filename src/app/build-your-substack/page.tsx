@@ -97,7 +97,7 @@ const BuildYourSubstackPage: React.FC = () => {
                 </div>
 
                 {/* 15. Checkout */}
-                <div id="checkout-section" className="w-full flex justify-center py-20 px-6 bg-white">
+                <div id="checkout-section" data-track-section="checkout" className="w-full flex justify-center py-20 px-6 bg-white">
                     <div className="w-full max-w-[770px] flex flex-col items-center">
                         <h2 className="font-anton text-4xl md:text-5xl text-[#333333] mb-4 text-center uppercase tracking-wide">
                             LET&apos;S <span className="text-[#f72585]">DO THIS</span>

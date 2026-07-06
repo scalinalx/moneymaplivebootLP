@@ -22,7 +22,7 @@ export function FinalCTA() {
           Ana
         </p>
 
-        <CTA size="lg">GIVE ME EVERYTHING!</CTA>
+        <CTA size="lg" trackId="offer-clarity-final">GIVE ME EVERYTHING!</CTA>
       </div>
     </section>
   );

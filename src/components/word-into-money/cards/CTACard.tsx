@@ -18,6 +18,8 @@ export const CTACard: React.FC<CTACardProps> = ({
         <FeedCard animation={animation as any} accentBorder>
             <p className="font-bold text-brand-white text-lg mb-4">{headline}</p>
             <button
+                data-track="cta"
+                data-track-id="word-into-money-offer"
                 onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full bg-brand-lime hover:bg-brand-limeDim text-brand-950 font-anton text-lg py-4 rounded-xl transition-all hover:scale-[1.02] uppercase tracking-wide"
             >

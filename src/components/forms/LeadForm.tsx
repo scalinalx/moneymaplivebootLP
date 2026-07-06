@@ -11,9 +11,10 @@ interface LeadFormProps {
   onSuccess: (leadData: Lead) => void;
   onError?: (error: string) => void;
   inline?: boolean;
+  trackForm?: string;
 }
 
-export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline = false }) => {
+export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline = false, trackForm }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [referralId, setReferralId] = useState<string | null>(null);
 
@@ -86,6 +87,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, onError, inline =
     <div className={inline ? 'w-full' : 'max-w-md mx-auto'}>
       <form
         onSubmit={handleSubmit(onSubmit)}
+        data-track-form={trackForm}
         className={inline ? 'flex flex-col md:flex-row md:items-start gap-3' : 'space-y-6'}
       >
         {/* Hidden input for referral ID as recommended by Rewardful */}

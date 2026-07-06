@@ -44,7 +44,7 @@ const First100Page: React.FC = () => {
                 {/* 11. FAQ */}
                 <FAQSection />
                 {/* 11. Checkout */}
-                <div id="checkout-section" className="w-full flex justify-center py-20 px-6 bg-white">
+                <div id="checkout-section" data-track-section="checkout" className="w-full flex justify-center py-20 px-6 bg-white">
                     <div className="w-full max-w-[700px] flex flex-col items-center">
                         <h2 className="font-anton text-4xl md:text-5xl text-[#333333] mb-4 text-center uppercase tracking-wide">
                             I WANT TO HIT <span className="text-[#d81159]">BESTSELLER STATUS!</span>

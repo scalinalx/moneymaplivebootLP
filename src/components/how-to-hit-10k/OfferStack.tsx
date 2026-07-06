@@ -47,7 +47,7 @@ export const OfferStack: React.FC = () => {
     ];
 
     return (
-        <div className="w-full flex justify-center py-20 px-6 bg-white">
+        <div data-track-section="offer" className="w-full flex justify-center py-20 px-6 bg-white">
             <div className="max-w-[900px] w-full flex flex-col items-center">
 
                 {/* Bridge Headline */}
@@ -96,7 +96,7 @@ export const OfferStack: React.FC = () => {
                 </div>
 
                 {/* Price and Closing CTA */}
-                <div className="mt-16 w-full flex flex-col items-center">
+                <div data-track-section="price" className="mt-16 w-full flex flex-col items-center">
                     <div className="relative mb-2">
                         <span className="font-anton text-gray-500 text-3xl md:text-5xl">
                             Regular Price $300
@@ -107,6 +107,8 @@ export const OfferStack: React.FC = () => {
                         ${HIT10K_PRICE / 100}
                     </div>
                     <button
+                        data-track="cta"
+                        data-track-id="offer-cta"
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group relative bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg md:text-2xl py-6 px-10 rounded-[5px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase flex flex-col md:flex-row items-center justify-center gap-3 text-center w-full md:w-auto"
                     >

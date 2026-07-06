@@ -65,6 +65,8 @@ export const GeniusSegmentSection = ({
                 )}
 
                 <button
+                    data-track="cta"
+                    data-track-id="genius-ideas-segment"
                     onClick={onScrollToCheckout}
                     className={`font-black px-12 py-5 rounded-2xl shadow-[4px_4px_0px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_rgba(0,0,0,0.15)] text-xl uppercase tracking-tight ${isRose
                         ? 'bg-rose-500 hover:bg-rose-600 text-white border-2 border-rose-600'

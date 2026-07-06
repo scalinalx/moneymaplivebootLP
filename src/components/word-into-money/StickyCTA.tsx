@@ -52,6 +52,8 @@ export const StickyCTA: React.FC = () => {
                     </p>
                 </div>
                 <button
+                    data-track="cta"
+                    data-track-id="word-into-money-final"
                     onClick={scrollToCheckout}
                     className="w-full sm:w-auto bg-brand-lime hover:bg-brand-limeDim text-brand-950 font-anton text-lg py-3 px-8 rounded-xl transition-all hover:scale-[1.02] uppercase tracking-wide"
                 >

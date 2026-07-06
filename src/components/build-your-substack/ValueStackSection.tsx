@@ -17,7 +17,7 @@ export const ValueStackSection = () => {
   };
 
   return (
-    <section className="bg-[#1a1a1a] py-20 px-6">
+    <section data-track-section="offer" className="bg-[#1a1a1a] py-20 px-6">
       <p className="text-[#ffc300] text-xs tracking-widest uppercase text-center mb-4 font-montserrat">
         EVERYTHING YOU GET
       </p>
@@ -42,7 +42,7 @@ export const ValueStackSection = () => {
         </div>
       </div>
 
-      <div className="text-center mt-8 mb-8">
+      <div data-track-section="price" className="text-center mt-8 mb-8">
         <p className="font-lora italic text-gray-400 text-lg mb-2">Your Price Today:</p>
         <p className="font-anton text-7xl md:text-8xl text-[#ffc300]">$97</p>
         <span className="inline-block bg-[#27AE60] text-white text-sm font-bold px-4 py-1 rounded-full mt-3">
@@ -52,6 +52,8 @@ export const ValueStackSection = () => {
 
       <div className="text-center">
         <button
+          data-track="cta"
+          data-track-id="build-substack-offer"
           onClick={scrollToCheckout}
           className="bg-[#ffc300] text-[#1a1a1a] font-montserrat font-bold text-xl px-10 py-5 rounded-xl hover:opacity-90 transition-opacity cursor-pointer"
         >

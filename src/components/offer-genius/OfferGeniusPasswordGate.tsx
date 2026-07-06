@@ -34,6 +34,8 @@ export const OfferGeniusPasswordGate: React.FC<PasswordGateProps> = ({ children 
 
             if (isValid) {
                 sessionStorage.setItem('offer_genius_auth', 'true');
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.formSuccess?.('ana-offer-genius-lead');
                 setIsAuthenticated(true);
             } else {
                 setError(true);
@@ -83,9 +85,10 @@ export const OfferGeniusPasswordGate: React.FC<PasswordGateProps> = ({ children 
                 </p>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="relative">
+                <form onSubmit={handleSubmit} className="relative" data-track-form="ana-offer-genius-lead">
                     <input
                         type="password"
+                        name="password"
                         value={password}
                         onChange={(e) => {
                             setPassword(e.target.value);
@@ -98,6 +101,8 @@ export const OfferGeniusPasswordGate: React.FC<PasswordGateProps> = ({ children 
 
                     <button
                         type="submit"
+                        data-track="cta"
+                        data-track-id="ana-offer-genius-gate"
                         className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors p-2"
                         disabled={!password || isVerifying}
                     >

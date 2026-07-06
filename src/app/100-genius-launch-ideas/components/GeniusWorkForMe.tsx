@@ -79,6 +79,8 @@ export const GeniusWorkForMe = ({ onScrollToCheckout }: { onScrollToCheckout: ()
                 {/* Specific CTA */}
                 <div className="text-center">
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-fit"
                         onClick={onScrollToCheckout}
                         className="bg-slate-900 hover:bg-black text-white font-black px-12 py-6 rounded-2xl shadow-2xl shadow-slate-900/30 transition-all hover:-translate-y-1 text-xl uppercase tracking-tight"
                     >

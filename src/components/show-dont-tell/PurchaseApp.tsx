@@ -35,6 +35,8 @@ const PurchaseApp = () => {
             const data = await response.json();
 
             if (data.success && data.url) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'show-dont-tell-checkout');
                 window.location.href = data.url;
             } else {
                 setError(data.error || "Failed to initialize checkout.");
@@ -76,7 +78,7 @@ const PurchaseApp = () => {
                     </p>
                 </div>
 
-                <div className="max-w-2xl mx-auto mb-12">
+                <div className="max-w-2xl mx-auto mb-12" data-track-section="checkout">
                     <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-8 shadow-xl border border-white/50 space-y-6">
                         <h2 className="text-lg font-bold text-slate-800 uppercase tracking-widest text-center mb-6">Your Details</h2>
 
@@ -122,7 +124,7 @@ const PurchaseApp = () => {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto" data-track-section="price">
                     {/* Starter Package */}
                     <div className="relative bg-white rounded-[2.5rem] p-10 shadow-xl border border-slate-100 hover:border-rose-200 transition-all hover:shadow-2xl flex flex-col">
                         <div className="mb-6">
@@ -150,6 +152,8 @@ const PurchaseApp = () => {
 
                         <button
                             onClick={() => handlePurchase('starter')}
+                            data-track="cta"
+                            data-track-id="show-dont-tell-starter"
                             disabled={loadingPackage !== null}
                             className="w-full bg-slate-100 hover:bg-slate-200 text-slate-900 py-5 rounded-2xl font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                         >
@@ -189,6 +193,8 @@ const PurchaseApp = () => {
 
                         <button
                             onClick={() => handlePurchase('pro')}
+                            data-track="cta"
+                            data-track-id="show-dont-tell-pro"
                             disabled={loadingPackage !== null}
                             className="w-full bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] shadow-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 hover:scale-[1.02]"
                         >

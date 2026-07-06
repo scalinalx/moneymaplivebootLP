@@ -10,6 +10,13 @@ const SuccessContent = () => {
     const tokenId = searchParams.get('token_id');
     const [copied, setCopied] = useState(false);
 
+    useEffect(() => {
+        if (tokenId) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('show-dont-tell-checkout');
+        }
+    }, [tokenId]);
+
     const handleCopy = () => {
         if (tokenId) {
             navigator.clipboard.writeText(tokenId);

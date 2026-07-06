@@ -42,3 +42,10 @@ next-env.d.ts
 
 # local-only image manipulation tool — never commit
 /src/app/image-tools/
+
+# local-only briefs — never commit
+/briefs
+
+# Ana AI Coach RAG source material — build inputs only (local `npm run rag:build`).
+# Runtime uses the committed src/data/ana-coach/knowledge-chunks.json instead.
+claude chat files/

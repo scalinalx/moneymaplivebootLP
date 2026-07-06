@@ -85,6 +85,8 @@ export const HeroSection = () => {
 
         {/* 8. CTA button */}
         <button
+          data-track="cta"
+          data-track-id="build-substack-hero"
           onClick={handleScrollToCheckout}
           className="bg-[#ffc300] text-[#1a1a1a] font-montserrat font-bold text-lg py-5 px-12 rounded-lg shadow uppercase tracking-wider hover:-translate-y-1 transition-transform duration-200 flex items-center gap-2 mb-4"
         >

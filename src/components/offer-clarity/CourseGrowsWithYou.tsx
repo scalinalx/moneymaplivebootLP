@@ -44,7 +44,7 @@ export function CourseGrowsWithYou() {
             </p>
           </div>
 
-          <CTA size="lg">I WANT RESULTS LIKE THESE!</CTA>
+          <CTA size="lg" trackId="offer-clarity-grows">I WANT RESULTS LIKE THESE!</CTA>
         </div>
       </div>
     </section>

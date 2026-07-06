@@ -66,7 +66,7 @@ export function AuthorPreamble() {
             Two-hour workdays.
           </h3>
           <div className="flex justify-center order-1 md:order-2">
-            <CTA size="lg">TEACH ME HOW TO GET WAY MORE MONEY!</CTA>
+            <CTA size="lg" trackId="offer-clarity-author">TEACH ME HOW TO GET WAY MORE MONEY!</CTA>
           </div>
         </div>
       </section>

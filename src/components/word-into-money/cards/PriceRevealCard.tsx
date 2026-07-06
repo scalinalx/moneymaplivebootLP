@@ -22,7 +22,7 @@ export const PriceRevealCard: React.FC<PriceRevealCardProps> = ({
     animation = 'scale',
 }) => {
     return (
-        <FeedCard animation={animation as any} className="text-center">
+        <FeedCard animation={animation as any} trackSection="price" className="text-center">
             <h3 className="font-anton text-2xl text-brand-white uppercase mb-6">Everything You Get</h3>
             <div className="space-y-3 mb-6">
                 {items.map((item, i) => (

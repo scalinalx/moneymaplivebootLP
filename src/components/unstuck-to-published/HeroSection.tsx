@@ -65,6 +65,8 @@ export const HeroSection: React.FC = () => {
                         {/* CTA — below image */}
                         <div className="flex flex-col items-center mb-8">
                             <button
+                                data-track="cta"
+                                data-track-id="unstuck-hero"
                                 onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                                 className="group bg-[#ffc300] hover:bg-[#e6b000] text-[#1a1a1a] font-montserrat font-black text-xl md:text-2xl py-5 px-10 md:px-16 rounded-lg shadow-[0_4px_30px_rgba(255,195,0,0.35)] hover:shadow-[0_8px_40px_rgba(255,195,0,0.5)] transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider flex items-center gap-3"
                             >

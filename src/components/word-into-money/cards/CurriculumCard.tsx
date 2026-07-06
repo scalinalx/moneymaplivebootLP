@@ -18,7 +18,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({ modules, animati
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     return (
-        <FeedCard animation={animation as any}>
+        <FeedCard animation={animation as any} trackSection="offer">
             <h3 className="font-anton text-2xl text-brand-white uppercase mb-1">What&apos;s Inside</h3>
             <p className="text-brand-grey text-sm font-lora mb-5">The full Word Into Money curriculum</p>
             <div className="space-y-2">

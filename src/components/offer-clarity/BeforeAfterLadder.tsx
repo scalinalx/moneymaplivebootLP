@@ -80,7 +80,7 @@ export function BeforeAfterLadder() {
           </div>
         </div>
 
-        <CTA size="lg" className="mt-12">
+        <CTA size="lg" className="mt-12" trackId="offer-clarity-ladder">
           I&apos;M READY TO MAKE WAY MORE MONEY!
         </CTA>
 
@@ -101,7 +101,7 @@ export function BeforeAfterLadder() {
           />
         </div>
 
-        <CTA size="lg" className="mt-12">
+        <CTA size="lg" className="mt-12" trackId="offer-clarity-ladder-2">
           YES — FIX MY OFFER NOW!
         </CTA>
       </div>

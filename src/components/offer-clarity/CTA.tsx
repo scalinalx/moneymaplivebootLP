@@ -7,9 +7,10 @@ interface CTAProps {
   variant?: 'gold' | 'dark';
   size?: 'md' | 'lg';
   className?: string;
+  trackId?: string;
 }
 
-export function CTA({ children, variant = 'gold', size = 'md', className = '' }: CTAProps) {
+export function CTA({ children, variant = 'gold', size = 'md', className = '', trackId }: CTAProps) {
   const base =
     'inline-block rounded-md font-extrabold uppercase tracking-wide text-center transition-all hover:-translate-y-1 shadow-lg cursor-pointer';
   const colors =
@@ -32,6 +33,8 @@ export function CTA({ children, variant = 'gold', size = 'md', className = '' }:
       <a
         href="#checkout-section"
         onClick={handleClick}
+        data-track="cta"
+        data-track-id={trackId}
         className={`${base} ${colors} ${padding}`}
         style={{ fontFamily: 'Montserrat, system-ui, sans-serif' }}
       >

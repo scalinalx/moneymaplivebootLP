@@ -20,6 +20,8 @@ export const HeroCard: React.FC<HeroCardProps> = ({ headline, subheadline }) => 
                 {subheadline}
             </p>
             <button
+                data-track="cta"
+                data-track-id="word-into-money-hero"
                 onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="mt-8 bg-brand-lime hover:bg-brand-limeDim text-brand-950 font-anton text-xl py-4 px-10 rounded-xl transition-all hover:scale-[1.02] uppercase tracking-wide"
             >

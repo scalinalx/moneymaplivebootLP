@@ -35,6 +35,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
             setIsSubmitting(true);
             try {
                 await captureLead(name, email);
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.formSuccess?.('ana-ai-offer-flow-lead');
                 onSignup(name, email);
             } catch (error) {
                 alert("Something went wrong. Please try again.");
@@ -102,11 +104,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                 <p className="text-slate-500 text-[10px]">Join the top 1% of creators building smarter offers.</p>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
+                            <form onSubmit={handleSubmit} className="space-y-4" data-track-form="ana-ai-offer-flow-lead">
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-1.5 ml-1">First Name</label>
                                     <input
                                         type="text"
+                                        name="name"
                                         required
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
@@ -118,6 +121,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
                                     <label className="block text-sm font-medium text-slate-700 mb-1.5 ml-1">Email Address</label>
                                     <input
                                         type="email"
+                                        name="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -142,6 +146,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
 
                                 <button
                                     type="submit"
+                                    data-track="cta"
+                                    data-track-id="ana-ai-offer-flow-hero"
                                     disabled={isSubmitting || !name || !email || !agreed}
                                     className="w-full bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-900/10 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 mt-4 disabled:opacity-70 text-sm"
                                 >
@@ -166,7 +172,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
             </div>
 
             {/* Testimonials Section */}
-            <div className="max-w-7xl mx-auto px-6 pb-32 mt-8 md:mt-12">
+            <div className="max-w-7xl mx-auto px-6 pb-32 mt-8 md:mt-12" data-track-section="testimonials">
                 <div className="w-full border-t border-slate-100 pt-8 md:pt-12">
                     <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
                         {/* Testimonial 1 */}

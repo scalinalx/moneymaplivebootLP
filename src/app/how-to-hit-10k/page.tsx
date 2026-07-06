@@ -42,7 +42,7 @@ const HowToHit10kPage: React.FC = () => {
                 <SectionDivider />
                 <GabrielleSpotlight />
                 <FAQSection />
-                <div id="checkout-section">
+                <div id="checkout-section" data-track-section="checkout">
                     <EmbeddedCheckout />
                 </div>
             </main>

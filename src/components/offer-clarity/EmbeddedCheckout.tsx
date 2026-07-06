@@ -47,9 +47,15 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ customerName, total,
     });
 
     if (error) {
+      // Payment confirmation failed (card declined, validation, etc.).
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.checkoutStep?.('payment_error', 'offer-clarity-checkout');
       setErrorMessage(error.message || 'An unexpected error occurred.');
       setIsProcessing(false);
     } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+      // Conversion — payment succeeded.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.formSuccess?.('offer-clarity-checkout');
       await fetch('/api/offer-clarity/confirm-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -169,6 +175,9 @@ export const EmbeddedCheckout: React.FC = () => {
             currency: 'USD',
           });
         }
+        // Reached the payment step (Stripe card form shown).
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.checkoutStep?.('payment_step', 'offer-clarity-checkout');
         setClientSecret(data.clientSecret);
         setLeadId(data.leadId);
         setStep(2);
@@ -184,7 +193,7 @@ export const EmbeddedCheckout: React.FC = () => {
   };
 
   return (
-    <section id="checkout-section" className="bg-[#faf7f0] py-16 md:py-24">
+    <section id="checkout-section" data-track-section="checkout" className="bg-[#faf7f0] py-16 md:py-24">
       <div className="max-w-2xl mx-auto px-6">
         <h2
           className="text-3xl md:text-5xl font-extrabold text-center mb-3 leading-tight"
@@ -212,7 +221,7 @@ export const EmbeddedCheckout: React.FC = () => {
 
           <div className="p-6 md:p-10">
             {step === 1 ? (
-              <form onSubmit={startCheckout} className="space-y-5">
+              <form onSubmit={startCheckout} data-track-form="offer-clarity-checkout" className="space-y-5">
                 {/* Header summary */}
                 <div className="flex items-baseline justify-between mb-2">
                   <p
@@ -239,6 +248,7 @@ export const EmbeddedCheckout: React.FC = () => {
                   <input
                     required
                     type="text"
+                    name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#9E8B52] focus:ring-2 focus:ring-[#9E8B52]/15 outline-none transition-all text-black"
@@ -255,6 +265,7 @@ export const EmbeddedCheckout: React.FC = () => {
                   <input
                     required
                     type="email"
+                    name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#9E8B52] focus:ring-2 focus:ring-[#9E8B52]/15 outline-none transition-all text-black"

@@ -40,6 +40,7 @@ function CtaButton({
   sub,
   onClick,
   disabled,
+  trackId,
 }: {
   children: React.ReactNode;
   gold?: boolean;
@@ -47,6 +48,7 @@ function CtaButton({
   sub?: string;
   onClick?: () => void;
   disabled?: boolean;
+  trackId?: string;
 }) {
   const base =
     'inline-block font-dm-sans font-bold uppercase tracking-[1.5px] rounded-lg transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0';
@@ -61,6 +63,7 @@ function CtaButton({
         type="button"
         onClick={onClick}
         disabled={disabled}
+        {...(trackId ? { 'data-track': 'cta', 'data-track-id': trackId } : {})}
         className={`${base} ${size} ${color}`}
       >
         {children}
@@ -107,11 +110,15 @@ function FallbackCheckoutForm({
     });
 
     if (stripeError) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.checkoutStep?.('payment_error', 'oc-wts-upsell-checkout');
       setError(stripeError.message || 'Payment failed');
       setSubmitting(false);
       return;
     }
     if (paymentIntent && paymentIntent.status === 'succeeded') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.formSuccess?.('oc-wts-upsell-checkout');
       // Tell the server to flip the flag (webhook is also a safety net).
       await fetch('/api/offer-clarity/what-to-sell-upsell/confirm-payment', {
         method: 'POST',
@@ -125,7 +132,7 @@ function FallbackCheckoutForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} data-track-form="oc-wts-upsell-checkout" className="space-y-4">
       <PaymentElement options={{ layout: 'tabs' }} />
       {error && (
         <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600">
@@ -209,6 +216,7 @@ function HeroSection({
             <CtaButton
               onClick={onAdd}
               disabled={purchasing}
+              trackId="oc-wts-upsell-hero"
               sub={`Instant access · One-click add (no card re-entry) · Full recording + bonuses`}
             >
               {purchasing
@@ -328,7 +336,7 @@ function ModulesSection({
   ];
 
   return (
-    <section className="bg-[#1a1a1a] px-5 py-20 text-white">
+    <section data-track-section="offer" className="bg-[#1a1a1a] px-5 py-20 text-white">
       <div className="mx-auto max-w-[780px]">
         <Divider />
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
@@ -355,7 +363,7 @@ function ModulesSection({
         </ul>
 
         <div className="mt-10 text-center">
-          <CtaButton onClick={onAdd} disabled={purchasing}>
+          <CtaButton onClick={onAdd} disabled={purchasing} trackId="oc-wts-upsell-modules">
             {purchasing ? 'PROCESSING…' : `YES — ADD FOR $${priceUsd}`}
           </CtaButton>
         </div>
@@ -474,7 +482,7 @@ function BonusesSection({
         ))}
 
         <div className="mt-10 text-center">
-          <CtaButton onClick={onAdd} disabled={purchasing}>
+          <CtaButton onClick={onAdd} disabled={purchasing} trackId="oc-wts-upsell-bonuses">
             {purchasing ? 'PROCESSING…' : `YES — ADD FOR $${priceUsd}`}
           </CtaButton>
         </div>
@@ -556,7 +564,7 @@ function FinalCtaSection({
           system I used. The plan you&apos;ll leave with.
         </p>
 
-        <div className="mb-10">
+        <div data-track-section="price" className="mb-10">
           <div className="font-playfair text-7xl font-black leading-none text-white">
             ${priceUsd}
           </div>
@@ -574,7 +582,7 @@ function FinalCtaSection({
           </p>
         ) : (
           <>
-            <CtaButton large onClick={onAdd} disabled={purchasing}>
+            <CtaButton large onClick={onAdd} disabled={purchasing} trackId="oc-wts-upsell-final">
               {purchasing
                 ? 'PROCESSING…'
                 : `I'M DONE THINKING — ADD FOR $${priceUsd}`}
@@ -671,10 +679,14 @@ function WhatToSellInner() {
         return;
       }
       if (data.oneClick) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.formSuccess?.('oc-wts-upsell-checkout');
         setPurchased(true);
         setPurchasing(false);
         setTimeout(() => continueToCoaching(), 1200);
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.checkoutStep?.('payment_step', 'oc-wts-upsell-checkout');
         setFallbackClientSecret(data.clientSecret);
         setFallbackPaymentIntentId(data.paymentIntentId);
         setPurchasing(false);
@@ -727,7 +739,7 @@ function WhatToSellInner() {
 
       {/* Inline fallback checkout (only if no saved card). */}
       {fallbackClientSecret && !purchased && (
-        <section className="bg-[#fffdf5] px-5 py-12">
+        <section data-track-section="checkout" className="bg-[#fffdf5] px-5 py-12">
           <div className="mx-auto max-w-[520px] rounded-2xl border-2 border-[#ffc300] bg-white p-8 shadow-lg">
             <h3 className="mb-2 font-playfair text-2xl font-black">
               One last step — your payment details

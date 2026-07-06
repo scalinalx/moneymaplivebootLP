@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:docs": "tsx scripts/generate-ecosystem-md.ts"
+    "generate:docs": "tsx scripts/generate-ecosystem-md.ts",
+    "generate:coach": "tsx scripts/generate-ana-coach-knowledge.ts",
+    "ingest:kit": "tsx scripts/ingest-kit-broadcasts.ts",
+    "rag:build": "tsx scripts/build-ana-coach-rag.ts"
   },
   "dependencies": {
     "@google/genai": "^1.39.0",
@@ -16,14 +19,21 @@
     "@stripe/react-stripe-js": "^5.5.0",
     "@stripe/stripe-js": "^8.6.4",
     "@supabase/supabase-js": "^2.50.0",
+    "@types/html-to-text": "^9.0.4",
     "@types/stripe": "^8.0.416",
+    "html-to-text": "^10.0.0",
     "lucide-react": "^0.516.0",
+    "mammoth": "^1.12.0",
     "next": "16.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.58.1",
+    "react-markdown": "^10.1.0",
     "recharts": "^3.7.0",
-    "stripe": "^18.2.1"
+    "remark-gfm": "^4.0.1",
+    "stripe": "^18.2.1",
+    "undici": "^7.28.0",
+    "unpdf": "^1.6.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

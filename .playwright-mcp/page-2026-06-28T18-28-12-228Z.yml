@@ -1,0 +1,9 @@
+- generic [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - heading "📊 Conversion Analytics" [level=1] [ref=e4]
+      - textbox "ADMIDASH_PASSWORD" [active] [ref=e5]
+      - button "Unlock" [ref=e6]
+  - button "Open Next.js Dev Tools" [ref=e12] [cursor=pointer]:
+    - img [ref=e13]
+  - alert [ref=e16]

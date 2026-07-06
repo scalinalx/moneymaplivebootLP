@@ -46,6 +46,8 @@ export const FinalCTASection: React.FC = () => {
                     </div>
 
                     <button
+                        data-track="cta"
+                        data-track-id="unstuck-final"
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group w-full bg-[#ffc300] hover:bg-[#e6b000] text-[#1a1a1a] font-montserrat font-bold text-lg md:text-xl py-5 px-8 rounded-lg shadow-[0_4px_20px_rgba(255,195,0,0.25)] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2"
                     >

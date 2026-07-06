@@ -51,6 +51,8 @@ export const GeniusBridgeSection = ({ onScrollToCheckout }: { onScrollToCheckout
                 {/* CTA */}
                 <div className="mt-16">
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-bridge"
                         onClick={onScrollToCheckout}
                         className="group relative bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-lg md:text-xl py-4 px-10 rounded-full shadow-lg shadow-pink-500/30 hover:shadow-pink-500/40 transition-all duration-300 transform hover:-translate-y-1"
                     >

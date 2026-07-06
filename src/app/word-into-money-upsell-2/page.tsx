@@ -27,9 +27,13 @@ function PaymentForm({ clientSecret, leadId, wimLeadId }: { clientSecret: string
         });
 
         if (error) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'wim-upsell-2-checkout');
             setErrorMessage(error.message || 'An error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent?.status === 'succeeded') {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('wim-upsell-2-checkout');
             await fetch('/api/word-into-money/upsell-2/confirm-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -40,7 +44,7 @@ function PaymentForm({ clientSecret, leadId, wimLeadId }: { clientSecret: string
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-track-form="wim-upsell-2-checkout">
             <PaymentElement options={{ layout: 'tabs' }} />
             {errorMessage && (
                 <div className="mt-4 p-3 bg-red-900/30 border border-red-500/50 rounded-lg flex items-center gap-2 text-red-400 text-sm">
@@ -86,6 +90,9 @@ function Upsell2Content() {
             });
             const data = await res.json();
             if (data.success) {
+                // Reached the payment step (Stripe card form shown).
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'wim-upsell-2-checkout');
                 setClientSecret(data.clientSecret);
                 setUpsellLeadId(data.leadId);
                 setStep('payment');
@@ -108,7 +115,7 @@ function Upsell2Content() {
                     </p>
                 </div>
 
-                <div className="space-y-4 mb-10">
+                <div data-track-section="offer" className="space-y-4 mb-10">
                     {['Complete launch system from $0 to $10K', 'The $100K Roadmap & templates', 'Launch email sequences & swipe files', 'Community access with other launchers', 'Templates, tools & lifetime updates'].map((item, i) => (
                         <div key={i} className="flex items-center gap-3 bg-brand-900 border border-brand-800 rounded-xl p-4">
                             <Zap size={18} className="text-brand-lime flex-shrink-0" />
@@ -117,7 +124,7 @@ function Upsell2Content() {
                     ))}
                 </div>
 
-                <div className="bg-brand-900 border border-brand-800 rounded-2xl overflow-hidden">
+                <div data-track-section="checkout" className="bg-brand-900 border border-brand-800 rounded-2xl overflow-hidden">
                     <div className="bg-brand-800 py-3 px-6 text-center">
                         <p className="text-brand-white font-montserrat font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2">
                             <Lock size={14} className="text-brand-lime" /> Secure Checkout
@@ -125,10 +132,10 @@ function Upsell2Content() {
                     </div>
                     <div className="p-6 md:p-8">
                         {step === 'info' ? (
-                            <form onSubmit={startPayment} className="space-y-4">
-                                <input required type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Full Name" className="w-full px-4 py-4 rounded-lg bg-brand-950 border border-brand-800 focus:border-brand-lime outline-none text-brand-white placeholder-brand-grey font-lato" />
-                                <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" className="w-full px-4 py-4 rounded-lg bg-brand-950 border border-brand-800 focus:border-brand-lime outline-none text-brand-white placeholder-brand-grey font-lato" />
-                                <button disabled={isLoading} className="w-full bg-brand-lime hover:bg-brand-limeDim text-brand-950 font-anton text-xl py-5 rounded-xl uppercase">
+                            <form onSubmit={startPayment} data-track-form="wim-upsell-2-checkout" className="space-y-4">
+                                <input required type="text" name="name" value={name} onChange={e => setName(e.target.value)} placeholder="Full Name" className="w-full px-4 py-4 rounded-lg bg-brand-950 border border-brand-800 focus:border-brand-lime outline-none text-brand-white placeholder-brand-grey font-lato" />
+                                <input required type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" className="w-full px-4 py-4 rounded-lg bg-brand-950 border border-brand-800 focus:border-brand-lime outline-none text-brand-white placeholder-brand-grey font-lato" />
+                                <button disabled={isLoading} data-track="cta" data-track-id="wim-upsell-2-accept" className="w-full bg-brand-lime hover:bg-brand-limeDim text-brand-950 font-anton text-xl py-5 rounded-xl uppercase">
                                     {isLoading ? 'Preparing...' : 'CONTINUE TO PAYMENT — $597'}
                                 </button>
                             </form>

@@ -208,6 +208,8 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
                 </div>
                 {err && <p style={{ color: '#F43F5E', fontSize: 13, marginBottom: 12, minHeight: 20 }}>{err}</p>}
                 <button
+                    data-track="cta"
+                    data-track-id="vdpb-unlock"
                     onClick={check}
                     style={{
                         width: '100%', padding: '16px 0',
@@ -577,6 +579,8 @@ export default function VDPBApp() {
                         <button className="btn btn-secondary" onClick={() => goTo(4)}>‹ Back</button>
                         <button
                             className="btn btn-primary"
+                            data-track="cta"
+                            data-track-id="vdpb-build"
                             disabled={selectedFormats.length === 0}
                             onClick={() => goTo(6)}
                         >
@@ -668,7 +672,7 @@ export default function VDPBApp() {
                         </div>
 
                         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                            <button className="btn btn-primary" onClick={copyResult} style={{ flex: 1, minWidth: 160, justifyContent: 'center' }}>
+                            <button className="btn btn-primary" data-track="cta" data-track-id="vdpb-copy" onClick={copyResult} style={{ flex: 1, minWidth: 160, justifyContent: 'center' }}>
                                 {copied ? '✅ Copied!' : '📋 Copy Brief'}
                             </button>
                             <button

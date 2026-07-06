@@ -47,6 +47,8 @@ export const FinalCTASection = () => {
 
           {/* CTA Button */}
           <button
+            data-track="cta"
+            data-track-id="build-substack-final"
             onClick={handleClick}
             className="bg-[#ffc300] text-[#1a1a1a] font-montserrat font-bold text-xl py-5 w-full rounded-lg shadow-[0_4px_20px_rgba(255,195,0,0.25)] uppercase tracking-wider hover:-translate-y-1 transition-all"
           >

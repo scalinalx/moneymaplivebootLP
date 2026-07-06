@@ -63,7 +63,7 @@ export function Hero() {
           <span className="text-[#c9b67e] font-bold">one clear offer.</span>
         </p>
 
-        <CTA size="lg">TEACH ME HOW TO GET WAY MORE MONEY!</CTA>
+        <CTA size="lg" trackId="offer-clarity-hero">TEACH ME HOW TO GET WAY MORE MONEY!</CTA>
       </div>
     </section>
   );

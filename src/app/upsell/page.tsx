@@ -61,12 +61,19 @@ function UpsellContent() {
       });
       const data = await res.json();
       if (data?.success && data?.data?.url) {
+        // Reached the payment step (redirecting to Stripe hosted checkout).
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.checkoutStep?.('payment_step', 'generic-upsell-checkout');
         window.location.href = data.data.url;
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).__track?.checkoutStep?.('payment_error', 'generic-upsell-checkout');
         setLoading('none');
         alert(data?.error || 'Failed to start checkout. Please try again.');
       }
     } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__track?.checkoutStep?.('payment_error', 'generic-upsell-checkout');
       setLoading('none');
       alert('Network error. Please try again.');
     }
@@ -138,7 +145,7 @@ function UpsellContent() {
         {/* What you get */}
         {/* Subtitle above the box */}
         <h2 className="mt-6 text-2xl font-bold text-white/90">Add the <span style={{ color: '#ffc300' }}>Money Map Bundle</span> to Build to Profit</h2>
-        <div className="mt-3 max-w-[1100px] rounded-2xl border border-white/10 bg-white/5 p-4 ring-1 ring-white/10">
+        <div data-track-section="offer" className="mt-3 max-w-[1100px] rounded-2xl border border-white/10 bg-white/5 p-4 ring-1 ring-white/10">
           <div className="mb-3 text-base font-semibold"><span className="rounded bg-yellow-300 px-2 py-0.5 text-black">Here’s What You Get When You Upgrade Today…</span></div>
           {/* Hook sentence (not a bullet) */}
           <p className="mb-3 text-[15px] text-white/90">
@@ -199,7 +206,7 @@ function UpsellContent() {
         </div>
 
         {/* Value & Price Callout (progressively smaller text) */}
-        <div className="mt-5 mx-auto max-w-[900px] text-center">
+        <div data-track-section="price" className="mt-5 mx-auto max-w-[900px] text-center">
           <div className="font-extrabold text-4xl">Retail Value: <span className="text-yellow-300">$3,202</span></div>
           <div className="mt-1 font-bold text-3xl">Discount: <span className="text-yellow-300">$2,705</span></div>
           <div className="mt-1 font-semibold text-2xl">Today You Pay: <span className="text-yellow-300">$497</span></div>
@@ -209,6 +216,8 @@ function UpsellContent() {
               type="button"
               onClick={() => createCheckout('bundle')}
               disabled={loading !== 'none'}
+              data-track="cta"
+              data-track-id="generic-upsell-bundle"
               className="inline-flex items-center justify-center rounded-lg bg-yellow-300 px-6 py-3 text-[1.1rem] font-semibold text-black shadow-[0_8px_30px_rgba(253,224,71,0.35)] ring-1 ring-yellow-200 transition hover:translate-y-[-1px] hover:shadow-[0_12px_40px_rgba(253,224,71,0.45)] disabled:opacity-60"
             >
               {loading === 'bundle' ? 'Starting checkout…' : 'Upgrade now — Bundle ($497)'}
@@ -221,6 +230,8 @@ function UpsellContent() {
               type="button"
               onClick={() => createCheckout('standard')}
               disabled={loading !== 'none'}
+              data-track="cta"
+              data-track-id="generic-upsell-standard"
               className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-[1.05rem] py-[0.66rem] text-[0.95rem] font-bold text-white/85 ring-1 ring-white/20 shadow-sm backdrop-blur transition hover:text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300/50 disabled:opacity-60"
             >
               <span aria-hidden>❌</span> No Thanks! I want just Build To Profit ($497)

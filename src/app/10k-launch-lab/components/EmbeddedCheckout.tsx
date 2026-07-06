@@ -51,9 +51,15 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         });
 
         if (error) {
+            // Payment confirmation failed (card declined, validation, etc.).
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'launch-lab-checkout');
             setErrorMessage(error.message || 'An unexpected error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // Conversion — payment succeeded.
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('launch-lab-checkout');
             // Update Supabase
             await fetch('/api/launch-lab/confirm-payment', {
                 method: 'POST',
@@ -142,6 +148,10 @@ export const EmbeddedCheckout: React.FC = () => {
                     });
                 }
 
+                // Reached the payment step (Stripe card form shown).
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'launch-lab-checkout');
+
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);
@@ -164,7 +174,7 @@ export const EmbeddedCheckout: React.FC = () => {
     };
 
     return (
-        <section id="checkout" className="w-full bg-white py-20 px-4 md:px-8 border-t border-gray-100">
+        <section id="checkout" data-track-section="checkout" className="w-full bg-white py-20 px-4 md:px-8 border-t border-gray-100">
             <div className="w-full max-w-[600px] mx-auto bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
                 <div className="bg-black py-4 px-6 text-center">
                     <p className="text-white font-poppins font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2">
@@ -175,12 +185,13 @@ export const EmbeddedCheckout: React.FC = () => {
 
                 <div className="p-8 md:p-12">
                     {step === 1 ? (
-                        <form onSubmit={startCheckout} className="space-y-6">
+                        <form onSubmit={startCheckout} data-track-form="launch-lab-checkout" className="space-y-6">
                             <div>
                                 <label className="block font-poppins font-bold text-black mb-2 uppercase text-xs tracking-wider">Full Name</label>
                                 <input
                                     required
                                     type="text"
+                                    name="name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     className="w-full px-4 py-4 rounded-2xl border border-gray-100 focus:bg-yellow-50 outline-none transition-all font-poppins text-black"
@@ -192,6 +203,7 @@ export const EmbeddedCheckout: React.FC = () => {
                                 <input
                                     required
                                     type="email"
+                                    name="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="w-full px-4 py-4 rounded-2xl border border-gray-100 focus:bg-yellow-50 outline-none transition-all font-poppins text-black"

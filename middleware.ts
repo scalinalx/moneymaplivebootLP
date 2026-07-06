@@ -58,6 +58,8 @@ export function middleware(req: NextRequest) {
     // /create-viral-digital-product-success and any future
     // /create-viral-digital-product-upsell-* pages (all match startsWith).
     '/create-viral-digital-product',
+    // VIP member area (Ana AI Coach). One prefix covers future VIP pages.
+    '/vip',
   ];
 
   if (pathname.startsWith('/downloads/')) {

@@ -97,6 +97,8 @@ export const CurriculumSection = () => {
 
       <div className="text-center">
         <button
+          data-track="cta"
+          data-track-id="build-substack-curriculum"
           onClick={scrollToCheckout}
           className="bg-[#ffc300] text-[#1a1a1a] font-montserrat font-bold text-lg px-8 py-4 rounded-xl hover:opacity-90 transition-opacity cursor-pointer"
         >

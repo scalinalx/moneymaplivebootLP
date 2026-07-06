@@ -97,6 +97,8 @@ export default function GeniusLaunchIdeasPage() {
                             {/* Primary CTA */}
                             <div className="flex flex-col items-center gap-6">
                                 <button
+                                    data-track="cta"
+                                    data-track-id="genius-ideas-hero"
                                     onClick={scrollToCheckout}
                                     className="bg-rose-600 hover:bg-rose-700 text-white font-black px-12 py-6 rounded-2xl shadow-2xl shadow-rose-500/30 transition-all hover:-translate-y-1 text-xl uppercase tracking-tight"
                                 >
@@ -271,7 +273,7 @@ export default function GeniusLaunchIdeasPage() {
                     </div>
 
                     {/* RIGHT COLUMN: Sticky Checkout (Desktop Only) */}
-                    <div className="hidden lg:block relative z-10">
+                    <div data-track-section="checkout" className="hidden lg:block relative z-10">
                         <CheckoutCard />
                     </div>
 
@@ -288,6 +290,8 @@ export default function GeniusLaunchIdeasPage() {
                         </div>
                     </div>
                     <button
+                        data-track="cta"
+                        data-track-id="genius-ideas-mobile"
                         onClick={() => setIsCheckoutOpen(true)}
                         className="bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold px-8 py-3 rounded-full hover:shadow-lg hover:shadow-pink-500/25 transition-all active:scale-95"
                     >

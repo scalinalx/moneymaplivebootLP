@@ -7,7 +7,7 @@ import { GENIUS_IDEAS_PRICE } from '@/lib/constants';
 
 export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: () => void }) => {
     return (
-        <div className="w-full flex justify-center py-20 px-6 bg-white overflow-hidden">
+        <div data-track-section="offer" className="w-full flex justify-center py-20 px-6 bg-white overflow-hidden">
             <div className="max-w-[900px] w-full flex flex-col items-center">
 
                 {/* Section Headline */}
@@ -71,7 +71,7 @@ export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: (
                 </div>
 
                 {/* Price and CTA */}
-                <div className="w-full bg-slate-900 rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-slate-900/20">
+                <div data-track-section="price" className="w-full bg-slate-900 rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-slate-900/20">
                     {/* Background Glow */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-slate-800 to-slate-900 -z-10"></div>
                     <div className="absolute -top-24 -left-24 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl"></div>
@@ -92,6 +92,8 @@ export const GeniusOfferStack = ({ onScrollToCheckout }: { onScrollToCheckout: (
                         </div>
 
                         <button
+                            data-track="cta"
+                            data-track-id="genius-ideas-offer"
                             onClick={onScrollToCheckout}
                             className="w-full md:w-auto bg-white hover:bg-slate-50 text-slate-900 font-bold text-lg md:text-xl py-5 px-12 rounded-full shadow-xl shadow-white/10 transition-all duration-300 transform hover:-translate-y-1 mx-auto"
                         >

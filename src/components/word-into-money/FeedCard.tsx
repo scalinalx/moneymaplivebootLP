@@ -19,6 +19,7 @@ interface FeedCardProps {
     className?: string;
     accentBorder?: boolean;
     noPadding?: boolean;
+    trackSection?: string;
     children: React.ReactNode;
 }
 
@@ -28,6 +29,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({
     className = '',
     accentBorder = false,
     noPadding = false,
+    trackSection,
     children,
 }) => {
     const { ref, isVisible } = useScrollReveal();
@@ -41,6 +43,7 @@ export const FeedCard: React.FC<FeedCardProps> = ({
     return (
         <div
             ref={ref}
+            data-track-section={trackSection}
             className={`
                 ${variantStyles[variant]}
                 ${noPadding ? '' : 'p-5 md:p-7'}

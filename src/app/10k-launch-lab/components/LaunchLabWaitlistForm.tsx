@@ -34,6 +34,9 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                         currency: 'USD'
                     });
                 }
+                // Conversion — waitlist signup succeeded.
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.formSuccess?.('launch-lab-waitlist');
                 setIsSuccess(true);
                 setShowModal(true);
             } else {
@@ -91,7 +94,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                 </div>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} data-track-form="launch-lab-waitlist" className="space-y-6">
                                 <div>
                                     <label className="block font-display font-bold text-black mb-2 uppercase text-sm tracking-wider">Full Name</label>
                                     <div className="relative">
@@ -101,6 +104,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                         <input
                                             required
                                             type="text"
+                                            name="name"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             className="w-full pl-11 pr-4 py-4 rounded-lg border border-gray-100 focus:border-brand-neon focus:ring-2 focus:ring-brand-neon/20 outline-none transition-all font-poppins text-black shadow-[2px_2px_0px_#000000]"
@@ -117,6 +121,7 @@ export const LaunchLabWaitlistForm: React.FC = () => {
                                         <input
                                             required
                                             type="email"
+                                            name="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             className="w-full pl-11 pr-4 py-4 rounded-lg border border-gray-100 focus:border-brand-neon focus:ring-2 focus:ring-brand-neon/20 outline-none transition-all font-poppins text-black shadow-[2px_2px_0px_#000000]"

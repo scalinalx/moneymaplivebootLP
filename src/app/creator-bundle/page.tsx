@@ -49,9 +49,15 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
         });
 
         if (error) {
+            // Payment confirmation failed (card declined, validation, etc.).
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.checkoutStep?.('payment_error', 'creator-bundle-checkout');
             setErrorMessage(error.message || 'An unexpected error occurred.');
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // Conversion — payment succeeded.
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).__track?.formSuccess?.('creator-bundle-checkout');
             const confirmRes = await fetch('/api/creator-bundle/confirm-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -65,7 +71,7 @@ const CheckoutFormContent: React.FC<CheckoutFormProps> = ({ clientSecret, leadId
     };
 
     return (
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit} data-track-form="creator-bundle-checkout" className="w-full">
             <PaymentElement options={{ layout: 'tabs' }} />
             {errorMessage && (
                 <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600 text-sm font-medium">
@@ -148,6 +154,9 @@ export default function CreatorBundlePage() {
                 if (typeof window !== 'undefined' && (window as any).fbq) {
                     (window as any).fbq('track', 'Lead', { value: 2.00, currency: 'USD' });
                 }
+                // Reached the payment step (Stripe card form shown).
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                (window as any).__track?.checkoutStep?.('payment_step', 'creator-bundle-checkout');
                 setClientSecret(data.clientSecret);
                 setLeadId(data.leadId);
                 setStep(2);
@@ -206,6 +215,8 @@ export default function CreatorBundlePage() {
                         </div>
 
                         <button
+                            data-track="cta"
+                            data-track-id="creator-bundle-hero"
                             onClick={scrollToCheckout}
                             className="group bg-[#27AE60] hover:bg-[#219653] text-white font-montserrat font-black text-xl md:text-2xl py-5 px-10 md:px-16 rounded-lg shadow-[0_4px_30px_rgba(39,174,96,0.4)] hover:shadow-[0_8px_40px_rgba(39,174,96,0.6)] transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider flex items-center gap-3 mx-auto"
                         >
@@ -268,7 +279,7 @@ export default function CreatorBundlePage() {
                 </section>
 
                 {/* ═══════════ THE 3 TOOLS (Product Showcase) ═══════════ */}
-                <section className="w-full bg-[#fafafa] py-16 md:py-24 px-6">
+                <section data-track-section="offer" className="w-full bg-[#fafafa] py-16 md:py-24 px-6">
                     <div className="max-w-[1100px] mx-auto">
                         <div className="text-center mb-16">
                             <p className="font-montserrat font-bold text-[#27AE60] text-xs uppercase tracking-[3px] mb-3">What's Inside The Kit</p>
@@ -369,7 +380,7 @@ export default function CreatorBundlePage() {
                 </section>
 
                 {/* ═══════════ VALUE STACK ═══════════ */}
-                <section className="w-full bg-[#0d0d0d] py-16 md:py-24 px-6">
+                <section data-track-section="price" className="w-full bg-[#0d0d0d] py-16 md:py-24 px-6">
                     <div className="max-w-[700px] mx-auto flex flex-col items-center">
                         <p className="font-montserrat font-bold text-[#27AE60] text-xs uppercase tracking-[3px] mb-3">Here's what you're getting</p>
                         <h2 className="font-anton text-3xl md:text-5xl text-white uppercase mb-12 text-center leading-tight">
@@ -409,6 +420,8 @@ export default function CreatorBundlePage() {
                         </p>
 
                         <button
+                            data-track="cta"
+                            data-track-id="creator-bundle-offer"
                             onClick={scrollToCheckout}
                             className="group bg-[#27AE60] hover:bg-[#219653] text-white font-montserrat font-black text-lg md:text-xl py-5 px-10 md:px-14 rounded-lg shadow-[0_4px_30px_rgba(39,174,96,0.4)] transition-all transform hover:-translate-y-1 uppercase tracking-wider flex items-center gap-3"
                         >
@@ -559,6 +572,8 @@ export default function CreatorBundlePage() {
                         </div>
 
                         <button
+                            data-track="cta"
+                            data-track-id="creator-bundle-final"
                             onClick={scrollToCheckout}
                             className="group bg-[#27AE60] hover:bg-[#219653] text-white font-montserrat font-black text-xl py-5 px-12 rounded-lg shadow-[0_4px_30px_rgba(39,174,96,0.4)] transition-all transform hover:-translate-y-1 uppercase tracking-wider flex items-center gap-3 mx-auto mb-4"
                         >
@@ -570,7 +585,7 @@ export default function CreatorBundlePage() {
                 </section>
 
                 {/* ═══════════ CHECKOUT ═══════════ */}
-                <div id="checkout-section" className="w-full flex justify-center py-20 px-6 bg-white">
+                <div id="checkout-section" data-track-section="checkout" className="w-full flex justify-center py-20 px-6 bg-white">
                     <div className="w-full max-w-[660px] mx-auto">
                         <h2 className="font-anton text-3xl md:text-4xl text-[#333333] mb-2 text-center uppercase tracking-wide">
                             GET <span className="text-[#27AE60]">INSTANT ACCESS</span>
@@ -609,11 +624,11 @@ export default function CreatorBundlePage() {
                                 </div>
 
                                 {step === 1 ? (
-                                    <form onSubmit={startCheckout} className="space-y-5">
+                                    <form onSubmit={startCheckout} data-track-form="creator-bundle-checkout" className="space-y-5">
                                         <div>
                                             <label className="block font-montserrat font-bold text-[#1a1a1a] mb-2 uppercase text-xs tracking-wider">Full Name</label>
                                             <input
-                                                required type="text" value={name}
+                                                required type="text" name="name" value={name}
                                                 onChange={(e) => setName(e.target.value)}
                                                 className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#27AE60] focus:ring-2 focus:ring-[#27AE60]/10 outline-none transition-all font-lato text-black"
                                                 placeholder="Enter your full name"
@@ -622,7 +637,7 @@ export default function CreatorBundlePage() {
                                         <div>
                                             <label className="block font-montserrat font-bold text-[#1a1a1a] mb-2 uppercase text-xs tracking-wider">Email Address</label>
                                             <input
-                                                required type="email" value={email}
+                                                required type="email" name="email" value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 className="w-full px-4 py-4 rounded-lg border border-gray-200 focus:border-[#27AE60] focus:ring-2 focus:ring-[#27AE60]/10 outline-none transition-all font-lato text-black"
                                                 placeholder="name@example.com"

@@ -59,7 +59,7 @@ export const LaunchLabValueStack: React.FC = () => {
                 </div>
 
                 {/* Total & Pricing */}
-                <div className="bg-white/5 border-2 border-brand-neon rounded-2xl p-8 text-center">
+                <div data-track-section="price" className="bg-white/5 border-2 border-brand-neon rounded-2xl p-8 text-center">
                     <p className="font-poppins text-white/60 uppercase tracking-widest text-xs font-bold mb-3">Total Value</p>
                     <p className="font-display font-black text-5xl text-white/30 line-through mb-2">
                         ${totalValue.toLocaleString()}
@@ -72,6 +72,8 @@ export const LaunchLabValueStack: React.FC = () => {
                         One-time payment • Instant access • Lifetime community
                     </p>
                     <button
+                        data-track="cta"
+                        data-track-id="launch-lab-final"
                         onClick={scrollToCheckout}
                         className="w-full bg-[#d81159] hover:bg-[#b30e4a] text-white font-display font-black text-xl py-5 rounded-2xl border border-gray-100 shadow-2xl hover:shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wider"
                     >

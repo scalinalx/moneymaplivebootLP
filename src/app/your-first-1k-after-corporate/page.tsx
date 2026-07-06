@@ -18,11 +18,13 @@ function CtaButton({
   gold = false,
   large = false,
   sub,
+  trackId,
 }: {
   children: React.ReactNode
   gold?: boolean
   large?: boolean
   sub?: string
+  trackId?: string
 }) {
   const base =
     'inline-block font-dm-sans font-bold uppercase tracking-[1.5px] rounded-lg transition-all duration-300 hover:-translate-y-0.5'
@@ -35,7 +37,12 @@ function CtaButton({
 
   return (
     <div>
-      <a href={STRIPE_CHECKOUT_URL} className={`${base} ${size} ${color}`}>
+      <a
+        href={STRIPE_CHECKOUT_URL}
+        data-track="cta"
+        data-track-id={trackId}
+        className={`${base} ${size} ${color}`}
+      >
         {children}
       </a>
       {sub && (
@@ -96,7 +103,7 @@ function HeroSection() {
           decision that starts everything.
         </p>
 
-        <CtaButton sub="60 Minutes Workshop. Instant Access">
+        <CtaButton trackId="first-1k-hero" sub="60 Minutes Workshop. Instant Access">
           I&apos;M MAKING THE DECISION
         </CtaButton>
       </div>
@@ -329,7 +336,7 @@ function ModulesSection() {
   ]
 
   return (
-    <section className="bg-[#1a1a1a] px-5 py-20 text-white">
+    <section data-track-section="offer" className="bg-[#1a1a1a] px-5 py-20 text-white">
       <div className="mx-auto max-w-[780px]">
         <Divider />
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
@@ -357,7 +364,7 @@ function ModulesSection() {
         </ul>
 
         <div className="mt-10 text-center">
-          <CtaButton>I&apos;M IN THE ROOM ON TUESDAY</CtaButton>
+          <CtaButton trackId="first-1k-offer">I&apos;M IN THE ROOM ON TUESDAY</CtaButton>
         </div>
       </div>
     </section>
@@ -470,7 +477,7 @@ function BonusesSection() {
         ))}
 
         <div className="mt-10 text-center">
-          <CtaButton>I&apos;M IN THE ROOM ON TUESDAY</CtaButton>
+          <CtaButton trackId="first-1k-bonus">I&apos;M IN THE ROOM ON TUESDAY</CtaButton>
         </div>
       </div>
     </section>
@@ -534,7 +541,7 @@ function FAQSection() {
   ]
 
   return (
-    <section className="px-5 py-20">
+    <section data-track-section="faq" className="px-5 py-20">
       <div className="mx-auto max-w-[780px]">
         <Divider />
         <h2 className="mb-2 text-center font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2]">
@@ -561,7 +568,7 @@ function FAQSection() {
 
 function FinalCtaSection() {
   return (
-    <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d1b3d] px-5 py-[100px] text-center text-white">
+    <section data-track-section="price" className="bg-gradient-to-br from-[#1a1a1a] to-[#2d1b3d] px-5 py-[100px] text-center text-white">
       <div className="mx-auto max-w-[780px]">
         <h2 className="mb-6 font-playfair text-[clamp(28px,4vw,44px)] font-black leading-[1.2] text-white">
           One decision. Instant access.
@@ -584,7 +591,7 @@ function FinalCtaSection() {
           </div>
         </div>
 
-        <CtaButton large sub="Secure checkout via Stripe · Replay included">
+        <CtaButton trackId="first-1k-final" large sub="Secure checkout via Stripe · Replay included">
           I&apos;M DONE THINKING. I&apos;M IN.
         </CtaButton>
       </div>

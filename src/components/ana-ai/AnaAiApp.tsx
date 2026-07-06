@@ -168,6 +168,8 @@ const AnaAiApp = () => {
                                     />
                                     <button
                                         type="submit"
+                                        data-track="cta"
+                                        data-track-id="ana-ai-offer-flow-generate"
                                         disabled={loading || !expertise.trim()}
                                         className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group-hover:scale-[1.02]"
                                     >
@@ -384,6 +386,8 @@ const AnaAiApp = () => {
                                             href="https://www.monetisesubstack.com/"
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            data-track="cta"
+                                            data-track-id="ana-ai-offer-flow-bootcamp"
                                             className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-emerald-900/20 transition-all hover:scale-105 text-lg"
                                         >
                                             I'm ready to monetize
@@ -408,6 +412,8 @@ const AnaAiApp = () => {
                         href="https://howwegrowtoday.substack.com/subscribe"
                         target="_blank"
                         rel="noopener noreferrer"
+                        data-track="cta"
+                        data-track-id="ana-ai-offer-flow-subscribe"
                         className="
                     relative group
                     px-5 md:px-8 py-3 rounded-xl 

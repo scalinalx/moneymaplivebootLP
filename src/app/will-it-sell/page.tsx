@@ -339,7 +339,7 @@ function FormCard({
           <input type="text" value={niche} onChange={(e) => setNiche(e.target.value)} placeholder="e.g. new moms, solopreneurs, dog owners" className={t.inputCls} />
         </div>
       </div>
-      <button onClick={onSubmit} disabled={loading} className={t.btnCls}>
+      <button onClick={onSubmit} disabled={loading} data-track="cta" data-track-id="will-it-sell-score" className={t.btnCls}>
         {loading ? (
           <span className="inline-flex items-center gap-2">
             <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -421,7 +421,7 @@ function ResultsSection({
         </div>
       </div>
       <div className="mt-10 text-center">
-        <button onClick={onSeeHowToBuild} className={t.ctaCls}>
+        <button onClick={onSeeHowToBuild} data-track="cta" data-track-id="will-it-sell-results" className={t.ctaCls}>
           See How to Build &amp; Sell It &rarr;
         </button>
       </div>
@@ -475,7 +475,7 @@ function UpsellSection({ results, onBack, theme }: { results: WillItSellResult; 
             <p className={`mt-4 text-[16px] leading-relaxed ${t.textSecondary}`}>
               Learn how to create and sell a popular, in-demand digital product even if you&apos;re just getting started and have no idea what to sell or how to do it.
             </p>
-            <a href="/10k-launch-lab" className={`mt-6 inline-block px-8 py-4 text-center text-[17px] font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg ${theme === 'brutalist' ? 'border-4 border-[#FFC107] bg-[#e91e90]' : 'rounded-lg bg-[#e91e90]'}`}>
+            <a href="/10k-launch-lab" data-track="cta" data-track-id="will-it-sell-upsell" className={`mt-6 inline-block px-8 py-4 text-center text-[17px] font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg ${theme === 'brutalist' ? 'border-4 border-[#FFC107] bg-[#e91e90]' : 'rounded-lg bg-[#e91e90]'}`}>
               Show Me How to Create It &rarr;
             </a>
           </div>
@@ -525,7 +525,7 @@ function CtaBanner({ theme }: { theme: Theme }) {
       part. Knowing exactly how to turn it into a product that sells on autopilot
       &mdash; that&apos;s where most people get stuck. We&apos;ll show you the
       entire system, step by step.{' '}
-      <a href="/10k-launch-lab" className={`font-bold underline ${theme === 'brutalist' ? 'text-[#FFC107] hover:text-[#e91e90]' : 'text-[#e91e90] hover:text-[#c2185b]'}`}>
+      <a href="/10k-launch-lab" data-track="cta" data-track-id="will-it-sell-ps" className={`font-bold underline ${theme === 'brutalist' ? 'text-[#FFC107] hover:text-[#e91e90]' : 'text-[#e91e90] hover:text-[#c2185b]'}`}>
         Click here!
       </a>
     </div>
@@ -572,6 +572,8 @@ export default function WillItSellPage() {
       const data = await res.json()
       if (!res.ok) { setError(data.error || 'Something went wrong. Please try again.'); return }
       setResults(data)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(window as any).__track?.formSuccess?.('will-it-sell-lead')
       setTimeout(() => { resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, 200)
     } catch { setError('Network error. Please check your connection and try again.') }
     finally { setLoading(false) }
