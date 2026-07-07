@@ -84,6 +84,11 @@ export default function BootcampLanding() {
   const ctaHref = (scrollTarget: string) => (closed ? WAITLIST_URL : scrollTarget);
   const ctaLabel = (label: string) => (closed ? 'JOIN THE WAITLIST FOR THE NEXT COHORT' : label);
 
+  // Under-hero CTA. The savings claim is only true while the founding price
+  // is live, so it swaps to a doors-close line after the deadline.
+  const ctaHero = founding
+    ? `CLAIM MY FOUNDING SEAT — SAVE ${centsToUsd(STANDARD_CENTS - FOUNDING_CENTS)} →`
+    : 'CLAIM MY SEAT BEFORE DOORS CLOSE →';
   const urgency = founding
     ? `Founding price ends in ${clock} — then ${CONFIG.foundingPrice} becomes ${CONFIG.standardPrice}.`
     : `Doors close in ${clock} — and I keep my deadlines.`;
@@ -96,12 +101,15 @@ export default function BootcampLanding() {
         <a href={ctaHref('#checkout')}>{closed ? 'Join waitlist' : 'I WANT IN, ANA!'}</a>
       </div>
 
-      {/* Wider, viewport-relative hero band: hero image + title + tagline. */}
+      {/* Wider, viewport-relative hero band: title + hero image + CTA + tagline. */}
       <div className="wrap-wide">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="block" src="/imgs/bootcamp/hero.webp" alt="The 6-Figures Newsletter Bootcamp: turn what you know into six figures. 7 weeks, live, 30 women, July 15 to September 1." />
+        <h1 style={{ marginBottom: 17 }}>The 6-Figures Newsletter Bootcamp:<br />Turn What You Know Into <span className="hl">Six Figures</span></h1>
 
-        <h1>The 6-Figures Newsletter Bootcamp:<br />Turn What You Know Into <span className="hl">Six Figures</span></h1>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="block" style={{ marginTop: 0, marginBottom: 7 }} src="/imgs/bootcamp/hero.webp" alt="The 6-Figures Newsletter Bootcamp: turn what you know into six figures. 7 weeks, live, 30 women, July 15 to September 1." />
+
+        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel(ctaHero)}</a>
+
         <p className="tagline">Learn how to turn your existing expertise into a <span className="hl"><b>six-figure business</b></span> using email and your newsletter, even if you have no audience, hate being on camera, and only have two hours a day.</p>
       </div>
 
