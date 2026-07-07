@@ -6,6 +6,21 @@ export const metadata = {
   title: 'You’re in — The 6-Figures Newsletter Bootcamp',
   description: 'Your seat in the founding cohort is confirmed.',
   robots: 'noindex, nofollow',
+  openGraph: {
+    title: 'I’m in — The 6-Figures Newsletter Bootcamp',
+    description: 'Seven weeks, live, with Ana. 30 women turning what they know into six figures. We start July 15.',
+    url: '/bootcamp-success',
+    siteName: 'How We Grow',
+    type: 'website',
+    images: [{ url: '/imgs/bootcamp/og.jpg', width: 1200, height: 630, alt: 'The 6-Figures Newsletter Bootcamp' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'I’m in — The 6-Figures Newsletter Bootcamp',
+    description: 'Seven weeks, live, with Ana. 30 women turning what they know into six figures. We start July 15.',
+    images: ['/imgs/bootcamp/og.jpg'],
+    creator: '@howwegrow',
+  },
 };
 
 export default async function BootcampSuccessPage({
