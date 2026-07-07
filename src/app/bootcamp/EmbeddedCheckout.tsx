@@ -11,7 +11,7 @@ const WAITLIST_URL = 'https://substackulous.kit.com/6figurebootcamp-waitlist';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const w = (): any => window as any;
 
-function PaymentForm({ leadId, priceLabel }: { leadId: string | null; priceLabel: string }) {
+function PaymentForm({ leadId, priceLabel, urgency }: { leadId: string | null; priceLabel: string; urgency?: string }) {
   const stripe = useStripe();
   const elements = useElements();
   const [processing, setProcessing] = useState(false);
@@ -55,6 +55,7 @@ function PaymentForm({ leadId, priceLabel }: { leadId: string | null; priceLabel
       <button className="co-btn" style={{ marginTop: 20 }} disabled={processing || !stripe}>
         {processing ? 'Processing…' : `COMPLETE MY ENROLLMENT — ${priceLabel}`}
       </button>
+      {urgency && <p className="co-urgency">{urgency}</p>}
       <div className="co-badges">
         <span><Lock size={12} style={{ verticalAlign: '-2px', marginRight: 5 }} />256-bit Secure SSL Connection</span>
         <span><Shield size={12} style={{ verticalAlign: '-2px', marginRight: 5 }} />Secure payments powered by Stripe.</span>
@@ -63,7 +64,7 @@ function PaymentForm({ leadId, priceLabel }: { leadId: string | null; priceLabel
   );
 }
 
-export default function EmbeddedCheckout({ price, closed }: { price: string; closed: boolean }) {
+export default function EmbeddedCheckout({ price, closed, urgency }: { price: string; closed: boolean; urgency?: string }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [clientSecret, setClientSecret] = useState<string | null>(null);
@@ -117,15 +118,16 @@ export default function EmbeddedCheckout({ price, closed }: { price: string; clo
             <input className="co-input" required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" />
             {error && <div className="co-err" style={{ marginBottom: 12 }}>{error}</div>}
             <button className="co-btn" disabled={initializing}>
-              {initializing ? 'Starting…' : `RESERVE MY SEAT — ${price}`}
+              {initializing ? 'Starting…' : `YES, RESERVE MY SEAT — ${price}`}
             </button>
+            {urgency && <p className="co-urgency">{urgency}</p>}
           </form>
         ) : (
           <Elements
             stripe={stripePromise}
             options={{ clientSecret, appearance: { theme: 'stripe', variables: { colorPrimary: '#F4442E', borderRadius: '10px' } } }}
           >
-            <PaymentForm leadId={leadId} priceLabel={price} />
+            <PaymentForm leadId={leadId} priceLabel={price} urgency={urgency} />
           </Elements>
         )}
       </div>

@@ -42,6 +42,7 @@ export default function BootcampLanding() {
     'Goes up to ' + CONFIG.standardPrice + ' when public doors open, July 8 at 4pm Greece time',
   );
   const [closed, setClosed] = useState(false);
+  const [founding, setFounding] = useState(true);
 
   useEffect(() => {
     const founding = new Date(CONFIG.foundingDeadline);
@@ -56,6 +57,7 @@ export default function BootcampLanding() {
         setPlan(CONFIG.foundingPlan);
         setRiseText('Goes up to ' + CONFIG.standardPrice + ' when public doors open, July 8 at 4pm Greece time');
         setClosed(false);
+        setFounding(true);
       } else if (now < close) {
         setBarLabel('Doors close in');
         setClock(fmt(close.getTime() - now.getTime()));
@@ -64,10 +66,12 @@ export default function BootcampLanding() {
         setPlan(CONFIG.standardPlan);
         setRiseText('Doors close July 14');
         setClosed(false);
+        setFounding(false);
       } else {
         setBarLabel('Doors are closed');
         setClock('00:00:00');
         setClosed(true);
+        setFounding(false);
       }
     }
     tick();
@@ -80,12 +84,25 @@ export default function BootcampLanding() {
   const ctaHref = (scrollTarget: string) => (closed ? WAITLIST_URL : scrollTarget);
   const ctaLabel = (label: string) => (closed ? 'JOIN THE WAITLIST FOR THE NEXT COHORT →' : label);
 
+  // CTA copy is phase-aware so the savings/price claims stay true after the
+  // founding deadline. First-person + concrete value, never process words.
+  const save = centsToUsd(STANDARD_CENTS - FOUNDING_CENTS);
+  const ctaTop = founding
+    ? `CLAIM MY FOUNDING SEAT — SAVE ${save} →`
+    : 'CLAIM MY SEAT BEFORE DOORS CLOSE →';
+  const ctaMid = founding
+    ? `LOCK IN ${CONFIG.foundingPrice} BEFORE IT’S ${CONFIG.standardPrice} →`
+    : 'CLAIM ONE OF THE 30 SEATS →';
+  const urgency = founding
+    ? `Founding price ends in ${clock} — then ${CONFIG.foundingPrice} becomes ${CONFIG.standardPrice}.`
+    : `Doors close in ${clock} — and I keep my deadlines.`;
+
   return (
     <div className="bootcamp">
       <div className="bar">
         <span>{barLabel}</span>
         <span className="clock">{clock}</span>
-        <a href={ctaHref('#checkout')}>{closed ? 'Join waitlist' : 'Get my seat'}</a>
+        <a href={ctaHref('#checkout')}>{closed ? 'Join waitlist' : 'Claim my seat'}</a>
       </div>
 
       {/* Wider, viewport-relative hero band: hero image + title + tagline. */}
@@ -107,7 +124,7 @@ export default function BootcampLanding() {
         <p className="price-line">{priceLabel}: <span>{price}</span></p>
         <p className="plan-line">{plan}</p>
         <p className="rise-line">{riseText}</p>
-        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel('I’M READY! TAKE ME TO CHECKOUT →')}</a>
+        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel(ctaTop)}</a>
         <p className="btn-note">30 seats. 250+ women were on the waitlist. Doors close July 14.</p>
 
         <h2>What’s included?</h2>
@@ -147,7 +164,7 @@ export default function BootcampLanding() {
 
         <p className="price-line">Founding Price: <span>{price}</span></p>
         <p className="plan-line">{plan}</p>
-        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel('YES! I WANT MY SEAT →')}</a>
+        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel(ctaMid)}</a>
         <p className="btn-note">First 10 in get the free $1,500 private 1:1 with me.</p>
 
         <h2>Questions I know you have:</h2>
@@ -187,7 +204,7 @@ export default function BootcampLanding() {
         <p className="price-line">Founding Price: <span>{price}</span></p>
         <p className="plan-line">{plan}</p>
         <p className="rise-line">{riseText}</p>
-        <EmbeddedCheckout price={price} closed={closed} />
+        <EmbeddedCheckout price={price} closed={closed} urgency={urgency} />
         <p className="btn-note">We start July 15. See you inside.</p>
 
         <p className="quote">“Stop shrinking the dream to fit the doubt.”</p>
