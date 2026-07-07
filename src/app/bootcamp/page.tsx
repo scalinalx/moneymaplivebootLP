@@ -3,12 +3,15 @@ import type { Metadata } from 'next';
 import BootcampLanding from './BootcampLanding';
 
 // Social/share copy is bootcamp-specific (not the generic site card). The image
-// is a 1200×630 JPEG cut from the hero for link-preview crawlers; absolute URLs
-// come from metadataBase (NEXT_PUBLIC_APP_URL) in the root layout.
+// is a 1200×630 JPEG cut from the hero for link-preview crawlers. URLs are
+// absolute on purpose: metadataBase (NEXT_PUBLIC_APP_URL in Vercel) points at
+// monetizesubstack.com, a parked domain that serves an HTML stub instead of
+// images — crawlers can't fetch og:image through it.
+const SITE = 'https://www.monetisesubstack.com';
 const TITLE = 'The 6-Figures Newsletter Bootcamp: Turn What You Know Into Six Figures';
 const DESCRIPTION =
   'Seven weeks, live, with Ana. Turn your existing expertise into a six-figure business using email and your newsletter — no audience needed, two hours a day. 30 seats, a real launch done before September 1. Doors close July 14.';
-const OG_IMAGE = '/imgs/bootcamp/og.jpg';
+const OG_IMAGE = `${SITE}/imgs/bootcamp/og.jpg`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: '/bootcamp',
+    url: `${SITE}/bootcamp`,
     siteName: 'How We Grow',
     type: 'website',
     images: [
