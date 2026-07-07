@@ -187,6 +187,7 @@ export async function POST(request: NextRequest) {
       first100_workshop:           { table: 'first100_leads',      paidAtColumn: 'payment_completed_at' },
       first100_from_wim_upsell:    { table: 'first100_leads',      paidAtColumn: 'payment_completed_at' },
       '100_genius_ideas':          { table: 'genius_ideas_leads',  paidAtColumn: 'paid_at' },
+      bootcamp:                    { table: 'bootcamp_leads',      paidAtColumn: 'payment_completed_at' },
     };
 
     const route = routes[productKey];

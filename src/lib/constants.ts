@@ -94,3 +94,10 @@ export const CVDP_BUMP2_PRICE = Number.parseInt(process.env.CVDP_BUMP2_PRICE || 
 export const CVDP_BUMP3_PRICE = Number.parseInt(process.env.CVDP_BUMP3_PRICE || '6700', 10); // $67 — The Launch Stack
 // Bundle = all 3 add-ons. Individual total $131 ($27+$37+$67); bundle saves $50 -> $81.
 export const CVDP_BUNDLE_PRICE = Number.parseInt(process.env.CVDP_BUNDLE_PRICE || '8100', 10); // $81
+
+// The 6-Figures Newsletter Bootcamp (founding cohort)
+export const BOOTCAMP_FOUNDING_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_BOOTCAMP_FOUNDING_PRICE || '249700', 10); // $2,497
+export const BOOTCAMP_STANDARD_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_BOOTCAMP_STANDARD_PRICE || '299700', 10); // $2,997
+// Founding price is charged until this moment, then the standard price applies.
+// NEXT_PUBLIC_ so the front-end countdown and the server charge share ONE source.
+export const BOOTCAMP_FOUNDING_DEADLINE = process.env.NEXT_PUBLIC_BOOTCAMP_FOUNDING_DEADLINE || '2026-07-08T16:00:00+03:00';

@@ -49,3 +49,4 @@ next-env.d.ts
 # Ana AI Coach RAG source material — build inputs only (local `npm run rag:build`).
 # Runtime uses the committed src/data/ana-coach/knowledge-chunks.json instead.
 claude chat files/
+.playwright-mcp/

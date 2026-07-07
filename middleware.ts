@@ -60,6 +60,7 @@ export function middleware(req: NextRequest) {
     '/create-viral-digital-product',
     // VIP member area (Ana AI Coach). One prefix covers future VIP pages.
     '/vip',
+    '/bootcamp',
   ];
 
   if (pathname.startsWith('/downloads/')) {
