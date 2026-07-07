@@ -82,17 +82,8 @@ export default function BootcampLanding() {
   // CTA href/label: when closed, all buttons become the waitlist. Otherwise the
   // in-page CTAs scroll down to the embedded #checkout form.
   const ctaHref = (scrollTarget: string) => (closed ? WAITLIST_URL : scrollTarget);
-  const ctaLabel = (label: string) => (closed ? 'JOIN THE WAITLIST FOR THE NEXT COHORT →' : label);
+  const ctaLabel = (label: string) => (closed ? 'JOIN THE WAITLIST FOR THE NEXT COHORT' : label);
 
-  // CTA copy is phase-aware so the savings/price claims stay true after the
-  // founding deadline. First-person + concrete value, never process words.
-  const save = centsToUsd(STANDARD_CENTS - FOUNDING_CENTS);
-  const ctaTop = founding
-    ? `CLAIM MY FOUNDING SEAT — SAVE ${save} →`
-    : 'CLAIM MY SEAT BEFORE DOORS CLOSE →';
-  const ctaMid = founding
-    ? `LOCK IN ${CONFIG.foundingPrice} BEFORE IT’S ${CONFIG.standardPrice} →`
-    : 'CLAIM ONE OF THE 30 SEATS →';
   const urgency = founding
     ? `Founding price ends in ${clock} — then ${CONFIG.foundingPrice} becomes ${CONFIG.standardPrice}.`
     : `Doors close in ${clock} — and I keep my deadlines.`;
@@ -102,7 +93,7 @@ export default function BootcampLanding() {
       <div className="bar">
         <span>{barLabel}</span>
         <span className="clock">{clock}</span>
-        <a href={ctaHref('#checkout')}>{closed ? 'Join waitlist' : 'Claim my seat'}</a>
+        <a href={ctaHref('#checkout')}>{closed ? 'Join waitlist' : 'I WANT IN, ANA!'}</a>
       </div>
 
       {/* Wider, viewport-relative hero band: hero image + title + tagline. */}
@@ -124,7 +115,7 @@ export default function BootcampLanding() {
         <p className="price-line">{priceLabel}: <span>{price}</span></p>
         <p className="plan-line">{plan}</p>
         <p className="rise-line">{riseText}</p>
-        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel(ctaTop)}</a>
+        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel('I’M SO READY FOR THIS!')}</a>
         <p className="btn-note">30 seats. 250+ women were on the waitlist. Doors close July 14.</p>
 
         <h2>What’s included?</h2>
@@ -164,7 +155,7 @@ export default function BootcampLanding() {
 
         <p className="price-line">Founding Price: <span>{price}</span></p>
         <p className="plan-line">{plan}</p>
-        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel(ctaMid)}</a>
+        <a className="btn" href={ctaHref('#checkout')}>{ctaLabel('YES! I WANT MY SEAT!')}</a>
         <p className="btn-note">First 10 in get the free $1,500 private 1:1 with me.</p>
 
         <h2>Questions I know you have:</h2>

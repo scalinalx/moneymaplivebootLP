@@ -102,7 +102,7 @@ export default function EmbeddedCheckout({ price, closed, urgency }: { price: st
 
   if (closed) {
     return (
-      <a className="btn" href={WAITLIST_URL}>JOIN THE WAITLIST FOR THE NEXT COHORT →</a>
+      <a className="btn" href={WAITLIST_URL}>JOIN THE WAITLIST FOR THE NEXT COHORT</a>
     );
   }
 
@@ -118,7 +118,7 @@ export default function EmbeddedCheckout({ price, closed, urgency }: { price: st
             <input className="co-input" required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" />
             {error && <div className="co-err" style={{ marginBottom: 12 }}>{error}</div>}
             <button className="co-btn" disabled={initializing}>
-              {initializing ? 'Starting…' : `YES, RESERVE MY SEAT — ${price}`}
+              {initializing ? 'Starting…' : 'YES! I WANT THIS!'}
             </button>
             {urgency && <p className="co-urgency">{urgency}</p>}
           </form>
