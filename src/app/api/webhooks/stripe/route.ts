@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase';
+import { addSubscriberWithTag, KIT_BOOTCAMP_TAG } from '@/lib/kit';
 import { headers } from 'next/headers';
 
 export async function POST(request: NextRequest) {
@@ -225,6 +226,14 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'DB update failed' }, { status: 500 });
       }
       console.log(`✅ Marked ${route.table} lead ${leadId} as paid via webhook`);
+
+      // Bootcamp buyers also get enrolled in Kit (best-effort, idempotent —
+      // the client confirm-payment route does the same and re-tagging is a no-op).
+      if (productKey === 'bootcamp') {
+        const buyerEmail = intent.metadata?.email;
+        const firstName = String(intent.metadata?.name || '').trim().split(/\s+/)[0];
+        if (buyerEmail) await addSubscriberWithTag(buyerEmail, firstName, KIT_BOOTCAMP_TAG);
+      }
     } catch (err) {
       console.error('❌ payment_intent.succeeded handler exception:', err);
       return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 });
