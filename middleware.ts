@@ -60,8 +60,19 @@ export function middleware(req: NextRequest) {
     '/create-viral-digital-product',
     // VIP member area (Ana AI Coach). One prefix covers future VIP pages.
     '/vip',
-    '/bootcamp',
+    // NOTE: '/bootcamp' is intentionally absent — enrollment closed July 14;
+    // the exact path redirects to the workshop below. '/bootcamp-success'
+    // stays reachable for enrolled members revisiting their confirmation.
+    '/bootcamp-success',
   ];
+
+  // Bootcamp enrollment is closed — send visitors to the evergreen workshop.
+  // Temporary (307) on purpose: a future cohort may reopen this page.
+  if (pathname === '/bootcamp' || pathname === '/bootcamp/') {
+    const url = req.nextUrl.clone();
+    url.pathname = '/how-to-hit-10k';
+    return NextResponse.redirect(url);
+  }
 
   if (pathname.startsWith('/downloads/')) {
     const filename = pathname.replace('/downloads/', '');

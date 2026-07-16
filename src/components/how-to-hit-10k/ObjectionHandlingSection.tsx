@@ -23,7 +23,7 @@ export const ObjectionHandlingSection: React.FC = () => {
 
                 {/* The "Closing Gap" Statement */}
                 <p className="font-lato font-normal text-[#333333] text-lg md:text-[18px] leading-relaxed w-full mb-12">
-                    In this 90-minute course, I'll show you how to fix the foundations so you can scale what you ALREADY have.
+                    In this LIVE workshop, I'll show you how to fix the foundations so you can scale what you ALREADY have.
                 </p>
 
                 {/* Section Call-to-Action */}

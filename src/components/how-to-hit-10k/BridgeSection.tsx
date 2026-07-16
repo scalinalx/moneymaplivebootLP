@@ -77,7 +77,7 @@ export const BridgeSection: React.FC = () => {
                         <span>TEACH ME HOW TO HIT 10K</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
-                    <p className="font-lato text-gray-500 text-sm">90-Minute Workshop Recording | Instant Access</p>
+                    <p className="font-lato text-gray-500 text-sm">LIVE Workshop | July 21, 7 PM Greece time</p>
                 </div>
             </div>
 
@@ -110,7 +110,7 @@ export const BridgeSection: React.FC = () => {
                         The problem is almost never WHAT you're selling...
                     </h2>
                     <p className="font-lora italic text-[#333333] text-xl md:text-2xl max-w-3xl">
-                        ...it's how you position, price, and launch it. I'll show you the exact "Launch Physics" inside this 90-minute course.
+                        ...it's how you position, price, and launch it. I'll show you the exact "Launch Physics" inside this LIVE workshop.
                     </p>
                 </div>
             </div>

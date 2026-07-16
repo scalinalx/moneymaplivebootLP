@@ -52,7 +52,7 @@ export const OfferStack: React.FC = () => {
 
                 {/* Bridge Headline */}
                 <p className="font-montserrat text-black text-center text-xl md:text-[22px] leading-relaxed max-w-4xl mb-8">
-                    A <span className="font-bold text-[#d81159]">90-minute business course</span> covering the exact positioning, pricing, and launch frameworks to scale your existing offers to <span className="font-bold underline">5-figure months</span>.
+                    A <span className="font-bold text-[#d81159]">LIVE workshop — July 21, 7 PM Greece time —</span> covering the exact positioning, pricing, and launch frameworks to scale your existing offers to <span className="font-bold underline">5-figure months</span>.
                 </p>
 
                 {/* Section Headline */}

@@ -11,11 +11,11 @@ export const FAQSection: React.FC = () => {
     const faqs: FAQItem[] = [
         {
             question: "Is this a live workshop or a recorded course?",
-            answer: "This is a 90-minute intensive video course. recorded and ready to watch immediately. No fluff, just the frameworks."
+            answer: "It's LIVE. We meet on July 21 at 7 PM Greece time for an intensive 90-minute session. No fluff, just the frameworks — and everyone who enrolls gets the recording afterwards."
         },
         {
             question: "How do I access the materials?",
-            answer: "Instantly. You'll receive a welcome email with access to the entire 90 mins of content + BONUSES as soon as you enroll."
+            answer: "You'll receive a welcome email with your BONUSES as soon as you enroll, plus your link to join the LIVE workshop on July 21 at 7 PM Greece time. The recording lands in your inbox after the session."
         },
         {
             question: "Do I need a huge following?",
@@ -31,7 +31,7 @@ export const FAQSection: React.FC = () => {
         },
         {
             question: "What's the total investment for the workshop?",
-            answer: `The total investment is just $${HIT10K_PRICE / 100}. This includes the full 90-minute business course and over $500 worth of bonuses (like the Viral Substack Notes Generator and the Email Sequence templates).`
+            answer: `The total investment is just $${HIT10K_PRICE / 100}. This includes the full LIVE workshop and over $500 worth of bonuses (like the Viral Substack Notes Generator and the Email Sequence templates).`
         },
         {
             question: "Is there a refund policy?",
@@ -89,7 +89,7 @@ export const FAQSection: React.FC = () => {
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-lg py-4 px-12 rounded-[5px] shadow-lg transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        YES! I WANT THE WORKSHOP RECORDING
+                        YES! I WANT 10K MONTHS
                     </button>
                 </div>
 

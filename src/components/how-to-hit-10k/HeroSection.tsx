@@ -16,7 +16,7 @@ export const HeroSection: React.FC = () => {
 
                 {/* Sub-Headline */}
                 <h2 className="font-display text-[#333333] text-lg md:text-3xl leading-tight max-w-4xl mb-12 font-bold uppercase italic tracking-tight">
-                    90 minutes of videos covering in-depth the frameworks, strategies, tactics, tools & templates that took my business to $1M
+                    LIVE Workshop covering in-depth the frameworks, strategies, tactics, tools & templates that took my business to $1M
                 </h2>
 
                 {/* Proof Image */}
@@ -48,10 +48,10 @@ export const HeroSection: React.FC = () => {
                         onClick={() => document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' })}
                         className="bg-[#d81159] hover:bg-[#b30e4a] text-white font-montserrat font-bold text-xl md:text-2xl py-5 px-10 md:px-16 rounded shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 uppercase tracking-wider"
                     >
-                        GET INSTANT ACCESS TO THE WORKSHOP — ${HIT10K_PRICE / 100}
+                        GET MY SEAT AT THE LIVE WORKSHOP — ${HIT10K_PRICE / 100}
                     </button>
                     <p className="font-lora italic text-gray-500 mt-4 text-sm">
-                        *Get the full recording, frameworks & templates immediately after registration
+                        *LIVE on July 21, 7 PM Greece time — recording, frameworks & templates included with registration
                     </p>
                 </div>
 
