@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase';
-import { addSubscriberWithTag, KIT_BOOTCAMP_TAG } from '@/lib/kit';
+import { addSubscriberWithTag, KIT_BOOTCAMP_TAG, KIT_HIT10K_TAG } from '@/lib/kit';
 import { headers } from 'next/headers';
 
 export async function POST(request: NextRequest) {
@@ -227,12 +227,15 @@ export async function POST(request: NextRequest) {
       }
       console.log(`✅ Marked ${route.table} lead ${leadId} as paid via webhook`);
 
-      // Bootcamp buyers also get enrolled in Kit (best-effort, idempotent —
+      // Bootcamp + hit10k buyers also get enrolled in Kit (best-effort, idempotent —
       // the client confirm-payment route does the same and re-tagging is a no-op).
-      if (productKey === 'bootcamp') {
+      const kitTag = productKey === 'bootcamp' ? KIT_BOOTCAMP_TAG
+        : productKey === 'hit10k_workshop' ? KIT_HIT10K_TAG
+        : null;
+      if (kitTag) {
         const buyerEmail = intent.metadata?.email;
         const firstName = String(intent.metadata?.name || '').trim().split(/\s+/)[0];
-        if (buyerEmail) await addSubscriberWithTag(buyerEmail, firstName, KIT_BOOTCAMP_TAG);
+        if (buyerEmail) await addSubscriberWithTag(buyerEmail, firstName, kitTag);
       }
     } catch (err) {
       console.error('❌ payment_intent.succeeded handler exception:', err);

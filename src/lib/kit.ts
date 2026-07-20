@@ -8,6 +8,10 @@ const KIT_BASE_URL = process.env.KIT_BASE_URL || 'https://api.kit.com/v4/';
 /** Tag applied to every paid bootcamp enrollment. */
 export const KIT_BOOTCAMP_TAG = 'bootcampjuly';
 
+/** Tag applied to every paid "How To Hit 10k" workshop purchase.
+ *  (Kit stores it as '10kJUL' — its own casing; lookup is case-insensitive.) */
+export const KIT_HIT10K_TAG = '10kjul';
+
 async function kitFetch(path: string, init?: RequestInit): Promise<Response> {
   return fetch(`${KIT_BASE_URL}${path}`, {
     ...init,
@@ -26,7 +30,8 @@ async function findTagByName(tagName: string): Promise<number | null> {
     const res = await kitFetch(`tags?per_page=500${after ? `&after=${encodeURIComponent(after)}` : ''}`);
     if (!res.ok) return null;
     const data = await res.json();
-    const hit = (data.tags || []).find((t: { id: number; name: string }) => t.name === tagName);
+    const target = tagName.toLowerCase();
+    const hit = (data.tags || []).find((t: { id: number; name: string }) => t.name.toLowerCase() === target);
     if (hit) return hit.id;
     if (!data.pagination?.has_next_page || !data.pagination?.end_cursor) return null;
     after = data.pagination.end_cursor;
