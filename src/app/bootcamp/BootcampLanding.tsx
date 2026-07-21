@@ -39,7 +39,7 @@ export default function BootcampLanding() {
   const [price, setPrice] = useState(CONFIG.foundingPrice);
   const [plan, setPlan] = useState(CONFIG.foundingPlan);
   const [riseText, setRiseText] = useState(
-    'Goes up to ' + CONFIG.standardPrice + ' when public doors open, July 8 at 4pm Greece time',
+    'Goes up to ' + CONFIG.standardPrice + ' when public doors open, August 8 at 4pm Greece time',
   );
   const [closed, setClosed] = useState(false);
   const [founding, setFounding] = useState(true);
@@ -55,7 +55,7 @@ export default function BootcampLanding() {
         setPriceLabel('Founding Price');
         setPrice(CONFIG.foundingPrice);
         setPlan(CONFIG.foundingPlan);
-        setRiseText('Goes up to ' + CONFIG.standardPrice + ' when public doors open, July 8 at 4pm Greece time');
+        setRiseText('Goes up to ' + CONFIG.standardPrice + ' when public doors open, August 8 at 4pm Greece time');
         setClosed(false);
         setFounding(true);
       } else if (now < close) {
@@ -64,7 +64,7 @@ export default function BootcampLanding() {
         setPriceLabel('Price');
         setPrice(CONFIG.standardPrice);
         setPlan(CONFIG.standardPlan);
-        setRiseText('Doors close July 14');
+        setRiseText('Doors close August 14');
         setClosed(false);
         setFounding(false);
       } else {
@@ -106,7 +106,7 @@ export default function BootcampLanding() {
         <h1 style={{ marginBottom: 17 }}>The 6-Figures Newsletter Bootcamp:<br />Turn What You Know Into <span className="hl">Six Figures</span></h1>
 
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="block" style={{ marginTop: 0, marginBottom: 7 }} src="/imgs/bootcamp/hero.webp" alt="The 6-Figures Newsletter Bootcamp: turn what you know into six figures. 7 weeks, live, 30 women, July 15 to September 1." />
+        <img className="block" style={{ marginTop: 0, marginBottom: 7 }} src="/imgs/bootcamp/hero.webp" alt="The 6-Figures Newsletter Bootcamp: turn what you know into six figures. 7 weeks, live, 30 women, August 15 to September 1." />
 
         <a className="btn" href={ctaHref('#checkout')}>{ctaLabel(ctaHero)}</a>
 
@@ -124,7 +124,7 @@ export default function BootcampLanding() {
         <p className="plan-line">{plan}</p>
         <p className="rise-line">{riseText}</p>
         <a className="btn" href={ctaHref('#checkout')}>{ctaLabel('I’M SO READY FOR THIS!')}</a>
-        <p className="btn-note">30 seats. 250+ women were on the waitlist. Doors close July 14.</p>
+        <p className="btn-note">30 seats. 250+ women were on the waitlist. Doors close August 14.</p>
 
         <h2>What’s included?</h2>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -145,7 +145,7 @@ export default function BootcampLanding() {
           <li className="bonus"><b>[bonus] my 50+ hour video workshop repository,</b> my best programs including the complete 10K Launch Lab, on top of the weekly curriculum and support <em>(the Lab alone sells for $797; the repository is yours from day one)</em>.</li>
         </ul>
 
-        <p className="fine">Please note: the results on this page are real, individual student outcomes and are not a promise or guarantee of your earnings. This is a live cohort capped at 30 seats, so enrollment closes July 14 or when seats fill, whichever comes first.</p>
+        <p className="fine">Please note: the results on this page are real, individual student outcomes and are not a promise or guarantee of your earnings. This is a live cohort capped at 30 seats, so enrollment closes August 14 or when seats fill, whichever comes first.</p>
 
         <h2>Don’t take my word for it:</h2>
         <div className="t-pair">
@@ -181,7 +181,7 @@ export default function BootcampLanding() {
         <p className="faq-a">Every call is recorded and posted the same day, you can submit your work for hot seat feedback in advance, and async feedback runs all summer regardless of your time zone. My students live in 75+ countries. The program bends around your life, not the other way.</p>
 
         <h3>Why does the price go up?</h3>
-        <p className="faq-a">$2,497 is the founding price for this first cohort, and it’s available for 24 hours after the kickoff call, until public doors open July 8 at 4pm Greece time. After that it’s $2,997 until doors close July 14. Future cohorts will never see the founding price again. I keep my deadlines because that’s the only reason deadlines mean anything.</p>
+        <p className="faq-a">$2,497 is the founding price for this first cohort, and it’s available for 24 hours after the kickoff call, until public doors open August 8 at 4pm Greece time. After that it’s $2,997 until doors close August 14. Future cohorts will never see the founding price again. I keep my deadlines because that’s the only reason deadlines mean anything.</p>
 
         <h3>I already have a newsletter but it’s not making money.</h3>
         <p className="faq-a">Then you’re actually ahead. One of my students (Amaya, on the wall below) built an 8k+ newsletter that made a few hundred dollars in over a year. Within 3 days of applying the system she’d made more progress toward real revenue than in the previous 13 months. The newsletter isn’t your problem. The offer and the launch are, and that’s exactly what we fix in Weeks 1 through 5.</p>
@@ -190,7 +190,7 @@ export default function BootcampLanding() {
         <p className="faq-a">If you want me personally in your corner while you build and launch this summer, it’s this one, full stop. The bootcamp includes the complete 10K Launch Lab and my flagship trainings anyway, so there’s nothing to buy first. If you’d rather self-study without live coaching, wait for the Lab to reopen after the summer (at its regular price, without the 1:1s, the hot seats, or the AI tool).</p>
 
         <h3>What happens right after I enroll?</h3>
-        <p className="faq-a">You get instant access to the full video library and the private cohort room, your Week 1 roadmap lands in your inbox before July 15, and if you’re one of the first 10, my team reaches out to schedule your private 1:1. Then we start. Together.</p>
+        <p className="faq-a">You get instant access to the full video library and the private cohort room, your Week 1 roadmap lands in your inbox before August 15, and if you’re one of the first 10, my team reaches out to schedule your private 1:1. Then we start. Together.</p>
 
         <div className="t-pair">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -204,7 +204,7 @@ export default function BootcampLanding() {
         <p className="plan-line">{plan}</p>
         <p className="rise-line">{riseText}</p>
         <EmbeddedCheckout price={price} closed={closed} urgency={urgency} />
-        <p className="btn-note">We start July 15. See you inside.</p>
+        <p className="btn-note">We start August 15. See you inside.</p>
 
         <p className="quote">“Stop shrinking the dream to fit the doubt.”</p>
         <p className="quote-src">Letter №347 · how we grow</p>

@@ -10,7 +10,7 @@ export const metadata = {
   // can't serve the image (see src/app/bootcamp/page.tsx).
   openGraph: {
     title: 'I’m in — The 6-Figures Newsletter Bootcamp',
-    description: 'Seven weeks, live, with Ana. 30 women turning what they know into six figures. We start July 15.',
+    description: 'Seven weeks, live, with Ana. 30 women turning what they know into six figures. We start August 15.',
     url: 'https://www.monetisesubstack.com/bootcamp-success',
     siteName: 'How We Grow',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'I’m in — The 6-Figures Newsletter Bootcamp',
-    description: 'Seven weeks, live, with Ana. 30 women turning what they know into six figures. We start July 15.',
+    description: 'Seven weeks, live, with Ana. 30 women turning what they know into six figures. We start August 15.',
     images: ['https://www.monetisesubstack.com/imgs/bootcamp/og.jpg'],
     creator: '@howwegrow',
   },
@@ -56,15 +56,15 @@ export default async function BootcampSuccessPage({
         <h1>You’re in{firstName ? `, ${firstName}` : ''}. <span className="hl">Welcome to the cohort.</span></h1>
         <p className="tagline">
           Your seat in the founding cohort is confirmed. A receipt is on its way to your inbox, and
-          the real work starts July 15. Here’s exactly what happens now.
+          the real work starts August 15. Here’s exactly what happens now.
         </p>
 
         <h2>What happens now</h2>
         <ul className="inc">
           <li><b>Check your inbox.</b> Your welcome email with access to the full 50+ hour video library and the private cohort room is arriving in the next few minutes <em>(if you don’t see it, check spam/promotions and add me to your contacts)</em>.</li>
-          <li><b>Your Week 1 roadmap</b> lands before July 15, so you know exactly what to watch and what to execute first — no overwhelm, one focus in the right order.</li>
+          <li><b>Your Week 1 roadmap</b> lands before August 15, so you know exactly what to watch and what to execute first — no overwhelm, one focus in the right order.</li>
           <li><b>First 10 in?</b> If you’re one of the first 10 to enroll, my team will reach out to schedule your private $1,500 1:1 strategy session with me.</li>
-          <li><b>We start July 15.</b> Your first live hot seat call kicks off the 7 weeks. Bring your drafts and your numbers, and leave knowing your exact next move.</li>
+          <li><b>We start August 15.</b> Your first live hot seat call kicks off the 7 weeks. Bring your drafts and your numbers, and leave knowing your exact next move.</li>
         </ul>
 
         <p className="fine">

@@ -10,7 +10,7 @@ import BootcampLanding from './BootcampLanding';
 const SITE = 'https://www.monetisesubstack.com';
 const TITLE = 'The 6-Figures Newsletter Bootcamp: Turn What You Know Into Six Figures';
 const DESCRIPTION =
-  'Seven weeks, live, with Ana. Turn your existing expertise into a six-figure business using email and your newsletter — no audience needed, two hours a day. 30 seats, a real launch done before September 1. Doors close July 14.';
+  'Seven weeks, live, with Ana. Turn your existing expertise into a six-figure business using email and your newsletter — no audience needed, two hours a day. 30 seats, a real launch done before September 1. Doors close August 14.';
 const OG_IMAGE = `${SITE}/imgs/bootcamp/og.jpg`;
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: TITLE,
     description:
-      'Seven weeks, live, with Ana. Turn your expertise into a six-figure business using email and your newsletter. 30 seats. Doors close July 14.',
+      'Seven weeks, live, with Ana. Turn your expertise into a six-figure business using email and your newsletter. 30 seats. Doors close August 14.',
     images: [OG_IMAGE],
     creator: '@howwegrow',
   },
