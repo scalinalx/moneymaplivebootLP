@@ -23,12 +23,16 @@ function sign(payloadB64: string): string {
   return createHmac('sha256', getSessionSecret()).update(payloadB64).digest('base64url');
 }
 
-export function signSessionToken(memberId: string, nowMs: number = Date.now()): string {
+// maxExpMs (optional) caps the expiry below the standard TTL — used so a
+// cohort member's token can never outlive the cohort's expires_at.
+export function signSessionToken(memberId: string, nowMs: number = Date.now(), maxExpMs?: number): string {
   const nowSec = Math.floor(nowMs / 1000);
+  let exp = nowSec + SESSION_TTL_HOURS * 3600;
+  if (typeof maxExpMs === 'number') exp = Math.min(exp, Math.floor(maxExpMs / 1000));
   const payload: SessionPayload = {
     mid: memberId,
     iat: nowSec,
-    exp: nowSec + SESSION_TTL_HOURS * 3600,
+    exp,
     v: 1,
   };
   const payloadB64 = b64url(JSON.stringify(payload));

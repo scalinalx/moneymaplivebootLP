@@ -21,11 +21,32 @@ interface CoachMemberRow {
   created_at: string;
   revoked_at: string | null;
   last_used_at: string | null;
+  cohort_id?: string | null;
+}
+
+interface CohortRow {
+  id: string;
+  name: string;
+  status: 'active' | 'revoked';
+  expires_at: string | null;
+  notes: string | null;
+  created_at: string;
+  member_count: number;
+  total_messages: number;
+  tokens_total: number;
+  cost_total: number;
 }
 
 function fmtDate(iso: string | null) {
   if (!iso) return '—';
   return new Date(iso).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' });
+}
+
+// Expiry is stored/enforced in UTC — display it in UTC so it can't be off by a day.
+function fmtExpiry(iso: string | null) {
+  if (!iso) return 'never';
+  const d = new Date(iso);
+  return `${d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit', timeZone: 'UTC' })}, ${d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })} UTC`;
 }
 
 function fmtTok(n: number) {
@@ -58,8 +79,15 @@ export default function CoachMembersPanel({ password }: { password: string }) {
   const [newName, setNewName] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [creating, setCreating] = useState(false);
-  const [freshCode, setFreshCode] = useState<{ name: string; code: string } | null>(null);
+  const [freshCode, setFreshCode] = useState<{ name: string; code: string; shared?: boolean } | null>(null);
   const [error, setError] = useState('');
+  // Cohorts (shared codes)
+  const [cohorts, setCohorts] = useState<CohortRow[]>([]);
+  const [cohortsMigrationRequired, setCohortsMigrationRequired] = useState(false);
+  const [newCohortName, setNewCohortName] = useState('');
+  const [newCohortExpiry, setNewCohortExpiry] = useState(''); // yyyy-mm-dd → 00:00 UTC
+  const [creatingCohort, setCreatingCohort] = useState(false);
+  const [tierFilter, setTierFilter] = useState(''); // '' = all, 'vip', or cohort id
   const [viewing, setViewing] = useState<{ id: string; name: string } | null>(null);
   const [pricing, setPricing] = useState<{ in_per_1m: number; out_per_1m: number } | null>(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -109,10 +137,16 @@ export default function CoachMembersPanel({ password }: { password: string }) {
   const load = useCallback(async (silent = false) => {
     if (silent) setRefreshing(true); else setLoading(true);
     try {
-      const res = await fetch('/api/admidash/ana-coach/members', { headers: { Authorization: `Bearer ${password}` } });
+      const [res, cohortRes] = await Promise.all([
+        fetch('/api/admidash/ana-coach/members', { headers: { Authorization: `Bearer ${password}` } }),
+        fetch('/api/admidash/ana-coach/cohorts', { headers: { Authorization: `Bearer ${password}` } }),
+      ]);
       const json = await res.json();
       setMembers(json.members ?? []);
       setPricing(json.pricing ?? null);
+      const cohortJson = await cohortRes.json();
+      setCohorts(cohortJson.cohorts ?? []);
+      setCohortsMigrationRequired(!!cohortJson.migrationRequired);
     } catch {
       setError('Failed to load members');
     } finally {
@@ -167,6 +201,60 @@ export default function CoachMembersPanel({ password }: { password: string }) {
     setFreshCode({ name: m.member_name, code: json.code });
     await load();
   };
+
+  const createCohort = async () => {
+    if (!newCohortName.trim()) return;
+    setCreatingCohort(true);
+    setError('');
+    try {
+      const res = await fetch('/api/admidash/ana-coach/cohorts', {
+        method: 'POST',
+        headers: authHeaders,
+        body: JSON.stringify({
+          name: newCohortName.trim(),
+          expiresAt: newCohortExpiry ? `${newCohortExpiry}T00:00:00Z` : undefined,
+        }),
+      });
+      const json = await res.json();
+      if (!res.ok) { setError(json.error || 'Failed'); return; }
+      setFreshCode({ name: json.cohort.name, code: json.code, shared: true });
+      setNewCohortName('');
+      setNewCohortExpiry('');
+      await load();
+    } finally {
+      setCreatingCohort(false);
+    }
+  };
+
+  const toggleCohortStatus = async (c: CohortRow) => {
+    const next = c.status === 'active' ? 'revoked' : 'active';
+    if (next === 'revoked' && !window.confirm(`Revoke "${c.name}"? The shared code stops working AND all ${c.member_count} members spawned by it are locked out immediately.`)) return;
+    await fetch(`/api/admidash/ana-coach/cohorts/${c.id}`, {
+      method: 'PATCH',
+      headers: authHeaders,
+      body: JSON.stringify({ status: next }),
+    });
+    await load();
+  };
+
+  const regenerateCohort = async (c: CohortRow) => {
+    if (!window.confirm(`Issue a NEW shared code for "${c.name}"? The old code stops working for new logins. Already-active members keep working.`)) return;
+    setError('');
+    const res = await fetch(`/api/admidash/ana-coach/cohorts/${c.id}`, {
+      method: 'PATCH',
+      headers: authHeaders,
+      body: JSON.stringify({ regenerateCode: true }),
+    });
+    const json = await res.json();
+    if (!res.ok) { setError(json.error || 'Failed to regenerate'); return; }
+    setFreshCode({ name: c.name, code: json.code, shared: true });
+    await load();
+  };
+
+  const cohortName = (id: string | null | undefined) => cohorts.find((c) => c.id === id)?.name;
+  const visibleMembers = members.filter((m) =>
+    !tierFilter ? true : tierFilter === 'vip' ? !m.cohort_id : m.cohort_id === tierFilter,
+  );
 
   return (
     <div style={{ marginTop: 16 }}>
@@ -231,29 +319,109 @@ export default function CoachMembersPanel({ password }: { password: string }) {
       {freshCode && (
         <div style={{ border: '1px solid #f59e0b', borderRadius: 8, padding: 12, marginBottom: 16, background: 'rgba(245,158,11,0.08)' }}>
           <div style={{ fontSize: 12, color: 'var(--text-mid)', marginBottom: 4 }}>
-            Access code for <b>{freshCode.name}</b> — copy it now, it will not be shown again:
+            {freshCode.shared ? <>Shared cohort code for <b>{freshCode.name}</b> — every member of this cohort logs in with this same code. Copy it now, it will not be shown again:</> : <>Access code for <b>{freshCode.name}</b> — copy it now, it will not be shown again:</>}
           </div>
           <code style={{ fontSize: 18, letterSpacing: 1, userSelect: 'all' }}>{freshCode.code}</code>
           <button className="ad-btn" style={{ marginLeft: 12 }} onClick={() => setFreshCode(null)}>Dismiss</button>
         </div>
       )}
 
+      {/* Cohorts — shared codes for group products */}
+      <div style={{ margin: '20px 0 16px' }}>
+        <h4 style={{ margin: '0 0 8px' }}>Cohorts (shared codes)</h4>
+        <div style={{ fontSize: 11, color: 'var(--text-mid)', marginBottom: 10 }}>
+          One code for a whole group (e.g. a challenge cohort). Each login spawns its own member row below,
+          so sessions, quotas, and cost stay per-person. Expiry is enforced instantly on every request.
+        </div>
+        {cohortsMigrationRequired && (
+          <div style={{ color: '#f59e0b', fontSize: 12, marginBottom: 10 }}>
+            The cohorts migration has not been applied yet — paste
+            <code style={{ margin: '0 4px' }}>supabase/migrations/20260804120000_create_ana_coach_cohorts.sql</code>
+            into the Supabase Studio SQL editor to enable shared codes.
+          </div>
+        )}
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12, alignItems: 'center' }}>
+          <input className="ad-select" placeholder="Cohort name (e.g. 197 Challenge — Aug 2026)" value={newCohortName}
+            onChange={(e) => setNewCohortName(e.target.value)} style={{ minWidth: 260 }} />
+          <label style={{ fontSize: 12, color: 'var(--text-mid)' }}>Expires (00:00 UTC):</label>
+          <input type="date" className="ad-select" value={newCohortExpiry}
+            onChange={(e) => setNewCohortExpiry(e.target.value)} title="Cohort stops working at 00:00 UTC on this date. Leave empty = never expires." />
+          <button className="ad-btn amber" onClick={createCohort} disabled={creatingCohort || !newCohortName.trim() || cohortsMigrationRequired}>
+            {creatingCohort ? 'Creating…' : 'Create cohort + shared code'}
+          </button>
+        </div>
+        {cohorts.length > 0 && (
+          <table className="ad-table" style={{ width: '100%' }}>
+            <thead>
+              <tr>
+                <th>Cohort</th><th>Status</th><th>Expires</th><th>Members</th><th>Msgs</th>
+                <th>Tokens</th><th>Est. cost</th><th>Created</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {cohorts.map((c) => {
+                const expired = !!c.expires_at && new Date(c.expires_at).getTime() <= Date.now();
+                return (
+                  <tr key={c.id} style={{ opacity: c.status === 'revoked' || expired ? 0.5 : 1 }}>
+                    <td>{c.name}</td>
+                    <td>
+                      <span style={{ color: c.status === 'active' && !expired ? '#34d399' : '#f87171' }}>
+                        {expired && c.status === 'active' ? 'expired' : c.status}
+                      </span>
+                    </td>
+                    <td>{fmtExpiry(c.expires_at)}</td>
+                    <td>{c.member_count}</td>
+                    <td>{c.total_messages}</td>
+                    <td>{fmtTok(c.tokens_total)}</td>
+                    <td>{fmtUsd(c.cost_total)}</td>
+                    <td>{fmtDate(c.created_at)}</td>
+                    <td style={{ display: 'flex', gap: 6 }}>
+                      <button className="ad-btn" onClick={() => regenerateCohort(c)} title="Issue a new shared code (existing members keep working)">
+                        New code
+                      </button>
+                      <button className="ad-btn" onClick={() => toggleCohortStatus(c)}>
+                        {c.status === 'active' ? 'Revoke' : 'Reactivate'}
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+      </div>
+
       {/* Roster */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+        <h4 style={{ margin: 0 }}>Members</h4>
+        {cohorts.length > 0 && (
+          <select className="ad-select" value={tierFilter} onChange={(e) => setTierFilter(e.target.value)}>
+            <option value="">All tiers</option>
+            <option value="vip">VIP only</option>
+            {cohorts.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+          </select>
+        )}
+      </div>
       {loading ? (
         <div>Loading…</div>
       ) : (
         <table className="ad-table" style={{ width: '100%' }}>
           <thead>
             <tr>
-              <th>Name</th><th>Email</th><th>Status</th><th>Msgs</th><th>Sessions</th>
+              <th>Name</th><th>Tier</th><th>Email</th><th>Status</th><th>Msgs</th><th>Sessions</th>
               <th>Tokens</th><th>Est. cost</th>
               <th>Last used</th><th>Created</th><th></th>
             </tr>
           </thead>
           <tbody>
-            {members.map((m) => (
+            {visibleMembers.map((m) => (
               <tr key={m.id} style={{ opacity: m.status === 'revoked' ? 0.5 : 1 }}>
                 <td>{m.member_name}</td>
+                <td>
+                  {m.cohort_id
+                    ? <span style={{ fontSize: 11, color: '#60a5fa' }}>{cohortName(m.cohort_id) || 'Cohort'}</span>
+                    : <span style={{ fontSize: 11, color: '#f59e0b' }}>VIP</span>}
+                </td>
                 <td>{m.member_email || '—'}</td>
                 <td>
                   <span style={{ color: m.status === 'active' ? '#34d399' : '#f87171' }}>{m.status}</span>
@@ -277,8 +445,8 @@ export default function CoachMembersPanel({ password }: { password: string }) {
                 </td>
               </tr>
             ))}
-            {members.length === 0 && (
-              <tr><td colSpan={10} style={{ textAlign: 'center', color: 'var(--text-mid)' }}>No members yet.</td></tr>
+            {visibleMembers.length === 0 && (
+              <tr><td colSpan={11} style={{ textAlign: 'center', color: 'var(--text-mid)' }}>No members yet.</td></tr>
             )}
           </tbody>
         </table>

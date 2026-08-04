@@ -6,7 +6,7 @@
 
 import { NextResponse, type NextRequest } from 'next/server';
 import { verifySessionToken } from './session';
-import { getMemberById } from './store';
+import { cohortIsLive, getCohortById, getMemberById } from './store';
 import type { CoachMember } from './types';
 
 export type GuardResult =
@@ -28,6 +28,15 @@ export async function requireMember(req: NextRequest): Promise<GuardResult> {
   const member = await getMemberById(memberId);
   if (!member || member.status !== 'active') {
     return { ok: false, response: unauthorized() };
+  }
+
+  // Cohort members are additionally gated on their cohort being live, so
+  // expiry or a cohort-wide revocation cuts everyone off mid-token.
+  if (member.cohort_id) {
+    const cohort = await getCohortById(member.cohort_id);
+    if (!cohort || !cohortIsLive(cohort)) {
+      return { ok: false, response: unauthorized() };
+    }
   }
   return { ok: true, member };
 }

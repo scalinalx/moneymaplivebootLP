@@ -99,12 +99,14 @@ export function useCoachChat() {
     setStatus('gate');
   }, []);
 
-  const authenticate = useCallback(async (code: string) => {
+  // name is optional — used only when a shared cohort code spawns a new member,
+  // so the greeting and admin panel show a real first name.
+  const authenticate = useCallback(async (code: string, name?: string) => {
     setStatus('authing');
     setError('');
     try {
       const res = await fetch('/api/ana-coach/auth', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code }),
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code, name }),
       });
       const json = await res.json();
       if (!res.ok) { setError(json.error || 'Invalid code'); setStatus('gate'); return; }

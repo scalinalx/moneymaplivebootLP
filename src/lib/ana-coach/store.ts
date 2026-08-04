@@ -3,6 +3,7 @@
 // All reads/writes go through supabaseAdmin. Quota-sensitive mutations use the
 // atomic RPCs from the migration (no read-then-write races).
 
+import { createHash, randomUUID } from 'node:crypto';
 import { supabaseAdmin } from '@/lib/supabase';
 import {
   IN_FLIGHT_STALE_SECS,
@@ -13,6 +14,7 @@ import type {
   Attachment,
   ConsumeResult,
   Conversation,
+  CoachCohort,
   CoachMember,
   MemberProfile,
   SessionPhase,
@@ -21,23 +23,87 @@ import type {
 
 type DailyKind = 'conversations' | 'file_uploads' | 'url_fetches';
 
-export async function getMemberById(id: string): Promise<CoachMember | null> {
-  const { data, error } = await supabaseAdmin
+// Member selects include cohort_id, but retry without it so the app still runs
+// before the cohorts migration is applied (see CLAUDE.md rule on migrations).
+const MEMBER_COLS = 'id, member_name, member_email, status, profile';
+
+async function selectMember(column: 'id' | 'code_hash', value: string): Promise<CoachMember | null> {
+  let res = await supabaseAdmin
     .from('ana_coach_members')
-    .select('id, member_name, member_email, status, profile')
-    .eq('id', id)
+    .select(`${MEMBER_COLS}, cohort_id`)
+    .eq(column, value)
     .maybeSingle();
-  if (error || !data) return null;
-  return data as CoachMember;
+  if (res.error) {
+    res = await supabaseAdmin
+      .from('ana_coach_members')
+      .select(MEMBER_COLS)
+      .eq(column, value)
+      .maybeSingle();
+  }
+  if (res.error || !res.data) return null;
+  return res.data as CoachMember;
+}
+
+export async function getMemberById(id: string): Promise<CoachMember | null> {
+  return selectMember('id', id);
 }
 
 export async function getMemberByCodeHash(codeHash: string): Promise<CoachMember | null> {
+  return selectMember('code_hash', codeHash);
+}
+
+// --- Cohorts (shared access codes) ---------------------------------------
+// Reads return null before the cohorts migration is applied, so a shared-code
+// login degrades to the same generic "invalid code" as a wrong code.
+
+export async function getCohortByCodeHash(codeHash: string): Promise<CoachCohort | null> {
   const { data, error } = await supabaseAdmin
-    .from('ana_coach_members')
-    .select('id, member_name, member_email, status, profile')
+    .from('ana_coach_cohorts')
+    .select('id, name, status, expires_at')
     .eq('code_hash', codeHash)
     .maybeSingle();
   if (error || !data) return null;
+  return data as CoachCohort;
+}
+
+export async function getCohortById(id: string): Promise<CoachCohort | null> {
+  const { data, error } = await supabaseAdmin
+    .from('ana_coach_cohorts')
+    .select('id, name, status, expires_at')
+    .eq('id', id)
+    .maybeSingle();
+  if (error || !data) return null;
+  return data as CoachCohort;
+}
+
+// A cohort is usable iff active and not past its expiry. Checked at login AND
+// on every authenticated request (instant cutoff for the whole cohort).
+export function cohortIsLive(cohort: CoachCohort, nowMs: number = Date.now()): boolean {
+  if (cohort.status !== 'active') return false;
+  if (cohort.expires_at && new Date(cohort.expires_at).getTime() <= nowMs) return false;
+  return true;
+}
+
+// Spawn a personal member row for a cohort login. The code_hash placeholder is
+// the hash of random bytes — outside the space of any typeable code, so this
+// row can only ever be reached via its session token, never by a code.
+export async function createCohortMember(cohort: CoachCohort, name?: string): Promise<CoachMember> {
+  const placeholderHash = createHash('sha256')
+    .update(`cohort-member:${randomUUID()}`)
+    .digest('hex');
+  const { data, error } = await supabaseAdmin
+    .from('ana_coach_members')
+    .insert({
+      code_hash: placeholderHash,
+      member_name: name || `${cohort.name} member`,
+      cohort_id: cohort.id,
+      notes: 'Auto-created by shared cohort code',
+    })
+    .select(`${MEMBER_COLS}, cohort_id`)
+    .single();
+  if (error || !data) {
+    throw new Error(`[ana-coach] failed to create cohort member: ${error?.message}`);
+  }
   return data as CoachMember;
 }
 

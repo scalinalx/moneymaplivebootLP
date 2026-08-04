@@ -13,18 +13,23 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
   if (!verifyAdmin(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  // Never select code_hash. Token columns are optional — if the counter migration
-  // hasn't been applied yet, fall back to a select without them (tokens = 0).
+  // Never select code_hash. Token and cohort columns are optional — if their
+  // migrations haven't been applied yet, fall back to selects without them.
   const BASE_COLS = 'id, member_name, member_email, status, notes, total_messages, total_conversations, created_at, revoked_at, last_used_at';
   const TOKEN_COLS = 'total_tokens_in, total_tokens_out';
 
   let res: { data: Record<string, unknown>[] | null; error: { message: string } | null } =
     await supabaseAdmin
       .from('ana_coach_members')
-      .select(`${BASE_COLS}, ${TOKEN_COLS}`)
+      .select(`${BASE_COLS}, ${TOKEN_COLS}, cohort_id`)
       .order('created_at', { ascending: false });
   if (res.error) {
-    // Retry without the token columns so the panel still works pre-migration.
+    res = await supabaseAdmin
+      .from('ana_coach_members')
+      .select(`${BASE_COLS}, ${TOKEN_COLS}`)
+      .order('created_at', { ascending: false });
+  }
+  if (res.error) {
     res = await supabaseAdmin.from('ana_coach_members').select(BASE_COLS).order('created_at', { ascending: false });
   }
   if (res.error) {

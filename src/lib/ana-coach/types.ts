@@ -24,6 +24,18 @@ export interface CoachMember {
   member_email: string | null;
   status: 'active' | 'revoked';
   profile: MemberProfile;
+  // Set when this row was spawned by a shared cohort code (NULL/absent = VIP).
+  // Optional so the app keeps working before the cohorts migration is applied.
+  cohort_id?: string | null;
+}
+
+// A shared-code group (e.g. the $197 challenge). One row per cohort; each login
+// with its code spawns a personal CoachMember linked via cohort_id.
+export interface CoachCohort {
+  id: string;
+  name: string;
+  status: 'active' | 'revoked';
+  expires_at: string | null;
 }
 
 export interface Conversation {
