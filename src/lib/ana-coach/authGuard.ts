@@ -6,7 +6,7 @@
 
 import { NextResponse, type NextRequest } from 'next/server';
 import { verifySessionToken } from './session';
-import { cohortIsLive, getCohortById, getMemberById } from './store';
+import { cohortIsLive, getCohortById, getMemberById, memberIsLive } from './store';
 import type { CoachMember } from './types';
 
 export type GuardResult =
@@ -25,8 +25,9 @@ export async function requireMember(req: NextRequest): Promise<GuardResult> {
   const memberId = verifySessionToken(token);
   if (!memberId) return { ok: false, response: unauthorized() };
 
+  // Revoked or past their own expiry (VIP codes) → cut off mid-token.
   const member = await getMemberById(memberId);
-  if (!member || member.status !== 'active') {
+  if (!member || !memberIsLive(member)) {
     return { ok: false, response: unauthorized() };
   }
 

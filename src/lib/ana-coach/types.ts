@@ -27,6 +27,9 @@ export interface CoachMember {
   // Set when this row was spawned by a shared cohort code (NULL/absent = VIP).
   // Optional so the app keeps working before the cohorts migration is applied.
   cohort_id?: string | null;
+  // Optional per-member expiry (VIP codes). NULL/absent = never expires.
+  // Optional so the app keeps working before the member-expiry migration lands.
+  expires_at?: string | null;
 }
 
 // A shared-code group (e.g. the $197 challenge). One row per cohort; each login

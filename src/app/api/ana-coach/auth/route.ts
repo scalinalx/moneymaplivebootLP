@@ -5,6 +5,7 @@ import {
   createCohortMember,
   getCohortByCodeHash,
   getMemberByCodeHash,
+  memberIsLive,
   touchMemberLastUsed,
 } from '@/lib/ana-coach/store';
 import { signSessionToken } from '@/lib/ana-coach/session';
@@ -55,7 +56,9 @@ export async function POST(req: NextRequest) {
     //    sessions/quotas/cost stay per-person. Expired or revoked cohorts get
     //    the same generic error as a wrong code.
     let member = await getMemberByCodeHash(codeHash);
-    let cohortExpiresAtMs: number | undefined;
+    // Token exp cap: the cohort's expiry (shared codes) or the member's own
+    // expiry (VIP codes) — whichever applies. A token can never outlive either.
+    let expiresAtMs: number | undefined;
     let spawnedWithoutName = false;
     if (!member) {
       const cohort = await getCohortByCodeHash(codeHash);
@@ -64,15 +67,19 @@ export async function POST(req: NextRequest) {
       }
       member = await createCohortMember(cohort, givenName || undefined);
       spawnedWithoutName = !givenName;
-      if (cohort.expires_at) cohortExpiresAtMs = new Date(cohort.expires_at).getTime();
+      if (cohort.expires_at) expiresAtMs = new Date(cohort.expires_at).getTime();
     }
-    if (member.status !== 'active') {
+    // Revoked, or a VIP code past its expiry → same generic error.
+    if (!memberIsLive(member)) {
       return NextResponse.json({ error: 'Invalid access code' }, { status: 401 });
+    }
+    if (member.expires_at) {
+      const memberExpMs = new Date(member.expires_at).getTime();
+      expiresAtMs = expiresAtMs === undefined ? memberExpMs : Math.min(expiresAtMs, memberExpMs);
     }
 
     await touchMemberLastUsed(member.id);
-    // Cohort tokens are capped at the cohort's expiry — they can't outlive it.
-    const token = signSessionToken(member.id, Date.now(), cohortExpiresAtMs);
+    const token = signSessionToken(member.id, Date.now(), expiresAtMs);
 
     return NextResponse.json({
       token,

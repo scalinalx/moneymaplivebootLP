@@ -22,6 +22,7 @@ interface CoachMemberRow {
   revoked_at: string | null;
   last_used_at: string | null;
   cohort_id?: string | null;
+  expires_at?: string | null;
 }
 
 interface CohortRow {
@@ -78,6 +79,7 @@ export default function CoachMembersPanel({ password }: { password: string }) {
   const [loading, setLoading] = useState(true);
   const [newName, setNewName] = useState('');
   const [newEmail, setNewEmail] = useState('');
+  const [newExpiry, setNewExpiry] = useState(''); // yyyy-mm-dd → 00:00 UTC
   const [creating, setCreating] = useState(false);
   const [freshCode, setFreshCode] = useState<{ name: string; code: string; shared?: boolean } | null>(null);
   const [error, setError] = useState('');
@@ -165,13 +167,18 @@ export default function CoachMembersPanel({ password }: { password: string }) {
       const res = await fetch('/api/admidash/ana-coach/members', {
         method: 'POST',
         headers: authHeaders,
-        body: JSON.stringify({ memberName: newName.trim(), memberEmail: newEmail.trim() || undefined }),
+        body: JSON.stringify({
+          memberName: newName.trim(),
+          memberEmail: newEmail.trim() || undefined,
+          expiresAt: newExpiry ? `${newExpiry}T00:00:00Z` : undefined,
+        }),
       });
       const json = await res.json();
       if (!res.ok) { setError(json.error || 'Failed'); return; }
       setFreshCode({ name: json.member.member_name, code: json.code });
       setNewName('');
       setNewEmail('');
+      setNewExpiry('');
       await load();
     } finally {
       setCreating(false);
@@ -185,6 +192,27 @@ export default function CoachMembersPanel({ password }: { password: string }) {
       headers: authHeaders,
       body: JSON.stringify({ status: next }),
     });
+    await load();
+  };
+
+  // Edit a VIP member's expiry. Prompt takes yyyy-mm-dd (→ 00:00 UTC); empty = never.
+  const setExpiry = async (m: CoachMemberRow) => {
+    const current = m.expires_at ? m.expires_at.slice(0, 10) : '';
+    const input = window.prompt(
+      `Expiry date for ${m.member_name} (yyyy-mm-dd, stops working at 00:00 UTC that day). Leave empty for never.`,
+      current,
+    );
+    if (input === null) return;
+    const trimmed = input.trim();
+    if (trimmed && !/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) { setError('Expiry must be yyyy-mm-dd'); return; }
+    setError('');
+    const res = await fetch(`/api/admidash/ana-coach/members/${m.id}`, {
+      method: 'PATCH',
+      headers: authHeaders,
+      body: JSON.stringify({ expiresAt: trimmed ? `${trimmed}T00:00:00Z` : '' }),
+    });
+    const json = await res.json();
+    if (!res.ok) { setError(json.error || 'Failed to set expiry'); return; }
     await load();
   };
 
@@ -308,6 +336,9 @@ export default function CoachMembersPanel({ password }: { password: string }) {
           onChange={(e) => setNewName(e.target.value)} style={{ minWidth: 180 }} />
         <input className="ad-select" placeholder="Email (optional)" value={newEmail}
           onChange={(e) => setNewEmail(e.target.value)} style={{ minWidth: 200 }} />
+        <label style={{ fontSize: 12, color: 'var(--text-mid)' }}>Expires (00:00 UTC):</label>
+        <input type="date" className="ad-select" value={newExpiry}
+          onChange={(e) => setNewExpiry(e.target.value)} title="Code stops working at 00:00 UTC on this date. Leave empty = never expires." />
         <button className="ad-btn amber" onClick={create} disabled={creating || !newName.trim()}>
           {creating ? 'Creating…' : 'Create member + code'}
         </button>
@@ -408,14 +439,16 @@ export default function CoachMembersPanel({ password }: { password: string }) {
         <table className="ad-table" style={{ width: '100%' }}>
           <thead>
             <tr>
-              <th>Name</th><th>Tier</th><th>Email</th><th>Status</th><th>Msgs</th><th>Sessions</th>
+              <th>Name</th><th>Tier</th><th>Email</th><th>Status</th><th>Expires</th><th>Msgs</th><th>Sessions</th>
               <th>Tokens</th><th>Est. cost</th>
               <th>Last used</th><th>Created</th><th></th>
             </tr>
           </thead>
           <tbody>
-            {visibleMembers.map((m) => (
-              <tr key={m.id} style={{ opacity: m.status === 'revoked' ? 0.5 : 1 }}>
+            {visibleMembers.map((m) => {
+              const expired = !!m.expires_at && new Date(m.expires_at).getTime() <= Date.now();
+              return (
+              <tr key={m.id} style={{ opacity: m.status === 'revoked' || expired ? 0.5 : 1 }}>
                 <td>{m.member_name}</td>
                 <td>
                   {m.cohort_id
@@ -424,7 +457,14 @@ export default function CoachMembersPanel({ password }: { password: string }) {
                 </td>
                 <td>{m.member_email || '—'}</td>
                 <td>
-                  <span style={{ color: m.status === 'active' ? '#34d399' : '#f87171' }}>{m.status}</span>
+                  <span style={{ color: m.status === 'active' && !expired ? '#34d399' : '#f87171' }}>
+                    {expired && m.status === 'active' ? 'expired' : m.status}
+                  </span>
+                </td>
+                <td>
+                  {m.cohort_id
+                    ? <span style={{ fontSize: 11, color: 'var(--text-mid)' }} title="Governed by the cohort's expiry">cohort</span>
+                    : <span style={{ cursor: 'pointer' }} onClick={() => setExpiry(m)} title="Click to change">{fmtExpiry(m.expires_at ?? null)}</span>}
                 </td>
                 <td>{m.total_messages}</td>
                 <td>{m.total_conversations}</td>
@@ -444,9 +484,10 @@ export default function CoachMembersPanel({ password }: { password: string }) {
                   </button>
                 </td>
               </tr>
-            ))}
+              );
+            })}
             {visibleMembers.length === 0 && (
-              <tr><td colSpan={11} style={{ textAlign: 'center', color: 'var(--text-mid)' }}>No members yet.</td></tr>
+              <tr><td colSpan={12} style={{ textAlign: 'center', color: 'var(--text-mid)' }}>No members yet.</td></tr>
             )}
           </tbody>
         </table>

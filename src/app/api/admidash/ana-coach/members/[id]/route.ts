@@ -11,7 +11,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   if (!verifyAdmin(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { id } = await params;
 
-  let body: { status?: unknown; memberName?: unknown; memberEmail?: unknown; notes?: unknown; regenerateCode?: unknown };
+  let body: { status?: unknown; memberName?: unknown; memberEmail?: unknown; notes?: unknown; expiresAt?: unknown; regenerateCode?: unknown };
   try {
     body = JSON.parse(await req.text());
   } catch {
@@ -26,6 +26,18 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   if (typeof body.memberName === 'string' && body.memberName.trim()) update.member_name = body.memberName.trim();
   if (typeof body.memberEmail === 'string') update.member_email = body.memberEmail.trim() || null;
   if (typeof body.notes === 'string') update.notes = body.notes.trim() || null;
+  // Expiry: empty string clears it (never expires); otherwise any parseable date.
+  if (typeof body.expiresAt === 'string') {
+    if (!body.expiresAt.trim()) {
+      update.expires_at = null;
+    } else {
+      const parsed = new Date(body.expiresAt.trim());
+      if (Number.isNaN(parsed.getTime())) {
+        return NextResponse.json({ error: 'expiresAt is not a valid date' }, { status: 400 });
+      }
+      update.expires_at = parsed.toISOString();
+    }
+  }
 
   // Regenerate: issue a fresh code (new hash), invalidating the old one. The
   // plaintext is returned ONCE, exactly like member creation. The member row —
@@ -44,7 +56,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     .from('ana_coach_members')
     .update(update)
     .eq('id', id)
-    .select('id, member_name, member_email, status, notes, revoked_at')
+    .select('id, member_name, member_email, status, notes, revoked_at, expires_at')
     .maybeSingle();
 
   if (error) {

@@ -23,25 +23,23 @@ import type {
 
 type DailyKind = 'conversations' | 'file_uploads' | 'url_fetches';
 
-// Member selects include cohort_id, but retry without it so the app still runs
-// before the cohorts migration is applied (see CLAUDE.md rule on migrations).
+// Member selects include cohort_id and expires_at, but retry without them so the
+// app still runs before their migrations are applied (see CLAUDE.md rule on
+// migrations). Newest optional column first, so each fallback drops one.
 const MEMBER_COLS = 'id, member_name, member_email, status, profile';
+const MEMBER_SELECTS = [`${MEMBER_COLS}, cohort_id, expires_at`, `${MEMBER_COLS}, cohort_id`, MEMBER_COLS];
 
 async function selectMember(column: 'id' | 'code_hash', value: string): Promise<CoachMember | null> {
-  let res = await supabaseAdmin
-    .from('ana_coach_members')
-    .select(`${MEMBER_COLS}, cohort_id`)
-    .eq(column, value)
-    .maybeSingle();
-  if (res.error) {
-    res = await supabaseAdmin
+  for (const cols of MEMBER_SELECTS) {
+    const res = await supabaseAdmin
       .from('ana_coach_members')
-      .select(MEMBER_COLS)
+      .select(cols)
       .eq(column, value)
       .maybeSingle();
+    if (res.error) continue;
+    return (res.data as unknown as CoachMember | null) ?? null;
   }
-  if (res.error || !res.data) return null;
-  return res.data as CoachMember;
+  return null;
 }
 
 export async function getMemberById(id: string): Promise<CoachMember | null> {
@@ -84,6 +82,15 @@ export function cohortIsLive(cohort: CoachCohort, nowMs: number = Date.now()): b
   return true;
 }
 
+// A member is usable iff active and not past their own expiry (VIP codes).
+// Cohort members are additionally gated on their cohort via cohortIsLive.
+// Checked at login AND on every authenticated request (instant cutoff).
+export function memberIsLive(member: CoachMember, nowMs: number = Date.now()): boolean {
+  if (member.status !== 'active') return false;
+  if (member.expires_at && new Date(member.expires_at).getTime() <= nowMs) return false;
+  return true;
+}
+
 // Spawn a personal member row for a cohort login. The code_hash placeholder is
 // the hash of random bytes — outside the space of any typeable code, so this
 // row can only ever be reached via its session token, never by a code.
@@ -99,12 +106,12 @@ export async function createCohortMember(cohort: CoachCohort, name?: string): Pr
       cohort_id: cohort.id,
       notes: 'Auto-created by shared cohort code',
     })
-    .select(`${MEMBER_COLS}, cohort_id`)
+    .select(MEMBER_SELECTS[1])
     .single();
   if (error || !data) {
     throw new Error(`[ana-coach] failed to create cohort member: ${error?.message}`);
   }
-  return data as CoachMember;
+  return data as unknown as CoachMember;
 }
 
 export async function touchMemberLastUsed(id: string): Promise<void> {

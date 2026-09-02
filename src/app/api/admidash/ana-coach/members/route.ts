@@ -13,24 +13,25 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
   if (!verifyAdmin(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  // Never select code_hash. Token and cohort columns are optional — if their
-  // migrations haven't been applied yet, fall back to selects without them.
+  // Never select code_hash. Token, cohort, and expiry columns are optional — if
+  // their migrations haven't been applied yet, fall back to selects without
+  // them (newest optional column dropped first).
   const BASE_COLS = 'id, member_name, member_email, status, notes, total_messages, total_conversations, created_at, revoked_at, last_used_at';
   const TOKEN_COLS = 'total_tokens_in, total_tokens_out';
+  const SELECTS = [
+    `${BASE_COLS}, ${TOKEN_COLS}, cohort_id, expires_at`,
+    `${BASE_COLS}, ${TOKEN_COLS}, cohort_id`,
+    `${BASE_COLS}, ${TOKEN_COLS}`,
+    BASE_COLS,
+  ];
 
-  let res: { data: Record<string, unknown>[] | null; error: { message: string } | null } =
-    await supabaseAdmin
+  let res: { data: Record<string, unknown>[] | null; error: { message: string } | null } = { data: null, error: null };
+  for (const cols of SELECTS) {
+    res = (await supabaseAdmin
       .from('ana_coach_members')
-      .select(`${BASE_COLS}, ${TOKEN_COLS}, cohort_id`)
-      .order('created_at', { ascending: false });
-  if (res.error) {
-    res = await supabaseAdmin
-      .from('ana_coach_members')
-      .select(`${BASE_COLS}, ${TOKEN_COLS}`)
-      .order('created_at', { ascending: false });
-  }
-  if (res.error) {
-    res = await supabaseAdmin.from('ana_coach_members').select(BASE_COLS).order('created_at', { ascending: false });
+      .select(cols)
+      .order('created_at', { ascending: false })) as unknown as typeof res;
+    if (!res.error) break;
   }
   if (res.error) {
     console.error('[ana-coach] members list error:', res.error);
@@ -64,7 +65,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   if (!verifyAdmin(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  let body: { memberName?: unknown; memberEmail?: unknown; notes?: unknown };
+  let body: { memberName?: unknown; memberEmail?: unknown; notes?: unknown; expiresAt?: unknown };
   try {
     body = JSON.parse(await req.text());
   } catch {
@@ -76,13 +77,30 @@ export async function POST(req: NextRequest) {
   const memberEmail = typeof body.memberEmail === 'string' ? body.memberEmail.trim() || null : null;
   const notes = typeof body.notes === 'string' ? body.notes.trim() || null : null;
 
+  // Optional expiry (same shape as cohorts). Only included in the insert when
+  // given, so creation keeps working before the member-expiry migration lands.
+  let expiresAt: string | undefined;
+  if (typeof body.expiresAt === 'string' && body.expiresAt.trim()) {
+    const parsed = new Date(body.expiresAt.trim());
+    if (Number.isNaN(parsed.getTime())) {
+      return NextResponse.json({ error: 'expiresAt is not a valid date' }, { status: 400 });
+    }
+    expiresAt = parsed.toISOString();
+  }
+
   // Generate a unique code (retry on the astronomically unlikely hash collision).
   for (let attempt = 0; attempt < 5; attempt++) {
     const code = generateCode();
     const code_hash = hashCode(code);
     const { data, error } = await supabaseAdmin
       .from('ana_coach_members')
-      .insert({ code_hash, member_name: memberName, member_email: memberEmail, notes })
+      .insert({
+        code_hash,
+        member_name: memberName,
+        member_email: memberEmail,
+        notes,
+        ...(expiresAt ? { expires_at: expiresAt } : {}),
+      })
       .select('id, member_name, member_email, status, created_at')
       .single();
 
