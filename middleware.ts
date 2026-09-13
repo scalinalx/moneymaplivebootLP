@@ -62,6 +62,9 @@ export function middleware(req: NextRequest) {
     '/vip',
     // '/bootcamp' also covers '/bootcamp-success' (startsWith).
     '/bootcamp',
+    // 30-Day Substack Challenge funnel. One prefix also covers any future
+    // /30-day-substack-challenge-success or -upsell pages (startsWith).
+    '/30-day-substack-challenge',
   ];
 
   if (pathname.startsWith('/downloads/')) {

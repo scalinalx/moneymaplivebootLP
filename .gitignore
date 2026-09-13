@@ -50,3 +50,6 @@ next-env.d.ts
 # Runtime uses the committed src/data/ana-coach/knowledge-chunks.json instead.
 claude chat files/
 .playwright-mcp/
+
+# Claude Design handoff bundles (120MB of source images/screenshots; not shipped)
+design-handoff/

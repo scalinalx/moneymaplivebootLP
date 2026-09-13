@@ -101,3 +101,14 @@ export const BOOTCAMP_STANDARD_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_B
 // Founding price is charged until this moment, then the standard price applies.
 // NEXT_PUBLIC_ so the front-end countdown and the server charge share ONE source.
 export const BOOTCAMP_FOUNDING_DEADLINE = process.env.NEXT_PUBLIC_BOOTCAMP_FOUNDING_DEADLINE || '2026-07-08T16:00:00+03:00';
+
+// 30-Day Substack Challenge (/30-day-substack-challenge). Payment is taken on
+// Circle (not Stripe), so these are display prices only — NEXT_PUBLIC_ is fine.
+// The *_RETAIL_PRICE values are the strikethrough anchors on the pricing cards.
+export const SUBSTACK_CHALLENGE_PRICE             = Number.parseInt(process.env.NEXT_PUBLIC_SUBSTACK_CHALLENGE_PRICE || '29700', 10);             // $297
+export const SUBSTACK_CHALLENGE_RETAIL_PRICE      = Number.parseInt(process.env.NEXT_PUBLIC_SUBSTACK_CHALLENGE_RETAIL_PRICE || '49700', 10);      // $497
+export const SUBSTACK_CHALLENGE_PLUS_PRICE        = Number.parseInt(process.env.NEXT_PUBLIC_SUBSTACK_CHALLENGE_PLUS_PRICE || '79700', 10);        // $797 (challenge + 1:1)
+export const SUBSTACK_CHALLENGE_PLUS_RETAIL_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_SUBSTACK_CHALLENGE_PLUS_RETAIL_PRICE || '129700', 10); // $1,297
+// Where the lead is sent after we've captured name + email.
+export const SUBSTACK_CHALLENGE_CHECKOUT_URL =
+  process.env.NEXT_PUBLIC_SUBSTACK_CHALLENGE_CHECKOUT_URL || 'https://ana-inner-circle-508d20.circle.so/checkout/substack-challenge';
