@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { validateEmail, validateName } from '@/utils/validation';
-import { addSubscriberWithTag, KIT_SUBSTACK_CHALLENGE_LEAD_TAG } from '@/lib/kit';
+import { addSubscriberWithTag, addSubscriberToSequence, KIT_SUBSTACK_CHALLENGE_LEAD_TAG, KIT_SUBSTACK_CHALLENGE_RECOVERY_SEQUENCE_ID } from '@/lib/kit';
 
 const TIERS = new Set(['challenge', 'challenge_1on1']);
 
@@ -12,9 +12,10 @@ const TIERS = new Set(['challenge', 'challenge_1on1']);
 // block someone from paying:
 //   1. insert into substack_challenge_leads (logs loudly if the table is
 //      missing — migration not applied — but still returns success);
-//   2. subscribe + tag the lead in Kit (KIT_SUBSTACK_CHALLENGE_LEAD_TAG), which
-//      starts the abandoned-cart / recovery sequences. Buyers are removed from
-//      those sequences by the Circle → Kit "paid" tag, set up outside this app.
+//   2. subscribe + tag the lead in Kit (KIT_SUBSTACK_CHALLENGE_LEAD_TAG) and add
+//      them to the recovery sequence. Someone who already paid (per our leads
+//      table) is neither tagged nor sequenced. Buyers who pay later are pulled
+//      out by the Circle sync's paid tag + a Kit rule on that tag.
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -34,15 +35,35 @@ export async function POST(request: NextRequest) {
 
     let leadId: string | null = null;
     const firstName = name.split(/\s+/)[0];
-    const [{ data, error, status }, kitTagged] = await Promise.all([
+
+    // Already a buyer? (e.g. re-submitting the modal after paying.) Then skip
+    // the recovery marketing entirely. Tolerates the is_paid column being absent.
+    let alreadyPaid = false;
+    try {
+      const { data: paid } = await supabaseAdmin
+        .from('substack_challenge_leads').select('id').eq('email', email).eq('is_paid', true).limit(1);
+      alreadyPaid = !!(paid && paid.length);
+    } catch { /* column may not exist yet */ }
+
+    // Kit: tag first (this creates the subscriber), THEN add to the sequence —
+    // the sequence endpoint 404s for an email Kit doesn't know yet.
+    const kitWork = async (): Promise<[boolean, boolean]> => {
+      if (alreadyPaid) return [true, true];
+      const tagged = await addSubscriberWithTag(email, firstName, KIT_SUBSTACK_CHALLENGE_LEAD_TAG);
+      const seq = await addSubscriberToSequence(email, KIT_SUBSTACK_CHALLENGE_RECOVERY_SEQUENCE_ID);
+      return [tagged, seq];
+    };
+    const [{ data, error, status }, [kitTagged, sequenced]] = await Promise.all([
       supabaseAdmin
         .from('substack_challenge_leads')
         .insert({ name, email, tier, created_at: new Date().toISOString() })
         .select('id')
         .single(),
-      addSubscriberWithTag(email, firstName, KIT_SUBSTACK_CHALLENGE_LEAD_TAG),
+      kitWork(),
     ]);
+    if (alreadyPaid) console.log('[substack-challenge] lead already paid — skipped Kit tag/sequence for', email);
     if (!kitTagged) console.warn('[substack-challenge] Kit lead tag not applied for', email);
+    if (!sequenced) console.warn('[substack-challenge] Kit sequence add failed for', email);
 
     if (error) {
       console.error(`[substack-challenge] lead insert failed (migration applied?): HTTP ${status}`, error.message || JSON.stringify(error));

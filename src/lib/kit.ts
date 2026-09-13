@@ -23,6 +23,11 @@ export const KIT_SUBSTACK_CHALLENGE_LEAD_TAG = '30days-lead-sept';
  *  the buyer from the abandoned-cart / recovery sequences. */
 export const KIT_SUBSTACK_CHALLENGE_PAID_TAG = '30days-paid-sept';
 
+/** Kit sequence "30days-recovery-sept" (abandoned-checkout / recovery emails).
+ *  Leads are added directly by the lead route — no Kit rule needed for entry.
+ *  Exit (on the paid tag) is a Kit rule, since the API can't remove from a sequence. */
+export const KIT_SUBSTACK_CHALLENGE_RECOVERY_SEQUENCE_ID = Number.parseInt(process.env.KIT_SUBSTACK_CHALLENGE_RECOVERY_SEQUENCE_ID || '2892341', 10);
+
 async function kitFetch(path: string, init?: RequestInit): Promise<Response> {
   return fetch(`${KIT_BASE_URL}${path}`, {
     ...init,
@@ -102,6 +107,34 @@ export async function addSubscriberWithTag(
     return true;
   } catch (e) {
     console.error('[kit] subscribe/tag error (non-fatal):', e instanceof Error ? e.message : e);
+    return false;
+  }
+}
+
+/**
+ * Add an existing-or-new subscriber to a Kit sequence by email. Best-effort,
+ * never throws; returns whether Kit accepted it. Kit ignores a subscriber who
+ * is already in (or has completed) the sequence, so repeat calls are safe.
+ */
+export async function addSubscriberToSequence(email: string, sequenceId: number): Promise<boolean> {
+  if (!KIT_API_KEY) {
+    console.warn('[kit] KIT_API_KEY not configured — skipping sequence add for', sequenceId);
+    return false;
+  }
+  if (!sequenceId) return false;
+  try {
+    const res = await kitFetch(`sequences/${sequenceId}/subscribers`, {
+      method: 'POST',
+      body: JSON.stringify({ email_address: email }),
+    });
+    if (!res.ok) {
+      console.error(`[kit] sequence add failed (${res.status}):`, await res.text());
+      return false;
+    }
+    console.log(`[kit] added ${email} to sequence ${sequenceId}`);
+    return true;
+  } catch (e) {
+    console.error('[kit] sequence add error (non-fatal):', e instanceof Error ? e.message : e);
     return false;
   }
 }
