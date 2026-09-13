@@ -12,6 +12,17 @@ export const KIT_BOOTCAMP_TAG = 'bootcampjuly';
  *  (Kit stores it as '10kJUL' — its own casing; lookup is case-insensitive.) */
 export const KIT_HIT10K_TAG = '10kjul';
 
+/** Tag applied to every 30-Day Substack Challenge lead the moment they submit
+ *  the name/email modal (before the Circle checkout). Drives the Kit
+ *  abandoned-cart / sales-recovery sequences; the paid tag that stops those
+ *  sequences is applied by the Circle → Zapier → Kit sync, not by this app. */
+export const KIT_SUBSTACK_CHALLENGE_LEAD_TAG = '30days-lead-sept';
+
+/** Tag applied when Circle reports a paid challenge charge (see
+ *  src/lib/substack-challenge/circle-sync.ts). A Kit rule on this tag removes
+ *  the buyer from the abandoned-cart / recovery sequences. */
+export const KIT_SUBSTACK_CHALLENGE_PAID_TAG = '30days-paid-sept';
+
 async function kitFetch(path: string, init?: RequestInit): Promise<Response> {
   return fetch(`${KIT_BASE_URL}${path}`, {
     ...init,

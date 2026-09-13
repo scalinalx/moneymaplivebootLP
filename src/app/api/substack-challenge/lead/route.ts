@@ -1,15 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { validateEmail, validateName } from '@/utils/validation';
+import { addSubscriberWithTag, KIT_SUBSTACK_CHALLENGE_LEAD_TAG } from '@/lib/kit';
 
 const TIERS = new Set(['challenge', 'challenge_1on1']);
 
 // Records a 30-Day Substack Challenge lead (name + email + which pricing card
 // they clicked) right before the client redirects them to the Circle checkout.
 // There is no Stripe step here, so this is the only server-side record of the
-// visitor. The insert is best-effort: if the substack_challenge_leads table
-// isn't there yet (migration not applied) we log loudly but still return
-// success, because a missing table must never block someone from paying.
+// visitor. Two things happen in parallel, both best-effort so neither can
+// block someone from paying:
+//   1. insert into substack_challenge_leads (logs loudly if the table is
+//      missing — migration not applied — but still returns success);
+//   2. subscribe + tag the lead in Kit (KIT_SUBSTACK_CHALLENGE_LEAD_TAG), which
+//      starts the abandoned-cart / recovery sequences. Buyers are removed from
+//      those sequences by the Circle → Kit "paid" tag, set up outside this app.
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -28,11 +33,16 @@ export async function POST(request: NextRequest) {
     }
 
     let leadId: string | null = null;
-    const { data, error, status } = await supabaseAdmin
-      .from('substack_challenge_leads')
-      .insert({ name, email, tier, created_at: new Date().toISOString() })
-      .select('id')
-      .single();
+    const firstName = name.split(/\s+/)[0];
+    const [{ data, error, status }, kitTagged] = await Promise.all([
+      supabaseAdmin
+        .from('substack_challenge_leads')
+        .insert({ name, email, tier, created_at: new Date().toISOString() })
+        .select('id')
+        .single(),
+      addSubscriberWithTag(email, firstName, KIT_SUBSTACK_CHALLENGE_LEAD_TAG),
+    ]);
+    if (!kitTagged) console.warn('[substack-challenge] Kit lead tag not applied for', email);
 
     if (error) {
       console.error(`[substack-challenge] lead insert failed (migration applied?): HTTP ${status}`, error.message || JSON.stringify(error));

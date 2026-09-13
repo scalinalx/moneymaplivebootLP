@@ -37,16 +37,18 @@ const STATS = [
   { label: 'Time from zero', value: '< 2 years' },
   { label: 'Other social platforms', value: '0' },
 ];
-const WINS: { img: string; alt: string; name: string; pill?: string; tilt: number }[] = [
-  { img: 't-highticket', alt: 'From 27 to 88 subscribers in 15 days', name: 'The High-Ticket Closer', pill: '27 → 88 in 15 days', tilt: -1.5 },
-  { img: 't-suzanne', alt: 'Suzanne: #62 Rising, 16 subscribers and 3 paid in a week', name: 'Suzanne Harrison', pill: '+3 paid in week 1', tilt: 1.5 },
-  { img: 't-jessica', alt: 'Jessica: woke up to 52 subscribers', name: 'Jessica Donovan', pill: '52 subscribers', tilt: -1 },
-  { img: 't-jenna', alt: 'Jenna: increased the price, updated paid subscription', name: 'Jenna Garagiola', pill: 'Raised her price', tilt: 2 },
-  { img: 't-asteria', alt: 'Asteria: first 100 subs', name: 'Asteria Rose', pill: 'First 100 subs', tilt: -2 },
-  { img: 't-kwame-2away', alt: 'Kwame: +18 subscribers, 2 paid away from double digits', name: 'Kwame Twumasi-Ankrah', pill: '+18 in 30 days', tilt: 1 },
-  { img: 't-andrea', alt: 'Andrea on the Thursday hot seat', name: 'Andrea Dell', tilt: -1.5 },
-  { img: 't-malinda', alt: 'Malinda: first week of the challenge has been amazing', name: 'Malinda Zarate', tilt: 1.5 },
-  { img: 't-stephanie', alt: 'Stephanie: rebranded her Substack in week one', name: 'Stephanie Frank', tilt: -1 },
+// h = intrinsic height at 900px wide, so the lazy images reserve their space
+// (no layout shift, and "scroll to pricing" lands where it aimed).
+const WINS: { img: string; h: number; alt: string; name: string; pill?: string; tilt: number }[] = [
+  { img: 't-highticket', h: 364, alt: 'From 27 to 88 subscribers in 15 days', name: 'The High-Ticket Closer', pill: '27 → 88 in 15 days', tilt: -1.5 },
+  { img: 't-suzanne', h: 388, alt: 'Suzanne: #62 Rising, 16 subscribers and 3 paid in a week', name: 'Suzanne Harrison', pill: '+3 paid in week 1', tilt: 1.5 },
+  { img: 't-jessica', h: 275, alt: 'Jessica: woke up to 52 subscribers', name: 'Jessica Donovan', pill: '52 subscribers', tilt: -1 },
+  { img: 't-jenna', h: 378, alt: 'Jenna: increased the price, updated paid subscription', name: 'Jenna Garagiola', pill: 'Raised her price', tilt: 2 },
+  { img: 't-asteria', h: 555, alt: 'Asteria: first 100 subs', name: 'Asteria Rose', pill: 'First 100 subs', tilt: -2 },
+  { img: 't-kwame-2away', h: 353, alt: 'Kwame: +18 subscribers, 2 paid away from double digits', name: 'Kwame Twumasi-Ankrah', pill: '+18 in 30 days', tilt: 1 },
+  { img: 't-andrea', h: 333, alt: 'Andrea on the Thursday hot seat', name: 'Andrea Dell', tilt: -1.5 },
+  { img: 't-malinda', h: 342, alt: 'Malinda: first week of the challenge has been amazing', name: 'Malinda Zarate', tilt: 1.5 },
+  { img: 't-stephanie', h: 265, alt: 'Stephanie: rebranded her Substack in week one', name: 'Stephanie Frank', tilt: -1 },
 ];
 const WEEKS = [
   { n: '1', label: 'Week one', title: 'One reader.', body: 'Name her. Know what she typed into Google at 11pm. Everything you write from here is to her.' },
@@ -88,9 +90,22 @@ function Scribble({ kind, color, width, stroke = 5, style }: { kind: keyof typeo
   );
 }
 
+// Sticky top bar height + breathing room, so a scrolled-to element sits just
+// under the bar instead of behind it.
+function barOffset() {
+  const bar = document.querySelector<HTMLElement>('.sc30-bar');
+  return (bar?.offsetHeight ?? 56) + 16;
+}
 function scrollToId(id: string) {
   const el = document.getElementById(id);
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' });
+  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - barOffset(), behavior: 'smooth' });
+}
+// "join" CTAs land on the two price cards themselves (not the section heading),
+// so the card buttons are on screen after the scroll.
+function scrollToPricing() {
+  const el = document.querySelector<HTMLElement>('.sc30-tiers');
+  if (!el) return scrollToId('pricing');
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - barOffset() - 24, behavior: 'smooth' });
 }
 
 export default function ChallengeLanding() {
@@ -106,18 +121,16 @@ export default function ChallengeLanding() {
 
   return (
     <div className="sc30">
-      {/* Announcement */}
-      <div className="sc30-announce" data-track-section="announcement">
-        Doors open · We start {CONFIG.startDate} · Under 500 subscribers? This is built for you.
-      </div>
-
-      {/* Nav */}
-      <div className="sc30-nav">
+      {/* Top bar: brand + announcement + join, one sticky strip */}
+      <div className="sc30-bar" data-track-section="topbar">
         <div className="sc30-wrap">
           <img src={`${IMG}/logo-mark.png`} alt="how we grow" />
           <b className="sc30-brand">how we grow</b>
-          <span className="sc30-spacer" />
-          <button type="button" className="sc30-btn sc30-btn--accent sc30-btn--s" onClick={() => scrollToId('pricing')}>
+          <span className="sc30-bar-msg">
+            <span className="sc30-bar-msg-full">Doors open · We start {CONFIG.startDate} · Under 500 subscribers? This is built for you.</span>
+            <span className="sc30-bar-msg-short">Doors open · Starts {CONFIG.startDate}</span>
+          </span>
+          <button type="button" className="sc30-btn sc30-btn--accent sc30-btn--s" onClick={scrollToPricing}>
             join — {CONFIG.price}
           </button>
         </div>
@@ -135,7 +148,7 @@ export default function ChallengeLanding() {
             <h1><span className="sc30-hl sc30-hl--white">That&apos;s exactly who this is built for.</span></h1>
             <p>Thirty days. A daily lesson, a weekly hot seat with me, my AI coach in between. You leave with one reader, one priced offer, and your first paying subscribers.</p>
             <div className="sc30-hero-ctas">
-              <button type="button" className="sc30-btn sc30-btn--accent sc30-btn--l" onClick={() => scrollToId('pricing')}>
+              <button type="button" className="sc30-btn sc30-btn--accent sc30-btn--l" onClick={scrollToPricing}>
                 join the challenge <ArrowRight size={20} />
               </button>
               <button type="button" className="sc30-btn sc30-btn--l" onClick={() => scrollToId('wins')}>
@@ -145,7 +158,7 @@ export default function ChallengeLanding() {
           </div>
           <div className="sc30-hero-proof">
             <div className="sc30-proofcard sc30-proofcard--float">
-              <img src={`${IMG}/t-kwame-600.webp`} alt="Kwame's Substack note: 600 subscribers today, 7 paid" />
+              <img src={`${IMG}/t-kwame-600.webp`} width={900} height={895} alt="Kwame's Substack note: 600 subscribers today, 7 paid" />
             </div>
             <div className="sc30-sticker sc30-sticker--pink">Last cohort</div>
           </div>
@@ -208,7 +221,7 @@ export default function ChallengeLanding() {
           {WINS.map((wn) => (
             <div key={wn.img}>
               <div className="sc30-proofcard" style={{ transform: `rotate(${wn.tilt}deg)` }}>
-                <img src={`${IMG}/${wn.img}.webp`} alt={wn.alt} loading="lazy" />
+                <img src={`${IMG}/${wn.img}.webp`} width={900} height={wn.h} alt={wn.alt} loading="lazy" />
                 <div className="sc30-proofcard-meta">
                   <b>{wn.name}</b>
                   {wn.pill && <span className="sc30-pill"><TrendingUp size={16} strokeWidth={2.5} />{wn.pill}</span>}
@@ -218,7 +231,7 @@ export default function ChallengeLanding() {
           ))}
         </div>
         <div className="sc30-wins-cta">
-          <button type="button" className="sc30-btn sc30-btn--ink sc30-btn--l" onClick={() => scrollToId('pricing')}>
+          <button type="button" className="sc30-btn sc30-btn--ink sc30-btn--l" onClick={scrollToPricing}>
             I want wins like these <ArrowRight size={20} />
           </button>
         </div>
@@ -249,7 +262,7 @@ export default function ChallengeLanding() {
           <h2 className="sc30-h2">Me in your corner for <span className="sc30-hl sc30-hl--pink">30 days.</span></h2>
           <p className="sc30-lede">Work through the full 30-day curriculum, then keep complete access for 60 days to finish at your pace.</p>
           <div className="sc30-proofcard">
-            <img src={`${IMG}/t-bernadette.webp`} alt="Bernadette: Ana AI Coach is brilliant" loading="lazy" />
+            <img src={`${IMG}/t-bernadette.webp`} width={900} height={324} alt="Bernadette: Ana AI Coach is brilliant" loading="lazy" />
           </div>
         </div>
         <div className="sc30-inc-list">
@@ -363,7 +376,7 @@ export default function ChallengeLanding() {
         <div className="sc30-wrap">
           <div className="sc30-marker sc30-marker--xl sc30-marker--center sc30-tilt-a">We start {CONFIG.startDate}.</div>
           <p>Two hundred readers and one priced offer is a business. <em>Come build yours.</em></p>
-          <button type="button" className="sc30-btn sc30-btn--accent sc30-btn--l" onClick={() => scrollToId('pricing')}>
+          <button type="button" className="sc30-btn sc30-btn--accent sc30-btn--l" onClick={scrollToPricing}>
             join the challenge — {CONFIG.price} <ArrowRight size={20} />
           </button>
         </div>

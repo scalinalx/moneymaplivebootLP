@@ -87,12 +87,12 @@ export default function LeadCaptureModal({
         )}
         <div className="sc30-eyebrow">30-Day Substack Challenge · {priceLabel}</div>
         <h2 id="sc30-modal-title">
-          {redirecting ? <>Taking you to <em>checkout.</em></> : <>One step, then <em>checkout.</em></>}
+          {redirecting ? <>Taking you to <em>Circle.</em></> : <>One step, then <em>checkout.</em></>}
         </h2>
         <p className="sc30-modal-sub">
           {redirecting
-            ? 'Hold on a second.'
-            : 'Your name and email, so I know who is in the room. Then you pay on the next page.'}
+            ? 'Circle is where the challenge and the community live. Use the same email there. Circle will ask you to set a password so you can log in after you pay.'
+            : 'Your name and email, so I know who is in the room. Then you pay on the next page, on Circle, where the challenge lives.'}
         </p>
 
         {!redirecting && (
