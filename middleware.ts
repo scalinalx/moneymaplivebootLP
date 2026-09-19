@@ -65,6 +65,9 @@ export function middleware(req: NextRequest) {
     // 30-Day Substack Challenge funnel. One prefix also covers any future
     // /30-day-substack-challenge-success or -upsell pages (startsWith).
     '/30-day-substack-challenge',
+    // Get Featured lead-collection page (Forbes feature). One prefix also
+    // covers any future /get-featured-success page (startsWith).
+    '/get-featured',
   ];
 
   if (pathname.startsWith('/downloads/')) {

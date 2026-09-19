@@ -26,6 +26,9 @@ export const KIT_SUBSTACK_CHALLENGE_PAID_TAG = '30days-paid-sept';
 /** Kit sequence "30days-recovery-sept" (abandoned-checkout / recovery emails).
  *  Leads are added directly by the lead route — no Kit rule needed for entry.
  *  Exit (on the paid tag) is a Kit rule, since the API can't remove from a sequence. */
+/** Tag applied to every /get-featured waitlist signup (Get Featured course, Oct 2026). */
+export const KIT_GET_FEATURED_TAG = 'getfeatured-waitlist';
+
 export const KIT_SUBSTACK_CHALLENGE_RECOVERY_SEQUENCE_ID = Number.parseInt(process.env.KIT_SUBSTACK_CHALLENGE_RECOVERY_SEQUENCE_ID || '2892341', 10);
 
 async function kitFetch(path: string, init?: RequestInit): Promise<Response> {
