@@ -52,7 +52,7 @@ export default function GetFeaturedLanding() {
       {/* Hero */}
       <section className="gf-wrap gf-hero" data-track-section="hero">
         <div className="gf-hero-copy">
-          <div className="gf-eyebrow">Get Featured · a short course on getting into the media, free</div>
+          <div className="gf-eyebrow gf-eyebrow--hero"><b>Get Featured</b> · a short course on getting into the media</div>
           <h1>Six articles on Forbes.com.<br />20,134 people read them.<br /><em>I cannot contact a single one.</em></h1>
           <p className="gf-hero-lede">But there is another way. <b>And I&apos;ll show it to you.</b></p>
           <p className="gf-hero-body"><b>Get Featured</b> is a short course on getting your name into Forbes, trade press and podcasts without paying for it, and turning each feature into reputation and readers you can actually reach. Join the waitlist and you get in 48 hours before anyone else.</p>

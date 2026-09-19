@@ -34,6 +34,7 @@
 .gf-eyebrow--cocoa { color: var(--cocoa); }
 .gf-eyebrow--yellow { color: var(--yellow); }
 .gf-eyebrow--ink { color: var(--ink); }
+.gf-eyebrow--hero b { font-weight: 800; font-size: 1.18em; }
 .gf-hl { background: var(--yellow); padding: .05em .16em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .gf-hl--pink { background: var(--pink); color: var(--cream); padding: .05em .18em; font-weight: 700; }
 .gf-serif { font-family: var(--font-display); font-weight: 400; }
