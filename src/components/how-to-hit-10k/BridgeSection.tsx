@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, X } from 'lucide-react';
 import { HIT10K_PRICE } from '@/lib/stripe';
+import { HIT10K_LIVE_DATE } from '@/lib/constants';
 
 const AnimatedCounter = ({ end }: { end: number }) => {
     const [count, setCount] = useState(0);
@@ -77,7 +78,7 @@ export const BridgeSection: React.FC = () => {
                         <span>TEACH ME HOW TO HIT 10K</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
-                    <p className="font-lato text-gray-500 text-sm">LIVE Workshop | July 21, 7 PM Greece time</p>
+                    <p className="font-lato text-gray-500 text-sm">LIVE Workshop | {HIT10K_LIVE_DATE}, 7 PM Greece time</p>
                 </div>
             </div>
 

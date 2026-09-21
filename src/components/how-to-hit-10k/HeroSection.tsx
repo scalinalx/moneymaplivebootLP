@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { HIT10K_PRICE } from '@/lib/stripe';
+import { HIT10K_LIVE_DATE } from '@/lib/constants';
 
 export const HeroSection: React.FC = () => {
     return (
@@ -51,7 +52,7 @@ export const HeroSection: React.FC = () => {
                         GET MY SEAT AT THE LIVE WORKSHOP — ${HIT10K_PRICE / 100}
                     </button>
                     <p className="font-lora italic text-gray-500 mt-4 text-sm">
-                        *LIVE on July 21, 7 PM Greece time — recording, frameworks & templates included with registration
+                        *LIVE on {HIT10K_LIVE_DATE}, 7 PM Greece time — recording, frameworks & templates included with registration
                     </p>
                 </div>
 

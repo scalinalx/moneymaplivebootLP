@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { HIT10K_PRICE } from '@/lib/stripe';
+import { HIT10K_LIVE_DATE } from '@/lib/constants';
 
 interface FAQItem {
     question: string;
@@ -11,11 +12,11 @@ export const FAQSection: React.FC = () => {
     const faqs: FAQItem[] = [
         {
             question: "Is this a live workshop or a recorded course?",
-            answer: "It's LIVE. We meet on July 21 at 7 PM Greece time for an intensive 90-minute session. No fluff, just the frameworks — and everyone who enrolls gets the recording afterwards."
+            answer: `It's LIVE. We meet on ${HIT10K_LIVE_DATE} at 7 PM Greece time for an intensive 90-minute session. No fluff, just the frameworks — and everyone who enrolls gets the recording afterwards.`
         },
         {
             question: "How do I access the materials?",
-            answer: "You'll receive a welcome email with your BONUSES as soon as you enroll, plus your link to join the LIVE workshop on July 21 at 7 PM Greece time. The recording lands in your inbox after the session."
+            answer: `You'll receive a welcome email with your BONUSES as soon as you enroll, plus your link to join the LIVE workshop on ${HIT10K_LIVE_DATE} at 7 PM Greece time. The recording lands in your inbox after the session.`
         },
         {
             question: "Do I need a huge following?",

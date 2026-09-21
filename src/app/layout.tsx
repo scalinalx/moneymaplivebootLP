@@ -21,7 +21,10 @@ export const metadata: Metadata = {
     shortcut: '/imgs/hwg-icon.webp',
     apple: '/imgs/hwg-icon.webp',
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  // Canonical domain, hard-coded: relative OG/Twitter image paths across the
+  // site resolve against this. (NEXT_PUBLIC_APP_URL once pointed at a parked
+  // domain and silently broke every link preview.)
+  metadataBase: new URL('https://www.monetisesubstack.com'),
   openGraph: {
     title: "Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income",
     description: "Build To Profit helps newsletter creators monetize—land brand deals, productize, and scale toward 6‑figure income with recorded implementation sessions, templates, and proven playbooks.",

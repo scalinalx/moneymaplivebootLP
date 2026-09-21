@@ -8,9 +8,10 @@ const KIT_BASE_URL = process.env.KIT_BASE_URL || 'https://api.kit.com/v4/';
 /** Tag applied to every paid bootcamp enrollment. */
 export const KIT_BOOTCAMP_TAG = 'bootcampjuly';
 
-/** Tag applied to every paid "How To Hit 10k" workshop purchase.
- *  (Kit stores it as '10kJUL' — its own casing; lookup is case-insensitive.) */
-export const KIT_HIT10K_TAG = '10kjul';
+/** Tag applied to every paid "How To Hit 10k" workshop purchase. Per cohort:
+ *  July 2026 run used '10kjul'; the September 29 2026 run uses '10kSEPT'.
+ *  (Lookup is case-insensitive on Kit's side.) */
+export const KIT_HIT10K_TAG = process.env.KIT_HIT10K_TAG || '10kSEPT';
 
 /** Tag applied to every 30-Day Substack Challenge lead the moment they submit
  *  the name/email modal (before the Circle checkout). Drives the Kit

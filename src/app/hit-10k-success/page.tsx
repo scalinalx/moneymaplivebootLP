@@ -82,8 +82,12 @@ function SuccessContent() {
                     You're In! 🚀
                 </h1>
 
-                <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-12">
-                    Success! You now have lifetime access to the **Hit Your First $10,000 Month** business course. We're ready to scale your business together.
+                <p className="font-lora text-xl text-gray-600 max-w-2xl text-center mb-6">
+                    Success! You now have lifetime access to the <strong>Hit Your First $10,000 Month</strong> business course. We&apos;re ready to scale your business together.
+                </p>
+
+                <p className="font-montserrat font-bold text-lg md:text-xl text-[#333333] text-center bg-[#FFF2C2] border border-[#FFD338] rounded-xl px-6 py-4 mb-12 max-w-2xl">
+                    All your event details are in your inbox now
                 </p>
 
                 <div className="mb-12">

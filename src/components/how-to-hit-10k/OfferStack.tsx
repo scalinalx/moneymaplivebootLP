@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { HIT10K_PRICE } from '@/lib/stripe';
+import { HIT10K_LIVE_DATE } from '@/lib/constants';
 
 export const OfferStack: React.FC = () => {
     const stackItems = [
@@ -52,7 +53,7 @@ export const OfferStack: React.FC = () => {
 
                 {/* Bridge Headline */}
                 <p className="font-montserrat text-black text-center text-xl md:text-[22px] leading-relaxed max-w-4xl mb-8">
-                    A <span className="font-bold text-[#d81159]">LIVE workshop — July 21, 7 PM Greece time —</span> covering the exact positioning, pricing, and launch frameworks to scale your existing offers to <span className="font-bold underline">5-figure months</span>.
+                    A <span className="font-bold text-[#d81159]">LIVE workshop — {HIT10K_LIVE_DATE}, 7 PM Greece time —</span> covering the exact positioning, pricing, and launch frameworks to scale your existing offers to <span className="font-bold underline">5-figure months</span>.
                 </p>
 
                 {/* Section Headline */}

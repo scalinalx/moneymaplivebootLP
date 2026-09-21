@@ -64,9 +64,7 @@ export const metadata: Metadata = {
     shortcut: '/imgs/hwg-icon.webp',
     apple: '/imgs/hwg-icon.webp',
   },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-  ),
+  metadataBase: new URL('https://www.monetisesubstack.com'),
   openGraph: {
     title:
       'Build To Profit - How to Monetize Your Newsletter & Build 6-Figure Income',

@@ -48,6 +48,9 @@ export const OFFER_CLARITY_COACHING_RETAIL_PRICE = Number.parseInt(process.env.N
 export const HIT10K_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_PRICE || '9700', 10);
 export const HIT10K_BUMP_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP_PRICE || '2700', 10);
 export const HIT10K_BUMP2_PRICE = Number.parseInt(process.env.NEXT_PUBLIC_HIT10K_BUMP2_PRICE || '6900', 10);
+// Live-workshop date shown throughout /how-to-hit-10k (announcement bar, hero,
+// bridge, offer stack, FAQ). Display-only label — change it here, not in copy.
+export const HIT10K_LIVE_DATE = process.env.NEXT_PUBLIC_HIT10K_LIVE_DATE || 'September 29';
 
 // First 100 Paid Subscribers Pricing (server-only — no NEXT_PUBLIC_ to prevent client exposure)
 export const FIRST100_PRICE = Number.parseInt(process.env.FIRST100_PRICE || '9700', 10);
