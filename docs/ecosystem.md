@@ -49,6 +49,9 @@ This document serves as a comprehensive map of all URLs, products, price points,
     *   A 60-minute live workshop teaching corporate professionals the exact 90-day system to make their first $1,000 online. Uses a direct Stripe Payment Link (no embedded checkout). Scheduled for March 31st.
     *   *Links:* [Sales Page](/your-first-1k-after-corporate)
     *   **Note:** Checkout via Stripe Payment Link — no backend API routes or database table
+*   **Create Viral Digital Product**: **$97** (`CVDP_PRICE` — server-only env var, default 9700 cents)
+    *   A 90-minute LIVE workshop (then recorded — every registrant gets the full replay) that walks creators through finding, validating, and shaping their one signature digital product. Embedded Stripe Elements checkout with 3 order bumps (100 Genius Launch Ideas $27, Offer Genius AI Builder $37, The Launch Stack $67) + an all-three bundle ($81, save $50), plus a success page that delivers the add-ons.
+    *   *Links:* [Sales & Checkout](/create-viral-digital-product) | [Success](/create-viral-digital-product-success)
 
 ---
 
@@ -106,12 +109,6 @@ A free AI-powered tool (Gemini 3 Flash with thinking) that scores digital produc
 In development. Currently a 'Coming Soon' placeholder page — intended as a future AI tool in the viral-digital-product family (alongside the Finder and Will It Sell? tools).
 *   **Access/Type:** Not yet live — placeholder page (Coming Soon).
 *   **App URL:** `/viral-digital-product-ai`
-
-### Create Viral Digital Product
-
-In development. Blank scaffold page created as the starting canvas for a new viral-digital-product creation tool/funnel. No content, product, or checkout wired up yet.
-*   **Access/Type:** Not yet live — blank placeholder page (work in progress).
-*   **App URL:** `/create-viral-digital-product`
 
 ---
 
@@ -392,7 +389,7 @@ Every production deployment relies on the following backend services and environ
 
 ### Google Gemini (AI Engine)
 
-*   **`NEXT_PUBLIC_GEMINI_API_KEY`**: Invokes the `gemini-2.5-flash` environment for the "Show Don't Tell" thumbnail generator.
+*   **`GEMINI_API_KEY`**: Server-only Gemini key used by every AI tool (Offer Flow, Launch Stack, Will It Sell, Show Don't Tell, Viral Product Finder, Offer Genius) and the Ana AI Coach. Never prefix with NEXT_PUBLIC_.
 
 ### Kit Integration
 

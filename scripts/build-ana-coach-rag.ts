@@ -18,7 +18,7 @@ const ROOT = process.cwd();
 const EMBED_MODEL = 'gemini-embedding-001';
 const DIMS = 768;
 
-const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) { console.error('❌ GEMINI_API_KEY not set'); process.exit(1); }
 const ai = new GoogleGenAI({ apiKey });
 

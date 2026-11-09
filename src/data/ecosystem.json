@@ -1654,8 +1654,8 @@
                     "name": "Google Gemini (AI Engine)",
                     "vars": [
                         {
-                            "key": "NEXT_PUBLIC_GEMINI_API_KEY",
-                            "description": "Invokes the `gemini-2.5-flash` environment for the \"Show Don't Tell\" thumbnail generator."
+                            "key": "GEMINI_API_KEY",
+                            "description": "Server-only Gemini key used by every AI tool (Offer Flow, Launch Stack, Will It Sell, Show Don't Tell, Viral Product Finder, Offer Genius) and the Ana AI Coach. Never prefix with NEXT_PUBLIC_."
                         }
                     ]
                 },

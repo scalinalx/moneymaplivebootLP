@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
         { error: "Gemini API key is not configured." },

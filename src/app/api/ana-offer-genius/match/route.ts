@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { findTopMatches } from '@/services/ana-ai/offerMatchingService';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || "");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 /**
  * Last-ditch repair for a truncated JSON array. Walks the text counting brace

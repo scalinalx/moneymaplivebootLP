@@ -3,8 +3,8 @@ import kbData from "../../data/offer-genius/knowledge_base.json";
 import embeddingData from "../../data/offer-genius/embeddings.json";
 
 const getAI = () => {
-    const key = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
-    if (!key) throw new Error("NEXT_PUBLIC_GEMINI_API_KEY is not configured.");
+    const key = process.env.GEMINI_API_KEY || "";
+    if (!key) throw new Error("GEMINI_API_KEY is not configured.");
     return new GoogleGenerativeAI(key);
 };
 

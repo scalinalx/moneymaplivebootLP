@@ -6,9 +6,9 @@ import dotenv from 'dotenv';
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });
 
-const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
+const API_KEY = process.env.GEMINI_API_KEY || "";
 if (!API_KEY) {
-    console.error("❌ Error: NEXT_PUBLIC_GEMINI_API_KEY is not defined in .env.local");
+    console.error("❌ Error: GEMINI_API_KEY is not defined in .env.local");
     process.exit(1);
 }
 
