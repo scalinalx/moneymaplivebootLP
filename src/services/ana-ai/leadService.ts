@@ -1,4 +1,7 @@
-import { supabase } from '@/lib/supabaseClient';
+import { supabaseAdmin as supabase } from '@/lib/supabase';
+
+// SERVER-ONLY: used by /api/ana-ai-offer-flow routes. ana_ai_leads is
+// service-role-only (RLS), so this must never be imported from a client component.
 
 export interface LeadActivity {
     timestamp: string;

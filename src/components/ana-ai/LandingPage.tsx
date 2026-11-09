@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { ArrowRight, Lock, CheckCircle2, Loader2, ThumbsUp, Heart, Award } from 'lucide-react';
-import { captureLead } from '@/services/ana-ai/leadService';
 import { ProductHuntBadge } from '@/components/ProductHuntBadge';
 
 interface LandingPageProps {
@@ -34,7 +33,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onSignup }) => {
         if (name && email && agreed) {
             setIsSubmitting(true);
             try {
-                await captureLead(name, email);
+                // Saved server-side: ana_ai_leads is service-role-only
+                const res = await fetch('/api/ana-ai-offer-flow/lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email }),
+                });
+                if (!res.ok) throw new Error('Lead capture failed');
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (window as any).__track?.formSuccess?.('ana-ai-offer-flow-lead');
                 onSignup(name, email);

@@ -1,9 +1,13 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { OfferStackResponse } from "../../types/ana-ai";
 
-// Note: Using @google/generative-ai which is the standard package name
-// The user provided @google/genai, but it's likely @google/generative-ai
-const ai = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || "");
+// SERVER-ONLY: called from /api/ana-ai-offer-flow. Never import this from a
+// client component — the Gemini key must not reach the browser.
+const getAI = () => {
+    const key = process.env.GEMINI_API_KEY || "";
+    if (!key) throw new Error("GEMINI_API_KEY is not configured.");
+    return new GoogleGenerativeAI(key);
+};
 
 const responseSchema = {
     type: "object",
@@ -26,7 +30,7 @@ const responseSchema = {
 // Next.js adapter for the provided logic
 export const generateOfferStack = async (expertise: string): Promise<OfferStackResponse> => {
     try {
-        const model = ai.getGenerativeModel({
+        const model = getAI().getGenerativeModel({
             model: "gemini-2.5-flash",
             generationConfig: {
                 responseMimeType: "application/json",
@@ -90,7 +94,7 @@ export const generateOfferStack = async (expertise: string): Promise<OfferStackR
 
 export const refineOfferStack = async (expertise: string, currentStack: OfferStackResponse, feedback: string): Promise<OfferStackResponse> => {
     try {
-        const model = ai.getGenerativeModel({
+        const model = getAI().getGenerativeModel({
             model: "gemini-2.5-flash",
             generationConfig: {
                 responseMimeType: "application/json",

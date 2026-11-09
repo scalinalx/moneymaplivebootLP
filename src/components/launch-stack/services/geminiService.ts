@@ -1,8 +1,13 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { LaunchFormData, SequenceResponse, EmailDay } from "../types";
 
-// Initialize Gemini Client
-const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
+// SERVER-ONLY: called from /api/launch-stack. Never import this from a client
+// component — the Gemini key must not reach the browser.
+const getAI = () => {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) throw new Error("GEMINI_API_KEY is not configured.");
+    return new GoogleGenAI({ apiKey });
+};
 
 const LAUNCH_MASTERCLASS_GUIDELINES = `
 *** HIGH-CONVERTING LAUNCH SEQUENCE PRINCIPLES ***
@@ -235,7 +240,7 @@ export const generateEmailSequence = async (data: LaunchFormData): Promise<Seque
   `;
 
     try {
-        const response = await ai.models.generateContent({
+        const response = await getAI().models.generateContent({
             model: modelId,
             contents: textPrompt,
             config: {

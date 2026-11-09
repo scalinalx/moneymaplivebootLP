@@ -3,9 +3,20 @@
 import React, { useState } from 'react';
 import InputForm from './components/InputForm';
 import EmailSequenceDisplay from './components/EmailSequenceDisplay';
-import { generateEmailSequence } from './services/geminiService';
 import { LaunchFormData, SequenceResponse } from './types';
 import { Zap } from 'lucide-react';
+
+// Gemini runs server-side in /api/launch-stack (keeps the API key out of the browser).
+const generateEmailSequence = async (data: LaunchFormData): Promise<SequenceResponse> => {
+    const res = await fetch('/api/launch-stack', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json?.error || 'Something went wrong. Please try again.');
+    return json as SequenceResponse;
+};
 
 const App: React.FC = () => {
     const [sequenceData, setSequenceData] = useState<SequenceResponse | null>(null);

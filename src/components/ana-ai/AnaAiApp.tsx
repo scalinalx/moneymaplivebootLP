@@ -2,14 +2,24 @@
 
 import React, { useState, useRef } from 'react';
 import { Sparkles, ArrowRight, Loader2, Feather, MessageSquarePlus, RefreshCw, ExternalLink } from 'lucide-react';
-import { generateOfferStack, refineOfferStack } from '@/services/ana-ai/geminiService';
-import { trackActivity } from '@/services/ana-ai/leadService';
 import { OfferStackResponse } from '@/types/ana-ai';
 import { OfferCard } from '@/components/ana-ai/OfferCard';
 import { LandingPage } from '@/components/ana-ai/LandingPage';
 import { ProductHuntBadge } from '@/components/ProductHuntBadge';
 import { ExitIntentModal } from '@/components/ExitIntentModal';
 import { PurchaseNotification } from '@/components/PurchaseNotification';
+
+// Gemini runs server-side in /api/ana-ai-offer-flow (keeps the API key out of the browser).
+const callOfferFlowApi = async (payload: Record<string, unknown>): Promise<OfferStackResponse> => {
+    const res = await fetch('/api/ana-ai-offer-flow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data?.error || 'Request failed');
+    return data as OfferStackResponse;
+};
 
 const AnaAiApp = () => {
     // User Access State
@@ -51,13 +61,9 @@ const AnaAiApp = () => {
         setResult(null);
 
         try {
-            const data = await generateOfferStack(expertise);
+            // Activity is tracked server-side when email is present
+            const data = await callOfferFlowApi({ action: 'generate', expertise, email: user?.email });
             setResult(data);
-
-            // Track activity in Supabase
-            if (user?.email) {
-                trackActivity(user.email, expertise, 'initial_generation');
-            }
 
             // Small delay to allow render before scrolling
             setTimeout(() => {
@@ -78,13 +84,9 @@ const AnaAiApp = () => {
         setError(null);
 
         try {
-            const data = await refineOfferStack(expertise, result, feedback);
+            // Activity is tracked server-side when email is present
+            const data = await callOfferFlowApi({ action: 'refine', expertise, currentStack: result, feedback, email: user?.email });
             setResult(data);
-
-            // Track activity in Supabase
-            if (user?.email) {
-                trackActivity(user.email, feedback, 'refinement');
-            }
 
             setFeedback(''); // Clear feedback after successful update
         } catch (err) {
